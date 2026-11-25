@@ -1,0 +1,1046 @@
+{
+  "meta": {
+    "scenario": "DV6",
+    "condicao": "B",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "dev_v2",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D3",
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 818,
+    "user_message_sha12": "070f274ea594"
+  },
+  "user_message": "Município (fictício): Prainha do Sul\nData de referência da análise: 2026-11-15\nDocumentos disponíveis (3), em ordem cronológica:\n\n### [D3] Ata — simulado 2023\nTipo: Ata | Fonte: COMPDEC | Data: 2023-09-09\n\nNo simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul (12 minutos).\n\n---\n\n### [D1] Plano de Contingência (2026)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2026-05-05\n\nRota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul. A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).\n\n---\n\n### [D2] Alerta (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-15\n\nNÍVEL: LARANJA. Alagamento provável no bairro Prainha.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_030d0a6698b600a5016b06ebc0fa1887d2b9a430fd7b92f0c1",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 2058,
+    "output_tokens": 2984,
+    "reasoning_tokens": 61
+  },
+  "latency_ms": 19170,
+  "started_at": "2026-11-25T14:08:00.433Z",
+  "output": {
+    "resumo_situacao": "Há um alerta laranja de alagamento provável no bairro Prainha. O plano de 2026 indica a Av. Atlântica como rota de evacuação do bairro Prainha até o Ginásio Sul. A Rua do Mangue, que foi a rota mais rápida em simulado de 2023, deixou de ser rota por obra de drenagem até 2027.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Bairro Prainha",
+        "tipo": "local",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Área citada no plano de contingência e no alerta como local afetado."
+      },
+      {
+        "id": "E2",
+        "nome": "Ginásio Sul",
+        "tipo": "local",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Ponto de destino da rota de evacuação indicado no plano e usado no simulado."
+      },
+      {
+        "id": "E3",
+        "nome": "Av. Atlântica",
+        "tipo": "infraestrutura",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Via indicada no plano de contingência como rota de evacuação do bairro Prainha até o Ginásio Sul."
+      },
+      {
+        "id": "E4",
+        "nome": "Rua do Mangue",
+        "tipo": "infraestrutura",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Via usada no simulado de 2023 e depois retirada da rota por obra de drenagem."
+      },
+      {
+        "id": "E5",
+        "nome": "Obra de drenagem",
+        "tipo": "evento",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Motivo registrado para a Rua do Mangue ter deixado de ser rota até 2027."
+      },
+      {
+        "id": "E6",
+        "nome": "Evacuação do bairro Prainha até o Ginásio Sul",
+        "tipo": "servico",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Rota/ação de deslocamento prevista no plano de contingência."
+      },
+      {
+        "id": "E7",
+        "nome": "COMPDEC",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Órgão citado como fonte do plano e da ata."
+      },
+      {
+        "id": "E8",
+        "nome": "Alagamento provável no bairro Prainha",
+        "tipo": "evento",
+        "setor_responsavel": "Sala de Situação Regional (fictícia)",
+        "descricao": "Cenário de alerta emitido em 2026-11-15 com nível laranja."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E6",
+        "destino": "E1",
+        "tipo": "localizado_em",
+        "rotulo": "A evacuação parte do bairro Prainha.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-05-05",
+          "fim": null,
+          "observacao": "Válido no plano de contingência de 2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E6",
+        "destino": "E2",
+        "tipo": "abastece",
+        "rotulo": "A evacuação tem como destino o Ginásio Sul.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-05-05",
+          "fim": null,
+          "observacao": "Válido no plano de contingência de 2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E6",
+        "destino": "E3",
+        "tipo": "depende_de",
+        "rotulo": "A rota prevista depende da Av. Atlântica.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-05-05",
+          "fim": null,
+          "observacao": "Rota descrita no plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E4",
+        "destino": "E2",
+        "tipo": "acesso_por",
+        "rotulo": "No simulado, a Rua do Mangue levou ao Ginásio Sul.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2023-09-09",
+          "fim": null,
+          "observacao": "Registro do simulado de 2023."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul"
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E4",
+        "destino": "E5",
+        "tipo": "afetado_por",
+        "rotulo": "A Rua do Mangue deixou de ser rota por obra de drenagem.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-05-05",
+          "fim": "2027-12-31",
+          "observacao": "O plano registra a exclusão até 2027."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027)."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E8",
+        "destino": "E1",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta aponta o bairro Prainha como área provável de alagamento.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-15",
+          "fim": null,
+          "observacao": "Data do alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: LARANJA. Alagamento provável no bairro Prainha."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E7",
+        "destino": "E6",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC é a fonte do plano que define a rota.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-05-05",
+          "fim": null,
+          "observacao": "Fonte do documento."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Fonte: COMPDEC | Data: 2026-05-05"
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E7",
+        "destino": "E4",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC também registra o simulado com a Rua do Mangue.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2023-09-09",
+          "fim": null,
+          "observacao": "Fonte da ata."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Ata — simulado 2023"
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "O plano de 2026 substitui o uso da Rua do Mangue como rota de evacuação por uma rota pela Av. Atlântica.",
+        "implicacao": "A leitura operacional mais recente para o bairro Prainha é a do plano de 2026, não a do simulado de 2023.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "vigencia_encerrada",
+        "descricao": "A Rua do Mangue deixou de ser rota por obra de drenagem, com vigência indicada até 2027.",
+        "implicacao": "Não deve ser presumida como rota atual sem nova confirmação documental.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027)."
+          }
+        ]
+      },
+      {
+        "id": "T3",
+        "tipo": "historico_superado",
+        "descricao": "O resultado do simulado de 2023 sobre a Rua do Mangue é histórico e foi superado pelo plano de 2026.",
+        "implicacao": "O tempo de deslocamento do simulado não deve ser tratado como rota vigente.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027)."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "A rota operacional para o bairro Prainha continua sendo pela Av. Atlântica até o Ginásio Sul no cenário atual de alerta?",
+        "por_que_importa": "O alerta é para alagamento provável no bairro Prainha e a rota mais recente precisa ser confirmada para uso preventivo.",
+        "motivacao": "O plano de 2026 define a rota e o alerta atual torna essa informação operacionalmente relevante.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E6",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "fato_documentado",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: LARANJA. Alagamento provável no bairro Prainha."
+          }
+        ],
+        "o_que_falta_saber": "Se houve nova atualização após 2026-05-05 alterando essa rota.",
+        "quem_pode_confirmar": "COMPDEC",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "A Rua do Mangue está realmente indisponível para uso como rota, conforme a obra de drenagem mencionada no plano?",
+        "por_que_importa": "Há um registro anterior de uso da via no simulado, mas o plano posterior diz que ela deixou de ser rota.",
+        "motivacao": "Existe mudança documental entre o simulado de 2023 e o plano de 2026.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "contradicao",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul"
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027)."
+          }
+        ],
+        "o_que_falta_saber": "Se a obra de drenagem realmente impede o uso da via no momento do alerta.",
+        "quem_pode_confirmar": "COMPDEC ou setor responsável pela obra de drenagem",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "O Ginásio Sul continua sendo o ponto de chegada previsto para a evacuação do bairro Prainha?",
+        "por_que_importa": "Se o destino tiver mudado, a orientação operacional do plano pode estar desatualizada.",
+        "motivacao": "O plano define o Ginásio Sul como destino, mas não há outro documento confirmando ou alterando isso depois de 2026-05-05.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E2",
+          "E6"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "fato_documentado",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul."
+          }
+        ],
+        "o_que_falta_saber": "Se houve mudança posterior do ponto de recepção.",
+        "quem_pode_confirmar": "COMPDEC",
+        "prioridade": "media"
+      },
+      {
+        "id": "V4",
+        "pergunta": "Há alguma atualização posterior ao plano de 2026 que altere a rota ou a interdição associada à Rua do Mangue antes de 2027?",
+        "por_que_importa": "A validade temporal da exclusão da via pode mudar a leitura do cenário atual.",
+        "motivacao": "O plano fixa a informação com limite temporal até 2027, e a análise é em 2026-11-15.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E4",
+          "E5"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027)."
+          }
+        ],
+        "o_que_falta_saber": "Se existe ofício, atualização ou novo plano após 2026-05-05.",
+        "quem_pode_confirmar": "COMPDEC",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há documento com detalhamento operacional do ponto de apoio, abrigo ou capacidade do Ginásio Sul.",
+        "por_que_importa": "Sem isso, não é possível avaliar a logística de chegada prevista pela rota."
+      },
+      {
+        "descricao": "Não há informação sobre condições atuais da Av. Atlântica no dia do alerta.",
+        "por_que_importa": "A rota principal depende dessa via e o alerta é de alagamento."
+      },
+      {
+        "descricao": "Não há registro de atualização posterior ao plano sobre a situação da Rua do Mangue.",
+        "por_que_importa": "A vigência da exclusão da via pode ter mudado."
+      }
+    ],
+    "cautelas": [
+      "A ata de 2023 é um registro histórico e não deve ser tratada como rota vigente sem confirmação posterior.",
+      "O alerta informa cenário provável, mas não descreve medidas automáticas de resposta.",
+      "A análise não presume que a obra de drenagem esteja concluída; apenas registra o que o plano informa.",
+      "Não há base nos documentos para afirmar capacidade, estado físico ou disponibilidade atual do Ginásio Sul."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 8,
+    "n_relacoes": 8,
+    "n_verificacoes": 4,
+    "n_temporais": 3,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: LARANJA. Alagamento provável no bairro Prainha.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Fonte: COMPDEC | Data: 2026-05-05",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Ata — simulado 2023",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: LARANJA. Alagamento provável no bairro Prainha.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      }
+    ],
+    "n_citacoes": 19,
+    "n_citacoes_literais": 19,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795615699,
+    "created_at": 1795615681,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_030d0a6698b600a5016b06ebc0fa1887d2b9a430fd7b92f0c1",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBuvCF0S_THViqqjSE3GzTtrVHaylJYUp2VOf8m3UfoYRkXAI5m_0u16Fr4RQxMn_nv-xo-AX-licoluwLeSUwGhcvNtl4NxG1RBuqcRsawoRYYcT1k2WSinlyTPog0v_zZONelkqX-di5xyH4sGyxWoSt5xPfcCL0hH-Ask2LZolVK-8ZdixPKc7Wgi9CC4D8bFgojOWyuM0d2CUUHYJOI_fyDc5HQvN-DpnFZ-wBPA7hIZApa3tuuTdWh7lfDz9TGIvvORwQDzjoG0qMIcyAVgrxKBApckOXgMp3HnGi1M3AWqsFzZw568AJIcgTQ_ZVg9WRs7N55q76AOP55SnFJSNJIJ_AQXGcEf3GVl_28eW0CoBOBgthloH7_BrjS-chSZ_R-szz_I5egkv73XbTIQw3ULQsN3QH-r7u_NilHCCkqbZqcUG7AHgOQGMcAPRaE2UhyO7ZCj2_ACqo3ALLbUM3XaI-tHyN7GVvkSgdRJJAO64vrwpiQ5ayGjJrT5eCw035NEqJZLSEtlYVPlbzFj2Hlcw9UmqM5C3eglXWKV09b07y_YqjMhAnXIkF0ivMeVisbvQXfiLh5ronGpYBOz0monapu2R5QiDpADNK0oBvGnhQimqK5ZujCM2QKCY5rwXHNGWZCsm7vqFl9d6AQ2wPGAlxU64XJoMYugBrA6OSaAosQr8rdirHJDWl9B6LutM-HdW66BQ5e0IkPnwDFBj1sd4aocEGgJs178-16ILjre9Kb05nF8KNMKW3E_2hkvJZgipcme-ofWBiBbTKA4myAulz48ASdXS3Wik_j454tYmoMQWYuxVOH9EadfZL1EmstAO2hSzSdDLHOa5LbShgbCJ3cxED1FFB32cUGeFLXnrxJLAaA7GouVOS9y6qPxxohBCq0Xig80fk855O5pKJTP_stwLUjJ7crMbmyxxW5eWhut2WGjQHieCo9ktliCZDiacoy33bllHF6o-4uCIFE6fE3wpszVjL1iEBKNMP-7ms99wRs4St2TMGQ6yRiUFJBZeWA1u0ypp1bKxCTuIwXKfzYqC-Ogr1nePwF-Lg_o6m5GM-_3MyPxQdpUA4sA3SEGWNQ1irNyRDIy4TE7AV7uPBtwYUo2Va5ZlDiG5vVqogBHMVerBsYojAX45ONLt5d-p-a_1i4JD9-fMZcS5GLq6fjTTstwcb2ahIUdnnvfoKf66EpSv1hQ1A5ihR5qq-uOCnqVEoX7PyIniY4Bhb4ZGKWjJKzC2F4ER-AEZu8fwqN5d5SLZT7eTo-l-mSYn-Qje7ajLpQu98PtHz7mNcDsqWIm1V9M8SXP7bDrx7mL_daNENKwhWNXNYEbLVkRKfQsNO81oCsb9kMIJq7Ihki-4OSvbXjtX_7rxa1PYsS8sl-jfN07YcAAHnj9fdUx2o43t4I3rgRsiVqGdnDm214_BABuxrq8EzyQGGaG5WPx96PKI5xhJ5-fnZKy5QDXvWiXe9VOqE4CCzJDipk60-tVM-ICmgEzmND1_uYhovTXhYEAAiq0NOVlBxTH0e-5Afp4dGxsVTgOqTTWxZV5nnaTp_Xhvp-0GIcAlU007OyeFQ4lf5HWhaOHIWexlwW6jLB5QDLmixUhaRS1JX9yBVx3a-Q363bNfl3m1O4KTIyefGZnKA13hmDOVBNCfjtQUTdhcIlAJhrTMon1LvVwI7evNNIZmfIeF5noRTrrko3IIwP6CqAEFzdvd9GY6wbjwc0nX5R-feyOxNP6mGTFjFhDNaxsUitnsHbmU9BcqMGyaS7kjPyq3qsHFQ7g4_jDfXDTC9CDIEZxkXey_JlvFwbja1lPAjuR3xittvy2iRjjOytklqThFn_aZVfX0xmzF5jqQFMx4Md8hXkBO3Uc-rXaFHxEVY3EmZydNM3I-XXSxUyecrx2Sr0wIo11PG0YlUISeSyImkY8BmyawZneRIrGwUrkApYQ5h25AcxzPrpg5bMTwkPYRcTBupmVuicg8o0t1OmGJjXL2IiZMW81jtUMQGCLQPmOvB6MNDNuBz6iwWgx-y7aehwwvP6q0S5T6gdY6IT7T-Wqa0kcu2pZ-uxslJhJIY_i4nDx5EfAF4fTdWGxPoRzRlgjEniJ8k31g6_V8ssyiWBk2y6GTMmANkDNxynED-EpfeEFKJoJ2Sgo6M0rWcsbSyr8y9mDZcyWMzzaECF7zAfasWOfNi5HkxXL8eR2tdelfP6JamtH_XShxX4Z7opMRcUcezsMOfwQa0M-qxCgqH16HR86CfCNkwevadNuALsp64p-5cJlyYirg-OBvCzMhGhEi1LqxIpXJ3bjfflIaJweXWkm_em4tOdPeS1_q-03E0f4iCe3ebncng62YlbYDAN7PQa3XUdJ9G7lYE9C2phFm9jGTTJHku1sgwlMjnzxmYu9DK2o2sB0toovDXRNl_pR6KapRHk7Lx_6GsSSRBmRmYdi0GXhJXFLDIDXFt-iwsgciiVLFkb4=",
+        "id": "rs_030d0a6698b600a5016b06ebc1ff2c87d28a8c577d683c0b88",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"Há um alerta laranja de alagamento provável no bairro Prainha. O plano de 2026 indica a Av. Atlântica como rota de evacuação do bairro Prainha até o Ginásio Sul. A Rua do Mangue, que foi a rota mais rápida em simulado de 2023, deixou de ser rota por obra de drenagem até 2027.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Bairro Prainha\",\"tipo\":\"local\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Área citada no plano de contingência e no alerta como local afetado.\"},{\"id\":\"E2\",\"nome\":\"Ginásio Sul\",\"tipo\":\"local\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Ponto de destino da rota de evacuação indicado no plano e usado no simulado.\"},{\"id\":\"E3\",\"nome\":\"Av. Atlântica\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Via indicada no plano de contingência como rota de evacuação do bairro Prainha até o Ginásio Sul.\"},{\"id\":\"E4\",\"nome\":\"Rua do Mangue\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Via usada no simulado de 2023 e depois retirada da rota por obra de drenagem.\"},{\"id\":\"E5\",\"nome\":\"Obra de drenagem\",\"tipo\":\"evento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Motivo registrado para a Rua do Mangue ter deixado de ser rota até 2027.\"},{\"id\":\"E6\",\"nome\":\"Evacuação do bairro Prainha até o Ginásio Sul\",\"tipo\":\"servico\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Rota/ação de deslocamento prevista no plano de contingência.\"},{\"id\":\"E7\",\"nome\":\"COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Órgão citado como fonte do plano e da ata.\"},{\"id\":\"E8\",\"nome\":\"Alagamento provável no bairro Prainha\",\"tipo\":\"evento\",\"setor_responsavel\":\"Sala de Situação Regional (fictícia)\",\"descricao\":\"Cenário de alerta emitido em 2026-11-15 com nível laranja.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E6\",\"destino\":\"E1\",\"tipo\":\"localizado_em\",\"rotulo\":\"A evacuação parte do bairro Prainha.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-05-05\",\"fim\":null,\"observacao\":\"Válido no plano de contingência de 2026.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.\"}]},{\"id\":\"R2\",\"origem\":\"E6\",\"destino\":\"E2\",\"tipo\":\"abastece\",\"rotulo\":\"A evacuação tem como destino o Ginásio Sul.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-05-05\",\"fim\":null,\"observacao\":\"Válido no plano de contingência de 2026.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.\"}]},{\"id\":\"R3\",\"origem\":\"E6\",\"destino\":\"E3\",\"tipo\":\"depende_de\",\"rotulo\":\"A rota prevista depende da Av. Atlântica.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-05-05\",\"fim\":null,\"observacao\":\"Rota descrita no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.\"}]},{\"id\":\"R4\",\"origem\":\"E4\",\"destino\":\"E2\",\"tipo\":\"acesso_por\",\"rotulo\":\"No simulado, a Rua do Mangue levou ao Ginásio Sul.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2023-09-09\",\"fim\":null,\"observacao\":\"Registro do simulado de 2023.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul\"}]},{\"id\":\"R5\",\"origem\":\"E4\",\"destino\":\"E5\",\"tipo\":\"afetado_por\",\"rotulo\":\"A Rua do Mangue deixou de ser rota por obra de drenagem.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-05-05\",\"fim\":\"2027-12-31\",\"observacao\":\"O plano registra a exclusão até 2027.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).\"}]},{\"id\":\"R6\",\"origem\":\"E8\",\"destino\":\"E1\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta aponta o bairro Prainha como área provável de alagamento.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-15\",\"fim\":null,\"observacao\":\"Data do alerta.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Alagamento provável no bairro Prainha.\"}]},{\"id\":\"R7\",\"origem\":\"E7\",\"destino\":\"E6\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC é a fonte do plano que define a rota.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-05-05\",\"fim\":null,\"observacao\":\"Fonte do documento.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Fonte: COMPDEC | Data: 2026-05-05\"}]},{\"id\":\"R8\",\"origem\":\"E7\",\"destino\":\"E4\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC também registra o simulado com a Rua do Mangue.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2023-09-09\",\"fim\":null,\"observacao\":\"Fonte da ata.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Ata — simulado 2023\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"O plano de 2026 substitui o uso da Rua do Mangue como rota de evacuação por uma rota pela Av. Atlântica.\",\"implicacao\":\"A leitura operacional mais recente para o bairro Prainha é a do plano de 2026, não a do simulado de 2023.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.\"},{\"doc_id\":\"D3\",\"trecho\":\"No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul.\"}]},{\"id\":\"T2\",\"tipo\":\"vigencia_encerrada\",\"descricao\":\"A Rua do Mangue deixou de ser rota por obra de drenagem, com vigência indicada até 2027.\",\"implicacao\":\"Não deve ser presumida como rota atual sem nova confirmação documental.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).\"}]},{\"id\":\"T3\",\"tipo\":\"historico_superado\",\"descricao\":\"O resultado do simulado de 2023 sobre a Rua do Mangue é histórico e foi superado pelo plano de 2026.\",\"implicacao\":\"O tempo de deslocamento do simulado não deve ser tratado como rota vigente.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul.\"},{\"doc_id\":\"D1\",\"trecho\":\"A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"A rota operacional para o bairro Prainha continua sendo pela Av. Atlântica até o Ginásio Sul no cenário atual de alerta?\",\"por_que_importa\":\"O alerta é para alagamento provável no bairro Prainha e a rota mais recente precisa ser confirmada para uso preventivo.\",\"motivacao\":\"O plano de 2026 define a rota e o alerta atual torna essa informação operacionalmente relevante.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\",\"E6\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"fato_documentado\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Alagamento provável no bairro Prainha.\"}],\"o_que_falta_saber\":\"Se houve nova atualização após 2026-05-05 alterando essa rota.\",\"quem_pode_confirmar\":\"COMPDEC\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A Rua do Mangue está realmente indisponível para uso como rota, conforme a obra de drenagem mencionada no plano?\",\"por_que_importa\":\"Há um registro anterior de uso da via no simulado, mas o plano posterior diz que ela deixou de ser rota.\",\"motivacao\":\"Existe mudança documental entre o simulado de 2023 e o plano de 2026.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E4\",\"E5\",\"E6\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"contradicao\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul\"},{\"doc_id\":\"D1\",\"trecho\":\"A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).\"}],\"o_que_falta_saber\":\"Se a obra de drenagem realmente impede o uso da via no momento do alerta.\",\"quem_pode_confirmar\":\"COMPDEC ou setor responsável pela obra de drenagem\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"O Ginásio Sul continua sendo o ponto de chegada previsto para a evacuação do bairro Prainha?\",\"por_que_importa\":\"Se o destino tiver mudado, a orientação operacional do plano pode estar desatualizada.\",\"motivacao\":\"O plano define o Ginásio Sul como destino, mas não há outro documento confirmando ou alterando isso depois de 2026-05-05.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\",\"E6\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"fato_documentado\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.\"}],\"o_que_falta_saber\":\"Se houve mudança posterior do ponto de recepção.\",\"quem_pode_confirmar\":\"COMPDEC\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"Há alguma atualização posterior ao plano de 2026 que altere a rota ou a interdição associada à Rua do Mangue antes de 2027?\",\"por_que_importa\":\"A validade temporal da exclusão da via pode mudar a leitura do cenário atual.\",\"motivacao\":\"O plano fixa a informação com limite temporal até 2027, e a análise é em 2026-11-15.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E4\",\"E5\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).\"}],\"o_que_falta_saber\":\"Se existe ofício, atualização ou novo plano após 2026-05-05.\",\"quem_pode_confirmar\":\"COMPDEC\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há documento com detalhamento operacional do ponto de apoio, abrigo ou capacidade do Ginásio Sul.\",\"por_que_importa\":\"Sem isso, não é possível avaliar a logística de chegada prevista pela rota.\"},{\"descricao\":\"Não há informação sobre condições atuais da Av. Atlântica no dia do alerta.\",\"por_que_importa\":\"A rota principal depende dessa via e o alerta é de alagamento.\"},{\"descricao\":\"Não há registro de atualização posterior ao plano sobre a situação da Rua do Mangue.\",\"por_que_importa\":\"A vigência da exclusão da via pode ter mudado.\"}],\"cautelas\":[\"A ata de 2023 é um registro histórico e não deve ser tratada como rota vigente sem confirmação posterior.\",\"O alerta informa cenário provável, mas não descreve medidas automáticas de resposta.\",\"A análise não presume que a obra de drenagem esteja concluída; apenas registra o que o plano informa.\",\"Não há base nos documentos para afirmar capacidade, estado físico ou disponibilidade atual do Ginásio Sul.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_030d0a6698b600a5016b06ebc21d5087d2b5b6e49cb59c2ae8",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2058,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 2984,
+      "output_tokens_details": {
+        "reasoning_tokens": 61
+      },
+      "total_tokens": 5042
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"Há um alerta laranja de alagamento provável no bairro Prainha. O plano de 2026 indica a Av. Atlântica como rota de evacuação do bairro Prainha até o Ginásio Sul. A Rua do Mangue, que foi a rota mais rápida em simulado de 2023, deixou de ser rota por obra de drenagem até 2027.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Bairro Prainha\",\"tipo\":\"local\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Área citada no plano de contingência e no alerta como local afetado.\"},{\"id\":\"E2\",\"nome\":\"Ginásio Sul\",\"tipo\":\"local\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Ponto de destino da rota de evacuação indicado no plano e usado no simulado.\"},{\"id\":\"E3\",\"nome\":\"Av. Atlântica\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Via indicada no plano de contingência como rota de evacuação do bairro Prainha até o Ginásio Sul.\"},{\"id\":\"E4\",\"nome\":\"Rua do Mangue\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Via usada no simulado de 2023 e depois retirada da rota por obra de drenagem.\"},{\"id\":\"E5\",\"nome\":\"Obra de drenagem\",\"tipo\":\"evento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Motivo registrado para a Rua do Mangue ter deixado de ser rota até 2027.\"},{\"id\":\"E6\",\"nome\":\"Evacuação do bairro Prainha até o Ginásio Sul\",\"tipo\":\"servico\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Rota/ação de deslocamento prevista no plano de contingência.\"},{\"id\":\"E7\",\"nome\":\"COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Órgão citado como fonte do plano e da ata.\"},{\"id\":\"E8\",\"nome\":\"Alagamento provável no bairro Prainha\",\"tipo\":\"evento\",\"setor_responsavel\":\"Sala de Situação Regional (fictícia)\",\"descricao\":\"Cenário de alerta emitido em 2026-11-15 com nível laranja.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E6\",\"destino\":\"E1\",\"tipo\":\"localizado_em\",\"rotulo\":\"A evacuação parte do bairro Prainha.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-05-05\",\"fim\":null,\"observacao\":\"Válido no plano de contingência de 2026.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.\"}]},{\"id\":\"R2\",\"origem\":\"E6\",\"destino\":\"E2\",\"tipo\":\"abastece\",\"rotulo\":\"A evacuação tem como destino o Ginásio Sul.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-05-05\",\"fim\":null,\"observacao\":\"Válido no plano de contingência de 2026.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.\"}]},{\"id\":\"R3\",\"origem\":\"E6\",\"destino\":\"E3\",\"tipo\":\"depende_de\",\"rotulo\":\"A rota prevista depende da Av. Atlântica.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-05-05\",\"fim\":null,\"observacao\":\"Rota descrita no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.\"}]},{\"id\":\"R4\",\"origem\":\"E4\",\"destino\":\"E2\",\"tipo\":\"acesso_por\",\"rotulo\":\"No simulado, a Rua do Mangue levou ao Ginásio Sul.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2023-09-09\",\"fim\":null,\"observacao\":\"Registro do simulado de 2023.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul\"}]},{\"id\":\"R5\",\"origem\":\"E4\",\"destino\":\"E5\",\"tipo\":\"afetado_por\",\"rotulo\":\"A Rua do Mangue deixou de ser rota por obra de drenagem.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-05-05\",\"fim\":\"2027-12-31\",\"observacao\":\"O plano registra a exclusão até 2027.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).\"}]},{\"id\":\"R6\",\"origem\":\"E8\",\"destino\":\"E1\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta aponta o bairro Prainha como área provável de alagamento.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-15\",\"fim\":null,\"observacao\":\"Data do alerta.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Alagamento provável no bairro Prainha.\"}]},{\"id\":\"R7\",\"origem\":\"E7\",\"destino\":\"E6\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC é a fonte do plano que define a rota.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-05-05\",\"fim\":null,\"observacao\":\"Fonte do documento.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Fonte: COMPDEC | Data: 2026-05-05\"}]},{\"id\":\"R8\",\"origem\":\"E7\",\"destino\":\"E4\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC também registra o simulado com a Rua do Mangue.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2023-09-09\",\"fim\":null,\"observacao\":\"Fonte da ata.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Ata — simulado 2023\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"O plano de 2026 substitui o uso da Rua do Mangue como rota de evacuação por uma rota pela Av. Atlântica.\",\"implicacao\":\"A leitura operacional mais recente para o bairro Prainha é a do plano de 2026, não a do simulado de 2023.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.\"},{\"doc_id\":\"D3\",\"trecho\":\"No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul.\"}]},{\"id\":\"T2\",\"tipo\":\"vigencia_encerrada\",\"descricao\":\"A Rua do Mangue deixou de ser rota por obra de drenagem, com vigência indicada até 2027.\",\"implicacao\":\"Não deve ser presumida como rota atual sem nova confirmação documental.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).\"}]},{\"id\":\"T3\",\"tipo\":\"historico_superado\",\"descricao\":\"O resultado do simulado de 2023 sobre a Rua do Mangue é histórico e foi superado pelo plano de 2026.\",\"implicacao\":\"O tempo de deslocamento do simulado não deve ser tratado como rota vigente.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul.\"},{\"doc_id\":\"D1\",\"trecho\":\"A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"A rota operacional para o bairro Prainha continua sendo pela Av. Atlântica até o Ginásio Sul no cenário atual de alerta?\",\"por_que_importa\":\"O alerta é para alagamento provável no bairro Prainha e a rota mais recente precisa ser confirmada para uso preventivo.\",\"motivacao\":\"O plano de 2026 define a rota e o alerta atual torna essa informação operacionalmente relevante.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\",\"E6\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"fato_documentado\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Alagamento provável no bairro Prainha.\"}],\"o_que_falta_saber\":\"Se houve nova atualização após 2026-05-05 alterando essa rota.\",\"quem_pode_confirmar\":\"COMPDEC\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A Rua do Mangue está realmente indisponível para uso como rota, conforme a obra de drenagem mencionada no plano?\",\"por_que_importa\":\"Há um registro anterior de uso da via no simulado, mas o plano posterior diz que ela deixou de ser rota.\",\"motivacao\":\"Existe mudança documental entre o simulado de 2023 e o plano de 2026.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E4\",\"E5\",\"E6\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"contradicao\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul\"},{\"doc_id\":\"D1\",\"trecho\":\"A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).\"}],\"o_que_falta_saber\":\"Se a obra de drenagem realmente impede o uso da via no momento do alerta.\",\"quem_pode_confirmar\":\"COMPDEC ou setor responsável pela obra de drenagem\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"O Ginásio Sul continua sendo o ponto de chegada previsto para a evacuação do bairro Prainha?\",\"por_que_importa\":\"Se o destino tiver mudado, a orientação operacional do plano pode estar desatualizada.\",\"motivacao\":\"O plano define o Ginásio Sul como destino, mas não há outro documento confirmando ou alterando isso depois de 2026-05-05.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\",\"E6\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"fato_documentado\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul.\"}],\"o_que_falta_saber\":\"Se houve mudança posterior do ponto de recepção.\",\"quem_pode_confirmar\":\"COMPDEC\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"Há alguma atualização posterior ao plano de 2026 que altere a rota ou a interdição associada à Rua do Mangue antes de 2027?\",\"por_que_importa\":\"A validade temporal da exclusão da via pode mudar a leitura do cenário atual.\",\"motivacao\":\"O plano fixa a informação com limite temporal até 2027, e a análise é em 2026-11-15.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E4\",\"E5\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).\"}],\"o_que_falta_saber\":\"Se existe ofício, atualização ou novo plano após 2026-05-05.\",\"quem_pode_confirmar\":\"COMPDEC\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há documento com detalhamento operacional do ponto de apoio, abrigo ou capacidade do Ginásio Sul.\",\"por_que_importa\":\"Sem isso, não é possível avaliar a logística de chegada prevista pela rota.\"},{\"descricao\":\"Não há informação sobre condições atuais da Av. Atlântica no dia do alerta.\",\"por_que_importa\":\"A rota principal depende dessa via e o alerta é de alagamento.\"},{\"descricao\":\"Não há registro de atualização posterior ao plano sobre a situação da Rua do Mangue.\",\"por_que_importa\":\"A vigência da exclusão da via pode ter mudado.\"}],\"cautelas\":[\"A ata de 2023 é um registro histórico e não deve ser tratada como rota vigente sem confirmação posterior.\",\"O alerta informa cenário provável, mas não descreve medidas automáticas de resposta.\",\"A análise não presume que a obra de drenagem esteja concluída; apenas registra o que o plano informa.\",\"Não há base nos documentos para afirmar capacidade, estado físico ou disponibilidade atual do Ginásio Sul.\"]}"
+  }
+}

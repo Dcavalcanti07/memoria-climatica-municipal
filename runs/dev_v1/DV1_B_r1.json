@@ -1,0 +1,1122 @@
+{
+  "meta": {
+    "scenario": "DV1",
+    "condicao": "B",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "dev_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v1.md",
+    "prompt_sha12": "ba9edac57f55",
+    "docs_fornecidos": [
+      "D3",
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 948,
+    "user_message_sha12": "de7f63414fd3"
+  },
+  "user_message": "Município (fictício): Águas Mansas\nData de referência da análise: 2026-11-10\nDocumentos disponíveis (3), em ordem cronológica:\n\n### [D3] Relatório — 2024\nTipo: Relatório de ocorrência | Fonte: COMPDEC | Data: 2024-05-12\n\nO micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado, único caminho pavimentado até o bairro Outeiro. Famílias chegaram à Escola Mansa a pé, 4 horas depois.\n\n---\n\n### [D1] Plano de Contingência (2025)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2025-05-20\n\nAbrigo: Escola Municipal Mansa (100 pessoas), no bairro Outeiro.\nTransporte de famílias: um micro-ônibus da Educação.\n\n---\n\n### [D2] Alerta (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-10\n\nNÍVEL: LARANJA. Arroio Manso pode transbordar e alagar passagens baixas, incluindo o pontilhão da Rua 3.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_01a90b63e53ca363016b06eb2abe5887d2a59c7b7b5c5901c8",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 1864,
+    "output_tokens": 3330,
+    "reasoning_tokens": 38
+  },
+  "latency_ms": 22516,
+  "started_at": "2026-11-25T14:05:29.840Z",
+  "output": {
+    "resumo_situacao": "O cenário de alerta indica possibilidade de transbordamento do Arroio Manso e alagamento de passagens baixas, incluindo o pontilhão da Rua 3. Nos documentos anteriores, esse ponto já apareceu como barreira para o acesso ao bairro Outeiro, onde fica o abrigo Escola Municipal Mansa. Há também registro de transporte de famílias por micro-ônibus da Educação, mas o relatório de 2024 mostra limitação nesse trajeto quando há alagamento.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Arroio Manso",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Curso d'água citado no alerta como sujeito a transbordamento."
+      },
+      {
+        "id": "E2",
+        "nome": "Pontilhão da Rua 3",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Passagem baixa mencionada como ponto que pode alagar e bloquear o acesso ao bairro Outeiro."
+      },
+      {
+        "id": "E3",
+        "nome": "Rua 3",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Via onde fica o pontilhão citado nos documentos."
+      },
+      {
+        "id": "E4",
+        "nome": "Bairro Outeiro",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Local onde fica o abrigo e destino mencionado nos documentos."
+      },
+      {
+        "id": "E5",
+        "nome": "Escola Municipal Mansa",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Abrigo previsto no plano de contingência, com capacidade para 100 pessoas."
+      },
+      {
+        "id": "E6",
+        "nome": "Micro-ônibus da Educação",
+        "tipo": "equipamento",
+        "setor_responsavel": "Educação",
+        "descricao": "Meio de transporte indicado para transporte de famílias no plano de contingência."
+      },
+      {
+        "id": "E7",
+        "nome": "Famílias",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": null,
+        "descricao": "Pessoas que foram transportadas no relatório de 2024 e que podem demandar deslocamento no cenário de alerta."
+      },
+      {
+        "id": "E8",
+        "nome": "COMPDEC",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "Proteção e Defesa Civil",
+        "descricao": "Fonte dos documentos de 2024 e 2025, ligada à Defesa Civil municipal."
+      },
+      {
+        "id": "E9",
+        "nome": "Sala de Situação Regional",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": null,
+        "descricao": "Fonte do alerta de 2026-11-10."
+      },
+      {
+        "id": "E10",
+        "nome": "Alerta nível laranja",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Cenário de alerta com possibilidade de transbordamento e alagamento de passagens baixas."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "afetado_por",
+        "rotulo": "O arroio pode alagar o pontilhão da Rua 3.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-10",
+          "fim": null,
+          "observacao": "Conforme o alerta vigente."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Arroio Manso pode transbordar e alagar passagens baixas, incluindo o pontilhão da Rua 3."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E2",
+        "destino": "E4",
+        "tipo": "acesso_por",
+        "rotulo": "O pontilhão da Rua 3 integra o acesso ao bairro Outeiro.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2024-05-12",
+          "fim": null,
+          "observacao": "Inferido pelo bloqueio do único caminho pavimentado até o bairro."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "único caminho pavimentado até o bairro Outeiro"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E5",
+        "destino": "E4",
+        "tipo": "localizado_em",
+        "rotulo": "A Escola Municipal Mansa fica no bairro Outeiro.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-05-20",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Escola Municipal Mansa (100 pessoas), no bairro Outeiro."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E6",
+        "destino": "E7",
+        "tipo": "atende",
+        "rotulo": "O micro-ônibus é usado para transportar famílias.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-05-20",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Transporte de famílias: um micro-ônibus da Educação."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E6",
+        "destino": "E8",
+        "tipo": "responsavel_por",
+        "rotulo": "O micro-ônibus está vinculado à Educação.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-05-20",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "um micro-ônibus da Educação."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E5",
+        "destino": "E7",
+        "tipo": "atende",
+        "rotulo": "A Escola Municipal Mansa funciona como abrigo para famílias.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-05-20",
+          "fim": null,
+          "observacao": "Capacidade registrada de 100 pessoas."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Municipal Mansa (100 pessoas)"
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E2",
+        "destino": "E4",
+        "tipo": "afetado_por",
+        "rotulo": "Quando alagado, o pontilhão pode impedir o acesso ao bairro.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2024-05-12",
+          "fim": null,
+          "observacao": "Baseado no relato de bloqueio do caminho pavimentado."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado"
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E10",
+        "destino": "E2",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta inclui o risco de alagamento do pontilhão.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-10",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "incluindo o pontilhão da Rua 3."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "Em 2025 o plano passou a registrar a Escola Municipal Mansa como abrigo no bairro Outeiro e o uso de micro-ônibus da Educação para transporte de famílias.",
+        "implicacao": "Esses itens compõem a referência mais recente de organização operacional nos documentos disponíveis.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Municipal Mansa (100 pessoas), no bairro Outeiro."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Transporte de famílias: um micro-ônibus da Educação."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "pendencia_historica",
+        "descricao": "Em 2024 houve dificuldade de acesso ao bairro Outeiro por causa do alagamento no pontilhão da Rua 3.",
+        "implicacao": "O histórico mostra vulnerabilidade de acesso que precisa ser checada no cenário atual, sem presumir que tenha sido resolvida.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado"
+          }
+        ]
+      },
+      {
+        "id": "T3",
+        "tipo": "atualizacao",
+        "descricao": "O alerta de 2026 retoma o mesmo ponto crítico, agora associado ao transbordamento do Arroio Manso e ao alagamento de passagens baixas.",
+        "implicacao": "Há continuidade do risco operacional sobre o acesso citado no registro histórico.",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Arroio Manso pode transbordar e alagar passagens baixas, incluindo o pontilhão da Rua 3."
+          }
+        ]
+      },
+      {
+        "id": "T4",
+        "tipo": "solucao_parcial",
+        "descricao": "Os documentos mostram que existe um meio de transporte previsto e um abrigo definido, mas o histórico indica que o trajeto pode falhar quando a passagem baixa alaga.",
+        "implicacao": "A existência de recurso não garante acesso; a capacidade de uso precisa ser verificada no momento.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Transporte de famílias: um micro-ônibus da Educação."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "não conseguiu passar sob o pontilhão da Rua 3, alagado"
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "O micro-ônibus da Educação consegue acessar o bairro Outeiro pelo trajeto habitual no momento do alerta?",
+        "por_que_importa": "Sem acesso viável, o transporte previsto no plano pode não funcionar como previsto.",
+        "motivacao": "O plano prevê o transporte por micro-ônibus, mas o relatório anterior mostra bloqueio no mesmo caminho quando o pontilhão alaga.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E2",
+          "E4",
+          "E6",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "Educação",
+          "Proteção e Defesa Civil"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Transporte de famílias: um micro-ônibus da Educação."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado"
+          }
+        ],
+        "o_que_falta_saber": "Se o trajeto está transitável e se há rota alternativa operável.",
+        "quem_pode_confirmar": "Educação e Proteção e Defesa Civil",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "A Escola Municipal Mansa permanece disponível para uso como abrigo e com capacidade compatível com o previsto no plano?",
+        "por_que_importa": "O abrigo é a referência formal para acolhimento das famílias, então sua disponibilidade deve ser checada.",
+        "motivacao": "O plano define a escola como abrigo, mas os documentos não informam condições atuais de funcionamento ou lotação.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E5",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "Educação",
+          "Proteção e Defesa Civil"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Municipal Mansa (100 pessoas), no bairro Outeiro."
+          }
+        ],
+        "o_que_falta_saber": "Se a escola está liberada, acessível e apta para acolhimento agora.",
+        "quem_pode_confirmar": "Educação e Proteção e Defesa Civil",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "O pontilhão da Rua 3 está transitável ou já apresenta alagamento no cenário atual?",
+        "por_que_importa": "Esse ponto define se o acesso ao bairro Outeiro pode ser mantido pelo caminho citado.",
+        "motivacao": "O alerta inclui o pontilhão e o histórico mostra bloqueio nesse mesmo local.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E4"
+        ],
+        "setores_relacionados": [
+          "Proteção e Defesa Civil"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Arroio Manso pode transbordar e alagar passagens baixas, incluindo o pontilhão da Rua 3."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado"
+          }
+        ],
+        "o_que_falta_saber": "Se há alagamento no local e qual é a condição de passagem neste momento.",
+        "quem_pode_confirmar": "Proteção e Defesa Civil",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V4",
+        "pergunta": "Existe uma rota alternativa para chegar ao bairro Outeiro se o pontilhão da Rua 3 ficar inacessível?",
+        "por_que_importa": "A dependência de um único caminho aumenta a necessidade de saber se há outro acesso utilizável.",
+        "motivacao": "O relatório anterior descreve o trecho como único caminho pavimentado até o bairro.",
+        "base": "registro_historico",
+        "entidades_relacionadas": [
+          "E2",
+          "E4"
+        ],
+        "setores_relacionados": [
+          "Proteção e Defesa Civil",
+          "Obras",
+          "Transporte"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "único caminho pavimentado até o bairro Outeiro"
+          }
+        ],
+        "o_que_falta_saber": "Se há via alternativa pavimentada ou transitável para o bairro.",
+        "quem_pode_confirmar": "Proteção e Defesa Civil, Obras ou Transporte, conforme a organização local",
+        "prioridade": "media"
+      },
+      {
+        "id": "V5",
+        "pergunta": "A capacidade de 100 pessoas do abrigo ainda é suficiente para a demanda estimada no cenário atual?",
+        "por_que_importa": "A lotação do abrigo precisa ser confrontada com a necessidade real antes do uso.",
+        "motivacao": "O plano informa capacidade, mas não informa a quantidade de pessoas possivelmente afetadas agora.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E5",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "Proteção e Defesa Civil"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Municipal Mansa (100 pessoas), no bairro Outeiro."
+          }
+        ],
+        "o_que_falta_saber": "Quantas pessoas precisariam ser acolhidas e se a capacidade comporta essa demanda.",
+        "quem_pode_confirmar": "Proteção e Defesa Civil",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Condição atual do pontilhão da Rua 3 e do acesso ao bairro Outeiro.",
+        "por_que_importa": "Define se o transporte e o acesso ao abrigo são viáveis."
+      },
+      {
+        "descricao": "Existência de rota alternativa para o bairro Outeiro.",
+        "por_que_importa": "Reduz dependência de um único ponto vulnerável."
+      },
+      {
+        "descricao": "Situação atual da Escola Municipal Mansa como abrigo.",
+        "por_que_importa": "É o local previsto para acolhimento."
+      },
+      {
+        "descricao": "Quantidade estimada de pessoas que precisariam de abrigo.",
+        "por_que_importa": "Permite avaliar a compatibilidade com a capacidade indicada."
+      },
+      {
+        "descricao": "Disponibilidade operacional do micro-ônibus da Educação no momento do alerta.",
+        "por_que_importa": "O plano depende desse recurso para transporte de famílias."
+      }
+    ],
+    "cautelas": [
+      "O relatório de 2024 é um registro histórico e não prova que a mesma dificuldade persista hoje; por isso a checagem precisa ser feita no presente.",
+      "O plano de 2025 informa recursos e abrigo previstos, mas não garante que estejam disponíveis no momento atual.",
+      "O alerta de 2026 descreve um cenário possível e não confirma sozinho que já houve transbordamento ou alagamento.",
+      "Não presumir solução para o ponto crítico sem registro recente que a comprove."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 10,
+    "n_relacoes": 8,
+    "n_verificacoes": 5,
+    "n_temporais": 4,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D2",
+        "trecho": "Arroio Manso pode transbordar e alagar passagens baixas, incluindo o pontilhão da Rua 3.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "único caminho pavimentado até o bairro Outeiro",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Escola Municipal Mansa (100 pessoas), no bairro Outeiro.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Transporte de famílias: um micro-ônibus da Educação.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "um micro-ônibus da Educação.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Municipal Mansa (100 pessoas)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "incluindo o pontilhão da Rua 3.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Municipal Mansa (100 pessoas), no bairro Outeiro.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Transporte de famílias: um micro-ônibus da Educação.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Arroio Manso pode transbordar e alagar passagens baixas, incluindo o pontilhão da Rua 3.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Transporte de famílias: um micro-ônibus da Educação.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "não conseguiu passar sob o pontilhão da Rua 3, alagado",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Transporte de famílias: um micro-ônibus da Educação.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Municipal Mansa (100 pessoas), no bairro Outeiro.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Arroio Manso pode transbordar e alagar passagens baixas, incluindo o pontilhão da Rua 3.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "único caminho pavimentado até o bairro Outeiro",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Municipal Mansa (100 pessoas), no bairro Outeiro.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      }
+    ],
+    "n_citacoes": 21,
+    "n_citacoes_literais": 21,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795615552,
+    "created_at": 1795615530,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_01a90b63e53ca363016b06eb2abe5887d2a59c7b7b5c5901c8",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBusrBjMAuxtVyRCGT8OOTmOITGSFJTG0uQoumO5_UeHe-uw9eSl7FKWLeSIGCpZn5TElwPkVSl33MTHuxW1wX4X5WnYMEZhys7yU5D37CiQLKGS3k3wWnuhWxMo5V50qtcknoqcvouVJdFscdb0XSS6My469s_T3cTexS4bRtYdx1TlDFgq5mGc21_2mm37xmwkDM_oaWC8MfjkGPBKqriHti_EVZxQxzII3_CYS9LiQWgCeXTPfpB5ykBLynu0fY_ucLgx7K3_Wki9MsZ7slP1OujTQWOwvT7cwOMF5cNbr5Ft8QZOSjgEzW3bQ3_tTUD_djIFATzp__mWfj5zW8fyLV1rZrKxMWv79fVswuByWfeQ38NGE_Zm-OOY7j5coFGpRn1cdd1HkGj6fCAjODshxBfX01ry75UkdGsj6leoEVWcnSv-clUOOjwe0exD49Fb20ewqbcmALXWdrdBRB1bwk-sDA_PJjIBhDh0ybeoynHJm_I0htDLJhtBKfdKCdESaDhN1k6DKmyaln_aippY89Ec_SYlpbm7fpXI8q8vAsvsaoPJxnPE-T2lX2yJhjKF2nzimOgx4LvM1AgpK223RGyLma_Esgdf1uo-izQbTi2Ya3ORwFYRcDsT5jfIhGOjY7zAja8yKwZdd9kihAO_zIv0IjylH55RT_tPgd-ZxEKhrtGgQQG_OiRFHkb_V_WJxY7ajP4-PLWgsezAhTyQT6ka_cjq7-rfmFgatA57DjfIPCJKqGFj1xzXoBAd5kvSNXGcrjV_7nt6C9kSkcL2VC6oB0v0G_lyD16u2YnLnECqPst1_9JQQbqHCQozOqNmTO67EQjanXaQXaI3lSh-EbzNnkYH76G3whnSZwvxbuUl3ILykMf4rIUMmYOq3QTxIhCgjVYoRcIadtE77JBOh3hkTlbJr6enj3P-XaoswpRQWmHrfKGi3lGjyTeobiaQlQwmQWsV3Fd17y5EsMS1Di0-v1uVApgDh23F1rlfBKMnXNnHLJWDklLitXSAISYUCPOmjN2wjXSN8IbDO24e75IjTFzWyF27Cv87YbxVDEv0-82P4CMqLV3zi7BDtq2LPKKMt-n57PGVABYzNtnMm-PkRDPfW7D8VOpMXELgN2tQwNvkYbqf8n8RIN5JOMzjyo6rmDAYp4X0wptm_QenuW9wJJfwGNcG4qyhE4gaOj4clQmDIbp_LRh7oWi672sRqVxb58bP81_SQZ4yOzvRdxTxtxD-S62u-PaPtIsuMz4Y6l8WR5y-m17r3nyAOSOuJ4UbncuSoKSrVeXVCJk5nRpbtesbz5JNd-WVaCAFLVV8sonVYQN4wmmhR8Bb1HTNTdqW1CeNOffLF-pINEL170-tyHdU8iTRz5o9uwQipdBPldFKjYtnn32Mcf19iUvkgTa7qhZE5NaLZCqPW5JYK3EbemcHcfNnUx0Wd8py3lx1kZ2YEXzSohvs_KFL5L2ulSevXWfQ2nShzcKCi_m-TJXNBldYbfdlywGvbi2hivaYwZS71oPgdKXMM6NzKb00w0Y2CFVdrrNVR8qzZDdpf1Lh6-JFhXljAK4PJD7J8zfC7DiCmdcOM8ow14qPjIiBHdtKkmMtoQI81_X390r164ig2fHEzJjQ1rmA9KCylH6lT8BE4pHBUSmO18iERvyiTRZo04fn-UUbAIWDw34z_WT5kGNqJGmC7FVpkIRUFeqisuN86FcjuuBtWAst-3pucytjynCNwy9RC8I5HzB8_ViX797zM_g5V4kyX8PrvVX4INRC3sV5TljeBJryo6YKoGoAiI4rsmhwQW3HFnNk2s3gwry38DeATcZOJUzEnuB6gDJxUYmdNqVfv-7Ac4KaTyrig0WtTmMWlUtaEvvIRTQSv5pc93xrjZVQtyhy2icIgFL17DmQz0FKNP-wFAq5pOhMmTEWxEj7jtr35KurOtcJjZ4vnHknmYb0XRdlu4j2kd0-K9TwBLk-pvoLcFUnOKD4rVmv1-ZKQ9DhKBaLXWzCU-urS9etX4j-MJgBo770miX2WBg9NfMzrwOYAAsP_FpbteEPkovK6j-rCp4V4-QgOi9LEhvn6MMEeiHPDX9PeOm2v4a16iUa9YGs-U2ieYlDujv9xLDuRfFtAWsPWBg==",
+        "id": "rs_01a90b63e53ca363016b06eb2bd54c87d2910ac7446a9795cb",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"O cenário de alerta indica possibilidade de transbordamento do Arroio Manso e alagamento de passagens baixas, incluindo o pontilhão da Rua 3. Nos documentos anteriores, esse ponto já apareceu como barreira para o acesso ao bairro Outeiro, onde fica o abrigo Escola Municipal Mansa. Há também registro de transporte de famílias por micro-ônibus da Educação, mas o relatório de 2024 mostra limitação nesse trajeto quando há alagamento.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Arroio Manso\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":null,\"descricao\":\"Curso d'água citado no alerta como sujeito a transbordamento.\"},{\"id\":\"E2\",\"nome\":\"Pontilhão da Rua 3\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":null,\"descricao\":\"Passagem baixa mencionada como ponto que pode alagar e bloquear o acesso ao bairro Outeiro.\"},{\"id\":\"E3\",\"nome\":\"Rua 3\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Via onde fica o pontilhão citado nos documentos.\"},{\"id\":\"E4\",\"nome\":\"Bairro Outeiro\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Local onde fica o abrigo e destino mencionado nos documentos.\"},{\"id\":\"E5\",\"nome\":\"Escola Municipal Mansa\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Abrigo previsto no plano de contingência, com capacidade para 100 pessoas.\"},{\"id\":\"E6\",\"nome\":\"Micro-ônibus da Educação\",\"tipo\":\"equipamento\",\"setor_responsavel\":\"Educação\",\"descricao\":\"Meio de transporte indicado para transporte de famílias no plano de contingência.\"},{\"id\":\"E7\",\"nome\":\"Famílias\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":null,\"descricao\":\"Pessoas que foram transportadas no relatório de 2024 e que podem demandar deslocamento no cenário de alerta.\"},{\"id\":\"E8\",\"nome\":\"COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"Proteção e Defesa Civil\",\"descricao\":\"Fonte dos documentos de 2024 e 2025, ligada à Defesa Civil municipal.\"},{\"id\":\"E9\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":null,\"descricao\":\"Fonte do alerta de 2026-11-10.\"},{\"id\":\"E10\",\"nome\":\"Alerta nível laranja\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Cenário de alerta com possibilidade de transbordamento e alagamento de passagens baixas.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"afetado_por\",\"rotulo\":\"O arroio pode alagar o pontilhão da Rua 3.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-10\",\"fim\":null,\"observacao\":\"Conforme o alerta vigente.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Arroio Manso pode transbordar e alagar passagens baixas, incluindo o pontilhão da Rua 3.\"}]},{\"id\":\"R2\",\"origem\":\"E2\",\"destino\":\"E4\",\"tipo\":\"acesso_por\",\"rotulo\":\"O pontilhão da Rua 3 integra o acesso ao bairro Outeiro.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2024-05-12\",\"fim\":null,\"observacao\":\"Inferido pelo bloqueio do único caminho pavimentado até o bairro.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"único caminho pavimentado até o bairro Outeiro\"}]},{\"id\":\"R3\",\"origem\":\"E5\",\"destino\":\"E4\",\"tipo\":\"localizado_em\",\"rotulo\":\"A Escola Municipal Mansa fica no bairro Outeiro.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-05-20\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Escola Municipal Mansa (100 pessoas), no bairro Outeiro.\"}]},{\"id\":\"R4\",\"origem\":\"E6\",\"destino\":\"E7\",\"tipo\":\"atende\",\"rotulo\":\"O micro-ônibus é usado para transportar famílias.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-05-20\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Transporte de famílias: um micro-ônibus da Educação.\"}]},{\"id\":\"R5\",\"origem\":\"E6\",\"destino\":\"E8\",\"tipo\":\"responsavel_por\",\"rotulo\":\"O micro-ônibus está vinculado à Educação.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-05-20\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"um micro-ônibus da Educação.\"}]},{\"id\":\"R6\",\"origem\":\"E5\",\"destino\":\"E7\",\"tipo\":\"atende\",\"rotulo\":\"A Escola Municipal Mansa funciona como abrigo para famílias.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-05-20\",\"fim\":null,\"observacao\":\"Capacidade registrada de 100 pessoas.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Municipal Mansa (100 pessoas)\"}]},{\"id\":\"R7\",\"origem\":\"E2\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"Quando alagado, o pontilhão pode impedir o acesso ao bairro.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2024-05-12\",\"fim\":null,\"observacao\":\"Baseado no relato de bloqueio do caminho pavimentado.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado\"}]},{\"id\":\"R8\",\"origem\":\"E10\",\"destino\":\"E2\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta inclui o risco de alagamento do pontilhão.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-10\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"incluindo o pontilhão da Rua 3.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"Em 2025 o plano passou a registrar a Escola Municipal Mansa como abrigo no bairro Outeiro e o uso de micro-ônibus da Educação para transporte de famílias.\",\"implicacao\":\"Esses itens compõem a referência mais recente de organização operacional nos documentos disponíveis.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Municipal Mansa (100 pessoas), no bairro Outeiro.\"},{\"doc_id\":\"D1\",\"trecho\":\"Transporte de famílias: um micro-ônibus da Educação.\"}]},{\"id\":\"T2\",\"tipo\":\"pendencia_historica\",\"descricao\":\"Em 2024 houve dificuldade de acesso ao bairro Outeiro por causa do alagamento no pontilhão da Rua 3.\",\"implicacao\":\"O histórico mostra vulnerabilidade de acesso que precisa ser checada no cenário atual, sem presumir que tenha sido resolvida.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado\"}]},{\"id\":\"T3\",\"tipo\":\"atualizacao\",\"descricao\":\"O alerta de 2026 retoma o mesmo ponto crítico, agora associado ao transbordamento do Arroio Manso e ao alagamento de passagens baixas.\",\"implicacao\":\"Há continuidade do risco operacional sobre o acesso citado no registro histórico.\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Arroio Manso pode transbordar e alagar passagens baixas, incluindo o pontilhão da Rua 3.\"}]},{\"id\":\"T4\",\"tipo\":\"solucao_parcial\",\"descricao\":\"Os documentos mostram que existe um meio de transporte previsto e um abrigo definido, mas o histórico indica que o trajeto pode falhar quando a passagem baixa alaga.\",\"implicacao\":\"A existência de recurso não garante acesso; a capacidade de uso precisa ser verificada no momento.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Transporte de famílias: um micro-ônibus da Educação.\"},{\"doc_id\":\"D3\",\"trecho\":\"não conseguiu passar sob o pontilhão da Rua 3, alagado\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"O micro-ônibus da Educação consegue acessar o bairro Outeiro pelo trajeto habitual no momento do alerta?\",\"por_que_importa\":\"Sem acesso viável, o transporte previsto no plano pode não funcionar como previsto.\",\"motivacao\":\"O plano prevê o transporte por micro-ônibus, mas o relatório anterior mostra bloqueio no mesmo caminho quando o pontilhão alaga.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E4\",\"E6\",\"E7\"],\"setores_relacionados\":[\"Educação\",\"Proteção e Defesa Civil\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Transporte de famílias: um micro-ônibus da Educação.\"},{\"doc_id\":\"D3\",\"trecho\":\"O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado\"}],\"o_que_falta_saber\":\"Se o trajeto está transitável e se há rota alternativa operável.\",\"quem_pode_confirmar\":\"Educação e Proteção e Defesa Civil\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A Escola Municipal Mansa permanece disponível para uso como abrigo e com capacidade compatível com o previsto no plano?\",\"por_que_importa\":\"O abrigo é a referência formal para acolhimento das famílias, então sua disponibilidade deve ser checada.\",\"motivacao\":\"O plano define a escola como abrigo, mas os documentos não informam condições atuais de funcionamento ou lotação.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E5\",\"E7\"],\"setores_relacionados\":[\"Educação\",\"Proteção e Defesa Civil\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Municipal Mansa (100 pessoas), no bairro Outeiro.\"}],\"o_que_falta_saber\":\"Se a escola está liberada, acessível e apta para acolhimento agora.\",\"quem_pode_confirmar\":\"Educação e Proteção e Defesa Civil\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"O pontilhão da Rua 3 está transitável ou já apresenta alagamento no cenário atual?\",\"por_que_importa\":\"Esse ponto define se o acesso ao bairro Outeiro pode ser mantido pelo caminho citado.\",\"motivacao\":\"O alerta inclui o pontilhão e o histórico mostra bloqueio nesse mesmo local.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\",\"E4\"],\"setores_relacionados\":[\"Proteção e Defesa Civil\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Arroio Manso pode transbordar e alagar passagens baixas, incluindo o pontilhão da Rua 3.\"},{\"doc_id\":\"D3\",\"trecho\":\"O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado\"}],\"o_que_falta_saber\":\"Se há alagamento no local e qual é a condição de passagem neste momento.\",\"quem_pode_confirmar\":\"Proteção e Defesa Civil\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"Existe uma rota alternativa para chegar ao bairro Outeiro se o pontilhão da Rua 3 ficar inacessível?\",\"por_que_importa\":\"A dependência de um único caminho aumenta a necessidade de saber se há outro acesso utilizável.\",\"motivacao\":\"O relatório anterior descreve o trecho como único caminho pavimentado até o bairro.\",\"base\":\"registro_historico\",\"entidades_relacionadas\":[\"E2\",\"E4\"],\"setores_relacionados\":[\"Proteção e Defesa Civil\",\"Obras\",\"Transporte\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"único caminho pavimentado até o bairro Outeiro\"}],\"o_que_falta_saber\":\"Se há via alternativa pavimentada ou transitável para o bairro.\",\"quem_pode_confirmar\":\"Proteção e Defesa Civil, Obras ou Transporte, conforme a organização local\",\"prioridade\":\"media\"},{\"id\":\"V5\",\"pergunta\":\"A capacidade de 100 pessoas do abrigo ainda é suficiente para a demanda estimada no cenário atual?\",\"por_que_importa\":\"A lotação do abrigo precisa ser confrontada com a necessidade real antes do uso.\",\"motivacao\":\"O plano informa capacidade, mas não informa a quantidade de pessoas possivelmente afetadas agora.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E5\",\"E7\"],\"setores_relacionados\":[\"Proteção e Defesa Civil\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Municipal Mansa (100 pessoas), no bairro Outeiro.\"}],\"o_que_falta_saber\":\"Quantas pessoas precisariam ser acolhidas e se a capacidade comporta essa demanda.\",\"quem_pode_confirmar\":\"Proteção e Defesa Civil\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Condição atual do pontilhão da Rua 3 e do acesso ao bairro Outeiro.\",\"por_que_importa\":\"Define se o transporte e o acesso ao abrigo são viáveis.\"},{\"descricao\":\"Existência de rota alternativa para o bairro Outeiro.\",\"por_que_importa\":\"Reduz dependência de um único ponto vulnerável.\"},{\"descricao\":\"Situação atual da Escola Municipal Mansa como abrigo.\",\"por_que_importa\":\"É o local previsto para acolhimento.\"},{\"descricao\":\"Quantidade estimada de pessoas que precisariam de abrigo.\",\"por_que_importa\":\"Permite avaliar a compatibilidade com a capacidade indicada.\"},{\"descricao\":\"Disponibilidade operacional do micro-ônibus da Educação no momento do alerta.\",\"por_que_importa\":\"O plano depende desse recurso para transporte de famílias.\"}],\"cautelas\":[\"O relatório de 2024 é um registro histórico e não prova que a mesma dificuldade persista hoje; por isso a checagem precisa ser feita no presente.\",\"O plano de 2025 informa recursos e abrigo previstos, mas não garante que estejam disponíveis no momento atual.\",\"O alerta de 2026 descreve um cenário possível e não confirma sozinho que já houve transbordamento ou alagamento.\",\"Não presumir solução para o ponto crítico sem registro recente que a comprove.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_01a90b63e53ca363016b06eb2bf44887d2a94ad854009c31d8",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 1864,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 3330,
+      "output_tokens_details": {
+        "reasoning_tokens": 38
+      },
+      "total_tokens": 5194
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"O cenário de alerta indica possibilidade de transbordamento do Arroio Manso e alagamento de passagens baixas, incluindo o pontilhão da Rua 3. Nos documentos anteriores, esse ponto já apareceu como barreira para o acesso ao bairro Outeiro, onde fica o abrigo Escola Municipal Mansa. Há também registro de transporte de famílias por micro-ônibus da Educação, mas o relatório de 2024 mostra limitação nesse trajeto quando há alagamento.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Arroio Manso\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":null,\"descricao\":\"Curso d'água citado no alerta como sujeito a transbordamento.\"},{\"id\":\"E2\",\"nome\":\"Pontilhão da Rua 3\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":null,\"descricao\":\"Passagem baixa mencionada como ponto que pode alagar e bloquear o acesso ao bairro Outeiro.\"},{\"id\":\"E3\",\"nome\":\"Rua 3\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Via onde fica o pontilhão citado nos documentos.\"},{\"id\":\"E4\",\"nome\":\"Bairro Outeiro\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Local onde fica o abrigo e destino mencionado nos documentos.\"},{\"id\":\"E5\",\"nome\":\"Escola Municipal Mansa\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Abrigo previsto no plano de contingência, com capacidade para 100 pessoas.\"},{\"id\":\"E6\",\"nome\":\"Micro-ônibus da Educação\",\"tipo\":\"equipamento\",\"setor_responsavel\":\"Educação\",\"descricao\":\"Meio de transporte indicado para transporte de famílias no plano de contingência.\"},{\"id\":\"E7\",\"nome\":\"Famílias\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":null,\"descricao\":\"Pessoas que foram transportadas no relatório de 2024 e que podem demandar deslocamento no cenário de alerta.\"},{\"id\":\"E8\",\"nome\":\"COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"Proteção e Defesa Civil\",\"descricao\":\"Fonte dos documentos de 2024 e 2025, ligada à Defesa Civil municipal.\"},{\"id\":\"E9\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":null,\"descricao\":\"Fonte do alerta de 2026-11-10.\"},{\"id\":\"E10\",\"nome\":\"Alerta nível laranja\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Cenário de alerta com possibilidade de transbordamento e alagamento de passagens baixas.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"afetado_por\",\"rotulo\":\"O arroio pode alagar o pontilhão da Rua 3.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-10\",\"fim\":null,\"observacao\":\"Conforme o alerta vigente.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Arroio Manso pode transbordar e alagar passagens baixas, incluindo o pontilhão da Rua 3.\"}]},{\"id\":\"R2\",\"origem\":\"E2\",\"destino\":\"E4\",\"tipo\":\"acesso_por\",\"rotulo\":\"O pontilhão da Rua 3 integra o acesso ao bairro Outeiro.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2024-05-12\",\"fim\":null,\"observacao\":\"Inferido pelo bloqueio do único caminho pavimentado até o bairro.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"único caminho pavimentado até o bairro Outeiro\"}]},{\"id\":\"R3\",\"origem\":\"E5\",\"destino\":\"E4\",\"tipo\":\"localizado_em\",\"rotulo\":\"A Escola Municipal Mansa fica no bairro Outeiro.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-05-20\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Escola Municipal Mansa (100 pessoas), no bairro Outeiro.\"}]},{\"id\":\"R4\",\"origem\":\"E6\",\"destino\":\"E7\",\"tipo\":\"atende\",\"rotulo\":\"O micro-ônibus é usado para transportar famílias.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-05-20\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Transporte de famílias: um micro-ônibus da Educação.\"}]},{\"id\":\"R5\",\"origem\":\"E6\",\"destino\":\"E8\",\"tipo\":\"responsavel_por\",\"rotulo\":\"O micro-ônibus está vinculado à Educação.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-05-20\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"um micro-ônibus da Educação.\"}]},{\"id\":\"R6\",\"origem\":\"E5\",\"destino\":\"E7\",\"tipo\":\"atende\",\"rotulo\":\"A Escola Municipal Mansa funciona como abrigo para famílias.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-05-20\",\"fim\":null,\"observacao\":\"Capacidade registrada de 100 pessoas.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Municipal Mansa (100 pessoas)\"}]},{\"id\":\"R7\",\"origem\":\"E2\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"Quando alagado, o pontilhão pode impedir o acesso ao bairro.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2024-05-12\",\"fim\":null,\"observacao\":\"Baseado no relato de bloqueio do caminho pavimentado.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado\"}]},{\"id\":\"R8\",\"origem\":\"E10\",\"destino\":\"E2\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta inclui o risco de alagamento do pontilhão.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-10\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"incluindo o pontilhão da Rua 3.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"Em 2025 o plano passou a registrar a Escola Municipal Mansa como abrigo no bairro Outeiro e o uso de micro-ônibus da Educação para transporte de famílias.\",\"implicacao\":\"Esses itens compõem a referência mais recente de organização operacional nos documentos disponíveis.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Municipal Mansa (100 pessoas), no bairro Outeiro.\"},{\"doc_id\":\"D1\",\"trecho\":\"Transporte de famílias: um micro-ônibus da Educação.\"}]},{\"id\":\"T2\",\"tipo\":\"pendencia_historica\",\"descricao\":\"Em 2024 houve dificuldade de acesso ao bairro Outeiro por causa do alagamento no pontilhão da Rua 3.\",\"implicacao\":\"O histórico mostra vulnerabilidade de acesso que precisa ser checada no cenário atual, sem presumir que tenha sido resolvida.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado\"}]},{\"id\":\"T3\",\"tipo\":\"atualizacao\",\"descricao\":\"O alerta de 2026 retoma o mesmo ponto crítico, agora associado ao transbordamento do Arroio Manso e ao alagamento de passagens baixas.\",\"implicacao\":\"Há continuidade do risco operacional sobre o acesso citado no registro histórico.\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Arroio Manso pode transbordar e alagar passagens baixas, incluindo o pontilhão da Rua 3.\"}]},{\"id\":\"T4\",\"tipo\":\"solucao_parcial\",\"descricao\":\"Os documentos mostram que existe um meio de transporte previsto e um abrigo definido, mas o histórico indica que o trajeto pode falhar quando a passagem baixa alaga.\",\"implicacao\":\"A existência de recurso não garante acesso; a capacidade de uso precisa ser verificada no momento.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Transporte de famílias: um micro-ônibus da Educação.\"},{\"doc_id\":\"D3\",\"trecho\":\"não conseguiu passar sob o pontilhão da Rua 3, alagado\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"O micro-ônibus da Educação consegue acessar o bairro Outeiro pelo trajeto habitual no momento do alerta?\",\"por_que_importa\":\"Sem acesso viável, o transporte previsto no plano pode não funcionar como previsto.\",\"motivacao\":\"O plano prevê o transporte por micro-ônibus, mas o relatório anterior mostra bloqueio no mesmo caminho quando o pontilhão alaga.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E4\",\"E6\",\"E7\"],\"setores_relacionados\":[\"Educação\",\"Proteção e Defesa Civil\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Transporte de famílias: um micro-ônibus da Educação.\"},{\"doc_id\":\"D3\",\"trecho\":\"O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado\"}],\"o_que_falta_saber\":\"Se o trajeto está transitável e se há rota alternativa operável.\",\"quem_pode_confirmar\":\"Educação e Proteção e Defesa Civil\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A Escola Municipal Mansa permanece disponível para uso como abrigo e com capacidade compatível com o previsto no plano?\",\"por_que_importa\":\"O abrigo é a referência formal para acolhimento das famílias, então sua disponibilidade deve ser checada.\",\"motivacao\":\"O plano define a escola como abrigo, mas os documentos não informam condições atuais de funcionamento ou lotação.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E5\",\"E7\"],\"setores_relacionados\":[\"Educação\",\"Proteção e Defesa Civil\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Municipal Mansa (100 pessoas), no bairro Outeiro.\"}],\"o_que_falta_saber\":\"Se a escola está liberada, acessível e apta para acolhimento agora.\",\"quem_pode_confirmar\":\"Educação e Proteção e Defesa Civil\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"O pontilhão da Rua 3 está transitável ou já apresenta alagamento no cenário atual?\",\"por_que_importa\":\"Esse ponto define se o acesso ao bairro Outeiro pode ser mantido pelo caminho citado.\",\"motivacao\":\"O alerta inclui o pontilhão e o histórico mostra bloqueio nesse mesmo local.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\",\"E4\"],\"setores_relacionados\":[\"Proteção e Defesa Civil\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Arroio Manso pode transbordar e alagar passagens baixas, incluindo o pontilhão da Rua 3.\"},{\"doc_id\":\"D3\",\"trecho\":\"O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado\"}],\"o_que_falta_saber\":\"Se há alagamento no local e qual é a condição de passagem neste momento.\",\"quem_pode_confirmar\":\"Proteção e Defesa Civil\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"Existe uma rota alternativa para chegar ao bairro Outeiro se o pontilhão da Rua 3 ficar inacessível?\",\"por_que_importa\":\"A dependência de um único caminho aumenta a necessidade de saber se há outro acesso utilizável.\",\"motivacao\":\"O relatório anterior descreve o trecho como único caminho pavimentado até o bairro.\",\"base\":\"registro_historico\",\"entidades_relacionadas\":[\"E2\",\"E4\"],\"setores_relacionados\":[\"Proteção e Defesa Civil\",\"Obras\",\"Transporte\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"único caminho pavimentado até o bairro Outeiro\"}],\"o_que_falta_saber\":\"Se há via alternativa pavimentada ou transitável para o bairro.\",\"quem_pode_confirmar\":\"Proteção e Defesa Civil, Obras ou Transporte, conforme a organização local\",\"prioridade\":\"media\"},{\"id\":\"V5\",\"pergunta\":\"A capacidade de 100 pessoas do abrigo ainda é suficiente para a demanda estimada no cenário atual?\",\"por_que_importa\":\"A lotação do abrigo precisa ser confrontada com a necessidade real antes do uso.\",\"motivacao\":\"O plano informa capacidade, mas não informa a quantidade de pessoas possivelmente afetadas agora.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E5\",\"E7\"],\"setores_relacionados\":[\"Proteção e Defesa Civil\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Municipal Mansa (100 pessoas), no bairro Outeiro.\"}],\"o_que_falta_saber\":\"Quantas pessoas precisariam ser acolhidas e se a capacidade comporta essa demanda.\",\"quem_pode_confirmar\":\"Proteção e Defesa Civil\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Condição atual do pontilhão da Rua 3 e do acesso ao bairro Outeiro.\",\"por_que_importa\":\"Define se o transporte e o acesso ao abrigo são viáveis.\"},{\"descricao\":\"Existência de rota alternativa para o bairro Outeiro.\",\"por_que_importa\":\"Reduz dependência de um único ponto vulnerável.\"},{\"descricao\":\"Situação atual da Escola Municipal Mansa como abrigo.\",\"por_que_importa\":\"É o local previsto para acolhimento.\"},{\"descricao\":\"Quantidade estimada de pessoas que precisariam de abrigo.\",\"por_que_importa\":\"Permite avaliar a compatibilidade com a capacidade indicada.\"},{\"descricao\":\"Disponibilidade operacional do micro-ônibus da Educação no momento do alerta.\",\"por_que_importa\":\"O plano depende desse recurso para transporte de famílias.\"}],\"cautelas\":[\"O relatório de 2024 é um registro histórico e não prova que a mesma dificuldade persista hoje; por isso a checagem precisa ser feita no presente.\",\"O plano de 2025 informa recursos e abrigo previstos, mas não garante que estejam disponíveis no momento atual.\",\"O alerta de 2026 descreve um cenário possível e não confirma sozinho que já houve transbordamento ou alagamento.\",\"Não presumir solução para o ponto crítico sem registro recente que a comprove.\"]}"
+  }
+}

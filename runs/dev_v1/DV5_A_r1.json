@@ -1,0 +1,1111 @@
+{
+  "meta": {
+    "scenario": "DV5",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "dev_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v1.md",
+    "prompt_sha12": "ba9edac57f55",
+    "docs_fornecidos": [
+      "D1",
+      "D2",
+      "D3"
+    ],
+    "user_message_chars": 803,
+    "user_message_sha12": "c027dc12979f"
+  },
+  "user_message": "Município (fictício): Rincão do Meio\nData de referência da análise: 2026-11-14\nDocumentos disponíveis (3), em ordem cronológica:\n\n### [D1] Plano de Contingência (2024)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2024-02-02\n\nCoordenador da COMPDEC: João Batista Lima.\nAbrigo: Escola Rincão (80 pessoas).\n\n---\n\n### [D2] Decreto de nomeação\nTipo: Atualização de secretaria | Fonte: Gabinete do Prefeito | Data: 2025-01-10\n\nNomeia Marta Souza para o cargo de coordenadora da COMPDEC, em substituição a João Batista Lima.\n\n---\n\n### [D3] Alerta (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-14\n\nNÍVEL: LARANJA. Risco de inundação na várzea do Rincão.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_03eacc72e65f8f21016b06eb40e5f087d2af92087614a0571f",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 1818,
+    "output_tokens": 3164,
+    "reasoning_tokens": 79
+  },
+  "latency_ms": 20072,
+  "started_at": "2026-11-25T14:05:52.359Z",
+  "output": {
+    "resumo_situacao": "Há um alerta laranja por risco de inundação na várzea do Rincão. O plano de 2024 registra a Escola Rincão como abrigo para 80 pessoas e o decreto de 2025 mudou a coordenação da COMPDEC para Marta Souza. Com base só nos documentos, é preciso confirmar se o abrigo e a coordenação seguem válidos para este cenário.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "COMPDEC",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "Proteção e Defesa Civil",
+        "descricao": "Coordenadoria municipal citada no plano de contingência e no decreto de nomeação."
+      },
+      {
+        "id": "E2",
+        "nome": "João Batista Lima",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Coordenador da COMPDEC no plano de contingência de 2024."
+      },
+      {
+        "id": "E3",
+        "nome": "Marta Souza",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Nomeada coordenadora da COMPDEC pelo decreto de 2025, em substituição a João Batista Lima."
+      },
+      {
+        "id": "E4",
+        "nome": "Escola Rincão",
+        "tipo": "infraestrutura",
+        "setor_responsavel": "Educação",
+        "descricao": "Abrigo citado no plano de contingência, com capacidade para 80 pessoas."
+      },
+      {
+        "id": "E5",
+        "nome": "várzea do Rincão",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Área mencionada no alerta como local com risco de inundação."
+      },
+      {
+        "id": "E6",
+        "nome": "Risco de inundação na várzea do Rincão",
+        "tipo": "evento",
+        "setor_responsavel": "Proteção e Defesa Civil",
+        "descricao": "Cenário de alerta em nível laranja emitido em 2026-11-14."
+      },
+      {
+        "id": "E7",
+        "nome": "Plano de Contingência (2024)",
+        "tipo": "norma_documento",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Documento de 2024 que registra coordenador da COMPDEC e abrigo disponível."
+      },
+      {
+        "id": "E8",
+        "nome": "Decreto de nomeação",
+        "tipo": "norma_documento",
+        "setor_responsavel": "Gabinete do Prefeito",
+        "descricao": "Documento de 2025 que nomeia nova coordenadora da COMPDEC."
+      },
+      {
+        "id": "E9",
+        "nome": "Alerta (cenário fictício)",
+        "tipo": "evento",
+        "setor_responsavel": "Sala de Situação Regional",
+        "descricao": "Documento de 2026 que indica nível laranja e risco de inundação."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E7",
+        "destino": "E2",
+        "tipo": "responsavel_por",
+        "rotulo": "O plano registra João Batista Lima como coordenador da COMPDEC.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-02-02",
+          "fim": "2025-01-10",
+          "observacao": "Válido até a nomeação posterior informada no decreto."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Coordenador da COMPDEC: João Batista Lima."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E8",
+        "destino": "E3",
+        "tipo": "responsavel_por",
+        "rotulo": "O decreto nomeia Marta Souza para a coordenação da COMPDEC.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-01-10",
+          "fim": null,
+          "observacao": "Substitui a nomeação anterior informada no plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Nomeia Marta Souza para o cargo de coordenadora da COMPDEC"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E8",
+        "destino": "E2",
+        "tipo": "substitui",
+        "rotulo": "O decreto substitui João Batista Lima na coordenação da COMPDEC.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-01-10",
+          "fim": null,
+          "observacao": "Substituição expressa no texto do decreto."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "em substituição a João Batista Lima."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E7",
+        "destino": "E4",
+        "tipo": "abastece",
+        "rotulo": "O plano aponta a Escola Rincão como abrigo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-02-02",
+          "fim": null,
+          "observacao": "Não há documento posterior alterando o abrigo."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Rincão (80 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E4",
+        "destino": "E5",
+        "tipo": "localizado_em",
+        "rotulo": "A Escola Rincão é tratada como recurso associado ao cenário local de risco.",
+        "status_epistemico": "informacao_insuficiente",
+        "periodo": {
+          "inicio": null,
+          "fim": null,
+          "observacao": "O texto não informa a localização geográfica da escola."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Rincão (80 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E9",
+        "destino": "E5",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta indica risco de inundação na várzea do Rincão.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-14",
+          "fim": null,
+          "observacao": "Situação vigente na data do alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "NÍVEL: LARANJA. Risco de inundação na várzea do Rincão."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E9",
+        "destino": "E6",
+        "tipo": "outro",
+        "rotulo": "O documento de alerta descreve o evento de risco.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-14",
+          "fim": null,
+          "observacao": "Referência explícita no alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "NÍVEL: LARANJA. Risco de inundação na várzea do Rincão."
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E1",
+        "destino": "E3",
+        "tipo": "responsavel_por",
+        "rotulo": "Marta Souza está vinculada à coordenação da COMPDEC.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-01-10",
+          "fim": null,
+          "observacao": "Nomeação formal no decreto."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Nomeia Marta Souza para o cargo de coordenadora da COMPDEC."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "mudanca_responsavel",
+        "descricao": "A coordenação da COMPDEC mudou de João Batista Lima para Marta Souza em 2025-01-10.",
+        "implicacao": "A lista de responsáveis usada para a resposta ao alerta deve ser conferida antes do acionamento das rotinas de coordenação.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Coordenador da COMPDEC: João Batista Lima."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Nomeia Marta Souza para o cargo de coordenadora da COMPDEC"
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "contradicao",
+        "descricao": "O plano de 2024 e o decreto de 2025 trazem nomes diferentes para a coordenação da COMPDEC, mas o decreto é posterior e explicita a substituição.",
+        "implicacao": "Não se deve usar o nome antigo como responsável atual sem checagem institucional.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Coordenador da COMPDEC: João Batista Lima."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "em substituição a João Batista Lima."
+          }
+        ]
+      },
+      {
+        "id": "T3",
+        "tipo": "atualizacao",
+        "descricao": "O abrigo Escola Rincão aparece apenas no plano de 2024 e não há documento posterior atualizando sua disponibilidade ou capacidade.",
+        "implicacao": "A existência e a capacidade do abrigo precisam ser confirmadas para o cenário atual.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Rincão (80 pessoas)."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "Marta Souza segue como coordenadora da COMPDEC na data do alerta?",
+        "por_que_importa": "Define quem pode coordenar as ações preventivas e a comunicação institucional durante o cenário de inundação.",
+        "motivacao": "O plano traz um coordenador antigo e o decreto posterior nomeia outra pessoa.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E7",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Gabinete do Prefeito"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Nomeia Marta Souza para o cargo de coordenadora da COMPDEC"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "em substituição a João Batista Lima."
+          }
+        ],
+        "o_que_falta_saber": "Se houve nova alteração de coordenação depois de 2025-01-10.",
+        "quem_pode_confirmar": "COMPDEC ou Gabinete do Prefeito, conforme registro institucional.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "A Escola Rincão continua disponível e com capacidade de receber 80 pessoas?",
+        "por_que_importa": "O abrigo indicado no plano pode ser necessário para o cenário atual, mas sua disponibilidade não foi atualizada nos documentos.",
+        "motivacao": "O único registro do abrigo é do plano de 2024.",
+        "base": "registro_historico",
+        "entidades_relacionadas": [
+          "E4",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "Educação",
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Rincão (80 pessoas)."
+          }
+        ],
+        "o_que_falta_saber": "Se o espaço segue apto, desocupado e com a mesma capacidade informada.",
+        "quem_pode_confirmar": "COMPDEC e setor responsável pela unidade escolar, conforme organização local.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "Há atualização mais recente do plano de contingência ou da lista de abrigos para este cenário?",
+        "por_que_importa": "Pode haver mudança de abrigo, de capacidade ou de fluxo de acionamento não registrada nos documentos disponíveis.",
+        "motivacao": "Existe um plano de 2024 e um alerta de 2026, mas nenhum documento intermediário sobre abrigo ou protocolo.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E4",
+          "E7",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Rincão (80 pessoas)."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "NÍVEL: LARANJA. Risco de inundação na várzea do Rincão."
+          }
+        ],
+        "o_que_falta_saber": "Se houve revisão formal do plano ou do rol de abrigos após 2024.",
+        "quem_pode_confirmar": "COMPDEC.",
+        "prioridade": "media"
+      },
+      {
+        "id": "V4",
+        "pergunta": "O alerta de nível laranja já foi comunicado à coordenação correta da COMPDEC?",
+        "por_que_importa": "A ação preventiva depende de a informação chegar ao responsável vigente, não ao nome antigo do plano.",
+        "motivacao": "Há mudança de responsável documentada entre 2024 e 2025.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E3",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Sala de Situação Regional"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Nomeia Marta Souza para o cargo de coordenadora da COMPDEC"
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "NÍVEL: LARANJA. Risco de inundação na várzea do Rincão."
+          }
+        ],
+        "o_que_falta_saber": "Se a notificação foi encaminhada e recebida pela coordenação atual.",
+        "quem_pode_confirmar": "Sala de Situação Regional e COMPDEC.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V5",
+        "pergunta": "A área indicada no alerta, a várzea do Rincão, corresponde ao território atendido pelo plano de contingência disponível?",
+        "por_que_importa": "É preciso saber se o plano existente cobre o local do alerta ou se há lacuna territorial.",
+        "motivacao": "O alerta menciona um local específico e o plano não explicita sua abrangência geográfica.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E5",
+          "E7",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Risco de inundação na várzea do Rincão."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Rincão (80 pessoas)."
+          }
+        ],
+        "o_que_falta_saber": "Se o plano de 2024 foi elaborado para essa mesma área ou para outro recorte territorial.",
+        "quem_pode_confirmar": "COMPDEC.",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há indicação de vigência, revisão ou atualização do plano de contingência após 2024-02-02.",
+        "por_que_importa": "Impede saber se o abrigo e os responsáveis continuam exatamente como registrados no documento antigo."
+      },
+      {
+        "descricao": "Não há confirmação documental sobre a disponibilidade física da Escola Rincão como abrigo na data do alerta.",
+        "por_que_importa": "Sem essa confirmação, não se sabe se o abrigo pode ser usado no cenário atual."
+      },
+      {
+        "descricao": "Não há descrição operacional do que fazer no nível laranja no texto do alerta.",
+        "por_que_importa": "Sem protocolo anexado, não é possível extrair etapas operacionais específicas apenas destes documentos."
+      }
+    ],
+    "cautelas": [
+      "O decreto de 2025 substitui o nome do coordenador, mas não atualiza outras partes do plano.",
+      "O abrigo citado em 2024 não deve ser tratado como automaticamente disponível em 2026.",
+      "O alerta informa risco, mas não traz detalhes de impacto, duração ou área exata além da várzea do Rincão.",
+      "Não foi usado nenhum dado externo ao conteúdo dos documentos."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 9,
+    "n_relacoes": 8,
+    "n_verificacoes": 5,
+    "n_temporais": 3,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Coordenador da COMPDEC: João Batista Lima.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Nomeia Marta Souza para o cargo de coordenadora da COMPDEC",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "em substituição a João Batista Lima.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Rincão (80 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Rincão (80 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "NÍVEL: LARANJA. Risco de inundação na várzea do Rincão.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "NÍVEL: LARANJA. Risco de inundação na várzea do Rincão.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Nomeia Marta Souza para o cargo de coordenadora da COMPDEC.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Coordenador da COMPDEC: João Batista Lima.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Nomeia Marta Souza para o cargo de coordenadora da COMPDEC",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Coordenador da COMPDEC: João Batista Lima.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "em substituição a João Batista Lima.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Rincão (80 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Nomeia Marta Souza para o cargo de coordenadora da COMPDEC",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "em substituição a João Batista Lima.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Rincão (80 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Rincão (80 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "NÍVEL: LARANJA. Risco de inundação na várzea do Rincão.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Nomeia Marta Souza para o cargo de coordenadora da COMPDEC",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "NÍVEL: LARANJA. Risco de inundação na várzea do Rincão.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Risco de inundação na várzea do Rincão.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Rincão (80 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      }
+    ],
+    "n_citacoes": 22,
+    "n_citacoes_literais": 22,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795615572,
+    "created_at": 1795615553,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_03eacc72e65f8f21016b06eb40e5f087d2af92087614a0571f",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrButCDe0MeTqIcc0JdkB56pHHswjaW698Gf9lDfE_M0Kq2zjDEMXbSCjCYTfuhQiGIGC78O6VdceWhM-z5zdkgGWvpw4WXtbpEL9Eb3F4QZMHT5Bp7Ai0_rM4L3S6eptgTNvzXFLA08VMtAR3sOlh2zY-eXVUlNpNNZcI9vKtlgx4Ff8aTRUc0t0cRzgHINW6-HdDzjBOY_dTqrM4v3lLLp3edslmTytfdfIu18ecb3GncPZdRtj0iMvdFVC_5GLG37loeqMJ0lXyxG0ZuT38cTYKrmps288WQLuQAofVVZbNFuDWJ6ZmPLH8Pe85GbaKTdJmwoON6EL85SOw_gOZz13mNd2NyJGSXfmkq24AYa5yGTO17-EUs2X69uVNR10xjl8UDEur21ma_QgHVjsGLbhRJLq9ExUXfh3iO-VF8ZQSfbMEfrfz2hzqLwpyragwKUoJ4EXYJwAzUqNMp23xvPB6RrqbS0nm6bLouPG2Mjwbvp9OWz-Vc7mahATkAOKdiS8jSLVYyP-q3YjHsV8HP7Co4i8hVD6yXWi071NK6bUXcc9Wq4A3rzxtl49xgEYX8ncvfY0B-iUj6h37AGu1S1I1SUsmrogXIs4ZKUbT4fWndFmgDorCmwxKBD_ME5lvoj_Z-zSKtw0HZ0bLdzDMxCx29inhFESwW_DtAy3pdVtGpd4U2f_QxXoozYuHUIyY289qlQ5AMB1cTeebdZW-GXUyuUgzrEFLD1RyNDLSD-vsjpfdAbnP7uqEr2gsSEIH0d3i7Da6ky-lfLvBzcPk9_pZeoJBdVu4GhTY4uQRFaFowN5DAswyd1fuQyhO9Q0aIyl0EL0z_JMsBF-dWmSfqT4T8oa8IYoqzOfgn3Cw8ObEW8kR-kg_KYQtz0kVMl4ePQYkqERVoDZYOlrZyuywtMXRZqqRzHqVo8g9D9-dv5eB9LBYSu_uEUUfEZFxb4RObEgsHZ0ZP1xnklMeFI3Y4q7SuK8j1EGOtM4MdEuTWK6VEPym731AnAqpmdmxTJ4LjLGlbCykyBaN_9KblGkzx1vHEoCiggyZ7tcWkEj9MachcsDrHihvUjYuyrA70VQMMhzErGJulWrmb4pEp0gqLfwTY1JfNxX6WtXXbAOde0vNCDMjyeQO_W8wEHW8_iTbnHkE1-rlcaOoHwiyvhCgbQm5IjjthcdUFj6dGG2Gev924Aya9INkW26QcDgdUSIkxaRi92CSmtpckQHudgbr_F1pvJiLmYR7ttEe5v9nRzPmMJ_7lEhHF1smg3_EGQBMwtUkWQhoCWRS3CTi65FuhUjWDV1B7zejjf2UNJODR742VQFcrRjO8syXMVHLL8L2ZYfKEUn1n-otGzcpiy91IDUGNGX-nZxzsa64683G4zQY0-f2GchXSCzlvMX8WIKFfkX2I_rqjGQ4i3smAP6ZrDnxJ-nR85fyhtfX8dMePfEsV1MD3LBL_qBhbs0a-cI_VSM0glf_RvxA_r7iD37mRhJRywIwZr91OUkWdnOw1c-XeeQ_lbcrjVzcHNNqqf4ZHMbaiGGDOH_a5UrOEytYDzsync2yqLmpkEpI6N7qM_MTNZ317vo6TghxfZlkgoOk2JuI8KF_plRbw5Gp8dACcx9cyAHSzM13wFLPCx8oGT_XBelUQUdvQVS5_EDPWkd1-sEg1mJMqwJxHs_JB52w2LiMv-mOG-76y_3pBGFBdyoMob4YNGmuchWJVJTwjkDJ34yl2q31kvhs9CAR_y2PDocSCxNmwpc_F4rQPhTAlr6Uv0ghxoLA8dENgx1PC2-309FEEajqsCZQYQS_S065aMqP2vIXiG-gpBXgaV0-owhS1jrMt0EQqbwBEygLA3mBTr7AFwK3EoE7s_MAZzsaqRJzNnGfoqbTyqLJz7hR94HaOyEVJkF401ZjKX75AhIDfKtF9aZ7d1Tjwwpb2vjZrUFxEHj24VZlTXngsIgj1yywvE5UAAE4Ng6xSMi0Ga4TfDCtBxoBIwpi-2FQhWcFsqbQTdqvH6dHiPAPDccQCbb39pZ_jwL8p9MhMeMumZnKqkTUZaXmKLV5QHzcJ8hl8mcOC3cLNE-rkNGSrxQcMegxJpgMpWwb0E0SQbRO_T_3MbCAFTtuVf8RfeoOTe_7-j7YnaaC15hg0AbY4-oJntMCaSGMorpD6h6r5lrfXC2xDwnTU9Ap8eB-3CyfmH3FqoejMNyk7LmcinzXmLoHjlXEJ2FZb0plkti8I9zVALm5-1bYKTlr4MQEkdSIcv6yPu0m4g7KHBwasWkWSpwDxw1SxS2ya8pekh9wxRoWjNCpD5i11H_twh2KTMfNFz0QfvLFVyVIVkZ6Q1TQ9DKh1-qbQ9DILE6VTtXWR2Rhwx2HXYAxbEGthH_h5Y4nQKyw__l-Ymdv28vCUZx6ukgIDmhREK64GtY8f23rA8xiQZpdGZLzgjrBclbRBlDj-O-AqYDlW7TlaDhcIN5WJmXEyciztL9TsVe3mjAIY2rNTT3zdIIXRorIHten7AB3MZHZi2mKy_k8cXyTJQGSnjpDBcqW84Jmj4bkwWp5-EQh9X9ucwQjU_-uPv3whGoTTglxnYu6bFvq6SqPmvHDAE8OdrVTWzPQ7DZpXiVJHUJqiySYgdf2pQNjLjO5866O4nazI2m2I8GBNKMEBiI2Gjn2bHeJ_Xw=",
+        "id": "rs_03eacc72e65f8f21016b06eb41e27c87d2a37b3af6d3208936",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"Há um alerta laranja por risco de inundação na várzea do Rincão. O plano de 2024 registra a Escola Rincão como abrigo para 80 pessoas e o decreto de 2025 mudou a coordenação da COMPDEC para Marta Souza. Com base só nos documentos, é preciso confirmar se o abrigo e a coordenação seguem válidos para este cenário.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"Proteção e Defesa Civil\",\"descricao\":\"Coordenadoria municipal citada no plano de contingência e no decreto de nomeação.\"},{\"id\":\"E2\",\"nome\":\"João Batista Lima\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Coordenador da COMPDEC no plano de contingência de 2024.\"},{\"id\":\"E3\",\"nome\":\"Marta Souza\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Nomeada coordenadora da COMPDEC pelo decreto de 2025, em substituição a João Batista Lima.\"},{\"id\":\"E4\",\"nome\":\"Escola Rincão\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"Educação\",\"descricao\":\"Abrigo citado no plano de contingência, com capacidade para 80 pessoas.\"},{\"id\":\"E5\",\"nome\":\"várzea do Rincão\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área mencionada no alerta como local com risco de inundação.\"},{\"id\":\"E6\",\"nome\":\"Risco de inundação na várzea do Rincão\",\"tipo\":\"evento\",\"setor_responsavel\":\"Proteção e Defesa Civil\",\"descricao\":\"Cenário de alerta em nível laranja emitido em 2026-11-14.\"},{\"id\":\"E7\",\"nome\":\"Plano de Contingência (2024)\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Documento de 2024 que registra coordenador da COMPDEC e abrigo disponível.\"},{\"id\":\"E8\",\"nome\":\"Decreto de nomeação\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"Gabinete do Prefeito\",\"descricao\":\"Documento de 2025 que nomeia nova coordenadora da COMPDEC.\"},{\"id\":\"E9\",\"nome\":\"Alerta (cenário fictício)\",\"tipo\":\"evento\",\"setor_responsavel\":\"Sala de Situação Regional\",\"descricao\":\"Documento de 2026 que indica nível laranja e risco de inundação.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E7\",\"destino\":\"E2\",\"tipo\":\"responsavel_por\",\"rotulo\":\"O plano registra João Batista Lima como coordenador da COMPDEC.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-02-02\",\"fim\":\"2025-01-10\",\"observacao\":\"Válido até a nomeação posterior informada no decreto.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Coordenador da COMPDEC: João Batista Lima.\"}]},{\"id\":\"R2\",\"origem\":\"E8\",\"destino\":\"E3\",\"tipo\":\"responsavel_por\",\"rotulo\":\"O decreto nomeia Marta Souza para a coordenação da COMPDEC.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-01-10\",\"fim\":null,\"observacao\":\"Substitui a nomeação anterior informada no plano.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Nomeia Marta Souza para o cargo de coordenadora da COMPDEC\"}]},{\"id\":\"R3\",\"origem\":\"E8\",\"destino\":\"E2\",\"tipo\":\"substitui\",\"rotulo\":\"O decreto substitui João Batista Lima na coordenação da COMPDEC.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-01-10\",\"fim\":null,\"observacao\":\"Substituição expressa no texto do decreto.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"em substituição a João Batista Lima.\"}]},{\"id\":\"R4\",\"origem\":\"E7\",\"destino\":\"E4\",\"tipo\":\"abastece\",\"rotulo\":\"O plano aponta a Escola Rincão como abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-02-02\",\"fim\":null,\"observacao\":\"Não há documento posterior alterando o abrigo.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Rincão (80 pessoas).\"}]},{\"id\":\"R5\",\"origem\":\"E4\",\"destino\":\"E5\",\"tipo\":\"localizado_em\",\"rotulo\":\"A Escola Rincão é tratada como recurso associado ao cenário local de risco.\",\"status_epistemico\":\"informacao_insuficiente\",\"periodo\":{\"inicio\":null,\"fim\":null,\"observacao\":\"O texto não informa a localização geográfica da escola.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Rincão (80 pessoas).\"}]},{\"id\":\"R6\",\"origem\":\"E9\",\"destino\":\"E5\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta indica risco de inundação na várzea do Rincão.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-14\",\"fim\":null,\"observacao\":\"Situação vigente na data do alerta.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Risco de inundação na várzea do Rincão.\"}]},{\"id\":\"R7\",\"origem\":\"E9\",\"destino\":\"E6\",\"tipo\":\"outro\",\"rotulo\":\"O documento de alerta descreve o evento de risco.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-14\",\"fim\":null,\"observacao\":\"Referência explícita no alerta.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Risco de inundação na várzea do Rincão.\"}]},{\"id\":\"R8\",\"origem\":\"E1\",\"destino\":\"E3\",\"tipo\":\"responsavel_por\",\"rotulo\":\"Marta Souza está vinculada à coordenação da COMPDEC.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-01-10\",\"fim\":null,\"observacao\":\"Nomeação formal no decreto.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Nomeia Marta Souza para o cargo de coordenadora da COMPDEC.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"mudanca_responsavel\",\"descricao\":\"A coordenação da COMPDEC mudou de João Batista Lima para Marta Souza em 2025-01-10.\",\"implicacao\":\"A lista de responsáveis usada para a resposta ao alerta deve ser conferida antes do acionamento das rotinas de coordenação.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Coordenador da COMPDEC: João Batista Lima.\"},{\"doc_id\":\"D2\",\"trecho\":\"Nomeia Marta Souza para o cargo de coordenadora da COMPDEC\"}]},{\"id\":\"T2\",\"tipo\":\"contradicao\",\"descricao\":\"O plano de 2024 e o decreto de 2025 trazem nomes diferentes para a coordenação da COMPDEC, mas o decreto é posterior e explicita a substituição.\",\"implicacao\":\"Não se deve usar o nome antigo como responsável atual sem checagem institucional.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Coordenador da COMPDEC: João Batista Lima.\"},{\"doc_id\":\"D2\",\"trecho\":\"em substituição a João Batista Lima.\"}]},{\"id\":\"T3\",\"tipo\":\"atualizacao\",\"descricao\":\"O abrigo Escola Rincão aparece apenas no plano de 2024 e não há documento posterior atualizando sua disponibilidade ou capacidade.\",\"implicacao\":\"A existência e a capacidade do abrigo precisam ser confirmadas para o cenário atual.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Rincão (80 pessoas).\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"Marta Souza segue como coordenadora da COMPDEC na data do alerta?\",\"por_que_importa\":\"Define quem pode coordenar as ações preventivas e a comunicação institucional durante o cenário de inundação.\",\"motivacao\":\"O plano traz um coordenador antigo e o decreto posterior nomeia outra pessoa.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\",\"E7\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\",\"Gabinete do Prefeito\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Nomeia Marta Souza para o cargo de coordenadora da COMPDEC\"},{\"doc_id\":\"D2\",\"trecho\":\"em substituição a João Batista Lima.\"}],\"o_que_falta_saber\":\"Se houve nova alteração de coordenação depois de 2025-01-10.\",\"quem_pode_confirmar\":\"COMPDEC ou Gabinete do Prefeito, conforme registro institucional.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A Escola Rincão continua disponível e com capacidade de receber 80 pessoas?\",\"por_que_importa\":\"O abrigo indicado no plano pode ser necessário para o cenário atual, mas sua disponibilidade não foi atualizada nos documentos.\",\"motivacao\":\"O único registro do abrigo é do plano de 2024.\",\"base\":\"registro_historico\",\"entidades_relacionadas\":[\"E4\",\"E7\"],\"setores_relacionados\":[\"Educação\",\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Rincão (80 pessoas).\"}],\"o_que_falta_saber\":\"Se o espaço segue apto, desocupado e com a mesma capacidade informada.\",\"quem_pode_confirmar\":\"COMPDEC e setor responsável pela unidade escolar, conforme organização local.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"Há atualização mais recente do plano de contingência ou da lista de abrigos para este cenário?\",\"por_que_importa\":\"Pode haver mudança de abrigo, de capacidade ou de fluxo de acionamento não registrada nos documentos disponíveis.\",\"motivacao\":\"Existe um plano de 2024 e um alerta de 2026, mas nenhum documento intermediário sobre abrigo ou protocolo.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E4\",\"E7\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Rincão (80 pessoas).\"},{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Risco de inundação na várzea do Rincão.\"}],\"o_que_falta_saber\":\"Se houve revisão formal do plano ou do rol de abrigos após 2024.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"O alerta de nível laranja já foi comunicado à coordenação correta da COMPDEC?\",\"por_que_importa\":\"A ação preventiva depende de a informação chegar ao responsável vigente, não ao nome antigo do plano.\",\"motivacao\":\"Há mudança de responsável documentada entre 2024 e 2025.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E3\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\",\"Sala de Situação Regional\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Nomeia Marta Souza para o cargo de coordenadora da COMPDEC\"},{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Risco de inundação na várzea do Rincão.\"}],\"o_que_falta_saber\":\"Se a notificação foi encaminhada e recebida pela coordenação atual.\",\"quem_pode_confirmar\":\"Sala de Situação Regional e COMPDEC.\",\"prioridade\":\"alta\"},{\"id\":\"V5\",\"pergunta\":\"A área indicada no alerta, a várzea do Rincão, corresponde ao território atendido pelo plano de contingência disponível?\",\"por_que_importa\":\"É preciso saber se o plano existente cobre o local do alerta ou se há lacuna territorial.\",\"motivacao\":\"O alerta menciona um local específico e o plano não explicita sua abrangência geográfica.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E5\",\"E7\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Risco de inundação na várzea do Rincão.\"},{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Rincão (80 pessoas).\"}],\"o_que_falta_saber\":\"Se o plano de 2024 foi elaborado para essa mesma área ou para outro recorte territorial.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há indicação de vigência, revisão ou atualização do plano de contingência após 2024-02-02.\",\"por_que_importa\":\"Impede saber se o abrigo e os responsáveis continuam exatamente como registrados no documento antigo.\"},{\"descricao\":\"Não há confirmação documental sobre a disponibilidade física da Escola Rincão como abrigo na data do alerta.\",\"por_que_importa\":\"Sem essa confirmação, não se sabe se o abrigo pode ser usado no cenário atual.\"},{\"descricao\":\"Não há descrição operacional do que fazer no nível laranja no texto do alerta.\",\"por_que_importa\":\"Sem protocolo anexado, não é possível extrair etapas operacionais específicas apenas destes documentos.\"}],\"cautelas\":[\"O decreto de 2025 substitui o nome do coordenador, mas não atualiza outras partes do plano.\",\"O abrigo citado em 2024 não deve ser tratado como automaticamente disponível em 2026.\",\"O alerta informa risco, mas não traz detalhes de impacto, duração ou área exata além da várzea do Rincão.\",\"Não foi usado nenhum dado externo ao conteúdo dos documentos.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_03eacc72e65f8f21016b06eb42093887d2b6422d56db5e5117",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 1818,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 3164,
+      "output_tokens_details": {
+        "reasoning_tokens": 79
+      },
+      "total_tokens": 4982
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"Há um alerta laranja por risco de inundação na várzea do Rincão. O plano de 2024 registra a Escola Rincão como abrigo para 80 pessoas e o decreto de 2025 mudou a coordenação da COMPDEC para Marta Souza. Com base só nos documentos, é preciso confirmar se o abrigo e a coordenação seguem válidos para este cenário.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"Proteção e Defesa Civil\",\"descricao\":\"Coordenadoria municipal citada no plano de contingência e no decreto de nomeação.\"},{\"id\":\"E2\",\"nome\":\"João Batista Lima\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Coordenador da COMPDEC no plano de contingência de 2024.\"},{\"id\":\"E3\",\"nome\":\"Marta Souza\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Nomeada coordenadora da COMPDEC pelo decreto de 2025, em substituição a João Batista Lima.\"},{\"id\":\"E4\",\"nome\":\"Escola Rincão\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"Educação\",\"descricao\":\"Abrigo citado no plano de contingência, com capacidade para 80 pessoas.\"},{\"id\":\"E5\",\"nome\":\"várzea do Rincão\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área mencionada no alerta como local com risco de inundação.\"},{\"id\":\"E6\",\"nome\":\"Risco de inundação na várzea do Rincão\",\"tipo\":\"evento\",\"setor_responsavel\":\"Proteção e Defesa Civil\",\"descricao\":\"Cenário de alerta em nível laranja emitido em 2026-11-14.\"},{\"id\":\"E7\",\"nome\":\"Plano de Contingência (2024)\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Documento de 2024 que registra coordenador da COMPDEC e abrigo disponível.\"},{\"id\":\"E8\",\"nome\":\"Decreto de nomeação\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"Gabinete do Prefeito\",\"descricao\":\"Documento de 2025 que nomeia nova coordenadora da COMPDEC.\"},{\"id\":\"E9\",\"nome\":\"Alerta (cenário fictício)\",\"tipo\":\"evento\",\"setor_responsavel\":\"Sala de Situação Regional\",\"descricao\":\"Documento de 2026 que indica nível laranja e risco de inundação.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E7\",\"destino\":\"E2\",\"tipo\":\"responsavel_por\",\"rotulo\":\"O plano registra João Batista Lima como coordenador da COMPDEC.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-02-02\",\"fim\":\"2025-01-10\",\"observacao\":\"Válido até a nomeação posterior informada no decreto.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Coordenador da COMPDEC: João Batista Lima.\"}]},{\"id\":\"R2\",\"origem\":\"E8\",\"destino\":\"E3\",\"tipo\":\"responsavel_por\",\"rotulo\":\"O decreto nomeia Marta Souza para a coordenação da COMPDEC.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-01-10\",\"fim\":null,\"observacao\":\"Substitui a nomeação anterior informada no plano.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Nomeia Marta Souza para o cargo de coordenadora da COMPDEC\"}]},{\"id\":\"R3\",\"origem\":\"E8\",\"destino\":\"E2\",\"tipo\":\"substitui\",\"rotulo\":\"O decreto substitui João Batista Lima na coordenação da COMPDEC.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-01-10\",\"fim\":null,\"observacao\":\"Substituição expressa no texto do decreto.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"em substituição a João Batista Lima.\"}]},{\"id\":\"R4\",\"origem\":\"E7\",\"destino\":\"E4\",\"tipo\":\"abastece\",\"rotulo\":\"O plano aponta a Escola Rincão como abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-02-02\",\"fim\":null,\"observacao\":\"Não há documento posterior alterando o abrigo.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Rincão (80 pessoas).\"}]},{\"id\":\"R5\",\"origem\":\"E4\",\"destino\":\"E5\",\"tipo\":\"localizado_em\",\"rotulo\":\"A Escola Rincão é tratada como recurso associado ao cenário local de risco.\",\"status_epistemico\":\"informacao_insuficiente\",\"periodo\":{\"inicio\":null,\"fim\":null,\"observacao\":\"O texto não informa a localização geográfica da escola.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Rincão (80 pessoas).\"}]},{\"id\":\"R6\",\"origem\":\"E9\",\"destino\":\"E5\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta indica risco de inundação na várzea do Rincão.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-14\",\"fim\":null,\"observacao\":\"Situação vigente na data do alerta.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Risco de inundação na várzea do Rincão.\"}]},{\"id\":\"R7\",\"origem\":\"E9\",\"destino\":\"E6\",\"tipo\":\"outro\",\"rotulo\":\"O documento de alerta descreve o evento de risco.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-14\",\"fim\":null,\"observacao\":\"Referência explícita no alerta.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Risco de inundação na várzea do Rincão.\"}]},{\"id\":\"R8\",\"origem\":\"E1\",\"destino\":\"E3\",\"tipo\":\"responsavel_por\",\"rotulo\":\"Marta Souza está vinculada à coordenação da COMPDEC.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-01-10\",\"fim\":null,\"observacao\":\"Nomeação formal no decreto.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Nomeia Marta Souza para o cargo de coordenadora da COMPDEC.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"mudanca_responsavel\",\"descricao\":\"A coordenação da COMPDEC mudou de João Batista Lima para Marta Souza em 2025-01-10.\",\"implicacao\":\"A lista de responsáveis usada para a resposta ao alerta deve ser conferida antes do acionamento das rotinas de coordenação.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Coordenador da COMPDEC: João Batista Lima.\"},{\"doc_id\":\"D2\",\"trecho\":\"Nomeia Marta Souza para o cargo de coordenadora da COMPDEC\"}]},{\"id\":\"T2\",\"tipo\":\"contradicao\",\"descricao\":\"O plano de 2024 e o decreto de 2025 trazem nomes diferentes para a coordenação da COMPDEC, mas o decreto é posterior e explicita a substituição.\",\"implicacao\":\"Não se deve usar o nome antigo como responsável atual sem checagem institucional.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Coordenador da COMPDEC: João Batista Lima.\"},{\"doc_id\":\"D2\",\"trecho\":\"em substituição a João Batista Lima.\"}]},{\"id\":\"T3\",\"tipo\":\"atualizacao\",\"descricao\":\"O abrigo Escola Rincão aparece apenas no plano de 2024 e não há documento posterior atualizando sua disponibilidade ou capacidade.\",\"implicacao\":\"A existência e a capacidade do abrigo precisam ser confirmadas para o cenário atual.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Rincão (80 pessoas).\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"Marta Souza segue como coordenadora da COMPDEC na data do alerta?\",\"por_que_importa\":\"Define quem pode coordenar as ações preventivas e a comunicação institucional durante o cenário de inundação.\",\"motivacao\":\"O plano traz um coordenador antigo e o decreto posterior nomeia outra pessoa.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\",\"E7\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\",\"Gabinete do Prefeito\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Nomeia Marta Souza para o cargo de coordenadora da COMPDEC\"},{\"doc_id\":\"D2\",\"trecho\":\"em substituição a João Batista Lima.\"}],\"o_que_falta_saber\":\"Se houve nova alteração de coordenação depois de 2025-01-10.\",\"quem_pode_confirmar\":\"COMPDEC ou Gabinete do Prefeito, conforme registro institucional.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A Escola Rincão continua disponível e com capacidade de receber 80 pessoas?\",\"por_que_importa\":\"O abrigo indicado no plano pode ser necessário para o cenário atual, mas sua disponibilidade não foi atualizada nos documentos.\",\"motivacao\":\"O único registro do abrigo é do plano de 2024.\",\"base\":\"registro_historico\",\"entidades_relacionadas\":[\"E4\",\"E7\"],\"setores_relacionados\":[\"Educação\",\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Rincão (80 pessoas).\"}],\"o_que_falta_saber\":\"Se o espaço segue apto, desocupado e com a mesma capacidade informada.\",\"quem_pode_confirmar\":\"COMPDEC e setor responsável pela unidade escolar, conforme organização local.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"Há atualização mais recente do plano de contingência ou da lista de abrigos para este cenário?\",\"por_que_importa\":\"Pode haver mudança de abrigo, de capacidade ou de fluxo de acionamento não registrada nos documentos disponíveis.\",\"motivacao\":\"Existe um plano de 2024 e um alerta de 2026, mas nenhum documento intermediário sobre abrigo ou protocolo.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E4\",\"E7\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Rincão (80 pessoas).\"},{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Risco de inundação na várzea do Rincão.\"}],\"o_que_falta_saber\":\"Se houve revisão formal do plano ou do rol de abrigos após 2024.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"O alerta de nível laranja já foi comunicado à coordenação correta da COMPDEC?\",\"por_que_importa\":\"A ação preventiva depende de a informação chegar ao responsável vigente, não ao nome antigo do plano.\",\"motivacao\":\"Há mudança de responsável documentada entre 2024 e 2025.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E3\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\",\"Sala de Situação Regional\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Nomeia Marta Souza para o cargo de coordenadora da COMPDEC\"},{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Risco de inundação na várzea do Rincão.\"}],\"o_que_falta_saber\":\"Se a notificação foi encaminhada e recebida pela coordenação atual.\",\"quem_pode_confirmar\":\"Sala de Situação Regional e COMPDEC.\",\"prioridade\":\"alta\"},{\"id\":\"V5\",\"pergunta\":\"A área indicada no alerta, a várzea do Rincão, corresponde ao território atendido pelo plano de contingência disponível?\",\"por_que_importa\":\"É preciso saber se o plano existente cobre o local do alerta ou se há lacuna territorial.\",\"motivacao\":\"O alerta menciona um local específico e o plano não explicita sua abrangência geográfica.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E5\",\"E7\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Risco de inundação na várzea do Rincão.\"},{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Rincão (80 pessoas).\"}],\"o_que_falta_saber\":\"Se o plano de 2024 foi elaborado para essa mesma área ou para outro recorte territorial.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há indicação de vigência, revisão ou atualização do plano de contingência após 2024-02-02.\",\"por_que_importa\":\"Impede saber se o abrigo e os responsáveis continuam exatamente como registrados no documento antigo.\"},{\"descricao\":\"Não há confirmação documental sobre a disponibilidade física da Escola Rincão como abrigo na data do alerta.\",\"por_que_importa\":\"Sem essa confirmação, não se sabe se o abrigo pode ser usado no cenário atual.\"},{\"descricao\":\"Não há descrição operacional do que fazer no nível laranja no texto do alerta.\",\"por_que_importa\":\"Sem protocolo anexado, não é possível extrair etapas operacionais específicas apenas destes documentos.\"}],\"cautelas\":[\"O decreto de 2025 substitui o nome do coordenador, mas não atualiza outras partes do plano.\",\"O abrigo citado em 2024 não deve ser tratado como automaticamente disponível em 2026.\",\"O alerta informa risco, mas não traz detalhes de impacto, duração ou área exata além da várzea do Rincão.\",\"Não foi usado nenhum dado externo ao conteúdo dos documentos.\"]}"
+  }
+}

@@ -26,7 +26,8 @@ export type QuoteCheck = { doc_id: string; trecho: string; doc_valido: boolean; 
 export function checkQuote(ev: Evidencia, docs: Map<string, Doc>, onde: string): QuoteCheck {
   const doc = docs.get(ev.doc_id);
   if (!doc) return { ...ev, doc_valido: false, literal: false, onde };
-  const hay = norm(doc.texto + ' ' + doc.titulo);
+  // o modelo vê título e cabeçalho (tipo | fonte | data); citações desses trechos também são literais
+  const hay = norm([doc.titulo, `Fonte: ${doc.fonte} | Data: ${doc.data}`, doc.fonte, doc.texto].join(' \n '));
   // aceita trechos separados por reticências: cada segmento precisa estar no texto
   const parts = ev.trecho.split(/\.\.\.|…|\[\.\.\.\]/).map((p) => stripEdge(norm(p))).filter((p) => p.length > 0);
   const literal = parts.length > 0 && parts.every((p) => hay.includes(p));

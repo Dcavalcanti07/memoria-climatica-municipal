@@ -1,0 +1,1129 @@
+{
+  "meta": {
+    "scenario": "DV4",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "dev_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v1.md",
+    "prompt_sha12": "ba9edac57f55",
+    "docs_fornecidos": [
+      "D1",
+      "D2",
+      "D3"
+    ],
+    "user_message_chars": 787,
+    "user_message_sha12": "56b5956eab9d"
+  },
+  "user_message": "Município (fictício): Fazenda Velha\nData de referência da análise: 2026-11-13\nDocumentos disponíveis (3), em ordem cronológica:\n\n### [D1] Plano de Contingência (2025)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2025-03-03\n\nPlantão da COMPDEC: (fictício) 0000-1199.\nAbrigo: Ginásio Velho (120 pessoas).\n\n---\n\n### [D2] Cartaz informativo — site da Prefeitura\nTipo: Atualização de secretaria | Fonte: Comunicação | Data: 2026-10-01\n\nEm caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299.\n\n---\n\n### [D3] Alerta (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-13\n\nNÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_03cc45b7b02c1dbb016b06eb3c9f7c87d29ae051c905ae3a10",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 1822,
+    "output_tokens": 3574,
+    "reasoning_tokens": 305
+  },
+  "latency_ms": 23044,
+  "started_at": "2026-11-25T14:05:48.075Z",
+  "output": {
+    "resumo_situacao": "Há um alerta em vigor de nível laranja para alagamentos prováveis nas áreas baixas. Os documentos trazem dois contatos diferentes para emergência/plantão e um abrigo identificado no plano de contingência. Falta confirmar se os contatos e a capacidade do abrigo continuam válidos para este cenário.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "COMPDEC",
+        "tipo": "setor",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Setor citado no plano de contingência como referência para plantão."
+      },
+      {
+        "id": "E2",
+        "nome": "Plantão da COMPDEC",
+        "tipo": "servico",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Plantão informado no plano de contingência de 2025."
+      },
+      {
+        "id": "E3",
+        "nome": "Defesa Civil",
+        "tipo": "servico",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Contato de emergência divulgado na atualização de 2026."
+      },
+      {
+        "id": "E4",
+        "nome": "Ginásio Velho",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Abrigo indicado no plano de contingência."
+      },
+      {
+        "id": "E5",
+        "nome": "Abrigo do Ginásio Velho",
+        "tipo": "servico",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Abrigo com capacidade informada de 120 pessoas."
+      },
+      {
+        "id": "E6",
+        "nome": "Áreas baixas",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Área mencionada no alerta como sujeita a alagamentos prováveis."
+      },
+      {
+        "id": "E7",
+        "nome": "Alagamentos prováveis",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Evento mencionado no alerta de 2026-11-13."
+      },
+      {
+        "id": "E8",
+        "nome": "Nível laranja",
+        "tipo": "norma_documento",
+        "setor_responsavel": null,
+        "descricao": "Classificação do alerta informado pela Sala de Situação Regional."
+      },
+      {
+        "id": "E9",
+        "nome": "Sala de Situação Regional",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Fonte do alerta de 2026-11-13."
+      },
+      {
+        "id": "E10",
+        "nome": "0000-1199",
+        "tipo": "recurso",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Telefone de plantão informado no plano de contingência."
+      },
+      {
+        "id": "E11",
+        "nome": "0000-2299",
+        "tipo": "recurso",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Telefone de emergência divulgado pela atualização de secretaria."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC mantém um plantão.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-03-03",
+          "fim": null,
+          "observacao": "Informação do plano de contingência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Plantão da COMPDEC: (fictício) 0000-1199."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E2",
+        "destino": "E10",
+        "tipo": "comunica",
+        "rotulo": "O plantão usa o telefone 0000-1199.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-03-03",
+          "fim": null,
+          "observacao": "Vigência não informada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Plantão da COMPDEC: (fictício) 0000-1199."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E3",
+        "destino": "E11",
+        "tipo": "comunica",
+        "rotulo": "A Defesa Civil divulga o telefone 0000-2299.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-10-01",
+          "fim": null,
+          "observacao": "Informação publicada em atualização de secretaria."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E4",
+        "destino": "E5",
+        "tipo": "localizado_em",
+        "rotulo": "O abrigo fica no Ginásio Velho.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-03-03",
+          "fim": null,
+          "observacao": "Informação do plano de contingência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Ginásio Velho (120 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E5",
+        "destino": "E4",
+        "tipo": "localizado_em",
+        "rotulo": "O abrigo está localizado no Ginásio Velho.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-03-03",
+          "fim": null,
+          "observacao": "Informação do plano de contingência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Ginásio Velho (120 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E7",
+        "destino": "E6",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta indica alagamentos prováveis nas áreas baixas.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-13",
+          "fim": null,
+          "observacao": "Válido na data do alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E8",
+        "destino": "E7",
+        "tipo": "outro",
+        "rotulo": "O alerta foi classificado como nível laranja.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-13",
+          "fim": null,
+          "observacao": "Classificação do cenário de alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas."
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E9",
+        "destino": "E8",
+        "tipo": "outro",
+        "rotulo": "A Sala de Situação Regional emitiu o alerta com nível laranja.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-13",
+          "fim": null,
+          "observacao": "Fonte do documento D3."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-13"
+          }
+        ]
+      },
+      {
+        "id": "R9",
+        "origem": "E1",
+        "destino": "E5",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC aparece como referência do abrigo no plano.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2025-03-03",
+          "fim": null,
+          "observacao": "Inferido pela forma como o abrigo é apresentado no plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Ginásio Velho (120 pessoas)."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "Em 2026-10-01 foi divulgada uma nova forma de contato de emergência para a Defesa Civil.",
+        "implicacao": "A equipe precisa confirmar se esse é o canal a ser usado no cenário atual, sem presumir que substitui o plantão anterior.",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "pendencia_historica",
+        "descricao": "O plano de contingência de 2025 registra um plantão e um abrigo, mas não informa se continuam inalterados em 2026.",
+        "implicacao": "É necessário checar vigência operacional antes de usar essas informações no atendimento do alerta.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Plantão da COMPDEC: (fictício) 0000-1199."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Ginásio Velho (120 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "T3",
+        "tipo": "atualizacao",
+        "descricao": "Em 2026-11-13 há um alerta de nível laranja para alagamentos prováveis nas áreas baixas.",
+        "implicacao": "A pauta de verificação deve focar os locais baixos e a pronta comunicação com os serviços citados nos documentos.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "Qual contato deve ser usado agora para acionar a Defesa Civil no cenário atual: 0000-2299, 0000-1199 ou ambos por função diferente?",
+        "por_que_importa": "Há dois números em documentos diferentes e não está claro se um substituiu o outro ou se servem a finalidades distintas.",
+        "motivacao": "D1 informa o plantão da COMPDEC e D2 divulga um telefone de emergência para a Defesa Civil.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E2",
+          "E3",
+          "E10",
+          "E11"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Plantão da COMPDEC: (fictício) 0000-1199."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299."
+          }
+        ],
+        "o_que_falta_saber": "Se houve substituição, complementaridade ou uso por áreas diferentes.",
+        "quem_pode_confirmar": "COMPDEC ou setor de Comunicação da Prefeitura, conforme validação institucional.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "O abrigo do Ginásio Velho continua disponível e com capacidade operacional para 120 pessoas?",
+        "por_que_importa": "O abrigo foi citado no plano de 2025, mas não há atualização posterior sobre sua disponibilidade atual.",
+        "motivacao": "D1 registra abrigo e capacidade, enquanto o alerta de 2026 exige checagem preventiva.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E4",
+          "E5"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Ginásio Velho (120 pessoas)."
+          }
+        ],
+        "o_que_falta_saber": "Se o local segue habilitado, se a capacidade mudou e se há condição de uso imediato.",
+        "quem_pode_confirmar": "COMPDEC ou gestão do abrigo, conforme organização local.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "As áreas baixas mencionadas no alerta coincidem com os pontos que a equipe precisa priorizar no município?",
+        "por_que_importa": "O alerta aponta as áreas baixas como foco, mas os documentos não detalham quais locais entram nessa classificação.",
+        "motivacao": "D3 menciona alagamentos prováveis nas áreas baixas sem detalhamento territorial.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E6",
+          "E7",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "Sala de Situação Regional",
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas."
+          }
+        ],
+        "o_que_falta_saber": "Quais bairros, ruas ou pontos são considerados áreas baixas na documentação de apoio local.",
+        "quem_pode_confirmar": "COMPDEC, Defesa Civil ou setor técnico municipal responsável pelo mapeamento local.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V4",
+        "pergunta": "Há orientação registrada para o uso do abrigo do Ginásio Velho neste alerta de nível laranja?",
+        "por_que_importa": "O abrigo existe no plano, mas o alerta atual não informa se ele deve ser preparado, monitorado ou apenas mantido como referência.",
+        "motivacao": "D1 traz o abrigo e D3 traz o cenário atual, sem ligação operacional explícita.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E5",
+          "E7",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Ginásio Velho (120 pessoas)."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas."
+          }
+        ],
+        "o_que_falta_saber": "Se o abrigo deve ser acionado, preparado ou apenas mantido em reserva.",
+        "quem_pode_confirmar": "COMPDEC.",
+        "prioridade": "media"
+      },
+      {
+        "id": "V5",
+        "pergunta": "A informação do cartaz de 2026 substitui ou complementa o plantão informado no plano de 2025?",
+        "por_que_importa": "Sem essa confirmação, a pauta pode orientar a equipe para um contato desatualizado ou incompleto.",
+        "motivacao": "Há atualização posterior com outro número, mas sem menção explícita de substituição.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E2",
+          "E3",
+          "E10",
+          "E11"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Comunicação"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Plantão da COMPDEC: (fictício) 0000-1199."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299."
+          }
+        ],
+        "o_que_falta_saber": "Se o cartaz é uma atualização de canal, de plantão ou apenas de divulgação pública.",
+        "quem_pode_confirmar": "Comunicação da Prefeitura e COMPDEC, conforme validação institucional.",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há no material a delimitação geográfica das áreas baixas.",
+        "por_que_importa": "Sem isso, a equipe não consegue transformar o alerta em checagem territorial objetiva."
+      },
+      {
+        "descricao": "Não há indicação de vigência ou revisão do plano de contingência após 2025-03-03.",
+        "por_que_importa": "Sem vigência clara, não é possível saber se o conteúdo operacional continua atual."
+      },
+      {
+        "descricao": "Não há informação sobre acionamento efetivo do abrigo ou do plantão no cenário de 2026-11-13.",
+        "por_que_importa": "A pauta preventiva precisa distinguir referências históricas de medidas em uso agora."
+      }
+    ],
+    "cautelas": [
+      "O alerta atual fala em alagamentos prováveis, mas não informa extensão, duração ou bairros atingidos.",
+      "Os números telefônicos aparecem em documentos diferentes; não presumir equivalência nem substituição sem confirmação institucional.",
+      "O abrigo mencionado no plano é um registro histórico útil, mas não deve ser tratado como disponível sem checagem.",
+      "Não usar informações fora dos documentos para completar localização, capacidade ou funcionamento.",
+      "Evitar interpretar o nível laranja como decisão operacional; o documento apenas registra a classificação do alerta."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 11,
+    "n_relacoes": 9,
+    "n_verificacoes": 5,
+    "n_temporais": 3,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Plantão da COMPDEC: (fictício) 0000-1199.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Plantão da COMPDEC: (fictício) 0000-1199.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Ginásio Velho (120 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Ginásio Velho (120 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-13",
+        "doc_valido": true,
+        "literal": false,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Ginásio Velho (120 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R9"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Plantão da COMPDEC: (fictício) 0000-1199.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Ginásio Velho (120 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Plantão da COMPDEC: (fictício) 0000-1199.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Ginásio Velho (120 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Ginásio Velho (120 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Plantão da COMPDEC: (fictício) 0000-1199.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      }
+    ],
+    "n_citacoes": 21,
+    "n_citacoes_literais": 20,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795615571,
+    "created_at": 1795615548,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_03cc45b7b02c1dbb016b06eb3c9f7c87d29ae051c905ae3a10",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBus_nzXkao1HqrTcCM-vCo600s9T50Iic7f_oTCuCbbzKCRtnlQUf8vTze-CargJvNo60J_O8yGopu8WehT5HyA-x3WC1BovpTueHud3UY8RlI31Xiu8FgK6KOnCeGciahOhpnkhe3NcSY9KW5_cPLz86PFtdzEJj4D1XAKEjtEOUR6GO3OWulMWMjNOJa594Q8Pa3jsw_9CroKVmcapudcXx4l_gTx_e6oV7TAqNiOZq0L3-x-qtdKXod6Mju1QcZtpbZDJhPmgzL4J6dlIVtU5yVh-SdJpRGcwMSPQswq1l8vOQZmQLK2Fm6ZIuEABtW0VwB0WFSndgyW6pw9skrK_894_S8daOQMVYDjll9EmU8XMKhK7mCRDsSo0MQeC2qwwtw1sJv4fPsectQpB41G4pgB3Ym31469fmaU02_7YJUIs-uwLj2IkNkEucnSezX4O_jr4kl5HTvk4s2IjZrnB1unIImIJSQqQbcPf_HrPgfLcppDV-mmvPZte9zp50hbbtLzRF6xVhX3ZiQHBvXw_ntCMMlO4EVauZAmsxYNwn6Ee14Qsk5Sxi_VKz06GHRkHYD8I_YAzfhvqkbMNuRBc2HxVY0DxLgoXWseWGi4QXovAnjs5FhAWAleo1MrSPbj1W4YPyaJeaqVyuZtsy-GEkNS2Jy2bVRMJvoaGmmTzatHJMowwX37QFgE9r0S7RPsxcvA4ozbaOrYLnWj7nDSJnsAnzuDwek1bpHDJRqt_RUc_IhobjGcT6MZEiDqjq2u_7Gzphz5LINjEMrdRAqJV4i32S0kw5e8109Wn3rRjP1ce_LbHalZ2oN5p-mA_-1-hY_0M2LH6StUVgaXanUhvyoHb8ql5irhfwtqShov6keeoYN5sZwhPv3-ooOAVBgJUAviiCOmjFBCGVZF78fZxKGjMBhUZ6hJP1oi4h0beLZi_NFP4QfkLhDFvqCAZCN3-Lzz8IJQSbbrGnsnt1l8UHcBN1YMILA5J5v0ZrpHqbYVQ22pdru_KGNfAQfrk3KipcPagJZh3kocoKmBoBUCiaLbj33PH9AqhbwZFOLPHH_MWn1_GhsmxEYHpHiTr7y-W8m84c53WiIEVG2SVmOl8HwtTdByE7enUbvT5yBptUXOtVRxe53hZvHtQ3RJboWp2PoOFwZLyrjZctEPuJF1XmjWIEbmXh-NRucr63reb2bRy5Tw6Zw4C2mCL6_7a8BVQc1Oos5K21pe1c-O9lDJTFM7PeJFG5eKPJY0xa2_O-lvAuJSchVgofNHBf2AtsMTz8J_O8RBI-OU1HcUMTMHnyjDu18z_AUpYI7RriRIp-IbFWxF2JwLPjHEx4WNnwVr5x7l_u2y1ppQKyeCjxXfdOx7OUJ8d4XnxNRb6BCLCJyKDwcIbQKjwlFvDKrY-n5IdOWOG_b_UI0JPf5LUv_cI8HVoEjHDPT22bF2-Q8L7HGrBrQYn5to8eyEA_CHRaC1VvAaKOoYKM-lx0Ubh9AdiCnquplvqplzymXCDtU9Lt_MScaovdR6pBMIVQWNqBzvahxMXJQmH_-pId1_h17INtiZJOl_aVvZsEg3IEM9N1k6C1sd9l1qTwhY1fo-Nt6y1fihd0LxgzZkE_8gXSnL2rtKapNPPSIx6NRd__r_ChyFMwLEUs1YmNpYzpMvv04czW1EzeDuLMWNNqBRoDegSlyNIw_69bDmGOKOpGP8F0tB81m62ZhN1puSKPybh0vYbQVKQLBlPJduL-3N3ckI0x41t6adGEBUwCag9t0fR5N5pOoRbLTkmCxBTRCjRRlv059QHFc7KHFcDAcGzrnfFwePxjSmVmizhKxXbZCys8AluBeFqbryhcJG1ZizMLNoHzGAzlzDcmHUHIIcwstgosS1poG-kHy20mv44VB4mJI9-SbiUQ2LyR3gh-qYeMq3exkZjCIsimubUPLQ-IeQdCDlEpfETLsQPdTSKnwlOMCiJnpdsMxze492Og96uSDBQl8BMNh4Vt3fxXv-X1IRHij5xQg3lEwDbqGw1-DLvFOzr25B-q5K0L-tMnYWyORlUfWubVqJosSOklrbO3GDWCzLqiBSziEMJi_Tnx971s16Jft3JYe4JWwrLW9Kc_41aTRPfx7bo-D6uC79tftRdzNfCVJ3TF0LYlCF2UxeJw2msNDe_glHAtJDP0W4cARkw5_B1yZU-u8GeZEDOPEIzQkkVG_akQLNDjNduybwQ5LHJFj3cEJJoDneXpPzfr7ZoYn0Zi4RjF6_RaCk4HKSeCQ6bAqCbuW5OXZzJ8lFsruwsqaw5QpX9SjnaQpru_qV5_C5HtHsPgd8o5Gb7Q_4HzDZk5rT03ezjYRBTwXO1lA9RiQRQoD3py6sxZfL0OQFh_XzZ1FroUoaJG9CjKkNRqyRD4c2ShOmZVEXMGON28GnGW-2v7wE9Q1Mjvh_VpyWTa0EG3TDMPvIfsE-Y8vOrxTjDsHknfGOuZPaJHU7DWYEocEGbxPYLOyPvHjQ6pPDOZkKECOgGQKY20yZAuVuTGv4Qvfiru7C1crgXM2c5z8R1Ye9YWmPJvh83hSoC1SHlreSrQkZPrIWkcNByhxzNKoW73XDu5HUl0mE5ucvxK5027xFsSWuATSkp2xi-7-s5iGQQxFYOIbMERTdHA8EE9f2g3Z_uCn8bmrrDC2tJec5UUyONWBOvvJW7A64_5Szz7ubjP3RPJU9XyLzFRN9KMK8PZgGI9UI8DQiunH-pjhlF-afjBSIfqt6X-JwHAhDYwmfcAG5Vdexv6y9xbzaXzFmN2UY8xerTzQTDyLiL7kUpudA3Ic_xv2JAb3u8rjc1wePspq1FhAwubG5o7QZOkoV-T6OlLiCsJ9q5W-0-N855f7Tl-ait5qCBy1o_bh1BFiUKRALNSO81Ok-e0YfWjJnzj7D4bCl132IT-d_MOn-P5YSEQhYTcHXXMOI12Y9kUDGM1FixjArUA0TQwf7hdzqOgvuZ3Yu8zoqbhHQm-nDXphM3ZPbTBy-nPCg1RrlF63yAClYUoVWh7E5CiSOi4inCH7mMQHfZtMzuph33o3V33Msr-XqHiPFfQuofZJ8-biFKaeRkOrAeFCyaYmUy1HeCTTmKpTj6SIaxtLZnngnuh5NrSd18IXaFwOnDwljCGrUVNW0Qls8zXviYJO5eB0UijGG18iTQp38Ieb5c_n6nQOIA8KC-dCifW2JiWUj_bxY80a5d5kr1RQ2qSy-Ycz_ZuLm4_OF55kxrosVnjLMsWE0OofuBK7-RXDUnLTAADrRmyc27bIo38Z9GdhrNaaEZ8KRYmsfJzc0Jz2YxHuc74iKHhIUBZxW_PC3bn7rxcqpzWJwFAMBA1diJCBY9DQpN7W9CaIuEWvwBiRmdnamNPwS6PWyPKHjgOXg5YW9rnmOV7AKgq6RsEkgBYAlgBhNh-tlKfrgSYo5c4KvOB5beKh3AGh0bLuLt_3lzYzEMK3klSi1WFCfOK0LyQuKbzfsywnP0Pjj-rJrSPSS5hjsjutIMGkl4hCQX8YGzmbwLaIW5HNxGyiorsIfRzZInjyhY7ZDvAiyvZsIBzG1yLTI1zeaXP1BwPg0VjYo8zHvN6WwXPsqszTl3-dijrx1m9_2zd_kzdCyNCMujNBi0u1O0_mT6J-GvpBNVdBriGx2T_pfkKnStwEd-uTt_ylQFVm7Iit2c0Guym0K32YosCiWQNZO4dFdha_oqQdGcB6lJGxGtNEV5uPvasFeca_2sJ-wMyvGFydu0ZDACWs4MPzOUhchWe5ToAfX4T6NMBa1NHOL3fF6SWesPLNiz1JfN963rXyZpc-FsiSKszjtnchqjyDdZs96TDcZY-dOETocohZ8Opqw_fFUwM7zCOXZGfbJ8WA4R1i2wOK4j7A9q6xpYd-8KAFP5lpH9KZmNmVSZR5n8q9Wp60XPPXcwDEd2_nA5gIjdQN5azm524vyilbFTpXSbMUGw-tyBu0LmQlK_cZbSFMp45FTO97ZYyuh7fs1PvMxLT9oAD34rNbtfTWeT720YVVVJc7Sm-tZ2VAHw_f-KUrGwHTmKEHqyCiy-C4gHR88B4OLzbM_ISLHH3Dgia6glG_VpavePuQoAVkHcR88DVFKJSIC9oJwKT0QKo54HtJ6RT6zYq3jbFTTx7js0gLOnXIOMyYuJZCyn4R8uWBTta4HtaT4b6avGC1KNF9Emb0V5OPQBvqftrC3N2Fq2uCWfR-eZRX0rXIkT1sl_eFQGYbFqv2nLN06AYkP9Zo8Qh-F5P59xVXR37LXEtuC7InjTYvubMxF3dWZoyXBXFjHjtZG-c54vMxaoGjPfgQHFM7GVkFMDKFflF1RRoK9D9lWSG87NKCXeRHgga_9yJ2kHMq0Yq37WRQGjFsdcJ357kQrMBy_vinU_OUN7wne354TnuTNkU6Mm4SMjOXxX1h87Q4gECMnetZYVXJneUAiptD52Vuipi7_FQ3VaTTqDCQaX5ujbhHCsJ44ACg0E05hCmCiuV8dp03AK5P0NGEzCOlWRVi9XNQBA0W9nAJAo3kOdbrSLkFmbiZHsNTPv06WJ68OM9AohZ8c4IXJCElqdkOvoI5SGoeAn-MkovxXr-u6tHE9oduUi9TgVjqWeG14rX60_mJQYtoGo6k0nGVwfR_gJxUTB9ygeHcnaJaW5p___JYr6d-qwITUnF8hqg6wfQYizgeWgfzQ3O8uOUIu-Tl3TwnD9ZdwdwKfbhhmy8qMAfQX_715FOMF2UoBPwLHCAMo5oJC5w-nkwxzBYKj90YJQan4MIDZsShBUDHRF7dECmEDQMkvFd0uIiYJUD7vMSoQ5LrmKoEb5GEEe8An1gvKTpStBfWNLfBmrgVGrW_uI-v1iklbD9rTQf6rkqtXoQcUYzQ8Sz_0sCcyVITTZmRB-e_iEBnM81kVhwPug-BpOh-0__dnyvCmwnOHMQ-Nq-3rsJ7ZOkB8KCAnca9Qr0MJgo-uoyWh2fNSgEmBKH193oM-CbSMoLwvn8WIg1uWL30dZDAQR0ZVCFZblQMWWiRkT8g6XuJyVZo9Pa-WkYN82SzhrImwW8IcQZ5tUxSHY9OyMw9IjvXKyjGFcH8a3A7HUEAGwCe30i3fGBxdOFarwrPxxphPPhHx9fe_38LvdTBOUguDP6FMlJyuW_7YYUQb9Xz_2Mk4fLhaMWH5iQqvu8lUpEcP_-AaY-VOcuEqwHthn7BuVPiq1bZ_hpATpGYpIoNy_9AFywklxmmYXpYqXu0cKgJ7WDrI3z76iFOfzJKRO51oWKQe4DbKALxgF96U8IFVfXgx3RRjNQ2v1aKhUxhbquIG3FcD7fQBQ5yCCq8SwK9b4B6Ve6mv823grn09SHjD4U3UTaB3H21lLqvdB87ivI06q7qRoDyU8c51_IaRSJFqoDiKTQfrS2I1d3wawHhgfxoRu4ZwF-nZFDtgL70Ao4GPpVqS-HP6s73myidQ_X58G8wgo1Macarq87lgBtpjueD3DWUgm1ly2u5s8CJfefFq7pc4RIfUI7qcQh3vk9SYCdw8aDLMFEw==",
+        "id": "rs_03cc45b7b02c1dbb016b06eb3fce0487d2988546c8bb584663",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"Há um alerta em vigor de nível laranja para alagamentos prováveis nas áreas baixas. Os documentos trazem dois contatos diferentes para emergência/plantão e um abrigo identificado no plano de contingência. Falta confirmar se os contatos e a capacidade do abrigo continuam válidos para este cenário.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"COMPDEC\",\"tipo\":\"setor\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Setor citado no plano de contingência como referência para plantão.\"},{\"id\":\"E2\",\"nome\":\"Plantão da COMPDEC\",\"tipo\":\"servico\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Plantão informado no plano de contingência de 2025.\"},{\"id\":\"E3\",\"nome\":\"Defesa Civil\",\"tipo\":\"servico\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Contato de emergência divulgado na atualização de 2026.\"},{\"id\":\"E4\",\"nome\":\"Ginásio Velho\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Abrigo indicado no plano de contingência.\"},{\"id\":\"E5\",\"nome\":\"Abrigo do Ginásio Velho\",\"tipo\":\"servico\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Abrigo com capacidade informada de 120 pessoas.\"},{\"id\":\"E6\",\"nome\":\"Áreas baixas\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área mencionada no alerta como sujeita a alagamentos prováveis.\"},{\"id\":\"E7\",\"nome\":\"Alagamentos prováveis\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Evento mencionado no alerta de 2026-11-13.\"},{\"id\":\"E8\",\"nome\":\"Nível laranja\",\"tipo\":\"norma_documento\",\"setor_responsavel\":null,\"descricao\":\"Classificação do alerta informado pela Sala de Situação Regional.\"},{\"id\":\"E9\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Fonte do alerta de 2026-11-13.\"},{\"id\":\"E10\",\"nome\":\"0000-1199\",\"tipo\":\"recurso\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Telefone de plantão informado no plano de contingência.\"},{\"id\":\"E11\",\"nome\":\"0000-2299\",\"tipo\":\"recurso\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Telefone de emergência divulgado pela atualização de secretaria.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC mantém um plantão.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-03-03\",\"fim\":null,\"observacao\":\"Informação do plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plantão da COMPDEC: (fictício) 0000-1199.\"}]},{\"id\":\"R2\",\"origem\":\"E2\",\"destino\":\"E10\",\"tipo\":\"comunica\",\"rotulo\":\"O plantão usa o telefone 0000-1199.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-03-03\",\"fim\":null,\"observacao\":\"Vigência não informada.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plantão da COMPDEC: (fictício) 0000-1199.\"}]},{\"id\":\"R3\",\"origem\":\"E3\",\"destino\":\"E11\",\"tipo\":\"comunica\",\"rotulo\":\"A Defesa Civil divulga o telefone 0000-2299.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-10-01\",\"fim\":null,\"observacao\":\"Informação publicada em atualização de secretaria.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299.\"}]},{\"id\":\"R4\",\"origem\":\"E4\",\"destino\":\"E5\",\"tipo\":\"localizado_em\",\"rotulo\":\"O abrigo fica no Ginásio Velho.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-03-03\",\"fim\":null,\"observacao\":\"Informação do plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Velho (120 pessoas).\"}]},{\"id\":\"R5\",\"origem\":\"E5\",\"destino\":\"E4\",\"tipo\":\"localizado_em\",\"rotulo\":\"O abrigo está localizado no Ginásio Velho.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-03-03\",\"fim\":null,\"observacao\":\"Informação do plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Velho (120 pessoas).\"}]},{\"id\":\"R6\",\"origem\":\"E7\",\"destino\":\"E6\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta indica alagamentos prováveis nas áreas baixas.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-13\",\"fim\":null,\"observacao\":\"Válido na data do alerta.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.\"}]},{\"id\":\"R7\",\"origem\":\"E8\",\"destino\":\"E7\",\"tipo\":\"outro\",\"rotulo\":\"O alerta foi classificado como nível laranja.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-13\",\"fim\":null,\"observacao\":\"Classificação do cenário de alerta.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.\"}]},{\"id\":\"R8\",\"origem\":\"E9\",\"destino\":\"E8\",\"tipo\":\"outro\",\"rotulo\":\"A Sala de Situação Regional emitiu o alerta com nível laranja.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-13\",\"fim\":null,\"observacao\":\"Fonte do documento D3.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-13\"}]},{\"id\":\"R9\",\"origem\":\"E1\",\"destino\":\"E5\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC aparece como referência do abrigo no plano.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2025-03-03\",\"fim\":null,\"observacao\":\"Inferido pela forma como o abrigo é apresentado no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Velho (120 pessoas).\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"Em 2026-10-01 foi divulgada uma nova forma de contato de emergência para a Defesa Civil.\",\"implicacao\":\"A equipe precisa confirmar se esse é o canal a ser usado no cenário atual, sem presumir que substitui o plantão anterior.\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299.\"}]},{\"id\":\"T2\",\"tipo\":\"pendencia_historica\",\"descricao\":\"O plano de contingência de 2025 registra um plantão e um abrigo, mas não informa se continuam inalterados em 2026.\",\"implicacao\":\"É necessário checar vigência operacional antes de usar essas informações no atendimento do alerta.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plantão da COMPDEC: (fictício) 0000-1199.\"},{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Velho (120 pessoas).\"}]},{\"id\":\"T3\",\"tipo\":\"atualizacao\",\"descricao\":\"Em 2026-11-13 há um alerta de nível laranja para alagamentos prováveis nas áreas baixas.\",\"implicacao\":\"A pauta de verificação deve focar os locais baixos e a pronta comunicação com os serviços citados nos documentos.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"Qual contato deve ser usado agora para acionar a Defesa Civil no cenário atual: 0000-2299, 0000-1199 ou ambos por função diferente?\",\"por_que_importa\":\"Há dois números em documentos diferentes e não está claro se um substituiu o outro ou se servem a finalidades distintas.\",\"motivacao\":\"D1 informa o plantão da COMPDEC e D2 divulga um telefone de emergência para a Defesa Civil.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E10\",\"E11\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plantão da COMPDEC: (fictício) 0000-1199.\"},{\"doc_id\":\"D2\",\"trecho\":\"Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299.\"}],\"o_que_falta_saber\":\"Se houve substituição, complementaridade ou uso por áreas diferentes.\",\"quem_pode_confirmar\":\"COMPDEC ou setor de Comunicação da Prefeitura, conforme validação institucional.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"O abrigo do Ginásio Velho continua disponível e com capacidade operacional para 120 pessoas?\",\"por_que_importa\":\"O abrigo foi citado no plano de 2025, mas não há atualização posterior sobre sua disponibilidade atual.\",\"motivacao\":\"D1 registra abrigo e capacidade, enquanto o alerta de 2026 exige checagem preventiva.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E4\",\"E5\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Velho (120 pessoas).\"}],\"o_que_falta_saber\":\"Se o local segue habilitado, se a capacidade mudou e se há condição de uso imediato.\",\"quem_pode_confirmar\":\"COMPDEC ou gestão do abrigo, conforme organização local.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"As áreas baixas mencionadas no alerta coincidem com os pontos que a equipe precisa priorizar no município?\",\"por_que_importa\":\"O alerta aponta as áreas baixas como foco, mas os documentos não detalham quais locais entram nessa classificação.\",\"motivacao\":\"D3 menciona alagamentos prováveis nas áreas baixas sem detalhamento territorial.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E6\",\"E7\",\"E8\"],\"setores_relacionados\":[\"Sala de Situação Regional\",\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.\"}],\"o_que_falta_saber\":\"Quais bairros, ruas ou pontos são considerados áreas baixas na documentação de apoio local.\",\"quem_pode_confirmar\":\"COMPDEC, Defesa Civil ou setor técnico municipal responsável pelo mapeamento local.\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"Há orientação registrada para o uso do abrigo do Ginásio Velho neste alerta de nível laranja?\",\"por_que_importa\":\"O abrigo existe no plano, mas o alerta atual não informa se ele deve ser preparado, monitorado ou apenas mantido como referência.\",\"motivacao\":\"D1 traz o abrigo e D3 traz o cenário atual, sem ligação operacional explícita.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E5\",\"E7\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Velho (120 pessoas).\"},{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.\"}],\"o_que_falta_saber\":\"Se o abrigo deve ser acionado, preparado ou apenas mantido em reserva.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"media\"},{\"id\":\"V5\",\"pergunta\":\"A informação do cartaz de 2026 substitui ou complementa o plantão informado no plano de 2025?\",\"por_que_importa\":\"Sem essa confirmação, a pauta pode orientar a equipe para um contato desatualizado ou incompleto.\",\"motivacao\":\"Há atualização posterior com outro número, mas sem menção explícita de substituição.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E10\",\"E11\"],\"setores_relacionados\":[\"COMPDEC\",\"Comunicação\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plantão da COMPDEC: (fictício) 0000-1199.\"},{\"doc_id\":\"D2\",\"trecho\":\"Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299.\"}],\"o_que_falta_saber\":\"Se o cartaz é uma atualização de canal, de plantão ou apenas de divulgação pública.\",\"quem_pode_confirmar\":\"Comunicação da Prefeitura e COMPDEC, conforme validação institucional.\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há no material a delimitação geográfica das áreas baixas.\",\"por_que_importa\":\"Sem isso, a equipe não consegue transformar o alerta em checagem territorial objetiva.\"},{\"descricao\":\"Não há indicação de vigência ou revisão do plano de contingência após 2025-03-03.\",\"por_que_importa\":\"Sem vigência clara, não é possível saber se o conteúdo operacional continua atual.\"},{\"descricao\":\"Não há informação sobre acionamento efetivo do abrigo ou do plantão no cenário de 2026-11-13.\",\"por_que_importa\":\"A pauta preventiva precisa distinguir referências históricas de medidas em uso agora.\"}],\"cautelas\":[\"O alerta atual fala em alagamentos prováveis, mas não informa extensão, duração ou bairros atingidos.\",\"Os números telefônicos aparecem em documentos diferentes; não presumir equivalência nem substituição sem confirmação institucional.\",\"O abrigo mencionado no plano é um registro histórico útil, mas não deve ser tratado como disponível sem checagem.\",\"Não usar informações fora dos documentos para completar localização, capacidade ou funcionamento.\",\"Evitar interpretar o nível laranja como decisão operacional; o documento apenas registra a classificação do alerta.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_03cc45b7b02c1dbb016b06eb3ff5bc87d2b381cce6cf2cb804",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 1822,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 3574,
+      "output_tokens_details": {
+        "reasoning_tokens": 305
+      },
+      "total_tokens": 5396
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"Há um alerta em vigor de nível laranja para alagamentos prováveis nas áreas baixas. Os documentos trazem dois contatos diferentes para emergência/plantão e um abrigo identificado no plano de contingência. Falta confirmar se os contatos e a capacidade do abrigo continuam válidos para este cenário.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"COMPDEC\",\"tipo\":\"setor\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Setor citado no plano de contingência como referência para plantão.\"},{\"id\":\"E2\",\"nome\":\"Plantão da COMPDEC\",\"tipo\":\"servico\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Plantão informado no plano de contingência de 2025.\"},{\"id\":\"E3\",\"nome\":\"Defesa Civil\",\"tipo\":\"servico\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Contato de emergência divulgado na atualização de 2026.\"},{\"id\":\"E4\",\"nome\":\"Ginásio Velho\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Abrigo indicado no plano de contingência.\"},{\"id\":\"E5\",\"nome\":\"Abrigo do Ginásio Velho\",\"tipo\":\"servico\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Abrigo com capacidade informada de 120 pessoas.\"},{\"id\":\"E6\",\"nome\":\"Áreas baixas\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área mencionada no alerta como sujeita a alagamentos prováveis.\"},{\"id\":\"E7\",\"nome\":\"Alagamentos prováveis\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Evento mencionado no alerta de 2026-11-13.\"},{\"id\":\"E8\",\"nome\":\"Nível laranja\",\"tipo\":\"norma_documento\",\"setor_responsavel\":null,\"descricao\":\"Classificação do alerta informado pela Sala de Situação Regional.\"},{\"id\":\"E9\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Fonte do alerta de 2026-11-13.\"},{\"id\":\"E10\",\"nome\":\"0000-1199\",\"tipo\":\"recurso\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Telefone de plantão informado no plano de contingência.\"},{\"id\":\"E11\",\"nome\":\"0000-2299\",\"tipo\":\"recurso\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Telefone de emergência divulgado pela atualização de secretaria.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC mantém um plantão.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-03-03\",\"fim\":null,\"observacao\":\"Informação do plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plantão da COMPDEC: (fictício) 0000-1199.\"}]},{\"id\":\"R2\",\"origem\":\"E2\",\"destino\":\"E10\",\"tipo\":\"comunica\",\"rotulo\":\"O plantão usa o telefone 0000-1199.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-03-03\",\"fim\":null,\"observacao\":\"Vigência não informada.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plantão da COMPDEC: (fictício) 0000-1199.\"}]},{\"id\":\"R3\",\"origem\":\"E3\",\"destino\":\"E11\",\"tipo\":\"comunica\",\"rotulo\":\"A Defesa Civil divulga o telefone 0000-2299.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-10-01\",\"fim\":null,\"observacao\":\"Informação publicada em atualização de secretaria.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299.\"}]},{\"id\":\"R4\",\"origem\":\"E4\",\"destino\":\"E5\",\"tipo\":\"localizado_em\",\"rotulo\":\"O abrigo fica no Ginásio Velho.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-03-03\",\"fim\":null,\"observacao\":\"Informação do plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Velho (120 pessoas).\"}]},{\"id\":\"R5\",\"origem\":\"E5\",\"destino\":\"E4\",\"tipo\":\"localizado_em\",\"rotulo\":\"O abrigo está localizado no Ginásio Velho.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-03-03\",\"fim\":null,\"observacao\":\"Informação do plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Velho (120 pessoas).\"}]},{\"id\":\"R6\",\"origem\":\"E7\",\"destino\":\"E6\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta indica alagamentos prováveis nas áreas baixas.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-13\",\"fim\":null,\"observacao\":\"Válido na data do alerta.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.\"}]},{\"id\":\"R7\",\"origem\":\"E8\",\"destino\":\"E7\",\"tipo\":\"outro\",\"rotulo\":\"O alerta foi classificado como nível laranja.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-13\",\"fim\":null,\"observacao\":\"Classificação do cenário de alerta.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.\"}]},{\"id\":\"R8\",\"origem\":\"E9\",\"destino\":\"E8\",\"tipo\":\"outro\",\"rotulo\":\"A Sala de Situação Regional emitiu o alerta com nível laranja.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-13\",\"fim\":null,\"observacao\":\"Fonte do documento D3.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-13\"}]},{\"id\":\"R9\",\"origem\":\"E1\",\"destino\":\"E5\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC aparece como referência do abrigo no plano.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2025-03-03\",\"fim\":null,\"observacao\":\"Inferido pela forma como o abrigo é apresentado no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Velho (120 pessoas).\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"Em 2026-10-01 foi divulgada uma nova forma de contato de emergência para a Defesa Civil.\",\"implicacao\":\"A equipe precisa confirmar se esse é o canal a ser usado no cenário atual, sem presumir que substitui o plantão anterior.\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299.\"}]},{\"id\":\"T2\",\"tipo\":\"pendencia_historica\",\"descricao\":\"O plano de contingência de 2025 registra um plantão e um abrigo, mas não informa se continuam inalterados em 2026.\",\"implicacao\":\"É necessário checar vigência operacional antes de usar essas informações no atendimento do alerta.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plantão da COMPDEC: (fictício) 0000-1199.\"},{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Velho (120 pessoas).\"}]},{\"id\":\"T3\",\"tipo\":\"atualizacao\",\"descricao\":\"Em 2026-11-13 há um alerta de nível laranja para alagamentos prováveis nas áreas baixas.\",\"implicacao\":\"A pauta de verificação deve focar os locais baixos e a pronta comunicação com os serviços citados nos documentos.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"Qual contato deve ser usado agora para acionar a Defesa Civil no cenário atual: 0000-2299, 0000-1199 ou ambos por função diferente?\",\"por_que_importa\":\"Há dois números em documentos diferentes e não está claro se um substituiu o outro ou se servem a finalidades distintas.\",\"motivacao\":\"D1 informa o plantão da COMPDEC e D2 divulga um telefone de emergência para a Defesa Civil.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E10\",\"E11\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plantão da COMPDEC: (fictício) 0000-1199.\"},{\"doc_id\":\"D2\",\"trecho\":\"Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299.\"}],\"o_que_falta_saber\":\"Se houve substituição, complementaridade ou uso por áreas diferentes.\",\"quem_pode_confirmar\":\"COMPDEC ou setor de Comunicação da Prefeitura, conforme validação institucional.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"O abrigo do Ginásio Velho continua disponível e com capacidade operacional para 120 pessoas?\",\"por_que_importa\":\"O abrigo foi citado no plano de 2025, mas não há atualização posterior sobre sua disponibilidade atual.\",\"motivacao\":\"D1 registra abrigo e capacidade, enquanto o alerta de 2026 exige checagem preventiva.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E4\",\"E5\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Velho (120 pessoas).\"}],\"o_que_falta_saber\":\"Se o local segue habilitado, se a capacidade mudou e se há condição de uso imediato.\",\"quem_pode_confirmar\":\"COMPDEC ou gestão do abrigo, conforme organização local.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"As áreas baixas mencionadas no alerta coincidem com os pontos que a equipe precisa priorizar no município?\",\"por_que_importa\":\"O alerta aponta as áreas baixas como foco, mas os documentos não detalham quais locais entram nessa classificação.\",\"motivacao\":\"D3 menciona alagamentos prováveis nas áreas baixas sem detalhamento territorial.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E6\",\"E7\",\"E8\"],\"setores_relacionados\":[\"Sala de Situação Regional\",\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.\"}],\"o_que_falta_saber\":\"Quais bairros, ruas ou pontos são considerados áreas baixas na documentação de apoio local.\",\"quem_pode_confirmar\":\"COMPDEC, Defesa Civil ou setor técnico municipal responsável pelo mapeamento local.\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"Há orientação registrada para o uso do abrigo do Ginásio Velho neste alerta de nível laranja?\",\"por_que_importa\":\"O abrigo existe no plano, mas o alerta atual não informa se ele deve ser preparado, monitorado ou apenas mantido como referência.\",\"motivacao\":\"D1 traz o abrigo e D3 traz o cenário atual, sem ligação operacional explícita.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E5\",\"E7\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Velho (120 pessoas).\"},{\"doc_id\":\"D3\",\"trecho\":\"NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.\"}],\"o_que_falta_saber\":\"Se o abrigo deve ser acionado, preparado ou apenas mantido em reserva.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"media\"},{\"id\":\"V5\",\"pergunta\":\"A informação do cartaz de 2026 substitui ou complementa o plantão informado no plano de 2025?\",\"por_que_importa\":\"Sem essa confirmação, a pauta pode orientar a equipe para um contato desatualizado ou incompleto.\",\"motivacao\":\"Há atualização posterior com outro número, mas sem menção explícita de substituição.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E10\",\"E11\"],\"setores_relacionados\":[\"COMPDEC\",\"Comunicação\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plantão da COMPDEC: (fictício) 0000-1199.\"},{\"doc_id\":\"D2\",\"trecho\":\"Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299.\"}],\"o_que_falta_saber\":\"Se o cartaz é uma atualização de canal, de plantão ou apenas de divulgação pública.\",\"quem_pode_confirmar\":\"Comunicação da Prefeitura e COMPDEC, conforme validação institucional.\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há no material a delimitação geográfica das áreas baixas.\",\"por_que_importa\":\"Sem isso, a equipe não consegue transformar o alerta em checagem territorial objetiva.\"},{\"descricao\":\"Não há indicação de vigência ou revisão do plano de contingência após 2025-03-03.\",\"por_que_importa\":\"Sem vigência clara, não é possível saber se o conteúdo operacional continua atual.\"},{\"descricao\":\"Não há informação sobre acionamento efetivo do abrigo ou do plantão no cenário de 2026-11-13.\",\"por_que_importa\":\"A pauta preventiva precisa distinguir referências históricas de medidas em uso agora.\"}],\"cautelas\":[\"O alerta atual fala em alagamentos prováveis, mas não informa extensão, duração ou bairros atingidos.\",\"Os números telefônicos aparecem em documentos diferentes; não presumir equivalência nem substituição sem confirmação institucional.\",\"O abrigo mencionado no plano é um registro histórico útil, mas não deve ser tratado como disponível sem checagem.\",\"Não usar informações fora dos documentos para completar localização, capacidade ou funcionamento.\",\"Evitar interpretar o nível laranja como decisão operacional; o documento apenas registra a classificação do alerta.\"]}"
+  }
+}

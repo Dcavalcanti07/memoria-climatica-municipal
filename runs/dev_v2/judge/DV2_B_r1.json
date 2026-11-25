@@ -1,0 +1,101 @@
+{
+  "run_file": "DV2_B_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-5.4-2026-03-05",
+    "reasoning_effort": "low",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_0be332ddbee0369d016b06ebd51a1087d28a92a7ae757c246e",
+  "model_reported": "gpt-5.4-2026-03-05",
+  "usage": {
+    "input_tokens": 4161,
+    "output_tokens": 1428,
+    "reasoning_tokens": 855
+  },
+  "latency_ms": 23663,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V3",
+          "V2"
+        ],
+        "justificativa": "V3 trata diretamente de acompanhamento de combustível e reabastecimento no alerta, e V2 cobre a insuficiência potencial da autonomia de 36 h em falta prolongada."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V2",
+          "V3",
+          "R4",
+          "R5"
+        ],
+        "justificativa": "A saída liga o risco atual de falta de energia prolongada à autonomia de 36 h do gerador e à necessidade de gestão de combustível."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "correto",
+        "ids_saida": [
+          "T1",
+          "resumo_situacao",
+          "R6"
+        ],
+        "justificativa": "A saída reconhece que o problema de 2023 é histórico e contrapõe isso ao gerador de 150 kVA registrado em 2025/2026 com teste normal."
+      }
+    ],
+    "gold_insuficiente": [],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não afirma que o gerador atual não suporta a carga; ela apenas levanta verificação e trata a falha como histórica."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "baseada_em_info_superada",
+        "justificativa": "Retoma como pauta atual a dúvida de capacidade de carga/UTI a partir de um problema de 2023 que a própria saída reconhece como superado pelo gerador de 150 kVA testado em 2026."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde parcialmente ao item do gabarito ao focar a autonomia de 36 h frente à falta de energia prolongada."
+      },
+      {
+        "id": "V3",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde diretamente ao item do gabarito sobre garantir reposição de diesel/reabastecimento diante de falta de energia prolongada."
+      },
+      {
+        "id": "V4",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É uma checagem específica e sustentada pelo registro do teste recente, relevante para entender o alcance operacional do ensaio."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "R3",
+        "afirmacao": "A UTI depende do gerador para suporte elétrico crítico."
+      },
+      {
+        "onde": "R5",
+        "afirmacao": "O Hospital Municipal é afetado pelo cenário de falta de energia prolongada."
+      },
+      {
+        "onde": "R6",
+        "afirmacao": "O gerador antigo foi sucedido por um gerador de maior potência."
+      }
+    ]
+  }
+}

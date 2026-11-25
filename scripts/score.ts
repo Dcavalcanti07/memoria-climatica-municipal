@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { root, readJSON, arg } from './util';
+import { validateAnalysis } from '../src/core/validate';
 
 const tag = arg('tag', 'dev');
 const outDir = path.join(root, arg('out', `results/${tag}`));
@@ -43,7 +44,10 @@ for (const f of files) {
   const falsos = cls('irrelevante') + cls('sem_respaldo') + cls('baseada_em_info_superada');
   const precision = nV ? (corr + pert) / nV : NaN;
   const recall = checkScores.length ? sum(checkScores.map((x: any) => x.s)) / checkScores.length : NaN;
-  const v = run.validation;
+  // revalida com o validador atual (determinístico), a partir dos documentos efetivamente enviados
+  const scen = readJSON(path.join(root, `data/scenarios/${run.meta.scenario}.json`));
+  const sent = [...scen.docs, ...(scen.atualizacao ?? [])].filter((d: any) => run.meta.docs_fornecidos.includes(d.id));
+  const v = validateAnalysis(run.output, sent);
   const row: Row = {
     file: f, scenario: run.meta.scenario, categoria: gold.categoria, cond: run.meta.condicao + (run.meta.com_atualizacao ? 'U' : ''), rep: run.meta.rep,
     n_verificacoes: nV,
