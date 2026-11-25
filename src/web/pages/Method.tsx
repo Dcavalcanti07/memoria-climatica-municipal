@@ -33,15 +33,23 @@ export function Method() {
   const [m, setM] = useState<any>(null);
   useEffect(() => { loadMethod().then(setM).catch(() => setM(null)); }, []);
   return (
-    <div className="wrap" style={{ padding: '36px 20px 80px' }}>
-      <div className="prose">
+    <div className="wrap editorial-page method-page">
+      <header className="editorial-head prose">
         <div className="eyebrow">Método</div>
-        <h1 style={{ fontSize: 38 }}>Como o protótipo funciona e como foi avaliado</h1>
+        <h1 className="editorial-title">Como o protótipo funciona e como foi avaliado</h1>
         <p style={{ fontSize: 16.5 }}>Esta página reúne a camada técnica: arquitetura, modelo, instruções, formato de saída, desenho experimental, métricas, limitações e uma versão simplificada da metodologia que qualquer equipe pode repetir sem programar.</p>
-      </div>
+      </header>
 
-      <h2 style={{ marginTop: 34 }}>Arquitetura</h2>
-      <div className="card" style={{ padding: 16, overflowX: 'auto', marginTop: 10 }}><Arch /></div>
+      <nav className="method-index" aria-label="Nesta página">
+        {['Arquitetura', 'Métricas', 'Oficina', 'Limitações'].map((label) => <button type="button" key={label} onClick={() => {
+          const heading = document.getElementById(label);
+          heading?.scrollIntoView({ block: 'start' });
+          heading?.focus({ preventScroll: true });
+        }}>{label}</button>)}
+      </nav>
+
+      <h2 id="Arquitetura" tabIndex={-1}>Arquitetura</h2>
+      <div className="table-scroll method-architecture" role="region" aria-label="Diagrama da arquitetura" tabIndex={0}><Arch /></div>
 
       <div className="prose">
         <h2>Modelo e configuração</h2>
@@ -62,8 +70,8 @@ export function Method() {
           <li><b>Repetições:</b> parte da amostra foi executada mais vezes para observar estabilidade.</li>
         </ul>
 
-        <h2>Métricas</h2>
-        <table className="t">
+        <h2 id="Métricas" tabIndex={-1}>Métricas</h2>
+        <div className="table-scroll" role="region" aria-label="Definições das métricas" tabIndex={0}><table className="t method-table">
           <thead><tr><th>Métrica</th><th>Cálculo</th><th>Tipo</th></tr></thead>
           <tbody>
             <tr><td>Recall de verificações</td><td>soma (atendido = 1, parcial = 0,5) ÷ itens do gabarito; separado em itens “atuais” e “de memória”</td><td>rubrica</td></tr>
@@ -77,14 +85,14 @@ export function Method() {
             <tr><td>Integridade</td><td>documentos citados existem no conjunto enviado; relações apontam para entidades existentes</td><td>determinística</td></tr>
             <tr><td>Latência e tokens</td><td>medidos em cada chamada</td><td>determinística</td></tr>
           </tbody>
-        </table>
+        </table></div>
         <p>A avaliação semântica foi feita por um segundo modelo com rubrica explícita, sem saber a condição. Uma amostra foi conferida manualmente. Isso não equivale à validação por servidores ou especialistas em Defesa Civil.</p>
 
         <h2>Indicador de produtividade: TCPM</h2>
         <p><b>Tempo de Consolidação da Prontidão Municipal</b> — tempo para transformar os documentos disponíveis em uma pauta preventiva revisada. A meta exploratória é reduzir esse tempo em pelo menos 30% sem perder qualidade. É uma hipótese: não foi medida com pessoas neste protótipo, e a latência da IA não serve como evidência de economia de tempo.</p>
         <p>Como validar: duas pessoas da equipe, conjuntos de documentos fictícios equivalentes e sorteados; cada uma prepara uma pauta do jeito habitual e outra com apoio da IA (ordem alternada). Medir tempo total (inclui ler, conferir as fontes e corrigir a IA), itens relevantes encontrados, erros que passaram e confiança declarada. Só avançar se o tempo cair sem aumentar erros graves.</p>
 
-        <h2>Versão sem programação, para as equipes</h2>
+        <h2 id="Oficina" tabIndex={-1}>Versão sem programação, para as equipes</h2>
         <ol>
           <li>Escolham um alerta fictício e reúnam 3 a 5 documentos: o plano vigente e 1 ou 2 registros de eventos anteriores (relatório, ata).</li>
           <li>Antes de usar IA, a equipe lista em 10 minutos o que verificaria. Essa lista é o “gabarito” da oficina.</li>
@@ -95,13 +103,13 @@ export function Method() {
         </ol>
         <p>O aplicativo é uma demonstração mais avançada; a oficina funciona sem ele.</p>
 
-        <h2>Limitações</h2>
+        <h2 id="Limitações" tabIndex={-1}>Limitações</h2>
         <ul>
           <li>Documentos e gabaritos foram escritos pela mesma equipe do protótipo; o recorte pode favorecer casos “legíveis” e não reflete a bagunça de arquivos reais (PDFs escaneados, planilhas, mensagens).</li>
           <li>Cenários curtos (3 a 6 documentos). Com dezenas de documentos, seria preciso estratégia de seleção ou recuperação de contexto.</li>
           <li>Avaliação semântica automatizada, com auditoria manual parcial; sem participação de especialistas municipais.</li>
           <li>Um único modelo testado; resultados podem mudar com outros modelos ou versões.</li>
-          <li>O grafo depende da saída de cada execução; nomes de entidades variam entre execuções e são pareados por similaridade de texto.</li>
+          <li>O grafo depende da saída de cada execução; nomes de entidades variam entre execuções. O mapa aproxima nomes da mesma coluna por similaridade textual, e compara relações pela direção e pelo tipo.</li>
         </ul>
 
         <h2>Antes de um piloto real, precisaríamos conhecer</h2>

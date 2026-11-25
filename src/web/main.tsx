@@ -45,7 +45,7 @@ function App() {
         <ThemeToggle />
       </header>
       <main>
-        {page === 'cenario' ? <Workspace id={arg || 'E01'} /> : page === 'experimento' ? <Experiment /> : page === 'metodo' ? <Method /> : <Home />}
+        {page === 'cenario' ? <Workspace key={arg || 'E01'} id={arg || 'E01'} /> : page === 'experimento' ? <Experiment /> : page === 'metodo' ? <Method /> : <Home />}
       </main>
     </>
   );

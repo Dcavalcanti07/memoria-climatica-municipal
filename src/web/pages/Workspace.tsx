@@ -5,16 +5,21 @@ import { CheckCard, DocList, DocReader, QuoteBtn } from '../components/Panels';
 import { buildUnion, type GEdge, type GNode } from '../lib/graph';
 import { CATEGORIA_LABEL, STATUS_LABEL, TEMPORAL_LABEL, alertLevel, fmtDate, loadScenario, type RunView, type ScenarioView } from '../lib/data';
 import { useReviews } from '../lib/review';
-import { norm } from '../../core/validate';
 
 type Mode = 'A' | 'B' | 'BU' | 'LIVE';
 const MODE_LABEL: Record<Mode, string> = { A: 'Só informação atual', B: '+ Memória institucional', BU: '+ Atualização recente', LIVE: 'Análise ao vivo' };
+
+const ENTITY_LABEL: Record<string, string> = {
+  evento: 'Evento', norma_documento: 'Norma ou documento', infraestrutura: 'Infraestrutura', local: 'Local',
+  servico: 'Serviço', equipamento: 'Equipamento', recurso: 'Recurso', grupo_populacional: 'Grupo populacional',
+  setor: 'Setor', funcao_responsavel: 'Função ou responsável',
+};
 
 const GUIDE = [
   { t: 'Os documentos do município', p: 'À esquerda está o arquivo fictício: plano de contingência, alerta, ofícios e, em ocre, registros de eventos anteriores. Clique em qualquer um para ler.' },
   { t: 'O que a IA conectou', p: 'No centro, cada ponto é algo que a IA extraiu dos documentos (uma ponte, um abrigo, uma secretaria). As linhas são relações, com o tipo de certeza: fato, inferência, hipótese, contradição ou informação superada.' },
   { t: 'A pauta de verificações', p: 'À direita, as perguntas que a equipe poderia confirmar antes do evento. Clique numa pergunta para ver no mapa o caminho de dependências e as citações literais que a sustentam.' },
-  { t: 'Com e sem memória', p: 'No alto, alterne entre a análise feita só com informações atuais e a análise que também recebeu os registros históricos. O que aparece com halo ocre foi revelado pela memória.' },
+  { t: 'Com e sem memória', p: 'No alto, alterne entre a análise feita só com informações atuais e a análise que também recebeu os registros históricos. O contorno ocre indica o que apareceu na condição com memória.' },
 ];
 
 export function Workspace({ id }: { id: string }) {
@@ -22,39 +27,49 @@ export function Workspace({ id }: { id: string }) {
   const [err, setErr] = useState<string | null>(null);
   const [mode, setMode] = useState<Mode>('B');
   const [live, setLive] = useState<RunView | null>(null);
+  const [livePending, setLivePending] = useState(false);
+  const [liveError, setLiveError] = useState<string | null>(null);
+  const [liveDoc, setLiveDoc] = useState<Doc | undefined>();
+  const liveRequest = useRef<AbortController | null>(null);
   const [tech, setTech] = useState(false);
   const [selCheck, setSelCheck] = useState<string | null>(null);
   const [selEdge, setSelEdge] = useState<GEdge | null>(null);
   const [selNode, setSelNode] = useState<GNode | null>(null);
   const [reader, setReader] = useState<{ doc: Doc; focus?: string } | null>(null);
-  const [cutoff, setCutoff] = useState<string | null>(null);
+  const [cutoff, setCutoff] = useState<number | null>(null);
   const [playing, setPlaying] = useState(false);
-  const [hover, setHover] = useState<string | null>(null);
   const [guide, setGuide] = useState<number>(() => { try { return localStorage.getItem('mcm.guide.done') ? -1 : 0; } catch { return 0; } });
-  const [size, setSize] = useState({ w: 900, h: 560 });
-  const stageRef = useRef<HTMLDivElement>(null);
-  const { reviews, update } = useReviews(`${id}`);
+  const { reviews, update } = useReviews(id);
+  const stageRef = useRef<HTMLElement>(null);
+  const inspectorRef = useRef<HTMLElement>(null);
+  const inspectorTrigger = useRef<HTMLElement | SVGElement | null>(null);
 
-  useEffect(() => { setSc(null); setErr(null); setLive(null); setSelCheck(null); setSelEdge(null); setCutoff(null); loadScenario(id).then((s) => { setSc(s); setMode(s.runs.B ? 'B' : 'A'); }).catch((e) => setErr(String(e))); }, [id]);
   useEffect(() => {
-    const el = stageRef.current; if (!el) return;
-    const ro = new ResizeObserver(([e]) => setSize({ w: Math.max(560, Math.round(e.contentRect.width)), h: Math.max(420, Math.round(e.contentRect.height)) }));
-    ro.observe(el); return () => ro.disconnect();
-  }, [sc]);
+    let mounted = true;
+    loadScenario(id).then((scenario) => {
+      if (mounted) { setSc(scenario); setMode(scenario.runs.B ? 'B' : 'A'); }
+    }).catch((e) => { if (mounted) setErr(String(e)); });
+    return () => { mounted = false; liveRequest.current?.abort(); };
+  }, [id]);
+
+  useEffect(() => {
+    if (selEdge || selNode) inspectorRef.current?.focus({ preventScroll: true });
+  }, [selEdge, selNode]);
 
   const runs = useMemo(() => {
     if (!sc) return {} as Record<string, RunView>;
     return { ...sc.runs, ...(live ? { LIVE: live } : {}) } as Record<string, RunView>;
   }, [sc, live]);
-  const allDocs = useMemo(() => (sc ? [...sc.docs, ...sc.atualizacao].sort((a, b) => a.data.localeCompare(b.data)) : []), [sc]);
+  const allDocs = useMemo(() => sc ? [...sc.docs, ...sc.atualizacao, ...(liveDoc ? [liveDoc] : [])]
+    .sort((a, b) => a.data.localeCompare(b.data) || a.id.localeCompare(b.id)) : [], [sc, liveDoc]);
   const docMap = useMemo(() => new Map(allDocs.map((d) => [d.id, d])), [allDocs]);
-  const W = size.w, H = size.h;
-  const union = useMemo(() => (sc ? buildUnion(Object.entries(runs).map(([key, r]) => ({ key, out: r.output })), allDocs, W, H) : null), [sc, runs, allDocs, H]);
+  const union = useMemo(() => sc ? buildUnion(Object.entries(runs).map(([key, r]) => ({ key, out: r.output })), allDocs) : null, [sc, runs, allDocs]);
 
   const run = runs[mode];
-  const base = mode === 'B' ? (runs.A ? 'A' : null) : mode === 'BU' ? 'B' : null;
-  const provided = new Set(run?.docs_fornecidos ?? []);
-  const updateIds = new Set(sc?.atualizacao.map((d) => d.id) ?? []);
+  const base = mode === 'B' && runs.A ? 'A' : mode === 'BU' && runs.B ? 'B' : null;
+  const provided = useMemo(() => new Set(run?.docs_fornecidos ?? []), [run]);
+  const readingOrder = useMemo(() => allDocs.flatMap((doc, index) => provided.has(doc.id) ? [{ doc, index }] : []), [allDocs, provided]);
+  const updateIds = new Set([...(sc?.atualizacao.map((d) => d.id) ?? []), ...(liveDoc ? [liveDoc.id] : [])]);
   const cites = useMemo(() => {
     const m = new Map<string, number>();
     run?.validation?.citacoes?.forEach((c: any) => m.set(c.doc_id, (m.get(c.doc_id) ?? 0) + 1));
@@ -71,23 +86,57 @@ export function Workspace({ id }: { id: string }) {
     const v = run.output.verificacoes.find((x) => x.id === selCheck); if (!v) return { hlNodes: hn, hlEdges: he };
     for (const n of union.nodes) if (v.entidades_relacionadas.includes(n.ids[mode] ?? '')) hn.add(n.key);
     const evDocs = new Set(v.evidencias.map((e) => e.doc_id));
+    const seeds = new Set(hn);
     for (const e of union.edges) {
       const info = e.byRun[mode]; if (!info) continue;
-      const bothIn = hn.has(e.s) && hn.has(e.t);
-      const shares = (hn.has(e.s) || hn.has(e.t)) && info.evid.some((x) => evDocs.has(x.doc_id));
+      const bothIn = seeds.has(e.s) && seeds.has(e.t);
+      const shares = (seeds.has(e.s) || seeds.has(e.t)) && info.evidencias.some((x) => evDocs.has(x.doc_id));
       if (bothIn || shares) { he.add(e.key); hn.add(e.s); hn.add(e.t); }
     }
     return { hlNodes: hn, hlEdges: he };
   }, [union, run, selCheck, mode]);
 
-  // formação progressiva: avança a linha do tempo documento a documento
-  const dates = useMemo(() => [...new Set(allDocs.filter((d) => provided.has(d.id)).map((d) => d.data))].sort(), [allDocs, run]);
   useEffect(() => {
     if (!playing) return;
-    let i = 0; setCutoff(dates[0] ?? null);
-    const t = setInterval(() => { i++; if (i >= dates.length) { setPlaying(false); setCutoff(null); clearInterval(t); } else setCutoff(dates[i]); }, 1500);
-    return () => clearInterval(t);
-  }, [playing, dates]);
+    let step = 0;
+    const timer = window.setInterval(() => {
+      step++;
+      if (step < readingOrder.length) setCutoff(readingOrder[step].index);
+      else { setPlaying(false); setCutoff(null); window.clearInterval(timer); }
+    }, 1800);
+    return () => window.clearInterval(timer);
+  }, [playing, readingOrder]);
+
+  function changeMode(next: Mode) {
+    setMode(next);
+    setSelCheck(null);
+    setSelEdge(null);
+    setSelNode(null);
+    setPlaying(false);
+    setCutoff(null);
+  }
+
+  function closeInspector() {
+    setSelEdge(null);
+    setSelNode(null);
+    inspectorTrigger.current?.focus({ preventScroll: true });
+  }
+
+  function inspect(e: GEdge | null, n: GNode | null) {
+    const active = document.activeElement;
+    if (active instanceof HTMLElement || active instanceof SVGElement) {
+      if (!inspectorRef.current?.contains(active)) inspectorTrigger.current = active;
+    }
+    setSelEdge(e);
+    setSelNode(n);
+  }
+
+  function seek(index: number | null) {
+    setPlaying(false);
+    setCutoff(index);
+    setSelEdge(null);
+    setSelNode(null);
+  }
 
   const judgeFor = (vid: string) => {
     const j = run?.judge; if (!j) return null;
@@ -97,15 +146,29 @@ export function Workspace({ id }: { id: string }) {
   };
 
   async function runLive(extra?: Doc) {
-    if (!sc) return;
-    setMode('LIVE'); setLive(null);
+    if (!sc || liveRequest.current) return;
+    const request = new AbortController();
+    liveRequest.current = request;
+    setLivePending(true);
+    changeMode('LIVE');
+    setLive(null);
+    setLiveError(null);
+    setLiveDoc(undefined);
     try {
-      const r = await fetch('/api/analyze', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ scenario: sc.id, cond: 'B', extra_doc: extra ?? null }) });
-      const j = await r.json();
-      if (!r.ok) throw new Error(j.error ?? `erro ${r.status}`);
-      setLive(j as RunView);
-    } catch (e: any) {
-      setLive({ key: 'LIVE', provenance: 'live', response_id: null, model: null, started_at: new Date().toISOString(), latency_ms: 0, usage: { input_tokens: null, output_tokens: null }, docs_fornecidos: [], output: { resumo_situacao: '', entidades: [], relacoes: [], achados_temporais: [], verificacoes: [], informacoes_ausentes: [], cautelas: [] }, validation: { citacoes: [] }, judge: { erro: String(e.message ?? e) } } as any);
+      const response = await fetch('/api/analyze', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ scenario: sc.id, cond: 'B', extra_doc: extra ?? null }), signal: request.signal });
+      if (response.status === 503) {
+        setLiveError('A análise ao vivo está desativada nesta instalação.');
+        return;
+      }
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error ?? '');
+      setLiveDoc(result.extra_docs?.[0]);
+      setLive(result as RunView);
+    } catch {
+      if (!request.signal.aborted) setLiveError('A análise ao vivo não pôde ser concluída. Tente novamente mais tarde.');
+    } finally {
+      liveRequest.current = null;
+      if (!request.signal.aborted) setLivePending(false);
     }
   }
 
@@ -113,19 +176,21 @@ export function Workspace({ id }: { id: string }) {
   if (!sc || !union) return <div className="wrap" style={{ padding: 40 }} aria-busy="true"><p className="eyebrow">Carregando documentos e análises…</p></div>;
 
   const out = run?.output;
-  const liveError = mode === 'LIVE' && (live as any)?.judge?.erro;
   const groups = out ? [
     { k: 'registro_historico', t: 'Trazidas pela memória institucional' },
     { k: 'ambos', t: 'Combinam informação atual e memória' },
     { k: 'informacao_atual', t: 'A partir das informações atuais' },
   ].map((g) => ({ ...g, items: out.verificacoes.filter((v) => v.base === g.k) })).filter((g) => g.items.length) : [];
-  const nReviewed = out ? out.verificacoes.filter((v) => (reviews[`${mode}:${v.id}`]?.status ?? 'pendente') !== 'pendente').length : 0;
+  const reviewKey = (verificationId: string) => mode === 'LIVE'
+    ? `LIVE:${run.response_id ?? run.started_at}:${verificationId}`
+    : `${mode}:${verificationId}`;
+  const nReviewed = out ? out.verificacoes.filter((v) => (reviews[reviewKey(v.id)]?.status ?? 'pendente') !== 'pendente').length : 0;
 
   function exportMd() {
     if (!out || !sc) return;
     const lines = [`# Pauta de verificações preventivas — ${sc.municipio} (fictício)`, '', `Cenário: ${sc.titulo} · referência ${fmtDate(sc.alerta_data)} · condição: ${MODE_LABEL[mode]}`, `Origem: ${run.provenance === 'live' ? 'análise executada agora' : `execução real armazenada (${run.model}, ${run.started_at.slice(0, 10)})`}`, '', '> Material experimental com dados fictícios, sujeito à revisão humana. Não substitui protocolos oficiais.', ''];
     out.verificacoes.forEach((v, i) => {
-      const r = reviews[`${mode}:${v.id}`];
+      const r = reviews[reviewKey(v.id)];
       lines.push(`## ${i + 1}. ${v.pergunta}`, '', `- Por que importa: ${v.por_que_importa}`, `- O que motivou: ${v.motivacao}`, `- Evidências: ${v.evidencias.map((e) => `[${e.doc_id}] “${e.trecho}”`).join('; ')}`, `- O que ainda não sabemos: ${v.o_que_falta_saber}`, `- Quem poderia confirmar (sujeito à confirmação institucional): ${v.quem_pode_confirmar}`, `- Revisão: ${r?.status ?? 'pendente'}${r?.nota ? ` — ${r.nota}` : ''}`, '');
     });
     if (out.informacoes_ausentes.length) { lines.push('## Informações que faltam', ''); out.informacoes_ausentes.forEach((x) => lines.push(`- ${x.descricao} — ${x.por_que_importa}`)); }
@@ -133,84 +198,103 @@ export function Workspace({ id }: { id: string }) {
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `pauta-${sc.id}-${mode}.md`; a.click(); URL.revokeObjectURL(a.href);
   }
 
-  const edgeInfo = selEdge ? selEdge.byRun[mode] : null;
+  const shownAt = (item?: { firstDoc: number }) => !!item && (cutoff === null || item.firstDoc <= cutoff);
+  const edgeInfo = selEdge?.byRun[mode];
+  const nodeInfo = selNode?.byRun[mode];
+  const baseChecks = base ? runs[base].judge?.gold_checks as { id: string; resultado: string; ids_saida: string[] }[] | undefined : undefined;
+  const currentChecks = run?.judge?.gold_checks as typeof baseChecks;
+  const newlyCovered = new Set(currentChecks?.filter((g) =>
+    g.resultado === 'atendido' && baseChecks?.some((b) => b.id === g.id && b.resultado === 'ausente')
+  ).flatMap((g) => g.ids_saida ?? []));
   return (
     <div className="ws">
       <header className="ws-head">
-        <div className="ws-title">
-          <div className="eyebrow">{sc.id} · {CATEGORIA_LABEL[sc.categoria] ?? sc.categoria} · município fictício</div>
-          <h1>{sc.municipio} — {sc.titulo}</h1>
+        <div className="ws-heading">
+          <div className="ws-title">
+            <div className="eyebrow">{sc.id} · {CATEGORIA_LABEL[sc.categoria] ?? sc.categoria} · município fictício</div>
+            <h1>{sc.municipio} <span>{sc.titulo}</span></h1>
+          </div>
+          <span className={`alert-pill ${alertLevel(sc.docs)}`}><span className="dot" />Alerta {alertLevel(sc.docs)} simulado · {fmtDate(sc.alerta_data)}</span>
         </div>
-        <span className={`alert-pill ${alertLevel(sc.docs)}`}>● Alerta {alertLevel(sc.docs)} (simulado) · {fmtDate(sc.alerta_data)}</span>
-        <div className="seg" role="group" aria-label="Condição da análise" style={{ marginLeft: 'auto' }}>
-          {(['A', 'B', 'BU'] as Mode[]).filter((m) => runs[m]).map((m) => (
-            <button key={m} aria-pressed={mode === m} onClick={() => { setMode(m); setSelCheck(null); setSelEdge(null); }}>
-              <span className="dot" style={{ background: m === 'A' ? 'var(--water)' : m === 'B' ? 'var(--memory)' : 'var(--moss)' }} />{MODE_LABEL[m]}
-            </button>
-          ))}
-          {live && <button aria-pressed={mode === 'LIVE'} onClick={() => setMode('LIVE')}><span className="dot" style={{ background: 'var(--moss)' }} />Ao vivo</button>}
+        <div className="ws-controls">
+          <div className="seg" role="group" aria-label="Condição da análise">
+            {(['A', 'B', 'BU'] as Mode[]).filter((m) => runs[m]).map((m) => (
+              <button key={m} className={`mode-${m}`} aria-pressed={mode === m} onClick={() => changeMode(m)}>
+                <span className="mode-key">{m === 'BU' ? 'B+' : m}</span>{MODE_LABEL[m]}
+              </button>
+            ))}
+            {(livePending || live || liveError) && <button className="mode-BU" aria-pressed={mode === 'LIVE'} onClick={() => changeMode('LIVE')}>Ao vivo</button>}
+          </div>
+          <button className="theme-btn technical-toggle" aria-pressed={tech} onClick={() => setTech(!tech)}>Camada técnica</button>
         </div>
-        <button className="theme-btn" aria-pressed={tech} onClick={() => setTech(!tech)} title="Mostrar detalhes técnicos">{tech ? '◉' : '○'} Camada técnica</button>
       </header>
 
-      <aside className="pane">
+      <aside className="pane archive-pane">
         <div className="pane-h">
           <h2>Arquivo do município</h2>
-          <div className="muted" style={{ fontSize: 12.5 }}>{provided.size} de {allDocs.length} documentos nesta análise · <span style={{ color: 'var(--water)' }}>■</span> atual <span style={{ color: 'var(--memory)' }}>■</span> histórico {updateIds.size > 0 && <><span style={{ color: 'var(--moss)' }}>■</span> atualização</>}</div>
+          <div className="muted" style={{ fontSize: 12.5 }}>{provided.size} de {allDocs.length - (liveDoc && mode !== 'LIVE' ? 1 : 0)} documentos nesta análise · <span style={{ color: 'var(--water)' }}>■</span> atual <span style={{ color: 'var(--memory)' }}>■</span> histórico {updateIds.size > 0 && <><span style={{ color: 'var(--moss)' }}>■</span> atualização</>}</div>
         </div>
-        <DocList docs={allDocs} provided={provided} cites={cites} updateIds={updateIds} onOpen={(d) => setReader({ doc: d })} selected={reader?.doc.id} />
-        <LiveBox onRun={runLive} scenario={sc} />
+        <DocList docs={allDocs.filter((doc) => mode === 'LIVE' || doc !== liveDoc)} provided={provided} cites={cites} updateIds={updateIds} onOpen={(d) => setReader({ doc: d })} selected={reader?.doc.id} />
+        <LiveBox onRun={runLive} scenario={sc} pending={livePending} />
       </aside>
 
-      <section className="stage">
+      <section className="stage" ref={stageRef} tabIndex={-1} aria-label="Mapa de conhecimento">
         <div className="stage-tools">
-          {run && (
-            <span className={`provenance ${run.provenance}`} title={run.response_id ?? ''}>
-              <span className="led" />{run.provenance === 'live' ? 'Executada agora' : 'Execução real armazenada'} · {run.model ?? '—'} · {run.started_at?.slice(0, 10)}
-            </span>
-          )}
-          <button className="btn small ghost" onClick={() => setPlaying(true)} disabled={playing}>▶ Formação do conhecimento</button>
-          {base && <span className="chip memory">halo ocre = novo em relação a “{MODE_LABEL[base as Mode]}”</span>}
-          {tech && run && <span className="mono muted" style={{ fontSize: 11 }}>{out?.entidades.length} entidades · {out?.relacoes.length} relações · {run.latency_ms ? `${(run.latency_ms / 1000).toFixed(1)} s` : ''} · tokens {run.usage.input_tokens ?? '—'}/{run.usage.output_tokens ?? '—'}</span>}
+          <div className="stage-heading">
+            <h2>Mapa de conhecimento</h2>
+            <Legend />
+          </div>
+          <div className="stage-actions">
+            {run && (
+              <span className={`provenance ${run.provenance}`} title={run.response_id ?? ''}>
+                <span className="led" /><span><strong>{run.provenance === 'live' ? 'Executada agora' : 'Execução real armazenada'}</strong><span className="run-meta">{run.model ?? 'Modelo indisponível'} · {fmtDate(run.started_at.slice(0, 10))}</span></span>
+              </span>
+            )}
+            <button className="btn small ghost replay" aria-pressed={playing} disabled={!readingOrder.length} onClick={() => {
+              if (playing) seek(null);
+              else { seek(readingOrder[0].index); setPlaying(true); }
+            }}>{playing ? '■ Parar formação' : '▶ Formação do conhecimento'}</button>
+          </div>
+          {tech && run && <span className="mono muted stage-stats">{out?.entidades.length} entidades · {out?.relacoes.length} relações · {run.latency_ms ? `${(run.latency_ms / 1000).toFixed(1)} s · ` : ''}tokens {run.usage.input_tokens ?? '—'}/{run.usage.output_tokens ?? '—'}</span>}
         </div>
-        <div className="graph-wrap" ref={stageRef}>
-          {mode === 'LIVE' && !live && <div className="guide card" style={{ bottom: '45%' }}><h3>Analisando agora…</h3><p>Chamada real ao modelo em andamento. Pode levar até um minuto.</p></div>}
-          {liveError && <div className="guide card" style={{ bottom: '45%' }}><h3>A análise ao vivo não está disponível</h3><p>{liveError}. As execuções reais armazenadas continuam disponíveis nos outros modos.</p></div>}
-          {run && out && (
-            <Graph g={union} width={W} height={H} run={mode} base={base} cutoff={cutoff} highlightNodes={hlNodes} highlightEdges={hlEdges}
-              selectedEdge={selEdge?.key} hover={hover} onHover={setHover}
-              onEdge={(e) => { setSelEdge(e); setSelNode(null); }} onNode={(n) => { setSelNode(n); setSelEdge(null); }} />
-          )}
-          <Legend />
-          {(edgeInfo || selNode) && (
-            <div className="inspector card">
-              <button className="close-x" onClick={() => { setSelEdge(null); setSelNode(null); }} aria-label="Fechar">×</button>
+        <div className="graph-wrap">
+          {mode === 'LIVE' && !live && <div className="stage-message" role="status">
+            <h3>{liveError ? 'Análise ao vivo indisponível' : 'Analisando agora…'}</h3>
+            <p>{liveError ? `${liveError} Consulte as execuções armazenadas nos modos acima.` : 'A chamada ao modelo pode levar até um minuto.'}</p>
+          </div>}
+          {run && out && <Graph g={union} run={mode} base={base} cutoff={cutoff} highlightNodes={hlNodes} highlightEdges={hlEdges}
+            selectedEdge={selEdge?.key} selectedNode={selNode?.key} onEdge={(e) => inspect(e, null)} onNode={(n) => inspect(null, n)} />}
+          {((edgeInfo && shownAt(edgeInfo)) || (nodeInfo && shownAt(nodeInfo))) && (
+            <section className="inspector card" ref={inspectorRef} tabIndex={-1} aria-label="Detalhes do mapa" onKeyDown={(e) => { if (e.key === 'Escape') closeInspector(); }}>
+              <button className="close-x" onClick={closeInspector} aria-label="Fechar detalhes do mapa">×</button>
               {edgeInfo && selEdge && (
                 <>
-                  <div className="eyebrow">Relação · {STATUS_LABEL[edgeInfo.status]}</div>
+                  <div className="eyebrow">Relação · {STATUS_LABEL[edgeInfo.status_epistemico]}</div>
                   <h3>{edgeInfo.rotulo}</h3>
-                  <div className="muted" style={{ fontSize: 13 }}>{union.nodes.find((n) => n.key === selEdge.s)?.label} → {union.nodes.find((n) => n.key === selEdge.t)?.label}</div>
-                  {(edgeInfo.periodo?.inicio || edgeInfo.periodo?.fim || edgeInfo.periodo?.observacao) && <p style={{ fontSize: 13 }}>Período: {edgeInfo.periodo.inicio ?? '?'} → {edgeInfo.periodo.fim ?? 'sem fim registrado'}{edgeInfo.periodo.observacao ? ` · ${edgeInfo.periodo.observacao}` : ''}</p>}
-                  {edgeInfo.evid.map((ev, i) => <QuoteBtn key={i} ev={ev} doc={docMap.get(ev.doc_id)} literal={literal(ev)} onOpen={() => docMap.get(ev.doc_id) && setReader({ doc: docMap.get(ev.doc_id)!, focus: ev.trecho })} />)}
-                  {base && selEdge.byRun[base] && selEdge.byRun[base].status !== edgeInfo.status && <p className="note" style={{ fontSize: 13 }}>Mudou de <b>{STATUS_LABEL[selEdge.byRun[base].status]}</b> para <b>{STATUS_LABEL[edgeInfo.status]}</b> em relação a “{MODE_LABEL[base as Mode]}”.</p>}
+                  <div className="muted" style={{ fontSize: 13 }}>{union.nodes.find((n) => n.key === selEdge.s)?.byRun[mode]?.nome} → {union.nodes.find((n) => n.key === selEdge.t)?.byRun[mode]?.nome}</div>
+                  <p style={{ fontSize: 13 }}>{edgeInfo.periodo.inicio || edgeInfo.periodo.fim
+                    ? <><b>Período</b> · {edgeInfo.periodo.inicio ?? 'início sem registro'} → {edgeInfo.periodo.fim ?? 'fim sem registro'}</>
+                    : 'Período sem datas registradas.'}{edgeInfo.periodo.observacao ? ` ${edgeInfo.periodo.observacao}` : ''}</p>
+                  {edgeInfo.evidencias.filter((ev) => cutoff === null || allDocs.some((doc, index) => doc.id === ev.doc_id && index <= cutoff)).map((ev, i) => <QuoteBtn key={i} ev={ev} doc={docMap.get(ev.doc_id)} literal={literal(ev)} onOpen={() => docMap.get(ev.doc_id) && setReader({ doc: docMap.get(ev.doc_id)!, focus: ev.trecho })} />)}
+                  {base && selEdge.byRun[base] && selEdge.byRun[base].status_epistemico !== edgeInfo.status_epistemico && <p className="note" style={{ fontSize: 13 }}>Mudou de <b>{STATUS_LABEL[selEdge.byRun[base].status_epistemico]}</b> para <b>{STATUS_LABEL[edgeInfo.status_epistemico]}</b> em relação a “{MODE_LABEL[base as Mode]}”.</p>}
                   {base && !selEdge.byRun[base] && <p className="note" style={{ fontSize: 13 }}>Relação que não apareceu em “{MODE_LABEL[base as Mode]}”.</p>}
                 </>
               )}
-              {selNode && (
+              {selNode && nodeInfo && (
                 <>
-                  <div className="eyebrow">{selNode.tipo.replace(/_/g, ' ')}{selNode.setor ? ` · ${selNode.setor}` : ''}</div>
-                  <h3>{selNode.label}</h3>
-                  <p style={{ fontSize: 14, color: 'var(--ink-2)' }}>{selNode.desc}</p>
+                  <div className="eyebrow">{ENTITY_LABEL[nodeInfo.tipo]}{nodeInfo.setor_responsavel ? ` · ${nodeInfo.setor_responsavel}` : ''}</div>
+                  <h3>{nodeInfo.nome}</h3>
+                  <p style={{ fontSize: 14, color: 'var(--ink-2)' }}>{nodeInfo.descricao}</p>
                   <div className="eyebrow" style={{ marginTop: 8 }}>Relações</div>
-                  {union.edges.filter((e) => e.byRun[mode] && (e.s === selNode.key || e.t === selNode.key)).map((e) => (
-                    <button key={e.key} className="quote" onClick={() => { setSelEdge(e); setSelNode(null); }} style={{ fontFamily: 'var(--sans)', fontSize: 13 }}>{e.byRun[mode].rotulo}<span className="qmeta">{STATUS_LABEL[e.byRun[mode].status]}</span></button>
+                  {union.edges.filter((e) => shownAt(e.byRun[mode]) && (e.s === selNode.key || e.t === selNode.key)).map((e) => (
+                    <button key={e.key} className="quote" onClick={() => inspect(e, null)} style={{ fontFamily: 'var(--sans)', fontSize: 13 }}>{e.byRun[mode].rotulo}<span className="qmeta">{STATUS_LABEL[e.byRun[mode].status_epistemico]}</span></button>
                   ))}
                 </>
               )}
-            </div>
+            </section>
           )}
-          {guide >= 0 && guide < GUIDE.length && (
-            <div className="guide card" role="dialog" aria-label="Guia rápido">
+          {mode !== 'LIVE' && guide >= 0 && guide < GUIDE.length && (
+            <div className="guide card" role="dialog" aria-label="Guia rápido" onKeyDown={(event) => { if (event.key === 'Escape') setGuide(-1); }}>
               <div className="eyebrow">Guia rápido · {guide + 1}/{GUIDE.length}</div>
               <h3>{GUIDE[guide].t}</h3>
               <p>{GUIDE[guide].p}</p>
@@ -224,18 +308,18 @@ export function Workspace({ id }: { id: string }) {
             </div>
           )}
         </div>
-        <Timeline docs={allDocs.filter((d) => provided.has(d.id))} cutoff={cutoff} setCutoff={setCutoff} />
+        <Timeline entries={readingOrder} cutoff={cutoff} onSeek={seek} playing={playing} updateIds={updateIds} />
       </section>
 
-      <aside className="pane">
+      <aside className="pane review-pane">
         <div className="pane-h">
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+          <div>
             <h2>Pauta preventiva</h2>
             <span className="muted" style={{ fontSize: 12.5 }}>{out?.verificacoes.length ?? 0} verificações · {nReviewed} revisadas</span>
           </div>
           <div style={{ display: 'flex', gap: 6, marginTop: 8, flexWrap: 'wrap' }}>
-            <button className="btn small ghost" onClick={exportMd}>Baixar pauta (.md)</button>
-            <button className="btn small ghost" onClick={() => setGuide(0)}>Guia</button>
+            <button className="btn small ghost" onClick={exportMd} disabled={!out}>Baixar pauta (.md)</button>
+            <button className="btn small ghost" onClick={() => { setGuide(0); stageRef.current?.scrollIntoView({ block: 'start' }); }}>Guia</button>
           </div>
         </div>
         {out && (
@@ -247,9 +331,13 @@ export function Workspace({ id }: { id: string }) {
                 {g.items.map((v) => (
                   <CheckCard key={`${mode}:${v.id}`} v={v} sel={selCheck === v.id} open={selCheck === v.id}
                     onSelect={() => { setSelCheck(selCheck === v.id ? null : v.id); setSelEdge(null); setSelNode(null); }}
-                    review={reviews[`${mode}:${v.id}`]} onReview={(p) => update(`${mode}:${v.id}`, p)}
+                    review={reviews[reviewKey(v.id)]} onReview={(p) => update(reviewKey(v.id), p)}
                     docs={docMap} literal={literal} onQuote={(ev) => docMap.get(ev.doc_id) && setReader({ doc: docMap.get(ev.doc_id)!, focus: ev.trecho })}
-                    judgeNote={judgeFor(v.id)} tech={tech} />
+                    comparison={newlyCovered.has(v.id) ? base : null}
+                    onMap={selCheck === v.id && hlNodes.size > 0 ? () => {
+                      stageRef.current?.scrollIntoView({ block: 'start' });
+                      stageRef.current?.focus({ preventScroll: true });
+                    } : undefined} judgeNote={judgeFor(v.id)} tech={tech} />
                 ))}
               </div>
             ))}
@@ -261,6 +349,11 @@ export function Workspace({ id }: { id: string }) {
                     <span className={`chip ${t.tipo === 'contradicao' ? 'contra' : t.tipo === 'problema_resolvido' ? 'moss' : t.tipo === 'historico_superado' ? 'grey' : 'memory'}`}>{TEMPORAL_LABEL[t.tipo] ?? t.tipo}</span>
                     <div style={{ fontSize: 14, marginTop: 6 }}>{t.descricao}</div>
                     <div className="muted" style={{ fontSize: 13, marginTop: 4 }}>{t.implicacao}</div>
+                    {t.evidencias.length > 0 && <details className="temporal-sources">
+                      <summary>Fontes do achado</summary>
+                      {t.evidencias.map((ev, i) => <QuoteBtn key={i} ev={ev} doc={docMap.get(ev.doc_id)} literal={literal(ev)}
+                        onOpen={() => docMap.get(ev.doc_id) && setReader({ doc: docMap.get(ev.doc_id)!, focus: ev.trecho })} />)}
+                    </details>}
                   </div>
                 ))}
               </>
@@ -272,7 +365,7 @@ export function Workspace({ id }: { id: string }) {
               </>
             )}
             {tech && <TechPanel sc={sc} runs={runs} mode={mode} />}
-            <p className="muted" style={{ fontSize: 12, margin: '8px 4px' }}>Verificações geradas por IA para revisão humana. Não são alertas, previsões nem recomendações oficiais. Dados fictícios.</p>
+            <p className="muted" style={{ fontSize: 12, margin: '8px 4px' }}>Protótipo experimental com dados fictícios. A IA sugere perguntas para revisão humana. Não emite alertas, prevê desastres ou decide evacuações.</p>
           </div>
         )}
       </aside>
@@ -281,34 +374,43 @@ export function Workspace({ id }: { id: string }) {
   );
 }
 
-function Timeline({ docs, cutoff, setCutoff }: { docs: Doc[]; cutoff: string | null; setCutoff: (d: string | null) => void }) {
-  if (!docs.length) return null;
-  const ts = docs.map((d) => +new Date(d.data));
-  const min = Math.min(...ts), max = Math.max(...ts);
-  const x = (d: string) => 20 + ((+new Date(d) - min) / Math.max(1, max - min)) * 760;
-  const years = [...new Set(docs.map((d) => d.data.slice(0, 4)))];
+function Timeline({ entries, cutoff, onSeek, playing, updateIds }: {
+  entries: { doc: Doc; index: number }[];
+  cutoff: number | null;
+  onSeek: (index: number | null) => void;
+  playing: boolean;
+  updateIds: Set<string>;
+}) {
+  if (!entries.length) return null;
+  const step = entries.findIndex((entry) => entry.index === cutoff);
+  const doc = entries[step]?.doc;
   return (
     <div className="timeline">
-      <span className="eyebrow" style={{ whiteSpace: 'nowrap' }}>Linha do tempo</span>
-      <svg viewBox="0 0 800 46" preserveAspectRatio="none" aria-label="Linha do tempo dos documentos; clique para ver o conhecimento disponível em cada data">
-        <line className="tl-axis" x1={10} x2={790} y1={22} y2={22} />
-        {years.map((y) => <text key={y} className="tl-label" x={x(`${y}-01-01`) < 20 ? 20 : x(`${y}-01-01`)} y={42}>{y}</text>)}
-        {docs.map((d) => (
-          <g key={d.id} className="tl-tick" onClick={() => setCutoff(cutoff === d.data ? null : d.data)}>
-            <circle cx={x(d.data)} cy={22} r={cutoff && d.data <= cutoff ? 6 : 5} fill={d.conjunto === 'memoria' ? 'var(--memory)' : 'var(--water)'} stroke="var(--paper)" strokeWidth={2} opacity={cutoff && d.data > cutoff ? 0.3 : 1}>
-              <title>{d.id} · {fmtDate(d.data)} · {d.titulo}</title>
-            </circle>
-            <text className="tl-label" x={x(d.data)} y={11} textAnchor="middle">{d.id}</text>
-          </g>
-        ))}
-        {cutoff && <line className="tl-cursor" x1={x(cutoff)} x2={x(cutoff)} y1={4} y2={36} />}
-      </svg>
-      {cutoff ? <button className="btn small ghost" onClick={() => setCutoff(null)}>Ver tudo</button> : <span className="muted" style={{ fontSize: 12, whiteSpace: 'nowrap' }}>clique numa data</span>}
+      <div className="timeline-heading">
+        <h3>Linha do tempo</h3><span className="muted">Pela data das fontes da execução</span>
+      </div>
+      <div className="scrubber">
+        <input type="range" min={0} max={entries.length} step={1} value={step < 0 ? entries.length : step}
+          aria-label="Limitar o mapa pela ordem dos documentos" aria-valuetext={doc ? `${doc.id}, ${fmtDate(doc.data)}, ${doc.titulo}` : 'Todos os documentos'}
+          onChange={(e) => onSeek(entries[e.target.valueAsNumber]?.index ?? null)} />
+        <div className="document-ticks">
+          {entries.map(({ doc: marker, index }) => (
+            <button type="button" key={marker.id} className={updateIds.has(marker.id) ? 'update' : marker.conjunto}
+              aria-label={`${marker.id}, ${fmtDate(marker.data)}, ${marker.titulo}`} title={`${fmtDate(marker.data)} · ${marker.titulo}`}
+              aria-pressed={cutoff === index} onClick={() => onSeek(cutoff === index ? null : index)}>{marker.id}</button>
+          ))}
+          <button type="button" className="all-docs" onClick={() => onSeek(null)} aria-pressed={cutoff === null}>Ver tudo</button>
+        </div>
+      </div>
+      <div className="timeline-caption" role="status">
+        {doc ? <><b>{playing ? 'Em leitura' : 'Até este documento'} · {doc.id} · {fmtDate(doc.data)}</b><span>{doc.titulo}</span></>
+          : <span>{entries.length} documentos em ordem cronológica. Selecione um para limitar o mapa.</span>}
+      </div>
     </div>
   );
 }
 
-function LiveBox({ onRun, scenario }: { onRun: (d?: Doc) => void; scenario: ScenarioView }) {
+function LiveBox({ onRun, scenario, pending }: { onRun: (d?: Doc) => void; scenario: ScenarioView; pending: boolean }) {
   const [open, setOpen] = useState(false);
   const [txt, setTxt] = useState('');
   const [titulo, setTitulo] = useState('');
@@ -322,8 +424,8 @@ function LiveBox({ onRun, scenario }: { onRun: (d?: Doc) => void; scenario: Scen
             <input aria-label="Título" placeholder="Título (opcional)" value={titulo} onChange={(e) => setTitulo(e.target.value.slice(0, 120))} style={{ width: '100%', marginBottom: 6, padding: 7, border: '1px solid var(--rule)', borderRadius: 8, background: 'var(--paper)', color: 'var(--ink)' }} />
             <textarea aria-label="Texto da atualização" required minLength={20} maxLength={1500} value={txt} onChange={(e) => setTxt(e.target.value)} placeholder="Texto fictício (até 1.500 caracteres)" style={{ width: '100%', minHeight: 90, padding: 8, border: '1px solid var(--rule)', borderRadius: 8, background: 'var(--paper)', color: 'var(--ink)', fontFamily: 'inherit' }} />
             <div style={{ display: 'flex', gap: 6, marginTop: 6 }}>
-              <button className="btn small" type="submit">Analisar agora</button>
-              <button className="btn small ghost" type="button" onClick={() => onRun()}>Reanalisar sem novo doc.</button>
+              <button className="btn small" type="submit" disabled={pending}>Analisar agora</button>
+              <button className="btn small ghost" type="button" disabled={pending} onClick={() => onRun()}>Reanalisar sem documento novo</button>
             </div>
             <p className="muted" style={{ fontSize: 11.5, margin: '6px 0 0' }}>Não use dados reais ou pessoais. Há limite de uso por visitante.</p>
           </form>
@@ -345,7 +447,7 @@ function TechPanel({ sc, runs, mode }: { sc: ScenarioView; runs: Record<string, 
       {sc.gold && (
         <>
           <div className="eyebrow" style={{ marginTop: 10 }}>Gabarito (definido antes dos testes) × resultado</div>
-          <table className="t">
+          <div className="table-scroll" role="region" aria-label="Gabarito e resultados" tabIndex={0}><table className="t">
             <thead><tr><th>Item</th><th>Requer</th>{['A', 'B'].filter((k) => runs[k]).map((k) => <th key={k}>{k}</th>)}</tr></thead>
             <tbody>
               {sc.gold.checks.map((g: any) => (
@@ -354,10 +456,10 @@ function TechPanel({ sc, runs, mode }: { sc: ScenarioView; runs: Record<string, 
               ))}
               {(sc.gold.proibido ?? []).map((g: any) => (
                 <tr key={g.id}><td><b>{g.id}</b> Não deveria: {g.texto}</td><td>proibido</td>
-                  {['A', 'B'].filter((k) => runs[k]).map((k) => <td key={k}>{runs[k].judge?.proibidos?.find((x: any) => x.id === g.id)?.violado ? 'violou' : 'ok'}</td>)}</tr>
+                  {['A', 'B'].filter((k) => runs[k]).map((k) => <td key={k}>{(() => { const item = runs[k].judge?.proibidos?.find((x: any) => x.id === g.id); return item ? (item.violado ? 'violou' : 'ok') : '—'; })()}</td>)}</tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
           <p className="muted" style={{ fontSize: 11.5 }}>Resultados atribuídos por IA avaliadora com rubrica, sem acesso à condição. Não equivalem à validação por especialistas municipais.</p>
         </>
       )}

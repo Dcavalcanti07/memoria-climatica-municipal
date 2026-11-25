@@ -13,7 +13,12 @@ function Morph() {
     { x: 290, y: 175, t: 'Rota de acesso', c: 'var(--memory)' }, { x: 380, y: 95, t: 'Abrigo A', c: 'var(--ink)' },
   ];
   return (
-    <svg className="morph" viewBox="0 0 460 420" key={k} onClick={() => setK(k + 1)} role="img" aria-label="Ilustração: quatro documentos se transformam em uma cadeia de dependência — inundação, ponte, rota de acesso, abrigo. Clique para repetir.">
+    <figure className="hero-map">
+      <figcaption><span>exemplo ilustrativo</span><button type="button" onClick={() => setK(k + 1)}>Repetir animação <span aria-hidden="true">↻</span></button></figcaption>
+      <svg className="morph" viewBox="0 0 460 400" key={k} role="img" aria-label="Quatro documentos se transformam em uma cadeia de dependência entre inundação, ponte, rota de acesso e abrigo.">
+      <defs><pattern id="hero-grid" width="23" height="23" patternUnits="userSpaceOnUse"><path d="M23 0H0V23" fill="none" stroke="var(--rule)" strokeWidth=".7" /></pattern></defs>
+      <rect width="460" height="400" fill="url(#hero-grid)" opacity=".65" />
+      {[0, 1, 2, 3, 4, 5].map((i) => <path key={i} d={`M-5 ${37 + i * 24} C130 ${200 + i * 21} 340 ${-57 + i * 19} 465 ${105 + i * 26}`} fill="none" stroke="var(--water)" strokeWidth=".7" opacity=".25" />)}
       <style>{`
         .md { animation: md 1.6s cubic-bezier(.6,0,.3,1) .6s forwards; transform-box: fill-box; transform-origin: center; }
         @keyframes md { to { opacity: 0; transform: scale(.25) rotate(0deg); } }
@@ -48,8 +53,8 @@ function Morph() {
         <text x="58" y="348" fontSize="15" fontFamily="var(--serif)" fill="var(--ink)">A Ponte A continua sendo o único acesso</text>
         <text x="58" y="367" fontSize="15" fontFamily="var(--serif)" fill="var(--ink)">ao abrigo? Existe rota alternativa?</text>
       </g>
-      <text x="230" y="412" textAnchor="middle" fontSize="10.5" fontFamily="var(--mono)" fill="var(--ink-3)">exemplo ilustrativo · clique para repetir</text>
-    </svg>
+      </svg>
+    </figure>
   );
 }
 
@@ -79,14 +84,23 @@ export function Home() {
         </div>
       </section>
 
+      <section className="map-reading">
+        <div className="wrap reading-inner">
+          <h2>Como ler o mapa</h2>
+          <div><span className="key-swatch water" aria-hidden="true" />Azul <span>Informação atual</span></div>
+          <div><span className="key-swatch memory" aria-hidden="true" />Ocre <span>O que apareceu com a memória</span></div>
+          <div><span className="reading-mark" aria-hidden="true">? ≠</span>Marcas <span>Hipóteses e contradições</span></div>
+        </div>
+      </section>
+
       <section className="section">
         <div className="wrap">
           <div className="eyebrow">Como funciona</div>
           <h2>De documentos soltos a uma pauta que a equipe pode revisar</h2>
           <div className="steps">
-            <div className="step card"><div className="n">1</div><h3>Reunir o que existe</h3><p>Plano de contingência vigente, o cenário de alerta, ofícios recentes e — quando houver — relatórios e atas de eventos anteriores.</p></div>
-            <div className="step card"><div className="n">2</div><h3>A IA lê e conecta</h3><p>Um modelo de linguagem extrai serviços, locais, responsáveis e dependências, separando fato, inferência, hipótese, contradição e informação superada, sempre com a citação literal.</p></div>
-            <div className="step card"><div className="n">3</div><h3>A equipe revisa</h3><p>Cada verificação diz o que confirmar, por quê, o que ainda não se sabe e quem poderia confirmar. A equipe marca, anota e exporta a pauta para a reunião.</p></div>
+            <div className="step"><h3>Reunir o que existe</h3><p>Plano de contingência vigente, o cenário de alerta, ofícios recentes e — quando houver — relatórios e atas de eventos anteriores.</p></div>
+            <div className="step"><h3>A IA lê e conecta</h3><p>Um modelo de linguagem extrai serviços, locais, responsáveis e dependências, separando fato, inferência, hipótese, contradição e informação superada, sempre com a citação literal.</p></div>
+            <div className="step"><h3>A equipe revisa</h3><p>Cada verificação diz o que confirmar, por quê, o que ainda não se sabe e quem poderia confirmar. A equipe marca, anota e exporta a pauta para a reunião.</p></div>
           </div>
         </div>
       </section>
@@ -95,13 +109,16 @@ export function Home() {
         <div className="wrap">
           <div className="eyebrow">O que testamos</div>
           <h2>A memória institucional muda a análise?</h2>
-          <p className="prose" style={{ color: 'var(--ink-2)' }}>Em {ix?.summary ? ix.scenarios.filter((s) => s.split === 'eval').length : 30} cenários fictícios, o mesmo modelo, com as mesmas instruções, analisou cada caso duas vezes: só com as informações atuais (A) e com os registros de eventos anteriores (B). As respostas foram comparadas a gabaritos escritos antes dos testes.</p>
+          <p className="prose" style={{ color: 'var(--ink-2)' }}>Em {ix ? `${ix.scenarios.filter((s) => s.split === 'eval').length} ` : ''}cenários fictícios, o mesmo modelo, com as mesmas instruções, analisou cada caso duas vezes: só com as informações atuais (A) e com os registros de eventos anteriores (B). As respostas foram comparadas a gabaritos escritos antes dos testes.</p>
           {A && B ? (
-            <div className="kpis">
-              <div className="kpi card"><div className="v"><span style={{ color: 'var(--water)' }}>{pct(A.recall_verificacoes)}</span> → <span style={{ color: 'var(--memory)' }}>{pct(B.recall_verificacoes)}</span></div><div className="l">das verificações esperadas encontradas (A → B)</div></div>
-              <div className="kpi card"><div className="v"><span style={{ color: 'var(--water)' }}>{pct(A.recall_verificacoes_memoria)}</span> → <span style={{ color: 'var(--memory)' }}>{pct(B.recall_verificacoes_memoria)}</span></div><div className="l">das verificações que dependem do histórico</div></div>
-              <div className="kpi card"><div className="v">{pct(B.fidelidade_citacoes)}</div><div className="l">das citações da condição B encontradas literalmente nos documentos</div></div>
-              <div className="kpi card"><div className="v"><span style={{ color: 'var(--water)' }}>{A.violacoes_proibidos}</span> / <span style={{ color: 'var(--memory)' }}>{B.violacoes_proibidos}</span></div><div className="l">afirmações que não deveriam ser feitas (A / B), em {A.itens_proibidos} pontos de controle</div></div>
+            <div className="result-snapshot">
+              <div className="conditions"><span className="a"><b>A</b> Informações atuais</span><span className="b"><b>B</b> Informações atuais + memória</span></div>
+              <div className="kpis">
+              <div className="kpi"><div className="v"><span style={{ color: 'var(--water)' }}>{pct(A.recall_verificacoes)}</span> → <span style={{ color: 'var(--memory)' }}>{pct(B.recall_verificacoes)}</span></div><div className="l">das verificações esperadas encontradas (A → B)</div></div>
+              <div className="kpi"><div className="v"><span style={{ color: 'var(--water)' }}>{pct(A.recall_verificacoes_memoria)}</span> → <span style={{ color: 'var(--memory)' }}>{pct(B.recall_verificacoes_memoria)}</span></div><div className="l">das verificações que dependem do histórico</div></div>
+              <div className="kpi"><div className="v">{pct(B.fidelidade_citacoes)}</div><div className="l">das citações da condição B encontradas literalmente nos documentos</div></div>
+              <div className="kpi"><div className="v"><span style={{ color: 'var(--water)' }}>{A.violacoes_proibidos}</span> / <span style={{ color: 'var(--memory)' }}>{B.violacoes_proibidos}</span></div><div className="l">afirmações que não deveriam ser feitas (A / B), em {A.itens_proibidos} pontos de controle</div></div>
+              </div>
             </div>
           ) : <p className="muted">Resultados ainda não disponíveis nesta versão.</p>}
           <p className="muted" style={{ fontSize: 13, marginTop: 14 }}>Avaliação automatizada por rubrica, com auditoria manual de uma amostra. Não substitui validação com servidores e especialistas municipais.</p>
@@ -115,7 +132,7 @@ export function Home() {
             <h2>Comece por um destes</h2>
             <div className="steps">
               {featured.map((s) => (
-                <a key={s.id} href={`#/cenario/${s.id}`} className="step card" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <a key={s.id} href={`#/cenario/${s.id}`} className="step scenario-link">
                   <div className="eyebrow">{s.id} · {CATEGORIA_LABEL[s.categoria]}</div>
                   <h3>{s.municipio}</h3>
                   <p>{s.titulo}</p>

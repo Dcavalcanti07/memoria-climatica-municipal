@@ -3,11 +3,12 @@
  * (A × B × B+atualização). Nada aqui inventa relações: nós e arestas vêm 100% das saídas do modelo.
  * O pareamento entre execuções é determinístico (similaridade de rótulos).
  */
-import type { Analise, Doc } from '../../core/schema';
+import type { Analise, Doc, Entidade, Relacao } from '../../core/schema';
 
 export const LANES = [
   { key: 'evento', label: 'Eventos e alertas', types: ['evento', 'norma_documento'] },
-  { key: 'infra', label: 'Infraestrutura e locais', types: ['infraestrutura', 'local'] },
+  { key: 'infra', label: 'Infraestrutura', types: ['infraestrutura'] },
+  { key: 'local', label: 'Locais e abrigos', types: ['local'] },
   { key: 'serv', label: 'Serviços e recursos', types: ['servico', 'equipamento', 'recurso'] },
   { key: 'pessoas', label: 'Pessoas e setores', types: ['grupo_populacional', 'setor', 'funcao_responsavel'] },
 ] as const;
@@ -21,89 +22,128 @@ export function sim(a: string, b: string) {
   const A = tokens(a), B = tokens(b);
   if (!A.size || !B.size) return 0;
   let inter = 0; for (const t of A) if (B.has(t)) inter++;
-  return inter / Math.min(A.size, B.size) * (inter / Math.max(A.size, B.size)) ** 0.25;
+  return inter / (A.size + B.size - inter);
 }
 
-export type GNode = { key: string; label: string; tipo: string; lane: number; desc: string; setor: string | null; ids: Record<string, string>; firstDate: string; memoryOnly: boolean; degree: number; x: number; y: number };
-export type GEdge = { key: string; s: string; t: string; ids: Record<string, string>; byRun: Record<string, { rotulo: string; status: string; tipo: string; evid: { doc_id: string; trecho: string }[]; periodo: any }>; firstDate: string; mem: boolean };
-export type UnionGraph = { nodes: GNode[]; edges: GEdge[]; runs: string[] };
+export const MAP_WIDTH = 1060;
+export const NODE_WIDTH = 152;
+export const NODE_HEIGHT = 58;
+const ROW_HEIGHT = 74;
+const FIRST_ROW = 100;
 
-/** Monta um grafo-união das execuções informadas, com layout único (posições estáveis entre modos). */
-export function buildUnion(runs: { key: string; out: Analise }[], docs: Doc[], width: number, height: number): UnionGraph {
-  const docDate = new Map(docs.map((d) => [d.id, d.data]));
-  const docMem = new Map(docs.map((d) => [d.id, d.conjunto === 'memoria']));
+export type GNode = {
+  key: string; label: string; lane: number; ids: Record<string, string>;
+  byRun: Record<string, Entidade & { firstDoc: number }>; x: number; y: number;
+};
+export type GEdge = {
+  key: string; s: string; t: string; ids: Record<string, string>;
+  byRun: Record<string, Relacao & { firstDoc: number }>;
+};
+export type LaneDef = (typeof LANES)[number];
+export type UnionGraph = { nodes: GNode[]; edges: GEdge[]; height: number; lanes: LaneDef[] };
+
+export const laneCenter = (lane: number, count: number = LANES.length) => (lane + 0.5) * MAP_WIDTH / count;
+
+/** As posições são compartilhadas. Os rótulos e as evidências pertencem a cada execução. */
+export function buildUnion(runs: { key: string; out: Analise }[], docs: Doc[]): UnionGraph {
+  const docOrder = new Map(docs.map((d, i) => [d.id, i]));
+  const firstDoc = (evidence: Relacao['evidencias']) => Math.min(...evidence.map((e) => docOrder.get(e.doc_id) ?? Infinity));
   const nodes: GNode[] = [];
-  const localToKey: Record<string, Record<string, string>> = {};
-
-  const evidDates = (out: Analise, entId: string) => out.relacoes.filter((r) => r.origem === entId || r.destino === entId).flatMap((r) => r.evidencias.map((e) => docDate.get(e.doc_id) ?? '9999'));
-
-  for (const { key: rk, out } of runs) {
-    localToKey[rk] = {};
-    for (const e of out.entidades) {
-      let best: GNode | null = null, bestS = 0;
-      for (const n of nodes) {
-        if (n.ids[rk]) continue;
-        const s = sim(n.label, e.nome);
-        if (s > bestS) { bestS = s; best = n; }
-      }
-      const dates = evidDates(out, e.id);
-      const first = dates.length ? dates.sort()[0] : '9999';
-      if (best && bestS >= 0.55) {
-        best.ids[rk] = e.id;
-        if (first < best.firstDate) best.firstDate = first;
-        localToKey[rk][e.id] = best.key;
-      } else {
-        const key = `n${nodes.length}`;
-        nodes.push({ key, label: e.nome, tipo: e.tipo, lane: laneOf(e.tipo), desc: e.descricao, setor: e.setor_responsavel, ids: { [rk]: e.id }, firstDate: first, memoryOnly: false, degree: 0, x: 0, y: 0 });
-        localToKey[rk][e.id] = key;
-      }
-    }
-  }
-
   const edges: GEdge[] = [];
-  for (const { key: rk, out } of runs) {
-    for (const r of out.relacoes) {
-      const s = localToKey[rk][r.origem], t = localToKey[rk][r.destino];
-      if (!s || !t || s === t) continue;
-      let e = edges.find((x) => !x.ids[rk] && ((x.s === s && x.t === t) || (x.s === t && x.t === s)));
-      const info = { rotulo: r.rotulo, status: r.status_epistemico, tipo: r.tipo, evid: r.evidencias, periodo: r.periodo };
-      const dates = r.evidencias.map((ev) => docDate.get(ev.doc_id) ?? '9999').sort();
-      const mem = r.evidencias.some((ev) => docMem.get(ev.doc_id));
-      if (!e) { e = { key: `e${edges.length}`, s, t, ids: {}, byRun: {}, firstDate: dates[0] ?? '9999', mem }; edges.push(e); }
-      e.ids[rk] = r.id; e.byRun[rk] = info; e.mem = e.mem || mem;
-      if ((dates[0] ?? '9999') < e.firstDate) e.firstDate = dates[0];
+
+  for (const { key: run, out } of runs) {
+    const local = new Map<string, string>();
+    for (const entity of out.entidades) {
+      const lane = laneOf(entity.tipo);
+      let best: GNode | undefined;
+      let score = 0.62;
+      for (const node of nodes) {
+        if (node.ids[run] || node.lane !== lane) continue;
+        const similarity = Math.max(...Object.values(node.byRun).map((other) => sim(other.nome, entity.nome)));
+        if (similarity >= score && (!best || similarity > score)) { best = node; score = similarity; }
+      }
+      if (!best) {
+        best = { key: `n${nodes.length}`, label: entity.nome, lane, ids: {}, byRun: {}, x: laneCenter(lane), y: 0 };
+        nodes.push(best);
+      }
+      const evidence = out.relacoes.filter((r) => r.origem === entity.id || r.destino === entity.id).flatMap((r) => r.evidencias);
+      best.ids[run] = entity.id;
+      best.byRun[run] = { ...entity, firstDoc: firstDoc(evidence) };
+      local.set(entity.id, best.key);
+    }
+
+    for (const relation of out.relacoes) {
+      const s = local.get(relation.origem), t = local.get(relation.destino);
+      if (!s || !t) continue;
+      const candidates = edges.filter((e) => e.s === s && e.t === t && !e.ids[run] && Object.values(e.byRun).some((r) => r.tipo === relation.tipo));
+      const similarity = (e: GEdge) => Math.max(...Object.values(e.byRun).map((r) => sim(r.rotulo, relation.rotulo)));
+      let edge = candidates.sort((a, b) => similarity(b) - similarity(a))[0];
+      if (!edge) {
+        edge = { key: `e${edges.length}`, s, t, ids: {}, byRun: {} };
+        edges.push(edge);
+      }
+      edge.ids[run] = relation.id;
+      edge.byRun[run] = { ...relation, firstDoc: firstDoc(relation.evidencias) };
     }
   }
-  for (const e of edges) { nodes.find((n) => n.key === e.s)!.degree++; nodes.find((n) => n.key === e.t)!.degree++; }
 
-  // layout determinístico em colunas semânticas (eventos → infraestrutura → serviços → pessoas/setores).
-  // Dentro de cada coluna, ordenação baricêntrica para reduzir cruzamentos; espaçamento uniforme.
-  const padX = 110, laneW = (width - padX * 2) / (LANES.length - 1);
-  const top = 56, bottom = height - 40;
-  const nbrs = new Map<string, string[]>(nodes.map((n) => [n.key, []]));
-  for (const e of edges) { nbrs.get(e.s)!.push(e.t); nbrs.get(e.t)!.push(e.s); }
-  const lanes: GNode[][] = LANES.map((_, i) => nodes.filter((n) => n.lane === i).sort((a, b) => b.degree - a.degree || a.label.localeCompare(b.label)));
-  const place = () => lanes.forEach((ln, li) => {
-    const span = bottom - top; const step = span / Math.max(1, ln.length);
-    ln.forEach((n, i) => { n.x = padX + li * laneW + (ln.length > 6 ? (i % 2 ? 26 : -26) : 0); n.y = top + step * (i + 0.5); });
-  });
+  // colunas vazias não ocupam espaço: renumera as colunas usadas, mantendo a ordem semântica
+  const used = [...new Set(nodes.map((n) => n.lane))].sort((a, b) => a - b);
+  for (const n of nodes) { n.lane = used.indexOf(n.lane); n.x = laneCenter(n.lane, used.length); }
+  const laneDefs = used.map((i) => LANES[i]);
+
+  const neighbors = new Map(nodes.map((n) => [n.key, [] as GNode[]]));
+  const byKey = new Map(nodes.map((n) => [n.key, n]));
+  for (const e of edges) {
+    neighbors.get(e.s)!.push(byKey.get(e.t)!);
+    neighbors.get(e.t)!.push(byKey.get(e.s)!);
+  }
+  const lanes = laneDefs.map((_, i) => nodes.filter((n) => n.lane === i).sort((a, b) => neighbors.get(b.key)!.length - neighbors.get(a.key)!.length || a.label.localeCompare(b.label, 'pt-BR')));
+  const rows = Math.max(1, ...lanes.map((lane) => lane.length));
+  const place = () => lanes.forEach((lane) => lane.forEach((node, i) => {
+    const row = lane.length === 1 ? Math.floor((rows - 1) / 2) : Math.round(i * (rows - 1) / (lane.length - 1));
+    node.y = FIRST_ROW + row * ROW_HEIGHT;
+  }));
   place();
-  for (let it = 0; it < 6; it++) {
-    for (const ln of lanes) {
-      const bc = new Map(ln.map((n) => { const ns = nbrs.get(n.key)!.map((k) => nodes.find((m) => m.key === k)!.y); return [n.key, ns.length ? ns.reduce((a, b) => a + b, 0) / ns.length : n.y]; }));
-      ln.sort((a, b) => bc.get(a.key)! - bc.get(b.key)!);
-    }
+  for (let i = 0; i < 5; i++) {
+    const center = new Map(nodes.map((n) => {
+      const adjacent = neighbors.get(n.key)!;
+      return [n.key, adjacent.length ? adjacent.reduce((sum, other) => sum + other.y, 0) / adjacent.length : n.y];
+    }));
+    for (const lane of lanes) lane.sort((a, b) => center.get(a.key)! - center.get(b.key)!);
     place();
   }
-  return { nodes, edges, runs: runs.map((r) => r.key) };
+  return { nodes, edges, height: FIRST_ROW + (rows - 1) * ROW_HEIGHT + 56, lanes: laneDefs };
 }
 
-export type Change = 'new' | 'same' | 'status' | 'gone';
-/** Diferença entre duas execuções no grafo-união. */
-export function diffEdge(e: GEdge, from: string, to: string): Change | null {
-  const a = e.byRun[from], b = e.byRun[to];
-  if (!a && !b) return null;
-  if (!a && b) return 'new';
-  if (a && !b) return 'gone';
-  return a!.status === b!.status ? 'same' : 'status';
+type Point = [number, number];
+
+function roundedPath(points: Point[]) {
+  const offset = ([x, y]: Point, [tx, ty]: Point) => {
+    const distance = Math.hypot(tx - x, ty - y);
+    const ratio = distance ? Math.min(12 / distance, 0.45) : 0;
+    return [x + (tx - x) * ratio, y + (ty - y) * ratio];
+  };
+  return `M${points[0]}` + points.slice(1, -1).map((p, i) =>
+    `L${offset(p, points[i])}Q${p} ${offset(p, points[i + 2])}`).join('') + `L${points[points.length - 1]}`;
+}
+
+/** Curvas suaves entre as laterais dos cartões; laços para relações dentro da mesma coluna. */
+export function routeEdge(a: GNode, b: GNode, sourcePort: number, targetPort: number, channel: number, laneCount: number = LANES.length) {
+  const direction = b.lane < a.lane || (a.lane === b.lane && a.lane === laneCount - 1) ? -1 : 1;
+  const sx = a.x + direction * NODE_WIDTH / 2;
+  const tx = b.x + (a.lane === b.lane ? direction : -direction) * NODE_WIDTH / 2;
+  const sy = a.y + sourcePort;
+  const ty = b.y + targetPort;
+  if (a === b) {
+    return { d: `M${sx},${sy - 13} C${sx + direction * 43},${sy - 38} ${sx + direction * 43},${sy + 38} ${sx},${sy + 13}`, x: sx + direction * 32, y: sy };
+  }
+  if (a.lane === b.lane) {
+    const bulge = sx + direction * (34 + Math.min(60, Math.abs(ty - sy) * 0.18) + channel);
+    return { d: `M${sx},${sy} C${bulge},${sy} ${bulge},${ty} ${tx},${ty}`, x: bulge - direction * 8, y: (sy + ty) / 2 };
+  }
+  const dx = Math.abs(tx - sx);
+  const k = Math.max(40, dx * 0.45);
+  const c1 = sx + direction * k, c2 = tx - direction * k;
+  return { d: `M${sx},${sy} C${c1},${sy + channel} ${c2},${ty - channel} ${tx},${ty}`, x: (sx + 3 * c1 + 3 * c2 + tx) / 8, y: (sy + ty) / 2 };
 }

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import type { Doc, Evidencia, Verificacao } from '../../core/schema';
 import { BASE_CHIP, BASE_LABEL, STATUS_CHIP, STATUS_LABEL, fmtDate } from '../lib/data';
 import type { Review } from '../lib/review';
@@ -29,44 +29,64 @@ export function DocList({ docs, provided, cites, onOpen, selected, updateIds }: 
 
 /** Leitor com destaque das citações literais usadas pela IA. */
 export function DocReader({ doc, quotes, focus, onClose }: { doc: Doc; quotes: Evidencia[]; focus?: string | null; onClose: () => void }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
-    const el = ref.current?.querySelector('mark.focus');
-    el?.scrollIntoView({ block: 'center', behavior: 'smooth' });
-    const k = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
-    window.addEventListener('keydown', k);
-    return () => window.removeEventListener('keydown', k);
-  }, [doc, focus, onClose]);
-  // marca trechos citados (casamento literal, sem normalização agressiva)
-  const segments: { text: string; mark: boolean; focus: boolean }[] = [];
-  let rest = doc.texto;
-  const qs = [...new Set(quotes.map((q) => q.trecho.replace(/^["“]|["”]$/g, '').trim()))].filter((q) => q.length > 3);
-  let guard = 0;
-  while (rest.length && guard++ < 200) {
-    let best = -1, bq = '';
-    for (const q of qs) { const i = rest.indexOf(q); if (i >= 0 && (best < 0 || i < best)) { best = i; bq = q; } }
-    if (best < 0) { segments.push({ text: rest, mark: false, focus: false }); break; }
-    if (best > 0) segments.push({ text: rest.slice(0, best), mark: false, focus: false });
-    segments.push({ text: bq, mark: true, focus: !!focus && bq.includes(focus.replace(/^["“]|["”]$/g, '').trim().slice(0, 40)) });
-    rest = rest.slice(best + bq.length);
+    const dialog = ref.current;
+    if (!dialog) return;
+    const trigger = document.activeElement;
+    dialog.showModal();
+    dialog.querySelector('mark.focus')?.scrollIntoView({ block: 'center' });
+    return () => {
+      dialog.close();
+      if (trigger instanceof HTMLElement || trigger instanceof SVGElement) trigger.focus({ preventScroll: true });
+    };
+  }, [doc, focus]);
+  const parts = (quote: string) => quote.split(/\[\.\.\.\]|\.\.\.|…/).map((part) => part.trim().replace(/^["“]|["”]$/g, '').trim()).filter(Boolean);
+  const targets = new Set(parts(focus ?? ''));
+  const excerpts = new Set([...quotes.flatMap((q) => parts(q.trecho)), ...targets]);
+  const ranges: { start: number; end: number; focus: boolean }[] = [];
+  for (const excerpt of excerpts) {
+    let start = doc.texto.indexOf(excerpt);
+    while (start >= 0) {
+      const end = start + excerpt.length;
+      ranges.push({ start, end, focus: targets.has(excerpt) });
+      start = doc.texto.indexOf(excerpt, end);
+    }
   }
+  ranges.sort((a, b) => a.start - b.start || b.end - a.end);
+  const merged: typeof ranges = [];
+  for (const range of ranges) {
+    const last = merged.at(-1);
+    if (last && range.start < last.end) {
+      last.end = Math.max(last.end, range.end);
+      last.focus ||= range.focus;
+    } else merged.push(range);
+  }
+  let offset = 0;
+  const segments = merged.map((range) => {
+    const before = doc.texto.slice(offset, range.start);
+    offset = range.end;
+    return { ...range, before, text: doc.texto.slice(range.start, range.end) };
+  });
   return (
-    <div className="reader-backdrop" onClick={onClose}>
-      <div className="reader" ref={ref} onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-label={doc.titulo}>
+    <dialog className="reader" ref={ref} aria-label={doc.titulo}
+      onCancel={(e) => { e.preventDefault(); onClose(); }}
+      onClick={(e) => { if (e.clientX > e.currentTarget.getBoundingClientRect().right) onClose(); }}>
         <button className="close-x" onClick={onClose} aria-label="Fechar">×</button>
         <div className="eyebrow">{doc.id} · {fmtDate(doc.data)} · {doc.conjunto === 'memoria' ? 'registro histórico' : 'informação atual'}</div>
         <h2>{doc.titulo}</h2>
         <div className="muted">{doc.fonte}</div>
-        <pre>{segments.map((s, i) => s.mark ? <mark key={i} className={`${doc.conjunto === 'memoria' ? '' : 'water'} ${s.focus ? 'focus' : ''}`}>{s.text}</mark> : <span key={i}>{s.text}</span>)}</pre>
+        <pre>{segments.map((s) => (
+          <Fragment key={s.start}>{s.before}<mark className={`${doc.conjunto === 'memoria' ? '' : 'water'} ${s.focus ? 'focus' : ''}`}>{s.text}</mark></Fragment>
+        ))}{doc.texto.slice(offset)}</pre>
         <p className="muted" style={{ fontSize: 13 }}>Trechos destacados foram citados literalmente pela IA nesta análise. Documento fictício, criado para o experimento.</p>
-      </div>
-    </div>
+    </dialog>
   );
 }
 
 export function QuoteBtn({ ev, doc, literal, onOpen }: { ev: Evidencia; doc?: Doc; literal?: boolean; onOpen: () => void }) {
   return (
-    <button className={`quote ${doc?.conjunto ?? ''}`} onClick={onOpen}>
+    <button className={`quote ${doc?.conjunto ?? ''}`} onClick={onOpen} disabled={!doc}>
       “{ev.trecho}”
       <span className="qmeta">
         {ev.doc_id} · {doc ? `${doc.titulo.slice(0, 48)}${doc.titulo.length > 48 ? '…' : ''} · ${fmtDate(doc.data)}` : 'documento não encontrado'}
@@ -76,19 +96,24 @@ export function QuoteBtn({ ev, doc, literal, onOpen }: { ev: Evidencia; doc?: Do
   );
 }
 
-export function CheckCard({ v, sel, onSelect, review, onReview, docs, literal, onQuote, judgeNote, tech, open }: {
+export function CheckCard({ v, sel, onSelect, review, onReview, docs, literal, onQuote, judgeNote, tech, open, comparison, onMap }: {
   v: Verificacao; sel: boolean; onSelect: () => void; review?: Review; onReview: (p: Partial<Review>) => void;
-  docs: Map<string, Doc>; literal: (ev: Evidencia) => boolean | undefined; onQuote: (ev: Evidencia) => void; judgeNote?: string | null; tech: boolean; open: boolean;
+  docs: Map<string, Doc>; literal: (ev: Evidencia) => boolean | undefined; onQuote: (ev: Evidencia) => void; judgeNote?: string | null; tech: boolean; open: boolean; comparison: string | null; onMap?: () => void;
 }) {
   const st = review?.status ?? 'pendente';
+  const reviewLabels = { pendente: 'Pendente', revisada: 'Revisada', confirmar: 'Precisa confirmar', descartada: 'Não se aplica' };
+  const priority = { alta: 'alta', media: 'média', baixa: 'baixa' }[v.prioridade];
   return (
     <article className={`check ${sel ? 'sel' : ''} ${st}`} aria-label={v.pergunta}>
+      <h3><button type="button" className="q" onClick={onSelect} aria-expanded={open}>{v.pergunta}<span aria-hidden="true">{open ? '−' : '+'}</span></button></h3>
       <div className="chips">
         <span className={`chip ${BASE_CHIP[v.base]}`}>{BASE_LABEL[v.base]}</span>
         <span className={`chip ${STATUS_CHIP[v.status_epistemico]}`}>{STATUS_LABEL[v.status_epistemico]}</span>
-        {v.prioridade === 'alta' && <span className="chip contra">prioridade alta</span>}
+        {priority && <span className={`chip ${v.prioridade === 'alta' ? 'contra' : ''}`}>Prioridade {priority}</span>}
+        {st !== 'pendente' && <span className="chip moss">{reviewLabels[st]}</span>}
+        {comparison && <span className={`chip ${comparison === 'A' ? 'memory' : 'moss'}`} title="Avaliador vinculou esta verificação a um item do gabarito atendido aqui e ausente na condição comparada.">Cobre item ausente em {comparison}</span>}
       </div>
-      <div className="q" onClick={onSelect} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onSelect()}>{v.pergunta}</div>
+      {open && onMap && <div className="check-map"><button className="btn small ghost" onClick={onMap}>Ver caminho no mapa ↑</button></div>}
       {open && (
         <dl>
           <div><dt>Por que importa</dt><dd>{v.por_que_importa}</dd></div>
@@ -99,16 +124,16 @@ export function CheckCard({ v, sel, onSelect, review, onReview, docs, literal, o
           {v.setores_relacionados.length > 0 && <div><dt>Setores relacionados</dt><dd>{v.setores_relacionados.join(' · ')}</dd></div>}
           <div>
             <dt>Revisão da equipe</dt>
-            <div className="review-row" role="group" aria-label="Status de revisão">
+            <dd><div className="review-row" role="group" aria-label="Status de revisão">
               {([['revisada', 'Revisada'], ['confirmar', 'Precisa confirmar'], ['descartada', 'Não se aplica']] as const).map(([k, l]) => (
                 <button key={k} aria-pressed={st === k} onClick={() => onReview({ status: st === k ? 'pendente' : k })}>{l}</button>
               ))}
             </div>
-            <textarea aria-label="Observação da equipe" placeholder="Observação da equipe (ex.: quem ligou, o que foi confirmado)…" value={review?.nota ?? ''} onChange={(e) => onReview({ nota: e.target.value })} style={{ marginTop: 8 }} />
+            <textarea aria-label="Observação da equipe" placeholder="Observação da equipe (ex.: quem ligou, o que foi confirmado)…" value={review?.nota ?? ''} onChange={(e) => onReview({ nota: e.target.value })} style={{ marginTop: 8 }} /></dd>
           </div>
-          {tech && judgeNote && <div className="judge-note">Avaliação por rubrica (IA avaliadora, não especialista): {judgeNote}</div>}
         </dl>
       )}
+      {open && tech && judgeNote && <div className="judge-note">Avaliação por rubrica (IA avaliadora, não especialista): {judgeNote}</div>}
     </article>
   );
 }
