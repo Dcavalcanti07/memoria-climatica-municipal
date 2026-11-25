@@ -88,7 +88,7 @@ export function Home() {
               </div>
             </div>
           ) : <p className="muted">Resultados ainda não disponíveis nesta versão.</p>}
-          <p className="muted" style={{ fontSize: 13, marginTop: 14 }}>Avaliação automatizada por rubrica, com conferência item a item de uma amostra. Não substitui validação com servidores e especialistas municipais.</p>
+          <p className="muted" style={{ fontSize: 13, marginTop: 14 }}>Correção automatizada por rubrica, feita por um segundo modelo que não sabe qual versão avalia. Não substitui validação com servidores e especialistas municipais.</p>
         </div>
       </section>
 

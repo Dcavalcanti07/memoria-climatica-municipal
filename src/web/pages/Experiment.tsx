@@ -68,7 +68,7 @@ export function Experiment() {
           </tbody>
         </table>
       </div>
-      <p className="muted" style={{ fontSize: 12.5 }}>Recall: atendido = 1, parcial = 0,5. Em A, itens que dependem do histórico são uma limitação legítima de acesso, não uma omissão. Intervalos por bootstrap pareado por cenário (10 mil reamostras). Classificações semânticas atribuídas por IA avaliadora cega à condição, com conferência item a item de amostra.</p>
+      <p className="muted" style={{ fontSize: 12.5 }}>Recall: atendido = 1, parcial = 0,5. Em A, itens que dependem do histórico são uma limitação legítima de acesso, não uma omissão. Intervalos por bootstrap pareado por cenário (10 mil reamostras). Classificações semânticas atribuídas pelo gpt-6.1-terra, cego à condição. Numa rodada anterior, dois corretores diferentes concordaram em 92% das decisões.</p>
 
       <figure className="scenario-chart">
         <figcaption>

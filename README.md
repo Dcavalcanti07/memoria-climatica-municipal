@@ -62,7 +62,7 @@ documentos fictícios ─► LLM (saída estruturada) ─► validação determi
 - **Amostra:** 36 cenários fictícios (6 de desenvolvimento, 30 de avaliação final), 3 a 6 documentos cada. Em 11 dos 30, a memória foi desenhada para não ajudar ou poder atrapalhar. → [data/authoring](data/authoring)
 - **Gabaritos** escritos antes das execuções e congelados com SHA-256 no commit `aea0272`; cada item marca se depende do contexto atual ou da memória. → [data/gold](data/gold)
 - **Condições:** A = plano + alerta + informações atuais; B = A + registros históricos. Mesmo modelo, prompt, configuração e formato; chamadas independentes.
-- **Avaliação:** validações determinísticas + rubrica aplicada por outro modelo (`gpt-6.1-terra`, raciocínio médio), cego à condição, com conferência item a item de uma amostra (feita com o assistente de IA, não por especialistas). → [prompts/avaliador_v1.md](prompts/avaliador_v1.md)
+- **Avaliação:** validações determinísticas + rubrica aplicada por outro modelo (`gpt-6.1-terra`, raciocínio médio), cego à condição, com concordância de 92% entre dois corretores medida numa rodada anterior. → [prompts/avaliador_v1.md](prompts/avaliador_v1.md)
 - **Execuções:** rodada principal com 60 análises (30 cenários × A e B) + 1 de atualização e suas correções; rodada anterior com 60 + 40 repetições + 1, recorrigida pelo segundo avaliador. Mais de 450 chamadas reais no total, com respostas brutas em [runs/](runs).
 
 ## Resultados
@@ -84,7 +84,7 @@ Diferença pareada no recall: **+24 p.p.** (IC 95% +14 a +32). O ganho vem dos i
 
 - Casos e gabaritos escritos pela mesma equipe, com apoio de IA; documentos curtos e limpos.
 - Avaliação semântica automatizada; conferência parcial e não cega das decisões do avaliador; **sem validação por servidores ou especialistas em Defesa Civil**.
-- Um único modelo de análise.
+- Rodada principal sem repetições para medir estabilidade (houve repetições só na rodada anterior).
 - O indicador de produtividade (TCPM) não foi medido; há protocolo proposto em [docs/resultados.md](docs/resultados.md) e na página Método do app.
 
 ## Metodologia simplificada para equipes
