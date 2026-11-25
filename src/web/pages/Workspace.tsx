@@ -149,7 +149,7 @@ export function Workspace({ id }: { id: string }) {
     const j = run?.judge; if (!j) return null;
     const p = j.verificacoes_produzidas?.find((x: any) => x.id === vid);
     const g = j.gold_checks?.filter((x: any) => x.ids_saida?.includes(vid)).map((x: any) => `${x.id} (${x.resultado})`);
-    return p ? `${p.classificacao.replace(/_/g, ' ')}${g?.length ? ` · gabarito ${g.join(', ')}` : ''} — ${p.justificativa}` : null;
+    return p ? `${p.classificacao.replace(/_/g, ' ')}${g?.length ? ` · gabarito ${g.join(', ')}` : ''}: ${p.justificativa}` : null;
   };
 
   async function runLive(extra?: Doc) {
@@ -195,12 +195,12 @@ export function Workspace({ id }: { id: string }) {
 
   function exportMd() {
     if (!out || !sc) return;
-    const lines = [`# Pauta de verificações preventivas — ${sc.municipio} (fictício)`, '', `Cenário: ${sc.titulo} · referência ${fmtDate(sc.alerta_data)} · condição: ${MODE_LABEL[mode]}`, `Origem: ${run.provenance === 'live' ? 'análise executada agora' : `execução real armazenada (${run.model}, ${run.started_at.slice(0, 10)})`}`, '', '> Material experimental com dados fictícios, sujeito à revisão humana. Não substitui protocolos oficiais.', ''];
+    const lines = [`# Pauta de verificações preventivas: ${sc.municipio} (fictício)`, '', `Cenário: ${sc.titulo} · referência ${fmtDate(sc.alerta_data)} · condição: ${MODE_LABEL[mode]}`, `Origem: ${run.provenance === 'live' ? 'análise executada agora' : `execução real armazenada (${run.model})`}`, '', '> Material experimental com dados fictícios, sujeito à revisão humana. Não substitui protocolos oficiais.', ''];
     out.verificacoes.forEach((v, i) => {
       const r = reviews[reviewKey(v.id)];
-      lines.push(`## ${i + 1}. ${v.pergunta}`, '', `- Por que importa: ${v.por_que_importa}`, `- O que motivou: ${v.motivacao}`, `- Evidências: ${v.evidencias.map((e) => `[${e.doc_id}] “${e.trecho}”`).join('; ')}`, `- O que ainda não sabemos: ${v.o_que_falta_saber}`, `- Quem poderia confirmar (sujeito à confirmação institucional): ${v.quem_pode_confirmar}`, `- Revisão: ${r?.status ?? 'pendente'}${r?.nota ? ` — ${r.nota}` : ''}`, '');
+      lines.push(`## ${i + 1}. ${v.pergunta}`, '', `- Por que importa: ${v.por_que_importa}`, `- O que motivou: ${v.motivacao}`, `- Evidências: ${v.evidencias.map((e) => `[${e.doc_id}] “${e.trecho}”`).join('; ')}`, `- O que ainda não sabemos: ${v.o_que_falta_saber}`, `- Quem poderia confirmar (sujeito à confirmação institucional): ${v.quem_pode_confirmar}`, `- Revisão: ${r?.status ?? 'pendente'}${r?.nota ? `. Observação: ${r.nota}` : ''}`, '');
     });
-    if (out.informacoes_ausentes.length) { lines.push('## Informações que faltam', ''); out.informacoes_ausentes.forEach((x) => lines.push(`- ${x.descricao} — ${x.por_que_importa}`)); }
+    if (out.informacoes_ausentes.length) { lines.push('## Informações que faltam', ''); out.informacoes_ausentes.forEach((x) => lines.push(`- ${x.descricao}. Por que importa: ${x.por_que_importa}`)); }
     const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `pauta-${sc.id}-${mode}.md`; a.click(); URL.revokeObjectURL(a.href);
   }
@@ -254,7 +254,7 @@ export function Workspace({ id }: { id: string }) {
           <div className="stage-actions">
             {run && (
               <span className={`provenance ${run.provenance}`} title={run.response_id ?? ''}>
-                <span className="led" /><span><strong>{run.provenance === 'live' ? 'Executada agora' : 'Execução real armazenada'}</strong><span className="run-meta">{run.model ?? 'Modelo indisponível'} · {fmtDate(run.started_at.slice(0, 10))}</span></span>
+                <span className="led" /><span><strong>{run.provenance === 'live' ? 'Executada agora' : 'Execução real armazenada'}</strong><span className="run-meta">{run.model ?? 'Modelo indisponível'}</span></span>
               </span>
             )}
             <button className="btn small ghost replay" aria-pressed={playing} disabled={!readingOrder.length} onClick={() => {
@@ -262,7 +262,7 @@ export function Workspace({ id }: { id: string }) {
               else { seek(readingOrder[0].index); setPlaying(true); }
             }}>{playing ? '■ Parar formação' : '▶ Formação do conhecimento'}</button>
           </div>
-          {tech && run && <span className="mono muted stage-stats">{out?.entidades.length} entidades · {out?.relacoes.length} relações · {run.latency_ms ? `${(run.latency_ms / 1000).toFixed(1)} s · ` : ''}tokens {run.usage.input_tokens ?? '—'}/{run.usage.output_tokens ?? '—'}</span>}
+          {tech && run && <span className="mono muted stage-stats">{out?.entidades.length} entidades · {out?.relacoes.length} relações · {run.latency_ms ? `${(run.latency_ms / 1000).toFixed(1)} s · ` : ''}tokens {run.usage.input_tokens ?? 'n/d'}/{run.usage.output_tokens ?? 'n/d'}</span>}
         </div>
         <div className="graph-wrap">
           {mode === 'LIVE' && !live && <div className="stage-message" role="status">
@@ -428,7 +428,7 @@ function UpdateShortcut({ hasUpdate, active, onShow }: { hasUpdate: boolean; act
         <div className="eyebrow">Incorporar uma atualização</div>
         {hasUpdate ? (
           <>
-            <p style={{ fontSize: 13, color: 'var(--ink-2)', margin: '6px 0 8px' }}>Veja como a IA incorporou um ofício novo, de 25/11/2026, que cadastra a estrada da Granja como rota alternativa. Resultado de uma execução real armazenada.</p>
+            <p style={{ fontSize: 13, color: 'var(--ink-2)', margin: '6px 0 8px' }}>Veja como a IA incorporou um ofício novo da Secretaria de Obras, que cadastra a estrada da Granja como rota alternativa. Resultado de uma execução real armazenada.</p>
             <button className="btn small ghost" onClick={onShow} disabled={active} aria-pressed={active}>{active ? 'Atualização em exibição' : 'Ver a atualização registrada'}</button>
           </>
         ) : (
@@ -485,11 +485,11 @@ function TechPanel({ sc, runs, mode }: { sc: ScenarioView; runs: Record<string, 
             <tbody>
               {sc.gold.checks.map((g: any) => (
                 <tr key={g.id}><td><b>{g.id}</b> {g.texto}</td><td>{g.requer}</td>
-                  {['A', 'B'].filter((k) => runs[k]).map((k) => <td key={k}>{runs[k].judge?.gold_checks?.find((x: any) => x.id === g.id)?.resultado ?? '—'}</td>)}</tr>
+                  {['A', 'B'].filter((k) => runs[k]).map((k) => <td key={k}>{runs[k].judge?.gold_checks?.find((x: any) => x.id === g.id)?.resultado ?? 'n/d'}</td>)}</tr>
               ))}
               {(sc.gold.proibido ?? []).map((g: any) => (
                 <tr key={g.id}><td><b>{g.id}</b> Não deveria: {g.texto}</td><td>proibido</td>
-                  {['A', 'B'].filter((k) => runs[k]).map((k) => <td key={k}>{(() => { const item = runs[k].judge?.proibidos?.find((x: any) => x.id === g.id); return item ? (item.violado ? 'violou' : 'ok') : '—'; })()}</td>)}</tr>
+                  {['A', 'B'].filter((k) => runs[k]).map((k) => <td key={k}>{(() => { const item = runs[k].judge?.proibidos?.find((x: any) => x.id === g.id); return item ? (item.violado ? 'violou' : 'ok') : 'n/d'; })()}</td>)}</tr>
               ))}
             </tbody>
           </table></div>

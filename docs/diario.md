@@ -1,6 +1,6 @@
 # Diário de experimentação e decisões
 
-Registro cronológico do que foi feito, por quê, o que deu certo e o que não deu. Datas em 25/11/2026 (horário de Brasília). Os commits citados permitem conferir a ordem dos acontecimentos.
+Registro cronológico do que foi feito, por quê, o que deu certo e o que não deu. Os commits citados permitem conferir a ordem dos acontecimentos.
 
 ## 1. Entendimento do desafio
 
@@ -20,7 +20,7 @@ Registro cronológico do que foi feito, por quê, o que deu certo e o que não d
 
 ## 3. Amostra sintética e gabaritos (commit `aea0272`)
 
-- 36 cenários fictícios: 6 de desenvolvimento (DV1–DV6) e 30 de avaliação final (E01–E30); 137 documentos; média de 3,8 documentos por cenário na avaliação.
+- 36 cenários fictícios: 6 de desenvolvimento (DV1 a DV6) e 30 de avaliação final (E01 a E30); 137 documentos; média de 3,8 documentos por cenário na avaliação.
 - Situações cobertas: dependência histórica relevante, histórico irrelevante, problema já resolvido, solução parcial, contradições (entre atual e histórico, entre documentos atuais, entre registros históricos), mudança de responsável, alteração de protocolo, informação insuficiente, evidência ambígua, distratores, memória que não acrescenta e memória que pode induzir erro ou exagero. **11 dos 30 cenários** foram desenhados para a memória não ajudar ou poder atrapalhar.
 - Gabarito por cenário: verificações esperadas, dependências, interpretações temporais, informações insuficientes e afirmações proibidas. Cada item indica se depende do contexto atual ou da memória (54 verificações esperadas; 26 dependem de memória).
 - Gabaritos escritos **antes** de qualquer chamada ao modelo e congelados com hash SHA-256 (`data/gold/MANIFEST.json`) no commit `aea0272`. Nenhum gabarito foi alterado depois.
@@ -35,7 +35,7 @@ Registro cronológico do que foi feito, por quê, o que deu certo e o que não d
 - Pedido: modelo barato e capaz. Analisador: **`gpt-5.4-mini-2026-03-17`** (versão fixada). Avaliador: **`gpt-5.4-2026-03-05`**, modelo diferente e mais forte.
 - Teste inicial (DV1): com raciocínio `medium` o modelo gastou 11,6 mil tokens de raciocínio num caso pequeno e estourou o limite de saída em 3 tentativas (B). Decisão: `reasoning_effort = low` e teto de 32 mil tokens. Essas 4 chamadas de teste não entram em nenhuma métrica.
 
-## 6. Desenvolvimento do prompt (somente DV1–DV6)
+## 6. Desenvolvimento do prompt (somente DV1 a DV6)
 
 **v1 → v2** (commit `b2e7392`). Problemas vistos em `runs/dev_v1`:
 
@@ -60,7 +60,9 @@ Resultado no desenvolvimento (A → B): precisão de B 90% → 96%; falsos alarm
 
 Resultados e casos: ver `docs/resultados.md`.
 
-## 8. Auditoria manual do avaliador
+## 8. Conferência das decisões do avaliador
+
+Feita durante o desenvolvimento pelo assistente de IA usado no projeto (Claude Code), lendo saída e decisão lado a lado. Não é validação humana especializada.
 
 12 execuções, 68 decisões sobre itens do gabarito, 65 concordâncias. Discordâncias nos dois sentidos. O avaliador quase não marca verificações como "genéricas", o que infla a precisão nas duas condições. A auditoria não foi cega (eu sabia a condição) e não substitui especialistas.
 

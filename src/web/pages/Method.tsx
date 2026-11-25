@@ -1,31 +1,38 @@
 import { useEffect, useState } from 'react';
 import { loadMethod } from '../lib/data';
 
+const FLOW = [
+  { n: '1', t: 'Reunir os documentos', leigo: 'Plano de contingência, alerta, ofícios e, quando houver, relatórios e atas de eventos anteriores.', tec: '3 a 6 documentos fictícios por caso, com código (D1, D2…), enviados em ordem de data.', tone: 'water' },
+  { n: '2', t: 'A IA lê e organiza', leigo: 'Um modelo de linguagem lê tudo de uma vez e devolve uma ficha organizada: o que existe, como se liga e o que conferir.', tec: 'gpt-5.4-mini, uma chamada por análise, resposta em JSON Schema estrito: entidades, relações, mudanças no tempo e verificações.', tone: 'ink' },
+  { n: '3', t: 'O sistema confere a IA', leigo: 'Antes de mostrar, o sistema checa se cada trecho citado existe mesmo no documento indicado.', tec: 'Validação determinística: citação literal, código de documento válido, relação ligada a entidade existente.', tone: 'ink' },
+  { n: '4', t: 'Mapa e pauta', leigo: 'As ligações viram um mapa navegável e as perguntas viram uma pauta para a reunião.', tec: 'O grafo é montado só com a resposta do modelo. Não há GraphRAG, banco vetorial ou embeddings.', tone: 'memory' },
+  { n: '5', t: 'A equipe decide', leigo: 'A equipe marca o que confirmou, anota e exporta. A IA sugere; quem decide é a prefeitura.', tec: 'Revisão por pergunta (revisada, precisa confirmar, não se aplica) e exportação em Markdown.', tone: 'moss' },
+];
+const EVAL = [
+  { t: 'Respostas esperadas', d: 'Escritas e congeladas antes dos testes (hash SHA-256 no git).' },
+  { t: 'Duas versões', d: 'Mesmo caso analisado só com o atual (A) e com a memória (B).' },
+  { t: 'Correção às cegas', d: 'Outro modelo (gpt-5.4) compara com o esperado sem saber se é A ou B.' },
+  { t: 'Conferência item a item', d: 'Amostra de 68 decisões do corretor conferida uma a uma: 65 confirmadas. Não substitui especialistas.' },
+];
+
 function Arch() {
-  const box = (x: number, y: number, w: number, t: string, s: string, c = 'var(--ink)') => (
-    <g transform={`translate(${x},${y})`}>
-      <rect width={w} height={64} rx={8} fill="var(--paper-3)" stroke={c} />
-      <text x={12} y={25} fontFamily="var(--serif)" fontSize="15" fontWeight={600} fill="var(--ink)">{t}</text>
-      <text x={12} y={46} fontFamily="var(--sans)" fontSize="11.5" fill="var(--ink-2)">{s}</text>
-    </g>
-  );
-  const arrow = (x1: number, x2: number, y = 52) => <path d={`M${x1} ${y} H${x2 - 6}`} stroke="var(--ink-3)" markerEnd="url(#ar)" />;
   return (
-    <svg viewBox="0 0 980 150" style={{ width: '100%', minWidth: 720 }} role="img" aria-label="Arquitetura: documentos fictícios, modelo de linguagem com saída estruturada, validação determinística, grafo e pauta, revisão humana">
-      <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--ink-3)" /></marker></defs>
-      {box(0, 20, 160, 'Documentos', 'plano · alerta · ofícios', 'var(--water)')}
-      {box(0, 86, 160, 'Memória', 'relatórios · atas antigas', 'var(--memory)')}
-      {arrow(160, 205, 52)}<path d="M160 118 H185 V60" stroke="var(--ink-3)" fill="none" />
-      {box(205, 20, 190, 'Modelo de linguagem', 'uma chamada · JSON Schema estrito')}
-      {arrow(395, 430)}
-      {box(430, 20, 170, 'Validação', 'ids · citações literais · órfãos')}
-      {arrow(600, 635)}
-      {box(635, 20, 150, 'Grafo + pauta', 'nós e relações da saída')}
-      {arrow(785, 820)}
-      {box(820, 20, 150, 'Revisão humana', 'marcar · anotar · exportar', 'var(--moss)')}
-      <text x={205} y={110} fontFamily="var(--mono)" fontSize="10.5" fill="var(--ink-3)">Sem GraphRAG, sem banco vetorial: os documentos vão inteiros no contexto.</text>
-      <text x={205} y={126} fontFamily="var(--mono)" fontSize="10.5" fill="var(--ink-3)">O grafo é construído a partir da saída estruturada; não é usado para recuperar contexto.</text>
-    </svg>
+    <div className="arch">
+      <ol className="arch-flow" aria-label="Como uma análise acontece, em cinco etapas">
+        {FLOW.map((f) => (
+          <li key={f.n} className={`arch-step tone-${f.tone}`}>
+            <span className="arch-n" aria-hidden="true">{f.n}</span>
+            <h3>{f.t}</h3>
+            <p className="arch-plain">{f.leigo}</p>
+            <p className="arch-tech"><span>Por dentro</span>{f.tec}</p>
+          </li>
+        ))}
+      </ol>
+      <div className="arch-eval">
+        <div className="arch-eval-h"><b>Como o experimento foi avaliado</b><span>fora do uso do dia a dia</span></div>
+        <ol>{EVAL.map((e) => <li key={e.t}><b>{e.t}</b><span>{e.d}</span></li>)}</ol>
+      </div>
+    </div>
   );
 }
 
@@ -49,7 +56,7 @@ export function Method() {
       </nav>
 
       <h2 id="Arquitetura" tabIndex={-1}>Arquitetura</h2>
-      <div className="table-scroll method-architecture" role="region" aria-label="Diagrama da arquitetura" tabIndex={0}><Arch /></div>
+      <Arch />
 
       <div className="prose">
         <h2>Modelo e configuração</h2>
@@ -57,7 +64,7 @@ export function Method() {
         <p>A mesma configuração foi usada nas duas condições. Cada análise é uma chamada independente, sem histórico de conversa. Os documentos são enviados em ordem cronológica, com o mesmo cabeçalho; nada é truncado (o maior contexto do experimento ficou bem abaixo do limite do modelo).</p>
 
         <h2>Instruções ao modelo</h2>
-        <p>Resumo: ler os documentos, extrair entidades e relações com citação literal, distinguir fato, inferência, hipótese, contradição, informação superada e insuficiente, interpretar datas e vigências, e gerar até 8 verificações para revisão humana — sem emitir alertas, prever desastres ou recomendar evacuação.</p>
+        <p>Resumo: ler os documentos, extrair entidades e relações com citação literal, distinguir fato, inferência, hipótese, contradição, informação superada e insuficiente, interpretar datas e vigências, e gerar até 8 verificações para revisão humana, sem emitir alertas, prever desastres ou recomendar evacuação.</p>
         {m && <details><summary>Ver o texto completo ({m.prompt_file})</summary><pre className="code">{m.prompt}</pre></details>}
         {m && <details><summary>Ver o formato de saída (JSON Schema)</summary><pre className="code">{JSON.stringify(m.schema, null, 2)}</pre></details>}
 
@@ -86,10 +93,10 @@ export function Method() {
             <tr><td>Latência e tokens</td><td>medidos em cada chamada</td><td>determinística</td></tr>
           </tbody>
         </table></div>
-        <p>A avaliação semântica foi feita por um segundo modelo com rubrica explícita, sem saber a condição. Uma amostra foi conferida manualmente. Isso não equivale à validação por servidores ou especialistas em Defesa Civil.</p>
+        <p>A avaliação semântica foi feita por um segundo modelo com rubrica explícita, sem saber a condição. Uma amostra de decisões foi conferida item a item com o assistente de IA usado no projeto. Isso não equivale à validação por servidores ou especialistas em Defesa Civil.</p>
 
         <h2>Indicador de produtividade: TCPM</h2>
-        <p><b>Tempo de Consolidação da Prontidão Municipal</b> — tempo para transformar os documentos disponíveis em uma pauta preventiva revisada. A meta exploratória é reduzir esse tempo em pelo menos 30% sem perder qualidade. É uma hipótese: não foi medida com pessoas neste protótipo, e a latência da IA não serve como evidência de economia de tempo.</p>
+        <p><b>Tempo de Consolidação da Prontidão Municipal</b>: tempo para transformar os documentos disponíveis em uma pauta preventiva revisada. A meta exploratória é reduzir esse tempo em pelo menos 30% sem perder qualidade. É uma hipótese: não foi medida com pessoas neste protótipo, e a latência da IA não serve como evidência de economia de tempo.</p>
         <p>Como validar: duas pessoas da equipe, conjuntos de documentos fictícios equivalentes e sorteados; cada uma prepara uma pauta do jeito habitual e outra com apoio da IA (ordem alternada). Medir tempo total (inclui ler, conferir as fontes e corrigir a IA), itens relevantes encontrados, erros que passaram e confiança declarada. Só avançar se o tempo cair sem aumentar erros graves.</p>
 
         <h2 id="Oficina" tabIndex={-1}>Versão sem programação, para as equipes</h2>
@@ -107,7 +114,7 @@ export function Method() {
         <ul>
           <li>Documentos e gabaritos foram escritos pela mesma equipe do protótipo; o recorte pode favorecer casos “legíveis” e não reflete a bagunça de arquivos reais (PDFs escaneados, planilhas, mensagens).</li>
           <li>Cenários curtos (3 a 6 documentos). Com dezenas de documentos, seria preciso estratégia de seleção ou recuperação de contexto.</li>
-          <li>Avaliação semântica automatizada, com auditoria manual parcial; sem participação de especialistas municipais.</li>
+          <li>Avaliação semântica automatizada, com conferência item a item de uma amostra; sem participação de especialistas municipais.</li>
           <li>Um único modelo testado; resultados podem mudar com outros modelos ou versões.</li>
           <li>O grafo depende da saída de cada execução; nomes de entidades variam entre execuções. O mapa aproxima nomes da mesma coluna por similaridade textual, e compara relações pela direção e pelo tipo.</li>
         </ul>
@@ -125,10 +132,10 @@ export function Method() {
         <h2>Referências de contexto</h2>
         <ul>
           <li>Lei nº 12.608/2012 (Política Nacional de Proteção e Defesa Civil) e Lei nº 14.750/2023, que atualizou a definição de plano de contingência. <a href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14750.htm">planalto.gov.br</a></li>
-          <li>Cemaden/USP/Inpe — “Water-related disasters in Brazil: an assessment from 1991 to 2024”: 91,5% dos municípios registraram ao menos um desastre no período. <a href="https://agencia.fapesp.br/58646">Agência FAPESP</a></li>
-          <li>Ipea — Nota técnica sobre as inundações de 2024 no RS: 418 municípios em calamidade ou emergência (Portaria 1.802/2024). <a href="https://repositorio.ipea.gov.br/bitstream/11058/14337/1/NT_CGDTI_02_Publicacao_Expressa.pdf">repositorio.ipea.gov.br</a></li>
-          <li>Cemaden — Nota técnica sobre o El Niño 2026–2027: o fenômeno não causa desastres sozinho, mas aumenta a probabilidade de eventos extremos no Sul. <a href="https://www.gov.br/cemaden/pt-br/cemaden-lidera-elaboracao-de-nota-tecnica-sobre-possiveis-impactos-do-el-nino-2026-27-no-rs">gov.br/cemaden</a></li>
-          <li>INMET — Como foi a atuação do El Niño 2023–2024 no Brasil. <a href="https://portal.inmet.gov.br/noticias/el-nino-saiba-como-foi-a-atuacao-do-fenomeno-no-brasil">portal.inmet.gov.br</a></li>
+          <li>Cemaden/USP/Inpe, “Water-related disasters in Brazil: an assessment from 1991 to 2024”: 91,5% dos municípios registraram ao menos um desastre no período. <a href="https://agencia.fapesp.br/58646">Agência FAPESP</a></li>
+          <li>Ipea: nota técnica sobre as inundações de 2024 no RS: 418 municípios em calamidade ou emergência (Portaria 1.802/2024). <a href="https://repositorio.ipea.gov.br/bitstream/11058/14337/1/NT_CGDTI_02_Publicacao_Expressa.pdf">repositorio.ipea.gov.br</a></li>
+          <li>Cemaden: nota técnica sobre o El Niño 2026-2027. o fenômeno não causa desastres sozinho, mas aumenta a probabilidade de eventos extremos no Sul. <a href="https://www.gov.br/cemaden/pt-br/cemaden-lidera-elaboracao-de-nota-tecnica-sobre-possiveis-impactos-do-el-nino-2026-27-no-rs">gov.br/cemaden</a></li>
+          <li>INMET: como foi a atuação do El Niño 2023-2024 no Brasil. <a href="https://portal.inmet.gov.br/noticias/el-nino-saiba-como-foi-a-atuacao-do-fenomeno-no-brasil">portal.inmet.gov.br</a></li>
         </ul>
 
         <h2>Uso de IA na construção</h2>

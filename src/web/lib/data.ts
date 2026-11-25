@@ -78,7 +78,7 @@ export const TEMPORAL_LABEL: Record<string, string> = {
   historico_superado: 'Histórico superado', vigencia_encerrada: 'Vigência encerrada', solucao_parcial: 'Solução parcial',
 };
 export const fmtDate = (d: string) => { const [y, m, dd] = d.split('-'); return `${dd}/${m}/${y}`; };
-export const pct = (x: number | null | undefined, digits = 0) => (x == null || Number.isNaN(x) ? '—' : `${(x * 100).toFixed(digits)}%`);
+export const pct = (x: number | null | undefined, digits = 0) => (x == null || Number.isNaN(x) ? 'n/d' : `${(x * 100).toFixed(digits)}%`);
 export const alertLevel = (docs: Doc[]) => {
   const a = docs.find((d) => d.tipo === 'alerta_simulado');
   const m = a?.texto.match(/NÍVEL:\s*([A-ZÁÉ]+)/);

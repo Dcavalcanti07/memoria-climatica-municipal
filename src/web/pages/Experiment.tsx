@@ -40,7 +40,7 @@ export function Experiment() {
     <div className="wrap editorial-page experiment-page">
       <header className="editorial-head">
       <div className="eyebrow">Experimento A × B</div>
-      <h1 className="editorial-title">O que a memória institucional acrescentou — e onde atrapalhou</h1>
+      <h1 className="editorial-title">O que a memória institucional acrescentou, e onde atrapalhou</h1>
       <p className="prose" style={{ color: 'var(--ink-2)', fontSize: 16.5 }}>
         Mesmo modelo, mesmas instruções e mesmo formato de resposta, em chamadas independentes. A única diferença: em B o modelo também recebeu relatórios e atas de eventos anteriores.
         {` ${evals.length} cenários de avaliação, ${A.n_execucoes + B.n_execucoes} execuções na comparação principal.`} Gabaritos escritos e congelados antes das execuções.
@@ -55,8 +55,8 @@ export function Experiment() {
         {ROWS.map(([k, l, t]) => (
           <tr key={k}>
             <th scope="row">{l}</th>
-            <td className="a">{A[k] == null ? '—' : fmt(k, A[k], t)}</td>
-            <td className="b">{B[k] == null ? '—' : fmt(k, B[k], t)}</td>
+            <td className="a">{A[k] == null ? 'n/d' : fmt(k, A[k], t)}</td>
+            <td className="b">{B[k] == null ? 'n/d' : fmt(k, B[k], t)}</td>
             <td className="mono muted" style={{ fontSize: 12 }}>
               {k === 'recall_verificacoes' && cmp?.recall_checks ? `${(cmp.recall_checks.diff_media * 100).toFixed(0)} p.p. [${(cmp.recall_checks.ic95[0] * 100).toFixed(0)}; ${(cmp.recall_checks.ic95[1] * 100).toFixed(0)}] · B melhor em ${cmp.recall_checks.b_melhor}, A em ${cmp.recall_checks.a_melhor}` : ''}
               {k === 'recall_verificacoes_memoria' && cmp?.recall_checks_memoria ? `${(cmp.recall_checks_memoria.diff_media * 100).toFixed(0)} p.p. [${(cmp.recall_checks_memoria.ic95[0] * 100).toFixed(0)}; ${(cmp.recall_checks_memoria.ic95[1] * 100).toFixed(0)}]` : ''}
@@ -68,7 +68,7 @@ export function Experiment() {
           </tbody>
         </table>
       </div>
-      <p className="muted" style={{ fontSize: 12.5 }}>Recall: atendido = 1, parcial = 0,5. Em A, itens que dependem do histórico são uma limitação legítima de acesso, não uma omissão. Intervalos por bootstrap pareado por cenário (10 mil reamostras). Classificações semânticas atribuídas por IA avaliadora cega à condição, com auditoria manual de amostra.</p>
+      <p className="muted" style={{ fontSize: 12.5 }}>Recall: atendido = 1, parcial = 0,5. Em A, itens que dependem do histórico são uma limitação legítima de acesso, não uma omissão. Intervalos por bootstrap pareado por cenário (10 mil reamostras). Classificações semânticas atribuídas por IA avaliadora cega à condição, com conferência item a item de amostra.</p>
 
       <figure className="scenario-chart">
         <figcaption>
@@ -91,7 +91,7 @@ export function Experiment() {
                   {r.b != null && <path d={`M${x(r.b)} 10 l4 4 -4 4 -4 -4Z`} fill="var(--memory)" stroke="var(--paper-3)" />}
                 </svg>
                 <span className="chart-values"><span className="a">A {pct(r.a)}</span><span className="b">B {pct(r.b)}</span></span>
-                <span className="chart-errors"><span>Falsos A/B {r.fa ?? '—'}/{r.fb ?? '—'}</span><span>Proibidas A/B {r.va ?? '—'}/{r.vb ?? '—'}</span></span>
+                <span className="chart-errors"><span>Falsos A/B {r.fa ?? 'n/d'}/{r.fb ?? 'n/d'}</span><span>Proibidas A/B {r.va ?? 'n/d'}/{r.vb ?? 'n/d'}</span></span>
               </a>
             </li>
           ))}
@@ -116,7 +116,7 @@ export function Experiment() {
           <p className="prose" style={{ color: 'var(--ink-2)' }}>
             {S.estabilidade.A.cenarios} cenários foram executados {S.estabilidade.A.execucoes_por_cenario.toFixed(0)} vezes em cada condição.
             Em A, {pct(S.estabilidade.A.itens_gabarito_com_resultado_identico)} dos itens do gabarito tiveram o mesmo resultado em todas as repetições; em B, {pct(S.estabilidade.B.itens_gabarito_com_resultado_identico)}.
-            Recall por repetição — A: {S.estabilidade.A.recall_por_rep.map((v: number) => pct(v)).join(' · ')}; B: {S.estabilidade.B.recall_por_rep.map((v: number) => pct(v)).join(' · ')}.
+            Recall por repetição. A: {S.estabilidade.A.recall_por_rep.map((v: number) => pct(v)).join(' · ')}; B: {S.estabilidade.B.recall_por_rep.map((v: number) => pct(v)).join(' · ')}.
           </p>
         </>
       )}

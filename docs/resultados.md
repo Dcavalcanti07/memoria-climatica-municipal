@@ -1,4 +1,4 @@
-# Relatório de resultados — experimento A × B
+# Relatório de resultados: experimento A × B
 
 **Pergunta:** uma IA que recebe o contexto atual e a memória de eventos anteriores identifica dependências e verificações relevantes que passariam despercebidas só com as informações atuais? E quais riscos a memória traz?
 
@@ -37,8 +37,8 @@ Dados completos: `results/eval_v1/summary.json`, `per_run.csv`, `per_item.csv`. 
 
 - Recall geral: **+28 p.p.** [IC 95%: +18; +36]. B melhor em 21 cenários, empate em 8, A melhor em 1.
 - Itens de memória: +64 p.p. [+53; +76].
-- Itens atuais: −2 p.p. [−8; +4] — sem ganho; leve tendência de perda.
-- Precisão: +2 p.p. [−4; +7] — sem diferença.
+- Itens atuais: −2 p.p. [−8; +4]. Sem ganho, com leve tendência de perda.
+- Precisão: +2 p.p. [−4; +7]. Sem diferença.
 - Verificações por cenário: +0,6 [+0,2; +0,9].
 
 ## Estabilidade
@@ -63,7 +63,7 @@ Nos cenários desenhados para a memória **induzir erro** (abrigo retirado do pl
 
 ## Validade e limitações
 
-- **Avaliação automatizada.** Auditoria manual de 12 execuções: 65 de 68 decisões confirmadas, discordâncias nos dois sentidos. O avaliador raramente marca verificações como genéricas; na amostra, cerca de metade das verificações de A eram perguntas genéricas de disponibilidade, contra menos de um terço em B. A precisão de 95% é teto.
+- **Avaliação automatizada.** Conferência item a item de 12 execuções, feita durante o desenvolvimento com o assistente de IA: 65 de 68 decisões confirmadas, discordâncias nos dois sentidos. O avaliador raramente marca verificações como genéricas; na amostra, cerca de metade das verificações de A eram perguntas genéricas de disponibilidade, contra menos de um terço em B. A precisão de 95% é teto.
 - **Construção da amostra.** Casos e gabaritos escritos pela mesma equipe, com apoio de IA. O gabarito tende a valorizar o que o autor considerou relevante; documentos reais são mais longos, ambíguos e mal organizados.
 - **Tamanho.** 30 cenários; intervalos de confiança largos nas métricas por categoria (1 a 7 cenários por categoria).
 - **Um modelo.** Resultados podem mudar com outros modelos, versões ou níveis de raciocínio.

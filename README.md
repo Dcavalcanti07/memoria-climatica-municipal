@@ -1,8 +1,12 @@
 # Memória Climática Municipal (MCM)
 
-**Protótipo experimental:** IA que lê documentos municipais dispersos — plano de contingência, alerta, ofícios, relatórios e atas de eventos anteriores — e monta uma **pauta de verificações preventivas** com as fontes à vista, para a equipe da prefeitura revisar antes de um evento de inundação.
+**Protótipo experimental:** IA que lê documentos municipais dispersos (plano de contingência, alerta, ofícios, relatórios e atas de eventos anteriores) e monta uma **pauta de verificações preventivas** com as fontes à vista, para a equipe da prefeitura revisar antes de um evento de inundação.
 
 > Todos os municípios, documentos, pessoas e alertas são **fictícios**. O MCM não emite alertas, não prevê desastres, não define níveis de risco nem recomenda evacuações. Ele sugere perguntas para revisão humana.
+
+![Exemplo ilustrativo: documentos fictícios viram um mapa de relações e uma pergunta para a equipe revisar](docs/img/memoria-hero.gif)
+
+_Exemplo ilustrativo, feito com HyperFrames (código em `video/hero`)._
 
 ![Cenário Vila das Águas: arquivo de documentos, mapa de relações e pauta preventiva](docs/img/cenario-e01.png)
 
@@ -18,7 +22,7 @@ Entre 1991 e 2024, 91,5% dos municípios brasileiros registraram ao menos um des
 
 ## A proposta
 
-Transformar documentos dispersos em **conhecimento conectado e verificável**:
+Ligar documentos dispersos em **conhecimento conectado e verificável**:
 
 - **O que precisa ser confirmado?** Perguntas específicas, não um checklist genérico.
 - **Por quê?** O que motivou cada pergunta, com o **trecho literal** e o documento de origem.
@@ -47,7 +51,7 @@ Uma chamada por análise, com os documentos inteiros no contexto e **saída em J
 documentos fictícios ─► LLM (saída estruturada) ─► validação determinística ─► grafo + pauta ─► revisão humana
 ```
 
-- O grafo é construído **a partir da saída do modelo**: nós e relações não são desenhados à mão. Sem GraphRAG, banco vetorial ou embeddings — o grafo não é usado para recuperar contexto.
+- O grafo é construído **a partir da saída do modelo**: nós e relações não são desenhados à mão. Não há GraphRAG, banco vetorial nem embeddings: o grafo não é usado para recuperar contexto.
 - Validação determinística: documentos citados existem no conjunto enviado, trechos aparecem literalmente, relações apontam para entidades existentes.
 - Modelo de análise: `gpt-5.4-mini-2026-03-17` (raciocínio `low`). Prompt: [prompts/analise_v2.md](prompts/analise_v2.md). Schema: [src/core/schema.ts](src/core/schema.ts).
 
@@ -58,7 +62,7 @@ documentos fictícios ─► LLM (saída estruturada) ─► validação determi
 - **Amostra:** 36 cenários fictícios (6 de desenvolvimento, 30 de avaliação final), 3 a 6 documentos cada. Em 11 dos 30, a memória foi desenhada para não ajudar ou poder atrapalhar. → [data/authoring](data/authoring)
 - **Gabaritos** escritos antes das execuções e congelados com SHA-256 no commit `aea0272`; cada item marca se depende do contexto atual ou da memória. → [data/gold](data/gold)
 - **Condições:** A = plano + alerta + informações atuais; B = A + registros históricos. Mesmo modelo, prompt, configuração e formato; chamadas independentes.
-- **Avaliação:** validações determinísticas + rubrica aplicada por outro modelo (`gpt-5.4-2026-03-05`), cego à condição, com auditoria manual de amostra. → [prompts/avaliador_v1.md](prompts/avaliador_v1.md)
+- **Avaliação:** validações determinísticas + rubrica aplicada por outro modelo (`gpt-5.4-2026-03-05`), cego à condição, com conferência item a item de uma amostra (feita com o assistente de IA, não por especialistas). → [prompts/avaliador_v1.md](prompts/avaliador_v1.md)
 - **Execuções:** 60 da comparação principal + 40 repetições + 1 de atualização; 264 chamadas reais no total (incluindo a reexecução do E01 após renomeação), com respostas brutas em [runs/](runs).
 
 ## Resultados
@@ -77,7 +81,7 @@ Diferença pareada no recall: **+28 p.p.** (IC 95% +18 a +36). O ganho vem intei
 ## Limitações
 
 - Casos e gabaritos escritos pela mesma equipe, com apoio de IA; documentos curtos e limpos.
-- Avaliação semântica automatizada; auditoria manual parcial e não cega; **sem validação por servidores ou especialistas em Defesa Civil**.
+- Avaliação semântica automatizada; conferência parcial e não cega das decisões do avaliador; **sem validação por servidores ou especialistas em Defesa Civil**.
 - Um único modelo de análise.
 - O indicador de produtividade (TCPM) não foi medido; há protocolo proposto em [docs/resultados.md](docs/resultados.md) e na página Método do app.
 

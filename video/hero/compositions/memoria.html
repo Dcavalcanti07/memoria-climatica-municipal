@@ -1,0 +1,193 @@
+<template>
+  <style>
+    @font-face { font-family: 'Source Serif 4'; src: url('assets/fonts/SourceSerif4-600.woff2') format('woff2'); font-weight: 600; }
+    @font-face { font-family: 'IBM Plex Sans'; src: url('assets/fonts/IBMPlexSans-400.woff2') format('woff2'); font-weight: 400; }
+    @font-face { font-family: 'IBM Plex Sans'; src: url('assets/fonts/IBMPlexSans-600.woff2') format('woff2'); font-weight: 600; }
+    @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/IBMPlexMono-500.woff2') format('woff2'); font-weight: 500; }
+    #root {
+      position: absolute; inset: 0; overflow: hidden;
+      background: radial-gradient(1200px 760px at 50% 42%, #16263a 0%, #0e1823 62%, #0a121b 100%);
+      font-family: 'IBM Plex Sans', sans-serif; color: #ece6da;
+      --water: #63b5cf; --memory: #e2a13b; --hyp: #a497e0; --line: #8a97a6; --paper: #f2ede3; --ink: #17212b;
+    }
+    #m-grain { position: absolute; inset: 0; opacity: .5;
+      background-image: radial-gradient(rgba(236,230,218,.07) 1px, transparent 1px); background-size: 28px 28px; }
+    #m-label { position: absolute; left: 110px; top: 80px; font-family: 'IBM Plex Mono', monospace; font-size: 30px; letter-spacing: .16em;
+      text-transform: uppercase; color: #b9c1ca; border: 1.5px dashed rgba(185,193,202,.6); padding: 8px 14px; border-radius: 8px; }
+    #m-brand { position: absolute; right: 110px; top: 84px; font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 36px; color: #d9d2c4; opacity: .85; }
+
+    /* documentos */
+    .doc { position: absolute; opacity: 0; width: 370px; height: 450px; border-radius: 12px; background: var(--paper); color: var(--ink);
+      box-shadow: 0 24px 60px -20px rgba(0,0,0,.65); padding: 26px 24px; transform-origin: 50% 50%; }
+    .doc .stripe { height: 10px; width: 120px; border-radius: 4px; margin-bottom: 18px; }
+    .doc.mem .stripe { background: var(--memory); }
+    .doc.cur .stripe { background: #1d6a85; }
+    .doc .meta { font-family: 'IBM Plex Mono', monospace; font-size: 24px; color: #46505a; letter-spacing: .06em; text-transform: uppercase; }
+    .doc .t { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 34px; line-height: 1.18; margin: 6px 0 18px; }
+    .doc .bar { height: 9px; border-radius: 4px; background: #d8d0c0; margin: 0 0 13px; }
+    .doc .q { position: relative; font-family: 'IBM Plex Mono', monospace; font-size: 24px; line-height: 1.35; padding: 6px 8px; border-radius: 6px; margin: 2px 0 13px; color: #3b4653; }
+    .doc .q span { position: absolute; inset: 0; border-radius: 6px; }
+    .doc.mem .q span { background: rgba(226,161,59,.32); border-bottom: 3px solid var(--memory); }
+    .doc.cur .q span { background: rgba(99,181,207,.28); border-bottom: 3px solid #1d6a85; }
+    .doc .q b { position: relative; font-weight: 500; }
+
+    /* grafo */
+    #m-graph { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+    .edge { fill: none; stroke: var(--line); stroke-width: 3; stroke-linecap: round; }
+    .edge.mem { stroke: #e9b25c; stroke-width: 4; }
+    .edge.hyp { opacity: 0; stroke: var(--hyp); stroke-dasharray: 14 10; }
+    #m-graph g { opacity: 0; }
+    .glow { fill: none; stroke: rgba(226,161,59,.30); stroke-width: 20; stroke-linecap: round; }
+    .pulse { opacity: 0; fill: none; stroke: #ffd28a; stroke-width: 7; stroke-linecap: round; }
+    .elabel { opacity: 0; font-family: 'IBM Plex Sans', sans-serif; font-size: 34px; fill: #c9d0d8; paint-order: stroke; stroke: #0e1823; stroke-width: 7px; stroke-linejoin: round; }
+    .elabel.mem { fill: #f0c37a; }
+    .elabel.hyp { fill: #c7bdf2; }
+    .nlabel { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 38px; fill: #ece6da; paint-order: stroke; stroke: #0e1823; stroke-width: 8px; stroke-linejoin: round; }
+    .ring { fill: none; stroke: var(--memory); stroke-width: 4; }
+    .halo { fill: rgba(226,161,59,.18); }
+
+    /* cartão */
+    #m-card { position: absolute; opacity: 0; left: 200px; top: 752px; width: 1520px; padding: 26px 34px 24px; border-radius: 16px;
+      background: rgba(242,237,227,.97); color: var(--ink); box-shadow: 0 30px 80px -30px rgba(0,0,0,.8); border-left: 8px solid var(--memory); }
+    #m-card .eb { font-family: 'IBM Plex Mono', monospace; font-size: 26px; letter-spacing: .14em; color: #a8650f; text-transform: uppercase; }
+    #m-card .qq { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 54px; line-height: 1.16; margin: 10px 0 12px; }
+    #m-card .ev { font-family: 'IBM Plex Mono', monospace; font-size: 28px; color: #4a5058; }
+  </style>
+
+  <div id="root" data-composition-id="memoria" data-width="1920" data-height="1080">
+    <div id="m-grain"></div>
+    <div id="m-label">exemplo ilustrativo</div>
+    <div id="m-brand">Memória Climática Municipal</div>
+
+    <svg id="m-graph" viewBox="0 0 1920 1080">
+      <defs>
+        <marker id="m-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8a97a6" /></marker>
+        <marker id="m-arrow-mem" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e9b25c" /></marker>
+        <marker id="m-arrow-hyp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0L10 5L0 10z" fill="#a497e0" /></marker>
+      </defs>
+
+      <!-- arestas -->
+      <path id="m-g2" class="glow" d="M402 546 Q 590 400 812 340" />
+      <path id="m-g3" class="glow" d="M870 326 Q 1110 300 1342 436" />
+      <path id="m-e1" class="edge draw" d="M332 280 Q 330 430 366 534" marker-end="url(#m-arrow)" />
+      <path id="m-e2" class="edge mem draw" d="M402 546 Q 590 400 812 340" marker-end="url(#m-arrow-mem)" />
+      <path id="m-e3" class="edge mem draw" d="M870 326 Q 1110 300 1342 436" marker-end="url(#m-arrow-mem)" />
+      <path id="m-e4" class="edge hyp draw" d="M1004 652 Q 1250 650 1362 486" marker-end="url(#m-arrow-hyp)" />
+      <path id="m-e5" class="edge draw" d="M1614 644 Q 1310 720 1008 664" marker-end="url(#m-arrow)" />
+      <path id="m-pulse" class="pulse" d="M380 560 Q 590 400 840 330 Q 1110 300 1380 450" />
+
+      <text id="m-l1" data-layout-allow-occlusion class="elabel" x="312" y="425" text-anchor="end">cota &gt; 4,2 m</text>
+      <text id="m-l2" class="elabel mem" x="505" y="548" text-anchor="start">interditou a ponte em 2024</text>
+      <text id="m-l3" class="elabel mem" x="1040" y="284" text-anchor="start">único acesso cadastrado</text>
+      <text id="m-l4" class="elabel hyp" x="1215" y="585" text-anchor="end">? rota sem execução</text>
+      <text id="m-l5" data-layout-allow-occlusion class="elabel" x="1320" y="745" text-anchor="middle">Obras avaliaria o custo</text>
+
+      <!-- nós -->
+      <g id="m-nA" transform="translate(320,250)"><circle r="18" fill="#a497e0" /><text class="nlabel" y="-38" text-anchor="middle">Alerta laranja (simulado)</text></g>
+      <g id="m-nR" transform="translate(380,560)"><circle r="20" fill="#5cc8b0" /><text class="nlabel" y="64" text-anchor="middle">Ribeirão das Águas</text></g>
+      <g id="m-nP" transform="translate(840,330)"><circle class="halo" r="44" /><circle r="22" fill="#67b7e6" /><circle class="ring" r="30" /><text class="nlabel" y="-52" text-anchor="middle">Ponte dos Tropeiros</text></g>
+      <g id="m-nB" transform="translate(1380,450)"><circle class="halo" r="50" /><circle r="26" fill="#f2b06a" /><circle class="ring" r="35" /><text class="nlabel" y="-58" text-anchor="middle">Abrigo Escola Lírio do Vale</text></g>
+      <g id="m-nG" transform="translate(980,660)"><circle r="19" fill="#67b7e6" /><text class="nlabel" y="62" text-anchor="middle">Estrada da Granja</text></g>
+      <g id="m-nO" transform="translate(1640,640)"><circle r="18" fill="#e897c3" /><text class="nlabel" y="60" text-anchor="middle">Secretaria de Obras</text></g>
+    </svg>
+
+    <!-- documentos fictícios -->
+    <div id="m-d1" class="doc mem" style="left:130px; top:270px">
+      <div class="stripe"></div><div class="meta">D4 · relatório 2024</div>
+      <div class="t">Inundação de maio de 2024</div>
+      <div class="bar" style="width:92%"></div><div class="bar" style="width:78%"></div>
+      <div class="q"><span id="m-q1"></span><b>“era o único acesso cadastrado ao abrigo”</b></div>
+      <div class="bar" style="width:85%"></div><div class="bar" style="width:60%"></div>
+    </div>
+    <div id="m-d2" class="doc mem" style="left:550px; top:300px">
+      <div class="stripe"></div><div class="meta">D5 · ata 2024</div>
+      <div class="t">Reunião de avaliação pós-evento</div>
+      <div class="bar" style="width:88%"></div>
+      <div class="q"><span id="m-q2"></span><b>“poderia servir como acesso alternativo”</b></div>
+      <div class="bar" style="width:74%"></div><div class="bar" style="width:90%"></div>
+    </div>
+    <div id="m-d3" class="doc cur" style="left:970px; top:270px">
+      <div class="stripe"></div><div class="meta">D1 · plano vigente</div>
+      <div class="t">Plano de contingência 2025</div>
+      <div class="bar" style="width:80%"></div><div class="bar" style="width:92%"></div>
+      <div class="q"><span id="m-q3"></span><b>“Abrigo da Escola Lírio do Vale”</b></div>
+      <div class="bar" style="width:70%"></div>
+    </div>
+    <div id="m-d4" class="doc cur" style="left:1390px; top:300px">
+      <div class="stripe"></div><div class="meta">D2 · alerta simulado</div>
+      <div class="t">Boletim hidrológico</div>
+      <div class="q"><span id="m-q4"></span><b>“NÍVEL: LARANJA”</b></div>
+      <div class="bar" style="width:90%"></div><div class="bar" style="width:84%"></div><div class="bar" style="width:66%"></div>
+    </div>
+
+    <!-- verificação -->
+    <div id="m-card">
+      <div class="eb">Verificação sugerida · para revisão humana</div>
+      <div class="qq">A Ponte dos Tropeiros continua sendo o único acesso ao abrigo? Existe rota alternativa?</div>
+      <div class="ev">Fonte: D4 · “A Ponte dos Tropeiros era o único acesso cadastrado ao abrigo”</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const q = (s) => document.querySelector(s);
+      const tl = gsap.timeline({ paused: true });
+      // comprimentos para desenhar as linhas
+      document.querySelectorAll('#m-graph .draw, #m-graph .glow').forEach((p) => {
+        const L = p.getTotalLength();
+        p.dataset.len = L;
+        gsap.set(p, { strokeDasharray: p.classList.contains('hyp') ? '14 10' : L, strokeDashoffset: p.classList.contains('hyp') ? 0 : L });
+      });
+      const pulse = q('#m-pulse');
+      const PL = pulse.getTotalLength();
+      gsap.set(pulse, { strokeDasharray: `90 ${PL + 200}`, strokeDashoffset: 90, opacity: 0 });
+
+      const docs = ['#m-d1', '#m-d2', '#m-d3', '#m-d4'];
+      const rot = [-5, 3, -2, 4];
+      // destino de cada documento: o nó que ele origina
+      const target = [[840, 330], [980, 660], [1380, 450], [320, 250]];
+      const center = [[315, 495], [735, 525], [1155, 495], [1575, 525]];
+
+      // estado inicial firme em t = 0 (vale para qualquer posição de busca)
+      tl.set(['#m-graph g', '.elabel', '#m-e4', '#m-card', '#m-pulse', '.doc'], { opacity: 0 }, 0);
+      tl.fromTo(['#m-label', '#m-brand'], { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 0.1);
+      docs.forEach((d, i) => {
+        tl.fromTo(d, { opacity: 0, y: 40, rotation: rot[i] * 1.6, scale: 0.96 }, { opacity: 1, y: 0, rotation: rot[i], scale: 1, duration: 0.6, ease: 'power3.out' }, 0.15 + i * 0.12);
+        tl.fromTo(`#m-q${i + 1}`, { scaleX: 0, transformOrigin: '0% 50%' }, { scaleX: 1, duration: 0.45, ease: 'power2.out' }, 0.95 + i * 0.14);
+        // o documento se dissolve em direção ao nó
+        tl.fromTo(d, { x: 0, scale: 1, opacity: 1 },
+          { x: target[i][0] - center[i][0], y: target[i][1] - center[i][1], scale: 0.08, rotation: 0, opacity: 0, duration: 0.85, ease: 'power3.in' }, 2.0 + i * 0.07);
+      });
+
+      const pop = (id, t) => tl.fromTo(id, { opacity: 0, scale: 0.2, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(2)' }, t);
+      pop('#m-nP', 2.75); pop('#m-nG', 2.82); pop('#m-nB', 2.9); pop('#m-nA', 2.97);
+      pop('#m-nR', 3.15); pop('#m-nO', 3.25);
+
+      const draw = (id, label, t, d = 0.6) => {
+        const p = q(id);
+        if (p.classList.contains('hyp')) tl.fromTo(p, { opacity: 0 }, { opacity: 1, duration: d, ease: 'none' }, t);
+        else tl.fromTo(p, { strokeDashoffset: p.dataset.len }, { strokeDashoffset: 0, duration: d, ease: 'power2.inOut' }, t);
+        tl.fromTo(label, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }, t + d * 0.6);
+      };
+      draw('#m-e1', '#m-l1', 3.4);
+      draw('#m-e2', '#m-l2', 3.9);
+      tl.fromTo('#m-g2', { strokeDashoffset: q('#m-g2').dataset.len }, { strokeDashoffset: 0, duration: 0.6, ease: 'power2.inOut' }, 3.9);
+      draw('#m-e3', '#m-l3', 4.4);
+      tl.fromTo('#m-g3', { strokeDashoffset: q('#m-g3').dataset.len }, { strokeDashoffset: 0, duration: 0.6, ease: 'power2.inOut' }, 4.4);
+      draw('#m-e5', '#m-l5', 4.9);
+      draw('#m-e4', '#m-l4', 5.2);
+
+      // pulso percorre a cadeia que a memória revelou
+      tl.fromTo(pulse, { opacity: 0, strokeDashoffset: 90 }, { opacity: 1, duration: 0.15 }, 5.9);
+      tl.fromTo(pulse, { strokeDashoffset: 90 }, { strokeDashoffset: -PL, duration: 1.3, ease: 'power1.inOut' }, 5.9);
+      tl.fromTo(pulse, { opacity: 1 }, { opacity: 0, duration: 0.2 }, 7.1);
+      // o restante recua para o cartão entrar
+      tl.fromTo(['#m-nA', '#m-nO', '#m-e1', '#m-e5', '#m-l1', '#m-l5'], { opacity: 1 }, { opacity: 0.32, duration: 0.5 }, 6.6);
+      tl.fromTo('#m-card', { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 6.8);
+      tl.fromTo('#m-card .ev', { opacity: 0 }, { opacity: 1, duration: 0.5 }, 7.5);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines['memoria'] = tl;
+    })();
+  </script>
+</template>
