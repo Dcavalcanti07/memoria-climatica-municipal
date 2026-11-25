@@ -47,7 +47,14 @@ export function Workspace({ id }: { id: string }) {
   useEffect(() => {
     let mounted = true;
     loadScenario(id).then((scenario) => {
-      if (mounted) { setSc(scenario); setMode(scenario.runs.B ? 'B' : 'A'); }
+      if (!mounted) return;
+      // link direto: ?modo=A|B|BU&v=V2 abre a condição e a verificação indicadas
+      const q = new URLSearchParams(location.search);
+      const wanted = q.get('modo') as Mode | null;
+      setSc(scenario);
+      setMode(wanted && scenario.runs[wanted] ? wanted : scenario.runs.B ? 'B' : 'A');
+      const v = q.get('v');
+      if (v) setSelCheck(v);
     }).catch((e) => { if (mounted) setErr(String(e)); });
     return () => { mounted = false; liveRequest.current?.abort(); };
   }, [id]);

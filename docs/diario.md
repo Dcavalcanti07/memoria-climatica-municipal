@@ -87,7 +87,12 @@ Resultados e casos: ver `docs/resultados.md`.
 - Publicação autorizada pela autora: repositório público no GitHub e app na Vercel **sem** análise ao vivo (nenhuma chave enviada à Vercel; a função responde 503 "desativada").
 - PDF da submissão (4 páginas A4) gerado fora do repositório. A Parte 1 foi diagramada a partir do texto fornecido e conferida palavra por palavra (978 palavras, sem alteração).
 
-## 13. O que não foi feito ou ficou limitado
+## 13. Revisão da Parte 2 frente ao enunciado
+
+- Revisão crítica contra o enunciado oficial: todos os itens atendidos; riscos de enquadramento corrigidos na Parte 2. Suposições do município explicitadas (inclusive a de que os registros existem), bloco "Como levaria para a equipe" com a oficina sem aplicativo, linguagem de métricas simplificada e figura legível (mapa com o caminho destacado e a mesma pergunta sem e com memória, trechos reais da execução armazenada).
+- O app ganhou link direto para uma verificação (`?modo=A|B|BU&v=V2`), usado para gerar a figura.
+
+## 14. O que não foi feito ou ficou limitado
 
 - Nenhum teste com servidores municipais. O indicador TCPM não foi medido; há protocolo proposto.
 - Um único modelo de análise. Sem comparação entre provedores.
