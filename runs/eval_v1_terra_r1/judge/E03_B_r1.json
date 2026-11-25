@@ -1,0 +1,150 @@
+{
+  "run_file": "E03_B_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-6.1-terra",
+    "reasoning_effort": "medium",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_0b2438b61d87ba90016b070020993c87d28fde8a9ca7f4fe19",
+  "model_reported": "gpt-6.1-terra",
+  "usage": {
+    "input_tokens": 6384,
+    "output_tokens": 1615,
+    "reasoning_tokens": 575
+  },
+  "latency_ms": 35781,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V3"
+        ],
+        "justificativa": "V3 pergunta sobre prorrogação ou nova contratação após o vencimento."
+      },
+      {
+        "id": "G2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V5"
+        ],
+        "justificativa": "V1 pergunta sobre a elevação do painel e V5 sobre a proteção para a faixa prevista."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "T6",
+          "R8",
+          "R2",
+          "V2",
+          "R3"
+        ],
+        "justificativa": "A saída relaciona a faixa prevista à inundação histórica, à interrupção do abastecimento e ao apoio aos abrigos."
+      },
+      {
+        "id": "P2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V3",
+          "T5",
+          "R3",
+          "R4"
+        ],
+        "justificativa": "A saída vincula a falta de água nos abrigos ao caminhão-pipa e reconhece o vencimento contratual."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "correto",
+        "ids_saida": [
+          "V1",
+          "T1"
+        ],
+        "justificativa": "A pendência de 2024 é identificada sem presumir sua solução."
+      },
+      {
+        "id": "T2",
+        "resultado": "correto",
+        "ids_saida": [
+          "V3",
+          "T5"
+        ],
+        "justificativa": "V3 e T5 reconhecem o vencimento, embora o resumo e T3 apresentem afirmações contraditórias."
+      }
+    ],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "reconhecido",
+        "ids_saida": [
+          "V1",
+          "V5"
+        ],
+        "justificativa": "A saída explicita que falta informação atual sobre a proteção da casa de bombas."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não afirma que haverá interrupção e ressalva que o dano não é certo."
+      },
+      {
+        "id": "X2",
+        "violado": true,
+        "onde": "resumo_situacao; achados_temporais.T3.implicacao",
+        "justificativa": "O resumo afirma que há contrato vigente e T3 aponta base contratual atual para o serviço."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à verificação da elevação do painel em G2."
+      },
+      {
+        "id": "V2",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "A instalação e a operação dos motores de reposição são relevantes e não estão comprovadas nos documentos."
+      },
+      {
+        "id": "V3",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à confirmação contratual de G1."
+      },
+      {
+        "id": "V4",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "A logística do caminhão-pipa para os dois abrigos é relevante e não é detalhada no plano."
+      },
+      {
+        "id": "V5",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à verificação da proteção da captação para a cota prevista em G2."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "resumo_situacao",
+        "afirmacao": "Há contrato vigente de caminhão-pipa até 31/10/2026."
+      },
+      {
+        "onde": "achados_temporais.T3.implicacao",
+        "afirmacao": "Há base documental atual para uso do caminhão-pipa, embora a vigência informada tenha terminado antes da data de referência."
+      },
+      {
+        "onde": "achados_temporais.T2.tipo e implicacao",
+        "afirmacao": "O problema dos motores queimados está resolvido ou não deve ser tratado como pendência ativa apenas porque foi registrada a compra de motores novos."
+      }
+    ]
+  }
+}

@@ -1,0 +1,918 @@
+{
+  "meta": {
+    "scenario": "E12",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v2_luna",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 858,
+    "user_message_sha12": "83e2a74a9484"
+  },
+  "user_message": "Município (fictício): Itaquara do Norte\nData de referência da análise: 2026-11-26\nDocumentos disponíveis (2), em ordem cronológica:\n\n### [D1] Plano de Contingência — Comunicação (2025)\nTipo: Plano de contingência | Fonte: Secretaria de Comunicação | Data: 2025-05-14\n\nCanais de comunicação com a população: perfis oficiais da Prefeitura nas redes sociais, lista de transmissão de mensagens da Defesa Civil e site da Prefeitura.\nPorta-voz: secretária de Comunicação.\n\n---\n\n### [D2] Alerta de temporal (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-26\n\nNÍVEL: LARANJA. Temporal com descargas elétricas, ventos fortes e chuva de 100 mm em 24 h. Possíveis interrupções de energia e de serviços de telecomunicação.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_0e69b5abc428a6a1016b070020928887d28de50f04e3771ada",
+  "model_reported": "gpt-6-luna",
+  "usage": {
+    "input_tokens": 2027,
+    "output_tokens": 3014,
+    "reasoning_tokens": 289
+  },
+  "latency_ms": 19204,
+  "started_at": "2026-11-25T15:34:56.114Z",
+  "output": {
+    "resumo_situacao": "O alerta de 26/11/2026 informa temporal com descargas elétricas, ventos fortes e chuva de 100 mm em 24 horas, com possíveis interrupções de energia e telecomunicações. O plano de comunicação de 2025 lista canais digitais e uma porta-voz, mas não informa como esses canais funcionam durante interrupções. A pauta se limita a verificar essa possível dependência e as alternativas previstas.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Alerta de temporal de 26/11/2026",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Alerta nível laranja para temporal com descargas elétricas, ventos fortes e chuva de 100 mm em 24 horas."
+      },
+      {
+        "id": "E2",
+        "nome": "Plano de Contingência — Comunicação (2025)",
+        "tipo": "norma_documento",
+        "setor_responsavel": "Secretaria de Comunicação",
+        "descricao": "Plano que registra canais de comunicação com a população e identifica a porta-voz."
+      },
+      {
+        "id": "E3",
+        "nome": "Secretaria de Comunicação",
+        "tipo": "setor",
+        "setor_responsavel": "Secretaria de Comunicação",
+        "descricao": "Setor indicado como fonte do plano de comunicação."
+      },
+      {
+        "id": "E4",
+        "nome": "Perfis oficiais da Prefeitura nas redes sociais",
+        "tipo": "servico",
+        "setor_responsavel": "Secretaria de Comunicação",
+        "descricao": "Um dos canais de comunicação com a população listados no plano."
+      },
+      {
+        "id": "E5",
+        "nome": "Lista de transmissão de mensagens da Defesa Civil",
+        "tipo": "servico",
+        "setor_responsavel": "Defesa Civil",
+        "descricao": "Canal de mensagens listado no plano de comunicação."
+      },
+      {
+        "id": "E6",
+        "nome": "Site da Prefeitura",
+        "tipo": "servico",
+        "setor_responsavel": "Secretaria de Comunicação",
+        "descricao": "Um dos canais de comunicação com a população listados no plano."
+      },
+      {
+        "id": "E7",
+        "nome": "Secretária de Comunicação",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "Secretaria de Comunicação",
+        "descricao": "Porta-voz indicada no plano de comunicação."
+      },
+      {
+        "id": "E8",
+        "nome": "Serviços de telecomunicação",
+        "tipo": "servico",
+        "setor_responsavel": null,
+        "descricao": "Serviços para os quais o alerta aponta possíveis interrupções."
+      },
+      {
+        "id": "E9",
+        "nome": "Fornecimento de energia",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Fornecimento para o qual o alerta aponta possíveis interrupções."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E3",
+        "destino": "E2",
+        "tipo": "responsavel_por",
+        "rotulo": "A Secretaria de Comunicação é indicada como fonte do plano.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-05-14",
+          "fim": null,
+          "observacao": "O documento não informa data de encerramento da vigência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Fonte: Secretaria de Comunicação"
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E2",
+        "destino": "E4",
+        "tipo": "comunica",
+        "rotulo": "O plano lista os perfis oficiais como canal para a população.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-05-14",
+          "fim": null,
+          "observacao": "Disponibilidade atual não informada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "perfis oficiais da Prefeitura nas redes sociais"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E2",
+        "destino": "E5",
+        "tipo": "comunica",
+        "rotulo": "O plano lista a lista de transmissão como canal para a população.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-05-14",
+          "fim": null,
+          "observacao": "Disponibilidade atual não informada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "lista de transmissão de mensagens da Defesa Civil"
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E2",
+        "destino": "E6",
+        "tipo": "comunica",
+        "rotulo": "O plano lista o site da Prefeitura como canal para a população.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-05-14",
+          "fim": null,
+          "observacao": "Disponibilidade atual não informada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "site da Prefeitura"
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E7",
+        "destino": "E3",
+        "tipo": "responsavel_por",
+        "rotulo": "A secretária de Comunicação é indicada como porta-voz.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-05-14",
+          "fim": null,
+          "observacao": "O plano não informa se houve mudança posterior."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Porta-voz: secretária de Comunicação."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E8",
+        "destino": "E1",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta aponta possíveis interrupções de telecomunicação associadas ao temporal.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-26",
+          "fim": null,
+          "observacao": "O alerta descreve uma possibilidade, não uma interrupção já ocorrida."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Possíveis interrupções de energia e de serviços de telecomunicação."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E9",
+        "destino": "E1",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta aponta possíveis interrupções de energia associadas ao temporal.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-26",
+          "fim": null,
+          "observacao": "O alerta descreve uma possibilidade, não uma interrupção já ocorrida."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Possíveis interrupções de energia"
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E4",
+        "destino": "E8",
+        "tipo": "depende_de",
+        "rotulo": "A eventual dependência dos perfis sociais de serviços de telecomunicação precisa ser confirmada.",
+        "status_epistemico": "hipotese",
+        "periodo": {
+          "inicio": null,
+          "fim": null,
+          "observacao": "O plano não descreve dependências nem alternativas em caso de interrupção."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "perfis oficiais da Prefeitura nas redes sociais"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Possíveis interrupções de energia e de serviços de telecomunicação."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "O plano de comunicação é de 14/05/2025; o alerta disponível é de 26/11/2026 e apresenta possíveis interrupções de energia e telecomunicações.",
+        "implicacao": "O alerta é posterior ao plano, mas não informa que o plano foi atualizado ou substituído. A adequação dos canais listados às possíveis interrupções não está documentada.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Data: 2025-05-14"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Data: 2026-11-26"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Possíveis interrupções de energia e de serviços de telecomunicação."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "Os perfis sociais, a lista de transmissão e o site dependem de energia ou de serviços de telecomunicação cuja interrupção possa afetar seu uso, e há alguma alternativa de comunicação prevista para esse caso?",
+        "por_que_importa": "O alerta menciona possíveis interrupções de energia e telecomunicações, enquanto o plano lista canais de comunicação sem descrever sua dependência desses serviços ou alternativas.",
+        "motivacao": "A combinação do alerta de 26/11/2026 com os canais registrados no plano de 2025.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E4",
+          "E5",
+          "E6",
+          "E8",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "Secretaria de Comunicação",
+          "Defesa Civil"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Canais de comunicação com a população:"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Possíveis interrupções de energia e de serviços de telecomunicação."
+          }
+        ],
+        "o_que_falta_saber": "Se cada canal pode operar durante interrupções, quais dependências existem e se o plano prevê alternativas para comunicar a população.",
+        "quem_pode_confirmar": "Secretaria de Comunicação e Defesa Civil, conforme a divisão institucional de responsabilidades a confirmar.",
+        "prioridade": "alta"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "O plano não descreve alternativas de comunicação para interrupções de energia ou telecomunicações, nem informa a dependência operacional de cada canal.",
+        "por_que_importa": "O alerta atual aponta essas interrupções como possíveis."
+      },
+      {
+        "descricao": "Não há informação posterior sobre atualização do plano, mudança da porta-voz ou condição atual dos canais.",
+        "por_que_importa": "O plano é de 2025 e os documentos disponíveis não confirmam se seus registros permanecem atuais."
+      }
+    ],
+    "cautelas": [
+      "O alerta descreve possíveis interrupções; os documentos não confirmam que tenham ocorrido.",
+      "A data mais recente do alerta não significa, por si só, que o plano de 2025 tenha sido substituído.",
+      "Não há registro de ocorrências anteriores entre os documentos fornecidos."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 9,
+    "n_relacoes": 8,
+    "n_verificacoes": 1,
+    "n_temporais": 1,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Fonte: Secretaria de Comunicação",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "perfis oficiais da Prefeitura nas redes sociais",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "lista de transmissão de mensagens da Defesa Civil",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "site da Prefeitura",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Porta-voz: secretária de Comunicação.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Possíveis interrupções de energia e de serviços de telecomunicação.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Possíveis interrupções de energia",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "perfis oficiais da Prefeitura nas redes sociais",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Possíveis interrupções de energia e de serviços de telecomunicação.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Data: 2025-05-14",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Data: 2026-11-26",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Possíveis interrupções de energia e de serviços de telecomunicação.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Canais de comunicação com a população:",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Possíveis interrupções de energia e de serviços de telecomunicação.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      }
+    ],
+    "n_citacoes": 14,
+    "n_citacoes_literais": 14,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795620915,
+    "created_at": 1795620896,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_0e69b5abc428a6a1016b070020928887d28de50f04e3771ada",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-6-luna",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBwAjoQzZpWdbqXJUrhLVJwhwFrrkviROoXrnDOJRuunOm2hHFSsYuWF3XREPt2VAlz3sUhEhmwkqjqBOGKZJQvYuw0xD4j6DCGxrxwIuME23XOFAibqTAxnN1hyuw470NdDXknqS_OliKY8besp4gVck9RcYafMJSc3E9rAeBSY2RBvmo7rdC0DzGowDpHqjd9ZTcC2i8AjoyghX5mo-Au7fyuJfXB4aMdOc0BVnt_LMWa7rOAmU7cIGvBxq02WHaS1DRxu_HUbQldIwGi8TYfvlyAw12tD-4sZWKcOm_357S9FBp3K2bBVy2dTruIZddcpj15sr1cdmIoxwSETuMVQ7gSvhdjIOAYVWJtnuUC-rifWvaG_i5v5pIoKDr52fGsbePhSxtS-a8ISXrssEx1sbjQPdoM6HOKgfCXt6shg8Wb4vyDxxzbfkLcrE9EEl_2arUxrQS2gBEFdakEhG36RVGJ0lg_9c7hKi0_GjGl7S9W9XozdYglO58EsRYEp4_lfdg3emortEY5KStLAZ-l6QL6Vs8VvlKThWECwq-8vXD07diaXhgqJv3Gf-sH_YjLi5Gs7Zc_r7kExp4ggrpzvIhnZxFHZaJ2WBYD2fO_AXhBUVv3KDOCsIsOPnpzUyQKH-KnijfR7zZDgI50I6TBtnENp4OurPJMX7pgbbv8AGv1fSD1BCdbBThTU7cEbi_Gt1Cb6PHoSlfp-NxJrO9I0KefwaUwjKNPIwYuhbZ1bs5MX4aidSA7nBMAvNXYdIYIAxXOnnsbZ1JWUN5_FUHnVyTJwRoncqzh0uRPOnVJNRWb1dmO5xiDDt9kMOIJbNICRT1xuATbOqRaPRl3OYnTTFkuN2TJ8CiQYgeqvfBcYCGqiShD_q__njTAsDRHA4NY2_yoK3An5XDa2mF4dE6b4SwESkgqSVCNdzBCN8j519Yj14EvY1jR8LW9xLc6NxxLbxn0L1_GUP5eWjfGO_zVLEwdUI1I-kB9VO4ZKq5oj6ePABMZ2cmWuQt5ahoAE3PLNbXpI0I1rwpkjLHmmxsF055zyGP4XBiVGHWzGdWCP6awrGYMv6xaKioH8ToDsM3qAtAaRRF_3iJ2fpZaqRYDR8rdC5CUhKeBwQMjAljvPzQ7MABR6yNCFfKDpLoPTiGTEuV0w5a0xkgupquxrZm0vqmum3G3mP1-OgG-fpuxTQiW67Md0nol8rdjR2S-uSt-i-bm6OfsA1qLIuTddVPOuby4PoU-600Kw4q2ORGI8m8NkEpxCJ3Rpdg33L7ztmKtLYnrR00A6obq2j_A7BHH9kh3mdj7fhM3XxTa0srYjz-Ba9WHUbAEbnyC5LdJaHHKyrIdU3RcMZ7f2UNO1ISjZPZC88tFyClv3vOj_Le4r7pHsHXgn4VPjEWpXe2cjWvTVgxboY_V-dki4RX-M2Dn1uPzlo1JvxS-_CT4B2ftR9db_tlouiWESU_48i28a529WdXdyImoT8dPU5Ek6lUQePw5LqF3WYN7PtCGTlHOSy-uuZQmoRTptOHRjnffEQobXML_R-z61omOUNtTivZbL2I_JFVQ4x3KkQNLM4jdnFSb7mgg2lwfMIPjF4knfhrPwsBlh4grJugRV2GAWDHw4gkVbJlDp0tnI-0CYAkpAYHHXvLWiUrz8iswbM3O3qjqkR1PjQML2dH7wIrLkTJAt1UKnrNMbUb9vP5nzZqDwmUmgAvnyyWZ8uCRDl6-WYm5JGBVBamCXEhyc3RukKG_6AZI2G45vES-EzRydepAOkzLOr7ZLNDEUdZTGq7ywAG7TUMZw3bMe8j9r97McxT04e7ce0nFrg76AulAFlc7ABQGe9rEBBTiY9AdRzCVgmeY9EHBhvJidlQeKGUziW-kVjW8oajSGJ6uMtp4WFcQ1eJibtlBII3hEPIE0M6RQE5trX9IHOb4yZ1EMTvcin6XTVVSJmkcqwPIlFw-90YCc8UY8y8wjxTFWuXslBizBFS25wCSVWryc0KA5Y4GcXOxfwqnMyN7vQr0_IqCEw5dBN8NYLmrPXdPM7cLgZeWpIcpxSvz3OW9gNB2gDMrmYy-Tn7_Kou3GVxfCEUo5ZmRJoL3crsBPG4N0zpJmG_Z00C2Ut0FcGQ8r4Pdb0YM3vdiAvxpWx1XMD8T34Yyumz7RoWOqxuLDCB4KMmz3bXAp-BFazcWvFCCcOabLxmSVvFp0YFIf4fiUZ1qzriWUl4k_swzEWTvI8YU23W1tAZShwrBggH2EjwQc9vMyALZM4Br9lC6NIr6jCoDzML8YUNC3JZCryz6PjH0zjZ0Dm5J-oHow27FKsKBK8dsj93R1OYnEi9RXc0d7zJUwlHv4kPFfMU1XgPf3JFGg4hBUjx4wbLij7JkT_BzHE4GjoGr9z-12XcDEepX_SDWryS_GNZyj2ZF5vfN2kOhxjeu5VRnxMdXFQtaDVBMVezZJWhrHcJHdeCkKRoyLm7EFUAFwkw1uc4lO6czGiZdhEik6Z3yqIY5g7ZF84-p7uTmTxNag1TVdXgSCqmiDBnAg5SF160cu8Urg3NSaf8i7gucIJ3DxREy191FF7zc4o9ZU-pRho9ZjQY0d7qLJoseumA3XqqJyg_w_SHhiCnkwkIRxL80V0itcY_GFbSrwOCuS5bZVwD1t-pi9jHOQ2-cMzaJ7INY-DmXzKtrY3LDWvwbLmFOgDPQuR2jsYxoR7PK6OQBgxD4tB8M9A7bUikVdLM7qCx3P-sMDsA7suuWJlprgWBNc0cNq-4lxmCgz_gH6GZY4LrREGRcamZqNXvxtaImPlr0Ey8s8Idgcur9JneUBmThdnCBoE1u6kGWU6T8j0tnK0i8rYzPYdWShgjZPMqpNT0kM-qbVzjWqAzNO_kZXWCyvKNPmnQMrnPAtjKQpqflfePKH3bsMbMDqozrhBT-lYRSML_3-BHiXCHnf2vYxno2oplEgeg9kupnOHY-1dKe4xppiSX-5a7gGRi32fjOE_4qBpH05CZjHMFUXsCjaUlnD8_d2SFsc2oJD2-Wkd8hb--bOGDzYn1VLOXAxvrZGaIpW2IcaBI4duHxXcnbRmxbV8arnc5GT4LiyUPJWpuBYwyZv7_i0TEuknCp5ioP0aO3GjN6cCsi7R7m4UnQTJ0uopdRHr9GmJr7ixDPjGPitAAnjC3GgvFHe-kvQXnwoBDh4s9qI-nXL1YSeAHc8abtO19BbwYJ7G8fJWoISW5PXVtKdDbssloZ8rllAENnR4QLh6VfGz0jgbA69m5qRWnnqfdq05W-GKap64qPkERJxo3w0hxmCU9uRBr3KWt56Iym4fAAoKJlP2BROs0njaGiiUmB3dasqwK2wv8YpCQbJdfMNuj94hmhkHSEqEh6Wh8yQ8qdR2kw7mDr8gLmPfIv67ZNWWj9tMnauYgBsddgWGUVUuskG8pW0v2CKel7ezD299fnZA9r1670bolSAZOpbQ4mCX0twYVXliDHK4HrITr3_IkupA_aZ9V81xtLx_SKLkO2Wq6cdigaJG-gINTBQLrgCB3G0b8jbnYu3IgvXdPuu9lcZpvPK1EoTmDlnaZ18NEmlFGIry8CwS0l2lUOFtdXQFdmjmdTerXVTyWntODIq7mnpsPqSVS8usjgHU0YrPcQHRTKNeq4_dAfEpwlzygkNbtKIZ7_OESVMQ4KFbId0gFcKYHwebPMz8zuL3r5wIMkqLFnSzPIG0eC7PGaytNb0g0VH-QQeXK0hceyooEBEzzkg_HPoWLGPJj6UBZBHvcHIrH3yAIfDgNjdh73Bf-fKK_OFwhRHM-yc06SAUkhIb4hIUXBNoTp_r0bprgiTzC5UVaBYY6RZd_2a6gEIDKqouXFeMmLYciJxfl8uuU_cIiN7g4AnUP1ShRtkWyhYqMU2xKu70yvW3MhcCjQS2MFAAjkuSaHJ37l6VHgcCy9Sr6Y9bIY6sKXIJt506ZWy6qqE-l913HLyFLoU7b3dDkBVyA47NfH7zzk7OgalAnquGNEmUWnB0ce04eoKchraeNhcqoFNvl-_uycjLc_mTo43yjY2X5CTj1Kw7DbjsJ5N8Q7sdTEMuUA4qhTdMTZk0YbGMeIKSnonvff-RqiqsSw5gznnAJ0xH1MKgEtXrCHdpks__Le5LVNDLz00GbS5CalZa6J_7FO_TqCFvSZK1WKQqwp4mwBJanMX7wO4wIfCH4ryaYfRWaBawKIEOitbVT_fA48McP-34tOdViNl8nv7olaGKVyeg8Kr55cZd_InmP3h54t3IGxW7VtZpF0u_O8SyB8FcQLzESmbeOA__DmGLnwOu1E46rXRgo2rbkBGr7oiBThEbVMV_-d_yoJxlRzMNk6yJQfgtsDu9DuhMvTgaOENCDh4M-owfWbydb8yWFbKBH7vEIJHO-iZb3NXbn4kIoLPFfUZvXbqMZP-jBU33SSPrnYQyXuA-KfIWhhbtuWRbeJ0fiZGtgge3KFJJH0i4ZY309guYRVACK9PQ2GCR8sYCdnhpywRzQzSerJmkYKH4NrlggxvSHkFsXbDe47aga9Ek5nnLp_Rzo4S0voCS2qydP0chvi2jNI_w0NRC_itBx1qGgCuotVF_vw1ghbn17FIMbUDxcnZfjsGWE4tarP3lsl_nZimLFLNBRfC31fVhAJIwBGO7e7hcJg3P51Wu8Ltgd15jLA-6z8uekjongv4ln6iNWo7LtTzFBEoIq2aGpqiUzbDu5CIvQSNm4KYlYsy-D_iMkb0O5-ntN_3kEH288mIZb2D6tgjxKPtx2wLA2OjsfFNXhhl-ovnfICINezDEzGarGQzIH00KKp1G3eUgZLgKsdSaGrDJBBuMqG-qsMqhxOT9wEtTKijCp2QemvsrxR1D7w7f6WfUISR-rR-fIXztSzIRODTtfxyWEUAtcgHWW5c20-4KbXwqq1OxuHF6mbx-j-iK99x7nry7bxh7nZpUXmUbCvXHt-boMctRyfSp9BTgg4yeiP7yyKjSU1P_Uj87xwIX9Z1whgjSM3RQZYkgXU2xJCrymD1-8koXod4aV-ctKvlpM7Oyvk4xx_wk9shy4p7yJHm2_WfMGBI2VFBOs9c3vvacV93NPWqJdCLHYFNtcNnxjgs02T5pZAlggGLp_XV4p1WUPXj7WUYq0hsStxrv8ESrp_XboSNy7Wzn2tp2D9JdR39zwKvJIwAC1XrRRqau4eUjrzPIk-IcGUCLeoJv37D3kvRzZY8g1hVWM3-IQLocovzqvPzkHGNKxamZnwohsgqGinH5W5BzQa_DqgI1Q9gd5c2-SAT0MR6OZOLGdyGT-E88v2dJcvGHGKRQB92PceF9dEyKFLbvrO0vmcncLxwZihQXYfLNxIr8QYXpweaWlSLURwTpgbViCLiZjMFGaOp4MH0_Cnt3Dj73p0zke3Weq3F4QwgZ8HWf2UHJRHN7AlJ8mkSieAZjRXOKB121vkt8tjmQioxy-PadCLVMyxyxFXZVCDAiTlGx5ZTtu6mgb5J0ORajPcCVrsoLAYhdOpkjAU__2zVksdUhJ-uXiPsyfh-6Q5by8CvwQMofthb6RDK4i25Ox1XfBtU5OiuAqTGiepzJ39t47G94PHxn3eodoxP-fB1tnQ9MkM_3bD3EXwiY1MjlLrOrqEo-7SqOKbuWXDLSh4LknDo50EZKaEyfTK9FU-wjejuzAj_bWfQC6RgIk0Ah_vVkKtu617x5YVDPJYKe9Uh7rsUYaCcSF8O6-Hf-dJyTybvuK6T-j_ndMHoBaTsbC_mADAdVOc6_ypBzsdjmiV7OkNhOgjSoGxyB3l3YiM1beWEpXbsyaT-tjjjQEpclEjZtrjfjcYbAvGbopyRYeDfcsziZ0wl1AHyQlInetA==",
+        "id": "rs_0e69b5abc428a6a1016b070023b0b487d2b53963f703b4b088",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"resumo_situacao\": \"O alerta de 26/11/2026 informa temporal com descargas elétricas, ventos fortes e chuva de 100 mm em 24 horas, com possíveis interrupções de energia e telecomunicações. O plano de comunicação de 2025 lista canais digitais e uma porta-voz, mas não informa como esses canais funcionam durante interrupções. A pauta se limita a verificar essa possível dependência e as alternativas previstas.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de temporal de 26/11/2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Alerta nível laranja para temporal com descargas elétricas, ventos fortes e chuva de 100 mm em 24 horas.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Plano de Contingência — Comunicação (2025)\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"Secretaria de Comunicação\",\n      \"descricao\": \"Plano que registra canais de comunicação com a população e identifica a porta-voz.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Secretaria de Comunicação\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Secretaria de Comunicação\",\n      \"descricao\": \"Setor indicado como fonte do plano de comunicação.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Perfis oficiais da Prefeitura nas redes sociais\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Secretaria de Comunicação\",\n      \"descricao\": \"Um dos canais de comunicação com a população listados no plano.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Lista de transmissão de mensagens da Defesa Civil\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Defesa Civil\",\n      \"descricao\": \"Canal de mensagens listado no plano de comunicação.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Site da Prefeitura\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Secretaria de Comunicação\",\n      \"descricao\": \"Um dos canais de comunicação com a população listados no plano.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Secretária de Comunicação\",\n      \"tipo\": \"funcao_responsavel\",\n      \"setor_responsavel\": \"Secretaria de Comunicação\",\n      \"descricao\": \"Porta-voz indicada no plano de comunicação.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"Serviços de telecomunicação\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Serviços para os quais o alerta aponta possíveis interrupções.\"\n    },\n    {\n      \"id\": \"E9\",\n      \"nome\": \"Fornecimento de energia\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Fornecimento para o qual o alerta aponta possíveis interrupções.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E3\",\n      \"destino\": \"E2\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Secretaria de Comunicação é indicada como fonte do plano.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-14\",\n        \"fim\": null,\n        \"observacao\": \"O documento não informa data de encerramento da vigência.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Fonte: Secretaria de Comunicação\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E2\",\n      \"destino\": \"E4\",\n      \"tipo\": \"comunica\",\n      \"rotulo\": \"O plano lista os perfis oficiais como canal para a população.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-14\",\n        \"fim\": null,\n        \"observacao\": \"Disponibilidade atual não informada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"perfis oficiais da Prefeitura nas redes sociais\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E2\",\n      \"destino\": \"E5\",\n      \"tipo\": \"comunica\",\n      \"rotulo\": \"O plano lista a lista de transmissão como canal para a população.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-14\",\n        \"fim\": null,\n        \"observacao\": \"Disponibilidade atual não informada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"lista de transmissão de mensagens da Defesa Civil\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E2\",\n      \"destino\": \"E6\",\n      \"tipo\": \"comunica\",\n      \"rotulo\": \"O plano lista o site da Prefeitura como canal para a população.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-14\",\n        \"fim\": null,\n        \"observacao\": \"Disponibilidade atual não informada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"site da Prefeitura\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E7\",\n      \"destino\": \"E3\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A secretária de Comunicação é indicada como porta-voz.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-14\",\n        \"fim\": null,\n        \"observacao\": \"O plano não informa se houve mudança posterior.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Porta-voz: secretária de Comunicação.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E8\",\n      \"destino\": \"E1\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta aponta possíveis interrupções de telecomunicação associadas ao temporal.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": null,\n        \"observacao\": \"O alerta descreve uma possibilidade, não uma interrupção já ocorrida.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Possíveis interrupções de energia e de serviços de telecomunicação.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R7\",\n      \"origem\": \"E9\",\n      \"destino\": \"E1\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta aponta possíveis interrupções de energia associadas ao temporal.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": null,\n        \"observacao\": \"O alerta descreve uma possibilidade, não uma interrupção já ocorrida.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Possíveis interrupções de energia\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R8\",\n      \"origem\": \"E4\",\n      \"destino\": \"E8\",\n      \"tipo\": \"depende_de\",\n      \"rotulo\": \"A eventual dependência dos perfis sociais de serviços de telecomunicação precisa ser confirmada.\",\n      \"status_epistemico\": \"hipotese\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": \"O plano não descreve dependências nem alternativas em caso de interrupção.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"perfis oficiais da Prefeitura nas redes sociais\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Possíveis interrupções de energia e de serviços de telecomunicação.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O plano de comunicação é de 14/05/2025; o alerta disponível é de 26/11/2026 e apresenta possíveis interrupções de energia e telecomunicações.\",\n      \"implicacao\": \"O alerta é posterior ao plano, mas não informa que o plano foi atualizado ou substituído. A adequação dos canais listados às possíveis interrupções não está documentada.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Data: 2025-05-14\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Data: 2026-11-26\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Possíveis interrupções de energia e de serviços de telecomunicação.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Os perfis sociais, a lista de transmissão e o site dependem de energia ou de serviços de telecomunicação cuja interrupção possa afetar seu uso, e há alguma alternativa de comunicação prevista para esse caso?\",\n      \"por_que_importa\": \"O alerta menciona possíveis interrupções de energia e telecomunicações, enquanto o plano lista canais de comunicação sem descrever sua dependência desses serviços ou alternativas.\",\n      \"motivacao\": \"A combinação do alerta de 26/11/2026 com os canais registrados no plano de 2025.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E4\",\n        \"E5\",\n        \"E6\",\n        \"E8\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Comunicação\",\n        \"Defesa Civil\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Canais de comunicação com a população:\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Possíveis interrupções de energia e de serviços de telecomunicação.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se cada canal pode operar durante interrupções, quais dependências existem e se o plano prevê alternativas para comunicar a população.\",\n      \"quem_pode_confirmar\": \"Secretaria de Comunicação e Defesa Civil, conforme a divisão institucional de responsabilidades a confirmar.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"O plano não descreve alternativas de comunicação para interrupções de energia ou telecomunicações, nem informa a dependência operacional de cada canal.\",\n      \"por_que_importa\": \"O alerta atual aponta essas interrupções como possíveis.\"\n    },\n    {\n      \"descricao\": \"Não há informação posterior sobre atualização do plano, mudança da porta-voz ou condição atual dos canais.\",\n      \"por_que_importa\": \"O plano é de 2025 e os documentos disponíveis não confirmam se seus registros permanecem atuais.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O alerta descreve possíveis interrupções; os documentos não confirmam que tenham ocorrido.\",\n    \"A data mais recente do alerta não significa, por si só, que o plano de 2025 tenha sido substituído.\",\n    \"Não há registro de ocorrências anteriores entre os documentos fornecidos.\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0e69b5abc428a6a1016b070023cf4887d283682ba12d79c97e",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "all_turns",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2027,
+      "input_tokens_details": {
+        "cache_write_tokens": 233,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 233
+        },
+        "cached_tokens": 1791
+      },
+      "output_tokens": 3014,
+      "output_tokens_details": {
+        "reasoning_tokens": 289
+      },
+      "total_tokens": 5041
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\n  \"resumo_situacao\": \"O alerta de 26/11/2026 informa temporal com descargas elétricas, ventos fortes e chuva de 100 mm em 24 horas, com possíveis interrupções de energia e telecomunicações. O plano de comunicação de 2025 lista canais digitais e uma porta-voz, mas não informa como esses canais funcionam durante interrupções. A pauta se limita a verificar essa possível dependência e as alternativas previstas.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de temporal de 26/11/2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Alerta nível laranja para temporal com descargas elétricas, ventos fortes e chuva de 100 mm em 24 horas.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Plano de Contingência — Comunicação (2025)\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"Secretaria de Comunicação\",\n      \"descricao\": \"Plano que registra canais de comunicação com a população e identifica a porta-voz.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Secretaria de Comunicação\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Secretaria de Comunicação\",\n      \"descricao\": \"Setor indicado como fonte do plano de comunicação.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Perfis oficiais da Prefeitura nas redes sociais\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Secretaria de Comunicação\",\n      \"descricao\": \"Um dos canais de comunicação com a população listados no plano.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Lista de transmissão de mensagens da Defesa Civil\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Defesa Civil\",\n      \"descricao\": \"Canal de mensagens listado no plano de comunicação.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Site da Prefeitura\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Secretaria de Comunicação\",\n      \"descricao\": \"Um dos canais de comunicação com a população listados no plano.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Secretária de Comunicação\",\n      \"tipo\": \"funcao_responsavel\",\n      \"setor_responsavel\": \"Secretaria de Comunicação\",\n      \"descricao\": \"Porta-voz indicada no plano de comunicação.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"Serviços de telecomunicação\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Serviços para os quais o alerta aponta possíveis interrupções.\"\n    },\n    {\n      \"id\": \"E9\",\n      \"nome\": \"Fornecimento de energia\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Fornecimento para o qual o alerta aponta possíveis interrupções.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E3\",\n      \"destino\": \"E2\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Secretaria de Comunicação é indicada como fonte do plano.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-14\",\n        \"fim\": null,\n        \"observacao\": \"O documento não informa data de encerramento da vigência.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Fonte: Secretaria de Comunicação\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E2\",\n      \"destino\": \"E4\",\n      \"tipo\": \"comunica\",\n      \"rotulo\": \"O plano lista os perfis oficiais como canal para a população.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-14\",\n        \"fim\": null,\n        \"observacao\": \"Disponibilidade atual não informada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"perfis oficiais da Prefeitura nas redes sociais\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E2\",\n      \"destino\": \"E5\",\n      \"tipo\": \"comunica\",\n      \"rotulo\": \"O plano lista a lista de transmissão como canal para a população.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-14\",\n        \"fim\": null,\n        \"observacao\": \"Disponibilidade atual não informada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"lista de transmissão de mensagens da Defesa Civil\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E2\",\n      \"destino\": \"E6\",\n      \"tipo\": \"comunica\",\n      \"rotulo\": \"O plano lista o site da Prefeitura como canal para a população.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-14\",\n        \"fim\": null,\n        \"observacao\": \"Disponibilidade atual não informada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"site da Prefeitura\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E7\",\n      \"destino\": \"E3\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A secretária de Comunicação é indicada como porta-voz.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-14\",\n        \"fim\": null,\n        \"observacao\": \"O plano não informa se houve mudança posterior.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Porta-voz: secretária de Comunicação.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E8\",\n      \"destino\": \"E1\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta aponta possíveis interrupções de telecomunicação associadas ao temporal.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": null,\n        \"observacao\": \"O alerta descreve uma possibilidade, não uma interrupção já ocorrida.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Possíveis interrupções de energia e de serviços de telecomunicação.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R7\",\n      \"origem\": \"E9\",\n      \"destino\": \"E1\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta aponta possíveis interrupções de energia associadas ao temporal.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": null,\n        \"observacao\": \"O alerta descreve uma possibilidade, não uma interrupção já ocorrida.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Possíveis interrupções de energia\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R8\",\n      \"origem\": \"E4\",\n      \"destino\": \"E8\",\n      \"tipo\": \"depende_de\",\n      \"rotulo\": \"A eventual dependência dos perfis sociais de serviços de telecomunicação precisa ser confirmada.\",\n      \"status_epistemico\": \"hipotese\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": \"O plano não descreve dependências nem alternativas em caso de interrupção.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"perfis oficiais da Prefeitura nas redes sociais\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Possíveis interrupções de energia e de serviços de telecomunicação.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O plano de comunicação é de 14/05/2025; o alerta disponível é de 26/11/2026 e apresenta possíveis interrupções de energia e telecomunicações.\",\n      \"implicacao\": \"O alerta é posterior ao plano, mas não informa que o plano foi atualizado ou substituído. A adequação dos canais listados às possíveis interrupções não está documentada.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Data: 2025-05-14\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Data: 2026-11-26\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Possíveis interrupções de energia e de serviços de telecomunicação.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Os perfis sociais, a lista de transmissão e o site dependem de energia ou de serviços de telecomunicação cuja interrupção possa afetar seu uso, e há alguma alternativa de comunicação prevista para esse caso?\",\n      \"por_que_importa\": \"O alerta menciona possíveis interrupções de energia e telecomunicações, enquanto o plano lista canais de comunicação sem descrever sua dependência desses serviços ou alternativas.\",\n      \"motivacao\": \"A combinação do alerta de 26/11/2026 com os canais registrados no plano de 2025.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E4\",\n        \"E5\",\n        \"E6\",\n        \"E8\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Comunicação\",\n        \"Defesa Civil\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Canais de comunicação com a população:\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Possíveis interrupções de energia e de serviços de telecomunicação.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se cada canal pode operar durante interrupções, quais dependências existem e se o plano prevê alternativas para comunicar a população.\",\n      \"quem_pode_confirmar\": \"Secretaria de Comunicação e Defesa Civil, conforme a divisão institucional de responsabilidades a confirmar.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"O plano não descreve alternativas de comunicação para interrupções de energia ou telecomunicações, nem informa a dependência operacional de cada canal.\",\n      \"por_que_importa\": \"O alerta atual aponta essas interrupções como possíveis.\"\n    },\n    {\n      \"descricao\": \"Não há informação posterior sobre atualização do plano, mudança da porta-voz ou condição atual dos canais.\",\n      \"por_que_importa\": \"O plano é de 2025 e os documentos disponíveis não confirmam se seus registros permanecem atuais.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O alerta descreve possíveis interrupções; os documentos não confirmam que tenham ocorrido.\",\n    \"A data mais recente do alerta não significa, por si só, que o plano de 2025 tenha sido substituído.\",\n    \"Não há registro de ocorrências anteriores entre os documentos fornecidos.\"\n  ]\n}"
+  }
+}

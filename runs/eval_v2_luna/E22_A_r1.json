@@ -1,0 +1,923 @@
+{
+  "meta": {
+    "scenario": "E22",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v2_luna",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 731,
+    "user_message_sha12": "ef9fff99d4dd"
+  },
+  "user_message": "Município (fictício): Lajeado Claro\nData de referência da análise: 2026-11-24\nDocumentos disponíveis (2), em ordem cronológica:\n\n### [D1] Plano de Contingência (2025)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2025-05-05\n\nAbrigo: Escola Estadual Lajeado (120 pessoas). Regras do abrigo: proibida a entrada de animais nas salas de aula.\nÁrea de risco prioritária: Beco do Rio (aprox. 45 famílias).\n\n---\n\n### [D2] Alerta de inundação (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-24\n\nNÍVEL: VERMELHO para o Beco do Rio. Elevação rápida do Rio Lajeado nas próximas 18 horas.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_0d3467b2d0b90e26016b07003b0db087d2ab147bc2071bfbd6",
+  "model_reported": "gpt-6-luna",
+  "usage": {
+    "input_tokens": 2016,
+    "output_tokens": 3595,
+    "reasoning_tokens": 433
+  },
+  "latency_ms": 21823,
+  "started_at": "2026-11-25T15:35:22.824Z",
+  "output": {
+    "resumo_situacao": "O alerta de 24/11/2026 indica nível vermelho para o Beco do Rio e elevação rápida do Rio Lajeado nas próximas 18 horas. O plano de 2025 identifica o Beco do Rio como área prioritária e designa a Escola Estadual Lajeado como abrigo para 120 pessoas, mas os documentos não confirmam se essas informações permanecem válidas hoje.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Beco do Rio",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Área de risco prioritária no plano de contingência; o alerta atual indica nível vermelho para o local."
+      },
+      {
+        "id": "E2",
+        "nome": "Famílias do Beco do Rio",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": null,
+        "descricao": "O plano de 2025 estima aproximadamente 45 famílias na área de risco prioritária."
+      },
+      {
+        "id": "E3",
+        "nome": "Escola Estadual Lajeado",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Local indicado como abrigo no plano de 2025, com capacidade informada de 120 pessoas."
+      },
+      {
+        "id": "E4",
+        "nome": "Abrigo na Escola Estadual Lajeado",
+        "tipo": "servico",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Abrigo previsto no plano de contingência de 2025; o plano proíbe a entrada de animais nas salas de aula."
+      },
+      {
+        "id": "E5",
+        "nome": "Rio Lajeado",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Rio cuja elevação rápida nas próximas 18 horas é indicada no alerta de inundação."
+      },
+      {
+        "id": "E6",
+        "nome": "Alerta de inundação de 24/11/2026",
+        "tipo": "evento",
+        "setor_responsavel": "Sala de Situação Regional",
+        "descricao": "Alerta fictício que indica nível vermelho para o Beco do Rio e elevação rápida do Rio Lajeado nas próximas 18 horas."
+      },
+      {
+        "id": "E7",
+        "nome": "Plano de Contingência (2025)",
+        "tipo": "norma_documento",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Documento de 05/05/2025 que registra o abrigo, sua capacidade e regra de entrada de animais, além da área prioritária e estimativa de famílias."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "localizado_em",
+        "rotulo": "O plano estima aproximadamente 45 famílias na área.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-05-05",
+          "fim": null,
+          "observacao": "Estimativa registrada no plano de 2025; não há atualização nos documentos fornecidos."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Área de risco prioritária: Beco do Rio (aprox. 45 famílias)."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E1",
+        "destino": "E6",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta indica nível vermelho para o Beco do Rio.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-24",
+          "fim": null,
+          "observacao": "O alerta informa elevação rápida nas próximas 18 horas."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: VERMELHO para o Beco do Rio."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E5",
+        "destino": "E6",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta informa elevação rápida do Rio Lajeado.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-24",
+          "fim": null,
+          "observacao": "Prazo indicado: próximas 18 horas."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Elevação rápida do Rio Lajeado nas próximas 18 horas."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E4",
+        "destino": "E3",
+        "tipo": "localizado_em",
+        "rotulo": "O abrigo previsto no plano fica na Escola Estadual Lajeado.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-05-05",
+          "fim": null,
+          "observacao": "A documentação fornecida não confirma a designação ou capacidade atuais."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E7",
+        "destino": "E4",
+        "tipo": "outro",
+        "rotulo": "O plano registra a proibição de entrada de animais nas salas de aula.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-05-05",
+          "fim": null,
+          "observacao": "Não há documento posterior sobre a vigência da regra ou alternativas para animais."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "proibida a entrada de animais nas salas de aula."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "O alerta de 24/11/2026 informa nível vermelho para o Beco do Rio e elevação rápida do Rio Lajeado nas próximas 18 horas. O plano de 2025 já identificava o Beco do Rio como área prioritária.",
+        "implicacao": "A área indicada no plano coincide com a área nomeada no alerta. O alerta não atualiza a estimativa de famílias, o abrigo ou suas regras.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Área de risco prioritária: Beco do Rio (aprox. 45 famílias)."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: VERMELHO para o Beco do Rio."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "pendencia_historica",
+        "descricao": "A capacidade e a designação da Escola Estadual Lajeado como abrigo, bem como a regra sobre animais, aparecem apenas no plano de 2025; não há atualização nos documentos fornecidos.",
+        "implicacao": "Não é possível concluir que a designação, capacidade ou regra tenham mudado ou permaneçam iguais; precisam de confirmação institucional para o cenário atual.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas)."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "proibida a entrada de animais nas salas de aula."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "A Escola Estadual Lajeado continua designada para abrigo, e a capacidade de 120 pessoas registrada no plano ainda é aplicável?",
+        "por_que_importa": "O plano é de 2025, enquanto o alerta atual indica nível vermelho para a área associada ao abrigo. A documentação não confirma a designação nem a capacidade atuais.",
+        "motivacao": "Plano de 2025 designa a escola para 120 pessoas; alerta de inundação emitido em 24/11/2026 para o Beco do Rio.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E3",
+          "E4",
+          "E6",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas)."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: VERMELHO para o Beco do Rio."
+          }
+        ],
+        "o_que_falta_saber": "Se o local continua designado como abrigo e se a capacidade informada no plano segue válida para o cenário atual.",
+        "quem_pode_confirmar": "COMPDEC, indicada como fonte do plano; confirmar institucionalmente a atribuição atual.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "A estimativa de aproximadamente 45 famílias no Beco do Rio foi atualizada para o cenário atual?",
+        "por_que_importa": "A estimativa consta de um plano de 2025 e não há atualização sobre o número de famílias na área nomeada no alerta de 2026.",
+        "motivacao": "O plano registra aproximadamente 45 famílias; o alerta atual indica nível vermelho para o mesmo local.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E6",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Área de risco prioritária: Beco do Rio (aprox. 45 famílias)."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: VERMELHO para o Beco do Rio."
+          }
+        ],
+        "o_que_falta_saber": "Se a estimativa de famílias foi revisada e qual é a informação vigente para o Beco do Rio.",
+        "quem_pode_confirmar": "COMPDEC, indicada como fonte do plano; confirmar institucionalmente a atribuição atual.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "A regra que proíbe animais nas salas de aula continua vigente e, caso famílias afetadas precisem do abrigo com animais, existe orientação ou alternativa definida?",
+        "por_que_importa": "O plano registra uma restrição de entrada de animais, mas não informa se a regra foi atualizada nem o que fazer diante dessa restrição.",
+        "motivacao": "A regra consta do plano de 2025 e o alerta atual se refere à área de risco associada ao abrigo; os documentos não informam se há animais entre as necessidades das famílias.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E2",
+          "E4",
+          "E6",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "proibida a entrada de animais nas salas de aula."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: VERMELHO para o Beco do Rio."
+          }
+        ],
+        "o_que_falta_saber": "Se a regra permanece válida, se há necessidade relacionada a animais entre as famílias e, se houver, qual orientação ou alternativa foi definida.",
+        "quem_pode_confirmar": "COMPDEC, indicada como fonte do plano; confirmar institucionalmente quem responde pela gestão atual do abrigo.",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há confirmação atual da designação, condição de uso ou capacidade da Escola Estadual Lajeado como abrigo.",
+        "por_que_importa": "Esses dados foram registrados em 2025 e são relevantes para revisar o uso do abrigo no cenário atual."
+      },
+      {
+        "descricao": "Não há estimativa atualizada do número de famílias no Beco do Rio.",
+        "por_que_importa": "A única estimativa disponível, de aproximadamente 45 famílias, consta do plano de 2025."
+      },
+      {
+        "descricao": "Não há informação sobre a vigência atual da regra para animais nem sobre orientação ou alternativa para famílias que precisem levá-los.",
+        "por_que_importa": "A regra pode afetar o acesso ao abrigo, mas os documentos não descrevem as necessidades das famílias nem uma alternativa."
+      }
+    ],
+    "cautelas": [
+      "O nível vermelho e o prazo de 18 horas são informações do alerta fornecido; esta análise não define medidas operacionais nem substitui os protocolos oficiais.",
+      "A estimativa de famílias, a capacidade do abrigo e a regra sobre animais são registros do plano de 2025, não confirmações de condição atual.",
+      "Os documentos não informam rotas, meios de comunicação, responsáveis operacionais atuais ou necessidades específicas das famílias; não se presume que existam ou estejam definidos."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 7,
+    "n_relacoes": 5,
+    "n_verificacoes": 3,
+    "n_temporais": 2,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Área de risco prioritária: Beco do Rio (aprox. 45 famílias).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: VERMELHO para o Beco do Rio.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Elevação rápida do Rio Lajeado nas próximas 18 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "proibida a entrada de animais nas salas de aula.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Área de risco prioritária: Beco do Rio (aprox. 45 famílias).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: VERMELHO para o Beco do Rio.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "proibida a entrada de animais nas salas de aula.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: VERMELHO para o Beco do Rio.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Área de risco prioritária: Beco do Rio (aprox. 45 famílias).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: VERMELHO para o Beco do Rio.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "proibida a entrada de animais nas salas de aula.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: VERMELHO para o Beco do Rio.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      }
+    ],
+    "n_citacoes": 15,
+    "n_citacoes_literais": 15,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795620944,
+    "created_at": 1795620923,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_0d3467b2d0b90e26016b07003b0db087d2ab147bc2071bfbd6",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-6-luna",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBwA-MC8_e4ATzDCI5OuTOd8_o26s4UYeyV0picNPvCuRNCrhWsbwQE03hGngI9IhJScRA-PnjWK2CWb2KVgmxbuxuZ7CXcXkxDHVcl03JjkCPcl8b3PSrvw-FWreXBevOrX9ZCDt8HnrymZZJclEkZRDqSwXBjE62pR8W6DnHvSnSBPODT_MppcB3McS8lyAiwhBX2PKZ3HPc-ao-LOLc45zhGHAD4DRCFTj51lhfuF6jVMAWFRkBmvAKQH55UO1KkHOIBz0myckf3G-iCv4zLYyTnBMK3-dBvP0g0z6XV1KqUKDzkUlpoEdxXjOehtMsbuGYbG6535YkKJF9xv3Z2N2jwzmm2Xr5-sqs-bkTyDWZouVeU25CO2HAeIzpnVgsmw-R8dEuqQPKc4pswsr6eZO5hr3GikPY8OGbybI6Hne_S74mxPzXWtdgpGznEgvy_18jPxaB85jQZP7ylYtOoD6cVqeGxvicoydQ28tNB62aU3kso1Q9hmbPTwcZh0GKyPOHaFQ7qwgUnuOoC2GwyVpkCaqh1iceBfiLqGlrtWAjvLD2iCS8ft7MvDocIXjiQE46FbV4_k39dvy1x14zjIobpdKPnsbDLR5CocEeHOvjTaIrd-Kw-n5t6PiKnyxLjLBcg_o2X6W4dbL37i4x5zGYZ3wfTBlr7pxl66gvnH636AoYnsskVyylnaaEMQzatzs4Tn4JyL52hGLmumiYQb71Yamk8JHR9EkjXuZu6Rjofz7lXtu5B0qOxhndhhcBf9var-u_aAjfxJIQfm8Thmzbqmp-DVnDMzWPH4P-AAL39oxDlswMvPdqOp0A7Dy6SaIQqEN9uS0SttNxrDEp7DW0xwrXyho6SxVEtCIh618BbWR6LkVxSMBar7a8TxEjCULOQEjEGMItS4ues9Ev3kFEHnWAh7mKmK0hNxktp2Ok3fK-2_aMH7zrcgwBm0LgCVND-GxUMn_G7iabli0u6NAJ7Q4XTnHTl7-b2WFzE85sJmP7ZbjFL-whIbvDaFEufMx_GbERqxnGp1nog6eRUDkulJvuGChnIFH7DyB2evpXnT5S8qn0hHljJq6WUCH933NVw-fCktvuwyBPajuZduxQudzywOkmgct2So-uabpcn9sJJBCaZLnqUotRocLkjLNTIku8bLHF9ncSa51ogC7G29l8U8FhxFze05H3VJyTyA3bOHDzeEqFQ2ZWkULF59aXmytAzm1M_VON0MTDxl7RggT7h6aeYWHB_aoqFHN7IkuAbPzgoC6K0Csg1qmCO4gczUC5gv9Dz8JI3CPyR2GuT1GbrykiHuAQfoUPgYulDvg4tfIVhy0U-ANqz3UDDwqOiRMie-oAi085k2DJVHzFYj6m86VVqVMEReOpDlAdoMHEzCKh8yiM01X38C-yN7is81KKuxaCuDwM4hs6V2nxKWF-lu3nOlEI3go3mflJzLWBvCD7z_80q_nVS7nogcks2taGo7BhS33SAU-rcTeYdvEStACQ2ah5JjjR4bjAAjI91FRM5TQXChnw9qs6kPaV7QxRO-eY_2RUqFAivKMaTPn_GUOM8MR9gOKaC_iypS212ibrRnySFqG0L6Q_SjShjQOjQv8KjRRnA2yFifDf_cALYIiMGDDY8Vk2mUHqPrKHEp0RIQrI7SXNzQroJ8QRZ-avJgHYmQjtMdj-jAqn90D1CwMgCFUgKiq9dkoRhGIbDt-jmeNgg1MAK8OeMdlfaDI4cFrhU5TEwfBoMydgvJnZsJUnzt9Ujt0G1el1LHOe3sGipi7o2XrPpdu-syJcVS_qw-_MRs7OTXs3XAita65UvgJAJLN-DD1zBdi2erKdnJmLgxJmnaxr35S7xNyXqicZFEY8E22XH45N-Ckj6nyJCRJt9YaKI-ji4vXbfgfHlZj8Og1jFIQZdvNFnonZ2T4Pb1A7sB1QafOK2gLOL__2m49MSQONWNtFSdFsq2eNSxwZwP5nuTz5bo-8cDf-H1aP2rVFjBvS6gNB2m_D_PkMC795xBwQEqrWggsKG8dPcZrlkSeKLQ4UtkrNHm67TTCLQcwBxoPPCmPa50_EiQd0Z-5-m6zPOnYThZGvtm0PP3C9DfK5OxVc9EchFifwvvoe1B83K7z8SO8rVMrjFoIZJ8KczRSkFyq8hVSPPPEiUiKafMOId8Ypg7bLbj4Ll-Ty42MvpDuYD_xSGT8uaDov28gXCyvdXBpUz2aOdU3U18Tvuhrz0l_Nd5aQuOfVZzZDoOO4oRtU6avkfhdjpQpf26r_O1pB1hF4QjSEoHXqYThW6vvMG5KqguC3ce-i-SZVwrn2GaNHuFVYDlN-nQLv4730uJmebMZUPgjO8brB-JUstjhJJUlBPphzV7cOyhViiNcjXqr_l59OpR174YxK4Tsy7DOgAaJPADBGNA1nwETplQiwrqVe8-dcsjgccEmWc-9jbgY6EKYE0Kg8sJfg2te6CTB7kiaoipkn3rh0xa2gSChVHfWRPLcI3X4-4Ziz8RdsvB9t983Es0FttbN0SZkItjgMFrWy9Y7U0KRMEI8fkhJ3KTjDGpSMB7Zf-SRS3n40AczSODrXYx1g9kKzMP_wPZMpjLrKP9t2jBYVXs5uPXphF0-HjQIw6lPDmXaxigxb-tfd18ozfzHUjFS92niKB1gEdOZT53KQb1sAgEsBklRx2EwgrOrjfzU02WMqjjttVl3KVgVaWzF-sWVD0Tvy-nu2rFtuiyZTtWfTQWJqofAqEumHOl6Q4KjD1TMD__fd8t6P7pymkK_vEKqQlwm6RWiggv-GK9ihtKom9hp9G0vlQG-8Myn4DVcdLCoxfYOSBudu0-1ha-15a61kR5on4m608pPht8vux5DbWCncZdYzZjWoTwIHTbhRpsYCFHyX8uFYE90dS1hCvBrcWWRQJHNV5m47HwKk2mIlBFz7RaF3L_oCoMXKv1UeMHoFWaR6iFEQWmzRTPWWWhk01DtAR9VeFSloYValXBSJ3IZbAr7Z-T-o5v_EWRCU8JNUBNefwE-CWBsAkU38iQWyDIPLyPtR0e8J3O_xhqjCTA7yMfpvtxySfNz6-iPLlc_JJlXz3SsFBAXviZcZXNuqxMAQjSL-jOvb9EyP_m62-DH5ncCIKmpSRC7s3_Cbhg4QFR2OLpZ_pQSj40lBoAhK_IOe62k5f7kPBGkQRquewUu9dQchOhs20QczHDEKeoOqMPP_NkBFqlb7O90IhrzLquwPw2AuZRPbnwPMDNLwwO5TlUuv9AlB6ioXP-rLlzEfeMjbF1yHq94TQAYeDGp0N6MlTSMVRSRujsZY5B5gMLgGuzkEJ0U11kbmnTYKMAMm7g8NKO3_WcHjYv_FmeIFiC6tkc19_fTGF30qsHvmp_L_FKjU1hW11dZE_E87BReaS-PkIjBsVQNZs6yjWjiFjBcSv1ehkEZ94ITp7kCzagjwnmgobCf4r1Qfc6OOdhJBdwKSEL-sZqEWzkPRkiLo8QG3yV7VC-HMZauwhzD3KcoUldt7uCiczH9_lAwTyDN3Dmj8VQPWFBFBP-7-UsD969DVIQwvFcabjFt1uB0oIi45Y0mNfllmQhMo5crBzZRglfo02DWvhj05Gj0bmNjqLFx0kGTW9AXZeWXF_FqT6GRoCYJ981G0OEiPNkZbp-tzfNbV3WumQ9KpYn_4FwBfI565wWBcxmFMc6b20xjijzvfebnu6F3TtVWj7kondW5nKytP52vyEzZ8tblWghamek-lrUToNBjlYhF23nvEnP2Z1Fx07dpKtTK-sC5-DBDuaKXqMZSCstecuwa-SHsy9KfnHDhcixDisGEgNQWKkKGSDD5xF6lqYc1dPTGSsvsS_vO_bTuoi30eGSbe5VhecX5qi_2vK5vJno2ecXrI4_JX5v31ld1fmQYQNj_67d7QfvWw4Ol9EJuocGrjucFtKiPcGK_Fzltu-hRJDCRBf-dhxgoRbBoXAXSObYBqA2f-6bllHzx_XW9jf5nlStk9gUP36rEHhppYd_HgkQEvZ1vpoXTK3tNFJXNRWwqYBsCztBbGdYDha48I7m-Bo-Cl1NmYKQgMQmSRlJd43eYo0y4diZHdd-AwV4-ssSKbaUrZePZ1M4fKk99FflnDLWGOjGSA6E5ECdjKbXQ1NDYvD6AD9yJ0UCxP7OsVbnMHbB18aIi7GA2DlQNpOU3CWeODth3MzoNmqunSj9j-z5Vglp7_o4AFAuxfsZ9F321kHCaCbi6E-03SZQDg8uzr22fcc7ipgj-Uz-0kCxbq1aAFHpPilAm4tffMZYXFsBfQiPjWJpv3LN-TEo6_ROFIQ8qjrgjy-1IV7TjmhddcuZMKA-mLq6wIP9RdWAXQI1PVSfJqPm5j54o0kcqjvRJysbQ2YTji6YRPfUobXZX67HjLFc3eQ_Zuqu6OiYNwPcMKfy2FnkqUuYw5nGGKNBSDfDQaVTDzCe-6rWXf82vilqsI9_tibSROsyp2E4gprRBn6POuojseKOUl2aqQVJhGM_NaabjQWXuf43BxbxzKp-bF0aJUp1SN7HpYtJFx2NianZjVbi0nCAjL2m2UpPln4GT6cZd2RacWHK7kjFOmkWwH_7IfP5Ond9WhXX_FPOUn0uMpHavbcFS9ZEb7fYHl6k0bdHwEW9Jyf2faQLT7e0XzkPgsXPh_hfMZPfnPn-PuCJKypBAw3NosDoZfwEhqBnYoVZ7XJ4TbTjD_QH8N4l4MrsQUvmnPTOO4dt575djVUkIzmpLI2yoHs_3tZ9vyzsV5jaxa10DY12NNbfNkWUjTAsd5Tf3nl5LYW3NGu26Fc6UEYerBLAt9Y24lS9oaYsWe_4XsU5cZUdVp52SGlN1VCpsCxXw0CpCEpLdXToUK4szgfso1L11n_SH2LRoZCSVIgZMQyA1aqsDfA73sI3jhepMSMILt6-xchSjH9v8RE2offPe9nxtHRka0yAj0htuJpYnINVWvQu_HtZiyVOiesMvgRp-P0DCfGVUHnliT-B6uWqkwjUuDkx4EKgrdIQpHYFmIKddCjpjngtp_in_2fkvtA0ckYpLkslsbdOLrAnxfJ1fFz5vcDDbOtQIYBrhNBkS0x4pCVJFyESUK2MUWLNZz6vpTKAygHUoja_QtGq3-lByPOydjwi_hzTvCx_EGdXwhDedV3D-AtbhfCeew3xY0gz8BEuYb_hHfOOsApXqSffn5HZAzDN9o9LxPtlLXgCjEJutwMZLh_dAvNWIXIi3mufVzXkWNODlJg88jLz9S7RnXxC2NJqmjS1TjDSixbSuPXEoVDDmzbJGPk8_f-pCacZLyhQbK-1fEGWwIh_kB8C16p-M5MGkhb4H8H_yrh4xRC_ljcTQK6SnLJY-Wlq7XXTj8ksXxGbkbNTYDzEuPOqKqbkmfIZw4Rp0D-6mO4m4sZxRBQxvYEjpBHnBRE4HP3wlJ3SCKQtHinXFpWYTS2td4jQ96gVM62V0mspQR9o7yCb8dVlHBElIIdJcBtTvmcxesliuIuVs6eav9yap7bubufFUGNoGgT1IplqKKTUejcAwZSXJ_lqRA41A-fR_ae3ewCqa63zOPbvsZlno1pCJFmGLw8KttWfi44QGMj7j4XWr2sQNMJ74ByKuo61jxx9Gomrib4p_r8td1JbMNYoEn5MeJg_Hwnp-YGbA_NqMIPDYDpK1tGJLQmgCL2y4TrxY_kKfvQqpSEFbdGmFq7_01QUnXsO57A1jXBPNYZ51rpxYPE2yx943UUvsHN4jt4ME3v5MznZD0fqZZ2qnuAQFXLF4zfMSbTjmOtcSYZCc4vgmT51Wh9it_e93nsK01hAy6DYsXPgneKmtqVPAb4EJSdXDN7IJX0rHYBr0w3btWNwlnYsrlMuDH-3aSuhC0VR_jIjtLHUP4rf4X9UAdjs2tQHryTLY-zChN-WrO0ojFS2tqIDdTADQWr9cSjKbQU58C7QVBfx_NO7VFPgpwgolcY3ap-A-WTLmKIhXNK8irJslaCeoqU4kWW5BjGVUwcCfTRxWBBWYptI_5jF8z9f-1kuBlfqL8v71I83kk2TgsX-EnP-2fC3rXAOKIOBnoHcF2varvrW5cyvllCWds5psdpeyrwNosX6uRoI5hLULSookOLS6quNXNHOIdoCbU-dP3Xz48HXWikzsBCXXeUlPQi1wpEyAlLkTp8wjz7cCb_GJ7lDdhw5_Pell-8hy02Zy-gzN5UqPfaLJbZaySuUSGNr8ImvOqUg9zyJxexl5FkvWoLNacfe25RTx9sAitVM9xqQhS9hMAiO7QZ93w0k5FKsQi2PGtGyIA9PgcMFJmiIBWa-p9Qsx2ceAUoES7ErfjqaYw5ERIudXD2y75nWt56gi15d8fYD6yFNNzRHJZ5WStTjWO7a1gdXxqLDCM56zub9pdxNjrPq2phErslZztO-g5dH9C1MX5R00EXaovLEBw2AZmj-Pl-LqnrqiEpGW75dXPY6M2pkdBn07NpvbptnvkI43ax1knMfNyVibw7H0eeHVA51cc7Ur7sMwB5MJ7bUyyhEGfYacCB_mP2rTh5aoEY5T6Qi5o8lFPKAmBHFx2wIfM-byi_9Uwna8TpfGC2Y_Vy_4xn_r__QM276T3iCjWZ6fli5852ADOcrU3ZSQhVmzx_ziJO53PxvR-B8EV_zkGwMuUjnMO5U2ei9sBKQmDUPQKeFVsxmsE7TafSZC4c638u-kd5ci1mahCb1E7W5kdMO1RTieJ8FAx08xta6g9F3eQv0fHK979aSGWTzMzdKvvnl_byaYQUbMFEBd6HdXMNXNIORk43eOfsygiO5yk5tHawd7VKmMYWrKJz5qN9OKhzpKp_9tbyJJ7f0FaRQlTALqslHrq3_-PtrhXG4sBji9vN5cvGZNocEGG4utuJc99Jr1HRPQbakfFMeeDf8IB2yuflPGej7ZPAJ6e2W3bvC6HhyFPOUi1n4KLy36iNn2UqKa3a613_qF0aOnD3cbE9Y6n_aJ7LLfBR7HAJdrnceThihcMe6SLJIgwSo85GefaPTQOVXC76PG2iqOWY1SUXYtnvd3RxcGy1AAA-v35tuXycPrK2nhisYgx1YNJ5E82NhhqBFYq1daGwPvc1MmOpFGcF2ADihFOlqsZ7HYSIVcAaZbOc9oz8ylTLm1OnGG4rj_6LfVS1TiSKdoCoQwkJtzyCdsyjy0H9Jb2toVl9SXkHfagXG7HMOjTsJEWngVX9Df7Xp-6qN3KH3rU5ra16UB35IKBD8JBwiI8pI5TmCWwUEj3qwOncVmnyrT1fDfZ1U3WwB_eOG8EvTFWlNzVRtXIEDp_3Q74Y2oVkQHk8Y02ypF7RgfyQfph3woMHAcMjyInSZIA3AtDXrbw7TmvbdRtmBD0En6czBtRyxWOdCICsLJJu9rH4MkJhGBaQ129M-4Qade8qpMP9QMxDTRUM_UqN7F1NXB_b-7xza4CmOgxnFuPxWd8ejqoDJmK6p5qBCdGqtShDsa8pzuFgyGOVxCHdi9qAXn4mQ8dyYF13SVPyhbvw==",
+        "id": "rs_0d3467b2d0b90e26016b07003eb26c87d2958fa52166e353c9",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"resumo_situacao\": \"O alerta de 24/11/2026 indica nível vermelho para o Beco do Rio e elevação rápida do Rio Lajeado nas próximas 18 horas. O plano de 2025 identifica o Beco do Rio como área prioritária e designa a Escola Estadual Lajeado como abrigo para 120 pessoas, mas os documentos não confirmam se essas informações permanecem válidas hoje.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Beco do Rio\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Área de risco prioritária no plano de contingência; o alerta atual indica nível vermelho para o local.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Famílias do Beco do Rio\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"O plano de 2025 estima aproximadamente 45 famílias na área de risco prioritária.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Escola Estadual Lajeado\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local indicado como abrigo no plano de 2025, com capacidade informada de 120 pessoas.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Abrigo na Escola Estadual Lajeado\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Abrigo previsto no plano de contingência de 2025; o plano proíbe a entrada de animais nas salas de aula.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Rio Lajeado\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Rio cuja elevação rápida nas próximas 18 horas é indicada no alerta de inundação.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Alerta de inundação de 24/11/2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": \"Sala de Situação Regional\",\n      \"descricao\": \"Alerta fictício que indica nível vermelho para o Beco do Rio e elevação rápida do Rio Lajeado nas próximas 18 horas.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Plano de Contingência (2025)\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Documento de 05/05/2025 que registra o abrigo, sua capacidade e regra de entrada de animais, além da área prioritária e estimativa de famílias.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O plano estima aproximadamente 45 famílias na área.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-05\",\n        \"fim\": null,\n        \"observacao\": \"Estimativa registrada no plano de 2025; não há atualização nos documentos fornecidos.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Área de risco prioritária: Beco do Rio (aprox. 45 famílias).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E1\",\n      \"destino\": \"E6\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta indica nível vermelho para o Beco do Rio.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-24\",\n        \"fim\": null,\n        \"observacao\": \"O alerta informa elevação rápida nas próximas 18 horas.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: VERMELHO para o Beco do Rio.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E5\",\n      \"destino\": \"E6\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta informa elevação rápida do Rio Lajeado.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-24\",\n        \"fim\": null,\n        \"observacao\": \"Prazo indicado: próximas 18 horas.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Elevação rápida do Rio Lajeado nas próximas 18 horas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E4\",\n      \"destino\": \"E3\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O abrigo previsto no plano fica na Escola Estadual Lajeado.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-05\",\n        \"fim\": null,\n        \"observacao\": \"A documentação fornecida não confirma a designação ou capacidade atuais.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Estadual Lajeado (120 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E7\",\n      \"destino\": \"E4\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"O plano registra a proibição de entrada de animais nas salas de aula.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-05\",\n        \"fim\": null,\n        \"observacao\": \"Não há documento posterior sobre a vigência da regra ou alternativas para animais.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"proibida a entrada de animais nas salas de aula.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O alerta de 24/11/2026 informa nível vermelho para o Beco do Rio e elevação rápida do Rio Lajeado nas próximas 18 horas. O plano de 2025 já identificava o Beco do Rio como área prioritária.\",\n      \"implicacao\": \"A área indicada no plano coincide com a área nomeada no alerta. O alerta não atualiza a estimativa de famílias, o abrigo ou suas regras.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Área de risco prioritária: Beco do Rio (aprox. 45 famílias).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: VERMELHO para o Beco do Rio.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T2\",\n      \"tipo\": \"pendencia_historica\",\n      \"descricao\": \"A capacidade e a designação da Escola Estadual Lajeado como abrigo, bem como a regra sobre animais, aparecem apenas no plano de 2025; não há atualização nos documentos fornecidos.\",\n      \"implicacao\": \"Não é possível concluir que a designação, capacidade ou regra tenham mudado ou permaneçam iguais; precisam de confirmação institucional para o cenário atual.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Estadual Lajeado (120 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"proibida a entrada de animais nas salas de aula.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"A Escola Estadual Lajeado continua designada para abrigo, e a capacidade de 120 pessoas registrada no plano ainda é aplicável?\",\n      \"por_que_importa\": \"O plano é de 2025, enquanto o alerta atual indica nível vermelho para a área associada ao abrigo. A documentação não confirma a designação nem a capacidade atuais.\",\n      \"motivacao\": \"Plano de 2025 designa a escola para 120 pessoas; alerta de inundação emitido em 24/11/2026 para o Beco do Rio.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E4\",\n        \"E6\",\n        \"E7\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Estadual Lajeado (120 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: VERMELHO para o Beco do Rio.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o local continua designado como abrigo e se a capacidade informada no plano segue válida para o cenário atual.\",\n      \"quem_pode_confirmar\": \"COMPDEC, indicada como fonte do plano; confirmar institucionalmente a atribuição atual.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"A estimativa de aproximadamente 45 famílias no Beco do Rio foi atualizada para o cenário atual?\",\n      \"por_que_importa\": \"A estimativa consta de um plano de 2025 e não há atualização sobre o número de famílias na área nomeada no alerta de 2026.\",\n      \"motivacao\": \"O plano registra aproximadamente 45 famílias; o alerta atual indica nível vermelho para o mesmo local.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E6\",\n        \"E7\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Área de risco prioritária: Beco do Rio (aprox. 45 famílias).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: VERMELHO para o Beco do Rio.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a estimativa de famílias foi revisada e qual é a informação vigente para o Beco do Rio.\",\n      \"quem_pode_confirmar\": \"COMPDEC, indicada como fonte do plano; confirmar institucionalmente a atribuição atual.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V3\",\n      \"pergunta\": \"A regra que proíbe animais nas salas de aula continua vigente e, caso famílias afetadas precisem do abrigo com animais, existe orientação ou alternativa definida?\",\n      \"por_que_importa\": \"O plano registra uma restrição de entrada de animais, mas não informa se a regra foi atualizada nem o que fazer diante dessa restrição.\",\n      \"motivacao\": \"A regra consta do plano de 2025 e o alerta atual se refere à área de risco associada ao abrigo; os documentos não informam se há animais entre as necessidades das famílias.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E2\",\n        \"E4\",\n        \"E6\",\n        \"E7\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"proibida a entrada de animais nas salas de aula.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: VERMELHO para o Beco do Rio.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a regra permanece válida, se há necessidade relacionada a animais entre as famílias e, se houver, qual orientação ou alternativa foi definida.\",\n      \"quem_pode_confirmar\": \"COMPDEC, indicada como fonte do plano; confirmar institucionalmente quem responde pela gestão atual do abrigo.\",\n      \"prioridade\": \"media\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há confirmação atual da designação, condição de uso ou capacidade da Escola Estadual Lajeado como abrigo.\",\n      \"por_que_importa\": \"Esses dados foram registrados em 2025 e são relevantes para revisar o uso do abrigo no cenário atual.\"\n    },\n    {\n      \"descricao\": \"Não há estimativa atualizada do número de famílias no Beco do Rio.\",\n      \"por_que_importa\": \"A única estimativa disponível, de aproximadamente 45 famílias, consta do plano de 2025.\"\n    },\n    {\n      \"descricao\": \"Não há informação sobre a vigência atual da regra para animais nem sobre orientação ou alternativa para famílias que precisem levá-los.\",\n      \"por_que_importa\": \"A regra pode afetar o acesso ao abrigo, mas os documentos não descrevem as necessidades das famílias nem uma alternativa.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O nível vermelho e o prazo de 18 horas são informações do alerta fornecido; esta análise não define medidas operacionais nem substitui os protocolos oficiais.\",\n    \"A estimativa de famílias, a capacidade do abrigo e a regra sobre animais são registros do plano de 2025, não confirmações de condição atual.\",\n    \"Os documentos não informam rotas, meios de comunicação, responsáveis operacionais atuais ou necessidades específicas das famílias; não se presume que existam ou estejam definidos.\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0d3467b2d0b90e26016b07003ed79487d2b426747c9d74cb68",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "all_turns",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2016,
+      "input_tokens_details": {
+        "cache_write_tokens": 222,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 222
+        },
+        "cached_tokens": 1791
+      },
+      "output_tokens": 3595,
+      "output_tokens_details": {
+        "reasoning_tokens": 433
+      },
+      "total_tokens": 5611
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\n  \"resumo_situacao\": \"O alerta de 24/11/2026 indica nível vermelho para o Beco do Rio e elevação rápida do Rio Lajeado nas próximas 18 horas. O plano de 2025 identifica o Beco do Rio como área prioritária e designa a Escola Estadual Lajeado como abrigo para 120 pessoas, mas os documentos não confirmam se essas informações permanecem válidas hoje.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Beco do Rio\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Área de risco prioritária no plano de contingência; o alerta atual indica nível vermelho para o local.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Famílias do Beco do Rio\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"O plano de 2025 estima aproximadamente 45 famílias na área de risco prioritária.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Escola Estadual Lajeado\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local indicado como abrigo no plano de 2025, com capacidade informada de 120 pessoas.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Abrigo na Escola Estadual Lajeado\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Abrigo previsto no plano de contingência de 2025; o plano proíbe a entrada de animais nas salas de aula.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Rio Lajeado\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Rio cuja elevação rápida nas próximas 18 horas é indicada no alerta de inundação.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Alerta de inundação de 24/11/2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": \"Sala de Situação Regional\",\n      \"descricao\": \"Alerta fictício que indica nível vermelho para o Beco do Rio e elevação rápida do Rio Lajeado nas próximas 18 horas.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Plano de Contingência (2025)\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Documento de 05/05/2025 que registra o abrigo, sua capacidade e regra de entrada de animais, além da área prioritária e estimativa de famílias.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O plano estima aproximadamente 45 famílias na área.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-05\",\n        \"fim\": null,\n        \"observacao\": \"Estimativa registrada no plano de 2025; não há atualização nos documentos fornecidos.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Área de risco prioritária: Beco do Rio (aprox. 45 famílias).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E1\",\n      \"destino\": \"E6\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta indica nível vermelho para o Beco do Rio.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-24\",\n        \"fim\": null,\n        \"observacao\": \"O alerta informa elevação rápida nas próximas 18 horas.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: VERMELHO para o Beco do Rio.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E5\",\n      \"destino\": \"E6\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta informa elevação rápida do Rio Lajeado.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-24\",\n        \"fim\": null,\n        \"observacao\": \"Prazo indicado: próximas 18 horas.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Elevação rápida do Rio Lajeado nas próximas 18 horas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E4\",\n      \"destino\": \"E3\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O abrigo previsto no plano fica na Escola Estadual Lajeado.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-05\",\n        \"fim\": null,\n        \"observacao\": \"A documentação fornecida não confirma a designação ou capacidade atuais.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Estadual Lajeado (120 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E7\",\n      \"destino\": \"E4\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"O plano registra a proibição de entrada de animais nas salas de aula.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-05-05\",\n        \"fim\": null,\n        \"observacao\": \"Não há documento posterior sobre a vigência da regra ou alternativas para animais.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"proibida a entrada de animais nas salas de aula.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O alerta de 24/11/2026 informa nível vermelho para o Beco do Rio e elevação rápida do Rio Lajeado nas próximas 18 horas. O plano de 2025 já identificava o Beco do Rio como área prioritária.\",\n      \"implicacao\": \"A área indicada no plano coincide com a área nomeada no alerta. O alerta não atualiza a estimativa de famílias, o abrigo ou suas regras.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Área de risco prioritária: Beco do Rio (aprox. 45 famílias).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: VERMELHO para o Beco do Rio.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T2\",\n      \"tipo\": \"pendencia_historica\",\n      \"descricao\": \"A capacidade e a designação da Escola Estadual Lajeado como abrigo, bem como a regra sobre animais, aparecem apenas no plano de 2025; não há atualização nos documentos fornecidos.\",\n      \"implicacao\": \"Não é possível concluir que a designação, capacidade ou regra tenham mudado ou permaneçam iguais; precisam de confirmação institucional para o cenário atual.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Estadual Lajeado (120 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"proibida a entrada de animais nas salas de aula.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"A Escola Estadual Lajeado continua designada para abrigo, e a capacidade de 120 pessoas registrada no plano ainda é aplicável?\",\n      \"por_que_importa\": \"O plano é de 2025, enquanto o alerta atual indica nível vermelho para a área associada ao abrigo. A documentação não confirma a designação nem a capacidade atuais.\",\n      \"motivacao\": \"Plano de 2025 designa a escola para 120 pessoas; alerta de inundação emitido em 24/11/2026 para o Beco do Rio.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E4\",\n        \"E6\",\n        \"E7\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Estadual Lajeado (120 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: VERMELHO para o Beco do Rio.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o local continua designado como abrigo e se a capacidade informada no plano segue válida para o cenário atual.\",\n      \"quem_pode_confirmar\": \"COMPDEC, indicada como fonte do plano; confirmar institucionalmente a atribuição atual.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"A estimativa de aproximadamente 45 famílias no Beco do Rio foi atualizada para o cenário atual?\",\n      \"por_que_importa\": \"A estimativa consta de um plano de 2025 e não há atualização sobre o número de famílias na área nomeada no alerta de 2026.\",\n      \"motivacao\": \"O plano registra aproximadamente 45 famílias; o alerta atual indica nível vermelho para o mesmo local.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E6\",\n        \"E7\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Área de risco prioritária: Beco do Rio (aprox. 45 famílias).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: VERMELHO para o Beco do Rio.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a estimativa de famílias foi revisada e qual é a informação vigente para o Beco do Rio.\",\n      \"quem_pode_confirmar\": \"COMPDEC, indicada como fonte do plano; confirmar institucionalmente a atribuição atual.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V3\",\n      \"pergunta\": \"A regra que proíbe animais nas salas de aula continua vigente e, caso famílias afetadas precisem do abrigo com animais, existe orientação ou alternativa definida?\",\n      \"por_que_importa\": \"O plano registra uma restrição de entrada de animais, mas não informa se a regra foi atualizada nem o que fazer diante dessa restrição.\",\n      \"motivacao\": \"A regra consta do plano de 2025 e o alerta atual se refere à área de risco associada ao abrigo; os documentos não informam se há animais entre as necessidades das famílias.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E2\",\n        \"E4\",\n        \"E6\",\n        \"E7\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"proibida a entrada de animais nas salas de aula.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: VERMELHO para o Beco do Rio.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a regra permanece válida, se há necessidade relacionada a animais entre as famílias e, se houver, qual orientação ou alternativa foi definida.\",\n      \"quem_pode_confirmar\": \"COMPDEC, indicada como fonte do plano; confirmar institucionalmente quem responde pela gestão atual do abrigo.\",\n      \"prioridade\": \"media\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há confirmação atual da designação, condição de uso ou capacidade da Escola Estadual Lajeado como abrigo.\",\n      \"por_que_importa\": \"Esses dados foram registrados em 2025 e são relevantes para revisar o uso do abrigo no cenário atual.\"\n    },\n    {\n      \"descricao\": \"Não há estimativa atualizada do número de famílias no Beco do Rio.\",\n      \"por_que_importa\": \"A única estimativa disponível, de aproximadamente 45 famílias, consta do plano de 2025.\"\n    },\n    {\n      \"descricao\": \"Não há informação sobre a vigência atual da regra para animais nem sobre orientação ou alternativa para famílias que precisem levá-los.\",\n      \"por_que_importa\": \"A regra pode afetar o acesso ao abrigo, mas os documentos não descrevem as necessidades das famílias nem uma alternativa.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O nível vermelho e o prazo de 18 horas são informações do alerta fornecido; esta análise não define medidas operacionais nem substitui os protocolos oficiais.\",\n    \"A estimativa de famílias, a capacidade do abrigo e a regra sobre animais são registros do plano de 2025, não confirmações de condição atual.\",\n    \"Os documentos não informam rotas, meios de comunicação, responsáveis operacionais atuais ou necessidades específicas das famílias; não se presume que existam ou estejam definidos.\"\n  ]\n}"
+  }
+}

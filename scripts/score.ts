@@ -23,7 +23,7 @@ const itemRows: Row[] = [];
 
 for (const f of files) {
   const run = readJSON(path.join(runDir, f));
-  const jf = path.join(runDir, 'judge', f);
+  const jf = path.join(runDir, arg('judge-dir', 'judge'), f);
   if (!fs.existsSync(jf)) { console.warn('sem avaliação:', f); continue; }
   const j = readJSON(jf).judgement;
   const gold = readJSON(path.join(root, `data/gold/${run.meta.scenario}.json`));

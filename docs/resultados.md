@@ -8,7 +8,34 @@
 
 Dados completos: `results/eval_v1/summary.json`, `per_run.csv`, `per_item.csv`. Respostas brutas: `runs/eval_v1/`.
 
-## Resultados principais (repetição 1, 30 cenários por condição)
+## Rodada 2 (principal): gpt-6-luna analisa, gpt-6.1-terra corrige
+
+Mesmo prompt (`analise_v2.md`), mesmos 30 cenários e gabaritos congelados. Sem repetições nesta rodada, por tempo.
+
+| Métrica | A · só atual | B · + memória |
+|---|---:|---:|
+| Verificações esperadas encontradas | 66% | 91% |
+| … que dependem só do contexto atual | 88% | 89% |
+| … que dependem da memória | 42% | 92% |
+| Precisão (pertinentes ÷ produzidas) | 99% | 100% |
+| Verificações por cenário | 2,6 | 3,7 |
+| Afirmações proibidas (40 pontos de controle) | 0 | 0 |
+| Citações literais | 99,6% | 99,6% |
+| Latência mediana | 24 s | 30 s |
+
+Diferença pareada B − A no recall: +24 p.p. [+14; +32]; B melhor em 19 cenários, empate em 10, A melhor em 1.
+
+**Concordância entre avaliadores.** O gpt-6.1-terra corrigiu também as 60 execuções da rodada 1: concordou com o gpt-5.4 em 92% das decisões (97 de 108 verificações, 35 de 42 interpretações temporais, 80 de 80 afirmações proibidas). Com esse avaliador, a rodada 1 mostra +19 p.p. [+10; +28].
+
+**Casos.** O erro do contrato vencido (E03) não se repetiu com o gpt-6-luna. Persistem: E18, em que a memória com distratores tirou foco, e E29, em que a divergência entre dois relatórios antigos foi interpretada de forma errada. Na atualização do E01, a IA perguntou se o trecho do km 1,2 foi avaliado em chuva intensa e notou que o memorando tem data posterior à do alerta.
+
+**Observação.** O gpt-6-luna gerou menos verificações por cenário. A precisão sobe, mas parte disso pode vir de pautas mais curtas.
+
+---
+
+## Rodada 1: gpt-5.4-mini analisa, gpt-5.4 corrige
+
+### Resultados principais (repetição 1, 30 cenários por condição)
 
 | Métrica | A · só atual | B · + memória |
 |---|---:|---:|

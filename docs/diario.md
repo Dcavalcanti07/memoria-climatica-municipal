@@ -101,7 +101,13 @@ Feita durante o desenvolvimento pelo assistente de IA usado no projeto (Claude C
 - Exemplo ilustrativo da página inicial refeito como vídeo com HyperFrames (fonte em `video/hero`), com capa estática para quem prefere menos movimento.
 - Diagrama de arquitetura refeito em duas camadas: o que acontece, em linguagem simples, e o detalhe técnico.
 
-## 15. O que não foi feito ou ficou limitado
+## 15. Rodada 2 com modelos mais recentes
+
+- A autora questionou se os modelos eram os ideais. Analisador trocado para `gpt-6-luna` (raciocínio baixo) e avaliador para `gpt-6.1-terra` (raciocínio médio), por decisão dela. Prompt, cenários e gabaritos não mudaram.
+- Por limite de tempo, a rodada 2 não teve repetições. Rodaram o desenvolvimento (12), os 30 cenários A e B (60), a atualização do E01 (1) e as correções correspondentes, além da recorreção das 60 execuções da rodada 1 pelo Terra para medir concordância entre avaliadores (92%).
+- O app, o README e a Parte 2 passaram a usar a rodada 2 como principal. A rodada 1 continua no repositório (`runs/eval_v1`, `config/experiment_v1.json`).
+
+## 16. O que não foi feito ou ficou limitado
 
 - Nenhum teste com servidores municipais. O indicador TCPM não foi medido; há protocolo proposto.
 - Um único modelo de análise. Sem comparação entre provedores.

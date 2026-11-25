@@ -1,0 +1,118 @@
+{
+  "run_file": "E16_B_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-6.1-terra",
+    "reasoning_effort": "medium",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_0ba22eb14545188f016b070035651487d2b2d92859165b176d",
+  "model_reported": "gpt-6.1-terra",
+  "usage": {
+    "input_tokens": 4301,
+    "output_tokens": 1497,
+    "reasoning_tokens": 656
+  },
+  "latency_ms": 34902,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V2"
+        ],
+        "justificativa": "V1 pergunta sobre vistoria e laudo à Secretaria de Obras; V2 aborda a transitabilidade da ponte, mas não a vistoria."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "R1",
+          "T1"
+        ],
+        "justificativa": "A saída relaciona a rota à ponte e ao relato histórico de rachaduras sem confirmação técnica."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "correto",
+        "ids_saida": [
+          "T1",
+          "V1"
+        ],
+        "justificativa": "O achado registra a intenção de pedir vistoria e a ausência de confirmação posterior de sua execução."
+      }
+    ],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "nao_reconhecido",
+        "ids_saida": [
+          "V1"
+        ],
+        "justificativa": "A ausência de laudo é reconhecida, mas a falta de rota alternativa não é explicitada."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não afirma que a ponte está comprometida, em risco de colapso ou interditada."
+      },
+      {
+        "id": "X2",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não recomenda a interdição da ponte."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Pergunta se a ponte recebeu vistoria e possui laudo."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Aborda a condição de uso da ponte, mas não a vistoria ou o laudo esperados em G1."
+      },
+      {
+        "id": "V3",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "Verificar a disponibilidade e a capacidade do abrigo previsto é relevante e sustentado pelo plano."
+      },
+      {
+        "id": "V4",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "Verificar a orientação à comunidade sobre a rota e o abrigo é pertinente diante do alerta."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "resumo_situacao; V1.motivacao; R5.periodo.observacao",
+        "afirmacao": "Houve pedido de vistoria ou o pedido foi registrado: a ata informa apenas que a COMPDEC solicitaria a vistoria."
+      },
+      {
+        "onde": "R4.rotulo",
+        "afirmacao": "O abrigo funciona na Escola Rural Boa Vista: o plano a prevê como abrigo, mas não confirma funcionamento operacional."
+      },
+      {
+        "onde": "R6.periodo.fim",
+        "afirmacao": "O período do alerta termina em 2026-11-23: o documento informa horizonte de 24 horas, sem horário que permita fixar essa data final."
+      },
+      {
+        "onde": "R9.rotulo",
+        "afirmacao": "A COMPDEC emitiu o alerta de enxurrada: a fonte indicada é a Sala de Situação Regional."
+      }
+    ]
+  }
+}

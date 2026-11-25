@@ -11,13 +11,13 @@ import { JUDGE_SCHEMA } from '../src/core/judge-schema';
 import type { Scenario } from '../src/core/schema';
 
 loadEnv();
-const cfgAll = readJSON(path.join(root, 'config/experiment.json'));
+const cfgAll = readJSON(path.join(root, 'config', arg('config', 'experiment.json')));
 const cfg: LLMConfig = cfgAll.judge;
 const system = fs.readFileSync(path.join(root, 'prompts', cfgAll.judge_prompt_file), 'utf8');
 const tag = arg('tag', 'dev');
 const concurrency = Number(arg('concurrency', '4'));
 const runDir = path.join(root, 'runs', tag);
-const outDir = path.join(runDir, 'judge');
+const outDir = path.join(runDir, arg('judge-dir', 'judge'));
 fs.mkdirSync(outDir, { recursive: true });
 
 const files = fs.readdirSync(runDir).filter((f) => /_[AB]U?_r\d+\.json$/.test(f)).sort();

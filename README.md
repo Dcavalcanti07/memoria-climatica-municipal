@@ -53,7 +53,7 @@ documentos fictícios ─► LLM (saída estruturada) ─► validação determi
 
 - O grafo é construído **a partir da saída do modelo**: nós e relações não são desenhados à mão. Não há GraphRAG, banco vetorial nem embeddings: o grafo não é usado para recuperar contexto.
 - Validação determinística: documentos citados existem no conjunto enviado, trechos aparecem literalmente, relações apontam para entidades existentes.
-- Modelo de análise: `gpt-5.4-mini-2026-03-17` (raciocínio `low`). Prompt: [prompts/analise_v2.md](prompts/analise_v2.md). Schema: [src/core/schema.ts](src/core/schema.ts).
+- Modelo de análise: `gpt-6-luna` (raciocínio `low`). Avaliador: `gpt-6.1-terra` (raciocínio `medium`). Uma primeira rodada com `gpt-5.4-mini` e `gpt-5.4` fica registrada como comparação. Prompt: [prompts/analise_v2.md](prompts/analise_v2.md). Schema: [src/core/schema.ts](src/core/schema.ts).
 
 ## Metodologia experimental
 
@@ -69,14 +69,16 @@ documentos fictícios ─► LLM (saída estruturada) ─► validação determi
 
 | Nos 30 cenários | A · só atual | B · + memória |
 |---|---:|---:|
-| Verificações esperadas encontradas | 62% | 92% |
-| … que dependem do histórico | 31% | 94% |
-| … que dependem só do contexto atual | 91% | 89% |
-| Precisão (pertinentes ÷ produzidas) | 95% | 96% |
-| Citações literais | 98,2% | 99,2% |
-| Afirmações proibidas (40 pontos de controle) | 0 | 1 |
+| Verificações esperadas encontradas | 66% | 91% |
+| … que dependem do histórico | 42% | 92% |
+| … que dependem só do contexto atual | 88% | 89% |
+| Precisão (pertinentes ÷ produzidas) | 99% | 100% |
+| Citações literais | 99,6% | 99,6% |
+| Afirmações proibidas (40 pontos de controle) | 0 | 0 |
 
-Diferença pareada no recall: **+28 p.p.** (IC 95% +18 a +36). O ganho vem inteiro dos itens de memória; nos itens atuais não houve ganho. Casos de falha e limites: [docs/resultados.md](docs/resultados.md).
+Diferença pareada no recall: **+24 p.p.** (IC 95% +14 a +32). O ganho vem dos itens de memória; nos itens atuais não houve ganho relevante.
+
+**Robustez.** Na primeira rodada (`gpt-5.4-mini`), o ganho foi de +28 p.p. com o avaliador `gpt-5.4` e de +19 p.p. com o avaliador `gpt-6.1-terra`. Os dois avaliadores concordaram em 92% das decisões (212 de 230) e em 100% das afirmações proibidas. Números completos: `results/eval_v2_luna/`, `results/eval_v1/` e `results/eval_v1_terra_r1/`. Casos de falha e limites: [docs/resultados.md](docs/resultados.md).
 
 ## Limitações
 

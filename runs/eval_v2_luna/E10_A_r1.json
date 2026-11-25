@@ -1,0 +1,760 @@
+{
+  "meta": {
+    "scenario": "E10",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v2_luna",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 810,
+    "user_message_sha12": "e1cc4c7c26f9"
+  },
+  "user_message": "Município (fictício): Várzea Grande do Sul\nData de referência da análise: 2026-11-20\nDocumentos disponíveis (2), em ordem cronológica:\n\n### [D1] Plano de Contingência (2024)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2024-12-10\n\nÁreas de risco mapeadas: Vila Esperança, Passo Fundo de Baixo e Loteamento Sol Nascente.\nAbrigos: Vila Esperança → Ginásio do Sesi (cedido); Passo Fundo de Baixo → Escola Municipal Ana Néri.\nLoteamento Sol Nascente: abrigo a definir.\n\n---\n\n### [D2] Alerta (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-20\n\nNÍVEL: LARANJA. Risco de alagamento nos loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_0bb4522e1674e1ea016b070020811487d299cab9510b71b408",
+  "model_reported": "gpt-6-luna",
+  "usage": {
+    "input_tokens": 2044,
+    "output_tokens": 2306,
+    "reasoning_tokens": 355
+  },
+  "latency_ms": 14902,
+  "started_at": "2026-11-25T15:34:56.113Z",
+  "output": {
+    "resumo_situacao": "O alerta de 20/11/2026 indica risco de alagamento nos loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente. O plano de 2024 registra esse loteamento como área de risco, mas informa que seu abrigo estava a definir. Os documentos não confirmam se essa definição foi feita desde então.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Loteamento Sol Nascente",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Loteamento listado como área de risco no plano de 2024 e incluído no alerta de alagamento de 2026."
+      },
+      {
+        "id": "E2",
+        "nome": "Arroio do Sol",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Arroio indicado no alerta como referência para os loteamentos sob risco de alagamento."
+      },
+      {
+        "id": "E3",
+        "nome": "Alerta de risco de alagamento de 2026-11-20",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Alerta fictício de nível laranja para loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente."
+      },
+      {
+        "id": "E4",
+        "nome": "Plano de Contingência de 2024",
+        "tipo": "norma_documento",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Plano que lista áreas de risco e abrigos; para o Loteamento Sol Nascente, registra abrigo a definir."
+      },
+      {
+        "id": "E5",
+        "nome": "COMPDEC",
+        "tipo": "setor",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Fonte do Plano de Contingência de 2024."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E4",
+        "tipo": "afetado_por",
+        "rotulo": "O plano de 2024 lista o loteamento entre as áreas de risco.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-12-10",
+          "fim": null,
+          "observacao": "Registro feito no plano; os documentos não informam se a classificação foi atualizada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Áreas de risco mapeadas: Vila Esperança, Passo Fundo de Baixo e Loteamento Sol Nascente."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E1",
+        "destino": "E3",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta inclui o Loteamento Sol Nascente no cenário de alagamento.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-20",
+          "fim": null,
+          "observacao": "Data do alerta; não há informação sobre seu prazo de validade."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Risco de alagamento nos loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "localizado_em",
+        "rotulo": "O alerta situa o loteamento entre os próximos ao Arroio do Sol.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-20",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E5",
+        "destino": "E4",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC consta como fonte do Plano de Contingência.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-12-10",
+          "fim": null,
+          "observacao": "A fonte do plano não confirma, por si só, a responsabilidade institucional atual por definir o abrigo."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Fonte: COMPDEC"
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "pendencia_historica",
+        "descricao": "O plano de 2024 registra que o abrigo do Loteamento Sol Nascente estava a definir. O alerta de 2026 inclui o loteamento, mas não informa se o abrigo foi posteriormente definido.",
+        "implicacao": "É necessário confirmar a situação atual do abrigo; não se pode concluir, com estes documentos, que a pendência permanece ou que foi resolvida.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Loteamento Sol Nascente: abrigo a definir."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "incluindo o Loteamento Sol Nascente."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "O abrigo do Loteamento Sol Nascente foi definido desde o Plano de Contingência de 2024? Se sim, qual local está atualmente designado para esse loteamento?",
+        "por_que_importa": "O loteamento está incluído no alerta de alagamento, enquanto o plano registra que seu abrigo estava a definir. Confirmar a situação evita tratar uma informação de 2024 como vigente sem validação.",
+        "motivacao": "O plano de 2024 deixou o abrigo do Loteamento Sol Nascente a definir, e o alerta de 2026 incluiu o loteamento no cenário de risco de alagamento.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E3",
+          "E4",
+          "E5"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Loteamento Sol Nascente: abrigo a definir."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "incluindo o Loteamento Sol Nascente."
+          }
+        ],
+        "o_que_falta_saber": "Se houve definição posterior e, caso tenha ocorrido, qual é o local designado. Os documentos não indicam quem tem atualmente a atribuição formal de definir ou confirmar esse abrigo.",
+        "quem_pode_confirmar": "COMPDEC, indicada como fonte do plano; a atribuição atual depende de confirmação institucional.",
+        "prioridade": "alta"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há atualização do Plano de Contingência posterior a 2024 que informe se o abrigo do Loteamento Sol Nascente foi definido.",
+        "por_que_importa": "O loteamento consta no alerta de 2026, mas não é possível confirmar a situação atual do abrigo com os documentos fornecidos."
+      },
+      {
+        "descricao": "O alerta não informa seu prazo de validade nem apresenta outros detalhes operacionais sobre o cenário.",
+        "por_que_importa": "Essas informações não podem ser presumidas a partir do nível e da descrição do alerta."
+      }
+    ],
+    "cautelas": [
+      "A indicação de abrigo a definir é um registro de 2024; estes documentos não permitem afirmar que a pendência continua nem que foi resolvida.",
+      "O alerta inclui o Loteamento Sol Nascente, mas não autoriza ampliar o cenário para outros locais além dos mencionados.",
+      "A análise não define medidas operacionais nem certifica a preparação do município."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 5,
+    "n_relacoes": 4,
+    "n_verificacoes": 1,
+    "n_temporais": 1,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Áreas de risco mapeadas: Vila Esperança, Passo Fundo de Baixo e Loteamento Sol Nascente.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Risco de alagamento nos loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Fonte: COMPDEC",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Loteamento Sol Nascente: abrigo a definir.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "incluindo o Loteamento Sol Nascente.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Loteamento Sol Nascente: abrigo a definir.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "incluindo o Loteamento Sol Nascente.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      }
+    ],
+    "n_citacoes": 8,
+    "n_citacoes_literais": 8,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795620910,
+    "created_at": 1795620896,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_0bb4522e1674e1ea016b070020811487d299cab9510b71b408",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-6-luna",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBwAjPkPZ61SzATxeFM35R5M81PeJs92QBLLmLGOuSMmdBbJ6SIiPcdzl0Q39XmFXAkg6ZYJ_OZ6kznBzzAamUDrtdl7NznSIQeAjGJUm0pUjD3twllJMKpgpOr92txGZV6eCNxDTl4f_mOiZLrOBIAhTdRL6HoLDzsoa6V-7iPhaVx5bflNSCi5tv3_bC3dMNlKY6FsjYZU3swKDnMp-K3cdnYxZGSQMmaTGh99f2rjY0goxGuvTvGebXyhU7f8xXXCx_UepRHYDBC_-KdedWe1LySl2ArJswaZCEky3koowP9BF7-0WMsviwkE5vTIn92CDWNewUxtZERkcAMIvUm6nieoXpDwZXUGvSCWbVaU_8PzS7fa4H7pRG75lGD_QYKcvzuUH5y_cgxYHc_N7K0BKrt4MrjYoh2avDBnWsPaujj_jJ3iX2leiw3vv1epHEvGf0fy_HJw6vvIfqLFDAaGgMhoJNSOPuZeF-oZXbYCAlCwL9BezjEO_vhwfu0X4Tdw2w-kDl7gOBxQp4SxtZa8HmyGiTBaMRi40J-7tvNMSxgZZgaLidCfnm-jUoDxXWsf_H2RZ2Vy0-gofLYlevU_GalSh4kQViilrfdvg46UCO7IXEACYV5lJy5-H-OfRhFnAYc14at1jbofF7bLe-6Jt7hzUmTnouOtwjFwfDCtkEEabuPnJHIGrfScehbKi5kLjCU2rIWxHgoBoA37n_D3Tp5mWX4siSsraoVTUaUsxBQnqUHVOJ8Mel1vZpPr8zFi7uckn3QijYmM49A1Ah30XIIcfYjEK-6OUH-41gvyOzFRQUSb0fxBSKRjQzgKNx3H6f4eKyUolKEdVxLseDw51ehxxvrAMQF9olFxuZO2fAXWXI_eh57PdXNOhuFVeer5O6lr82aQRZwnQSJaitVICySBlvSWdYGJtqlPf6zMKjosFigKxkpKX6Wz8REuuM_0RqueitsCx_Dmchu-WGZuIx-KlVBW9MDKpLGHZqc-cu0FVahWZuOMhnDedjnCgSUDgoU1bLISW-51nVM4mE_vvG9GaKf5omQnzfJourowYbP4olU1K4H89LitzNONfJyxLdqmuhbaXeqRW25aaFfXGjJBdln-fXi_MAa8Biv-n28XjwIM0AfCqCNBEo67U3EUosmVs97GxxVzund7-FD6FQkojPj5P6LhZ3ElfC_J0-sF1ou3W9A2Kw8-Axpm_x-pV_uY2REtmO30xTbDkMBPXFEVwegjzKdT6VVi1MnADPdixiAqV7htBAd9Zn6oNYhiGWi4Tt1gZ5HwcgqT5eu4vWmZQOhAHxYALq9klgZw6duPl_EbHgpAjdHChi3E8-2BrFeqbYkkbtUSxYoHQeWA9BlfIvXpufF4kKyDEfvmh6MwwKz-zuOme_p8n5cxvSeUblNUtCbn5e6USeqvlqXqqxbEjLJHbzeD5R8hdF-C0mAQTZp5rm-wblVoXHN_d1lxtYlsSIJavegq3zqP4OhFA1wYsHOEzGDsj2eXTFN-q1X7mqUoik__BeKWR-hxUqyUf_gljDQRc2T6AvQ7cwFZi3nkgw6-o7zUTxVFilVsZqr3Ch_DZ6ykpr_v4spDDsSk5Hg12iAmfNP7OZTf7ZCASWeGfb84uOU7Ui01zucZP2KGkAkp441XhvrIR-lU9y0RGrvSmOtewWzWJyDIC7jYLTVRIh8M3D0eU5G7p0snDR2LPytDGbdzNUpIFPxwPsOJFkxaQffjhG-m_C0IOy3YnkLjxbtRA3K3iuJSdC05c0xsMWXYSe6FpMbyd_OVf_YMZFAzpkiDaZop1lUMTbT1XPFF1xyEDc9NsO2dbJRahTECDFOgCCGcXvnahaA-BzbUjS1waJX-jNu_DVlbB8sUiYkjV0MMUMM3bEDqG4NOYha4kmuFx19ZhmRNt1IFHdKQFyxGlV801t3BOZbLogGHfRBHLQGA3vIdX3mmt5ZO4BlPYjiQHQxRQR8pnH6n0jsSoRWfatJs9UTE8rkBYv794bFAU45KxrbUxb_HEPqNFjA5UGEZ22EGXh3vaE_rdip5ADZ7J1kOvfKWk8b0XmtTPzX55peoYjRKzK24b3n95ZLfdE_inQtikM7KrGY6rhNBDdT9PeKYwkBiNNz74Zj0JBWfHcDd6TjWRdV0ooCgz2-95H1Om6zlS2NI6zyjT877wwd3F1d4NMJ77me4vErZq3vIyHigJxwVPU68HARNISt6w-GHEolLge0x-vfKbpcDdC-G9wMvrmR81wQ_iPP--XX7zrqGlkyd975-C0NN2iTAfWO1WcXXqtZF575byFlH49uci3JAtlJjfP3YD2vFCzv2haeooiZM7G4xvMVhFJDXlmMSbjEr9k-qQ8_UwTS9P6OrxueIVcZzWjox0ZJZOqzSSSi9Mcy2p0dG5PRLXybpfCA4CrfSauvBJLkQhr_aVSEANuQsgMwuFepdYwuRewAx_2WSTMD0ZkfuegtkJPerFlmCdm05L27mu77qwSAxqRSxbX6_4TdIW97kSuwna4t4rmG0EMZ50TFRlfNS7E1AMlOzD2MXViJSSTQxRWYJ0XqSbDwxZQ_eGcAxH6EbcTpJZtMI0R6mrwIA1VB10h9beMVeob_KUaylUCSKJE5Bt-bP_yYHu2Qy0bq9xb6h2TA5IVO01w88HfXfcN8pGnAMKo4XVEtplMz421Tzmhl-VKbs_-ZHJM4Zz71AAsQhe-B-vUwZ05S1c4G3LE1dvNxhwJzJOnXt4sJ7ybKSmrGtC2opULrZdPMmkrFexBTsrxh8eiqQVlxx1t_-PuI2ALB2hQvietzfhKjcXRbDx_eMwdSSKD8jToZOZvqzt4thqwWkN5vbtwn9Ahscp54q8EeoMo4PAdYDbnXcSZAkK_GV6MSFVB4KWDuMVtyvu9lS9btncGWyazFV5y5WFljswS8ZykjbQAiix1N6ZmJBLQnClSw7wHfd1-O65nUNE-uBqGUGDHmNbc1FHnzAogGxVKineEXJbx3ldtDN4KKEW20dUIVWpOAIU6b9oxOoAMABg2Ti1kJaWeF27I2FD4v3chU51CfSOMtrJErJzGQd-McpNTmjBtc4C9KG0U1ojo08IdmqAY7Ps7MAkssziaTkwacKKW8nWdXoxVsWHBPTT5KgCUaWNVFIZ35J784F2emOT2xdj2tSPOEtqvdQU4SHyC_RbD_pYlXWEF_BUbmJHgzrq6iKjaPIPI8CbK0MyYy6ZhEqJ-LZsiePvmS0vHxRraiSjx1UmV8Dse105YrJiKbZC8jnuRd-jZGvaLn48r7erid8JpsoVjqzRpEnlPA7ksPK4AvecNEF3rFSTAj7kJ9LRBaH6iKZXu0ZhcZyfx897AnyfJ060WXud3aq3d0Z5sk9VmSenX1PjGqT0Q-0ADfpdxz71-FOr7UO9ylNWpmBKUZCKDI_C6PPfuIwD_ihYL3LOEeojbYWkaOzYTA9a3n-SbTVg3eqBAMO7E6Y-CLcxhMgcUIi7dKGcOj00I1DhOKxxgwwoEv93eRP1pSo1y00mHSL5suDIKfwMowR3RsvOGujNRSrtfU_L9xrP4JK9B8bj309PdwFcIhJvL9AmVbJuvJR_5bXKuPbWk8MKJn93cjfxLDMCrJaa8jOU1dnDMr0aM3ZQDBoz3FoGYYFGrYx9s3iJTc2Pr5MDxynQWDRYj0j7FpfQO0G2XZmgfl4ErtXQOzQ3SVm3g5ZGtIUX9NuuO9Mw6rdINVR2pwFWVekNqHEtMQzmCYDrgb9p-KTSRQyN1fnptleUlorcaxfGrWlYinlf4nt1jhJnwLc4c7U5H-DR1QjJA1msDDCokT7oavRY0KqNxvuTi9bcsiagul2H44eZx7FecRVZa98-PF_5r2XaYuvIWHP6XmOpbekCOI-zZy3QJQ26wbNOTW_q-SLZZZzjc1rih6gAyapUu-04iQOl5XliqWMlEzceLQUcKJjdZ3hKquJcBIfotmd3MbaLxvtX2aKd7rWI34Ewq_0kTiRO3AFJ-naz64IPI4K2OrL2ckdKiuexRY6JE3MAEaejD_xmCLy4RFXT9jBWAPHR8T2mrDIINV88Nq5IeemReEx9xNL4bHVDNurhu12jUb23H01bE_JExasL2I4tgKNeK7MHEEayisTAtpF9NlgDfY_5knbDP2Ox8J-XwRd46e-ACJPdd-G7RvpGNKZ7YfJ5Al7GTMpCK4rcjNByVN35-NrvEhoXiFB3rjpPvAs6JdmlqUoVfPgtgIK6XCm3cRsfEJJAw3dMjS68gpeZgK1pOQBlaNA9Mpnr31QrTeOhcCivGBsoQND-pAn_mU4NFAt8su59MgrNZvhUEVPhN1rTtgLw9ln5SDnYvRLYmiMsXlAMTT-xOG7tZ2Gi-e_cCOz81o-zNATPw7BSsYHwrGlRX6BJ1lIH4OVFOqK4_DXM4TtdKpRDem6-WhvlrKtimG7qsUTwi444Voe7TGnM5obqUruUpCxdIqXaChOxINfqFD0yYE8PZFv8UHoJLPCpbHrsaZRSFUne0J6kampeeqhHcne9GpCXsr1FrTQ3ZJK0IJ1ZgLcLp98vNgGUKXr1egtJoxcGgSPDtQF-rY_q7CD-YpIz2LK2qj4_a3WCLuGby1pG5bqtpEfF2z95lIM-AMiulpxOx-WtVM0pHme12gDw3_DoxFcACSIac91CRJOSJSIPxwl3v-q8qUDtldaYXC0F08t8ln7c_HEn7Ezr-JQv67ZDirgoAp299-yu1WipnIrWjY4r87ByjXT-HcNphDi9exPMsKDlFo9IFp5dIX7bXfz4wmTL1JHWTzjFpZ6DPEGgMRjXxlJ2-czoqZEJjfT04UIhyJuqYLE7-8CDN4cg61sBkP5p84b9pNp-eWFEbsjQ5t6k-umcbFCaOWj7LJdSPTNLaihiXiRNDckAFiXWS40szey5upwOqw4beJWz3_umR79pT2tmS-jfbybKpCA3iJjC_y_-hPi5yz-X9qG7qTVhqI-Y2bqjzulNx8uXbBg47MCu-T6LAzLdMeoMrPM4iJ6q6dDK4Cewvp7Vsxt7q6FZr2pJqkKtDiU5FELSWqSHsc56zkPaRv7ajak-653WITP2iH5TzJbhkotRmaCNSwAAxk0CIdU84K_kK3Y-ocSOfxsjt30xjU_fIq3fdlBaFUiU2oh4JbpH8nS2C_g5orWEWckSC3F9XQxPbQ5930lI_XdeQE7Qo_sVUs_4UMvx10rmEOI5YpFIsOMDmfBnE2_MFHVdKLYmWHP9wbtcoU8Lj0TVpHV65sNa1I1liU_PllGW7if5mQzkfuGQP-RJJYIXxsoq8YAmAnLULt-c-S9Tf7QYdHAp_dgqfJ_xE73qcn9WHR9vrz-u3mcBuBfbqq_12nDaJpduidUiVeyKbOTjElzQlgvpenF8UXC90ups0dqpDWQ97ZhotcdyY4Gg9iIRO65EJYwldvoHZmaAU5AiHMrCrOZMdPo355WMrfRETfbIEIC7_QnVWG4UricDQPr4kQu7GbOkTxrOIi8ShOkvDFFlTP6fWJ9YcxQq7UK8ywwj274tWwR8833nISTH02gadkW8Kp8DaqPjNic8Ao6NHGqPISM3tG0y8bdvMKiTs850Y1LkUemTFtgGTXXnZ6BRAyCPQ3g1nEIqYJSDE-KHGhdgzqwTX-YHFH653pO-OceoF5EuoCqARq4JkSgYp6KuNSgqPyRWL3UZv9YAkPuFsdhWh9uWuypMLzJ6RRmFDQBEUj0kWL-AIGYAwKM6sbkzKYK5-pJlN2FGhS-cQOjoHjXXqXIb_gHysboJAZnGGL-5cWrujcK4eOg73Nh1avQP4dKutue7vwuJ1xh5gNDGz4TW8J9VZFDzPn0Q1fUB1greUOPGr5d65V3STDf8Bpol3rnLUuGRr4dODMZUnN8rFGbxXxtBSPrcqEzICM3xfWAMobSdRh52MlUWBa6hXHWgD15rBc1f1CG9B86PuExP5pw6H9vrutte5uNq8iBBOq_A6XNFgIGRpE8H9ECEa1ClHzj04o1jTWGpy-UB_Xq00upXM8Mn6sohUgNxvMVVMhwVWJYA6rw1KzEz7V2TD7fAVxdh6nM5Xca6bxuMSZkZ4ap4I2Uw2BYgweGvdolsd9R8RBPLpf9g6iX_Bhv_giR8cMPZqYrZmYu6lCDt2yhQcLfrYO6F-0PJT4VwvuZ4i5QKsw4LawLUCblDn05UMbiNviZaoxGwyBO2Gejwh_7tourCwEAVBuUKNAjY9J_s-ulyLcxJjQCsMPv22l-UooTRCZ95-zVlcWqqXaFcKCrhPb6GGuQf_Eq7NwdLsoF3RA==",
+        "id": "rs_0bb4522e1674e1ea016b0700239c6487d2bb221040a76eb74a",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"resumo_situacao\": \"O alerta de 20/11/2026 indica risco de alagamento nos loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente. O plano de 2024 registra esse loteamento como área de risco, mas informa que seu abrigo estava a definir. Os documentos não confirmam se essa definição foi feita desde então.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Loteamento Sol Nascente\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Loteamento listado como área de risco no plano de 2024 e incluído no alerta de alagamento de 2026.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Arroio do Sol\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Arroio indicado no alerta como referência para os loteamentos sob risco de alagamento.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Alerta de risco de alagamento de 2026-11-20\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Alerta fictício de nível laranja para loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Plano de Contingência de 2024\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Plano que lista áreas de risco e abrigos; para o Loteamento Sol Nascente, registra abrigo a definir.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Fonte do Plano de Contingência de 2024.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E4\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O plano de 2024 lista o loteamento entre as áreas de risco.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-12-10\",\n        \"fim\": null,\n        \"observacao\": \"Registro feito no plano; os documentos não informam se a classificação foi atualizada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Áreas de risco mapeadas: Vila Esperança, Passo Fundo de Baixo e Loteamento Sol Nascente.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E1\",\n      \"destino\": \"E3\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta inclui o Loteamento Sol Nascente no cenário de alagamento.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-20\",\n        \"fim\": null,\n        \"observacao\": \"Data do alerta; não há informação sobre seu prazo de validade.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Risco de alagamento nos loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O alerta situa o loteamento entre os próximos ao Arroio do Sol.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-20\",\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E5\",\n      \"destino\": \"E4\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A COMPDEC consta como fonte do Plano de Contingência.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-12-10\",\n        \"fim\": null,\n        \"observacao\": \"A fonte do plano não confirma, por si só, a responsabilidade institucional atual por definir o abrigo.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Fonte: COMPDEC\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"pendencia_historica\",\n      \"descricao\": \"O plano de 2024 registra que o abrigo do Loteamento Sol Nascente estava a definir. O alerta de 2026 inclui o loteamento, mas não informa se o abrigo foi posteriormente definido.\",\n      \"implicacao\": \"É necessário confirmar a situação atual do abrigo; não se pode concluir, com estes documentos, que a pendência permanece ou que foi resolvida.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Loteamento Sol Nascente: abrigo a definir.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"incluindo o Loteamento Sol Nascente.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"O abrigo do Loteamento Sol Nascente foi definido desde o Plano de Contingência de 2024? Se sim, qual local está atualmente designado para esse loteamento?\",\n      \"por_que_importa\": \"O loteamento está incluído no alerta de alagamento, enquanto o plano registra que seu abrigo estava a definir. Confirmar a situação evita tratar uma informação de 2024 como vigente sem validação.\",\n      \"motivacao\": \"O plano de 2024 deixou o abrigo do Loteamento Sol Nascente a definir, e o alerta de 2026 incluiu o loteamento no cenário de risco de alagamento.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E4\",\n        \"E5\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Loteamento Sol Nascente: abrigo a definir.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"incluindo o Loteamento Sol Nascente.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se houve definição posterior e, caso tenha ocorrido, qual é o local designado. Os documentos não indicam quem tem atualmente a atribuição formal de definir ou confirmar esse abrigo.\",\n      \"quem_pode_confirmar\": \"COMPDEC, indicada como fonte do plano; a atribuição atual depende de confirmação institucional.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há atualização do Plano de Contingência posterior a 2024 que informe se o abrigo do Loteamento Sol Nascente foi definido.\",\n      \"por_que_importa\": \"O loteamento consta no alerta de 2026, mas não é possível confirmar a situação atual do abrigo com os documentos fornecidos.\"\n    },\n    {\n      \"descricao\": \"O alerta não informa seu prazo de validade nem apresenta outros detalhes operacionais sobre o cenário.\",\n      \"por_que_importa\": \"Essas informações não podem ser presumidas a partir do nível e da descrição do alerta.\"\n    }\n  ],\n  \"cautelas\": [\n    \"A indicação de abrigo a definir é um registro de 2024; estes documentos não permitem afirmar que a pendência continua nem que foi resolvida.\",\n    \"O alerta inclui o Loteamento Sol Nascente, mas não autoriza ampliar o cenário para outros locais além dos mencionados.\",\n    \"A análise não define medidas operacionais nem certifica a preparação do município.\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0bb4522e1674e1ea016b070023bc9087d28d605e08484bdf34",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "all_turns",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2044,
+      "input_tokens_details": {
+        "cache_write_tokens": 250,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 250
+        },
+        "cached_tokens": 1791
+      },
+      "output_tokens": 2306,
+      "output_tokens_details": {
+        "reasoning_tokens": 355
+      },
+      "total_tokens": 4350
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\n  \"resumo_situacao\": \"O alerta de 20/11/2026 indica risco de alagamento nos loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente. O plano de 2024 registra esse loteamento como área de risco, mas informa que seu abrigo estava a definir. Os documentos não confirmam se essa definição foi feita desde então.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Loteamento Sol Nascente\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Loteamento listado como área de risco no plano de 2024 e incluído no alerta de alagamento de 2026.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Arroio do Sol\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Arroio indicado no alerta como referência para os loteamentos sob risco de alagamento.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Alerta de risco de alagamento de 2026-11-20\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Alerta fictício de nível laranja para loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Plano de Contingência de 2024\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Plano que lista áreas de risco e abrigos; para o Loteamento Sol Nascente, registra abrigo a definir.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Fonte do Plano de Contingência de 2024.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E4\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O plano de 2024 lista o loteamento entre as áreas de risco.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-12-10\",\n        \"fim\": null,\n        \"observacao\": \"Registro feito no plano; os documentos não informam se a classificação foi atualizada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Áreas de risco mapeadas: Vila Esperança, Passo Fundo de Baixo e Loteamento Sol Nascente.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E1\",\n      \"destino\": \"E3\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta inclui o Loteamento Sol Nascente no cenário de alagamento.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-20\",\n        \"fim\": null,\n        \"observacao\": \"Data do alerta; não há informação sobre seu prazo de validade.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Risco de alagamento nos loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O alerta situa o loteamento entre os próximos ao Arroio do Sol.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-20\",\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E5\",\n      \"destino\": \"E4\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A COMPDEC consta como fonte do Plano de Contingência.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-12-10\",\n        \"fim\": null,\n        \"observacao\": \"A fonte do plano não confirma, por si só, a responsabilidade institucional atual por definir o abrigo.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Fonte: COMPDEC\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"pendencia_historica\",\n      \"descricao\": \"O plano de 2024 registra que o abrigo do Loteamento Sol Nascente estava a definir. O alerta de 2026 inclui o loteamento, mas não informa se o abrigo foi posteriormente definido.\",\n      \"implicacao\": \"É necessário confirmar a situação atual do abrigo; não se pode concluir, com estes documentos, que a pendência permanece ou que foi resolvida.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Loteamento Sol Nascente: abrigo a definir.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"incluindo o Loteamento Sol Nascente.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"O abrigo do Loteamento Sol Nascente foi definido desde o Plano de Contingência de 2024? Se sim, qual local está atualmente designado para esse loteamento?\",\n      \"por_que_importa\": \"O loteamento está incluído no alerta de alagamento, enquanto o plano registra que seu abrigo estava a definir. Confirmar a situação evita tratar uma informação de 2024 como vigente sem validação.\",\n      \"motivacao\": \"O plano de 2024 deixou o abrigo do Loteamento Sol Nascente a definir, e o alerta de 2026 incluiu o loteamento no cenário de risco de alagamento.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E4\",\n        \"E5\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Loteamento Sol Nascente: abrigo a definir.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"incluindo o Loteamento Sol Nascente.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se houve definição posterior e, caso tenha ocorrido, qual é o local designado. Os documentos não indicam quem tem atualmente a atribuição formal de definir ou confirmar esse abrigo.\",\n      \"quem_pode_confirmar\": \"COMPDEC, indicada como fonte do plano; a atribuição atual depende de confirmação institucional.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há atualização do Plano de Contingência posterior a 2024 que informe se o abrigo do Loteamento Sol Nascente foi definido.\",\n      \"por_que_importa\": \"O loteamento consta no alerta de 2026, mas não é possível confirmar a situação atual do abrigo com os documentos fornecidos.\"\n    },\n    {\n      \"descricao\": \"O alerta não informa seu prazo de validade nem apresenta outros detalhes operacionais sobre o cenário.\",\n      \"por_que_importa\": \"Essas informações não podem ser presumidas a partir do nível e da descrição do alerta.\"\n    }\n  ],\n  \"cautelas\": [\n    \"A indicação de abrigo a definir é um registro de 2024; estes documentos não permitem afirmar que a pendência continua nem que foi resolvida.\",\n    \"O alerta inclui o Loteamento Sol Nascente, mas não autoriza ampliar o cenário para outros locais além dos mencionados.\",\n    \"A análise não define medidas operacionais nem certifica a preparação do município.\"\n  ]\n}"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "run_file": "E07_A_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-6.1-terra",
+    "reasoning_effort": "medium",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_0cde306941d2a34d016b070099170c87d286c2e3ff785012f8",
+  "model_reported": "gpt-6.1-terra",
+  "usage": {
+    "input_tokens": 4584,
+    "output_tokens": 1089,
+    "reasoning_tokens": 414
+  },
+  "latency_ms": 21802,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1"
+        ],
+        "justificativa": "V1 confronta o nome no plano com a designação posterior e pede confirmação do responsável atual."
+      },
+      {
+        "id": "G2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V2"
+        ],
+        "justificativa": "V2 pergunta se a lista foi atualizada e se identifica pessoas acamadas no Junco Baixo, embora não cite o episódio de 2024."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V2",
+          "V3",
+          "T1",
+          "T2"
+        ],
+        "justificativa": "A saída articula a coordenação da remoção, a mudança de responsável e a lista mantida pelas equipes de Saúde da Família."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "correto",
+        "ids_saida": [
+          "T1",
+          "R5"
+        ],
+        "justificativa": "A saída identifica a indicação de Ana como superada e registra a designação de Carlos em 2025."
+      }
+    ],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "nao_reconhecido",
+        "ids_saida": [],
+        "justificativa": "A saída não explicita a ausência do ramal do novo coordenador."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "Ana é citada como responsável no plano antigo, não como responsável vigente."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à confirmação do responsável pelo Transporte Sanitário."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à confirmação da atualização da lista de pessoas acamadas do Junco Baixo."
+      },
+      {
+        "id": "V3",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "A articulação entre Transporte Sanitário e Saúde da Família é específica e sustentada pelas atribuições do plano."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "achados_temporais.T2.implicacao",
+        "afirmacao": "Não há atualização documental sobre a lista, sua data de revisão ou sua relação com o bairro Junco Baixo. D4 documenta problemas na lista associados à remoção no bairro em 2024, embora não comprove uma atualização posterior da lista."
+      }
+    ]
+  }
+}

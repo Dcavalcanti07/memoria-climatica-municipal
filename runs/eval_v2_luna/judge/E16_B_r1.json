@@ -1,0 +1,97 @@
+{
+  "run_file": "E16_B_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-6.1-terra",
+    "reasoning_effort": "medium",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_0fbc23efc4ad7eda016b0700a3c43087d2a6680baac2d3a804",
+  "model_reported": "gpt-6.1-terra",
+  "usage": {
+    "input_tokens": 3930,
+    "output_tokens": 789,
+    "reasoning_tokens": 205
+  },
+  "latency_ms": 15969,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1"
+        ],
+        "justificativa": "V1 pergunta pela vistoria e pelo laudo da ponte e indica a Secretaria de Obras entre os setores que podem confirmar."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V2",
+          "T1"
+        ],
+        "justificativa": "A saída relaciona a rota do Fundão à ponte e ao relato histórico de rachaduras sem resultado de vistoria disponível."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "correto",
+        "ids_saida": [
+          "T1",
+          "R6"
+        ],
+        "justificativa": "A saída distingue a intenção de solicitar a vistoria da sua realização, que não está registrada."
+      }
+    ],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "reconhecido",
+        "ids_saida": [
+          "V1",
+          "V2",
+          "T1"
+        ],
+        "justificativa": "A saída registra que não havia laudo anexado e que os documentos não apresentam rota alternativa."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não afirma que a ponte esteja comprometida, interditada ou sob risco de colapso."
+      },
+      {
+        "id": "X2",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não recomenda interditar a ponte."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à confirmação da vistoria ou do laudo da ponte prevista em G1."
+      },
+      {
+        "id": "V2",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "A verificação de rota alternativa é específica e relevante, mas não integra os gold_checks."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "V1.pergunta",
+        "afirmacao": "A expressão «vistoria [...] solicitada pela COMPDEC» pressupõe que a solicitação foi feita; a ata registra apenas a intenção de solicitá-la."
+      }
+    ]
+  }
+}

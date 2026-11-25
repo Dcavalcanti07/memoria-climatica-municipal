@@ -1,0 +1,104 @@
+{
+  "run_file": "E13_B_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-6.1-terra",
+    "reasoning_effort": "medium",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_0b214654b8bf9a94016b07009925b087d2892d712b3c9150c8",
+  "model_reported": "gpt-6.1-terra",
+  "usage": {
+    "input_tokens": 5430,
+    "output_tokens": 1180,
+    "reasoning_tokens": 488
+  },
+  "latency_ms": 25126,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V3"
+        ],
+        "justificativa": "As verificações abordam o plano para os 9 pacientes e a rota alternativa pelo Caí."
+      },
+      {
+        "id": "G2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V2",
+          "V4"
+        ],
+        "justificativa": "V2 verifica agendas e transporte de ambos os grupos; V4 aborda também a contingência para oncologia."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "R1",
+          "R2",
+          "R3"
+        ],
+        "justificativa": "A saída relaciona o risco de bloqueio, o acesso pavimentado e o atendimento dos 9 pacientes de hemodiálise."
+      }
+    ],
+    "gold_temporal": [],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "reconhecido",
+        "ids_saida": [
+          "V3"
+        ],
+        "justificativa": "V3 e as informações ausentes explicitam que a condição atual da estrada do Caí não é conhecida."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "V3 e informacoes_ausentes",
+        "justificativa": "A saída pede confirmação das condições atuais da rota, sem afirmar que ela está transitável."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Aborda o plano para manter a hemodiálise dos 9 pacientes em caso de bloqueio."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Verifica as agendas e necessidades de transporte de hemodiálise e oncologia durante o alerta."
+      },
+      {
+        "id": "V3",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Verifica o uso da estrada do Caí como alternativa de transporte e suas condições atuais."
+      },
+      {
+        "id": "V4",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Aborda o transporte dos pacientes de oncologia diante de possível bloqueio."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "R7.periodo",
+        "afirmacao": "O transporte pela estrada vicinal ocorreu em 10/06/2024, indicado como início e fim do período."
+      },
+      {
+        "onde": "V4.motivacao",
+        "afirmacao": "Havia atendimentos de oncologia em Monte Alto no período da atualização; D3 registra pacientes, mas não datas de atendimento."
+      }
+    ]
+  }
+}

@@ -1,0 +1,1111 @@
+{
+  "meta": {
+    "scenario": "E06",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v2_luna",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 816,
+    "user_message_sha12": "0995ce9bcb85"
+  },
+  "user_message": "Município (fictício): Rio Pequeno\nData de referência da análise: 2026-11-21\nDocumentos disponíveis (2), em ordem cronológica:\n\n### [D1] Plano de Contingência (2023, vigente)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2023-09-14\n\nAbrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas.\nAbrigo secundário: Escola Municipal Rio Pequeno — capacidade 90 pessoas.\nKits de higiene e colchões: almoxarifado da Assistência Social.\n\n---\n\n### [D2] Alerta de inundação (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-21\n\nNÍVEL: LARANJA. Rio Pequeno com tendência de elevação; possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_0dd1d395e879ccfd016b070020836c87d285d293d72775c22e",
+  "model_reported": "gpt-6-luna",
+  "usage": {
+    "input_tokens": 2028,
+    "output_tokens": 4700,
+    "reasoning_tokens": 317
+  },
+  "latency_ms": 27806,
+  "started_at": "2026-11-25T15:34:56.110Z",
+  "output": {
+    "resumo_situacao": "O alerta de 21/11/2026 indica nível laranja, tendência de elevação do rio e possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas. O plano de contingência de 2023 identifica dois abrigos e informa que kits de higiene e colchões ficam no almoxarifado da Assistência Social. Os documentos não informam áreas específicas, critérios de acionamento, estoque atual ou condições operacionais dos locais.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Alerta de inundação de 21/11/2026",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Cenário fictício de nível laranja, com tendência de elevação do rio e possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas."
+      },
+      {
+        "id": "E2",
+        "nome": "Áreas ribeirinhas de Rio Pequeno",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Áreas citadas no alerta como locais onde pode haver desalojamento; não são especificadas."
+      },
+      {
+        "id": "E3",
+        "nome": "Plano de Contingência de 2023",
+        "tipo": "norma_documento",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Plano datado de 14/09/2023, identificado no documento como vigente."
+      },
+      {
+        "id": "E4",
+        "nome": "COMPDEC",
+        "tipo": "setor",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Fonte do Plano de Contingência de 2023."
+      },
+      {
+        "id": "E5",
+        "nome": "Ginásio Municipal Arnaldo Prado",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Abrigo principal indicado no plano, com capacidade informada de 200 pessoas."
+      },
+      {
+        "id": "E6",
+        "nome": "Escola Municipal Rio Pequeno",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Abrigo secundário indicado no plano, com capacidade informada de 90 pessoas."
+      },
+      {
+        "id": "E7",
+        "nome": "Almoxarifado da Assistência Social",
+        "tipo": "infraestrutura",
+        "setor_responsavel": "Assistência Social",
+        "descricao": "Local indicado no plano para armazenamento de kits de higiene e colchões."
+      },
+      {
+        "id": "E8",
+        "nome": "Kits de higiene e colchões",
+        "tipo": "recurso",
+        "setor_responsavel": "Assistência Social",
+        "descricao": "Recursos mencionados no plano como armazenados no almoxarifado da Assistência Social."
+      },
+      {
+        "id": "E9",
+        "nome": "Pessoas desalojadas de áreas ribeirinhas",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": null,
+        "descricao": "Grupo potencialmente afetado segundo o alerta; não há número estimado de pessoas."
+      },
+      {
+        "id": "E10",
+        "nome": "Sala de Situação Regional",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Fonte indicada para o alerta fictício de inundação."
+      },
+      {
+        "id": "E11",
+        "nome": "Assistência Social",
+        "tipo": "setor",
+        "setor_responsavel": "Assistência Social",
+        "descricao": "Setor associado no plano ao almoxarifado onde ficam kits de higiene e colchões."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E10",
+        "destino": "E1",
+        "tipo": "comunica",
+        "rotulo": "A Sala de Situação Regional é a fonte do alerta.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-21",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Fonte: Sala de Situação Regional (fictícia)"
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta aponta possibilidade de desalojamento nas áreas ribeirinhas.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-21",
+          "fim": null,
+          "observacao": "Possibilidade indicada para as próximas 36 horas."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E3",
+        "destino": "E5",
+        "tipo": "atende",
+        "rotulo": "O plano indica o Ginásio Municipal Arnaldo Prado como abrigo principal.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2023-09-14",
+          "fim": null,
+          "observacao": "O plano está identificado como vigente."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E3",
+        "destino": "E6",
+        "tipo": "atende",
+        "rotulo": "O plano indica a Escola Municipal Rio Pequeno como abrigo secundário.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2023-09-14",
+          "fim": null,
+          "observacao": "O plano está identificado como vigente."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo secundário: Escola Municipal Rio Pequeno — capacidade 90 pessoas."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E8",
+        "destino": "E7",
+        "tipo": "armazena",
+        "rotulo": "Os kits de higiene e colchões são armazenados no almoxarifado da Assistência Social.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2023-09-14",
+          "fim": null,
+          "observacao": "Não há informação posterior sobre estoque ou acesso."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Kits de higiene e colchões: almoxarifado da Assistência Social."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E7",
+        "destino": "E11",
+        "tipo": "localizado_em",
+        "rotulo": "O almoxarifado é associado à Assistência Social.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2023-09-14",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "almoxarifado da Assistência Social."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E5",
+        "destino": "E9",
+        "tipo": "atende",
+        "rotulo": "O plano prevê o ginásio como abrigo, potencialmente relevante para pessoas desalojadas.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2023-09-14",
+          "fim": null,
+          "observacao": "A relação com o grupo afetado decorre da combinação entre o plano e o alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas."
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E6",
+        "destino": "E9",
+        "tipo": "atende",
+        "rotulo": "O plano prevê a escola como abrigo, potencialmente relevante para pessoas desalojadas.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2023-09-14",
+          "fim": null,
+          "observacao": "A relação com o grupo afetado decorre da combinação entre o plano e o alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo secundário: Escola Municipal Rio Pequeno — capacidade 90 pessoas."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas."
+          }
+        ]
+      },
+      {
+        "id": "R9",
+        "origem": "E8",
+        "destino": "E9",
+        "tipo": "atende",
+        "rotulo": "Os recursos armazenados podem ser relevantes para pessoas acolhidas, mas o uso não é detalhado nos documentos.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2023-09-14",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Kits de higiene e colchões: almoxarifado da Assistência Social."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "O alerta de 21/11/2026 é posterior ao plano de 14/09/2023 e informa um cenário de inundação com possível desalojamento nas próximas 36 horas. O alerta não altera nem atualiza explicitamente os abrigos ou os recursos descritos no plano.",
+        "implicacao": "Os itens do plano são a referência documental disponível, mas é necessário confirmar sua aplicação operacional ao cenário atual; não há base para presumir alteração ou manutenção das condições práticas.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Plano de Contingência (2023, vigente)"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "Quais áreas ribeirinhas estão abrangidas pelo cenário do alerta e qual estimativa de pessoas pode precisar de acolhimento?",
+        "por_que_importa": "A identificação das áreas e do número potencial de pessoas ajuda a avaliar a pertinência dos abrigos e das capacidades indicadas no plano.",
+        "motivacao": "O alerta menciona áreas ribeirinhas sem identificá-las e não fornece estimativa de pessoas.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Sala de Situação Regional"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas."
+          }
+        ],
+        "o_que_falta_saber": "Quais áreas são consideradas no cenário e quantas pessoas podem ser afetadas.",
+        "quem_pode_confirmar": "Sala de Situação Regional quanto ao cenário; COMPDEC quanto ao planejamento municipal, sujeito à confirmação institucional.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "O plano vigente prevê algum critério ou procedimento para acionar os abrigos diante deste alerta?",
+        "por_que_importa": "Os documentos identificam abrigos, mas não esclarecem quando ou por quem sua abertura deve ser acionada.",
+        "motivacao": "O alerta aponta possibilidade de desalojamento nas próximas 36 horas, enquanto o trecho disponível do plano informa os locais e capacidades, sem mencionar acionamento.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E3",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: LARANJA."
+          }
+        ],
+        "o_que_falta_saber": "Se há procedimento de acionamento aplicável ao alerta atual e qual função ou setor executa cada etapa.",
+        "quem_pode_confirmar": "COMPDEC, setor indicado como fonte do plano.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "As capacidades informadas para o ginásio e a escola continuam sendo as referências operacionais atuais para este cenário?",
+        "por_que_importa": "A capacidade dos abrigos é relevante para comparar o acolhimento previsto com a quantidade de pessoas que possa precisar de abrigo.",
+        "motivacao": "As capacidades constam do plano de 2023, enquanto o alerta de 2026 prevê possível desalojamento; não há confirmação posterior das capacidades.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E3",
+          "E5",
+          "E6",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo secundário: Escola Municipal Rio Pequeno — capacidade 90 pessoas."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas."
+          }
+        ],
+        "o_que_falta_saber": "Se as capacidades registradas no plano correspondem às condições e ao arranjo considerados atualmente.",
+        "quem_pode_confirmar": "COMPDEC, sujeito à confirmação institucional sobre a responsabilidade operacional pelos abrigos.",
+        "prioridade": "media"
+      },
+      {
+        "id": "V4",
+        "pergunta": "Qual é o estoque atual de kits de higiene e colchões e como os responsáveis poderiam acessá-los no período indicado pelo alerta?",
+        "por_que_importa": "O plano localiza os recursos, mas não informa quantidades, condições de estoque ou procedimento de acesso; isso pode afetar o atendimento de pessoas acolhidas.",
+        "motivacao": "A possibilidade de desalojamento nas próximas 36 horas torna relevante confirmar os recursos citados no plano, sem presumir que o estoque esteja indisponível.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E7",
+          "E8",
+          "E11",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "Assistência Social",
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Kits de higiene e colchões: almoxarifado da Assistência Social."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas."
+          }
+        ],
+        "o_que_falta_saber": "Quantidades disponíveis, condições dos itens e procedimento de acesso ou retirada no período do alerta.",
+        "quem_pode_confirmar": "Assistência Social, setor associado ao almoxarifado no plano.",
+        "prioridade": "alta"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "O alerta não identifica quais áreas ribeirinhas estão abrangidas nem estima quantas pessoas podem ser desalojadas.",
+        "por_que_importa": "Sem esses dados, não é possível relacionar a demanda potencial às capacidades dos abrigos indicadas no plano."
+      },
+      {
+        "descricao": "Os trechos disponíveis não informam critérios de acionamento, responsáveis pela abertura dos abrigos ou procedimentos de encaminhamento de pessoas.",
+        "por_que_importa": "Esses elementos são necessários para entender como as estruturas previstas no plano se articulam com o alerta atual."
+      },
+      {
+        "descricao": "Não há informação posterior a 2023 sobre condições operacionais ou capacidades atuais dos abrigos.",
+        "por_que_importa": "As capacidades registradas podem ser consideradas na análise, mas os documentos não confirmam sua condição operacional no cenário de 2026."
+      },
+      {
+        "descricao": "Não há informação atual sobre quantidade, condição ou acesso aos kits de higiene e colchões armazenados.",
+        "por_que_importa": "O plano informa o local de armazenamento, mas não permite verificar a quantidade ou a possibilidade de uso no período do alerta."
+      }
+    ],
+    "cautelas": [
+      "A análise trata o alerta como cenário fictício e não prevê a ocorrência de desalojamento.",
+      "O plano de 2023 está identificado como vigente em D1; a existência do alerta posterior não o substitui nem altera explicitamente seus dados.",
+      "As capacidades e os locais de armazenamento são informações documentadas no plano, não confirmação de condições operacionais atuais.",
+      "Não há documentos de ocorrências históricas entre os materiais fornecidos; por isso, as verificações se baseiam em informação atual.",
+      "Esta pauta é para revisão humana e não decide acionamento de abrigos, remoção de pessoas ou qualquer outra medida."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 11,
+    "n_relacoes": 9,
+    "n_verificacoes": 4,
+    "n_temporais": 1,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D2",
+        "trecho": "Fonte: Sala de Situação Regional (fictícia)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo secundário: Escola Municipal Rio Pequeno — capacidade 90 pessoas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Kits de higiene e colchões: almoxarifado da Assistência Social.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "almoxarifado da Assistência Social.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo secundário: Escola Municipal Rio Pequeno — capacidade 90 pessoas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Kits de higiene e colchões: almoxarifado da Assistência Social.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R9"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R9"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Plano de Contingência (2023, vigente)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: LARANJA.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo secundário: Escola Municipal Rio Pequeno — capacidade 90 pessoas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Kits de higiene e colchões: almoxarifado da Assistência Social.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      }
+    ],
+    "n_citacoes": 22,
+    "n_citacoes_literais": 22,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795620923,
+    "created_at": 1795620896,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_0dd1d395e879ccfd016b070020836c87d285d293d72775c22e",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-6-luna",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBwAjax2bpWaneqb6PJqbEjFJ2oH6TySRnyPqbc4foUpWhiSoH592QWZz0ci92CipYQYW036eFn2j_0kcjamtjCWGS3nVmu9Hj52YG79BL2cU9pBZnbQHpLRX-JXfSVZNU3-mXeIDEn-lvtHvo1Hs_esecC1XvLYRIxHsLBY9_83qNIxu4DKOnM-B0k_ppy6j0KkgLq6IYfo8RikWf2Th2nYNuJDi48FC7YmjrbM7ZjlgyQswz8KBivGMa8rSP5ngK0Q1kP5U3m6Aw2Orsb-4NjAH_ro015IljxUekWHOOg8eAG_GMjVCfVsVixKFJ1wwhbpQFuShJ3mjHQv2c0LCRWZtdrfgbSD_d6kn1lMGQLyVLJNy6zrjx2HC6xXfMjfUSIHOrIzca0wHY6nJ7io-UZvzRcQEv68h6_M-o3ArEMNycNZWsQFp6fL4ezSXUNn0KK5pNLB85ZPETRYlh1Mmub6F5oy-esz6ZYWsbyZpE6gH5nsJGsM6iJH4XT6wSJuvK8DHl9ZCse1bKo8FjR-WUbkhNdCw3nJnVH06M-oMBSdRcCrhfQ34-1bEPR311XTvPbheahZatDzGgxgL_XlUfQkgTVJ6gobUqR9Ifd3TpNV9Cwyx6j5ELygynenbxggcGu7up5LUtav3NOve-xNAwnjSTW62YPxtkjYkTrmkKBnnPBiZak0PHbak8-HSSP-EdZWpSta-fjZ1pz3vLCK8g6c7vFou7rqTfPL0_IEa6gOvhTZu_UsyqlYW1hJgnheAwJHDp8bGgyBU6LWtQuMApGgiXW2A6namCEJcneCD1TR0JK0s2wAxAdARhsE2QbFGOSWl2CtTfPLZAu97xy1gxo0g2-rpaiBdNr9icPiRw3hBN6KVh_3XFJGT_LKY47KZtUEG9vhWrufMyEFIYkzWcS4Jiyf_Dd6P2TFFNCXNeLqEaN5JeXVh2lDrhmL2fCB-TaT7PazV61yz9tj9p23W_hHBD8NH3BMObMJ9lh_Wzwm04FPjJ5hs1zaofJUF-XGbe5CNC0ywO5mPjrsCOLdbMJ1cwrY6CGo64Pgv8gGKndtGjzRVOxH1qs3Dy4Gbq-W_WzflmYiCwA27V2uSTPNVIx_3JiHw2rgUXAgko_jnlk-DgeWrNV6yRKtfKpDaeUrpVN4mRzW0b_SsnUb_UEY1ptbQJn3gW9M3kjDuqeRMU-ZkW5Fb82K-y_pxs1q1cFc1UnNYq4zQCMXrt5MrPJsPWL7alfqX9dskPjeAv1E3Xwm3U_JIO9L_A8KT6Lbzg7FCb0leJvULnIESNp2bFLzOu5m-f9ceCDIxxsnYgzGQtdmMjGf1gL_bBqixMffJmIRjyD142PCTkXRTKwpq8_3P423ODxNge_5SN4DJ1uVL7cNsJ0y8_7QLjdCKNor9DEHKAmAgK-OL7MJtZL5dioAnBAYWW1UECT2djXOsSZ6DS5l47uhIK2OqQAgmxdBSV5Wm2fpKYonfe1MfoL4JyPvr15WvuoxQ89hLjVI8jeatcdQAnBqyMobRhj4BVw8ocGyxX_NWIPkHs-QgaTC9IWZzVzogwJtvO4gW6aAgqRwgW_whSXiFJTwoDWl4mkkPJZPdnaZNFAklCMbK6vHolM_SZ7d0xbP7lCBLOz_Y2fg-QldGVc5HGAg2sM0o8T8q8EcB0u8Ahj0Ivo0P4ROS0P5gc-0dtlISHkFDI0wmYsQLqaqx2g15BXG6qg5uQymseJ-3-uXlz5HxrXZvsUtdi5k4kcaFlhJsRwtKKcITJM1J5Sn8J9Yz1L7pbhsCL6afOpTnpcGRvANY6pGKRkRG-jVjfYhjrebkSSxzuM-MmT27f0kOI23cqn2DzdiIPZt8OmjupDMQvYPCg4jfJyW8wCIRiQMfn0xSpxSs4owx0cCLbrZTD4Q_yTLqnA2tyOBgsJ7NDt8bt3CXug5ItZ7PwzY0EgJeyAM-miQ3qALKxExShjxZ0qnfXnuDcY6EhzyL1LFbH_qauptBCDjGqsyZKky3GFBWnE1i4-rpg_-kCvDgQ4pX3kBdpTFZCAu8rlKihHp92QaU3OlIfguWrRPu9s_ZdJJmrxEqJJHyMmGAc7nmxFkwqa4JFlUVlXYfb8BgEugy1FuueR_yhLff5fC5lVqymeVJiQ_cMkaRudLMuE3rBri1IMn2g17oSEk39YzAPKWWwo421acH4d1L032vXArBsNcOV7M1HkVOVrGkuQwO084UZ7guSi75MgPhFuz12nFGmOPmJl6lNgWjCb0n_KpYdVwFOMixiY4nZfQVgQxbgNstZrVOUCf01ox95mpmv2VS6NXxhTFs57TvGQwZLssOFX4O3Op3C2FlILlAqm8iiqo09YO9617vTAF-lT9YeGMs_98fMAA6sTuqghiilvIGDGp1rfGyOdKqCrPKUroLLcLs_OgDr34ZcytSvbsvQy8KfbNKLkMGdkZFm9NV2EEZol3uAFEjxTEX_8FuwGoLF7ugKK7TsCb-KxDsRRzcSBHKbh1xi9g8MaptmD7Yw4aUrPhZsG1tTjDPrxg6SJcNVCaY0dGfCnrZ8QfN-6EjCRO5VYKCUaCY7DCEcO4JXAtdL_-HosySZhYN0hAvnt2MdoNGtJDUo0nX7sVnZZ-nPBR8zhkOmSd3JQIuNxMBbSWE3KUVDolqGKVxzhxZs29zdZRBpGGCGfUOYtiAjGlk4q6Y_4Qgt3IQO3ymCbk8slenoo19b-ycKvsmPg7AVZtaZ2w_SQGWWz_kp48DK4LvOyMSTYxuZAfxFnOMNM1mQKD3F1pG1NpIkDWYlrM8HiMDdeQAVXnn-Xhw6whyZkTTEEZJNKvWQG-WrFWbMhDbdGfnPh47dW9hFteRCm3HKu5Kqour_64XnqG14kg5i8hWzUqYYjxn7oDd6BSDB5Yh9fauzb8nQfWT8xbTFlm1SIJuLd3U7eh-fG099vs_apeV8mx4EMxXRmWf05suyLH2tPQqEv6RtJMEhjyXnmbBw0kzmapjk82jC-zD_jj45wvjN8wELuMxxNrRrSzjGzcrQQUPuQrYwZ2pKmZL0zdIzDg4MxzvisiVOHzLGNr26MeXftYiZqejolKS61C-5OsFHccTZ2HY4MGpCqddCmEBvY1UZAP8PTZ-PdR7S-JjCK4RYLD_oBttueNQsMv_oanZvDgvI9r9w_yrIV7yRDeJtZNWFJkXOgGoMbijy_YelePPKsGc7SZAYfwdE6vmpRPEwaB2V3peKFMewbPO_BYwOYTlV_nGbf7NAgcxqleIXz7KboGpK0Yxtsz51trXzzm-JisIgEjwaW07PmQEDTxArJd0ctzRDctaQ8o6qeaEWT0BP3ffgu4umcfJxOZHHFPOjlDLZQVAkkX7Cb2Hc6xF_UlHkHeMeWM3X0zF_SdMWMLt3GHFpYjzJa--JfoLWRqTDeYIUDpOCTs0KERDrgjSFfql7hyoxhiPp1mkW-Y7NAJYTwZn698cbTvVfAJ72aJ_Fbhs1eSpQvbUItc90bg2UAQtriwxXmnyF3Ki3QDBYp5W1CfCML4eZv6j9AfVUgUCAGICoTf1M6P0Yn2Y7PWqhaCdfHSyCaxiO_3ckaaHFNNA8ZbRt_KwLhgY-9_brDeXErfqLPNHGxfMWRBLf71bsDklgBtKEDuwdUlnrWDoth2RO3deakmcgeZDbBpEdfPoCuUGRaeXSEnHGTGhGwMsanZazGXCMM2hKDA5zRpgrrvfJZL1poQdNQraO5AZhEsZeH2LP9KHY1tz47mvGxkjaO2hY2Dj_hXraza79aZ1NNFWJDJPpk5-JVO3CgrtZxtXtWjMPN-NRaIcI2DWzGc-tXZCR-C5afib6jYk_nNwwBKWW9_sNgG752t6pMbH-qRiy04-xIvQ0spRBlIVuQbxM2G5qE37LisxlrGa1kS2VPJ5AwcuJTvMuziqKv84qGYAcvniNbN-2XLtyA_YBNbZAw04nrPzIHbqYUbUnmTQAA_bke5X-gepSeSQDnCEM0Afvry_KIWL7GS4wJD1oPavvF2JaCHo-BGZitCPMespmEaXaiIqG2G1p-0kmz2tk0i1ITYGil4jtAtbCxB5ZONzuoJxH_sACE9UvA22cn5-Y4m-js0ercskXpvGuCXDuv27Vzpkn98g6fYYiBe7C5NeFjLiHU9ozIUMkftAfsPs2nCEUfdbVbLRVf_aruizt2r3lxAHTbhk2vWcS84IbbxajBKPRo9nyMAx6r78-MsiscbLzaGRfh8QVXNmqKTAxbUrhzKOugWGAQLElAjUx8gJEFpeo099mIHfuiTVRog8GirSParb1tK8tqfZm2xHWTzeDhZO1TZnZQt_Qucb7Azpq8ZKZ_8cP62GEbyMGjNYR4_rktH9bHVivvsTJ8-JKVM0UirGvaTlAXb9XdWXGJdWbTuSLkga3LCJhxns9Gei3cIbYcLU9YhIMzR20Sr8P1isbFwpS5oqkKBXFiWVCXP-e2-HDaqyNlOaJUXXUwxmV6VdZ8kHf5Yd5uwON0jrCMDhVbwnGqVHP3VMhBe32vYRQjmpEM0ohNLsM8jXFKoLcPJrDFSabrhRCKIIpyjRbTgpfWMBSWC5L3rQ_d3ZUNliVQEPXiFbkvfMIF-3GYA9HCMwPkFMKOSrczP4LsFBi6ggkeD4MzfkD2KndsVih4jp2OJruz2VUCO-ku2b9AU_IQCQxtvPdlfeGaxj4Z_MC4vaWtucLpcia8Tc0AsbH1KM5yEFJQ026iaRDhp2Q8P7Db-l_pZegZMegiZpjcRMp4NoIYB0UacNq35i4leIROAi9rT1dbpcj_l2Ky-pl7qLvPZSW5dar2ZrX3tyNqr_zUQcd2yULfTE05ulN1aY1u0Mdd3IrSsar8pWW7OEyEX-Y2353cWsQMnV7PXFX5PuqEPO4FrgOdsihe9sqCkgY0MD78hbFUqtqZi0Q0N-eLVfKDxRtsv3AiLUcjX5qFcoyHwgY4Rvsnuv_5OTi-7smNSkyz_Qnw5WL5ycQlSNuwwPamUxBJATAVXsxLCIRV8oFTTxAB2Kp5PozymCIN9TotPhas8hH5VvrF70vRJJMqe9KnzhFdwQlJusmxsKfa2aAyNkDEC1LYsY23Geo35cC_g8UDLlNlQPh33s_gGgT2HgwAU_WVqjV3ycnfEsEnBR_FxYecXdiKSpe5kx0mbzAcovw202NcFEf_uh2IfaiMAIZwHZB8ZXxsEAHxbyS9zvXfZoNbgX8YisOFvs1M9HRQj0K0KlhQn0yb3p9L9KA0eJEst6Gmf30NhybcjcpLtde76QCrn0aSfrnZ7JLQq3jiu9sRnHaz94XqqkdShGepbKDDl-7OCbmZbu7N9CjGzweivIw65h4R74pC2qBU0EzQH-_m1H2VFhgqp2mOn6MORFOHY91p6EbipbuFsiHWGrTln7eNPPE7dJAWkjCc88g6GONBab3iIw1gCU4dbf0Udjg5nxY-HJvI4T5gWLKFGxe2NMLSqWs0gF2K7To0XFhjIFJypdY3VQegUQPisrkCvq3GwMGg0VgirwBdW8Wfp0wGFuS4TV7tGjLXo1bRx_yXcyUi02iFDvr6v6EjQMYqxMA4H5wpW3U61VJroqwVSik2JBc_nMiiMYR8Td29j_lh7VP6Pmkl-gfwpssWYt755Hg6g2SeqKXhddQif7aKWBGM4G40Z4jGZr_eqLU5h6eCZefCS2jjBOv-fuuPMLLoaal2dAVHZnOj51qJC4A_MO7bLa3gpaI7KBvNXhHO-T-93FSTLsMbJg79B0vxFKUTpSzzBTSAqjgYpwHajPVK5dw-PHT99AECHr7lHkgyc-kZwlG8cCcaamfMMnmdk_Fa3K_2p4_fe910RsYi8wUWRP0BlhBcma4IHBWT4E93v5rkp28nc5NxbvHmJsyVch1Xv-aIKLo_nvq-c9fmwZIPj_1jZcmBuflc3z6xBpnzV0UmGSOYRRzBl9drF6MmdpJUKk0iLwyUgdaq7lh4SbWvyM29VR4uh1yFpG3Q==",
+        "id": "rs_0dd1d395e879ccfd016b070023377487d2bbeb411b244bee77",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"resumo_situacao\": \"O alerta de 21/11/2026 indica nível laranja, tendência de elevação do rio e possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas. O plano de contingência de 2023 identifica dois abrigos e informa que kits de higiene e colchões ficam no almoxarifado da Assistência Social. Os documentos não informam áreas específicas, critérios de acionamento, estoque atual ou condições operacionais dos locais.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de inundação de 21/11/2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Cenário fictício de nível laranja, com tendência de elevação do rio e possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Áreas ribeirinhas de Rio Pequeno\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Áreas citadas no alerta como locais onde pode haver desalojamento; não são especificadas.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Plano de Contingência de 2023\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Plano datado de 14/09/2023, identificado no documento como vigente.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Fonte do Plano de Contingência de 2023.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Ginásio Municipal Arnaldo Prado\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Abrigo principal indicado no plano, com capacidade informada de 200 pessoas.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Escola Municipal Rio Pequeno\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Abrigo secundário indicado no plano, com capacidade informada de 90 pessoas.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Almoxarifado da Assistência Social\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": \"Assistência Social\",\n      \"descricao\": \"Local indicado no plano para armazenamento de kits de higiene e colchões.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"Kits de higiene e colchões\",\n      \"tipo\": \"recurso\",\n      \"setor_responsavel\": \"Assistência Social\",\n      \"descricao\": \"Recursos mencionados no plano como armazenados no almoxarifado da Assistência Social.\"\n    },\n    {\n      \"id\": \"E9\",\n      \"nome\": \"Pessoas desalojadas de áreas ribeirinhas\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Grupo potencialmente afetado segundo o alerta; não há número estimado de pessoas.\"\n    },\n    {\n      \"id\": \"E10\",\n      \"nome\": \"Sala de Situação Regional\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Fonte indicada para o alerta fictício de inundação.\"\n    },\n    {\n      \"id\": \"E11\",\n      \"nome\": \"Assistência Social\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Assistência Social\",\n      \"descricao\": \"Setor associado no plano ao almoxarifado onde ficam kits de higiene e colchões.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E10\",\n      \"destino\": \"E1\",\n      \"tipo\": \"comunica\",\n      \"rotulo\": \"A Sala de Situação Regional é a fonte do alerta.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-21\",\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Fonte: Sala de Situação Regional (fictícia)\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta aponta possibilidade de desalojamento nas áreas ribeirinhas.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-21\",\n        \"fim\": null,\n        \"observacao\": \"Possibilidade indicada para as próximas 36 horas.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E3\",\n      \"destino\": \"E5\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O plano indica o Ginásio Municipal Arnaldo Prado como abrigo principal.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2023-09-14\",\n        \"fim\": null,\n        \"observacao\": \"O plano está identificado como vigente.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E3\",\n      \"destino\": \"E6\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O plano indica a Escola Municipal Rio Pequeno como abrigo secundário.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2023-09-14\",\n        \"fim\": null,\n        \"observacao\": \"O plano está identificado como vigente.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo secundário: Escola Municipal Rio Pequeno — capacidade 90 pessoas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E8\",\n      \"destino\": \"E7\",\n      \"tipo\": \"armazena\",\n      \"rotulo\": \"Os kits de higiene e colchões são armazenados no almoxarifado da Assistência Social.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2023-09-14\",\n        \"fim\": null,\n        \"observacao\": \"Não há informação posterior sobre estoque ou acesso.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Kits de higiene e colchões: almoxarifado da Assistência Social.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E7\",\n      \"destino\": \"E11\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O almoxarifado é associado à Assistência Social.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2023-09-14\",\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"almoxarifado da Assistência Social.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R7\",\n      \"origem\": \"E5\",\n      \"destino\": \"E9\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O plano prevê o ginásio como abrigo, potencialmente relevante para pessoas desalojadas.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2023-09-14\",\n        \"fim\": null,\n        \"observacao\": \"A relação com o grupo afetado decorre da combinação entre o plano e o alerta.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R8\",\n      \"origem\": \"E6\",\n      \"destino\": \"E9\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O plano prevê a escola como abrigo, potencialmente relevante para pessoas desalojadas.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2023-09-14\",\n        \"fim\": null,\n        \"observacao\": \"A relação com o grupo afetado decorre da combinação entre o plano e o alerta.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo secundário: Escola Municipal Rio Pequeno — capacidade 90 pessoas.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R9\",\n      \"origem\": \"E8\",\n      \"destino\": \"E9\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"Os recursos armazenados podem ser relevantes para pessoas acolhidas, mas o uso não é detalhado nos documentos.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2023-09-14\",\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Kits de higiene e colchões: almoxarifado da Assistência Social.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O alerta de 21/11/2026 é posterior ao plano de 14/09/2023 e informa um cenário de inundação com possível desalojamento nas próximas 36 horas. O alerta não altera nem atualiza explicitamente os abrigos ou os recursos descritos no plano.\",\n      \"implicacao\": \"Os itens do plano são a referência documental disponível, mas é necessário confirmar sua aplicação operacional ao cenário atual; não há base para presumir alteração ou manutenção das condições práticas.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Plano de Contingência (2023, vigente)\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Quais áreas ribeirinhas estão abrangidas pelo cenário do alerta e qual estimativa de pessoas pode precisar de acolhimento?\",\n      \"por_que_importa\": \"A identificação das áreas e do número potencial de pessoas ajuda a avaliar a pertinência dos abrigos e das capacidades indicadas no plano.\",\n      \"motivacao\": \"O alerta menciona áreas ribeirinhas sem identificá-las e não fornece estimativa de pessoas.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\",\n        \"Sala de Situação Regional\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Quais áreas são consideradas no cenário e quantas pessoas podem ser afetadas.\",\n      \"quem_pode_confirmar\": \"Sala de Situação Regional quanto ao cenário; COMPDEC quanto ao planejamento municipal, sujeito à confirmação institucional.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"O plano vigente prevê algum critério ou procedimento para acionar os abrigos diante deste alerta?\",\n      \"por_que_importa\": \"Os documentos identificam abrigos, mas não esclarecem quando ou por quem sua abertura deve ser acionada.\",\n      \"motivacao\": \"O alerta aponta possibilidade de desalojamento nas próximas 36 horas, enquanto o trecho disponível do plano informa os locais e capacidades, sem mencionar acionamento.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E4\",\n        \"E5\",\n        \"E6\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: LARANJA.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se há procedimento de acionamento aplicável ao alerta atual e qual função ou setor executa cada etapa.\",\n      \"quem_pode_confirmar\": \"COMPDEC, setor indicado como fonte do plano.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V3\",\n      \"pergunta\": \"As capacidades informadas para o ginásio e a escola continuam sendo as referências operacionais atuais para este cenário?\",\n      \"por_que_importa\": \"A capacidade dos abrigos é relevante para comparar o acolhimento previsto com a quantidade de pessoas que possa precisar de abrigo.\",\n      \"motivacao\": \"As capacidades constam do plano de 2023, enquanto o alerta de 2026 prevê possível desalojamento; não há confirmação posterior das capacidades.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E5\",\n        \"E6\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo secundário: Escola Municipal Rio Pequeno — capacidade 90 pessoas.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se as capacidades registradas no plano correspondem às condições e ao arranjo considerados atualmente.\",\n      \"quem_pode_confirmar\": \"COMPDEC, sujeito à confirmação institucional sobre a responsabilidade operacional pelos abrigos.\",\n      \"prioridade\": \"media\"\n    },\n    {\n      \"id\": \"V4\",\n      \"pergunta\": \"Qual é o estoque atual de kits de higiene e colchões e como os responsáveis poderiam acessá-los no período indicado pelo alerta?\",\n      \"por_que_importa\": \"O plano localiza os recursos, mas não informa quantidades, condições de estoque ou procedimento de acesso; isso pode afetar o atendimento de pessoas acolhidas.\",\n      \"motivacao\": \"A possibilidade de desalojamento nas próximas 36 horas torna relevante confirmar os recursos citados no plano, sem presumir que o estoque esteja indisponível.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E7\",\n        \"E8\",\n        \"E11\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"Assistência Social\",\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Kits de higiene e colchões: almoxarifado da Assistência Social.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Quantidades disponíveis, condições dos itens e procedimento de acesso ou retirada no período do alerta.\",\n      \"quem_pode_confirmar\": \"Assistência Social, setor associado ao almoxarifado no plano.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"O alerta não identifica quais áreas ribeirinhas estão abrangidas nem estima quantas pessoas podem ser desalojadas.\",\n      \"por_que_importa\": \"Sem esses dados, não é possível relacionar a demanda potencial às capacidades dos abrigos indicadas no plano.\"\n    },\n    {\n      \"descricao\": \"Os trechos disponíveis não informam critérios de acionamento, responsáveis pela abertura dos abrigos ou procedimentos de encaminhamento de pessoas.\",\n      \"por_que_importa\": \"Esses elementos são necessários para entender como as estruturas previstas no plano se articulam com o alerta atual.\"\n    },\n    {\n      \"descricao\": \"Não há informação posterior a 2023 sobre condições operacionais ou capacidades atuais dos abrigos.\",\n      \"por_que_importa\": \"As capacidades registradas podem ser consideradas na análise, mas os documentos não confirmam sua condição operacional no cenário de 2026.\"\n    },\n    {\n      \"descricao\": \"Não há informação atual sobre quantidade, condição ou acesso aos kits de higiene e colchões armazenados.\",\n      \"por_que_importa\": \"O plano informa o local de armazenamento, mas não permite verificar a quantidade ou a possibilidade de uso no período do alerta.\"\n    }\n  ],\n  \"cautelas\": [\n    \"A análise trata o alerta como cenário fictício e não prevê a ocorrência de desalojamento.\",\n    \"O plano de 2023 está identificado como vigente em D1; a existência do alerta posterior não o substitui nem altera explicitamente seus dados.\",\n    \"As capacidades e os locais de armazenamento são informações documentadas no plano, não confirmação de condições operacionais atuais.\",\n    \"Não há documentos de ocorrências históricas entre os materiais fornecidos; por isso, as verificações se baseiam em informação atual.\",\n    \"Esta pauta é para revisão humana e não decide acionamento de abrigos, remoção de pessoas ou qualquer outra medida.\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0dd1d395e879ccfd016b0700235bc087d2956773e49fe46ddf",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "all_turns",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2028,
+      "input_tokens_details": {
+        "cache_write_tokens": 234,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 234
+        },
+        "cached_tokens": 1791
+      },
+      "output_tokens": 4700,
+      "output_tokens_details": {
+        "reasoning_tokens": 317
+      },
+      "total_tokens": 6728
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\n  \"resumo_situacao\": \"O alerta de 21/11/2026 indica nível laranja, tendência de elevação do rio e possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas. O plano de contingência de 2023 identifica dois abrigos e informa que kits de higiene e colchões ficam no almoxarifado da Assistência Social. Os documentos não informam áreas específicas, critérios de acionamento, estoque atual ou condições operacionais dos locais.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de inundação de 21/11/2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Cenário fictício de nível laranja, com tendência de elevação do rio e possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Áreas ribeirinhas de Rio Pequeno\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Áreas citadas no alerta como locais onde pode haver desalojamento; não são especificadas.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Plano de Contingência de 2023\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Plano datado de 14/09/2023, identificado no documento como vigente.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Fonte do Plano de Contingência de 2023.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Ginásio Municipal Arnaldo Prado\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Abrigo principal indicado no plano, com capacidade informada de 200 pessoas.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Escola Municipal Rio Pequeno\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Abrigo secundário indicado no plano, com capacidade informada de 90 pessoas.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Almoxarifado da Assistência Social\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": \"Assistência Social\",\n      \"descricao\": \"Local indicado no plano para armazenamento de kits de higiene e colchões.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"Kits de higiene e colchões\",\n      \"tipo\": \"recurso\",\n      \"setor_responsavel\": \"Assistência Social\",\n      \"descricao\": \"Recursos mencionados no plano como armazenados no almoxarifado da Assistência Social.\"\n    },\n    {\n      \"id\": \"E9\",\n      \"nome\": \"Pessoas desalojadas de áreas ribeirinhas\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Grupo potencialmente afetado segundo o alerta; não há número estimado de pessoas.\"\n    },\n    {\n      \"id\": \"E10\",\n      \"nome\": \"Sala de Situação Regional\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Fonte indicada para o alerta fictício de inundação.\"\n    },\n    {\n      \"id\": \"E11\",\n      \"nome\": \"Assistência Social\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Assistência Social\",\n      \"descricao\": \"Setor associado no plano ao almoxarifado onde ficam kits de higiene e colchões.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E10\",\n      \"destino\": \"E1\",\n      \"tipo\": \"comunica\",\n      \"rotulo\": \"A Sala de Situação Regional é a fonte do alerta.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-21\",\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Fonte: Sala de Situação Regional (fictícia)\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta aponta possibilidade de desalojamento nas áreas ribeirinhas.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-21\",\n        \"fim\": null,\n        \"observacao\": \"Possibilidade indicada para as próximas 36 horas.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E3\",\n      \"destino\": \"E5\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O plano indica o Ginásio Municipal Arnaldo Prado como abrigo principal.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2023-09-14\",\n        \"fim\": null,\n        \"observacao\": \"O plano está identificado como vigente.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E3\",\n      \"destino\": \"E6\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O plano indica a Escola Municipal Rio Pequeno como abrigo secundário.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2023-09-14\",\n        \"fim\": null,\n        \"observacao\": \"O plano está identificado como vigente.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo secundário: Escola Municipal Rio Pequeno — capacidade 90 pessoas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E8\",\n      \"destino\": \"E7\",\n      \"tipo\": \"armazena\",\n      \"rotulo\": \"Os kits de higiene e colchões são armazenados no almoxarifado da Assistência Social.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2023-09-14\",\n        \"fim\": null,\n        \"observacao\": \"Não há informação posterior sobre estoque ou acesso.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Kits de higiene e colchões: almoxarifado da Assistência Social.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E7\",\n      \"destino\": \"E11\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O almoxarifado é associado à Assistência Social.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2023-09-14\",\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"almoxarifado da Assistência Social.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R7\",\n      \"origem\": \"E5\",\n      \"destino\": \"E9\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O plano prevê o ginásio como abrigo, potencialmente relevante para pessoas desalojadas.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2023-09-14\",\n        \"fim\": null,\n        \"observacao\": \"A relação com o grupo afetado decorre da combinação entre o plano e o alerta.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R8\",\n      \"origem\": \"E6\",\n      \"destino\": \"E9\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O plano prevê a escola como abrigo, potencialmente relevante para pessoas desalojadas.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2023-09-14\",\n        \"fim\": null,\n        \"observacao\": \"A relação com o grupo afetado decorre da combinação entre o plano e o alerta.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo secundário: Escola Municipal Rio Pequeno — capacidade 90 pessoas.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R9\",\n      \"origem\": \"E8\",\n      \"destino\": \"E9\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"Os recursos armazenados podem ser relevantes para pessoas acolhidas, mas o uso não é detalhado nos documentos.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2023-09-14\",\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Kits de higiene e colchões: almoxarifado da Assistência Social.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O alerta de 21/11/2026 é posterior ao plano de 14/09/2023 e informa um cenário de inundação com possível desalojamento nas próximas 36 horas. O alerta não altera nem atualiza explicitamente os abrigos ou os recursos descritos no plano.\",\n      \"implicacao\": \"Os itens do plano são a referência documental disponível, mas é necessário confirmar sua aplicação operacional ao cenário atual; não há base para presumir alteração ou manutenção das condições práticas.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Plano de Contingência (2023, vigente)\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Quais áreas ribeirinhas estão abrangidas pelo cenário do alerta e qual estimativa de pessoas pode precisar de acolhimento?\",\n      \"por_que_importa\": \"A identificação das áreas e do número potencial de pessoas ajuda a avaliar a pertinência dos abrigos e das capacidades indicadas no plano.\",\n      \"motivacao\": \"O alerta menciona áreas ribeirinhas sem identificá-las e não fornece estimativa de pessoas.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\",\n        \"Sala de Situação Regional\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Quais áreas são consideradas no cenário e quantas pessoas podem ser afetadas.\",\n      \"quem_pode_confirmar\": \"Sala de Situação Regional quanto ao cenário; COMPDEC quanto ao planejamento municipal, sujeito à confirmação institucional.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"O plano vigente prevê algum critério ou procedimento para acionar os abrigos diante deste alerta?\",\n      \"por_que_importa\": \"Os documentos identificam abrigos, mas não esclarecem quando ou por quem sua abertura deve ser acionada.\",\n      \"motivacao\": \"O alerta aponta possibilidade de desalojamento nas próximas 36 horas, enquanto o trecho disponível do plano informa os locais e capacidades, sem mencionar acionamento.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E4\",\n        \"E5\",\n        \"E6\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: LARANJA.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se há procedimento de acionamento aplicável ao alerta atual e qual função ou setor executa cada etapa.\",\n      \"quem_pode_confirmar\": \"COMPDEC, setor indicado como fonte do plano.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V3\",\n      \"pergunta\": \"As capacidades informadas para o ginásio e a escola continuam sendo as referências operacionais atuais para este cenário?\",\n      \"por_que_importa\": \"A capacidade dos abrigos é relevante para comparar o acolhimento previsto com a quantidade de pessoas que possa precisar de abrigo.\",\n      \"motivacao\": \"As capacidades constam do plano de 2023, enquanto o alerta de 2026 prevê possível desalojamento; não há confirmação posterior das capacidades.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E5\",\n        \"E6\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo secundário: Escola Municipal Rio Pequeno — capacidade 90 pessoas.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se as capacidades registradas no plano correspondem às condições e ao arranjo considerados atualmente.\",\n      \"quem_pode_confirmar\": \"COMPDEC, sujeito à confirmação institucional sobre a responsabilidade operacional pelos abrigos.\",\n      \"prioridade\": \"media\"\n    },\n    {\n      \"id\": \"V4\",\n      \"pergunta\": \"Qual é o estoque atual de kits de higiene e colchões e como os responsáveis poderiam acessá-los no período indicado pelo alerta?\",\n      \"por_que_importa\": \"O plano localiza os recursos, mas não informa quantidades, condições de estoque ou procedimento de acesso; isso pode afetar o atendimento de pessoas acolhidas.\",\n      \"motivacao\": \"A possibilidade de desalojamento nas próximas 36 horas torna relevante confirmar os recursos citados no plano, sem presumir que o estoque esteja indisponível.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E7\",\n        \"E8\",\n        \"E11\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"Assistência Social\",\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Kits de higiene e colchões: almoxarifado da Assistência Social.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Quantidades disponíveis, condições dos itens e procedimento de acesso ou retirada no período do alerta.\",\n      \"quem_pode_confirmar\": \"Assistência Social, setor associado ao almoxarifado no plano.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"O alerta não identifica quais áreas ribeirinhas estão abrangidas nem estima quantas pessoas podem ser desalojadas.\",\n      \"por_que_importa\": \"Sem esses dados, não é possível relacionar a demanda potencial às capacidades dos abrigos indicadas no plano.\"\n    },\n    {\n      \"descricao\": \"Os trechos disponíveis não informam critérios de acionamento, responsáveis pela abertura dos abrigos ou procedimentos de encaminhamento de pessoas.\",\n      \"por_que_importa\": \"Esses elementos são necessários para entender como as estruturas previstas no plano se articulam com o alerta atual.\"\n    },\n    {\n      \"descricao\": \"Não há informação posterior a 2023 sobre condições operacionais ou capacidades atuais dos abrigos.\",\n      \"por_que_importa\": \"As capacidades registradas podem ser consideradas na análise, mas os documentos não confirmam sua condição operacional no cenário de 2026.\"\n    },\n    {\n      \"descricao\": \"Não há informação atual sobre quantidade, condição ou acesso aos kits de higiene e colchões armazenados.\",\n      \"por_que_importa\": \"O plano informa o local de armazenamento, mas não permite verificar a quantidade ou a possibilidade de uso no período do alerta.\"\n    }\n  ],\n  \"cautelas\": [\n    \"A análise trata o alerta como cenário fictício e não prevê a ocorrência de desalojamento.\",\n    \"O plano de 2023 está identificado como vigente em D1; a existência do alerta posterior não o substitui nem altera explicitamente seus dados.\",\n    \"As capacidades e os locais de armazenamento são informações documentadas no plano, não confirmação de condições operacionais atuais.\",\n    \"Não há documentos de ocorrências históricas entre os materiais fornecidos; por isso, as verificações se baseiam em informação atual.\",\n    \"Esta pauta é para revisão humana e não decide acionamento de abrigos, remoção de pessoas ou qualquer outra medida.\"\n  ]\n}"
+  }
+}

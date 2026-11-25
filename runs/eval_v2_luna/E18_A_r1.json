@@ -1,0 +1,956 @@
+{
+  "meta": {
+    "scenario": "E18",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v2_luna",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 716,
+    "user_message_sha12": "c87f0ad3d1b7"
+  },
+  "user_message": "Município (fictício): Alto Jacuí do Meio\nData de referência da análise: 2026-11-20\nDocumentos disponíveis (2), em ordem cronológica:\n\n### [D1] Plano de Contingência (2025)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2025-03-03\n\nPonto de apoio para triagem e distribuição de donativos: Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).\nAbrigo: Ginásio Municipal (130 pessoas).\n\n---\n\n### [D2] Alerta (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-20\n\nNÍVEL: LARANJA. Arroio Jacuí pode transbordar nas ruas próximas ao seu leito, incluindo a Rua do Arroio.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_04d40c04364b85b6016b07003703a887d2b1610eb62140a1d0",
+  "model_reported": "gpt-6-luna",
+  "usage": {
+    "input_tokens": 2010,
+    "output_tokens": 4000,
+    "reasoning_tokens": 603
+  },
+  "latency_ms": 24492,
+  "started_at": "2026-11-25T15:35:18.815Z",
+  "output": {
+    "resumo_situacao": "O alerta de 20/11/2026 indica possibilidade de transbordamento do Arroio Jacuí em ruas próximas, incluindo a Rua do Arroio. O plano de 2025 localiza na Rua do Arroio a Creche Municipal Pequeno Príncipe, indicada como ponto de triagem e distribuição de donativos. Os documentos não informam se esse ponto continua designado ou se poderá ser acessado e utilizado no cenário atual.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Alto Jacuí do Meio",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Município fictício a que se referem os documentos."
+      },
+      {
+        "id": "E2",
+        "nome": "Plano de Contingência (2025)",
+        "tipo": "norma_documento",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Documento de 03/03/2025 que indica um ponto de apoio para triagem e distribuição de donativos e um abrigo."
+      },
+      {
+        "id": "E3",
+        "nome": "COMPDEC",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Setor indicado como fonte do plano de contingência."
+      },
+      {
+        "id": "E4",
+        "nome": "Arroio Jacuí",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Arroio mencionado no alerta como podendo transbordar nas ruas próximas ao seu leito."
+      },
+      {
+        "id": "E5",
+        "nome": "Rua do Arroio",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Rua incluída no alerta entre as áreas onde pode ocorrer transbordamento; endereço informado para a Creche Municipal Pequeno Príncipe no plano."
+      },
+      {
+        "id": "E6",
+        "nome": "Creche Municipal Pequeno Príncipe",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Local indicado no plano de 2025 como ponto de apoio para triagem e distribuição de donativos, no endereço Rua do Arroio, 40."
+      },
+      {
+        "id": "E7",
+        "nome": "Triagem e distribuição de donativos",
+        "tipo": "servico",
+        "setor_responsavel": null,
+        "descricao": "Atividade para a qual a Creche Municipal Pequeno Príncipe é indicada como ponto de apoio no plano."
+      },
+      {
+        "id": "E8",
+        "nome": "Alerta de 20/11/2026",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Alerta fictício de nível laranja que informa possibilidade de transbordamento do Arroio Jacuí em ruas próximas, incluindo a Rua do Arroio."
+      },
+      {
+        "id": "E9",
+        "nome": "Sala de Situação Regional",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Fonte indicada para o alerta fictício."
+      },
+      {
+        "id": "E10",
+        "nome": "Ginásio Municipal",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Local indicado no plano de 2025 como abrigo, com capacidade informada de 130 pessoas."
+      },
+      {
+        "id": "E11",
+        "nome": "Abrigo",
+        "tipo": "servico",
+        "setor_responsavel": null,
+        "descricao": "Função atribuída ao Ginásio Municipal no plano de 2025."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E2",
+        "destino": "E6",
+        "tipo": "outro",
+        "rotulo": "O plano indica a creche como ponto de apoio para triagem e distribuição de donativos.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-03-03",
+          "fim": null,
+          "observacao": "O documento não informa prazo de validade nem confirmação posterior da designação."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Ponto de apoio para triagem e distribuição de donativos: Creche Municipal Pequeno Príncipe (Rua do Arroio, 40)."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E7",
+        "destino": "E6",
+        "tipo": "localizado_em",
+        "rotulo": "A creche é o local indicado para as atividades de triagem e distribuição de donativos.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-03-03",
+          "fim": null,
+          "observacao": "Designação registrada no plano de 2025; permanência atual não confirmada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Ponto de apoio para triagem e distribuição de donativos: Creche Municipal Pequeno Príncipe"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E6",
+        "destino": "E5",
+        "tipo": "localizado_em",
+        "rotulo": "O endereço da creche informado no plano é na Rua do Arroio.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-03-03",
+          "fim": null,
+          "observacao": "Endereço registrado no plano de 2025."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Creche Municipal Pequeno Príncipe (Rua do Arroio, 40)."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E8",
+        "destino": "E5",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta inclui a Rua do Arroio entre as ruas onde o arroio pode transbordar.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-20",
+          "fim": null,
+          "observacao": "O alerta descreve uma possibilidade, não a ocorrência confirmada de transbordamento."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Arroio Jacuí pode transbordar nas ruas próximas ao seu leito, incluindo a Rua do Arroio."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E4",
+        "destino": "E5",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta relaciona a possibilidade de transbordamento do Arroio Jacuí às ruas próximas, incluindo a Rua do Arroio.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-20",
+          "fim": null,
+          "observacao": "Possibilidade descrita no alerta fictício."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Arroio Jacuí pode transbordar nas ruas próximas ao seu leito"
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E6",
+        "destino": "E8",
+        "tipo": "afetado_por",
+        "rotulo": "Como a creche está na Rua do Arroio e essa rua é citada no alerta, pode haver impacto sobre o local ou seu acesso.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2026-11-20",
+          "fim": null,
+          "observacao": "O alerta não afirma que a creche será atingida ou ficará inacessível."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Creche Municipal Pequeno Príncipe (Rua do Arroio, 40)."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "incluindo a Rua do Arroio."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E2",
+        "destino": "E10",
+        "tipo": "outro",
+        "rotulo": "O plano indica o Ginásio Municipal como abrigo para 130 pessoas.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-03-03",
+          "fim": null,
+          "observacao": "O documento não informa vigência nem atualização dessa indicação."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Ginásio Municipal (130 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E11",
+        "destino": "E10",
+        "tipo": "localizado_em",
+        "rotulo": "O Ginásio Municipal é o local indicado como abrigo no plano.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-03-03",
+          "fim": null,
+          "observacao": "Indicação registrada no plano de 2025."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Ginásio Municipal"
+          }
+        ]
+      },
+      {
+        "id": "R9",
+        "origem": "E9",
+        "destino": "E8",
+        "tipo": "outro",
+        "rotulo": "A Sala de Situação Regional é indicada como fonte do alerta.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-20",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Fonte: Sala de Situação Regional (fictícia)"
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "O alerta de 20/11/2026 acrescenta uma condição relevante para o ponto de apoio registrado no plano de 2025: a possibilidade de transbordamento inclui a Rua do Arroio, onde fica a creche indicada.",
+        "implicacao": "A relação entre o endereço do ponto de apoio e a rua citada no alerta justifica confirmar a condição de uso e acesso. O alerta não informa que a creche será atingida, nem revoga ou substitui a indicação do plano.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Creche Municipal Pequeno Príncipe (Rua do Arroio, 40)."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "incluindo a Rua do Arroio."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "Diante da possibilidade de transbordamento na Rua do Arroio, a Creche Municipal Pequeno Príncipe continua designada e pode ser utilizada e acessada como ponto de triagem e distribuição de donativos? Se não, qual orientação vigente do município para esse ponto?",
+        "por_que_importa": "O plano indica a creche na Rua do Arroio para essas atividades, e o alerta inclui a mesma rua entre as áreas onde pode ocorrer transbordamento. Os documentos não esclarecem o impacto no local ou no acesso, nem registram uma orientação atualizada para esse ponto.",
+        "motivacao": "Coincidência entre o endereço do ponto de apoio no plano de 2025 e a rua mencionada no alerta de 2026.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E2",
+          "E5",
+          "E6",
+          "E7",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "inferencia",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Ponto de apoio para triagem e distribuição de donativos: Creche Municipal Pequeno Príncipe (Rua do Arroio, 40)."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Arroio Jacuí pode transbordar nas ruas próximas ao seu leito, incluindo a Rua do Arroio."
+          }
+        ],
+        "o_que_falta_saber": "Se a designação do ponto permanece vigente; se o local e seus acessos podem ser afetados nas condições descritas; e qual orientação municipal atual se o ponto não puder ser usado.",
+        "quem_pode_confirmar": "COMPDEC, indicada como fonte do plano; a confirmação da responsabilidade atual depende de validação institucional.",
+        "prioridade": "alta"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Os documentos não informam se a designação da Creche Municipal Pequeno Príncipe como ponto de apoio continua vigente em 20/11/2026.",
+        "por_que_importa": "A designação consta em um plano de 2025, mas não há atualização ou confirmação posterior."
+      },
+      {
+        "descricao": "Não há informação sobre possível impacto do transbordamento no prédio da creche, nas vias de acesso ou sobre uma orientação alternativa para o ponto de apoio.",
+        "por_que_importa": "O alerta menciona a Rua do Arroio, mas não especifica efeitos em locais ou acessos particulares."
+      },
+      {
+        "descricao": "Não há indicação no alerta sobre uso do abrigo do Ginásio Municipal ou sobre relação desse abrigo com o cenário descrito.",
+        "por_que_importa": "Evita presumir necessidade de uso do abrigo ou ampliar o cenário além do que foi informado."
+      }
+    ],
+    "cautelas": [
+      "O alerta descreve possibilidade de transbordamento; os documentos não confirmam que ele ocorreu.",
+      "A proximidade textual entre o endereço da creche e a rua citada no alerta sustenta uma verificação, mas não prova que o prédio ou seus acessos serão atingidos.",
+      "O alerta de 2026 não substitui automaticamente o plano de 2025: não há informação de revogação, atualização formal ou confirmação da vigência do ponto de apoio.",
+      "A capacidade do Ginásio Municipal é informação do plano de 2025; não há atualização sobre sua condição atual nem indicação de que será utilizado neste cenário."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 11,
+    "n_relacoes": 9,
+    "n_verificacoes": 1,
+    "n_temporais": 1,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Ponto de apoio para triagem e distribuição de donativos: Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Ponto de apoio para triagem e distribuição de donativos: Creche Municipal Pequeno Príncipe",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Arroio Jacuí pode transbordar nas ruas próximas ao seu leito, incluindo a Rua do Arroio.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Arroio Jacuí pode transbordar nas ruas próximas ao seu leito",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "incluindo a Rua do Arroio.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Ginásio Municipal (130 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Ginásio Municipal",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Fonte: Sala de Situação Regional (fictícia)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R9"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "incluindo a Rua do Arroio.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Ponto de apoio para triagem e distribuição de donativos: Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Arroio Jacuí pode transbordar nas ruas próximas ao seu leito, incluindo a Rua do Arroio.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      }
+    ],
+    "n_citacoes": 14,
+    "n_citacoes_literais": 14,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795620943,
+    "created_at": 1795620919,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_04d40c04364b85b6016b07003703a887d2b1610eb62140a1d0",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-6-luna",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBwA7WRKjNDQmMFIVifiYqPaiQm_b-Q5ItDsngyxUanhryZMtYGkcwQg0a3iSBvTwNI3-HFNP9XqvnYDMKg6o-VJtv0eG-xRfxw6SwBsrfi1spKLg2QWtT56owzvu_-wtU5LLOrP0pQdW3eS9a-9SMUCcX0LY6Xl-P1GiIXroYn-oNr5MeDV2YY3F7zd9vE4MkKgqJj2QmJG31OzWEXIdCJ-EKxXHSrdWFqxmVmHFhW2N2wVhIAVZLErb8nbzrNuT9iwMnHpaK8hw6mydd4Tn6TLZpWibdb5Y0z4103mex2eBDQ2F2jH0d4MlBvn1G5g6IimebaUwD4TkNH8W-dhlS4sySFQnozP4GPNxBixvxBqheh6NLeXN_Kj32YyKlHJBtY1f7ktrJp5jojdTF9EysE65OVe-vwvWv1YxBrBn7HbdwNEJGDovsDUMFG62nPl_wY4KKdTS_b1IIW_iXvOj4YFHxT2oQAoZ1W3g9xIStw84Bw89zvYORo9K5aCKDR7pnqLjP_084orTFsjQr1heOsoO-GxcS26rH91AgzZib9cgc3l-DA7cXyGle3wulHY6umi0IYm6b6FwsfQ4pM3IMz6avtShhy9wLg_8Df6VICl8wr_25b0XyZlCt0FTJra6HIZ4B9CEUdrMNppgMFfLTRYr1GV4zZzoWFtwU7mMUqR_4xrziVGHMoDYKKI574lDVEdu9W28veZYXWrQ94Hdn1PW3rZzeXM7tIPt8vDknexgdHpZRpuLh6HCdYaY5TxH5I7AJOVC3stTkEfos22AnRS_fSkvlfuo62yYUAK4VEY2zP_BjM3sntsiEYKmh6rpSQ903mIoz5sMmcmA249EQp_prhGpL3P2f1FC2yMSnE3FZBR_9Tnzywy_1tgvZiDeLF4Fl0yVPzTORI1aOaKfoz-NgZ0saKENoH03fHkvl2Cs_i8LiUy4W6VmpyA02L0TSqE24G0TJYtGUU9R91_pBe3ufqg8yvvGPmGgLVqZvBhLCV0a4Cy3rr0HvipYuM49F6jpcTFU9vQrYlNAntcXNC6_PuTH07BFwQwVYZTURARwrwuXlqR3JxF_n4XaNJ63qQn03c4FSh0NZyCSLCPQ_xL-nyv_dmp4BtknbP8ooAJSWyOW1y82CHS52bGXW1U_2dqmVqZrE2JCGHp6sotip8xiwTuuKyg0kFDQmGZ0eothwz7pKaPbFXe9hjxR9124VepyJEgyJpzoo6Azw0vla0h3zRWT7GBLUZwc9tYsIBkGil3LZovUvnfKJ71xWT5dCGWCQjQu263w2-uTv8RoYlMa8G9Fco-njbevgbUrU7DUZywgVGzFslCeZc4huqP1S5QJv9EJQsFQny0XGEXjDqspvOqdCyQJfIqYV-6E-rc_5KP-Niq7zGqHHx251wHS39zhoHz5Z4Ejc_n6BiaFVrr0Z2zTfEj3jWdEBdw49cU1zOwbeyTFYA5CzK34h2l2dJiG8DqEsDT-Z5VyjOuRPA59zbPAlDV_ip88yJc2TBhCzIiH-iyOiiUt-mBxn9KpQHw1AWJyQC809xOUrYiXK3F7FItFzwa1P883xiSBgd7aCjqDpMwrVhWlGlRywCqULlKxgYISVcKJ63tbp1yOeTQHMGh9qFeB16KIQYX1a6TlB-huazWH35sfLsHnf1Evhc-EFcY0HdaA6gO1Ka4OC16YIyTHQxlF1OjNqe-pHggsnETmMGszJt4FC7rxSSxPdrzI_u1AbtsxyctXI9P34Y6a88yYetnAFgRdQyxI7UCBkoEyxoAfBuO-NQCD3J1zPDhDOkz0dxSt-0LBCTkBPNi_Ae4Sso75oJK9B-zJr7UBprpeKEmD9gjbDOJJZrqJyCv3Q4PjSKD3tCaWvL0ByWh3lTjkIgb6SAy4W2RSa7ig3gHyp6BQLg9pM8l6r_g7kaA3At8nEF3h5qntoG2wz1proB1ir7ZWbh_U-O1Kq7vnVQY5axI5OTsbGQVDolIA8EyJ4-5VWkdJw1ODtpJrSkS61ukQWL5ADp7n0gJjEl_aJfMKgZaxHrc9hw2ticYgrTOfQUKLMimsD8wfZ9HXrZj2kJa4-4nkJIf0xvVUukMl2-vmPeBTggR3LSXAmjmVPxvbWrFsfS2MbFcgUX-YImD1jXBoEb8OL9SJwrjSXE21MI29qoWeRB6gBj0Z8c4oA4eQBHcR31tPE_FKRVufcNHjYSdWUB43dwuw_oHsynT6hanZ0mZKBRSTs2Kr7WQratmrbXnq_JU8uhUARY20hl1srvhsFPj4RNTWG7fZmDQKNCewG-cAZFewMCF-GakyVK_Ad2Rs0SkCmpte25KdnB2cYhsbRsYPmmNGiZO3MJGLSnoAhbmeTvcnEwODknP4SOFWhMmfy0blfqQNH5ul9er529uZpLZT3hYikphtloIlebqFbx5f_WKSYJiPm6X1_i5w0GNTJR0Hy2NNRR_b9uoKS3mCpOnnIVMZr7TxxcUpte8H_R3o_7v_h0PzqWDBOfxSkklMXIYGXcPJ-zW7sH0-0ZzWLK3smaUG_qjVIwHo8CwRktThwtlhhbS5wOjyIqG3MeU5MBUemnugLFnu1V5f0KdVaLtqgLunR_AhVnDmzgUMr4ZNbyHOR-F4ynk-r0MndBmCHBDWjuX1VO9XsmrFeqf0TBysHG1e1Jd4fvcLlStjez4Xe6Km2Z9ymI8EKxBZkkT0bVSt7dxLMv94NIqGdTjf6aprsZ-tQEBTvLQwbH_KlZGGaqvpiJI8VF3qF_qqj0LAzI5GsGM5kj7fTm0RKHMbQpmw7Fh9xOLmoM-qQG15BJBX0PyHZQbc9PGFlMTSDmkrH1sTGDL7nCl35hqjEgWG-wRFhI54NZOA_1y4-EFVlUscbp98tbgSk6NG2X0Vs-AyXzImugHDQTiwBxYyDvlJWCtkojBrmr3b5Mb9UhFMXP5OZd2l7vIPhVTVAiTBd6rp9bssCSUIGWjP1L0qomCCiP1iA8fYRKOpzUAI5bIawXHzu1dZNi4GZmEzPA_6VJkNsvzqSV0sPzl8JIupOTnKooD7Mh7kAD_bc8YPjWfb8DNRpdLb3SlUB5LCJAsgKzmPfJFLt25peIl0YsHkoDnDMwBfHGaYq8ipZRrFCtHHR4koTKZzJJFrxXpFrvSalwJB54lANppSIeoADOLkxUhebJKeq4s0qtl2Ts93n3dG_7slBuJYueG_YQHXyYkjDN9WhntmrmL1aa_8By51IFhHaocndEAylCAezt-kOg2biP3rxQEjIyPI2aQCR3P6xjDLw7tbx97HgdEiDQVa3pJosKUF_X5BhfduRi5W9z8-wBtvaMe31F3XK8lLO9JQOVUg5b-zHft9nVnGuWDR3ekwSFCBTjWSPN5O0cdy3vPFRwi-57Mi3UJ1j9wC8u6cKRg7mrAaS4GBKImk271_p4eHgvZrMfSpQceim9Pnr1Thr1YdTWDH1NgKrHZe0-87NXbgT4CUKUPRhg3CQGGhEcFoPD8N5mJtBIumf3Gai51e1jB_ECDKRv983q56ifdN7Z9FCZaczeFBvq7aPBSivkVk4OEdFRdomoqMil7K2yQxNwHJX3C0urH3N9mx2XEIyzrTHJD9zbE7aSNqa5PT5yN5TplyzgGNZUC3zzrCYB3pCBawcwnsDM9vx2JEDpz5r-PUjhMWr5jGFuxHFGqfBSioQldVGBlUgLjqROvyxBS8nkZhAxWoE2I9fimI4yWd9Oi1ZwqYdv9q1fwlbZnNMQSbhOICiajuGuoWfGvaUlE5nZl-2A8PquFW87sdMdvubDJ_fxF8JHvegaqBYoB-d2p4Cjkn5QdbAQDO4CRRf0YrDesopZobAIgftEkJkFXjOeNAC3ouTAl9n-JVR8G87OXYcYO9FktLhxGiIopV4CoN_oyopGDPUdbNs3pxRc4rLcfkoOwztKh0iFVbwmjqfMueogEieGvy9rgZ7KQ5ibQ1e12DDufGdfatAf4P_FkFjKLttsTdQjpG-BHlMlGmevxmi1UFYxs0ev03oDqY2261FqZUTUnKG0vd7PhxnE5FIbOiA1eUZJ0CSQfAmad-okZQE2u-R0aBVr4c6XwW-BCQy5dgNwJJz6D8FMg4iScBUtTnDkOxLRgE5jgrKMO_57Nk0AU2ujUWcGO-G9gpVidSFc0ztoireciE7AWMKg27acTgROzrI_MwTgZpJx-_UF88Mkeriah4Ff2rSAchXyo3ltvhCaahMFrF8wpoyqXT-b9uwAQKkJtbc0lXdlQYxBUhc9Sc-xaHQvC9Z94tjOw-tEtkOm8-xmVDi5IQWsNrl6SwwwiQJiRJXXrNXwHdx_1nSORop7iAlI7b3rhBLtBie0pncQaL2nuskqCelD2mr05pNysJzgcQe6VyPlSITJFPMxz9VUTeXtHSMGzFWe6kB6I1VknTC85euYAQg4LzT_GwudaUWmlrY0t7lyLMNwwueWHPmToTTd0NS1Y7FCrBd9-jP3LTqgpVRdMMQQvXuaFc7gF2lD6Phi06EuApsnwfwqSAUNfJOR_u0-9WA-22CyOXdcSnuWB8lvNFodm2kKJzybR_ZZs4SVMLzSYUp4gq4wUB4GK7VOONeEFCOzmewevWBFUtsmNsMeVgMHcriOzonwFWffJCFXmgO5-S4TkbxJ-tpckcVm357wwQQNeXtZeHMXphWa0teSj4-_npahLIvEyf3AcIUxoGJAJvxjngbHwaoU46zKlx2Q0M11CKeooeZ29u9_MmIZlk9SYhZDZy6Rahfw2_1AC4cnoLgZAORxgBMfaYoBgPMc_ItfxtlXeVuOxNmk35o6g78ACJH88fk5rDmM9EqynpEusnD4pETA_HoZnn9LuQxROkjurI7zhXbLBB4UTE7X49csW3LN-bYdUHW0QHgHLirb9oBJ0zWnAdbTgpppyP11FFgizxHzb9HYp-toKlRIu663lSRB8Z-4l-j_sT2PNMbIIgPsgpNAAnjAH76PIWs29c8BhXNmmJ21Tof8lRlukJ3IuTSw4TKiPek2FNc-84pGcSiLE4Ek3039wvv1wyBJoslbXoqMOuxQ1KMR-vpfxiokjtggfRpjWpU18U4uh45QWe-faFDT34M2-h-Ryd6CKwY7ztyLXS5DeP5PMCRBnECNZpUwGUThbcjlIJI9fgfgSCXHxiDnU0dzRZ9beieMpQ1bjfCKWq_QbQ908dUFhyeGkuLgWWZY4OQGsJHpzUxKKDf668ER1Tf53qP10m8sbzMACqxyaveQpXFQeyr43uRRyXJzXI_WVNyxvbl3YWa1det9a9Wj5o8xfcdxDcBaoHA4TSpujQPW8u51hPi6PqhPBH6iFdKGKwM0oDO-aiXifXY6zWkjSYXDoRTuUgHRA-bZZpPKnnbR3UZMh-bOvZ_NBUmr9DTMcJsiHNG2ZCVFUnNfhaUmUqEx0Xcb35JjVrFMHL7_9AK-JVuV2SUeJTnxeciRpbbWEBaKBufJlAqPvQ3JRjyTsyIW-y_R_HUx2AhF8XCtHVsPWZtykaqT8YHcMgsN1ih7aDlZYjxRzQAgCaNm87wuD7wUdFsuOL09D85lEaXTVlKsnIOZALJcXr1FUyeWz1-xi833Uqco67btnQ04YQCzoOM-Yw1O_TTRjK5jpiMnPv-i2c1ZI86MHsaXAOF-mJ2GYmzJy6Uvb3tKy9dVAkDhtUg_g0-9OuZpHta3t4O8tB3FCnjlG7fZXklfnYkZJEwm-XDBB0RO9xpundbgtwjQV8K7u3nzAd6AkMTSyEnnuVt_4KXDjvymE7PeyiIungswLgbNtV0nh0KQEifKmhqhcdULpFHzOYFmXRacPnkY888ah2O_7o7SRJhMr91Fpy2zg1LiSA423O0RiKLddl1fqtgw3Cuh9UkPiscZd97VVKJKiBod_nzYzmICbAwuigplJrI1_RLZepJvBcyPeY2Hbds0kRIaB60sJN6rqQ3Orm8To4gm_pEBRa30uL8ZTBe_JWL9HnPvjzDbItwsojO2PbLYJXAwOHhZlTtXOUzkJpvh_OvWLzcpBHhOgDR5pmfAq1NY0pYqItSlIeIXfiIZETSLU5GCGmMqt8eheqKWrU7E0rD_nI2UVqPf8XeJC58EotB1Rm1YQrgUBisT-h-Y-Rl2QqxGLgInp6ZyjdgNxzk8-T0e4HwGMFrkcT9C6cV40-xmV1GA8D1ND_fzRf9zD_aj0iO-yqbbnr16Yyrk7mpxUgUWaasOeYU37KH4f73IMPQFmuRRr5XjK9tHqzIKypUK_x1JBzqk4bwmqAmMHDaBH9NSaHR3bCXQJWKmW3t1nJzib5hlNjIi5_ZaK1biV-kVTgu63YPwm3tvBEiKFRANpxrcAxjgZhlCJtYpCbXb5gZtbICk_HCXe6faPiPWyeZwDqolS5-bHLrO953RpuwMtrYgS5s150dNP8KTxhVqKJi7vmTl7NcFLpf0_RCP9RK7d2RiZ2cjOLNl0jogBjD3Q1x1Uac-m0Zz-W5XjVC5IP7yBlt89Lr6F3fhIeRkH0hhjsxVCw0q_zHu1JDZaNj0FHigsp01ql-68I6T2G5LA_M1CF9y5paQG6yaNySl6fzue0Q08ehRY7Pc_lS92T8Ii9m5AWEO3UksKbm7Grv-1amqgVHflDDStzRGrzbGYtOltaKSUVul5fQVGGneVFftktRMurriK1N-4Zbi3QLcsRbv_GI-xV-tw8PhwhTCl9I38pQPN_hOFdUHDUYqALODt0-G22aTqigVNyoa3nQKp1QMyNZRB533DiIV2KZRNZU9x7rdfBdCNRHWRIeyDKoTt1fOCosHEIuMyyw6yfBQ0WD1FdubNtRb51WZRGHvYO5Xv3hfRq4jyqCC-CuNpmyJDNgsp-IBfwhAsOQlFCDT3FLLzBFe52NZA1Ye837nit1Vyxh_vq4mSkcbAGwYF156rBJi2xUsmbYhlsxxOVN9ObEEEdO6Y4fm7aRnEJkx1FKmwHVmqtaLZG-K9kfR9NmQBZ65HH_0KC2BTQw5aqiqyrjyS4X0lCVdebaWyb41rhG8g-w3H8nao53V7lxxDkkBKYnafyJCs0grqgBtxmnTj7kccH2dalLjEI3mkLSEoau-YFlIpb7WTjutQIuaW54XDxSqzNicCA8Hv6VznbLWoKW4qloPnmPprclT0-0TAMAJESQSvkmJwxJuXIzq7mpSUer4Jv4TYtVIMwVLeMpkSeNV2QJFKKXgGplzjZbgz-1gojgD7PvsH86faK6ErbP0NP3ZkG-RYpyU90QmT35o0V27eqNv2CEhuH2sd7ehy9V31LA6qkA_CXf9NUit54Kg-fC13dh7NPHCECHKdxOlBHN66VHn-m5SjVMspwNUvGlJ3KACJIv_AzSfHFWHIKzH1h3uHKNyeAWEjpETRjdi5L9cwbnOyTtxd5yLk_cPnXn8Hl1-zJgSgVPxlojd_r-kfWw-cDzohn9T7r-mUxd7m_nVZ7zXIA7cwGt3aUtcxLWk1QTjG8YHI0O5SVo14JT-tfOxTCHMwhJqzY7z6bmu5W1w5hKHlRvBN4us3rR_-Q5swGGNF03HfUlPvUq6kl04jQ6Eyovj4N3EZNP9RSStnLg_sZT1yBYzPIPsW-MDFQ1Pr46Vk_5X9YnDVTr3PvM5VhIqbF1mPuHOAl2Fgl_qPrNL4d8d2cY5e0bJLdAG3GuVVgXItwbinqoJG0Kl3qRRG8YhmYT9VBqx0B2aMjrFGC61Nj9pXwNI9nUQJScaT7m8xZ8kEsWonrUaXnlmZQLzaAYvWRuq3y-Fz-wh9qUEmOdZo3XimWkt6d_OgbYCf08uV_PJyf_hklloksOrUfftlwlcwyC-1_Mewt9PQIu04VF9kfgn46qB7Z4OwCcDsNXDYWaJu6UEZkfBvYJ1SehzaaRdpdoiTKANY3tekXuRYcPydIWIWde-8NWWz1iShLjJlQn3SqhCcPfmkpUlkEsghtwlXgKQFntgmCUMkJ3K-8R_vqKS2YWgKUdGwD2zewOZuYP9ah_n0VP7-A6Yn5Tv0bK9Mv4D2JnvoXRJ7aSlj3JoyOQrEnu26kAI2f_rpoihw33aAoIuCrrEVwxHVJsTo8OhSqtdINrV6HbOrHZ_ysd2-plsv7amSKufHYaLKrxU0qXSGLuPYr-sskWOesCSxnBxK4rqz0wDv3rKspULu5zhTjm0C8A6_uwdskY8N7qQkb5ZbObvsgeLss4ZOU-x_iTC48Fw7AM6GoQzAZPpiVM5CCC-GVrv2i0W2ISuUH9gUq7BiPVQVZYOUAH1j9AYvwbSkM5gL2htRitPSP6rz8mQKSBEMc9XteEsB-4LVJ7l-gjsWCJzDguVTteHYhL9esW7h9UuFGXiZfehMGita9WBPo-_CW5_O22FOjy_XuBs6eLhGVYI3ZSNMgZYE3yBoTzfNSPpahNvc9Bh_AW7mB2PikJh9C_duTLQKEGmUugDO2mJWKg5a1YtxmsGgE-jcYx5BqSlwrRT5f",
+        "id": "rs_04d40c04364b85b6016b07003be93487d2bd1932fb3863c8f1",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBwA86Vrd8qVpbuypSoH8tP1xTEnHDvtz8o3Reemd3rokI9x6_6yxX09zzh-VAK2l5IjP-LZeosgH5oUMLF6Ykq7EWUl26_LJq-SrN6RoefAuskTmNtYDAuH8DOh_4YC_l6znbWFEsgkDkSYeikFVEBHq5431RAeyy4PfOM15O4XTWF6dEL1KFPAJheegBIdbQoFJ-V1sG7_CRgyIUUqU4qImw-0VmC7QwyKGMumV8Apj49nx3H5P36lF5FoFImkgGboDLfq5t2pty-L86taQvVseeAek0lRFXhaxf6AuyttS-N9hhp2qj7G3k8rrDJ4sJpEzXRuHQLu8D-d2FMmZGIs_ybCnzCGW_5tlw1h5Ucrp5Gc8o7Py_gDn6PXpvJC---R4-k64oqhR7fIP3hiNql3aWSXHItAsE7dGDaEzXrdxWV9x56UrtAXWS7jP_Ze9TrD9bK2YiaMLK2FQCby6SnUmp_lA_wMmLHnhPhoFS1fYrGyaCtjtsILpPFZpCnFsPEBtf5C6c1tBXF3-Qrj24oLeiHjbWFNIyON11s7BzLDoRp4YHrrHF8bKiBf4e4blNRTjyP-MhyXM5fgt7WoSzLYDHZKhUZSveaMn-Uy3Xd09tRGtmmhDR48LKh4wWfYuu_N1Ej1ubk9bCDb1ac1h64GU01KzTSgdDNiHADtxUnHJZbdjnuB-Zkkm5O0OaGCOUtH3yV6zCbFJVN3z8Eyzdpm0kW3TbbAAaS04Tstbzjs3whnVEI9EeLcYHf_QsommIl2EPC7jDSl-w2uDji1ELZKGnhmiN3RPkFlnglPAE5SgrCCcHHjqfIK7Blk0SNPi4zL4qpU82Bu75IYxTSrT4hslljngaUGAwrpHWIfgS4Lj7QzUEDRrCe7oGMgAsRCjelsv_e_TB1ZEBMaeVAKZcQ6xlWef9jUkzJDtghJJ7SReAdopvdN-bTTwoDzhRQ6b4VT5T3L0gtB6rLOyqz0XsdT_DtmBeP6zq8GYF7hoEdkkHkSBZ9hxTnG9FDi_JGrEt-_4pEa5a-3mojFHl-Wosei3QazhSAmzAadQq6VhQ2MwgggyrShlku3Gq8V00ipt7lRrAFfsswNvXTtGgoT3zZJxm0OBEhbYwR0lxXf4Cwpl8649efKtDfSXqOuNAnldgvMoB8OcbGfKw-wOa5CMNwk2kdr3dn5nhLxM5RW4zgFqt2jWMQSUpYsfBhX6zfYFGRohqF-z-uosPQGEFqZAipXrd82GEH_IEV9K251UTfs-hzXLTIe1iLGFBk7ufKrxgET4_kwHzmyN8o2uz9W2LgNlHd0YBYWSPFHuqiaEk15OkJUFVcUInhZ-gXg_yllvIwTLCO_bLiSRN_RsALQKbQ0EDgpOkxqnZG6jmpyAed8LWINbpT7UsZBhkxh-bMazK6wiVJP59g8qzsKhWm_eftSN5j-aLf3uoFJpF26_IaCYMRFjT6q92jabhBhWiEn_aDiAWjsdRJQiahBUCjQ_8MtSzWH_yV9O13bKE_usCgqcp8QCfDtAblCXKg6AIIcrLajDYiFh_W95aAeapjffqIqj393ovmDd_FkqwV5V1PAQdQZ7QXjeeeBvSzAZCG-KxP7gVX4Igk0t97n5WUPFv0qHkbvyw9bc9SQaPd8b8oFN1otuuvDopTY_kc5Lq42Kjnn-Ux2QlUi7w3FMz4NxIAnpqCTR3Tzw2XjLLn_dA1znei8PTgdNUM3JksxbXQLLIoTNdu7EaXBgo7YY0jDBQfVZV4wMw47Zw6uiR03e1RZzJmGy15qFzuwycZMbNpQjKWeN3GjEk-yfHTO_drlE_Qp2tqglE3P9xGmhtM-cwwRtExMOz9ir4TkhySjx_LxdRl_c2nTtEYUrb-2QGS8ASEOOc1_EIYqP1gqUHAwGEz0BsWf2Dq45zhVrpC83tmKotnij0cwDtXebNTkTOQOXsnZLEZT2iTsVOQX3eMo6iuGa6zF3YxPsqeySd2MIIcgISx-60KKVoAiwFFFwz1UWiUAhcV7136cjEtbXsa12IMvYgjD2KvdRjLXA3asCsGTPqZz83RSm3niKNCPhFBBzRkzciAJwSH-x1E0WJ9f9X6-r3iIkv_63wlPNuFV2UHWqKyhwuphstFJswV9FC3dr9c4uIul2tfiamuhxGyyML0bwATnRg_moWpcDhcZ6aS9PBT1Yjdwq1Jegt_k-ikMnVLoO7GIujDozMtEFs9wk7rtKrAL_d1tuNZT9d_nCBFNdiUHAg1UWVIF2hMCZTmwrZBvU-2doJ8kcyOsx02OknYLVOHvLsxqhB_RE7lKD0SBrqpvctZjd5_dQ8PBPec4LbPD1-7KPPSB27RkZynMW-_nKE8qxX1FmSVs1jwUwvMKvrSrOVu87P0FH0OMnK4YvPK9lwMk_qCVfiypiQ8tDeBFcTkIezyHMyUNWRGs4BddEho2kD8Z9gXfv6D24QJRAUYVqT7ZHi9K1OzHHi4VEV2ky7HfV-F3XfxTcL6dkmrgEtuj7IiagKuv8SFsXOZK--o_CNJ9qXaPu4Lu9cciDAsd_J0LiuA-nN_04qCsIoHOtkESZe_-l-t6HeNTZU5KdqHlKO3wiC5VHAtN_A674Mo4F1pmUVFGYWPWYCfIZHL2tGLFBAvszppMW_Wr6YzfmZUK0Qwyw_C9TbjJLdNOCAR5M6aHOSdOvxAjj-XL04Um6y56MOkjO9S4z-Ik60I93tYlrI02nSK9LPbvVNqj6pGZnwGBlptyd7hB6KijZUPajvV1La0MOoJzw0OQv4mOKnNwXbg==",
+        "id": "rs_04d40c04364b85b6016b07003c75e087d297f5c773d82b56ad",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"resumo_situacao\": \"O alerta de 20/11/2026 indica possibilidade de transbordamento do Arroio Jacuí em ruas próximas, incluindo a Rua do Arroio. O plano de 2025 localiza na Rua do Arroio a Creche Municipal Pequeno Príncipe, indicada como ponto de triagem e distribuição de donativos. Os documentos não informam se esse ponto continua designado ou se poderá ser acessado e utilizado no cenário atual.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alto Jacuí do Meio\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Município fictício a que se referem os documentos.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Plano de Contingência (2025)\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Documento de 03/03/2025 que indica um ponto de apoio para triagem e distribuição de donativos e um abrigo.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Setor indicado como fonte do plano de contingência.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Arroio Jacuí\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Arroio mencionado no alerta como podendo transbordar nas ruas próximas ao seu leito.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Rua do Arroio\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Rua incluída no alerta entre as áreas onde pode ocorrer transbordamento; endereço informado para a Creche Municipal Pequeno Príncipe no plano.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Creche Municipal Pequeno Príncipe\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local indicado no plano de 2025 como ponto de apoio para triagem e distribuição de donativos, no endereço Rua do Arroio, 40.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Triagem e distribuição de donativos\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Atividade para a qual a Creche Municipal Pequeno Príncipe é indicada como ponto de apoio no plano.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"Alerta de 20/11/2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Alerta fictício de nível laranja que informa possibilidade de transbordamento do Arroio Jacuí em ruas próximas, incluindo a Rua do Arroio.\"\n    },\n    {\n      \"id\": \"E9\",\n      \"nome\": \"Sala de Situação Regional\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Fonte indicada para o alerta fictício.\"\n    },\n    {\n      \"id\": \"E10\",\n      \"nome\": \"Ginásio Municipal\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local indicado no plano de 2025 como abrigo, com capacidade informada de 130 pessoas.\"\n    },\n    {\n      \"id\": \"E11\",\n      \"nome\": \"Abrigo\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Função atribuída ao Ginásio Municipal no plano de 2025.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E2\",\n      \"destino\": \"E6\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"O plano indica a creche como ponto de apoio para triagem e distribuição de donativos.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-03-03\",\n        \"fim\": null,\n        \"observacao\": \"O documento não informa prazo de validade nem confirmação posterior da designação.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Ponto de apoio para triagem e distribuição de donativos: Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E7\",\n      \"destino\": \"E6\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"A creche é o local indicado para as atividades de triagem e distribuição de donativos.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-03-03\",\n        \"fim\": null,\n        \"observacao\": \"Designação registrada no plano de 2025; permanência atual não confirmada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Ponto de apoio para triagem e distribuição de donativos: Creche Municipal Pequeno Príncipe\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E6\",\n      \"destino\": \"E5\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O endereço da creche informado no plano é na Rua do Arroio.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-03-03\",\n        \"fim\": null,\n        \"observacao\": \"Endereço registrado no plano de 2025.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E8\",\n      \"destino\": \"E5\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta inclui a Rua do Arroio entre as ruas onde o arroio pode transbordar.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-20\",\n        \"fim\": null,\n        \"observacao\": \"O alerta descreve uma possibilidade, não a ocorrência confirmada de transbordamento.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Arroio Jacuí pode transbordar nas ruas próximas ao seu leito, incluindo a Rua do Arroio.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E4\",\n      \"destino\": \"E5\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta relaciona a possibilidade de transbordamento do Arroio Jacuí às ruas próximas, incluindo a Rua do Arroio.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-20\",\n        \"fim\": null,\n        \"observacao\": \"Possibilidade descrita no alerta fictício.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Arroio Jacuí pode transbordar nas ruas próximas ao seu leito\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E6\",\n      \"destino\": \"E8\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"Como a creche está na Rua do Arroio e essa rua é citada no alerta, pode haver impacto sobre o local ou seu acesso.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-20\",\n        \"fim\": null,\n        \"observacao\": \"O alerta não afirma que a creche será atingida ou ficará inacessível.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"incluindo a Rua do Arroio.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R7\",\n      \"origem\": \"E2\",\n      \"destino\": \"E10\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"O plano indica o Ginásio Municipal como abrigo para 130 pessoas.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-03-03\",\n        \"fim\": null,\n        \"observacao\": \"O documento não informa vigência nem atualização dessa indicação.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Ginásio Municipal (130 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R8\",\n      \"origem\": \"E11\",\n      \"destino\": \"E10\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O Ginásio Municipal é o local indicado como abrigo no plano.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-03-03\",\n        \"fim\": null,\n        \"observacao\": \"Indicação registrada no plano de 2025.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Ginásio Municipal\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R9\",\n      \"origem\": \"E9\",\n      \"destino\": \"E8\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"A Sala de Situação Regional é indicada como fonte do alerta.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-20\",\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Fonte: Sala de Situação Regional (fictícia)\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O alerta de 20/11/2026 acrescenta uma condição relevante para o ponto de apoio registrado no plano de 2025: a possibilidade de transbordamento inclui a Rua do Arroio, onde fica a creche indicada.\",\n      \"implicacao\": \"A relação entre o endereço do ponto de apoio e a rua citada no alerta justifica confirmar a condição de uso e acesso. O alerta não informa que a creche será atingida, nem revoga ou substitui a indicação do plano.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"incluindo a Rua do Arroio.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Diante da possibilidade de transbordamento na Rua do Arroio, a Creche Municipal Pequeno Príncipe continua designada e pode ser utilizada e acessada como ponto de triagem e distribuição de donativos? Se não, qual orientação vigente do município para esse ponto?\",\n      \"por_que_importa\": \"O plano indica a creche na Rua do Arroio para essas atividades, e o alerta inclui a mesma rua entre as áreas onde pode ocorrer transbordamento. Os documentos não esclarecem o impacto no local ou no acesso, nem registram uma orientação atualizada para esse ponto.\",\n      \"motivacao\": \"Coincidência entre o endereço do ponto de apoio no plano de 2025 e a rua mencionada no alerta de 2026.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E2\",\n        \"E5\",\n        \"E6\",\n        \"E7\",\n        \"E8\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"inferencia\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Ponto de apoio para triagem e distribuição de donativos: Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Arroio Jacuí pode transbordar nas ruas próximas ao seu leito, incluindo a Rua do Arroio.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a designação do ponto permanece vigente; se o local e seus acessos podem ser afetados nas condições descritas; e qual orientação municipal atual se o ponto não puder ser usado.\",\n      \"quem_pode_confirmar\": \"COMPDEC, indicada como fonte do plano; a confirmação da responsabilidade atual depende de validação institucional.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Os documentos não informam se a designação da Creche Municipal Pequeno Príncipe como ponto de apoio continua vigente em 20/11/2026.\",\n      \"por_que_importa\": \"A designação consta em um plano de 2025, mas não há atualização ou confirmação posterior.\"\n    },\n    {\n      \"descricao\": \"Não há informação sobre possível impacto do transbordamento no prédio da creche, nas vias de acesso ou sobre uma orientação alternativa para o ponto de apoio.\",\n      \"por_que_importa\": \"O alerta menciona a Rua do Arroio, mas não especifica efeitos em locais ou acessos particulares.\"\n    },\n    {\n      \"descricao\": \"Não há indicação no alerta sobre uso do abrigo do Ginásio Municipal ou sobre relação desse abrigo com o cenário descrito.\",\n      \"por_que_importa\": \"Evita presumir necessidade de uso do abrigo ou ampliar o cenário além do que foi informado.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O alerta descreve possibilidade de transbordamento; os documentos não confirmam que ele ocorreu.\",\n    \"A proximidade textual entre o endereço da creche e a rua citada no alerta sustenta uma verificação, mas não prova que o prédio ou seus acessos serão atingidos.\",\n    \"O alerta de 2026 não substitui automaticamente o plano de 2025: não há informação de revogação, atualização formal ou confirmação da vigência do ponto de apoio.\",\n    \"A capacidade do Ginásio Municipal é informação do plano de 2025; não há atualização sobre sua condição atual nem indicação de que será utilizado neste cenário.\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_04d40c04364b85b6016b07003c9b4887d280fb16486d511d89",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "all_turns",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2010,
+      "input_tokens_details": {
+        "cache_write_tokens": 216,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 216
+        },
+        "cached_tokens": 1791
+      },
+      "output_tokens": 4000,
+      "output_tokens_details": {
+        "reasoning_tokens": 603
+      },
+      "total_tokens": 6010
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\n  \"resumo_situacao\": \"O alerta de 20/11/2026 indica possibilidade de transbordamento do Arroio Jacuí em ruas próximas, incluindo a Rua do Arroio. O plano de 2025 localiza na Rua do Arroio a Creche Municipal Pequeno Príncipe, indicada como ponto de triagem e distribuição de donativos. Os documentos não informam se esse ponto continua designado ou se poderá ser acessado e utilizado no cenário atual.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alto Jacuí do Meio\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Município fictício a que se referem os documentos.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Plano de Contingência (2025)\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Documento de 03/03/2025 que indica um ponto de apoio para triagem e distribuição de donativos e um abrigo.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Setor indicado como fonte do plano de contingência.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Arroio Jacuí\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Arroio mencionado no alerta como podendo transbordar nas ruas próximas ao seu leito.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Rua do Arroio\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Rua incluída no alerta entre as áreas onde pode ocorrer transbordamento; endereço informado para a Creche Municipal Pequeno Príncipe no plano.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Creche Municipal Pequeno Príncipe\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local indicado no plano de 2025 como ponto de apoio para triagem e distribuição de donativos, no endereço Rua do Arroio, 40.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Triagem e distribuição de donativos\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Atividade para a qual a Creche Municipal Pequeno Príncipe é indicada como ponto de apoio no plano.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"Alerta de 20/11/2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Alerta fictício de nível laranja que informa possibilidade de transbordamento do Arroio Jacuí em ruas próximas, incluindo a Rua do Arroio.\"\n    },\n    {\n      \"id\": \"E9\",\n      \"nome\": \"Sala de Situação Regional\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Fonte indicada para o alerta fictício.\"\n    },\n    {\n      \"id\": \"E10\",\n      \"nome\": \"Ginásio Municipal\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local indicado no plano de 2025 como abrigo, com capacidade informada de 130 pessoas.\"\n    },\n    {\n      \"id\": \"E11\",\n      \"nome\": \"Abrigo\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Função atribuída ao Ginásio Municipal no plano de 2025.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E2\",\n      \"destino\": \"E6\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"O plano indica a creche como ponto de apoio para triagem e distribuição de donativos.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-03-03\",\n        \"fim\": null,\n        \"observacao\": \"O documento não informa prazo de validade nem confirmação posterior da designação.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Ponto de apoio para triagem e distribuição de donativos: Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E7\",\n      \"destino\": \"E6\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"A creche é o local indicado para as atividades de triagem e distribuição de donativos.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-03-03\",\n        \"fim\": null,\n        \"observacao\": \"Designação registrada no plano de 2025; permanência atual não confirmada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Ponto de apoio para triagem e distribuição de donativos: Creche Municipal Pequeno Príncipe\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E6\",\n      \"destino\": \"E5\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O endereço da creche informado no plano é na Rua do Arroio.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-03-03\",\n        \"fim\": null,\n        \"observacao\": \"Endereço registrado no plano de 2025.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E8\",\n      \"destino\": \"E5\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta inclui a Rua do Arroio entre as ruas onde o arroio pode transbordar.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-20\",\n        \"fim\": null,\n        \"observacao\": \"O alerta descreve uma possibilidade, não a ocorrência confirmada de transbordamento.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Arroio Jacuí pode transbordar nas ruas próximas ao seu leito, incluindo a Rua do Arroio.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E4\",\n      \"destino\": \"E5\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta relaciona a possibilidade de transbordamento do Arroio Jacuí às ruas próximas, incluindo a Rua do Arroio.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-20\",\n        \"fim\": null,\n        \"observacao\": \"Possibilidade descrita no alerta fictício.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Arroio Jacuí pode transbordar nas ruas próximas ao seu leito\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E6\",\n      \"destino\": \"E8\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"Como a creche está na Rua do Arroio e essa rua é citada no alerta, pode haver impacto sobre o local ou seu acesso.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-20\",\n        \"fim\": null,\n        \"observacao\": \"O alerta não afirma que a creche será atingida ou ficará inacessível.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"incluindo a Rua do Arroio.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R7\",\n      \"origem\": \"E2\",\n      \"destino\": \"E10\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"O plano indica o Ginásio Municipal como abrigo para 130 pessoas.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-03-03\",\n        \"fim\": null,\n        \"observacao\": \"O documento não informa vigência nem atualização dessa indicação.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Ginásio Municipal (130 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R8\",\n      \"origem\": \"E11\",\n      \"destino\": \"E10\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O Ginásio Municipal é o local indicado como abrigo no plano.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-03-03\",\n        \"fim\": null,\n        \"observacao\": \"Indicação registrada no plano de 2025.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Ginásio Municipal\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R9\",\n      \"origem\": \"E9\",\n      \"destino\": \"E8\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"A Sala de Situação Regional é indicada como fonte do alerta.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-20\",\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Fonte: Sala de Situação Regional (fictícia)\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O alerta de 20/11/2026 acrescenta uma condição relevante para o ponto de apoio registrado no plano de 2025: a possibilidade de transbordamento inclui a Rua do Arroio, onde fica a creche indicada.\",\n      \"implicacao\": \"A relação entre o endereço do ponto de apoio e a rua citada no alerta justifica confirmar a condição de uso e acesso. O alerta não informa que a creche será atingida, nem revoga ou substitui a indicação do plano.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"incluindo a Rua do Arroio.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Diante da possibilidade de transbordamento na Rua do Arroio, a Creche Municipal Pequeno Príncipe continua designada e pode ser utilizada e acessada como ponto de triagem e distribuição de donativos? Se não, qual orientação vigente do município para esse ponto?\",\n      \"por_que_importa\": \"O plano indica a creche na Rua do Arroio para essas atividades, e o alerta inclui a mesma rua entre as áreas onde pode ocorrer transbordamento. Os documentos não esclarecem o impacto no local ou no acesso, nem registram uma orientação atualizada para esse ponto.\",\n      \"motivacao\": \"Coincidência entre o endereço do ponto de apoio no plano de 2025 e a rua mencionada no alerta de 2026.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E2\",\n        \"E5\",\n        \"E6\",\n        \"E7\",\n        \"E8\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"inferencia\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Ponto de apoio para triagem e distribuição de donativos: Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Arroio Jacuí pode transbordar nas ruas próximas ao seu leito, incluindo a Rua do Arroio.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a designação do ponto permanece vigente; se o local e seus acessos podem ser afetados nas condições descritas; e qual orientação municipal atual se o ponto não puder ser usado.\",\n      \"quem_pode_confirmar\": \"COMPDEC, indicada como fonte do plano; a confirmação da responsabilidade atual depende de validação institucional.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Os documentos não informam se a designação da Creche Municipal Pequeno Príncipe como ponto de apoio continua vigente em 20/11/2026.\",\n      \"por_que_importa\": \"A designação consta em um plano de 2025, mas não há atualização ou confirmação posterior.\"\n    },\n    {\n      \"descricao\": \"Não há informação sobre possível impacto do transbordamento no prédio da creche, nas vias de acesso ou sobre uma orientação alternativa para o ponto de apoio.\",\n      \"por_que_importa\": \"O alerta menciona a Rua do Arroio, mas não especifica efeitos em locais ou acessos particulares.\"\n    },\n    {\n      \"descricao\": \"Não há indicação no alerta sobre uso do abrigo do Ginásio Municipal ou sobre relação desse abrigo com o cenário descrito.\",\n      \"por_que_importa\": \"Evita presumir necessidade de uso do abrigo ou ampliar o cenário além do que foi informado.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O alerta descreve possibilidade de transbordamento; os documentos não confirmam que ele ocorreu.\",\n    \"A proximidade textual entre o endereço da creche e a rua citada no alerta sustenta uma verificação, mas não prova que o prédio ou seus acessos serão atingidos.\",\n    \"O alerta de 2026 não substitui automaticamente o plano de 2025: não há informação de revogação, atualização formal ou confirmação da vigência do ponto de apoio.\",\n    \"A capacidade do Ginásio Municipal é informação do plano de 2025; não há atualização sobre sua condição atual nem indicação de que será utilizado neste cenário.\"\n  ]\n}"
+  }
+}

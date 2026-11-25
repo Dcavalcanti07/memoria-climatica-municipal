@@ -1,0 +1,917 @@
+{
+  "meta": {
+    "scenario": "E13",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v2_luna",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D3",
+      "D2"
+    ],
+    "user_message_chars": 1120,
+    "user_message_sha12": "a2926682feef"
+  },
+  "user_message": "Município (fictício): São Bento das Pedras\nData de referência da análise: 2026-11-21\nDocumentos disponíveis (3), em ordem cronológica:\n\n### [D1] Plano de Contingência — Saúde (2024)\nTipo: Plano de contingência | Fonte: Secretaria de Saúde | Data: 2024-10-18\n\nPacientes em tratamento fora do domicílio (TFD) são transportados pela frota da Saúde conforme agenda regular.\nHospital de referência: Hospital Municipal São Bento (urgência e internação).\n\n---\n\n### [D3] Relação de pacientes TFD — novembro/2026\nTipo: Atualização de secretaria | Fonte: Setor de TFD | Data: 2026-11-03\n\nHemodiálise (3 sessões semanais, Clínica Renal de Monte Alto, município vizinho): 9 pacientes.\nOncologia (Hospital Regional de Monte Alto): 4 pacientes.\n\n---\n\n### [D2] Alerta de chuva e deslizamentos (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-21\n\nNÍVEL: LARANJA. Chuva persistente sobre a região serrana; risco de deslizamentos e bloqueios na Estrada da Serra (RM-120) nos próximos 3 dias.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_026c9586f1cafc4c016b070020970c87d2a3eb739489014821",
+  "model_reported": "gpt-6-luna",
+  "usage": {
+    "input_tokens": 2111,
+    "output_tokens": 3500,
+    "reasoning_tokens": 333
+  },
+  "latency_ms": 22785,
+  "started_at": "2026-11-25T15:34:56.115Z",
+  "output": {
+    "resumo_situacao": "O alerta de 21/11/2026 aponta risco de bloqueios na Estrada da Serra (RM-120) nos próximos três dias. Há pacientes de TFD que viajam a Monte Alto para hemodiálise e oncologia, mas os documentos não informam se esses deslocamentos usam a RM-120 nem quais são as datas das viagens.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Alerta de chuva e deslizamentos",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Cenário fictício de nível laranja, com chuva persistente na região serrana e risco de deslizamentos e bloqueios na RM-120 nos próximos três dias."
+      },
+      {
+        "id": "E2",
+        "nome": "Estrada da Serra (RM-120)",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Via indicada no alerta como sujeita a risco de bloqueios."
+      },
+      {
+        "id": "E3",
+        "nome": "Serviço de transporte de pacientes TFD",
+        "tipo": "servico",
+        "setor_responsavel": "Secretaria de Saúde; Setor de TFD",
+        "descricao": "Transporte de pacientes em tratamento fora do domicílio pela frota da Saúde, conforme agenda regular, segundo o plano de 2024."
+      },
+      {
+        "id": "E4",
+        "nome": "Frota da Saúde",
+        "tipo": "recurso",
+        "setor_responsavel": "Secretaria de Saúde",
+        "descricao": "Frota indicada no plano de 2024 como responsável pelo transporte regular dos pacientes TFD."
+      },
+      {
+        "id": "E5",
+        "nome": "Pacientes TFD em hemodiálise",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": "Setor de TFD",
+        "descricao": "Nove pacientes registrados em novembro de 2026, com três sessões semanais em clínica de Monte Alto."
+      },
+      {
+        "id": "E6",
+        "nome": "Clínica Renal de Monte Alto",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Local onde os pacientes TFD registrados recebem hemodiálise."
+      },
+      {
+        "id": "E7",
+        "nome": "Pacientes TFD em oncologia",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": "Setor de TFD",
+        "descricao": "Quatro pacientes registrados em novembro de 2026 com atendimento no Hospital Regional de Monte Alto."
+      },
+      {
+        "id": "E8",
+        "nome": "Hospital Regional de Monte Alto",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Local de atendimento dos pacientes TFD em oncologia registrados em novembro de 2026."
+      },
+      {
+        "id": "E9",
+        "nome": "Setor de TFD",
+        "tipo": "setor",
+        "setor_responsavel": "Secretaria de Saúde",
+        "descricao": "Setor indicado como fonte da relação atualizada de pacientes TFD de novembro de 2026."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta aponta risco de bloqueios na estrada.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-21",
+          "fim": null,
+          "observacao": "O alerta menciona risco nos próximos três dias; não informa horário exato de término."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "risco de deslizamentos e bloqueios na Estrada da Serra (RM-120) nos próximos 3 dias."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E3",
+        "destino": "E4",
+        "tipo": "acesso_por",
+        "rotulo": "O transporte TFD é realizado pela frota da Saúde conforme agenda regular.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-10-18",
+          "fim": null,
+          "observacao": "O plano é de 2024; os documentos não confirmam se essa rotina continua vigente em 2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "são transportados pela frota da Saúde conforme agenda regular."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E3",
+        "destino": "E5",
+        "tipo": "atende",
+        "rotulo": "O serviço de TFD atende pacientes em hemodiálise.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-03",
+          "fim": null,
+          "observacao": "A relação de pacientes é datada de novembro de 2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Hemodiálise (3 sessões semanais, Clínica Renal de Monte Alto, município vizinho): 9 pacientes."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E5",
+        "destino": "E6",
+        "tipo": "localizado_em",
+        "rotulo": "O atendimento de hemodiálise ocorre na Clínica Renal de Monte Alto.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-03",
+          "fim": null,
+          "observacao": "Conforme relação de pacientes de novembro de 2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Clínica Renal de Monte Alto, município vizinho"
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E3",
+        "destino": "E7",
+        "tipo": "atende",
+        "rotulo": "O serviço de TFD atende pacientes em oncologia.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-03",
+          "fim": null,
+          "observacao": "A relação de pacientes é datada de novembro de 2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Oncologia (Hospital Regional de Monte Alto): 4 pacientes."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E7",
+        "destino": "E8",
+        "tipo": "localizado_em",
+        "rotulo": "O atendimento de oncologia ocorre no Hospital Regional de Monte Alto.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-03",
+          "fim": null,
+          "observacao": "Conforme relação de pacientes de novembro de 2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Oncologia (Hospital Regional de Monte Alto): 4 pacientes."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "A relação de novembro de 2026 registra nove pacientes em hemodiálise, com três sessões semanais, e quatro em oncologia. O plano de 2024 descreve transporte TFD pela frota da Saúde conforme agenda regular, mas não confirma a vigência dessa rotina em 2026.",
+        "implicacao": "A pauta pode considerar os deslocamentos TFD registrados em 2026, mas deve confirmar a rotina atual de transporte e as datas das viagens antes de presumir que o plano de 2024 continua aplicável.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "são transportados pela frota da Saúde conforme agenda regular."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Hemodiálise (3 sessões semanais, Clínica Renal de Monte Alto, município vizinho): 9 pacientes."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Oncologia (Hospital Regional de Monte Alto): 4 pacientes."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "Há viagens de TFD para Monte Alto programadas durante o período do alerta e, se houver, algum trecho dessas viagens utiliza a RM-120?",
+        "por_que_importa": "O alerta aponta risco de bloqueios na RM-120, e a atualização registra pacientes TFD atendidos em Monte Alto. Os documentos não estabelecem que a estrada seja usada nos trajetos.",
+        "motivacao": "A combinação do risco de bloqueio informado no D2 com os atendimentos em Monte Alto registrados no D3 torna necessário confirmar datas e rotas, sem presumir que a via seja utilizada.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E6",
+          "E8",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "Setor de TFD",
+          "Secretaria de Saúde"
+        ],
+        "status_epistemico": "inferencia",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "risco de deslizamentos e bloqueios na Estrada da Serra (RM-120) nos próximos 3 dias."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Hemodiálise (3 sessões semanais, Clínica Renal de Monte Alto, município vizinho): 9 pacientes."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Oncologia (Hospital Regional de Monte Alto): 4 pacientes."
+          }
+        ],
+        "o_que_falta_saber": "As datas e os horários das viagens no período do alerta, os trajetos previstos e se algum deles utiliza a RM-120.",
+        "quem_pode_confirmar": "Setor de TFD, conforme indicado como fonte da relação de pacientes; a atribuição institucional para confirmar trajetos depende de confirmação.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "Para as viagens de TFD que coincidam com o período do alerta, o Setor de TFD e a equipe responsável pelo transporte já confirmaram se os trajetos previstos são compatíveis com a situação informada para a RM-120?",
+        "por_que_importa": "O plano de 2024 prevê transporte pela frota da Saúde conforme agenda regular, mas não descreve procedimentos para risco de bloqueio nem confirma que essa rotina segue vigente.",
+        "motivacao": "A rotina de transporte está documentada em plano anterior; o alerta atual acrescenta risco de bloqueios, sem informar o estado da estrada ou procedimentos específicos para o TFD.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E4",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "Setor de TFD",
+          "Secretaria de Saúde"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "são transportados pela frota da Saúde conforme agenda regular."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "risco de deslizamentos e bloqueios na Estrada da Serra (RM-120) nos próximos 3 dias."
+          }
+        ],
+        "o_que_falta_saber": "Se o procedimento de transporte descrito em 2024 continua vigente, quais viagens coincidem com o alerta e se há orientação atual para verificar as condições dos trajetos.",
+        "quem_pode_confirmar": "Secretaria de Saúde e Setor de TFD; a unidade ou função responsável pela frota não é identificada nos documentos e depende de confirmação institucional.",
+        "prioridade": "alta"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Os documentos não indicam se os trajetos entre o município e Monte Alto passam pela RM-120.",
+        "por_que_importa": "Sem essa informação, não é possível determinar se o risco de bloqueio descrito no alerta afeta as viagens de TFD."
+      },
+      {
+        "descricao": "A relação de novembro de 2026 não apresenta datas ou horários dos atendimentos e viagens de TFD.",
+        "por_que_importa": "Não é possível identificar quais deslocamentos coincidem com os próximos três dias mencionados no alerta."
+      },
+      {
+        "descricao": "Não há informação sobre o estado atual da RM-120, confirmação de bloqueios ou procedimentos de transporte durante o alerta.",
+        "por_que_importa": "O alerta descreve risco, não a ocorrência de bloqueio nem uma orientação específica para as viagens de TFD."
+      }
+    ],
+    "cautelas": [
+      "O risco informado no alerta não comprova que a RM-120 esteja bloqueada.",
+      "A localização dos atendimentos em Monte Alto não comprova que as viagens utilizem a RM-120.",
+      "O plano de 2024 não deve ser tratado como confirmação automática da rotina vigente em novembro de 2026.",
+      "A análise não define medidas operacionais nem substitui decisões das autoridades e dos protocolos oficiais."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 9,
+    "n_relacoes": 6,
+    "n_verificacoes": 2,
+    "n_temporais": 1,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D2",
+        "trecho": "risco de deslizamentos e bloqueios na Estrada da Serra (RM-120) nos próximos 3 dias.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "são transportados pela frota da Saúde conforme agenda regular.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Hemodiálise (3 sessões semanais, Clínica Renal de Monte Alto, município vizinho): 9 pacientes.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Clínica Renal de Monte Alto, município vizinho",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Oncologia (Hospital Regional de Monte Alto): 4 pacientes.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Oncologia (Hospital Regional de Monte Alto): 4 pacientes.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "são transportados pela frota da Saúde conforme agenda regular.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Hemodiálise (3 sessões semanais, Clínica Renal de Monte Alto, município vizinho): 9 pacientes.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Oncologia (Hospital Regional de Monte Alto): 4 pacientes.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "risco de deslizamentos e bloqueios na Estrada da Serra (RM-120) nos próximos 3 dias.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Hemodiálise (3 sessões semanais, Clínica Renal de Monte Alto, município vizinho): 9 pacientes.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Oncologia (Hospital Regional de Monte Alto): 4 pacientes.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "são transportados pela frota da Saúde conforme agenda regular.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "risco de deslizamentos e bloqueios na Estrada da Serra (RM-120) nos próximos 3 dias.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      }
+    ],
+    "n_citacoes": 14,
+    "n_citacoes_literais": 14,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795620918,
+    "created_at": 1795620896,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_026c9586f1cafc4c016b070020970c87d2a3eb739489014821",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-6-luna",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBwAjdYDnDKHV91sVlGbN53gOb0t7EhtxMZw4W-T5vKfhuS69uvGcRSa9KcKGQBXHv_oRUJ0Xxa2f0UwtTp-4MoRv7W81Zqj4O5fvAcw-4lmO2AKwoTMJPqSZ_gUpu3mbFphwuL2M-8mEf-fe5NlbpH0zIXb_xPto0vwUvDywN98aI_ASSme_CS6mSXW4WLN2rNYhHUEenADevbYgts3LNSYVST6zrjlFzb9CKMiWN_ybcrHtAFS6rLzRPKXQ-74NfOyqDolfA0rcDrbmD2W7xDApb3ZoIjAuQZFR6HH8nOF9_CJXi8wNcauCamKvTwYdUgzwzeAnD68VAfxzgKg6EUvmBfTD05iYyHB1A8hrRqLYSVts0Xpg6jKeuWah56ZsDJczIt3gtm_nVphhf00cXN0yWqDE-rN8B5mAlvwqQ1RCQm-kvMvyFCkyNjH_7iDU9pR_iW1dbiLj_oTafaUdAX9rgUyPYnQw932ALFb2vpXjB7adqik4mLLiQ37DnNkeU9jxWEtLBCBouG66USCFlvKU-pGQiuJoAn0gZHbOd8zrZewEw6XjuMcZqwcg9tdLe2z2ueQLMlDRTeKqgjC-q67qZtFdVilDuXVyg8kFkj-Np_JZjjzLub6Ws5Y3IGIG3cvB7Hf_7DiBURlBgjfLX1Itk6WcbYYDCq4U8wwflfNXTueBI2KJ3yJ0HVYkTFwzHFm-es2felfR7Ve-foLn4Dq7zbc2rj905K0dIutk_p5xE65FOrLO1ZtyeqtykT_ANtMbYqacXzfo8jRzVOPn17ztX2zAfjXARlnSQYnH9XZBzz31BAFewwV9dzBSxbVfzMm9R4H7Y48FQmJGIKGjxOtuUNJ3t-28CRR4JJ-Q9rAFtkRzYIp-o3bafod8K9y_Z6KHx7hhOmwH1rFrdDWkx4LJD_bxOPX9ldUp0qOJN7YlPXFwKl7c8RFbTkGy6F2wBCbnQZ5ShsPoGvMJDrjkRclDIJh6dIAfQoGo8M2uTHyHyfglwGutx4qcx2pnmU9m31UKwSosRAB7PGjrPNh2zXsqg_cGu_Gka3e0j8_XuEB6AIoBefsJBNFiD4NnueKbtd9M0cIdGYlTW8nBlsfLSlKQXPGkpMd29xJs6nBzTJ7c-IuxEvThvJ-8V707-_Be5nAGc0Okzy0kR1eS7w178w9VXq3PNkfKKeaPpfsyGv16ewh3EcRPEveW11YT4gwgo4kAynJzWg16ioe2RRBv3UYUrPnYVyFqIqe4QLu3iV_W00P9Ls7itYx4YXZFe0n_-535pZQQnngu06wiLyekcFbTiFMKvkCe9OpyGJN82lSUMZSiowanWMVMApv8cTlAzVWETnyEG_TQlchD5O4gnMnCBGh9aR2uv22uOshV0JjhFyxaYGEFg6tVCCPcw5w5g95RaqI2QRe6ozgiMIhI2_kMv3U-VHlYV9BXfbBzLje8hf8A6iYgt_sgXHTl784Pqf4TLsUav66DrmjG2eARGY56WGSRK-BYlxWhoVWTupXSyPV1a_Q81M6FKDS2Z3qrIgA-SUySqrUkPZMiKbD33wyupX9RxGBzbXG2kSIZGn-kSt5etmPjt4X1V9cXg7gv6ean16UfPmqh4nB9qR0l4qyQJKwEyVmQWPhoB7j6UXRBb0iwTLMa30apeUQPWFzN0nnfb9o2rEu_0YyshV_Zrxpw_GQdzHSjk_PUdC-HQ4n05N4W4Op47hn0pDDMNmcGNfTAzCwJ5iPskWGyB_PXjjnM6C4ceMn8AbwoAv8ibsdnEshSSOOOjabyuJj_xSRyfX7h7whal6u5lnZhQ5ka_5zmTE3XpITFL0mlMDjasWEnpYa5hNM3kpQ0ZpUTDx0oBUsNKOurLlJT1jwppyTlhpzoI4iy5tyaIQNluEkQVfMxI2VB-x_DRIBfts0dQUEwHb0AfZ1ukN6yeLFXwaOY4iX-TTbldfGmaNaA7Pu3nPlzjAvVR_3n9JMoPX-AXnv_BXiRWTzkjIHqkLIlhzZkN5DA4wzrXormKtY3noD9zcz2gM7j5HgrzErSdU1f3INAD-Dirzvs8Rfds2U4RKwqgPM1CWH3mu7VKxmfZzvDWoij257Gw-92RfpjcexygbVdrTEIuejJTaWQNflV1S_78GWicjjkbLBN1b_TUUdf6ljFyuZRXoZFwn_ethZLFPsbTMVjSfFUNfBlcmhi9kZEaYmdl0D3712TFgIjNmnDlCMCpCZ601wBmI80M69ZUQmSNo-SZb5M2XZZ098IrHZOWgpbYfgGgcfxvFDpT9zbaRh7HARu6Biz68HouELrXOoFaX4RiHj1Oz6QWJj5RVosLJ67hafZwxXpXmNwjDMGCqWWtEg23JJYRuqK4ht5vvog3GX7R6umlQKi0p-qLPAY5I4ng5zdvS_d6zw0gpy0FE9OvbicHv3MQBb1fTMHbm2gC2uODTSaoXIWu8r6TjbN9QJFHaNt0WuLw-7Vu4mwSNaXGNLSYpxmsnPbqXq_WW0qg90sJfBLjV8XwWfXf_K0CZcDtMzWgIcZWWC4LC-SwNHP0Pn496e5v9VnEpNCPRPwbGv_yp1OLixAbsOo7ce7xdP3cCldYMxnqEKi1nvlzjYPlBG9WcMVX6ggnGv-ZEDXOcnCJi3kTF6kxI1YscmShIHBDEB1dMsdjRgPaEwkXwZsHwg8lOXRwa-ZjnCWJF1efrWwZ7d43A901WYWnaflgSDXsJnRMqXdZm3apmegoXLMHJHp4dGnUjfsithyvqKVJ85CCXHIxSwtxrv4c6mhXsP0535QnvyBla1VJJ4NXjU1hey9KfAz-Cgfte4ycHb5_YCYadvOaSj2Yp9X19QB6Nz60qc2YC93xcC26U6Zx92_Nk5lrV6gCG-MIdM5WPrLuCj11bjvUm7tTrtweyT24N4FseHQR3s8-JgG7YopEFRKYDQpqSA7FcZB9URYdet73cgDt2Fvg7r28kmN3lL_qfXDP_gXZXg8djD6_IzGYGVlHxY_2q4qd93V9Z6_LX8iDu2KssQfOfqkXMVXuf-RhWk3klKcaHxs_iAHnS50lYApBogM5qquv-4sR-UjaazxHgSQGUVn_W1IkEROA_nC-oeG-hBcOtfn2_pBd7rwR9ATQGPZ3jijUkATyHFBCkoUJzwRmKfitfxXN_-NvZVJ_z594t3bVT0jBaTDyqYel1kukwfThbIXTpP5sCbPqyorI87bBwAR_va5WvinGGdGwCCbFnfNqsvmVN3lEF0Z025T8q1iKtgSyzClFkVb4PciACO0qgDXnGmBs8cQHP7dhQqX8udC-Okgk7CP4V8feJasQum8CwWQtzgW7QLQk7O1GJSAY804lpDLQerTmnaOMa6pstnvIuDmDkU7EjlddCj0w5amJjEjNuJSHvSpD6TKCM5SGBBCRKFKVEYoQjxtAx6X23YianYJn2j6VMj8qZJDh9eL3ABTQYXeOXR-8DfBuzKr4KC9T_Q3DvhtPPi-RDDy5chP-adVDBE8p2d92mKfN4SZghn5lTHgzkGHW3RcUVQRmGFvVC1A5QYp8kJEXoiZ_Xj9cdZ06_hbc8-X0HDnTXYCR7uVNHHNF23RQ4kVdTnchbsZL5B1mJDAfmgxtdfE42HcZi1W1BR90SNJKk_Q4iHiSF-2uZWH57Y2iGEZnMiwcRrzxHvxgJesC6GzH-mCtAvmJ6hU4cy0qYnCH8DKwy5FABbghmantcMD2xuN8lsHk89LJdLCKLtll3_sZ0ERnvrjEVSlkaDnQXs3gJG5BAUekftIBmOULhwC9HNeKRXDxlRzFaUMp89WYPY4kPn9BB7lQWQS8n3B13juC55X9AmfcFOCBQz4a346_EXZ9pTsoLC8-XHq3aIVPsSXdPOhOQ9dulmm5gKAbuuu9nZTOSG9GeaE33387at0AfFYW3SpKDYdQh2ApXo2jjKHitJlSz6kB5NKau02VFu5tSfbln4ORrRHSPCjam0HKypDziszUsaN_2569K26LKLlshCMiOlWGUIk9krLlUnYOzYdx8t0w1v7r5OQN45Kp2GQtpzQEOQKeis2KZaDGhOb-KJgLPGc8ui19z7ZGAojZ9n59u9gLapQZujLv6mVp8n-TpHCrlOXeBzVa36rDvlaXNm_MQHYm_qX0k0ZqiVD5TxK306E1EVDt9ZbnXOBVOjxrZzc0pwPtaO63VYNrRYnwwoCS0Wy-1i1ITPrYdRz8Rj8m72Ya0-82_6A9UbCH2ecr_4D8xYK8XZoJA9bQPliXyNjHL3H6PxGcv30_LUmMh8hKsA9T20KPAPdPwtdNqCx8EOnAlxITtyTNYfh8ZHocjn2Tu_KNNDdLxl90up8R2fFHv3e1b9Ie3ty1PE9Yjb3hKdpYrRkZ0GxppFeevjhVWkCtrxPX5wGDuUiJs_Z-p-t8MeglY5uPz4aRiAu1NrMPsIAC-wZ0eCA8daBUaE2EmUg9D3xEQki-aefqWlx1I8MY_tWjDBM0fDbakRBvIwFtnO7eNUmebv8syUW1HljR1pkNaG08OV16-WdBXfuBuVllaQrXCGtfYzYRwb_edw6Jqws95gOFjqOtNov_vR__DU3ZnoHJyeeZCjNaPUDIeYVVBbRj8SkDddosXVEoM-cFYCwsmF92Bx43IpJ258IyFBsmieqOqBeonxFGLkcngEbzKzRFgsrhiAtTzxrtv5hu8h-t6fnkHDhZJKEylcmlQ1WnRL9ejcDZYfIZMTxZC0Yna7ukHndZ907gi5yakHqd6wLOhiLyB43utqNDFw3qcI9fC0xUGjw2h1dlqr7lc0qAJXXay2cjncuT78Wtg6BUV2oOedwwjGQDZ_EgHPcAj9lPHJbTr2bJQs6D8MqAhXzsWycJNmizyVvei_wV3uxNZXwb9366rnXT_gBDUl7EOEOVX0TW20T5X3OV7E5i4zye1MaZil-OHa3_qtEwFBpeG1Dj3Mfoj6G4a4BIXip0B7HBJkFMVFD-nellimXDHwrkQrlnhD0hkfQd6gH-wEO-cWuP7_z_ohsdfrfIHg9QH1hmh5M0C9pIqDGZWDPlUbWX3L3wyyr43FT4ypUJlqYk40TjLNvaGwv4JomN_Ib6omDLV1aZmahWOAFjjQOzYuB2rbsh-ZdhvIPuXFhHGBgm6RnbrxbdLyFsUP_jojc7MwlgQYevxWBfGk6y3hwe4i0kDMsdo-NVsBGLRnjbBvsZj3olmKIDZooTR4Nrzo4Auz6uQXazucX_ykltYEU9E3ohnxQJqxkYNEh4WAoMEux-piwfZSxLArQhXhO4a041s14LgVBxSIdUzAm6IcZozmFuM0VObn73WJ5ExkzL3zLaQKTEdmdj1QPAAmvY7Q0YOVTW_MzQ0fSnbVhzvU9WPOMBXhC-Le1QvBwWg57VS59t3YCeIkRKqlKWbNX1BsFEfM_OT706q0C5k8hqKvZEISr4YamZ1thyYTYS2goVsBjCiR1AFCL9GtVEnFr4XM-e4cQfduTQ_BVaBjgXdoYWAUrK2wu68ryEq-U5gKBPuSJUT1hFDeK721j9x3bNFS-65vuY2wN4jVSp-_E6klpStbxrbLTLylMLJNG8WbyG8jfWrdhdjF4unKA3Z3e8Ynqm2QAcnRMwEz0lKXF0tVrIQZdXrlpmgBg0-qsF4s04foGBHWAXfFrbLV4_tKkHTZHXO1kZ2UnbQCOSkE3Dj7jlqbasRStNKobI1aPKcRSfYavMBBD_9Z4sikC4uHxcZIGCYPKtzZEzzTK3rbWzg1ZBzL7zgj3jUCX7glRXKQAWzcvWpy8mBJRHBcnIn4KnzsK5fmH8n6t-wy3Xvi2cQ6E9MkBjiTnwmsY0l1w1SR9g15W6pG497GLF-9EDdY-eA5TNecrrrUUlITQRgscNMSKEd3Cit-nUVBf9soFaTy7eqhxcl_jz42KuQNFHuqu1pnv_OPX4EhlQOB2tomnTSIIBMZNYF5MnN3fY0Hh5t-NgT7KxAymDg4BETITodwaIr23xHa0FzlQRYSJ_HQDSVKsfEd4arSDE8EMQwWLKBLjA80DLQNQ3fQVywj3pISwuD4j4Vk0qA==",
+        "id": "rs_026c9586f1cafc4c016b070023c9e887d2b749b91bf7dc5476",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"resumo_situacao\": \"O alerta de 21/11/2026 aponta risco de bloqueios na Estrada da Serra (RM-120) nos próximos três dias. Há pacientes de TFD que viajam a Monte Alto para hemodiálise e oncologia, mas os documentos não informam se esses deslocamentos usam a RM-120 nem quais são as datas das viagens.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de chuva e deslizamentos\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Cenário fictício de nível laranja, com chuva persistente na região serrana e risco de deslizamentos e bloqueios na RM-120 nos próximos três dias.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Estrada da Serra (RM-120)\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Via indicada no alerta como sujeita a risco de bloqueios.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Serviço de transporte de pacientes TFD\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Secretaria de Saúde; Setor de TFD\",\n      \"descricao\": \"Transporte de pacientes em tratamento fora do domicílio pela frota da Saúde, conforme agenda regular, segundo o plano de 2024.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Frota da Saúde\",\n      \"tipo\": \"recurso\",\n      \"setor_responsavel\": \"Secretaria de Saúde\",\n      \"descricao\": \"Frota indicada no plano de 2024 como responsável pelo transporte regular dos pacientes TFD.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Pacientes TFD em hemodiálise\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": \"Setor de TFD\",\n      \"descricao\": \"Nove pacientes registrados em novembro de 2026, com três sessões semanais em clínica de Monte Alto.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Clínica Renal de Monte Alto\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local onde os pacientes TFD registrados recebem hemodiálise.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Pacientes TFD em oncologia\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": \"Setor de TFD\",\n      \"descricao\": \"Quatro pacientes registrados em novembro de 2026 com atendimento no Hospital Regional de Monte Alto.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"Hospital Regional de Monte Alto\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local de atendimento dos pacientes TFD em oncologia registrados em novembro de 2026.\"\n    },\n    {\n      \"id\": \"E9\",\n      \"nome\": \"Setor de TFD\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Secretaria de Saúde\",\n      \"descricao\": \"Setor indicado como fonte da relação atualizada de pacientes TFD de novembro de 2026.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta aponta risco de bloqueios na estrada.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-21\",\n        \"fim\": null,\n        \"observacao\": \"O alerta menciona risco nos próximos três dias; não informa horário exato de término.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"risco de deslizamentos e bloqueios na Estrada da Serra (RM-120) nos próximos 3 dias.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E3\",\n      \"destino\": \"E4\",\n      \"tipo\": \"acesso_por\",\n      \"rotulo\": \"O transporte TFD é realizado pela frota da Saúde conforme agenda regular.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-10-18\",\n        \"fim\": null,\n        \"observacao\": \"O plano é de 2024; os documentos não confirmam se essa rotina continua vigente em 2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"são transportados pela frota da Saúde conforme agenda regular.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E3\",\n      \"destino\": \"E5\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O serviço de TFD atende pacientes em hemodiálise.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-03\",\n        \"fim\": null,\n        \"observacao\": \"A relação de pacientes é datada de novembro de 2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Hemodiálise (3 sessões semanais, Clínica Renal de Monte Alto, município vizinho): 9 pacientes.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E5\",\n      \"destino\": \"E6\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O atendimento de hemodiálise ocorre na Clínica Renal de Monte Alto.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-03\",\n        \"fim\": null,\n        \"observacao\": \"Conforme relação de pacientes de novembro de 2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Clínica Renal de Monte Alto, município vizinho\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E3\",\n      \"destino\": \"E7\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O serviço de TFD atende pacientes em oncologia.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-03\",\n        \"fim\": null,\n        \"observacao\": \"A relação de pacientes é datada de novembro de 2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Oncologia (Hospital Regional de Monte Alto): 4 pacientes.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E7\",\n      \"destino\": \"E8\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O atendimento de oncologia ocorre no Hospital Regional de Monte Alto.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-03\",\n        \"fim\": null,\n        \"observacao\": \"Conforme relação de pacientes de novembro de 2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Oncologia (Hospital Regional de Monte Alto): 4 pacientes.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"A relação de novembro de 2026 registra nove pacientes em hemodiálise, com três sessões semanais, e quatro em oncologia. O plano de 2024 descreve transporte TFD pela frota da Saúde conforme agenda regular, mas não confirma a vigência dessa rotina em 2026.\",\n      \"implicacao\": \"A pauta pode considerar os deslocamentos TFD registrados em 2026, mas deve confirmar a rotina atual de transporte e as datas das viagens antes de presumir que o plano de 2024 continua aplicável.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"são transportados pela frota da Saúde conforme agenda regular.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Hemodiálise (3 sessões semanais, Clínica Renal de Monte Alto, município vizinho): 9 pacientes.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Oncologia (Hospital Regional de Monte Alto): 4 pacientes.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Há viagens de TFD para Monte Alto programadas durante o período do alerta e, se houver, algum trecho dessas viagens utiliza a RM-120?\",\n      \"por_que_importa\": \"O alerta aponta risco de bloqueios na RM-120, e a atualização registra pacientes TFD atendidos em Monte Alto. Os documentos não estabelecem que a estrada seja usada nos trajetos.\",\n      \"motivacao\": \"A combinação do risco de bloqueio informado no D2 com os atendimentos em Monte Alto registrados no D3 torna necessário confirmar datas e rotas, sem presumir que a via seja utilizada.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E6\",\n        \"E8\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"Setor de TFD\",\n        \"Secretaria de Saúde\"\n      ],\n      \"status_epistemico\": \"inferencia\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"risco de deslizamentos e bloqueios na Estrada da Serra (RM-120) nos próximos 3 dias.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Hemodiálise (3 sessões semanais, Clínica Renal de Monte Alto, município vizinho): 9 pacientes.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Oncologia (Hospital Regional de Monte Alto): 4 pacientes.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"As datas e os horários das viagens no período do alerta, os trajetos previstos e se algum deles utiliza a RM-120.\",\n      \"quem_pode_confirmar\": \"Setor de TFD, conforme indicado como fonte da relação de pacientes; a atribuição institucional para confirmar trajetos depende de confirmação.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"Para as viagens de TFD que coincidam com o período do alerta, o Setor de TFD e a equipe responsável pelo transporte já confirmaram se os trajetos previstos são compatíveis com a situação informada para a RM-120?\",\n      \"por_que_importa\": \"O plano de 2024 prevê transporte pela frota da Saúde conforme agenda regular, mas não descreve procedimentos para risco de bloqueio nem confirma que essa rotina segue vigente.\",\n      \"motivacao\": \"A rotina de transporte está documentada em plano anterior; o alerta atual acrescenta risco de bloqueios, sem informar o estado da estrada ou procedimentos específicos para o TFD.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E4\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"Setor de TFD\",\n        \"Secretaria de Saúde\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"são transportados pela frota da Saúde conforme agenda regular.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"risco de deslizamentos e bloqueios na Estrada da Serra (RM-120) nos próximos 3 dias.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o procedimento de transporte descrito em 2024 continua vigente, quais viagens coincidem com o alerta e se há orientação atual para verificar as condições dos trajetos.\",\n      \"quem_pode_confirmar\": \"Secretaria de Saúde e Setor de TFD; a unidade ou função responsável pela frota não é identificada nos documentos e depende de confirmação institucional.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Os documentos não indicam se os trajetos entre o município e Monte Alto passam pela RM-120.\",\n      \"por_que_importa\": \"Sem essa informação, não é possível determinar se o risco de bloqueio descrito no alerta afeta as viagens de TFD.\"\n    },\n    {\n      \"descricao\": \"A relação de novembro de 2026 não apresenta datas ou horários dos atendimentos e viagens de TFD.\",\n      \"por_que_importa\": \"Não é possível identificar quais deslocamentos coincidem com os próximos três dias mencionados no alerta.\"\n    },\n    {\n      \"descricao\": \"Não há informação sobre o estado atual da RM-120, confirmação de bloqueios ou procedimentos de transporte durante o alerta.\",\n      \"por_que_importa\": \"O alerta descreve risco, não a ocorrência de bloqueio nem uma orientação específica para as viagens de TFD.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O risco informado no alerta não comprova que a RM-120 esteja bloqueada.\",\n    \"A localização dos atendimentos em Monte Alto não comprova que as viagens utilizem a RM-120.\",\n    \"O plano de 2024 não deve ser tratado como confirmação automática da rotina vigente em novembro de 2026.\",\n    \"A análise não define medidas operacionais nem substitui decisões das autoridades e dos protocolos oficiais.\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_026c9586f1cafc4c016b070023e8b487d28d451c7a59447bcb",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "all_turns",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2111,
+      "input_tokens_details": {
+        "cache_write_tokens": 317,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 317
+        },
+        "cached_tokens": 1791
+      },
+      "output_tokens": 3500,
+      "output_tokens_details": {
+        "reasoning_tokens": 333
+      },
+      "total_tokens": 5611
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\n  \"resumo_situacao\": \"O alerta de 21/11/2026 aponta risco de bloqueios na Estrada da Serra (RM-120) nos próximos três dias. Há pacientes de TFD que viajam a Monte Alto para hemodiálise e oncologia, mas os documentos não informam se esses deslocamentos usam a RM-120 nem quais são as datas das viagens.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de chuva e deslizamentos\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Cenário fictício de nível laranja, com chuva persistente na região serrana e risco de deslizamentos e bloqueios na RM-120 nos próximos três dias.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Estrada da Serra (RM-120)\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Via indicada no alerta como sujeita a risco de bloqueios.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Serviço de transporte de pacientes TFD\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Secretaria de Saúde; Setor de TFD\",\n      \"descricao\": \"Transporte de pacientes em tratamento fora do domicílio pela frota da Saúde, conforme agenda regular, segundo o plano de 2024.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Frota da Saúde\",\n      \"tipo\": \"recurso\",\n      \"setor_responsavel\": \"Secretaria de Saúde\",\n      \"descricao\": \"Frota indicada no plano de 2024 como responsável pelo transporte regular dos pacientes TFD.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Pacientes TFD em hemodiálise\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": \"Setor de TFD\",\n      \"descricao\": \"Nove pacientes registrados em novembro de 2026, com três sessões semanais em clínica de Monte Alto.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Clínica Renal de Monte Alto\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local onde os pacientes TFD registrados recebem hemodiálise.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Pacientes TFD em oncologia\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": \"Setor de TFD\",\n      \"descricao\": \"Quatro pacientes registrados em novembro de 2026 com atendimento no Hospital Regional de Monte Alto.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"Hospital Regional de Monte Alto\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local de atendimento dos pacientes TFD em oncologia registrados em novembro de 2026.\"\n    },\n    {\n      \"id\": \"E9\",\n      \"nome\": \"Setor de TFD\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Secretaria de Saúde\",\n      \"descricao\": \"Setor indicado como fonte da relação atualizada de pacientes TFD de novembro de 2026.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta aponta risco de bloqueios na estrada.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-21\",\n        \"fim\": null,\n        \"observacao\": \"O alerta menciona risco nos próximos três dias; não informa horário exato de término.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"risco de deslizamentos e bloqueios na Estrada da Serra (RM-120) nos próximos 3 dias.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E3\",\n      \"destino\": \"E4\",\n      \"tipo\": \"acesso_por\",\n      \"rotulo\": \"O transporte TFD é realizado pela frota da Saúde conforme agenda regular.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-10-18\",\n        \"fim\": null,\n        \"observacao\": \"O plano é de 2024; os documentos não confirmam se essa rotina continua vigente em 2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"são transportados pela frota da Saúde conforme agenda regular.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E3\",\n      \"destino\": \"E5\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O serviço de TFD atende pacientes em hemodiálise.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-03\",\n        \"fim\": null,\n        \"observacao\": \"A relação de pacientes é datada de novembro de 2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Hemodiálise (3 sessões semanais, Clínica Renal de Monte Alto, município vizinho): 9 pacientes.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E5\",\n      \"destino\": \"E6\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O atendimento de hemodiálise ocorre na Clínica Renal de Monte Alto.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-03\",\n        \"fim\": null,\n        \"observacao\": \"Conforme relação de pacientes de novembro de 2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Clínica Renal de Monte Alto, município vizinho\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E3\",\n      \"destino\": \"E7\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O serviço de TFD atende pacientes em oncologia.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-03\",\n        \"fim\": null,\n        \"observacao\": \"A relação de pacientes é datada de novembro de 2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Oncologia (Hospital Regional de Monte Alto): 4 pacientes.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E7\",\n      \"destino\": \"E8\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O atendimento de oncologia ocorre no Hospital Regional de Monte Alto.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-03\",\n        \"fim\": null,\n        \"observacao\": \"Conforme relação de pacientes de novembro de 2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Oncologia (Hospital Regional de Monte Alto): 4 pacientes.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"A relação de novembro de 2026 registra nove pacientes em hemodiálise, com três sessões semanais, e quatro em oncologia. O plano de 2024 descreve transporte TFD pela frota da Saúde conforme agenda regular, mas não confirma a vigência dessa rotina em 2026.\",\n      \"implicacao\": \"A pauta pode considerar os deslocamentos TFD registrados em 2026, mas deve confirmar a rotina atual de transporte e as datas das viagens antes de presumir que o plano de 2024 continua aplicável.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"são transportados pela frota da Saúde conforme agenda regular.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Hemodiálise (3 sessões semanais, Clínica Renal de Monte Alto, município vizinho): 9 pacientes.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Oncologia (Hospital Regional de Monte Alto): 4 pacientes.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Há viagens de TFD para Monte Alto programadas durante o período do alerta e, se houver, algum trecho dessas viagens utiliza a RM-120?\",\n      \"por_que_importa\": \"O alerta aponta risco de bloqueios na RM-120, e a atualização registra pacientes TFD atendidos em Monte Alto. Os documentos não estabelecem que a estrada seja usada nos trajetos.\",\n      \"motivacao\": \"A combinação do risco de bloqueio informado no D2 com os atendimentos em Monte Alto registrados no D3 torna necessário confirmar datas e rotas, sem presumir que a via seja utilizada.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E6\",\n        \"E8\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"Setor de TFD\",\n        \"Secretaria de Saúde\"\n      ],\n      \"status_epistemico\": \"inferencia\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"risco de deslizamentos e bloqueios na Estrada da Serra (RM-120) nos próximos 3 dias.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Hemodiálise (3 sessões semanais, Clínica Renal de Monte Alto, município vizinho): 9 pacientes.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Oncologia (Hospital Regional de Monte Alto): 4 pacientes.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"As datas e os horários das viagens no período do alerta, os trajetos previstos e se algum deles utiliza a RM-120.\",\n      \"quem_pode_confirmar\": \"Setor de TFD, conforme indicado como fonte da relação de pacientes; a atribuição institucional para confirmar trajetos depende de confirmação.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"Para as viagens de TFD que coincidam com o período do alerta, o Setor de TFD e a equipe responsável pelo transporte já confirmaram se os trajetos previstos são compatíveis com a situação informada para a RM-120?\",\n      \"por_que_importa\": \"O plano de 2024 prevê transporte pela frota da Saúde conforme agenda regular, mas não descreve procedimentos para risco de bloqueio nem confirma que essa rotina segue vigente.\",\n      \"motivacao\": \"A rotina de transporte está documentada em plano anterior; o alerta atual acrescenta risco de bloqueios, sem informar o estado da estrada ou procedimentos específicos para o TFD.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E4\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"Setor de TFD\",\n        \"Secretaria de Saúde\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"são transportados pela frota da Saúde conforme agenda regular.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"risco de deslizamentos e bloqueios na Estrada da Serra (RM-120) nos próximos 3 dias.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o procedimento de transporte descrito em 2024 continua vigente, quais viagens coincidem com o alerta e se há orientação atual para verificar as condições dos trajetos.\",\n      \"quem_pode_confirmar\": \"Secretaria de Saúde e Setor de TFD; a unidade ou função responsável pela frota não é identificada nos documentos e depende de confirmação institucional.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Os documentos não indicam se os trajetos entre o município e Monte Alto passam pela RM-120.\",\n      \"por_que_importa\": \"Sem essa informação, não é possível determinar se o risco de bloqueio descrito no alerta afeta as viagens de TFD.\"\n    },\n    {\n      \"descricao\": \"A relação de novembro de 2026 não apresenta datas ou horários dos atendimentos e viagens de TFD.\",\n      \"por_que_importa\": \"Não é possível identificar quais deslocamentos coincidem com os próximos três dias mencionados no alerta.\"\n    },\n    {\n      \"descricao\": \"Não há informação sobre o estado atual da RM-120, confirmação de bloqueios ou procedimentos de transporte durante o alerta.\",\n      \"por_que_importa\": \"O alerta descreve risco, não a ocorrência de bloqueio nem uma orientação específica para as viagens de TFD.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O risco informado no alerta não comprova que a RM-120 esteja bloqueada.\",\n    \"A localização dos atendimentos em Monte Alto não comprova que as viagens utilizem a RM-120.\",\n    \"O plano de 2024 não deve ser tratado como confirmação automática da rotina vigente em novembro de 2026.\",\n    \"A análise não define medidas operacionais nem substitui decisões das autoridades e dos protocolos oficiais.\"\n  ]\n}"
+  }
+}

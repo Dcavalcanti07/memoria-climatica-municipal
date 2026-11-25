@@ -1,0 +1,879 @@
+{
+  "meta": {
+    "scenario": "E30",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v2_luna",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 801,
+    "user_message_sha12": "7cca1f6114d0"
+  },
+  "user_message": "Município (fictício): Recanto das Araras\nData de referência da análise: 2026-11-25\nDocumentos disponíveis (2), em ordem cronológica:\n\n### [D1] Plano de Contingência (2026)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2026-03-30\n\nRota de acesso ao Abrigo Ginásio Araras: Ponte da Rua 7 ou, em caso de bloqueio, Rua das Acácias (rota alternativa testada em 08/2026).\nAbrigo: Ginásio Araras (160 pessoas), com gerador.\nResponsável pelo abrigo: Assistência Social (plantão interno).\n\n---\n\n### [D2] Alerta (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-25\n\nNÍVEL: LARANJA. Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_0d41663c68eb472f016b0700472de087d2af08c92b2025a5f9",
+  "model_reported": "gpt-6-luna",
+  "usage": {
+    "input_tokens": 2045,
+    "output_tokens": 3352,
+    "reasoning_tokens": 655
+  },
+  "latency_ms": 24315,
+  "started_at": "2026-11-25T15:35:34.971Z",
+  "output": {
+    "resumo_situacao": "O alerta de 25/11/2026 informa que o Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11. O plano indica a Rua das Acácias como rota alternativa para acesso ao Ginásio Araras. Há uma inconsistência de datas no plano: ele é datado de março, mas registra um teste da rota em agosto de 2026.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Alerta de possível transbordamento do Arroio Araras",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Cenário fictício de nível laranja, com possibilidade de transbordamento e bloqueio da Ponte da Rua 7 entre 26 e 27/11/2026."
+      },
+      {
+        "id": "E2",
+        "nome": "Arroio Araras",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Curso d'água citado no alerta como possível causa de transbordamento."
+      },
+      {
+        "id": "E3",
+        "nome": "Ponte da Rua 7",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Acesso previsto para o Ginásio Araras, com possibilidade de bloqueio no período indicado pelo alerta."
+      },
+      {
+        "id": "E4",
+        "nome": "Rua das Acácias",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Rota alternativa de acesso ao abrigo em caso de bloqueio da Ponte da Rua 7."
+      },
+      {
+        "id": "E5",
+        "nome": "Ginásio Araras",
+        "tipo": "local",
+        "setor_responsavel": "Assistência Social",
+        "descricao": "Abrigo indicado no plano, com capacidade informada para 160 pessoas e gerador."
+      },
+      {
+        "id": "E6",
+        "nome": "Assistência Social",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Setor indicado como responsável pelo abrigo, com plantão interno."
+      },
+      {
+        "id": "E7",
+        "nome": "Gerador do Ginásio Araras",
+        "tipo": "equipamento",
+        "setor_responsavel": null,
+        "descricao": "Gerador mencionado como existente no abrigo; os documentos não informam seu estado atual."
+      },
+      {
+        "id": "E8",
+        "nome": "COMPDEC",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Fonte do Plano de Contingência de 2026."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E3",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta aponta possibilidade de bloqueio da ponte.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-26",
+          "fim": "2026-11-27",
+          "observacao": "O alerta informa que o bloqueio pode ocorrer nesse período."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E2",
+        "destino": "E3",
+        "tipo": "afetado_por",
+        "rotulo": "O possível transbordamento do arroio pode bloquear a ponte.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-26",
+          "fim": "2026-11-27",
+          "observacao": "Possibilidade indicada no alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E5",
+        "destino": "E3",
+        "tipo": "acesso_por",
+        "rotulo": "A ponte é uma das rotas de acesso ao abrigo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": null,
+          "fim": null,
+          "observacao": "O plano prevê a ponte como rota de acesso."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Rota de acesso ao Abrigo Ginásio Araras: Ponte da Rua 7"
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E5",
+        "destino": "E4",
+        "tipo": "acesso_por",
+        "rotulo": "A Rua das Acácias é a rota alternativa em caso de bloqueio da ponte.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": null,
+          "fim": null,
+          "observacao": "O plano a prevê como alternativa."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "em caso de bloqueio, Rua das Acácias (rota alternativa testada em 08/2026)."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E6",
+        "destino": "E5",
+        "tipo": "responsavel_por",
+        "rotulo": "A Assistência Social é indicada como responsável pelo abrigo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": null,
+          "fim": null,
+          "observacao": "O plano informa plantão interno, sem indicar prazo de vigência da atribuição."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Responsável pelo abrigo: Assistência Social (plantão interno)."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E7",
+        "destino": "E5",
+        "tipo": "localizado_em",
+        "rotulo": "O gerador é mencionado como parte da estrutura do abrigo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": null,
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Ginásio Araras (160 pessoas), com gerador."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E8",
+        "destino": "E5",
+        "tipo": "outro",
+        "rotulo": "A COMPDEC é a fonte do plano que identifica o abrigo e suas rotas de acesso.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-03-30",
+          "fim": null,
+          "observacao": "Data informada para o plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Tipo: Plano de contingência | Fonte: COMPDEC | Data: 2026-03-30"
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "contradicao",
+        "descricao": "O plano tem data de 30/03/2026, mas registra que a rota alternativa foi testada em 08/2026, data posterior à do documento. Como a data de referência da análise é 25/11/2026, agosto já passou, mas os documentos não esclarecem se o registro foi incluído em atualização posterior ou se o teste ocorreu.",
+        "implicacao": "Não é possível tratar o teste como confirmado apenas com essas datas. Convém verificar se o teste foi realizado e se a rota segue aplicável ao acesso ao abrigo.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Data: 2026-03-30"
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "rota alternativa testada em 08/2026"
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "O teste da Rua das Acácias mencionado como realizado em 08/2026 ocorreu de fato, e a rota continua adequada para acesso ao Ginásio Araras caso a Ponte da Rua 7 seja bloqueada entre 26 e 27/11?",
+        "por_que_importa": "O alerta prevê possível bloqueio da rota principal, e a alternativa é necessária para acessar o abrigo. Além disso, a data do teste é posterior à data do plano, sem explicação sobre eventual atualização.",
+        "motivacao": "O alerta prevê possível bloqueio da Ponte da Rua 7; o plano aponta a Rua das Acácias como alternativa e registra um teste em data posterior à data do próprio plano.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E3",
+          "E4",
+          "E5",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Assistência Social"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Rota de acesso ao Abrigo Ginásio Araras: Ponte da Rua 7 ou, em caso de bloqueio, Rua das Acácias (rota alternativa testada em 08/2026)."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Data: 2026-03-30"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11."
+          }
+        ],
+        "o_que_falta_saber": "Se o teste indicado ocorreu, em que condições foi feito e se há confirmação da adequação da rota para o período do alerta.",
+        "quem_pode_confirmar": "COMPDEC, como fonte do plano; a confirmação institucional da rota também pode envolver a Assistência Social, responsável pelo abrigo.",
+        "prioridade": "alta"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Os documentos não informam se o teste da Rua das Acácias ocorreu, nem a condição atual dessa rota.",
+        "por_que_importa": "A rota alternativa é a indicada para acessar o abrigo caso a ponte seja bloqueada."
+      },
+      {
+        "descricao": "Não há informação sobre o estado atual do gerador do Ginásio Araras.",
+        "por_que_importa": "O plano menciona o equipamento, mas não informa seu funcionamento; os documentos também não apontam um problema que justifique uma verificação preventiva específica neste cenário."
+      }
+    ],
+    "cautelas": [
+      "O alerta descreve uma possibilidade de bloqueio, não uma ocorrência confirmada.",
+      "A capacidade de 160 pessoas e a existência do gerador são informações do plano; não há atualização sobre sua situação atual.",
+      "Não há base documental para concluir que a rota alternativa está bloqueada ou que o abrigo esteja indisponível."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 8,
+    "n_relacoes": 7,
+    "n_verificacoes": 1,
+    "n_temporais": 1,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D2",
+        "trecho": "Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Rota de acesso ao Abrigo Ginásio Araras: Ponte da Rua 7",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "em caso de bloqueio, Rua das Acácias (rota alternativa testada em 08/2026).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Responsável pelo abrigo: Assistência Social (plantão interno).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Ginásio Araras (160 pessoas), com gerador.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Tipo: Plano de contingência | Fonte: COMPDEC | Data: 2026-03-30",
+        "doc_valido": true,
+        "literal": false,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Data: 2026-03-30",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "rota alternativa testada em 08/2026",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Rota de acesso ao Abrigo Ginásio Araras: Ponte da Rua 7 ou, em caso de bloqueio, Rua das Acácias (rota alternativa testada em 08/2026).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Data: 2026-03-30",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      }
+    ],
+    "n_citacoes": 12,
+    "n_citacoes_literais": 11,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795620959,
+    "created_at": 1795620935,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_0d41663c68eb472f016b0700472de087d2af08c92b2025a5f9",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-6-luna",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBwBMyUi3DaN-l0Aen6uTy5QeItfUkO_n51L86ICzxf7g6aInE-8rszERTGnZHgE9QR1i-cArpdjpUWl7Tgz2o3vmQSCR_xs-WYq6T1Q4ufkRjFCh94bKiYCQbeT_1BizlXIoCz6Zi_WXTvdPhVrp_d8CsHu9cL06s0z-9Tfvpau1CihIN3NZjb5YmFWvNe2QFTNjcR4ytxzeOlxjNY6zvuGm9vDPLvKi-pI00Dhg4kHs14gUQWln3bJQZ83v2qHlCOINNoKlj-sXiwSxh7UkaSeTJQN0JWhUU0pDYnzQhC_KWRZLRwoGv3cZR5PdGwdiziJMyyUZz8priatBsvfTlMU0UOjGuv_-wguv6yC5_Ppwet1T0S-uVibJ88I0eloLMNqMkScXFFM4c1peONpqOAcccqxf6A3ZCjCaIH6ElUlkIHDEYUm6FStX5jwy-t8wwyXBxujG14kiBMWhMJ3lo7p-z0ekxiY2cXviJgSy85r0H-3qbTfRoaSajd0zetudV29fOXSLMuEs3Ig5BxWAm2uXscgKMKyxMjfKOpmh2t9556v4FgVosbNgYUBVYuL-oaIS6mTIIjeRb0SPT5ImO9YMkmZtbPCYsOZIRmmZnyGgdXmN3nKocvw6MAJQGlgWHwVw3iczNNF6kbetlUaxOpYsMfe9LVC_qqymh7rLN13cJPVrk4CZ_Zj-plNb95jvf44edy2eFaNqm0f9bxWgxVGyjqEqZAf-tq1Aa1Q3NAhTqlIWGwhgmRAzM1BibL__Qfovt_YGjtE_Ku78HZBlbOzlZbhxrctuFe7crbAhB5WrAp9x5ZnSUk54WIyV8KQLf06j-fiXuZ-htW9AQ5VqxvloTGIT1YjM4oGCtXPX0ZaZalZRx2A7gYOM4VbHkf4l1MlZwpT3CJ-wmxMrMXdUeG38bvCEo3sRyAKcnUuIOie4-0XiL7Qrho1fzg5qFTSJ34n52pcy_0qjqz_-GwelkAG-ti_AD5ZbhmwiKVMroYvrFcWfDT28kUYR-0oO2yQbsBH6R5_5QmTRIKPCSqtd-q9arIB1FHLU29PViUztnHYjv_yIbtom58ZfKvm7br_d-zQgB8gvLGno1LyS_NaQstPndhkY66zh0B5385xSHUnLg7DxUJEcTbuhWblsEnNI-90_E4lXDk9EaI3gGEiJh2C8G3AIbVvc6eWBo24Q05NBR5Rd7SYI7aw_-o7BcF38voYK-cyCY3rE3f_z7Wi5ckDSEK--wv5kJiVq4MqSa0pw1MnYqMbjDsJYZjp1US8aBeVDBqQLI6OQOFCR0TDgyGdyV-vjo7PhW3j1K-Zf3XAvjpkMjo26PkI10u1hXib2JoGyXv_cDoFl8nmYynOC32DYPOXL9fj2Pl6Lo6Ln3JIqJJlZaSGvlVC8X3Xa4L0_oJGzxpLGN9VYJfcr7eGS5NcVYmgu8dA64VVIVNyV_enNUpsB8X131a1fXXrk0mL-NWlYQU0jL9us_2_1RKSBencpHgLShQ-WgegoGA61Mk2hKLA7DDr0VyjLFk2Dz-eHRPse2B6LnDJ61vFewWqlSk_2WAlG8cetu7Sv7wNdfy5Cd5JY15yCEhdt2RsIhzqhr9io4rzjm2YRGCWcyS-YxRtipSy9pAD3k486p2gGWZ9xlhZUD-gwiE-zk__32L1x_XcgcfhI6CwSlBVK8J_ES5RtKBLab-esjNmPb_NkIiWQ3Kwzvzu1TJ5M3S1VLhewmKA7Vw-6r2X_w9WkdytN6Zq65zwvtl7Va-XcWsyvuVNPc2WqmJLwks750IRlDeU7yf-6BNW2DsTrTcXlUesZPyr-JbLOf-EvgKcsQ2ym1Rt8JSsRPVxt1lqwhKBS1Q50rSmeK082U3X9J78X0W5hpAuQEFgIsWfw_dj6TJhhXS9OmRbXAdEheWmucHnUm_1QCvV0JAUBk-_Gh4dSK-4qbV-UnKmq-E_nzTLkSmx6V6qkDyLd7FsgjDuXliJO_X2rx9eMEducJju1hzJ7Kj6G-wckkMBFD-G5RqyUVWJcjwT5gRey15hPf_XEmuFAfZEQB2IIzdHTvT7fO503_6TwulrIIabf51rZOjQk10btNj2yStTUKl8sQRPmNaoMSBRiTPfFKgjEAm9foaKcXSzjANM5yqtCVlDhNde513pUa7hfSy_C1rVP-jUYaTLErg-tRl5ZH3IQm3VoGanbaIFyEg2cGiphzkFcDS_t9l9M3Yd5T-NynFe5xqgLtngxVZArhUUYaRJbbBrSSz_M5OUEgKy7QfqTAF4zDIvikLM0tDIUdyZ4ee5RgNi2gqXM5d5ND6qs-PmM4MuRFxF1LqIRYvadp8EuALCr-NXclstdN-ZjhYXpNKIqn1QnCoz-L8RzvUtdzhzTS-i67ovPtcGMsciJCjv402AxGovJisEbgb6N7SQfgsFWiVPv8bvbU6Umw2o0jwBUqlEKhn8RYrsMm8vE51m_fua8Dztqzjae9rTW9d4NkccwXJxV8U2DStxWzmQYLgOCNamynlW2UuVURtHBqonvikgl-bPSI5u6UwebPEuaX4HXulr7mDKXTFn406XmtJSKi6NC4mCOWyR9YFnlnzeiNL4pY1hC8u_C0ReK5J6x7KSG6ozwn7Zhm1DcIJYtTbxn4cew6JIZfuYI4PHOYbf8AJRwBUtlHq11Y-Cx3FRHT1Dysho0LN2s2ESjc0UX_wQWG6liyPWjLAhITVJMuF7Qx4HLTmLURg4pfACduvtCf6Bzwdwb1XdtDh_ra0XipJhv7lSboqZDepkvfPt147p8wjHVTOmbCcXaYpc-pgG8ZqNAAMn6NED6o6u4QSBBaqGS8oTulX5rtIucvDxp-zpr2BTvh4mDAAECrlJE2Pfmv6fah0TPw1jJ6Grs4oa5ZN8AhfhAibUTEnUsZOuxRk8RD7Y3T6Isn1jGXuB5sHY1CDub0lmqudJ1lSQMFzrV7K_3i5ymWNbPW11NdfgUjsVw_KkLckLzE2KmHVO55mGSXFY0m6v3QFte8wmoWy999bJ66hTD5cs4Aij90GMn-aHPbZIHtuVbJv--1GoW1uDJ7XKbH_ZcntHFU5jWULK5h9Jbm6svUzDUUf40j7Ztyl9wh_8dzVZwLMrTlYETdYSgbEoopggSX_uArXyGv1gXD28zndJgE0JMqoCzpz2JwYXh05YvRjnxwtgScriUByJFgUSv9cGAEnrnK6v7-oPB9LNdOMz3lLw4VA_hnZ0ToKLRUjiSwr6W-ZUhcpPa6_GSQHsykn82KZjLYI0zpmDoHxxezqjWQD7YuiIhXtsV1ZnqAFqYQ7RJAf9K5lfTFUH_SOs61BJJMRHB_H9oGpJXPyY2HiVT3-bmMUn19eTnDi_EYzuLUQnWbwMzjPAh-qQ_6UxQV0RMxdPhgh71OSCk-KOsUORglYEtpkMbXWHvPpcDybjcZheQefZPvhMK8fECf9DZJv5kzYwgNR6al1IODqB8nJ_Xooum0SsWCsUSRmzTRU1iRRiRisIz8cm0xvqNZpnTT7SkGJLXW74yCpSbxhlQEMqWqh8A0Zs4ur3wfbetwYYFoXixuLLyQjcrshJXrpECngvpGAw7d0ibKuylvZBS2qvU-W6NDOullzVCClK2NQ6OSFhdsgvaZ6yRs0XD7LKclfxwzgY_ABwBDgx_rwfYiQzD9voT_wvAQ0rJiD1HAiTzJRElrV-sbAK-3Abod7LBG2RXU41KeZLMmWm2mdzZy6LxivUCTF7ckAFcxAQ0v_1MgG6wpwuSg7h432BiFPtpR8wUSQ75VOIwVXlqZHFFzqWv7sZNSHkPIy-Y9bbbjZIXlJZfTBZ4GGvRjlzw61ZeaxGmpH1nWlbscDDUkkAYgB6jR1XXdM3Kw6pDECW5ycduWtxVplSml6tD2aaN5W4Zmxe04AMjx5LhwvFjNm_5fAk4wR_Q4mh1Ki5gfuKZkcBM9VSMlwwdpYZNOi5E3d8dTj-vHH1rZcw81mlSLXAc_VnUaqDQvWVAL8W00a4Qw-d6J5Uo3Yw1H1u0PA_mXuSoyPcS8viDsr4pj_es_r8EGCnKErWmjGV47vw93D4GXCPrCLT3o-ZhjqxqZanHLXT48xYbMM5CwCfY2wSUxg5wFwPwpRZSsoxxyEBZGN83EUS_Qoo0kskTOhPe8wIMSmjosl7lhnDGe-TyRuUfsGk3dHoUbCfJmbxcPFJbRuu4LApOKN_8KFgswqr38z3MoQTVYmYFZUixRTGa7mLRTPf_7ainH6iME3QwI5GSLZI8IdcSNIaKrF-piQluoECmTPTxtKtgA4dt054QE05qI98Vfl3sOLoUvrcKCfpdLpE4MTpLAaL4FoD4AjCzAUdZRarlIqiGNT_mQ5XIp4L18CQShwOpsGX2pvYT31tH2Dtk9gs2Eg-NfcoBEWpSdJvufeJhWuh6_c9gx5WM2uR4rJl36jHOhy3jUNlagWS9px_nzkuUhYWI7NQY-XQeaVZUG4VS82IradLdSzHTDcOazFTT8bNHdTfjDjJNammz8X4Ay7ViQdUkP1ZPmz2IIzdp-0znc_D_Eof7lZ6dXpu48cC9h5cFXbkLrTyZRPEX__2yqnYTuFBKDGHcswq-uM2pWJsqhYVDjFyS-2zivOXwtm94eCLpT2xjWqwFqZTfzyeNNPXYpjaLkvszDusLN5k2L8Gp_eCUeJYA8cCVRlXkAu8x7JN8vDxPiamQCCpI1vBtWazH5fs0xmD2AqEjqkGvqlwSMrwwQMPBk7k4uGi7FgWyyIZuL-SpoBESw5xKWSBVxTgiAr9-1n5rFDEJ1uHj1krrm4nMd3uJaZ7V5kuYv4EFKHjEp_V1xqpBqmP4RzJOM6u272mAmsyFWAF9CfVvrm61CqJiyhHbrcWzDa7ZFOO04Dyu5EG7aGyzi10v3cMYFc7Q1v3-1mgFWXo-jaARXfxjBNW_W6TkZWkuVHjxm-_t5Y9Pdg8p8aLfIm44N-Hq9cP1wlacZ0q6S8Z5HvQV68Y_ppFxQEtXLwvNc1g1m3thBr3pTDZ1wHZ3pvmiagVHXT0cPJtEOGw-3X260kJkL6PVCMOFg0e6SMjPqMMcjAq_70k8sNxVbmcVr3t6dRSNcCoHyvil533W1p_gGA9zg7492ZULvPr5Zz9bt0pLMCp7vY-t1Pv1Urq39zciTvceR2clMNzFnKeU7fmUHWBFBjfKMRexbDL0vCKepon4idwLyGSyKMNferhb766eA7tGqBOh5T84GFRR77sjwXpZ5Eh_UtYqjsfL19IlYvlYgXEMn8P7IJ7JI00sjxCfBxFhxN3PdyYVPoMtPYYk4Alk5yioIoTPeKqLB2WO7rBszES7hpkAnXDIikU5tnoyMspFZekSzr6-bjKsmZGnFh7ru4tYymOSL0gysLcsb62YETx6GPGFoqs47EgjQ5ah2ej9uqQxi2Jem2L0as2GbnyIBGs0gdxJbEXygNjTMxJspLGDKjXdGG9iZdOnXaZY-x5FXaCYZZo9HIK0wWFj_feTC9uJw9V9stcOSBz9EoDL4DLx6_AIvcQwaI57HXefhciFxpR3fEDWU0kw1WhUUUduQMCEpXAyEg_36MdifHdTP4EwjxBfGIGF-dvsxCYC0ykpxV5_-5BNTFZtbKaA6aioCPOn9sNUZ7VRmAldg7z0N1QcFmyKcqVlpm7OC6phtKXhMvwsGG0PYR7U7YjwugV-N-_LWSwmURNHW4dXy6QR5WCBOepmzJhcuhtjw_3vWOvH92E2U-OAKH7nh_xfHAJC33YMjJKcuM5M5D4TswnjBhDvaGs1L_uFsZC7C5-SKPrR0E2OdQg6qlHzvK2YwItHcQiVIhw2YhPqFx2bLDH2UrEPCQuCuMfXmmsJHliTb2nuoJqhTCgZKFL5od72ZJprCVu8tC1NrXtiMLcYMOdheO_bZRbstPJa-LHdeah6BTd-0qiotNidZHUl4h-aoVHqvc1eEAglll4OBSsQ5Mt6j4Xv7iafuYf_RkfY6h7sLvCI6KNhjY3NDLTDF7vjGPnJhSRLE81Wn2hKL6vWJ9QHcfMDsv3DDu5bxOBdRrSsxrCW1z4t5lHTc2vW0L33TiNwNHr4j1tWEpOzryJxiIkSpsIR2x8XDLCJ7sAuKFdGIgOsFveok0GvrddLHtyjSCxzegUtseFf6J9_vfQ5hOLxsayGLXHQVhYcYADQ2-hKKZmkx8eOzz3kztIfWk9_EkYwKJWZsCeFckEUqr66eEKiB_w02J1K79r391kvgUruJbeS_yuPZIxRQxoCw4mhsDdcGDDd78QnDP_S_aYT90sBzaXO2zTF8Z2n1pgUJ-Jn2cmoBQ_4No0jeWCutl6glwr27stIcbhdkW1hpyNba_0LJgbGUQzSLebhg0qeOog99S4PSbHjUyiWk75gVRkLYDhjKZsVD8xivG-JDk72RSRsPlcQP9fMDN69Jepwsni_D54x8g0AeGIda5MuyEewuYbXatbyc1cufEdYABbfBBMz3VNQkxwN9hLQ2JwizHK-6nS0_jxqXRapSPD-8pejXYhk-Y4B6RcNilZ5DnXxqCLOQ9fexHyxDulxHEzGUi38dO2cb_cc6RSFOXZ5tIB3e2NTcEN8DcoPQ4lrEA9QFH0PE7xZfuL3eqP0HTbOhsx4pJb4Nh6YPbZz7UQpZMV53unsN9jJJLuMl7VKPQHrb26FGPBiSOym0pnyc1XkCMikpVpp87wYjo8_jf9_lw1amD98BsE7Driz_E1Zfnn_ahmGy_JaZ9Zt9GZO4Dv9qJG1x0JDvESLhto3CkbPXCJbjuCY1VAcQ7m7twzhYRHkIhuLoPc-V3pLjbSFy_2ugsl8e_MreNYN0n7exoi6dLSL60YO7HgpOkQ2ipaAA-cDGt3DrRfry4ncyzvsfaBZuvviraz-VZn3EvpFoXby7xkuXSf3uHAZpUhC7Nab2FDuLr9_MLTSmNL_sJ3p-1twYldRLo0N5zET3DcYR5t9KKCb0KvFtdYFEoYy8D0259hBF45Vwp2S3S2OAxyQlpSySyxO7hdTNTjUmWXfz89TBCFO2fNJx0sjccS8d_GiBI8toqtgGEX4IGqE9eZeE0WZWRJ_xIPYzffKiZaDv1XN7DkmGSeRSs0e4AO-zhUcf5MLp-SFWD47qLg7uMureyaICWwN68HfB_uf0YlJ48sPZ1YwLvCeVVeyMwv7jlUjn_bVJs9_0r7vIajcinzm3DN4UgXi_zJh4EFubi_AxgSUi61yB7uhvN-qgoXdkKI9--a791_0C-SGpcCqeH61XEVJ2i2_USTSqip4jKwJS0XmtCzuhXsuDbCL7Jf_CMr1-e6aRGR7XJV5OufYpzN38j7JY3ZJX0lvBJahyYPlPyMk-MDa9fbCPe-L0XSWlJrJ29LLQWUEYhZmhY3sEM90fJ5jWNznV2XRVXDiwLx1SL2PEvk472DRgjVD6zxJe6GAyxiFyCuTuxgVVj7eUmCjEE8zpbvmDxK1ZmjshXKWWAV8-O0VIcM-5PvfMhb6bkdXNE75yjVCZLYJS8kCPe958VklripCNIHx_y11JMi0rGJGwTvXa-u-Hfzv_EFYf2quzZy87hdpvjG5TSPmWlyCmTBhV3QXJt_0dJ1f1v6XEw61g2mZgv82jUkhVHuJmOVnmRptBuVGVx7uwNaPlr7wH1ywtE_G0UOah2nNw7bt4fFvxgFR2vJsk5A3etytxw3HGZ3kewWXfO9EpdN-EtSqonNouOTxiaHfjRYiXda9X8aDyVpEVsukAW7YXhX9fbabaPE7Rha6yyQhe-spulsPdSW4qd7pxEg_7XydOSH84qDghfyX6bTrziX6s-tIEMExTZaPCZ-X4bhAV30GRAsZXkLmbAlt85JKt1s5v1dED3rVdMetQDhpO0Kq0EJgiqdeGtWWvH4gO-AikB4lfUNORC0m82OpwH26dp16GjYlsYJcF_dULRe2ze-lbODg9LnmPAt6GcrkWR-Zo1cIsoGiydh_W1Fj_XhPeBJdCz6a7Y89aP1bYQ7HzXCPxtbmhdCp2zt1SsSoiaeKpwxRSNaL6nz7RBCT_uhQVLBNa1pajrwgahdFASE7JHPa3yMMQtEBqLslStnA1cvZNnZKA-eTrAPxkUpHl50HF31tBhjdTvsqVP0Qar9-TLnixWyT2y0ARBd7KOR63uNj8ep3E8sS2-ToMBSoRl1pdt6etR1bQerdKr_mHVI47-G5jYqY7bVamV9IF-vcDCs8QD9hG5liNiBWoYxlcdkb9N_0U1CtuKGlM8eEff58CTTBbvWyirpcP02CulS50GEanZSMr7cxTsAt_ZcFaKkFatz-CouoG9VHs51URzQFrRETE-w6T8hbvJZEltFTZ71mG0Oq2Ig_4kbJAKECi8AnVhaJXvl1eM8ZMVFzTgQQ5bd1N61rIwc31ViUdMbZfkU9HldCOVF3XpaMyKKonu_feKd_nmLIbyJJqtVmE9g5f7YysawqZbX48vqpDlogTVCuiv0sIG74ZBl_P8BNUWV5aJHXDegF8ExgwMQDDcthIjfYe6nWlV4SQBMJ3eOfqppmHZ2Xk9kl_K7Ut1KDcnWaX1UW7P3I1-kyOWyyJx0fQatYpXTtmlYMeklGRPnKqr3cXUHWquqEuwI3ZYFibg==",
+        "id": "rs_0d41663c68eb472f016b07004c8eac87d2ab4f76255520dc60",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBwBNOUWclBprQNWVMllK593MkySuN4l2AJPf8mEB87-0w2OdH15LC2BJTPxYpQuEJFz-8XiWtS-M1ihZr1Y1AYGLsCzDkOIkUpztk_6XtmMmnAF0xv6b81bhxeoBoJ4zCYZVef5k8KPYOEeInn4jQHtylQxIGBXznVIM29LD_DH2OuvWvWeprwQd7RKlUXRXkN-W1-kIm_9jHavURdYjYLgeqgc6QI0iy9d-mit7DFwlsX9NQ6yx-CuEvTHjvUavOvfRyRcSCmz2XybUS7JYp8_pESvMVBuM3KHLG_wKGs66S3Q_n02cHvmyuHLKJe5pbhFvzOXPKkS56sfPldHcWL5y8ZInfXFnhLRgvlSjZ9Bs6b9u4zQL1o6rW3ytvSmkdollIxt-zzgJRkJgy-vUMbFGl0QZ5ih1KIDrfQIRdiXGNIhwoS2NtMHjSDQoSFPhr3anT8OBwW7oZMvDLED74LJ2UU_MMXyeP6QyNVYh7NjXHaD2P_6ZRSfnkpaf_AtxftjVWVZPJKQloQuhoGU5kYDqgRp6KVyq00UrWGrp64qnX-bthir0Jmm565d9uwfxiCGYKNHISFMmy9O--8gFa0nEbIOvKobEU-TSG1-pOE1_c5bCDptLVHzOtV8qu4Jfq_nAMqZZJezQd5ZkEqRHaW2tHOYHC5s8ldx5mosMjPmgWEJ1GigJYBVwTa-xNPGIRLijr6poo3HC4t4Ik5LT092HD24U3aZzOV9ojcwxfgIvBFT8gMrarnGxccmqJEPIyoL3tbTnk4zOd2D3ie6SSLiwcxbqxNXknaEF85XJRInHbZUoiWNr4RcR_2dEzi_q2nPqw0by93YQJD8GxZfUsYS7a4lDt-KNdSCVpNQLjUNbOIpJwdAk_s34lyvSu4LKRCbvhnlZ1PCiGtjqdse5qOlcWYDEhmrp5ljaInNBBOv02UqoWO6qgQFiJ7uNsxdw6dW7Y6ZLWs646RcSaTCKgSai2os5U3Mkr0t1TogmVxKJSkYvlcCoY6CFQPTzPkrsWnq3lIw5mIKrtDvPobyfwZA_Q03yNp733S-QnHqCq-2EhKkpfBgkhlNmAqdSGry5pHBcM1d_3_TYZj52l-UtAZRV1K3ValvfjU3nfJtns5Z3UV--SSClck6cJmlK_HcntDYP9uC9d9AX1qXwJUXjhB1wSgsMz151fqu3bluwCNV9Hg6_ful78losAgMnsdY0TXerozCvCjFHC45Y8dl5ozHIYAwVHuV4-NdGcD12op469rk1KbhhKnEjt1et0TPfHJc_fNxUqHIPDy125akRHOb-h7F874awKkJx24sYzpw8CE_BF_Sj5qZzgeMhQ2lTsdiB5d0_qa_z8nZnYq3Duk9mjlm74YyNxzpOSnK1psD8FpJgm3yfFo2wiCTDeq72tVCNf9YMy9DglswoN1lbFTsYb6MmegVdgBL9Vbg03bFbTaiUxRJNp9JFRafbvWT1HA4mj6m7KsWo68jO9RoJMj2D2ZTCy9gEvH6DDzb8Rlu1Sn3HS-wMrk33ahgzKhu6CEFll7h9sWsxi6EsPttAw5wXC0JhzK4GSH993zCGa4mDw90CWHzTrkxHuxn3MQz5GP1jvs-hk1Gv5PKgoQTIsrBzOiFKfRRZlMn5xo3rOR7bD3UkJi3Teyc0-sTCe0YGPQ2jo7HGKthz4AllRHjAW1oRVWwZIrIhwpn8V8zbuC_ADNBJYr_kRYqQ7kpn6wLoKgA65JCdTJl800jHLO2LR0axNg7fFvniRGePt756n8wLsvD6xgthoho7jJVguj_eZM6Qjb0ltVBQt-2oP9PW22Q7mvGc1eH32UTf1AjPNKl2-YawWpfO-0xUiH1r8BnVpjMCt0sPgvDtoduKCYYDIGT3zf3ygXH_8XtIf9oblEqKlRSv1LfCJfeno7l0xY-558wMAXL9v6cJHT80BRzoMCCom3WX_Bc6kAWgJecLivqoufFTQ8qxbcqKtgjLtxqunAVdK-THhJVujjbqz5FgDxkiOImG_9dCyNKi2sjw4orfJUOZ3xdClJd3P0QpjxQ14QZNNinBRlvpJTPYbYUCbPx0B27hZ-CMnqW0RpFReQEiK22ha2vLP80NQOjjxucPixMWi3WKcaCjvhmeroHXme7HRtWepn8KkJffULhXkVio9k7mXLPmzgHqVctBp1TY9DgocQeLmLQXokz6CgdceCL9NT2mo5almFKPJu0blaVYpKpZ2OG6ISnWFshzvkcH9ZvB2lTeFVxOT8_dkFmfI-xonPMcEczSzYl5rkWe9k3Uktjgyf-OpzEfUBUMnn1sT-1RfKDcdXtyIV02NGTcybmZzM0T_5TFVHhAvQJrJOvvCuO_ME5x-dVo0fZ3vCnkdOg0L3rtl9ynJqhpsfgQp4bBYUA9F1ED7z4FCNoB89u41moLx-7z35Swd-NXxMz2rMDg2wQAk8vF89jockm3So4pg5qpuVIr8g7yAcNDmPU6KcSKbasGHPhietHCa8XZycicykkoWVfE4o8wCljKyi2mf4XH2Q5Jtk_lVEL4BowsdLxuD3GDoKCSu9EDtYpLy9RWyfuTkgCfgvRDTRaCs0yS5kgEwBPWVP2kyBW46q-tco8kQR4skHzD45nlrDvOAcLwl84XqfdNqJOcg0Po4uvY__0b0aCYnBx0qM0RQuFwnt4qzf6penfBKZ50v4cQHWOXA_toTikFnzowuG2W5p4jwjOwY_5NZnqQkK9NO2nJOg7UXSEeum3WA9XFEVYQoSY8SCe1TsefUnx3PCZkXTI16hDJzMiK8Kg8kKq0pGq_MdQMtQ7QJ2cGuEvOGR3oJgw2j81vViZg8lFqycJ-2aFICuMdv4hwhf1QR74_-3jLgcefnItHbo8Ta2AK7NvMmnNHbY_cIpwvux8reiXIp_nG7IwNI9EPNSQ0574J4TAGHHALA9HoPr_2EivOEZf_p1hKPPYHnn_03Vv5YVsbBVEOlW0TED8uj4lSJGWCi0VBWseDKRBgXYuiy0Czn_Ht2KPuwDbyIt3aufE9DwNYMpjq5n9DJkefaCQgZ0IkAK6L6tTdbMZFaIc0rfTDhKzSr0UG0wOGj86DZ_zbXS5Vh8u0-sWNXRujHKsvJOIgyZHubQwocEA9e6IvEIcNWlZR8vpaRT1nKYCT0VHBSzAuskb9k7nV9eFeHCHEpNQl1p-gOzmNOWd6H1iqpCqW9fleheq5oLNaSZ3g-OWnpPLCSitcRYq_En5wdV5gOpDAImSZiLOoe9IW6GKzEvtoLbzeHsUD4btDuKy_edLMr-qnGK-0SGDSB16jZ7tu-37wVBTfbN-_mhcGomCaWIP0jKN_hIJKCqivorDqeONcyA9zcCWW9_m8AptWt4_xFq0J8VrkBdOJbByvsl1EKRN362VLH4i3tiE4L0IUFis0zXGrJDx9LW4m_XuZdHJyWexzPMdhx7-Fhq8CPf3v6LYGSTNCDyf9DqvPgBlceUpvuaDdEsSQRM8qfwrYRFHAO2lTV_Py85pS0aAdv5JocvVssP9SpxZtgumxHUCu4c6HhJacglASCg==",
+        "id": "rs_0d41663c68eb472f016b07004dcf6487d294df7d87367e2480",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"resumo_situacao\": \"O alerta de 25/11/2026 informa que o Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11. O plano indica a Rua das Acácias como rota alternativa para acesso ao Ginásio Araras. Há uma inconsistência de datas no plano: ele é datado de março, mas registra um teste da rota em agosto de 2026.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de possível transbordamento do Arroio Araras\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Cenário fictício de nível laranja, com possibilidade de transbordamento e bloqueio da Ponte da Rua 7 entre 26 e 27/11/2026.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Arroio Araras\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Curso d'água citado no alerta como possível causa de transbordamento.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Ponte da Rua 7\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Acesso previsto para o Ginásio Araras, com possibilidade de bloqueio no período indicado pelo alerta.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Rua das Acácias\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Rota alternativa de acesso ao abrigo em caso de bloqueio da Ponte da Rua 7.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Ginásio Araras\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": \"Assistência Social\",\n      \"descricao\": \"Abrigo indicado no plano, com capacidade informada para 160 pessoas e gerador.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Assistência Social\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Setor indicado como responsável pelo abrigo, com plantão interno.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Gerador do Ginásio Araras\",\n      \"tipo\": \"equipamento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Gerador mencionado como existente no abrigo; os documentos não informam seu estado atual.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Fonte do Plano de Contingência de 2026.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E3\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta aponta possibilidade de bloqueio da ponte.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"O alerta informa que o bloqueio pode ocorrer nesse período.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E2\",\n      \"destino\": \"E3\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O possível transbordamento do arroio pode bloquear a ponte.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"Possibilidade indicada no alerta.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E5\",\n      \"destino\": \"E3\",\n      \"tipo\": \"acesso_por\",\n      \"rotulo\": \"A ponte é uma das rotas de acesso ao abrigo.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": \"O plano prevê a ponte como rota de acesso.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Rota de acesso ao Abrigo Ginásio Araras: Ponte da Rua 7\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E5\",\n      \"destino\": \"E4\",\n      \"tipo\": \"acesso_por\",\n      \"rotulo\": \"A Rua das Acácias é a rota alternativa em caso de bloqueio da ponte.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": \"O plano a prevê como alternativa.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"em caso de bloqueio, Rua das Acácias (rota alternativa testada em 08/2026).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E6\",\n      \"destino\": \"E5\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Assistência Social é indicada como responsável pelo abrigo.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": \"O plano informa plantão interno, sem indicar prazo de vigência da atribuição.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Responsável pelo abrigo: Assistência Social (plantão interno).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E7\",\n      \"destino\": \"E5\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O gerador é mencionado como parte da estrutura do abrigo.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Ginásio Araras (160 pessoas), com gerador.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R7\",\n      \"origem\": \"E8\",\n      \"destino\": \"E5\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"A COMPDEC é a fonte do plano que identifica o abrigo e suas rotas de acesso.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-03-30\",\n        \"fim\": null,\n        \"observacao\": \"Data informada para o plano.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Tipo: Plano de contingência | Fonte: COMPDEC | Data: 2026-03-30\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"contradicao\",\n      \"descricao\": \"O plano tem data de 30/03/2026, mas registra que a rota alternativa foi testada em 08/2026, data posterior à do documento. Como a data de referência da análise é 25/11/2026, agosto já passou, mas os documentos não esclarecem se o registro foi incluído em atualização posterior ou se o teste ocorreu.\",\n      \"implicacao\": \"Não é possível tratar o teste como confirmado apenas com essas datas. Convém verificar se o teste foi realizado e se a rota segue aplicável ao acesso ao abrigo.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Data: 2026-03-30\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"rota alternativa testada em 08/2026\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"O teste da Rua das Acácias mencionado como realizado em 08/2026 ocorreu de fato, e a rota continua adequada para acesso ao Ginásio Araras caso a Ponte da Rua 7 seja bloqueada entre 26 e 27/11?\",\n      \"por_que_importa\": \"O alerta prevê possível bloqueio da rota principal, e a alternativa é necessária para acessar o abrigo. Além disso, a data do teste é posterior à data do plano, sem explicação sobre eventual atualização.\",\n      \"motivacao\": \"O alerta prevê possível bloqueio da Ponte da Rua 7; o plano aponta a Rua das Acácias como alternativa e registra um teste em data posterior à data do próprio plano.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E4\",\n        \"E5\",\n        \"E8\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\",\n        \"Assistência Social\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Rota de acesso ao Abrigo Ginásio Araras: Ponte da Rua 7 ou, em caso de bloqueio, Rua das Acácias (rota alternativa testada em 08/2026).\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Data: 2026-03-30\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o teste indicado ocorreu, em que condições foi feito e se há confirmação da adequação da rota para o período do alerta.\",\n      \"quem_pode_confirmar\": \"COMPDEC, como fonte do plano; a confirmação institucional da rota também pode envolver a Assistência Social, responsável pelo abrigo.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Os documentos não informam se o teste da Rua das Acácias ocorreu, nem a condição atual dessa rota.\",\n      \"por_que_importa\": \"A rota alternativa é a indicada para acessar o abrigo caso a ponte seja bloqueada.\"\n    },\n    {\n      \"descricao\": \"Não há informação sobre o estado atual do gerador do Ginásio Araras.\",\n      \"por_que_importa\": \"O plano menciona o equipamento, mas não informa seu funcionamento; os documentos também não apontam um problema que justifique uma verificação preventiva específica neste cenário.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O alerta descreve uma possibilidade de bloqueio, não uma ocorrência confirmada.\",\n    \"A capacidade de 160 pessoas e a existência do gerador são informações do plano; não há atualização sobre sua situação atual.\",\n    \"Não há base documental para concluir que a rota alternativa está bloqueada ou que o abrigo esteja indisponível.\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0d41663c68eb472f016b07004df6f887d2bca0b9c3fe5a104b",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "all_turns",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2045,
+      "input_tokens_details": {
+        "cache_write_tokens": 251,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 251
+        },
+        "cached_tokens": 1791
+      },
+      "output_tokens": 3352,
+      "output_tokens_details": {
+        "reasoning_tokens": 655
+      },
+      "total_tokens": 5397
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\n  \"resumo_situacao\": \"O alerta de 25/11/2026 informa que o Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11. O plano indica a Rua das Acácias como rota alternativa para acesso ao Ginásio Araras. Há uma inconsistência de datas no plano: ele é datado de março, mas registra um teste da rota em agosto de 2026.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de possível transbordamento do Arroio Araras\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Cenário fictício de nível laranja, com possibilidade de transbordamento e bloqueio da Ponte da Rua 7 entre 26 e 27/11/2026.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Arroio Araras\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Curso d'água citado no alerta como possível causa de transbordamento.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Ponte da Rua 7\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Acesso previsto para o Ginásio Araras, com possibilidade de bloqueio no período indicado pelo alerta.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Rua das Acácias\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Rota alternativa de acesso ao abrigo em caso de bloqueio da Ponte da Rua 7.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Ginásio Araras\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": \"Assistência Social\",\n      \"descricao\": \"Abrigo indicado no plano, com capacidade informada para 160 pessoas e gerador.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Assistência Social\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Setor indicado como responsável pelo abrigo, com plantão interno.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Gerador do Ginásio Araras\",\n      \"tipo\": \"equipamento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Gerador mencionado como existente no abrigo; os documentos não informam seu estado atual.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Fonte do Plano de Contingência de 2026.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E3\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta aponta possibilidade de bloqueio da ponte.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"O alerta informa que o bloqueio pode ocorrer nesse período.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E2\",\n      \"destino\": \"E3\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O possível transbordamento do arroio pode bloquear a ponte.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"Possibilidade indicada no alerta.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E5\",\n      \"destino\": \"E3\",\n      \"tipo\": \"acesso_por\",\n      \"rotulo\": \"A ponte é uma das rotas de acesso ao abrigo.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": \"O plano prevê a ponte como rota de acesso.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Rota de acesso ao Abrigo Ginásio Araras: Ponte da Rua 7\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E5\",\n      \"destino\": \"E4\",\n      \"tipo\": \"acesso_por\",\n      \"rotulo\": \"A Rua das Acácias é a rota alternativa em caso de bloqueio da ponte.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": \"O plano a prevê como alternativa.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"em caso de bloqueio, Rua das Acácias (rota alternativa testada em 08/2026).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E6\",\n      \"destino\": \"E5\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Assistência Social é indicada como responsável pelo abrigo.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": \"O plano informa plantão interno, sem indicar prazo de vigência da atribuição.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Responsável pelo abrigo: Assistência Social (plantão interno).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E7\",\n      \"destino\": \"E5\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O gerador é mencionado como parte da estrutura do abrigo.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Ginásio Araras (160 pessoas), com gerador.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R7\",\n      \"origem\": \"E8\",\n      \"destino\": \"E5\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"A COMPDEC é a fonte do plano que identifica o abrigo e suas rotas de acesso.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-03-30\",\n        \"fim\": null,\n        \"observacao\": \"Data informada para o plano.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Tipo: Plano de contingência | Fonte: COMPDEC | Data: 2026-03-30\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"contradicao\",\n      \"descricao\": \"O plano tem data de 30/03/2026, mas registra que a rota alternativa foi testada em 08/2026, data posterior à do documento. Como a data de referência da análise é 25/11/2026, agosto já passou, mas os documentos não esclarecem se o registro foi incluído em atualização posterior ou se o teste ocorreu.\",\n      \"implicacao\": \"Não é possível tratar o teste como confirmado apenas com essas datas. Convém verificar se o teste foi realizado e se a rota segue aplicável ao acesso ao abrigo.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Data: 2026-03-30\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"rota alternativa testada em 08/2026\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"O teste da Rua das Acácias mencionado como realizado em 08/2026 ocorreu de fato, e a rota continua adequada para acesso ao Ginásio Araras caso a Ponte da Rua 7 seja bloqueada entre 26 e 27/11?\",\n      \"por_que_importa\": \"O alerta prevê possível bloqueio da rota principal, e a alternativa é necessária para acessar o abrigo. Além disso, a data do teste é posterior à data do plano, sem explicação sobre eventual atualização.\",\n      \"motivacao\": \"O alerta prevê possível bloqueio da Ponte da Rua 7; o plano aponta a Rua das Acácias como alternativa e registra um teste em data posterior à data do próprio plano.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E4\",\n        \"E5\",\n        \"E8\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\",\n        \"Assistência Social\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Rota de acesso ao Abrigo Ginásio Araras: Ponte da Rua 7 ou, em caso de bloqueio, Rua das Acácias (rota alternativa testada em 08/2026).\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Data: 2026-03-30\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o teste indicado ocorreu, em que condições foi feito e se há confirmação da adequação da rota para o período do alerta.\",\n      \"quem_pode_confirmar\": \"COMPDEC, como fonte do plano; a confirmação institucional da rota também pode envolver a Assistência Social, responsável pelo abrigo.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Os documentos não informam se o teste da Rua das Acácias ocorreu, nem a condição atual dessa rota.\",\n      \"por_que_importa\": \"A rota alternativa é a indicada para acessar o abrigo caso a ponte seja bloqueada.\"\n    },\n    {\n      \"descricao\": \"Não há informação sobre o estado atual do gerador do Ginásio Araras.\",\n      \"por_que_importa\": \"O plano menciona o equipamento, mas não informa seu funcionamento; os documentos também não apontam um problema que justifique uma verificação preventiva específica neste cenário.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O alerta descreve uma possibilidade de bloqueio, não uma ocorrência confirmada.\",\n    \"A capacidade de 160 pessoas e a existência do gerador são informações do plano; não há atualização sobre sua situação atual.\",\n    \"Não há base documental para concluir que a rota alternativa está bloqueada ou que o abrigo esteja indisponível.\"\n  ]\n}"
+  }
+}

@@ -1,0 +1,849 @@
+{
+  "meta": {
+    "scenario": "DV2",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "dev_v3_luna",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D3",
+      "D2"
+    ],
+    "user_message_chars": 880,
+    "user_message_sha12": "994ce16505a9"
+  },
+  "user_message": "Município (fictício): Coxilha Nova\nData de referência da análise: 2026-11-11\nDocumentos disponíveis (3), em ordem cronológica:\n\n### [D1] Plano de Contingência — Saúde (2025)\nTipo: Plano de contingência | Fonte: Saúde | Data: 2025-02-02\n\nHospital Municipal: gerador de 150 kVA. Teste mensal registrado pela manutenção.\n\n---\n\n### [D3] Registro de teste do gerador\nTipo: Atualização de secretaria | Fonte: Manutenção hospitalar | Data: 2026-11-02\n\nGerador 150 kVA testado com carga por 2 horas em 02/11/2026: funcionamento normal. Tanque com 900 litros (autonomia estimada de 36 h).\n\n---\n\n### [D2] Alerta de temporal (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-11\n\nNÍVEL: LARANJA. Temporal com risco de falta de energia prolongada.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_04e12fd2bc763719016b06fff618b087d2ac2f956955cbde13",
+  "model_reported": "gpt-6-luna",
+  "usage": {
+    "input_tokens": 2055,
+    "output_tokens": 2642,
+    "reasoning_tokens": 192
+  },
+  "latency_ms": 16758,
+  "started_at": "2026-11-25T15:34:13.550Z",
+  "output": {
+    "resumo_situacao": "O alerta de 11/11/2026 indica temporal com risco de falta prolongada de energia. O gerador de 150 kVA do Hospital Municipal foi testado com carga em 02/11/2026 e apresentou funcionamento normal; o registro estima autonomia de 36 horas. Os documentos não informam como seria atendida uma interrupção que ultrapasse essa autonomia.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Hospital Municipal",
+        "tipo": "local",
+        "setor_responsavel": "Saúde",
+        "descricao": "Local associado ao gerador de 150 kVA mencionado no plano e no registro de teste."
+      },
+      {
+        "id": "E2",
+        "nome": "Gerador de 150 kVA",
+        "tipo": "equipamento",
+        "setor_responsavel": "Manutenção hospitalar",
+        "descricao": "Gerador do Hospital Municipal. O registro de 02/11/2026 informa teste com carga por 2 horas, funcionamento normal e tanque com 900 litros."
+      },
+      {
+        "id": "E3",
+        "nome": "Manutenção hospitalar",
+        "tipo": "setor",
+        "setor_responsavel": "Manutenção hospitalar",
+        "descricao": "Fonte do registro de teste do gerador."
+      },
+      {
+        "id": "E4",
+        "nome": "Alerta de temporal — nível laranja",
+        "tipo": "evento",
+        "setor_responsavel": "Sala de Situação Regional",
+        "descricao": "Cenário de alerta datado de 11/11/2026, com risco de falta de energia prolongada."
+      },
+      {
+        "id": "E5",
+        "nome": "Falta de energia prolongada",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Risco mencionado no alerta de temporal."
+      },
+      {
+        "id": "E6",
+        "nome": "Combustível do gerador",
+        "tipo": "recurso",
+        "setor_responsavel": "Manutenção hospitalar",
+        "descricao": "O registro informa tanque com 900 litros e autonomia estimada de 36 horas."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E2",
+        "destino": "E1",
+        "tipo": "localizado_em",
+        "rotulo": "O gerador está associado ao Hospital Municipal.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": null,
+          "fim": null,
+          "observacao": "O plano de 2025 e o registro de 2026 mencionam o gerador do Hospital Municipal."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Hospital Municipal: gerador de 150 kVA."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Gerador 150 kVA testado com carga por 2 horas em 02/11/2026"
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E3",
+        "destino": "E2",
+        "tipo": "responsavel_por",
+        "rotulo": "A Manutenção hospitalar registrou o teste do gerador.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-02",
+          "fim": null,
+          "observacao": "Responsabilidade indicada pela fonte do registro de teste."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Fonte: Manutenção hospitalar"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E2",
+        "destino": "E6",
+        "tipo": "abastece",
+        "rotulo": "O combustível no tanque sustenta a autonomia estimada do gerador.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-02",
+          "fim": null,
+          "observacao": "A quantidade e a autonomia constam do registro de teste."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Tanque com 900 litros (autonomia estimada de 36 h)."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E4",
+        "destino": "E5",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta de temporal aponta risco de falta de energia prolongada.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-11",
+          "fim": null,
+          "observacao": "Cenário de alerta fictício."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Temporal com risco de falta de energia prolongada."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E5",
+        "destino": "E2",
+        "tipo": "depende_de",
+        "rotulo": "A falta prolongada de energia torna pertinente verificar a cobertura oferecida pela autonomia estimada do gerador.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2026-11-11",
+          "fim": null,
+          "observacao": "A conexão resulta da combinação do risco indicado no alerta com a autonomia registrada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Temporal com risco de falta de energia prolongada."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "autonomia estimada de 36 h)."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "O plano de 02/02/2025 informa que o gerador tem 150 kVA e que havia teste mensal registrado pela manutenção. Em 02/11/2026, o registro informa teste com carga por 2 horas, funcionamento normal, 900 litros no tanque e autonomia estimada de 36 horas.",
+        "implicacao": "O registro recente documenta o resultado de um teste específico e acrescenta dados de combustível e autonomia. Não informa se a rotina mensal continuou sem interrupções nem como é provido combustível após o limite estimado.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Teste mensal registrado pela manutenção."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "funcionamento normal. Tanque com 900 litros (autonomia estimada de 36 h)."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "pendencia_historica",
+        "descricao": "O alerta atual menciona risco de falta de energia prolongada, enquanto o registro do gerador apresenta autonomia estimada de 36 horas. Os documentos não descrevem medidas para uma interrupção que ultrapasse essa estimativa.",
+        "implicacao": "Cabe confirmar quais procedimentos e recursos seriam considerados caso a falta de energia se prolongasse além da autonomia informada, sem presumir que haverá interrupção ou que os 36 horas serão excedidos.",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Temporal com risco de falta de energia prolongada."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "autonomia estimada de 36 h)."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "Que procedimento e recurso de abastecimento seriam aplicáveis se uma falta de energia se prolongasse além das 36 horas de autonomia estimada?",
+        "por_que_importa": "O alerta menciona risco de falta de energia prolongada, e o registro do gerador estima autonomia de 36 horas. A documentação não esclarece a continuidade do abastecimento além desse período.",
+        "motivacao": "Combinação do cenário atual de falta de energia prolongada com a autonomia estimada registrada para o gerador.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E2",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "setores_relacionados": [
+          "Manutenção hospitalar",
+          "Saúde"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Temporal com risco de falta de energia prolongada."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Tanque com 900 litros (autonomia estimada de 36 h)."
+          }
+        ],
+        "o_que_falta_saber": "Se há procedimento de reposição de combustível, recurso previsto para isso e responsável institucional por acioná-lo; os documentos não fornecem essas informações.",
+        "quem_pode_confirmar": "Manutenção hospitalar e Saúde, conforme os setores citados; a atribuição institucional deve ser confirmada.",
+        "prioridade": "alta"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há informação sobre procedimento ou recurso de abastecimento para operação do gerador além da autonomia estimada de 36 horas.",
+        "por_que_importa": "O alerta atual menciona risco de falta de energia prolongada; essa informação ajudaria a avaliar a continuidade coberta pelos registros disponíveis."
+      },
+      {
+        "descricao": "Não há registro posterior ao teste de 02/11/2026 sobre alteração da quantidade de combustível ou nova estimativa de autonomia.",
+        "por_que_importa": "A análise tem data de referência de 11/11/2026, e o dado de autonomia consta de um teste realizado nove dias antes."
+      }
+    ],
+    "cautelas": [
+      "O teste com resultado normal documenta o funcionamento observado em 02/11/2026; não certifica por si só a situação do equipamento em 11/11/2026.",
+      "A expressão “falta de energia prolongada” não define duração. Não se deve presumir que a interrupção excederá 36 horas.",
+      "A autonomia de 36 horas é apresentada como estimativa, não como garantia.",
+      "O plano de 2025 registra teste mensal, mas os documentos não demonstram que essa rotina permaneceu contínua até a data de referência.",
+      "Esta análise organiza pontos para revisão humana e não define nível de risco nem determina ações operacionais."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 6,
+    "n_relacoes": 5,
+    "n_verificacoes": 1,
+    "n_temporais": 2,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Hospital Municipal: gerador de 150 kVA.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Gerador 150 kVA testado com carga por 2 horas em 02/11/2026",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Fonte: Manutenção hospitalar",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Tanque com 900 litros (autonomia estimada de 36 h).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Temporal com risco de falta de energia prolongada.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Temporal com risco de falta de energia prolongada.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "autonomia estimada de 36 h).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Teste mensal registrado pela manutenção.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "funcionamento normal. Tanque com 900 litros (autonomia estimada de 36 h).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Temporal com risco de falta de energia prolongada.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "autonomia estimada de 36 h).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Temporal com risco de falta de energia prolongada.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Tanque com 900 litros (autonomia estimada de 36 h).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      }
+    ],
+    "n_citacoes": 13,
+    "n_citacoes_literais": 13,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795620870,
+    "created_at": 1795620854,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_04e12fd2bc763719016b06fff618b087d2ac2f956955cbde13",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-6-luna",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBv_4ozV2NXePf6_Q0omsWm-KA8v0xbT1IeysM8agOttedyQnjsTK5cBw2ht-ziaZwTHNhI4pCKhKxjuUBHmuDhZQZ-bMPqf9wToblSRABbo0lHVRyNd_eT5FGp4q7vGglUsX7JX_QEl2uj4qEbxRu7LRfTUWXHFeHm99nNErNQxM6Rg3fBobFJFb2MRCYWJ3AJAO7N34fRq_r5FtXckk9cTHZbGeiQ5YyEk4B4X7yguEB-qc-kcsgv6hO8OpQKbcEoRxzBGx38Edb1R9WmHGQWbIANvRbFTerI23WZi_SLcRqTomb06hyM68yvq5h2Euum9e8LBiGyRVjMZ_6FVwB8AJMLSZvYWd323YQHPsX0qP9ei5hGyUSe4uCLmWwV7Ga-cAw631hnDggHC65jTkV86DZplO8okDZCcjrV1-t90G1h54u9-5fqJqGI6FYJc-iOTW7p6V8RP0dfiIxoTDg-hEuseROTxbVWwLvXHRZnLsXV-yt3gLylP-dMY0PIIuJfowN9rZE_QkMvYIULBPCWRRrF6Q6vUcosvU2FSVtRnlouoUrO1hKzRC2C_bRd20-aVbIgfTt9bBfzLctCre1pflpByT9cc914VvsQM72igyPTIkW6-vxlnQ7dZf7UltMbuxRpNutuZPbv9AtI5rawSHEJmpxiNvGVBpeVAC1ZuMsu_vNkbBJmAnidYL6qZ0G0lXt86g8VsXBGJDd5nUNoY324hdS2UJpQmkhapH-CzV3EPTtFt2WiaX-XBhw7QrL70OeUc2Btq2xHvTvMFnDb-X7ED3dO8cdUzzuBo0xkNCm6F4J659YcN7P6uv_rZozLiRhJ_houvhEDa0LpGOZ4giMZFQM8m4Yfj8BMW2oN51Ez4iK7usUVAy6IdEsV7GK9gkg-kK950GYK5hNxFd7BBGLv31ZD1CHvC1cthR6ZF5E9Vf2hLMJ3LsVhIuVRR6stPANUVnfk5H7D5oj2b4zfeDzScHjTXocmlE7jg4tS7c8ct3kIqav5dVw27iR0nmXKWRQNvRfGA1PDn9Qx8c9HAOBS495uQM1UrWvQORW86w0ZNYMHgUanLdBQPfBjIu-0-4WXU6amc_qnDLJCKM30fzR6HrtH9mCVKvYxXjz1EONVamGEcwMBYUprKtJ2HIxYBP6f0IXAjGW9lN-vdEHItzo1AAX61cFttT2wTPdfH6r_pCsOJSlQugoRC4lHazhAQE7-zI2fZkpuRtt3ycbCafq2jIsBPEExT2AARD7GEpfroMIFKcVxp6uL0NTw_V4kL6PxF9hpUdtMwCLn93UfE6YgCPsNwpI20glkvoLH7zgn5chv3NjYoh6aIKMv0UrFbkZIA73kDRlCPzaOsQi-UECPSOlScWSnOraGQtZxjTf3RR1JUwJo2vShM4E1bRTV5mXg76xo8li1igNvyggljGtZpuRSAS-Ch22w4PTqTZw-aEkravS9J2tLbCXp5rzhsGIwsiCJgZwtSkoVt95EanURFiW0w2Ao69LILIWIKdt41VhL9bhpaAKMMX1EkiT6eQVZ1SIQ97kiQ8k8MiLF4SGbM3K_-uJU9GBctKoBYt2BzM0Xwa5vnl3EOS67P8cx2U_yza3KGdla9E8wCQujw1kD1KpC8o8ZGRI3X1q3OOPpgH1qxgDt5z4f79dbhuxMIfJ2-2fKNo5dcMLaMrpWzrON9AmJKNSY1Yb_O5wXgvm4otla_eYBnet1C56fkQu6K8oC2YFKth7IJjusNfjxYnrdp3lOC9ihmbJZ-6l1FrnBl8Pe44_7hhXyu3lBNZQfqAvCyfWQWL2wAfcqezfyJs6wiH8shw40UE8VX7iqgPNYW3IWLlb4ANTgtSuS7yYw7obnby8DvKca-iRr7HvrHb3O_en45GOk0_FDzAxp8Xupr_g6_dCLCw5H6SE9Wr4h4AIZxJmuScfojcBLF1XWpKJjjPwCIxUCgrrU7FyIUxgqXM6Dsk6Dy2j_z85oaigLj5A5KNYdPNFWCxU_T0laSx3y9UxL2EF1zh_L_mHxJYlbrfwkT5qbbKT_rz5yp8CtvoJL_wWQVWkyByblst2g47FlgwGlJyWJB8_MvrhdjbRfIrZMxND1f2o1ar8LOijg6i3EegAazU5WOELDTXmgwUIKEpsXUVfV7deox5T5JscWkgHYyVHqLhyoLF5T67B-GMEFDH9si4Re8pMwoY30DfqQiAF8m4N8gf-cSKDhmP1PWgbCOjkjuha4eLPkrOM298BxpQNc0mk979fldtTHAyRHXNeg_yenJDiBhnVEqq2AaDnnfPxiif8M7kPqswW5yjQVqB4EibrHZb-tfbFF72dMwdBXoMLOg14OgI1_p6bqmyn0gnplEIGJY_igaUfu8gLYzFGZlkbtA0MEgdNESZba9fr8T2fi9rEUjsxaYf189bnh1ApdF3XrgcvEAZq0XSJd--ePXFi6y_3LPpXVRsE4bN8jI5Q29hpDuVSZst7lF8jF1zwIXArsxDRYOvfUIKCWfcfN_XPWWjj2qQ8Ug7f8ghlyqwiRfuNW1hfTcWyDAgxtliBbpRBz63NHhuvE25pV_9XS5gvla6n8rYh6CGjmpJxDClGPWWm8BFm1SDGjSk-Root2vqf5P-VlvwdkXnt6vhS4a5Sk7SN45ySAsKIvqVBA_uJzsbmet8n6q-eSoFaTMs7e9NWvBNnvltHsquQqWqu2DiVcQFRQC7Jc2IrJgdZaUIGkLan7a9ah5lK65TyPmaI-j8413cpeHYWj3pnMmZ4wNlhHd6R3eaIhs2HxNZpmga7O-Uoeb3sveaqG3L-bYKjnpWlI_ztrQZAmTzoSMTjwLrCGYBEBCR5yuJ1qQFpnSrDxd4sjgRi-dc0i3iHjXwLlWCl5iqNjj-HKd6ToTD21FgmuLHaGFMF-k-AjyNRmvGNts3ewu90HW5h3j-fAX2gEz7GH78Cepx23lp-PjLlu-DUPqHJzk5_t16N6EnTnPVXfE7keOqyRsTyMxdnVgZ-DVNOHt21-N50xJvOmHK8SIK1wJbJPABEkFhScAKQ_yEiSEGlxtZNg96rbAo_Ra3uiGCNT0nR5tUBPtJWxk8izKVKcuEMrZ8yc9xSssuk0zFNpomgsxzLfcoPcrIs_NDYViRjKAas7-tH0nqLkrBKUefk-tsI46pRnB1I7DDsy_j_L-ZpJPdVwUJ6cnutsPVPhXmv_9Hv99fuS3L8HUlgTOH0O7wy7o4DS9hPLGb30VhTJhIovUYjpSLkCKCFCkh5QB7jdqnjbAikAkrjHxHwq5jwTTDvOQAAPemedUORR0JvE4KsJr9py4KxAc-POdAXakPbs4MhB2eM4fvEeEam9_6JWZdArFLI_PpTGxEmXUxJozJBUjNIklapfhDXivQPsgVv2Ql7FeP6FRt1snXObSX-PifCToVUtbdrPbyRLOcQ3kqkLfSBMtzEM89N0_hSdPg4ynD7PxcjL4jwd0UQt5XUb2xgCmv3KmguJnGPq3N96zdfT1uH_WvPA3QRHTxch2lglfHUG6gAddv2SwklZOXlBdPPj8LqbFAaheYyg04TuiMQoX01q-rbPWbRrt-f6j_6js612ZnXeBpTHYJVBOZFXR1fXHhjV67GlvHddqk_VKzkTpkKnVtQb1cHZ7huVg1VELj-RzXqnup4DZOhlCB6UhmIdajuZG83uwXltj-P8CAijHRxi0O8O-jiTe72WRIErgandi0wwxvF7Bxsboe1yyb9WAINuUsMjh3qwWN7XRBL7Sau9tzFbHjiJh_-EkBilvyaq8mifklGImMf326hUb14F7Bd8LU602js35IGcZkcPUi3gqkChdRn8kDspgHbcxHUWEJN0Gi_8bMqbPBxPa9ZBh3Eg5yod52rBmyHoHfs1fwqxRU_vpEXgw7x1PWH18uR2DopF_FnC1vQVnKiWPdGAXfNy8WnGJ6zFybctKfrVIcwMXb5wxHxzqIsFEZsbOryIq6--FmSbFmAxofRgnC365SmgX2bxAGqi914bD1sqhXmHTh6RfKn4-6u_22Jt_xSpi3X-KkV6Cfd_K1kbWM2WiBid7OkcizWPuEAyveEqvqrdSTirHF-4WBxBbpcrdcbyeRpbtMIT8xJM-cHXBX78Y3hjW0a1WjpUZOPOBVvWAf6dl_xlQhI-Q74ozPMLjZjLBaD780VUM02nS9UlKIGwDuxYlmnsfyAouwjk6vBGTSK2g66zEMKO5eqQwRrf7S7FENyI0dNGhY-6ynbd9Spc55gzAyCw==",
+        "id": "rs_04e12fd2bc763719016b06fff889ac87d2841102786d209dad",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"resumo_situacao\": \"O alerta de 11/11/2026 indica temporal com risco de falta prolongada de energia. O gerador de 150 kVA do Hospital Municipal foi testado com carga em 02/11/2026 e apresentou funcionamento normal; o registro estima autonomia de 36 horas. Os documentos não informam como seria atendida uma interrupção que ultrapasse essa autonomia.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Hospital Municipal\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": \"Saúde\",\n      \"descricao\": \"Local associado ao gerador de 150 kVA mencionado no plano e no registro de teste.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Gerador de 150 kVA\",\n      \"tipo\": \"equipamento\",\n      \"setor_responsavel\": \"Manutenção hospitalar\",\n      \"descricao\": \"Gerador do Hospital Municipal. O registro de 02/11/2026 informa teste com carga por 2 horas, funcionamento normal e tanque com 900 litros.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Manutenção hospitalar\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Manutenção hospitalar\",\n      \"descricao\": \"Fonte do registro de teste do gerador.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Alerta de temporal — nível laranja\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": \"Sala de Situação Regional\",\n      \"descricao\": \"Cenário de alerta datado de 11/11/2026, com risco de falta de energia prolongada.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Falta de energia prolongada\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Risco mencionado no alerta de temporal.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Combustível do gerador\",\n      \"tipo\": \"recurso\",\n      \"setor_responsavel\": \"Manutenção hospitalar\",\n      \"descricao\": \"O registro informa tanque com 900 litros e autonomia estimada de 36 horas.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E2\",\n      \"destino\": \"E1\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O gerador está associado ao Hospital Municipal.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": \"O plano de 2025 e o registro de 2026 mencionam o gerador do Hospital Municipal.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Hospital Municipal: gerador de 150 kVA.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Gerador 150 kVA testado com carga por 2 horas em 02/11/2026\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E3\",\n      \"destino\": \"E2\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Manutenção hospitalar registrou o teste do gerador.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-02\",\n        \"fim\": null,\n        \"observacao\": \"Responsabilidade indicada pela fonte do registro de teste.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Fonte: Manutenção hospitalar\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E2\",\n      \"destino\": \"E6\",\n      \"tipo\": \"abastece\",\n      \"rotulo\": \"O combustível no tanque sustenta a autonomia estimada do gerador.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-02\",\n        \"fim\": null,\n        \"observacao\": \"A quantidade e a autonomia constam do registro de teste.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Tanque com 900 litros (autonomia estimada de 36 h).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E4\",\n      \"destino\": \"E5\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta de temporal aponta risco de falta de energia prolongada.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-11\",\n        \"fim\": null,\n        \"observacao\": \"Cenário de alerta fictício.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Temporal com risco de falta de energia prolongada.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E5\",\n      \"destino\": \"E2\",\n      \"tipo\": \"depende_de\",\n      \"rotulo\": \"A falta prolongada de energia torna pertinente verificar a cobertura oferecida pela autonomia estimada do gerador.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-11\",\n        \"fim\": null,\n        \"observacao\": \"A conexão resulta da combinação do risco indicado no alerta com a autonomia registrada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Temporal com risco de falta de energia prolongada.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"autonomia estimada de 36 h).\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O plano de 02/02/2025 informa que o gerador tem 150 kVA e que havia teste mensal registrado pela manutenção. Em 02/11/2026, o registro informa teste com carga por 2 horas, funcionamento normal, 900 litros no tanque e autonomia estimada de 36 horas.\",\n      \"implicacao\": \"O registro recente documenta o resultado de um teste específico e acrescenta dados de combustível e autonomia. Não informa se a rotina mensal continuou sem interrupções nem como é provido combustível após o limite estimado.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Teste mensal registrado pela manutenção.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"funcionamento normal. Tanque com 900 litros (autonomia estimada de 36 h).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T2\",\n      \"tipo\": \"pendencia_historica\",\n      \"descricao\": \"O alerta atual menciona risco de falta de energia prolongada, enquanto o registro do gerador apresenta autonomia estimada de 36 horas. Os documentos não descrevem medidas para uma interrupção que ultrapasse essa estimativa.\",\n      \"implicacao\": \"Cabe confirmar quais procedimentos e recursos seriam considerados caso a falta de energia se prolongasse além da autonomia informada, sem presumir que haverá interrupção ou que os 36 horas serão excedidos.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Temporal com risco de falta de energia prolongada.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"autonomia estimada de 36 h).\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Que procedimento e recurso de abastecimento seriam aplicáveis se uma falta de energia se prolongasse além das 36 horas de autonomia estimada?\",\n      \"por_que_importa\": \"O alerta menciona risco de falta de energia prolongada, e o registro do gerador estima autonomia de 36 horas. A documentação não esclarece a continuidade do abastecimento além desse período.\",\n      \"motivacao\": \"Combinação do cenário atual de falta de energia prolongada com a autonomia estimada registrada para o gerador.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E2\",\n        \"E4\",\n        \"E5\",\n        \"E6\"\n      ],\n      \"setores_relacionados\": [\n        \"Manutenção hospitalar\",\n        \"Saúde\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Temporal com risco de falta de energia prolongada.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Tanque com 900 litros (autonomia estimada de 36 h).\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se há procedimento de reposição de combustível, recurso previsto para isso e responsável institucional por acioná-lo; os documentos não fornecem essas informações.\",\n      \"quem_pode_confirmar\": \"Manutenção hospitalar e Saúde, conforme os setores citados; a atribuição institucional deve ser confirmada.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há informação sobre procedimento ou recurso de abastecimento para operação do gerador além da autonomia estimada de 36 horas.\",\n      \"por_que_importa\": \"O alerta atual menciona risco de falta de energia prolongada; essa informação ajudaria a avaliar a continuidade coberta pelos registros disponíveis.\"\n    },\n    {\n      \"descricao\": \"Não há registro posterior ao teste de 02/11/2026 sobre alteração da quantidade de combustível ou nova estimativa de autonomia.\",\n      \"por_que_importa\": \"A análise tem data de referência de 11/11/2026, e o dado de autonomia consta de um teste realizado nove dias antes.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O teste com resultado normal documenta o funcionamento observado em 02/11/2026; não certifica por si só a situação do equipamento em 11/11/2026.\",\n    \"A expressão “falta de energia prolongada” não define duração. Não se deve presumir que a interrupção excederá 36 horas.\",\n    \"A autonomia de 36 horas é apresentada como estimativa, não como garantia.\",\n    \"O plano de 2025 registra teste mensal, mas os documentos não demonstram que essa rotina permaneceu contínua até a data de referência.\",\n    \"Esta análise organiza pontos para revisão humana e não define nível de risco nem determina ações operacionais.\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_04e12fd2bc763719016b06fff8af7487d28d01d639f85a4aaf",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "all_turns",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2055,
+      "input_tokens_details": {
+        "cache_write_tokens": 261,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 261
+        },
+        "cached_tokens": 1791
+      },
+      "output_tokens": 2642,
+      "output_tokens_details": {
+        "reasoning_tokens": 192
+      },
+      "total_tokens": 4697
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\n  \"resumo_situacao\": \"O alerta de 11/11/2026 indica temporal com risco de falta prolongada de energia. O gerador de 150 kVA do Hospital Municipal foi testado com carga em 02/11/2026 e apresentou funcionamento normal; o registro estima autonomia de 36 horas. Os documentos não informam como seria atendida uma interrupção que ultrapasse essa autonomia.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Hospital Municipal\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": \"Saúde\",\n      \"descricao\": \"Local associado ao gerador de 150 kVA mencionado no plano e no registro de teste.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Gerador de 150 kVA\",\n      \"tipo\": \"equipamento\",\n      \"setor_responsavel\": \"Manutenção hospitalar\",\n      \"descricao\": \"Gerador do Hospital Municipal. O registro de 02/11/2026 informa teste com carga por 2 horas, funcionamento normal e tanque com 900 litros.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Manutenção hospitalar\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Manutenção hospitalar\",\n      \"descricao\": \"Fonte do registro de teste do gerador.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Alerta de temporal — nível laranja\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": \"Sala de Situação Regional\",\n      \"descricao\": \"Cenário de alerta datado de 11/11/2026, com risco de falta de energia prolongada.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Falta de energia prolongada\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Risco mencionado no alerta de temporal.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Combustível do gerador\",\n      \"tipo\": \"recurso\",\n      \"setor_responsavel\": \"Manutenção hospitalar\",\n      \"descricao\": \"O registro informa tanque com 900 litros e autonomia estimada de 36 horas.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E2\",\n      \"destino\": \"E1\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O gerador está associado ao Hospital Municipal.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": \"O plano de 2025 e o registro de 2026 mencionam o gerador do Hospital Municipal.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Hospital Municipal: gerador de 150 kVA.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Gerador 150 kVA testado com carga por 2 horas em 02/11/2026\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E3\",\n      \"destino\": \"E2\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Manutenção hospitalar registrou o teste do gerador.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-02\",\n        \"fim\": null,\n        \"observacao\": \"Responsabilidade indicada pela fonte do registro de teste.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Fonte: Manutenção hospitalar\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E2\",\n      \"destino\": \"E6\",\n      \"tipo\": \"abastece\",\n      \"rotulo\": \"O combustível no tanque sustenta a autonomia estimada do gerador.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-02\",\n        \"fim\": null,\n        \"observacao\": \"A quantidade e a autonomia constam do registro de teste.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Tanque com 900 litros (autonomia estimada de 36 h).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E4\",\n      \"destino\": \"E5\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta de temporal aponta risco de falta de energia prolongada.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-11\",\n        \"fim\": null,\n        \"observacao\": \"Cenário de alerta fictício.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Temporal com risco de falta de energia prolongada.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E5\",\n      \"destino\": \"E2\",\n      \"tipo\": \"depende_de\",\n      \"rotulo\": \"A falta prolongada de energia torna pertinente verificar a cobertura oferecida pela autonomia estimada do gerador.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-11\",\n        \"fim\": null,\n        \"observacao\": \"A conexão resulta da combinação do risco indicado no alerta com a autonomia registrada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Temporal com risco de falta de energia prolongada.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"autonomia estimada de 36 h).\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O plano de 02/02/2025 informa que o gerador tem 150 kVA e que havia teste mensal registrado pela manutenção. Em 02/11/2026, o registro informa teste com carga por 2 horas, funcionamento normal, 900 litros no tanque e autonomia estimada de 36 horas.\",\n      \"implicacao\": \"O registro recente documenta o resultado de um teste específico e acrescenta dados de combustível e autonomia. Não informa se a rotina mensal continuou sem interrupções nem como é provido combustível após o limite estimado.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Teste mensal registrado pela manutenção.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"funcionamento normal. Tanque com 900 litros (autonomia estimada de 36 h).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T2\",\n      \"tipo\": \"pendencia_historica\",\n      \"descricao\": \"O alerta atual menciona risco de falta de energia prolongada, enquanto o registro do gerador apresenta autonomia estimada de 36 horas. Os documentos não descrevem medidas para uma interrupção que ultrapasse essa estimativa.\",\n      \"implicacao\": \"Cabe confirmar quais procedimentos e recursos seriam considerados caso a falta de energia se prolongasse além da autonomia informada, sem presumir que haverá interrupção ou que os 36 horas serão excedidos.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Temporal com risco de falta de energia prolongada.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"autonomia estimada de 36 h).\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Que procedimento e recurso de abastecimento seriam aplicáveis se uma falta de energia se prolongasse além das 36 horas de autonomia estimada?\",\n      \"por_que_importa\": \"O alerta menciona risco de falta de energia prolongada, e o registro do gerador estima autonomia de 36 horas. A documentação não esclarece a continuidade do abastecimento além desse período.\",\n      \"motivacao\": \"Combinação do cenário atual de falta de energia prolongada com a autonomia estimada registrada para o gerador.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E2\",\n        \"E4\",\n        \"E5\",\n        \"E6\"\n      ],\n      \"setores_relacionados\": [\n        \"Manutenção hospitalar\",\n        \"Saúde\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Temporal com risco de falta de energia prolongada.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Tanque com 900 litros (autonomia estimada de 36 h).\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se há procedimento de reposição de combustível, recurso previsto para isso e responsável institucional por acioná-lo; os documentos não fornecem essas informações.\",\n      \"quem_pode_confirmar\": \"Manutenção hospitalar e Saúde, conforme os setores citados; a atribuição institucional deve ser confirmada.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há informação sobre procedimento ou recurso de abastecimento para operação do gerador além da autonomia estimada de 36 horas.\",\n      \"por_que_importa\": \"O alerta atual menciona risco de falta de energia prolongada; essa informação ajudaria a avaliar a continuidade coberta pelos registros disponíveis.\"\n    },\n    {\n      \"descricao\": \"Não há registro posterior ao teste de 02/11/2026 sobre alteração da quantidade de combustível ou nova estimativa de autonomia.\",\n      \"por_que_importa\": \"A análise tem data de referência de 11/11/2026, e o dado de autonomia consta de um teste realizado nove dias antes.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O teste com resultado normal documenta o funcionamento observado em 02/11/2026; não certifica por si só a situação do equipamento em 11/11/2026.\",\n    \"A expressão “falta de energia prolongada” não define duração. Não se deve presumir que a interrupção excederá 36 horas.\",\n    \"A autonomia de 36 horas é apresentada como estimativa, não como garantia.\",\n    \"O plano de 2025 registra teste mensal, mas os documentos não demonstram que essa rotina permaneceu contínua até a data de referência.\",\n    \"Esta análise organiza pontos para revisão humana e não define nível de risco nem determina ações operacionais.\"\n  ]\n}"
+  }
+}

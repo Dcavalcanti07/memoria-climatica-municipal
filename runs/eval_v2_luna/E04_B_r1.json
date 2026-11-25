@@ -1,0 +1,919 @@
+{
+  "meta": {
+    "scenario": "E04",
+    "condicao": "B",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v2_luna",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D5",
+      "D4",
+      "D1",
+      "D3",
+      "D2"
+    ],
+    "user_message_chars": 1796,
+    "user_message_sha12": "ae90c1f3ef7b"
+  },
+  "user_message": "Município (fictício): Serra do Vento\nData de referência da análise: 2026-11-22\nDocumentos disponíveis (5), em ordem cronológica:\n\n### [D5] Ata — Comitê de Estiagem\nTipo: Ata | Fonte: Comitê Municipal de Estiagem | Data: 2023-10-20\n\nAprovada a distribuição de cestas para produtores rurais afetados pela seca. A Agricultura fará levantamento das perdas de safra.\n\n---\n\n### [D4] Relatório — estiagem 2023\nTipo: Relatório de ocorrência | Fonte: COMPDEC | Data: 2023-12-15\n\nEntre setembro e novembro de 2023 o município enfrentou estiagem. Foram distribuídos 420 mil litros de água por caminhão-pipa na zona rural (comunidades Lajeado e Pedra Branca). Recomenda-se cadastrar poços artesianos comunitários.\n\n---\n\n### [D1] Plano de Contingência — Inundações e Enxurradas (2025)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2025-09-01\n\nÁreas de risco de inundação: bairros Baixada e Vila Operária.\nAbrigo: Centro de Convivência do Idoso (100 pessoas).\nPonto de encontro: Praça da Matriz.\nResponsável pelo abrigo: Secretaria de Assistência Social — plantão (fictício) 0800-000-0101.\n\n---\n\n### [D3] Comunicado — Assistência Social — Centro de Convivência\nTipo: Atualização de secretaria | Fonte: Secretaria de Assistência Social | Data: 2026-11-10\n\nO Centro de Convivência do Idoso terá atividades regulares até 19/12/2026. Em caso de uso como abrigo, as atividades serão suspensas mediante aviso prévio de 6 horas às famílias atendidas.\n\n---\n\n### [D2] Alerta de enxurrada (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-22\n\nNÍVEL: AMARELO. Pancadas de chuva de 50 a 70 mm em poucas horas podem provocar enxurradas e alagamentos pontuais na Baixada.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_0f97e1246bd4533a016b0700208a1487d29475fdde129bb22c",
+  "model_reported": "gpt-6-luna",
+  "usage": {
+    "input_tokens": 2308,
+    "output_tokens": 3968,
+    "reasoning_tokens": 487
+  },
+  "latency_ms": 26372,
+  "started_at": "2026-11-25T15:34:56.108Z",
+  "output": {
+    "resumo_situacao": "O alerta de 22/11/2026 prevê pancadas de chuva que podem causar enxurradas e alagamentos pontuais na Baixada, área identificada no plano municipal de contingência. O plano indica o Centro de Convivência do Idoso como abrigo, e uma atualização informa que o local manterá atividades regulares até 19/12/2026, com aviso prévio de 6 horas às famílias atendidas caso seja usado como abrigo. A pauta se limita a confirmar a coordenação necessária; não define uso do abrigo nem outras medidas.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Alerta de enxurrada de 22/11/2026",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Cenário fictício de nível amarelo; prevê pancadas de chuva de 50 a 70 mm em poucas horas, com possibilidade de enxurradas e alagamentos pontuais na Baixada."
+      },
+      {
+        "id": "E2",
+        "nome": "Baixada",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Bairro apontado no alerta como local de possíveis alagamentos pontuais e identificado no plano como área de risco de inundação."
+      },
+      {
+        "id": "E3",
+        "nome": "Plano de Contingência — Inundações e Enxurradas (2025)",
+        "tipo": "norma_documento",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Plano datado de 01/09/2025 que identifica áreas de risco, abrigo, ponto de encontro e responsável pelo abrigo."
+      },
+      {
+        "id": "E4",
+        "nome": "Centro de Convivência do Idoso",
+        "tipo": "infraestrutura",
+        "setor_responsavel": "Secretaria de Assistência Social",
+        "descricao": "Local indicado no plano como abrigo para 100 pessoas. A atualização de 10/11/2026 informa que terá atividades regulares até 19/12/2026."
+      },
+      {
+        "id": "E5",
+        "nome": "Secretaria de Assistência Social",
+        "tipo": "setor",
+        "setor_responsavel": "Secretaria de Assistência Social",
+        "descricao": "Setor indicado no plano como responsável pelo abrigo, por meio de plantão."
+      },
+      {
+        "id": "E6",
+        "nome": "Famílias atendidas pelo Centro de Convivência do Idoso",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": "Secretaria de Assistência Social",
+        "descricao": "Famílias que, segundo a atualização da Secretaria, devem receber aviso prévio de 6 horas se o Centro for usado como abrigo."
+      },
+      {
+        "id": "E7",
+        "nome": "Atualização da Secretaria de Assistência Social sobre o Centro de Convivência",
+        "tipo": "norma_documento",
+        "setor_responsavel": "Secretaria de Assistência Social",
+        "descricao": "Comunicado de 10/11/2026 sobre atividades regulares até 19/12/2026 e suspensão mediante aviso prévio de 6 horas às famílias atendidas em caso de uso como abrigo."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta prevê possibilidade de enxurradas e alagamentos pontuais na Baixada.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-22",
+          "fim": null,
+          "observacao": "Cenário de alerta fictício datado de 22/11/2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "podem provocar enxurradas e alagamentos pontuais na Baixada."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E3",
+        "destino": "E2",
+        "tipo": "outro",
+        "rotulo": "O plano identifica a Baixada como área de risco de inundação.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-09-01",
+          "fim": null,
+          "observacao": "O documento não informa data de encerramento da vigência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Áreas de risco de inundação: bairros Baixada e Vila Operária."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E3",
+        "destino": "E4",
+        "tipo": "localizado_em",
+        "rotulo": "O plano indica o Centro de Convivência do Idoso como abrigo para 100 pessoas.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-09-01",
+          "fim": null,
+          "observacao": "A atualização de 2026 trata das atividades e do aviso, mas não informa alteração da capacidade indicada no plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Centro de Convivência do Idoso (100 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E5",
+        "destino": "E4",
+        "tipo": "responsavel_por",
+        "rotulo": "O plano atribui à Secretaria de Assistência Social, por meio de plantão, a responsabilidade pelo abrigo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-09-01",
+          "fim": null,
+          "observacao": "A atualização de 2026 não confirma se a atribuição ou o plantão permanecem iguais."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Responsável pelo abrigo: Secretaria de Assistência Social — plantão"
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E7",
+        "destino": "E4",
+        "tipo": "outro",
+        "rotulo": "A atualização informa que o Centro manterá atividades regulares até 19/12/2026 e que elas serão suspensas mediante aviso prévio se houver uso como abrigo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-10",
+          "fim": "2026-12-19",
+          "observacao": "O comunicado não informa o que ocorrerá com as atividades após 19/12/2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "O Centro de Convivência do Idoso terá atividades regulares até 19/12/2026."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Em caso de uso como abrigo, as atividades serão suspensas mediante aviso prévio de 6 horas às famílias atendidas."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E7",
+        "destino": "E6",
+        "tipo": "comunica",
+        "rotulo": "A atualização prevê aviso prévio de 6 horas às famílias atendidas se o Centro for usado como abrigo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-10",
+          "fim": "2026-12-19",
+          "observacao": "O aviso está vinculado à hipótese de uso como abrigo durante o período informado de atividades regulares."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "aviso prévio de 6 horas às famílias atendidas."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "O plano de 2025 indica o Centro de Convivência do Idoso como abrigo para 100 pessoas. Em 10/11/2026, a Secretaria informou que o local terá atividades regulares até 19/12/2026 e que, se houver uso como abrigo, as atividades serão suspensas com aviso prévio de 6 horas às famílias.",
+        "implicacao": "A informação mais recente acrescenta uma condição de coordenação para o uso do local; não declara que o abrigo foi retirado do plano nem confirma que a capacidade, a responsabilidade ou o plantão foram revistos.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Centro de Convivência do Idoso (100 pessoas)."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Em caso de uso como abrigo, as atividades serão suspensas mediante aviso prévio de 6 horas às famílias atendidas."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "pendencia_historica",
+        "descricao": "A análise tem registros de estiagem de 2023, mas eles tratam de seca e distribuição de água na zona rural, sem vínculo documentado com o alerta de enxurrada na Baixada.",
+        "implicacao": "Esses registros não fundamentam verificações para este cenário e não permitem inferir condições atuais relacionadas a enxurradas.",
+        "evidencias": [
+          {
+            "doc_id": "D4",
+            "trecho": "Entre setembro e novembro de 2023 o município enfrentou estiagem."
+          },
+          {
+            "doc_id": "D5",
+            "trecho": "Aprovada a distribuição de cestas para produtores rurais afetados pela seca."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "Se houver avaliação de uso do Centro como abrigo durante o período de atividades regulares, como será coordenado e registrado o aviso prévio de 6 horas às famílias atendidas?",
+        "por_que_importa": "A atualização prevê atividades regulares até 19/12/2026 e exige aviso prévio às famílias se o local for usado como abrigo. A confirmação ajuda a identificar a coordenação necessária sem presumir que o abrigo será ativado.",
+        "motivacao": "O Centro consta como abrigo no plano, e o comunicado mais recente acrescenta a condição de aviso prévio e suspensão das atividades.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E4",
+          "E6",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "Secretaria de Assistência Social"
+        ],
+        "status_epistemico": "fato_documentado",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Centro de Convivência do Idoso (100 pessoas)."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Em caso de uso como abrigo, as atividades serão suspensas mediante aviso prévio de 6 horas às famílias atendidas."
+          }
+        ],
+        "o_que_falta_saber": "O comunicado não especifica quem fará o aviso, por qual meio, nem como será coordenado com eventual decisão de uso do local.",
+        "quem_pode_confirmar": "Secretaria de Assistência Social, indicada como responsável pelo abrigo no plano; confirmar institucionalmente a coordenação do aviso.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "A Secretaria de Assistência Social continua responsável pelo abrigo por meio do plantão indicado no plano de 2025, e esse plantão é o canal vigente para coordenar eventual uso do Centro?",
+        "por_que_importa": "A atribuição está registrada no plano de 2025, mas o comunicado de 2026 não a confirma nem informa se houve mudança. Confirmar o responsável evita apoiar a coordenação em uma atribuição que pode não estar atualizada.",
+        "motivacao": "Há uma atribuição de responsabilidade no plano anterior e uma atualização posterior sobre o funcionamento do mesmo local, sem menção ao responsável ou ao plantão.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E3",
+          "E4",
+          "E5",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "Secretaria de Assistência Social",
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Responsável pelo abrigo: Secretaria de Assistência Social — plantão"
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "O Centro de Convivência do Idoso terá atividades regulares até 19/12/2026."
+          }
+        ],
+        "o_que_falta_saber": "Se a atribuição de 2025 e o plantão permanecem vigentes em 22/11/2026 e como se articulam com o aviso às famílias.",
+        "quem_pode_confirmar": "Secretaria de Assistência Social e COMPDEC, setores citados nos documentos; a confirmação da atribuição atual depende de validação institucional.",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Os documentos não informam se o Centro será utilizado como abrigo neste cenário, nem quem decide ou aciona seu uso.",
+        "por_que_importa": "Sem essa informação, não é possível concluir que as atividades serão suspensas ou que o aviso às famílias precisa ser iniciado."
+      },
+      {
+        "descricao": "Não há confirmação posterior a 2025 da capacidade de 100 pessoas ou da atualidade da responsabilidade e do plantão indicados no plano.",
+        "por_que_importa": "O plano fornece essas informações, mas os documentos disponíveis não registram sua revisão ou confirmação em 2026."
+      },
+      {
+        "descricao": "O comunicado não descreve como avisar as famílias atendidas nem informa a situação das atividades após 19/12/2026.",
+        "por_que_importa": "Esses detalhes limitam a avaliação da coordenação caso o uso do local seja considerado durante ou após o período de atividades regulares."
+      }
+    ],
+    "cautelas": [
+      "O alerta é um cenário fictício de nível amarelo e descreve possibilidade de impactos pontuais na Baixada; a análise não amplia esse cenário para outros bairros.",
+      "A inclusão do Centro no plano não significa que seu uso como abrigo tenha sido decidido para este alerta.",
+      "A atualização de 2026 acrescenta condições relativas às atividades e ao aviso às famílias, mas não substitui automaticamente as demais informações do plano de 2025.",
+      "Os registros de estiagem de 2023 não foram usados para propor verificações sobre enxurradas, pois os documentos não estabelecem vínculo com o alerta atual."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 7,
+    "n_relacoes": 6,
+    "n_verificacoes": 2,
+    "n_temporais": 2,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D2",
+        "trecho": "podem provocar enxurradas e alagamentos pontuais na Baixada.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Áreas de risco de inundação: bairros Baixada e Vila Operária.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Centro de Convivência do Idoso (100 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Responsável pelo abrigo: Secretaria de Assistência Social — plantão",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "O Centro de Convivência do Idoso terá atividades regulares até 19/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Em caso de uso como abrigo, as atividades serão suspensas mediante aviso prévio de 6 horas às famílias atendidas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "aviso prévio de 6 horas às famílias atendidas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Centro de Convivência do Idoso (100 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Em caso de uso como abrigo, as atividades serão suspensas mediante aviso prévio de 6 horas às famílias atendidas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "Entre setembro e novembro de 2023 o município enfrentou estiagem.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D5",
+        "trecho": "Aprovada a distribuição de cestas para produtores rurais afetados pela seca.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Centro de Convivência do Idoso (100 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Em caso de uso como abrigo, as atividades serão suspensas mediante aviso prévio de 6 horas às famílias atendidas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Responsável pelo abrigo: Secretaria de Assistência Social — plantão",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "O Centro de Convivência do Idoso terá atividades regulares até 19/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      }
+    ],
+    "n_citacoes": 15,
+    "n_citacoes_literais": 15,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795620922,
+    "created_at": 1795620896,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_0f97e1246bd4533a016b0700208a1487d29475fdde129bb22c",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-6-luna",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBwAljQy0acJMzPaeaXKHbG2HCo6KpfjMtzMnSWwCJ7ILQYu2mI8KctP6N2mmJJN2utNrtPd2dE1QHAAImSriCWQR6pOh8Wwyo8Gy9B6TKR-owhvBsF9VKDKZY925yc1ly5C9lyRaDYozKQZfbJoKiR_cNAS1NDG14VYdHJ0V-hlH5ENsNs074-FunclAr3l9WydRA2lQ1dtskbYUBps9ANaWXgNIDvh-P7Tw4CypzEKydUesfW2yniXjOjbJCPwDXHce6OgOpbs54rlMBkCsL-ey6klZOdXOxhVW-Thgu-m44m-G697viPMy1ya3zgOkM822gw7pQBif9MKEedrQoJFdbP3r0QeuW3dW5YmWEwK8r3iGTu2xA0Hc2dfNMm47m-WSrjG4GRqXxCIAjbYzmuT3KiM-D3vF7FwaDMi5MZid4FRTRoM_kSLlHyLhUwkLJGQ7oMjrX747L4jNpB2VTjVBRDeI53VyGFdpHjB1IFuAGImAGzRMarU0lq1Ed4hhqyAnIXnbaD3Ts0fhH8Ar-uPia5WGnorTBeUq_QugX5KHfNgIHQFR-Eky9-8WOALSkypIbycJdVHD41EvOYTlCI0_6iE3JJYxbYJhrPgXgiYEk1Ux8bIJTti8bHWNhj0GHNHqd4SzxVd1C0iYYg_9WDA9iscqqayPPv1EDsq6koozYm7H7OP_90X0xBTydv3OrFnrFbdHv_mFe_NAvEMRhcAueSYCuax_4_6Rb_Ko6K-TFfRCCWaflbJ3lRrVhvsbTg5XVM72nwDK5SnmKZJlOftdHvM5aw4NyTSvXIhB23o9i-Vr5G8aLxDjbXdBKAh1JPelP0U50IIa8CWhJP8s8FmGmWKQkeOy7hqMnZ9InbrwA6xMTRDXO5JLYwNxkKTG7FX3XMR1nP1wqDX6qLKaEsC4gxqpme367OWUXAGF8-Xv37ulfz0Kh2IEsvXyCGVbN9ZMKaNBw4rUrWsoYTlJ7tpg2UURSMzSoo6ZTQVtS1sM9OZF6wdimVJRqFXMpTFWv9GR3jvvaM6iuPQeE4Igpuyat8lyYL9y8ZygyRDrOlSfZvDplBhAUgL3WYi3rlKfj-aPcjGoBjDe-jyGACjQ5Nj6kzBDP5nBL84TP9uzMCW36C_OmXtPkcug8ttJFoaZLAH3681zefDUNuZQkI0uRzYORHCom_pSsLPLdP320lbGUin_SRykG7vc0tlqmfrERV-OZm22v-Yt5wFwzQuup7t7ZZU_5xeSk28QD6S_KeNtZrI-SLVA1IlU1gd1kfvG4eDQEIVmr4bTf9EtTEtfweBGGBNz77N5ZCpN_i0L6zem80818fP4Mz91zX0OUwUKDcTxE0al1BxKOGL34QE2PrVSW258YOJtWylZAihyZ-0UlzTTRwEq5O6PBKJtVkHtZW6XNWxcKBCEM44vmmEhLcDlEdsK6ozAJl305t9Akf1ZfZaM6B5qZ6dnbeFWSjv4AbYSQpH1MJRXMV8PMasOtRFSbBZZA2pQIrXlmGX6gS8hDB0Nk8WGvIDNA6YfCCFSKQoOipahb5nxPBkYPsB2h0ycpFuWeaTF4UsV2_-S-J8d2t9kPXVstdbAHk_Zme5BemDLr2V2YI9La4EmBgmX7sBWNOrv9BV1EIqaawHZJ6w_U1VSP5sXU8DspxQI8L7Wj7Ic58xusTcgMGAL3yf1bU8iS5PnHLsMGRIBzraJ3FVFBLr39KgA0X4k4JHXzpRrCfpFH05XhvAdVIxHIwMn-ieP3Qn2N0cqVWlumxw-3h5e72ov13VwD3I6gIUV9reBsWbwHcItPR8cCDDLgMLVsBXgHfu8tZ3__L7eZ2CA6KyPS3t43Jc_iek6-76SIVqO34IpE4Td6bMLPQoNq91pRwe9yzPIt8_Cz0579cBVaH3_gHThtysuZsMdP1XexM8poFNnDjn828eli6RxKE6z2dLOjw7uu0XkMjHI3fAV_8fSuCTlPUMWdaUty9Ag-K1X9xZfiuhf_jS2gui6_HjuEi9PYbLI0NiOCT0uoWyMF9Wjhuigfn5UEaoMZZPUEovoEVZLLzAfPeNPef28_Z_GIGcq26FyNrE9k72TAU3-xSNXdLXlU-GoySyMpYOcqhRFSYKr1Vg3S_CIXFpLl1N589rRyMbVCKGh0w4pTqb4f7hRBRm-3kVt9NTY-WaQVnYgbELwDIxgU3wVkzBQ0MCvPT8f_QH7HJtFnYHN-H5KZF9KC5_Eoos3GzTQ1au9659iNvwHkXV2YyZNNYywZdMRyVZFQgwCaE6EQtwPM8gSzyhDeyZ5HwOJ7Z48L9jwmnTTPOJ91b29rt9XrhK52ntxqPcMASOp0eyNH-MiGyf5kFkCHaWHg_2CiEZXccevj_KF-dpK9STfSYnwq5kcUwVqHDWeqrkSoBMrkMqke5nLQhwdCOEVJkjQVYDikGcoDO9FULUGUJnsXqZhenYTi0qqghWeMeaKP0CcKPTxS_f5ygxxPT9J14JyYfidtSwSdFYpvp4MoRavNyvKCPk6qs8hErOBAYre0fsdjiA2wyNaOFv54UBid6Ct_4sVaIIm1w41rCImYyxWb1KR5tG7f3eQt0BO8j0VI2mKg2JCePLBcNa9V6-TEFwr2p-0Gs1WwLSc4A962NdRC-XCprn9s-J7Bv8_N8YKngmfs5T42eraHxbL2Lzvx2F7QfZ7Yo71H_BWVmT4IwxXs1Z5QAFF4EAecd5xAp4GsPGK9GaRjlEsiTVTCa4vZROGDrypn9t84dJJ9HHoV8ZQNHNILZxGxSiMXSnxqRHvh6G-3ID25j4BrQ3JjjZkV-fOxbOaQ4nORcQKqzjdiGe27kGg7W7pTvDC5fKlIxOi7g3GFz_1qtK3ItRPwYAlh3dRMIohCxICg7jynomjJfDfTGQLFocknim3HZ_euG8QyQyOd9di3hIZAB6cfzqgR6t0m8U5BTMLu0Ms_-h65PHf3mJ8e_Zo_U4rklgZfqdebgV8QKed5LXO3avoBJUVM-iPEaFymgqaEwTG7pk0TsvgXsL7Ci2ZBt_ai0z7EYGNWKQE03JG6Xty9P8k4yPNixh4gaMLnQpTVKFH4L89qhljtEUYMTACmvB7I_Dx9hf20TrAudyGSCfIFIbOmLYQCXRrMsS6LgpktVOXHQQHXZOzYTOnhjDWMcZa_z_Ix0pysnAxSJEo7tvzOdIjBMs7kd8qVAwVlE9P1TOsSSSo-IFey3aoZ1qX5V_ceUdOB0buhvvbuEM50TW7QPEVlFjmTgdv0--Ft-A52xVoFyMabqkqAoY2RusVLPE7dEUiXiQk_uvX1BP3bXP95Ta7j0Tcqs4bvxU2E6wh0SpyRsizHuQ1thurYr_Nv4r8ccct5GGxAOHbLDWf2RcAe5VylWAev9XyW38zvFnpUUvBzJFL61-tJz3HYVjC1rt6W56KRLrqfGmIgphMBnBnVlD6rH_TE8RbLlBnF9dfxkmeqBsCJa0eSgPjlg3Jyh67keFePOY6PtwvbtceyhABxaI3iZI_rztRxbGHChWVsEy4fkKGS-k6Cawhe4P_m0eEXE9H2MyufUeLLjCEE_U2Arrq2iXWkwx5KDlSEHtOpXr0gGS1eqbT70h7XGIbCCAoxAjhFBAk6n_dtP3qpbnihhefYJzYCKcApM7Wic2oKCe2ffjVkFILwWBxmu1LQBcG0xmmWyfTmps_0sjuL74FIbiaFduF2_aid0Qmt5ocTYBEd69AuksQQxEDrBjOOYfrrfTKB9nUgW609lk5vO17xSTMSq8X-pAGB2MlYC0tphF-iDlQ_rJUo6ktHgOLzewTSufhtbnuF1wAqs2TfmEjdlhi9c02rva5YTPHxI0WMqLJsNnjZDBFhTnjJ8Dhc8Bue4AFDgpWmyII89clw49L4IqFjWUaT33ky8V7wO4vIgjc5s_Yfin5Bmd5KXQmLjrbKfi9aQ9fl44qxw0TCn1s086Nqyavr7gFv0OmkpQrpm79i_000Gez8Fvc5U0t04L06MnbGPU0aBapDA9tuOseuhONkZkEs-NZp1vYKstPk1kg_PNxqaJQs8zOiC5UVzKRrHKgsDaKAIfJ6AvrcathSK4q4n8Kk-1WPcj-mHKJarGNBQSHboyh4KlQqSdkwrr1HqhHQglwZzix5aS_dMhwU5MSKb7cC8KaqlFBlVHWzfSLsf0aPS8jiY-FT0pNI3Z26oUyivIqPTrHdONthhlLaJMtgJCI3-Q88G_gSTjDPQ12tSDE4ZXuPjSFCmPh-xZ7S7BphWWTqeyhDk8D3ci5cA04lnCBOzAgYxg3AsjJkVQWJX-h1btnkQn9vCUnDX-aOyDlfotxPuFaDkDuxOJFdNCjGXAtWKmPW5vo8lHizSCat24CaTe-VaJiL11yRjBT-SNV9N6YD7uc9Fq3buXF9eKVO90fntOLAAkdjL6So2BqQd1WyDpISn1UUAItY9oJRNjiX4kS2mayP-3rhphWe4120duJlxMwCVZsorVg3ujTHKKUyQcaQabK5EppqG-iiaiscGngVOVi7leYsJTfviEn35jFDJcSgOzA1bky4Fiyi0R-3FKbifBGaYjA3enqY3VAJWgVXnm2G3nFPK9spAT2dG004iGnisIwAexmQaueJ4ZISGwfMC3F33noj67kr5upJSu_jriEsTXituPrXWuh4gNCgEfKBHO64kyaGpFMDq-f0ZB1P1aCis0AWyqAv_Fz6XkfuADodnmyMr_R8aFLBJsNTZDlJi6DTgOFPzhTBp6whmVhZdyYJtb287PNyE3mMTkKyMJkv-hNE3EMWWCpiB20Yu4-JhTIkTH9MCZRl4IB5n_2LRKP36AgPnRnG6BD0Rvt6FKhjs2vZ5A6JtIzOpBoDKHTJ0bn_zi0UE2m0uJW5g9YWxI1dYF2ocYi9LpLTmBC2aikf9S-I7n2eg-sFje07oCBy9jFQ7pSVxAjpi4vF6Cv3CKm7yzwvjEBOpviVjq5-2u1Z8eQUKy-wbkSpV1ug5BeMBASnqFscGj4ZWwwzTnrCZBelwwgX0PzVfcwFbmUhh-YElLPPX4m3TPzJkigvTW6DrTlv302lINs7fRE8BkvefNmzfudR9pRGnNTYAyFpYoe_MyVF1lm8yr9Ov3zQrul1qmGdAnQahJeKUL2urRPbfbd_C415NFkQEOLtwSNzNYfSenu_wK-PaIn3pdufG5o1oNjRPRONrx64rR5S3sr6Cc31IoRJlxokERFPRGqNewbmCw8i_1IPcXfGvEjhQJQn1LwP7p-xi5zGSvB4pVmDst2qo1y_kem0d2o2x11Tvaus54rBzIskHpoA_Fjt4w0mmljqMvcl0Wt_zZc08JpnD9CH3oLAwkn85zCAmLZ8Tr-XRe1GpbJOcM4wX673cMVzz6q5kmrdgeH5rvQk86nxehTgdOOPx760d0FyHozH28P74Wk42OkouWsCR6VWOmymqFsHLtd_Lj1uIhkcYNxrAa24opQ7r7oCGW-F1Va01BVv3x1OUP8TDQAVnj9kXzbaaftLMNd61GSbvhkhsonv98QWfFqIC2DKAMzDZYFH9QhPQZxqEYBVxJ0hS_I7EQW7ArgI5gPzetsKS5xhNQssVavxJ6MbNKrE0T4h5ziw_Gmy3dqr5VVzQNCoxBCk0HSel7-NO8PRiaUmVVF1h7xrH4al6ZPwWF32jlkKYY46CEL2gPWyKQc7r37o71QP12PyP4umj2JjiEYhNXZaVKqFlk-825oDVp0D4xbpVMUxEn9dTLVvEMuOqcVpUCt9OO9gRea5nlR2vp9zx81ZFeQWI3gKu3kUAFM4nrPUlzcELoy8eoKG1tPo6QvqS09vh6olgSZo5Trrj7w3UrsQ_i4iEIbty8tjxF2237oLpWapjgjfMBL_ek-tL1OUzvjEZFJyewfWzlD2Mh1Xr_WFnZ0HaFXLxc8b6P6YeXwEG84974zb6fd-R4mg4OtbvyxM7MRSa0572uxZ0d_NWueDvCGLegkGQjj9tfstf6d0JwUfVWiphaPOKIfaDTP3FBmgtxkPrhvRslS5uNEAG0rq2rNaIwbewDd1KhHU80F5acIh-glnxvQOUrKi8ODjnITzmnMxbldxGU2Qfj0a7mcsa0ZfYflpANv7ePavo_pgzK0maVo3Xt2cPAd4fwpSN3uqFrWRdZdmebN1r3WJllxNYWvQCDr0-LvIpBhw5_UPPvbnWhjoJTkG_zFKZtM151q1vAE-5SxUuC3pd55w-Bm86UD8GjVKORcwgp94a7oR0YkQHQhP3Denc0TrJclLEBBlPjY0M1JYR5MaWd498LIkpwppWW0_WnvRQqnAvUF8zlxfYozSOw1uNtQnf1NtTfWumaoE6ZTJZX93L0POpnQxLDaguR0pQUpCdFFMo35wadARUdvPx3DNBzoloE0T5BUPxZJjV3m28lvQlzznK3-0AKm-frcRR470TnCQ3yadrd5okqfunNlz61PzDBRv3Dydi0sJ6tVVuVgZz9hisV4reB8Ln0k-Ank72-Dr1NVmlNotxCvMV2DgOloDJIL6f49FgCxM_ri9sFYw6BUhts4hKaVysMZHY1fnKF7i2SiyEgGEoSuNu19sPembtb-oDNdlqZhTIqUHgsfKAR61jO6mMt8IVIQgzUlNAhYTwzexKZf3p1sR6ZxpDAYPOEg4wxPhREBLI4zVMURC4sHZJ6ps16iZ4LWjD_dr3PDZR93bOtIWIhlK7RLfu-oth9seUFuVCbvg5ZVBFNiOvzwSfO8hRxxf2xXQCJZEPbPp36ltKOuGsR9zMxOnLYhkZ22hL6NeO7rkyrwc9Ji_JTNOCcWL_TyATrw3Pz9FrC_hY0SHCUpi2viHLvsSy6nHNEBIm7hFA9wiCg2npYVxESR3MPJKAhZGyzFFSNmyS2BVdcnAGHu2YWUT0didwJeYzAxosPqfpQkv0rOSKDKZ4rajzeVIh_VyNN_rIdA5rgTVZkiVbzZFJztqkkj8gIJemVk_axpWJCgi8HHBgjyZ0KIILc1dVdUxY8-d2WaTm-awL57JmksKTGxOchapWMH8fiFLLDQWVbBkgTXqhSWWGbt1YEG3YiZnff3dtHCMBilu_1OTcfqxEPG0vA-UBx7RsKzgWgvWNZl583CFfB4gkU6qvRQAz3Tvctbk0eznubMdbTbwcFlTuty5D_moKuzmL4RcA9WavQbQqyfEc5HkteAV0NJUw0AnIb2K9rCpv2n-9HAVrY7o9_hB_W-H7bekIkkGiqXeWYQg3gQDVdSq3Oet8PKjN-oCV-0_4bF6FkptkrPu15OmYTL9jxllUFlEz3xqYLvJKK7Y--IJtWA4TBoNDLOnEATKolqwF8kXywvbi1ZDwWh7tBrah-SZ-yWtFwN1q0UctSRPQh9EZP8VitJqrgTuWHD6-Dy3lUbdiirbC7chefJSED0y6mFqhhC5LsWlz_KftHHt5YIYLJt_t-3qBEbfkn2OcU3powbZmAMNNFkN9NQW5hM9jQblpUuIQeJBrF27KgLGUgHxCskfWgTzW9O9KJ6KkR54WJRyBW3GMyVECIXgMyQJ6TMIqUbCoGj0R3kofIARL-XOadQTtwEMq5GU75DGWVw36479-iVVKYolxAuYGvMkFzj9SOeWV8M2Z1DVHXPYRByidFHydeAG0A9i3HnOfxjGFwYAd1lfQlrJyyuwhjYIeVw4lu2O25NOyF4GD2NSVxDGw0pCOiHZWb2zQpadgfANmKOdbdyiOYBSMhmkxQDwyzefUfj4KLWdC4O_TRwL-X_qMpSiwPrDMEfjy1zG7ZV7_f1ofiLSrxmGn3gHlmidetBicyxxgF0rDWN0TmIyiLItfmhSIwYBcdZGlhk1sqYcdLmlYTGfOOlMwVq3t0okvlcQQW1Rg58nvBs-s85fTctW0XIIR4mkGAIVDgCwk4S3tbXOLRrjit7eOkFWjdvSU8LybXU_JT87rKmNsPmmylgQXel8fJ5PnDZKvu7PNyjRxJKfBIQMF6vgi_O4WOlllxjvue74TvRJam2PcNPGarRcA2COvOWiODCTgUo78CYT4u6N9GhLaml-QYWWNzJ0DCe-rvOhLmdnzdXyv3WbnzkIiR0SwRGvDIGHN25lgSboI5Nm8GfMydY_W2Gi790CD224id-PD8hJCyQ7-sA589Qwjii4VPDbesGuQ9dnxrl8LF37hdBC43Xw1t3t-wQ4JTi9x04Kpm2GpI=",
+        "id": "rs_0f97e1246bd4533a016b070025346487d2867c5223252032e0",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"resumo_situacao\": \"O alerta de 22/11/2026 prevê pancadas de chuva que podem causar enxurradas e alagamentos pontuais na Baixada, área identificada no plano municipal de contingência. O plano indica o Centro de Convivência do Idoso como abrigo, e uma atualização informa que o local manterá atividades regulares até 19/12/2026, com aviso prévio de 6 horas às famílias atendidas caso seja usado como abrigo. A pauta se limita a confirmar a coordenação necessária; não define uso do abrigo nem outras medidas.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de enxurrada de 22/11/2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Cenário fictício de nível amarelo; prevê pancadas de chuva de 50 a 70 mm em poucas horas, com possibilidade de enxurradas e alagamentos pontuais na Baixada.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Baixada\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Bairro apontado no alerta como local de possíveis alagamentos pontuais e identificado no plano como área de risco de inundação.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Plano de Contingência — Inundações e Enxurradas (2025)\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Plano datado de 01/09/2025 que identifica áreas de risco, abrigo, ponto de encontro e responsável pelo abrigo.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Centro de Convivência do Idoso\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": \"Secretaria de Assistência Social\",\n      \"descricao\": \"Local indicado no plano como abrigo para 100 pessoas. A atualização de 10/11/2026 informa que terá atividades regulares até 19/12/2026.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Secretaria de Assistência Social\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Secretaria de Assistência Social\",\n      \"descricao\": \"Setor indicado no plano como responsável pelo abrigo, por meio de plantão.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Famílias atendidas pelo Centro de Convivência do Idoso\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": \"Secretaria de Assistência Social\",\n      \"descricao\": \"Famílias que, segundo a atualização da Secretaria, devem receber aviso prévio de 6 horas se o Centro for usado como abrigo.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Atualização da Secretaria de Assistência Social sobre o Centro de Convivência\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"Secretaria de Assistência Social\",\n      \"descricao\": \"Comunicado de 10/11/2026 sobre atividades regulares até 19/12/2026 e suspensão mediante aviso prévio de 6 horas às famílias atendidas em caso de uso como abrigo.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta prevê possibilidade de enxurradas e alagamentos pontuais na Baixada.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-22\",\n        \"fim\": null,\n        \"observacao\": \"Cenário de alerta fictício datado de 22/11/2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"podem provocar enxurradas e alagamentos pontuais na Baixada.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E3\",\n      \"destino\": \"E2\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"O plano identifica a Baixada como área de risco de inundação.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-09-01\",\n        \"fim\": null,\n        \"observacao\": \"O documento não informa data de encerramento da vigência.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Áreas de risco de inundação: bairros Baixada e Vila Operária.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E3\",\n      \"destino\": \"E4\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O plano indica o Centro de Convivência do Idoso como abrigo para 100 pessoas.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-09-01\",\n        \"fim\": null,\n        \"observacao\": \"A atualização de 2026 trata das atividades e do aviso, mas não informa alteração da capacidade indicada no plano.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Centro de Convivência do Idoso (100 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E5\",\n      \"destino\": \"E4\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"O plano atribui à Secretaria de Assistência Social, por meio de plantão, a responsabilidade pelo abrigo.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-09-01\",\n        \"fim\": null,\n        \"observacao\": \"A atualização de 2026 não confirma se a atribuição ou o plantão permanecem iguais.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Responsável pelo abrigo: Secretaria de Assistência Social — plantão\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E7\",\n      \"destino\": \"E4\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"A atualização informa que o Centro manterá atividades regulares até 19/12/2026 e que elas serão suspensas mediante aviso prévio se houver uso como abrigo.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-10\",\n        \"fim\": \"2026-12-19\",\n        \"observacao\": \"O comunicado não informa o que ocorrerá com as atividades após 19/12/2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"O Centro de Convivência do Idoso terá atividades regulares até 19/12/2026.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Em caso de uso como abrigo, as atividades serão suspensas mediante aviso prévio de 6 horas às famílias atendidas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E7\",\n      \"destino\": \"E6\",\n      \"tipo\": \"comunica\",\n      \"rotulo\": \"A atualização prevê aviso prévio de 6 horas às famílias atendidas se o Centro for usado como abrigo.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-10\",\n        \"fim\": \"2026-12-19\",\n        \"observacao\": \"O aviso está vinculado à hipótese de uso como abrigo durante o período informado de atividades regulares.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"aviso prévio de 6 horas às famílias atendidas.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O plano de 2025 indica o Centro de Convivência do Idoso como abrigo para 100 pessoas. Em 10/11/2026, a Secretaria informou que o local terá atividades regulares até 19/12/2026 e que, se houver uso como abrigo, as atividades serão suspensas com aviso prévio de 6 horas às famílias.\",\n      \"implicacao\": \"A informação mais recente acrescenta uma condição de coordenação para o uso do local; não declara que o abrigo foi retirado do plano nem confirma que a capacidade, a responsabilidade ou o plantão foram revistos.\"\n      ,\"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Centro de Convivência do Idoso (100 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Em caso de uso como abrigo, as atividades serão suspensas mediante aviso prévio de 6 horas às famílias atendidas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T2\",\n      \"tipo\": \"pendencia_historica\",\n      \"descricao\": \"A análise tem registros de estiagem de 2023, mas eles tratam de seca e distribuição de água na zona rural, sem vínculo documentado com o alerta de enxurrada na Baixada.\",\n      \"implicacao\": \"Esses registros não fundamentam verificações para este cenário e não permitem inferir condições atuais relacionadas a enxurradas.\"\n      ,\"evidencias\": [\n        {\n          \"doc_id\": \"D4\",\n          \"trecho\": \"Entre setembro e novembro de 2023 o município enfrentou estiagem.\"\n        },\n        {\n          \"doc_id\": \"D5\",\n          \"trecho\": \"Aprovada a distribuição de cestas para produtores rurais afetados pela seca.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Se houver avaliação de uso do Centro como abrigo durante o período de atividades regulares, como será coordenado e registrado o aviso prévio de 6 horas às famílias atendidas?\",\n      \"por_que_importa\": \"A atualização prevê atividades regulares até 19/12/2026 e exige aviso prévio às famílias se o local for usado como abrigo. A confirmação ajuda a identificar a coordenação necessária sem presumir que o abrigo será ativado.\",\n      \"motivacao\": \"O Centro consta como abrigo no plano, e o comunicado mais recente acrescenta a condição de aviso prévio e suspensão das atividades.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E4\",\n        \"E6\",\n        \"E7\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Assistência Social\"\n      ],\n      \"status_epistemico\": \"fato_documentado\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Centro de Convivência do Idoso (100 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Em caso de uso como abrigo, as atividades serão suspensas mediante aviso prévio de 6 horas às famílias atendidas.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"O comunicado não especifica quem fará o aviso, por qual meio, nem como será coordenado com eventual decisão de uso do local.\",\n      \"quem_pode_confirmar\": \"Secretaria de Assistência Social, indicada como responsável pelo abrigo no plano; confirmar institucionalmente a coordenação do aviso.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"A Secretaria de Assistência Social continua responsável pelo abrigo por meio do plantão indicado no plano de 2025, e esse plantão é o canal vigente para coordenar eventual uso do Centro?\",\n      \"por_que_importa\": \"A atribuição está registrada no plano de 2025, mas o comunicado de 2026 não a confirma nem informa se houve mudança. Confirmar o responsável evita apoiar a coordenação em uma atribuição que pode não estar atualizada.\",\n      \"motivacao\": \"Há uma atribuição de responsabilidade no plano anterior e uma atualização posterior sobre o funcionamento do mesmo local, sem menção ao responsável ou ao plantão.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E3\",\n        \"E4\",\n        \"E5\",\n        \"E7\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Assistência Social\",\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Responsável pelo abrigo: Secretaria de Assistência Social — plantão\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"O Centro de Convivência do Idoso terá atividades regulares até 19/12/2026.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a atribuição de 2025 e o plantão permanecem vigentes em 22/11/2026 e como se articulam com o aviso às famílias.\",\n      \"quem_pode_confirmar\": \"Secretaria de Assistência Social e COMPDEC, setores citados nos documentos; a confirmação da atribuição atual depende de validação institucional.\",\n      \"prioridade\": \"media\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Os documentos não informam se o Centro será utilizado como abrigo neste cenário, nem quem decide ou aciona seu uso.\",\n      \"por_que_importa\": \"Sem essa informação, não é possível concluir que as atividades serão suspensas ou que o aviso às famílias precisa ser iniciado.\"\n    },\n    {\n      \"descricao\": \"Não há confirmação posterior a 2025 da capacidade de 100 pessoas ou da atualidade da responsabilidade e do plantão indicados no plano.\",\n      \"por_que_importa\": \"O plano fornece essas informações, mas os documentos disponíveis não registram sua revisão ou confirmação em 2026.\"\n    },\n    {\n      \"descricao\": \"O comunicado não descreve como avisar as famílias atendidas nem informa a situação das atividades após 19/12/2026.\",\n      \"por_que_importa\": \"Esses detalhes limitam a avaliação da coordenação caso o uso do local seja considerado durante ou após o período de atividades regulares.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O alerta é um cenário fictício de nível amarelo e descreve possibilidade de impactos pontuais na Baixada; a análise não amplia esse cenário para outros bairros.\",\n    \"A inclusão do Centro no plano não significa que seu uso como abrigo tenha sido decidido para este alerta.\",\n    \"A atualização de 2026 acrescenta condições relativas às atividades e ao aviso às famílias, mas não substitui automaticamente as demais informações do plano de 2025.\",\n    \"Os registros de estiagem de 2023 não foram usados para propor verificações sobre enxurradas, pois os documentos não estabelecem vínculo com o alerta atual.\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0f97e1246bd4533a016b0700254ec087d28709151ead0c2441",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "all_turns",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2308,
+      "input_tokens_details": {
+        "cache_write_tokens": 514,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 514
+        },
+        "cached_tokens": 1791
+      },
+      "output_tokens": 3968,
+      "output_tokens_details": {
+        "reasoning_tokens": 487
+      },
+      "total_tokens": 6276
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\n  \"resumo_situacao\": \"O alerta de 22/11/2026 prevê pancadas de chuva que podem causar enxurradas e alagamentos pontuais na Baixada, área identificada no plano municipal de contingência. O plano indica o Centro de Convivência do Idoso como abrigo, e uma atualização informa que o local manterá atividades regulares até 19/12/2026, com aviso prévio de 6 horas às famílias atendidas caso seja usado como abrigo. A pauta se limita a confirmar a coordenação necessária; não define uso do abrigo nem outras medidas.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de enxurrada de 22/11/2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Cenário fictício de nível amarelo; prevê pancadas de chuva de 50 a 70 mm em poucas horas, com possibilidade de enxurradas e alagamentos pontuais na Baixada.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Baixada\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Bairro apontado no alerta como local de possíveis alagamentos pontuais e identificado no plano como área de risco de inundação.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Plano de Contingência — Inundações e Enxurradas (2025)\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Plano datado de 01/09/2025 que identifica áreas de risco, abrigo, ponto de encontro e responsável pelo abrigo.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Centro de Convivência do Idoso\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": \"Secretaria de Assistência Social\",\n      \"descricao\": \"Local indicado no plano como abrigo para 100 pessoas. A atualização de 10/11/2026 informa que terá atividades regulares até 19/12/2026.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Secretaria de Assistência Social\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Secretaria de Assistência Social\",\n      \"descricao\": \"Setor indicado no plano como responsável pelo abrigo, por meio de plantão.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Famílias atendidas pelo Centro de Convivência do Idoso\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": \"Secretaria de Assistência Social\",\n      \"descricao\": \"Famílias que, segundo a atualização da Secretaria, devem receber aviso prévio de 6 horas se o Centro for usado como abrigo.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Atualização da Secretaria de Assistência Social sobre o Centro de Convivência\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"Secretaria de Assistência Social\",\n      \"descricao\": \"Comunicado de 10/11/2026 sobre atividades regulares até 19/12/2026 e suspensão mediante aviso prévio de 6 horas às famílias atendidas em caso de uso como abrigo.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta prevê possibilidade de enxurradas e alagamentos pontuais na Baixada.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-22\",\n        \"fim\": null,\n        \"observacao\": \"Cenário de alerta fictício datado de 22/11/2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"podem provocar enxurradas e alagamentos pontuais na Baixada.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E3\",\n      \"destino\": \"E2\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"O plano identifica a Baixada como área de risco de inundação.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-09-01\",\n        \"fim\": null,\n        \"observacao\": \"O documento não informa data de encerramento da vigência.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Áreas de risco de inundação: bairros Baixada e Vila Operária.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E3\",\n      \"destino\": \"E4\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O plano indica o Centro de Convivência do Idoso como abrigo para 100 pessoas.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-09-01\",\n        \"fim\": null,\n        \"observacao\": \"A atualização de 2026 trata das atividades e do aviso, mas não informa alteração da capacidade indicada no plano.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Centro de Convivência do Idoso (100 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E5\",\n      \"destino\": \"E4\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"O plano atribui à Secretaria de Assistência Social, por meio de plantão, a responsabilidade pelo abrigo.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-09-01\",\n        \"fim\": null,\n        \"observacao\": \"A atualização de 2026 não confirma se a atribuição ou o plantão permanecem iguais.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Responsável pelo abrigo: Secretaria de Assistência Social — plantão\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E7\",\n      \"destino\": \"E4\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"A atualização informa que o Centro manterá atividades regulares até 19/12/2026 e que elas serão suspensas mediante aviso prévio se houver uso como abrigo.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-10\",\n        \"fim\": \"2026-12-19\",\n        \"observacao\": \"O comunicado não informa o que ocorrerá com as atividades após 19/12/2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"O Centro de Convivência do Idoso terá atividades regulares até 19/12/2026.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Em caso de uso como abrigo, as atividades serão suspensas mediante aviso prévio de 6 horas às famílias atendidas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E7\",\n      \"destino\": \"E6\",\n      \"tipo\": \"comunica\",\n      \"rotulo\": \"A atualização prevê aviso prévio de 6 horas às famílias atendidas se o Centro for usado como abrigo.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-10\",\n        \"fim\": \"2026-12-19\",\n        \"observacao\": \"O aviso está vinculado à hipótese de uso como abrigo durante o período informado de atividades regulares.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"aviso prévio de 6 horas às famílias atendidas.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O plano de 2025 indica o Centro de Convivência do Idoso como abrigo para 100 pessoas. Em 10/11/2026, a Secretaria informou que o local terá atividades regulares até 19/12/2026 e que, se houver uso como abrigo, as atividades serão suspensas com aviso prévio de 6 horas às famílias.\",\n      \"implicacao\": \"A informação mais recente acrescenta uma condição de coordenação para o uso do local; não declara que o abrigo foi retirado do plano nem confirma que a capacidade, a responsabilidade ou o plantão foram revistos.\"\n      ,\"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Centro de Convivência do Idoso (100 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Em caso de uso como abrigo, as atividades serão suspensas mediante aviso prévio de 6 horas às famílias atendidas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T2\",\n      \"tipo\": \"pendencia_historica\",\n      \"descricao\": \"A análise tem registros de estiagem de 2023, mas eles tratam de seca e distribuição de água na zona rural, sem vínculo documentado com o alerta de enxurrada na Baixada.\",\n      \"implicacao\": \"Esses registros não fundamentam verificações para este cenário e não permitem inferir condições atuais relacionadas a enxurradas.\"\n      ,\"evidencias\": [\n        {\n          \"doc_id\": \"D4\",\n          \"trecho\": \"Entre setembro e novembro de 2023 o município enfrentou estiagem.\"\n        },\n        {\n          \"doc_id\": \"D5\",\n          \"trecho\": \"Aprovada a distribuição de cestas para produtores rurais afetados pela seca.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Se houver avaliação de uso do Centro como abrigo durante o período de atividades regulares, como será coordenado e registrado o aviso prévio de 6 horas às famílias atendidas?\",\n      \"por_que_importa\": \"A atualização prevê atividades regulares até 19/12/2026 e exige aviso prévio às famílias se o local for usado como abrigo. A confirmação ajuda a identificar a coordenação necessária sem presumir que o abrigo será ativado.\",\n      \"motivacao\": \"O Centro consta como abrigo no plano, e o comunicado mais recente acrescenta a condição de aviso prévio e suspensão das atividades.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E4\",\n        \"E6\",\n        \"E7\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Assistência Social\"\n      ],\n      \"status_epistemico\": \"fato_documentado\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Centro de Convivência do Idoso (100 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Em caso de uso como abrigo, as atividades serão suspensas mediante aviso prévio de 6 horas às famílias atendidas.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"O comunicado não especifica quem fará o aviso, por qual meio, nem como será coordenado com eventual decisão de uso do local.\",\n      \"quem_pode_confirmar\": \"Secretaria de Assistência Social, indicada como responsável pelo abrigo no plano; confirmar institucionalmente a coordenação do aviso.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"A Secretaria de Assistência Social continua responsável pelo abrigo por meio do plantão indicado no plano de 2025, e esse plantão é o canal vigente para coordenar eventual uso do Centro?\",\n      \"por_que_importa\": \"A atribuição está registrada no plano de 2025, mas o comunicado de 2026 não a confirma nem informa se houve mudança. Confirmar o responsável evita apoiar a coordenação em uma atribuição que pode não estar atualizada.\",\n      \"motivacao\": \"Há uma atribuição de responsabilidade no plano anterior e uma atualização posterior sobre o funcionamento do mesmo local, sem menção ao responsável ou ao plantão.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E3\",\n        \"E4\",\n        \"E5\",\n        \"E7\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Assistência Social\",\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Responsável pelo abrigo: Secretaria de Assistência Social — plantão\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"O Centro de Convivência do Idoso terá atividades regulares até 19/12/2026.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a atribuição de 2025 e o plantão permanecem vigentes em 22/11/2026 e como se articulam com o aviso às famílias.\",\n      \"quem_pode_confirmar\": \"Secretaria de Assistência Social e COMPDEC, setores citados nos documentos; a confirmação da atribuição atual depende de validação institucional.\",\n      \"prioridade\": \"media\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Os documentos não informam se o Centro será utilizado como abrigo neste cenário, nem quem decide ou aciona seu uso.\",\n      \"por_que_importa\": \"Sem essa informação, não é possível concluir que as atividades serão suspensas ou que o aviso às famílias precisa ser iniciado.\"\n    },\n    {\n      \"descricao\": \"Não há confirmação posterior a 2025 da capacidade de 100 pessoas ou da atualidade da responsabilidade e do plantão indicados no plano.\",\n      \"por_que_importa\": \"O plano fornece essas informações, mas os documentos disponíveis não registram sua revisão ou confirmação em 2026.\"\n    },\n    {\n      \"descricao\": \"O comunicado não descreve como avisar as famílias atendidas nem informa a situação das atividades após 19/12/2026.\",\n      \"por_que_importa\": \"Esses detalhes limitam a avaliação da coordenação caso o uso do local seja considerado durante ou após o período de atividades regulares.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O alerta é um cenário fictício de nível amarelo e descreve possibilidade de impactos pontuais na Baixada; a análise não amplia esse cenário para outros bairros.\",\n    \"A inclusão do Centro no plano não significa que seu uso como abrigo tenha sido decidido para este alerta.\",\n    \"A atualização de 2026 acrescenta condições relativas às atividades e ao aviso às famílias, mas não substitui automaticamente as demais informações do plano de 2025.\",\n    \"Os registros de estiagem de 2023 não foram usados para propor verificações sobre enxurradas, pois os documentos não estabelecem vínculo com o alerta atual.\"\n  ]\n}"
+  }
+}

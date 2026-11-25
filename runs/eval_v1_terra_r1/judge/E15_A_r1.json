@@ -1,0 +1,118 @@
+{
+  "run_file": "E15_A_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-6.1-terra",
+    "reasoning_effort": "medium",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_006de41358cc0ebe016b070020a3f087d2bf31bdc3d8a9defb",
+  "model_reported": "gpt-6.1-terra",
+  "usage": {
+    "input_tokens": 5377,
+    "output_tokens": 1681,
+    "reasoning_tokens": 873
+  },
+  "latency_ms": 40356,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V2",
+          "V3"
+        ],
+        "justificativa": "V2 verifica combustível disponível no posto e V3 menciona combustível dos geradores, mas não verificam estoque de diesel de reserva nem fornecedor alternativo."
+      },
+      {
+        "id": "G2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V6"
+        ],
+        "justificativa": "V1 verifica a operação e o acesso ao Posto Central durante o alerta; V6 aborda o acesso para abastecimento."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V3",
+          "R1",
+          "R2",
+          "R3",
+          "R5",
+          "R6",
+          "R7",
+          "R8",
+          "R9"
+        ],
+        "justificativa": "Em conjunto, a saída conecta a possível inundação da avenida ao posto e ao abastecimento de máquinas e dos geradores dos três locais."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "ausente",
+        "ids_saida": [],
+        "justificativa": "A saída não menciona a recomendação de 2024 nem sua ausência no plano de 2025."
+      }
+    ],
+    "gold_insuficiente": [],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída trata a inundação da avenida como possibilidade e não afirma que o posto ficará inundado."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Verifica a operação e a acessibilidade do Posto Central durante o alerta, conforme G2."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Aborda parcialmente G1 ao verificar combustível disponível para os geradores, embora apenas no ponto previsto pelo plano."
+      },
+      {
+        "id": "V3",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Menciona de passagem a disponibilidade de combustível para os geradores, cobrindo parcialmente G1."
+      },
+      {
+        "id": "V4",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "Verifica exposição e acesso dos três locais com geradores diante da área do alerta."
+      },
+      {
+        "id": "V5",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "Verifica a vigência do contrato citado no plano, relevante para o abastecimento."
+      },
+      {
+        "id": "V6",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Aborda o acesso ao posto para manter o abastecimento durante o alerta, questão de G2."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "V3.por_que_importa e V4.por_que_importa",
+        "afirmacao": "Os três locais são dependentes de geradores."
+      },
+      {
+        "onde": "R12.rotulo",
+        "afirmacao": "O alerta aciona o plano logístico anterior."
+      }
+    ]
+  }
+}

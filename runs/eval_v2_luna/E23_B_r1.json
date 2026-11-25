@@ -1,0 +1,1017 @@
+{
+  "meta": {
+    "scenario": "E23",
+    "condicao": "B",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v2_luna",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D3",
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 1062,
+    "user_message_sha12": "cdd650631615"
+  },
+  "user_message": "Município (fictício): Vale do Sossego\nData de referência da análise: 2026-11-23\nDocumentos disponíveis (3), em ordem cronológica:\n\n### [D3] Relatório — perdas no Depósito Central (2024)\nTipo: Relatório de ocorrência | Fonte: Secretaria de Educação | Data: 2024-05-24\n\nO Depósito Central da Educação teve 40 cm de água. Foram perdidas 2,3 toneladas de alimentos armazenados no chão. Recomendação: estrados e prateleiras elevadas.\n\n---\n\n### [D1] Plano de Contingência (2025)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2025-10-15\n\nAlimentos para abrigos: estoque da merenda escolar no Depósito Central da Educação (Rua Baixa, 12), liberado pela Educação mediante solicitação.\nAbrigo: Ginásio Sossego (110 pessoas).\n\n---\n\n### [D2] Alerta de alagamento (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-23\n\nNÍVEL: LARANJA. Alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_0892ecd1343ea08f016b07003c895487d2967a7c4e424dba72",
+  "model_reported": "gpt-6-luna",
+  "usage": {
+    "input_tokens": 2102,
+    "output_tokens": 3970,
+    "reasoning_tokens": 325
+  },
+  "latency_ms": 24302,
+  "started_at": "2026-11-25T15:35:24.339Z",
+  "output": {
+    "resumo_situacao": "O alerta de 2026 inclui a Rua Baixa, onde o Plano de Contingência localiza o Depósito Central da Educação, que guarda alimentos para abrigos. Um relatório de 2024 registra perdas por água no depósito e recomenda elevar os alimentos, mas os documentos não informam se a recomendação foi implementada. A pauta abaixo identifica pontos para confirmação humana, sem presumir danos ou indisponibilidade atuais.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Alerta de alagamento de 2026",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Cenário fictício de alerta que indica alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores."
+      },
+      {
+        "id": "E2",
+        "nome": "Depósito Central da Educação",
+        "tipo": "infraestrutura",
+        "setor_responsavel": "Secretaria de Educação",
+        "descricao": "Local de armazenamento do estoque de merenda escolar destinado a alimentos para abrigos; situado na Rua Baixa, 12, segundo o plano."
+      },
+      {
+        "id": "E3",
+        "nome": "Estoque de merenda escolar para abrigos",
+        "tipo": "recurso",
+        "setor_responsavel": "Secretaria de Educação",
+        "descricao": "Alimentos armazenados no Depósito Central e liberados pela Educação mediante solicitação."
+      },
+      {
+        "id": "E4",
+        "nome": "Rua Baixa",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Via onde o Plano de Contingência situa o Depósito Central; está incluída na área mencionada pelo alerta."
+      },
+      {
+        "id": "E5",
+        "nome": "Ginásio Sossego",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Abrigo indicado no Plano de Contingência, com capacidade registrada de 110 pessoas."
+      },
+      {
+        "id": "E6",
+        "nome": "Secretaria de Educação",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Setor que, segundo o plano, libera os alimentos para abrigos mediante solicitação."
+      },
+      {
+        "id": "E7",
+        "nome": "COMPDEC",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Fonte do Plano de Contingência de 2025."
+      },
+      {
+        "id": "E8",
+        "nome": "Pessoas atendidas pelo abrigo",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": null,
+        "descricao": "Grupo relacionado à capacidade declarada do Ginásio Sossego; os documentos não informam ocupação atual."
+      },
+      {
+        "id": "E9",
+        "nome": "Recomendação de elevar alimentos em estrados e prateleiras",
+        "tipo": "norma_documento",
+        "setor_responsavel": "Secretaria de Educação",
+        "descricao": "Recomendação registrada após perdas de alimentos no Depósito Central em 2024."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E4",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta inclui a Rua Baixa na área com alagamentos prováveis.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-23",
+          "fim": null,
+          "observacao": "Cenário de alerta datado de 2026-11-23."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E2",
+        "destino": "E4",
+        "tipo": "localizado_em",
+        "rotulo": "O Depósito Central fica na Rua Baixa, 12.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-10-15",
+          "fim": null,
+          "observacao": "Localização registrada no Plano de Contingência; não há confirmação posterior nos documentos."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "no Depósito Central da Educação (Rua Baixa, 12)"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E2",
+        "destino": "E3",
+        "tipo": "armazena",
+        "rotulo": "O depósito guarda o estoque de merenda indicado para alimentos de abrigos.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-10-15",
+          "fim": null,
+          "observacao": "O plano registra essa destinação; não informa o estoque atual."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Alimentos para abrigos: estoque da merenda escolar no Depósito Central da Educação"
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E6",
+        "destino": "E3",
+        "tipo": "responsavel_por",
+        "rotulo": "A Educação libera os alimentos mediante solicitação.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-10-15",
+          "fim": null,
+          "observacao": "Procedimento descrito no plano, sem atualização posterior fornecida."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "liberado pela Educação mediante solicitação."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E3",
+        "destino": "E5",
+        "tipo": "abastece",
+        "rotulo": "O estoque está previsto para fornecer alimentos a abrigos, incluindo o abrigo indicado no plano.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2025-10-15",
+          "fim": null,
+          "observacao": "O plano relaciona alimentos para abrigos e indica o Ginásio Sossego como abrigo; não afirma expressamente que o estoque se destina especificamente a esse ginásio."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Alimentos para abrigos: estoque da merenda escolar no Depósito Central da Educação"
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Ginásio Sossego (110 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E5",
+        "destino": "E8",
+        "tipo": "atende",
+        "rotulo": "O ginásio tem capacidade registrada para 110 pessoas; a ocupação atual não consta.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-10-15",
+          "fim": null,
+          "observacao": "Capacidade declarada no plano, não confirmação de ocupação."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Ginásio Sossego (110 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E9",
+        "destino": "E2",
+        "tipo": "outro",
+        "rotulo": "A recomendação de elevar os alimentos foi feita após perdas ocorridas no depósito.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-05-24",
+          "fim": null,
+          "observacao": "Os documentos não registram se a recomendação foi implementada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Recomendação: estrados e prateleiras elevadas."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "pendencia_historica",
+        "descricao": "Em 2024 houve entrada de água no Depósito Central e perda de alimentos armazenados no chão; o relatório recomendou estrados e prateleiras elevadas. Não há registro de implementação da recomendação nos documentos fornecidos.",
+        "implicacao": "Como o alerta atual inclui a Rua Baixa e o plano situa ali o depósito, é pertinente confirmar a condição atual de armazenamento. O episódio de 2024 não comprova que o problema persista.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Foram perdidas 2,3 toneladas de alimentos armazenados no chão."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Recomendação: estrados e prateleiras elevadas."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "no Depósito Central da Educação (Rua Baixa, 12)"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "incluindo a Rua Baixa e a Av. das Flores."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "atualizacao",
+        "descricao": "O plano de 2025 identifica o depósito como fonte de alimentos para abrigos e estabelece liberação pela Educação mediante solicitação. O alerta de 2026 acrescenta que a Rua Baixa está entre as vias com alagamentos prováveis; não atualiza o procedimento de liberação nem informa condições de acesso ao depósito.",
+        "implicacao": "Convém confirmar se o procedimento e o acesso permitem atender a necessidade de alimentos, sem presumir que a via ou o depósito já estejam comprometidos.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "liberado pela Educação mediante solicitação."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "A recomendação de armazenar os alimentos em estrados e prateleiras elevadas foi implementada no Depósito Central e qual é a condição atual do estoque?",
+        "por_que_importa": "O relatório registrou perdas de alimentos armazenados no chão e recomendou elevá-los; o alerta atual inclui a rua onde o plano situa o depósito.",
+        "motivacao": "Perdas e recomendação documentadas em 2024, combinadas com a localização do depósito na Rua Baixa e o alerta de 2026.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E4",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "Secretaria de Educação"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Foram perdidas 2,3 toneladas de alimentos armazenados no chão."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Recomendação: estrados e prateleiras elevadas."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "no Depósito Central da Educação (Rua Baixa, 12)"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "incluindo a Rua Baixa e a Av. das Flores."
+          }
+        ],
+        "o_que_falta_saber": "Se a recomendação foi executada, como os alimentos estão armazenados atualmente e qual é a condição do estoque.",
+        "quem_pode_confirmar": "Secretaria de Educação, responsável pelo estoque segundo o Plano de Contingência.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "Diante do alerta que inclui a Rua Baixa, o acesso ao Depósito Central e a liberação de alimentos pela Educação mediante solicitação estão operacionais para a necessidade prevista?",
+        "por_que_importa": "O depósito fica em uma via incluída no alerta e é a fonte de alimentos para abrigos indicada no plano; os documentos não dizem se o acesso ou a liberação estão afetados.",
+        "motivacao": "A combinação entre a localização do depósito, o procedimento de liberação previsto no plano e a área indicada no alerta.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E4",
+          "E5",
+          "E6",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "Secretaria de Educação",
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Alimentos para abrigos: estoque da merenda escolar no Depósito Central da Educação"
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "liberado pela Educação mediante solicitação."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores."
+          }
+        ],
+        "o_que_falta_saber": "Se o acesso ao depósito e o procedimento de solicitação e liberação podem ser realizados nas condições atuais; os documentos não descrevem rotas, impedimentos ou alternativas.",
+        "quem_pode_confirmar": "Secretaria de Educação e COMPDEC, conforme suas atribuições documentadas; a divisão operacional entre os setores depende de confirmação institucional.",
+        "prioridade": "alta"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há atualização sobre a implementação da recomendação de elevar os alimentos, nem informação sobre a condição atual do depósito e do estoque.",
+        "por_que_importa": "Esses dados permitem avaliar se a vulnerabilidade registrada em 2024 foi tratada e se os alimentos previstos para abrigos podem ser utilizados."
+      },
+      {
+        "descricao": "Não há informação sobre acesso ao Depósito Central durante o cenário descrito no alerta, nem atualização do procedimento de solicitação e liberação.",
+        "por_que_importa": "O plano depende desse depósito e da liberação pela Educação, enquanto o alerta inclui a via onde ele está situado."
+      },
+      {
+        "descricao": "Não há dados sobre a ocupação atual do Ginásio Sossego ou sobre a quantidade de alimentos atualmente disponível.",
+        "por_que_importa": "A capacidade de 110 pessoas e a existência de um estoque previsto no plano não informam a demanda nem a disponibilidade atuais."
+      }
+    ],
+    "cautelas": [
+      "O relatório de 2024 comprova perdas naquele evento, mas não demonstra que o depósito esteja atualmente vulnerável ou que a recomendação tenha sido ignorada.",
+      "O alerta descreve alagamentos prováveis; não confirma que a Rua Baixa esteja alagada nem que o depósito esteja inacessível.",
+      "O Plano de Contingência é de 2025 e o alerta é de 2026, mas o alerta não declara alteração do procedimento de liberação de alimentos.",
+      "A capacidade de 110 pessoas no plano não deve ser interpretada como ocupação atual do abrigo."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 9,
+    "n_relacoes": 7,
+    "n_verificacoes": 2,
+    "n_temporais": 2,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D2",
+        "trecho": "Alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "no Depósito Central da Educação (Rua Baixa, 12)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Alimentos para abrigos: estoque da merenda escolar no Depósito Central da Educação",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "liberado pela Educação mediante solicitação.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Alimentos para abrigos: estoque da merenda escolar no Depósito Central da Educação",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Ginásio Sossego (110 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Ginásio Sossego (110 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Recomendação: estrados e prateleiras elevadas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Foram perdidas 2,3 toneladas de alimentos armazenados no chão.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Recomendação: estrados e prateleiras elevadas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "no Depósito Central da Educação (Rua Baixa, 12)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "incluindo a Rua Baixa e a Av. das Flores.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "liberado pela Educação mediante solicitação.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Foram perdidas 2,3 toneladas de alimentos armazenados no chão.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Recomendação: estrados e prateleiras elevadas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "no Depósito Central da Educação (Rua Baixa, 12)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "incluindo a Rua Baixa e a Av. das Flores.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Alimentos para abrigos: estoque da merenda escolar no Depósito Central da Educação",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "liberado pela Educação mediante solicitação.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      }
+    ],
+    "n_citacoes": 21,
+    "n_citacoes_literais": 21,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795620948,
+    "created_at": 1795620924,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_0892ecd1343ea08f016b07003c895487d2967a7c4e424dba72",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-6-luna",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBwA_Ajww6RiUwNa0QOGcctI9TS5iIIEjP98FG0XNJCya2nCKPDuZcQQrj7BHRjmvq9ZawuVSCkR80b_pjR6uDONulcy3BoiNqk2tS-cmQpFDCeXQwkue8mc3t5vc4VvOHh9aGEH3gUE5t7HiJ-J3J-cGnuQ8y43ZISkYQoYXzxpBsTJyu1KUEUmcwcE74ZkKdXTHRmE5qwdbvpaP6GI8rkAsYuycuNbxzw1Urjgs8jHPi9KTAKOy5ktVAOV1KbjRTNimA6jIBMzCn_jG-xD0auCiMQ5NJnIMUmh8i0Q69B8NqbL2o0pl08VMxi9DUgVJc497hBZGcVk8YjStjS_mAHXwBqN0JH2nplOkjnEsuT9anfiyniIQZZoQcRn0KlaQzkQMXAxsTUXJLRH30-ZTdoCac7cAp0HbsqsdWo8exAKNqXjl6S9vyr2OrnXKmWq0-DpzBSBD61kN-I1ynrE73BFfLBgRxuWFpJaVTgqOaWrvNW6CJ4pZ8TYuQitcnty6iax0YsVidNSJWgFLtQTBH9ha8e7vdR6RD4jZsKj9kqvTYz8pXhhqrTYTSZuAkI2-ciVeC6GMIvkyooQ2ZOVGyL_8xRkxOXl6quQADPFUTuhnPRFjkA4DtPQrJx1vGL2U4FIz8SLm369CiaQuZlcIrI9N5iFlVMObLjS-h0wO2-yMfPoAP73RTe66OZ0FKjyoZWs7oCnTAHiH-zGe9h7DLIu7Mkz3dR_qvMQFNcIEhm1XwXxChCFCAhaGICTQ8QPmO4QY9AHrnF9YHVGf3qawWF_CQZ4br9vogAyT_r9XX9KuP3dZh4gdojXNxK8zoXPlV8crgxA4e_1_yELj3XTyhNOI3riMmFbBhFhRJbcI6i8o5_TI58IBVeExHmqpRK6UO7YdSBuarVS5xm9XUrbpaY9GT6yjS29C79YEy-bHa13hkx8WlATizFFP6yGVyTIvb8n32T2sjZOb43HQQFmPp8aWJ3mS9lS0jfh_YpozmtK_fGF4DhG8Tje3lGGsf5wG77eVHriR05r6TOlXfgqIUFHKSldXJGNwKBUIFqW9uHqztIxRP003YmBd3rkuJ_2H74oCJNlKvxqhejQbhwPemwq2UtJIq-_mWc1VjwBble-08rMz9chGZooe45wts9eESlt02wdhWmjfHlaK9J0ULYf6V_eEkhB2ZaH8e6ak1rF080XcwB-VPWXuL3HJcLn-RvXR6uYVJjrxJpgwfu4NNuy6tp019QVKhS1ydf5iPWD_OeBGOV3ylS5OAZFOifnCO8RaMhBLqwiQSKULprnjSrvQngMXka46Mjfd6ev4lwsmznAALUqMk-zRRmMqDUceSkP7hpPQe-cZeL2b312eHWK4u745frdgtIpLzCojbZfxZ7hR4Y1TJDAPCKrgSWgbUBPlr9fA_4I-IlG1f5HNMbh8EKCLVOuMSZb3zXlRsp4qQ02Wn9FJjkpL4dBfRXxWNDl1ta60Csd5dgZHfdFEZDwM13CJ7iFxNqlcoyGBM_gSLrK33hNRxXNO1-W3i81Xx9S2FrOIpt5Cc8n7vn9NgKHZeVNl3pGjUPxPIctvcjpov4gmsjJzGQ_rBcos2wbc6T9IUbpimuRa_UcQlehDdIsgxghqX-lQq15vEefN2SRmyBRuJm7fxwwU8CerQ9Qt2KJ8lNKoqubwHKvP10JxFUpG5l3LyEvVq-KUqoNnZzONnjdD2BRuKYlxy0bvTD_y_uHeywDGDHvqJDOUurtNmv-GhsNl-ZtDvszV5CVlUCvAvfnEa_rz8xqmI1kKvebGFZvpAXB8OOz9TIMy2jdwIXamm2Clk_d2MOaFh-haUuWHtkV9xEw0jPdLYtWsE8Ga15x0VIjHJUS_Z6TkZi_Fw-fntbkkWDSga5cFm6VJVeI4x6dlLoe-28tTtj7bHRAijD-i0DSqWGtkBmfa77mXlCb7e1K5sp6zRLV4bMqu0LKp0Iyk3uDbw0wZ2txR-djmQ8Z3nzlT8GnW8uPDL9bFH1pkXJfzgzkVBmOCv0SuXP-FgAp2j3Wlvso0YflxM3KXiLnBQmrhH6NyDizLepPbzXt6HtaZ7mGp8F6BgmC6dp904pM5gqytE38VIh6RxlABHFQ4w8_RmefR-YTbB3tGd0JOQslkqOIc9zAU5FzhriV71-U6iabCBPwt9SUok6wawbsDv792T4pOqN5lI30OT3kBe_yV0FW92NRf6kQw7zO5BIKar5tlS91JcRezERQfyj8y2ro4MoPE_ydhM-r_I_Xf2K91tz2V4mICI2gVTWACsCNyQ1U7g0ayB00Mnis4t7L_2YRELTy0crLtDsWR6h8f2lkvfQgkk3_WEGLvigr_PjfuCL02l4gvHJhKyu_HG-mjCaHAMvLxKtqJG9jRAXTK_q-_OwbETWriD2oG4BmZ4ZGG_A1NfOSV1_gcXyTPGZd-Z7--ZmQMCejmqz3_Y6PdxQbpxMakgxIZwomEsoHiBYGxuMN3t1bpKBY7_ziv9TeiwtJo7boF1cYNwvxmpqfNQqaxciTf2p3_16dbYRpn2KbXqu5GeE_7rIs4h6dvFyhc8l9fI7HEMhzcd-LRlQ1ixmzIBmc3FqUxCFd8zmVk9ztaE8pvyRfIPnz09h6FEyTzLy5oDa4EKVdz660eky0DpQUFnVVZApT09M3jX6RF5XSsC3QMwlOCiPQX8it2Px0Vy1GHaem9cEsYn9KUr0k_a6gwj_vR7H_4UgQ_NMuEufbvduZsBiET1iu7Mrc4umAKzLmHRc6oBpw2DGi5pdboRpgx0VTdUUxUFBLF3YGMjRj_9hTv6WVteQaRJjCg5lxkeQI-WnI8MGDirYCeIi5jA2FXt0LMBR0598jz-4FbCZgERYoTNENuIB73eJZd3yAZzkqwuFrc0yLdg-MkmhmTOibU3ssWh0F2pceQzqZJ1QW_8c4e24UHMHizV8Qb9jl5ru2cnpekLRUhVNnEzojzf__Ck2_iIwrF0b0NQt9qboz3c1M22NyTsslJ4XQHfSK-S0ZmLib2LF3sU9r5_jMWDRISBwDJga_M6mVwNT6grJ3-XCPl-vCz1hPNvczncx3fvDEGwenvbGo2uBsDaOZ5DmCf-gDHCN3ZOivFY9M4P_YXV-W9h_Izdi9hV2162MHzPFx-9aqQBBzP-42iEDnQDdR8LJtSZL8_sHpMM1V876Jovl3x4N-1_3YTqq4yQEQQcRWyl-yn98qu5Lpn1Lop3utLLTynIKtqzLsA7XZuP9ItiUvdReskn3uRP3Nw7Pe7xcfmComT-jYGsiv9zFMdr8yRgVmIuH2biitWiwvYNKP-zEPOI0wKBOHG6emL5Vqyk_NPJza8vtDTb6W5OjUcCCitTmSu8jzaD4HAQBeTxEdjUmaLxzw3c1NLZoJWqbrE1YfeIuSzcClmbdN87lhoIkAjTRf2NzZLa3f2GNrRzIsYXAIHRrHHkBYZnarYxr07ELdVB6lfonjx5wp6wRHTG9i4bzYd1q_qhJIOuvee8wyucm0Ii4wkmgG_DgVW80axkuauMiEJCzeK8-a9Q0aUYC6wQLAaT2NZihBBcTmOZH04coFcxm8BuKeMvoxoT2Xl_5pxqdvwimomuj2O88aXNLr7Sk0YppYIo3qD-ungPC_0Op80gktfcMKCgeUOIEsWH6R_7078K1CalHigVLrbpdhoczRvoci8_ZFE8lTjLrB7SbMgav7M7xL-vVV-gAKKV_yrr5SUx_82Yn6nxLcsoRloKVo5AiRQnLPx5_EPv2OCRz5PmYyjTuXcCq8KCtvMIoM36kdn6Pl9LDuJliuF4ZX-NWRNNmPQN0qj-6P6O-4JL502Q_g23tS0Kaw1-okID9-w_Ko1qhmnvxrbN2QtNF15Q9oTTAl868075x4b9hqjxatakNfzPPZ3tdNNPS9gXQO0xiYEZOpeVfiX_piDH0w-z1P6PEtfi3xQ1fStk8uFu3_RH3oJqS5ns1cMeD6fIWSGA_LG552dl7Ps8ciMR3PxgTiJeokllQ8BfeWvaKYURG1jT6OobH2IiuS6OKt2XYTJoGDv0NCsBqnBpspzzlhBNJmSdliTDD-y3kBCZRCFvn1Nqu6F8-Vy2j707HtVqdlrXguszHMyFq65zUvPpOeMiMt4K75vBS2xKRQ7ZQuORqdi_V_SNLoSVw-u_BDTrNKDhacCK4gxSzsVqfit7vWY1bp63Lw1j9s0Z-KdvpLQyS1lvp4bFiePTKPzxwRD1-FI8MQq99fpk-1ygVJ5xRRWbc_16dDjAoZIt655l9ipWLrP1O6oLROMBwrQNHQSBPb1ddav4POqDr-wGikJNn-Y9igbDiIYlclACZWP8sHeQvhj5nqA3Qa5wndJFL56ijmZmLgEYN1Kp5tOuCLdhlztBA-nYewfuol0i-2y3wn42ss7AR6VttNr-W_4QkEVYqp5kD28qcUeaN71Aeelw0ds_ooJ1ZZffkirIYtSlg_z9xxj7dHbGEH34PxJQjrbD4hAF5gb3r1uxQjuHjDrAmXpbns2AGni44k7yJ9me52H1imfVBACWH_aDsA9hsMoMNEgWrQJ1zzAgRS2erVwjZUN--VA22vIqQfNXNPmhr4uMm5yxuF1FAmryE7Bi-2tHZP7f5e_hAI__6bHz-EL5kgExSwh2QsZu_SgbxSadudha-qlVWXilUz5Owl4vcPDcoOIySoyJai6_cKXlQuuK2wqHRaCewwlsCI-NMWPTmC1KLUcM0K8KOmT1H-4O6jGCTRJDXDH6WbxdG6fooeXXAftqHK8hVdzkLuMpn9JKuz2q6ad4N0yRgtnT_eAyuw2AwyHsDSmxgWki5ynMFULhMutslx2E4DMigh8HNdshM_qFT6TCVS8XQSEdARHR-ZiwHKawJkCpwj1CLiRXwJzig4CSJqC6FG2JJA8vlrfR7Bm9dtsATIF0n_uofnq1g1-eA_vL_CcPe1XTDokEThgrU35xaxwRl5Zu62ITNM3wlaarJ5uztwQH0jDA38y7DHCwzSnOfxaee6ZpvlbrBOsQTQ0PYpQaSJp6Wl1wpPOtvb04JednZGUXZCOno3wtwgu_hVkQOif38JwzGTdP5CVDTt0HgVcexFVVU8MJUGpD4aqOsgt1Ye0WlqqTq2_hoxselP6D4IGltQJ1MYkxZ_nTOdkgHAhWs2Zqg1b3R27AvdqEX6pillKwy-JcTkpOZNxPwggC4kIXsw4pIfKy-3kj4CeenX9BOVwiyVzQKDAxHzjpxNXUGABtR2wSKPSnDeNgGYWahidlGUsx3j7EQvSDITnJ8E0dLrPtabTEFzirmZFPRtdraI68TeciT131zLU6uwlIlTbxEl3JZWCY-c0vU9w8z59--FtY031G7R0RUsTRm_Xy6COHzn-bCYcyYhWViGJH0PvkhoVHFAfLoB7991zT3h-ryf7VrdYy_sfEofWMMpGMBRQivN9LR6hfd7Ov2-G_EoPZUw8c9cW6JzgwbrP374UX5HNXb7iX87fLyaPQyvaknfmPGGzq6DC8d2edVuHSONrt2FtCX_ixvWxKnmOeliAdF0K8BdetxSfZT4lUy0T2g1O1d_lfRil8Qb_lxsV-6C-C7rOy90gHKBOGQONVdizocAZDAQePGkcnXMiG-uZZ_r2tm3BZntdN5D0QQR9RLLhycQooGXHKhQXGj5T_-dzuR7Yoc10_LqSHgHmT0siyo9_yEidoSpQVGPJwgjSZfloifGUHzUjGmaNnFfOAbwvL7cygjdKG_CqmPVWLeB9crpxN2hBb5rjRu6N-0aPrlq9_QVv4rdqY26BCqDQndHjI0EpgfH8lEYmzrS-b-orojD7FTfGeUfLcOyr1ctFY-fpwxbw5qAUSNOHeQnNeIJIwKBUyfr2AfAWdrablyLiI6WFYJsRYF7s79_84JMw1bRmiC3ZHW_XWroQhLxx_7dhmB6qIgdkrFbbaWZtGPPqvKtqettWLeTOBWpH5mORaG8iigRLOG-VFioxydARXjcha_7ON6Qmi0ZKxRRxmfCScJB5By73zDpCaX16-vdSpGURkFLjaX6UZ5zLLTSvheTQdGcJQhMyN06mvgEFYXkfC-iS98fKTc_c0Pg5",
+        "id": "rs_0892ecd1343ea08f016b07003ffef887d2b22a6113b2b97707",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"resumo_situacao\": \"O alerta de 2026 inclui a Rua Baixa, onde o Plano de Contingência localiza o Depósito Central da Educação, que guarda alimentos para abrigos. Um relatório de 2024 registra perdas por água no depósito e recomenda elevar os alimentos, mas os documentos não informam se a recomendação foi implementada. A pauta abaixo identifica pontos para confirmação humana, sem presumir danos ou indisponibilidade atuais.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de alagamento de 2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Cenário fictício de alerta que indica alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Depósito Central da Educação\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": \"Secretaria de Educação\",\n      \"descricao\": \"Local de armazenamento do estoque de merenda escolar destinado a alimentos para abrigos; situado na Rua Baixa, 12, segundo o plano.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Estoque de merenda escolar para abrigos\",\n      \"tipo\": \"recurso\",\n      \"setor_responsavel\": \"Secretaria de Educação\",\n      \"descricao\": \"Alimentos armazenados no Depósito Central e liberados pela Educação mediante solicitação.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Rua Baixa\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Via onde o Plano de Contingência situa o Depósito Central; está incluída na área mencionada pelo alerta.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Ginásio Sossego\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Abrigo indicado no Plano de Contingência, com capacidade registrada de 110 pessoas.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Secretaria de Educação\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Setor que, segundo o plano, libera os alimentos para abrigos mediante solicitação.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Fonte do Plano de Contingência de 2025.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"Pessoas atendidas pelo abrigo\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Grupo relacionado à capacidade declarada do Ginásio Sossego; os documentos não informam ocupação atual.\"\n    },\n    {\n      \"id\": \"E9\",\n      \"nome\": \"Recomendação de elevar alimentos em estrados e prateleiras\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"Secretaria de Educação\",\n      \"descricao\": \"Recomendação registrada após perdas de alimentos no Depósito Central em 2024.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E4\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta inclui a Rua Baixa na área com alagamentos prováveis.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-23\",\n        \"fim\": null,\n        \"observacao\": \"Cenário de alerta datado de 2026-11-23.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E2\",\n      \"destino\": \"E4\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O Depósito Central fica na Rua Baixa, 12.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-15\",\n        \"fim\": null,\n        \"observacao\": \"Localização registrada no Plano de Contingência; não há confirmação posterior nos documentos.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"no Depósito Central da Educação (Rua Baixa, 12)\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E2\",\n      \"destino\": \"E3\",\n      \"tipo\": \"armazena\",\n      \"rotulo\": \"O depósito guarda o estoque de merenda indicado para alimentos de abrigos.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-15\",\n        \"fim\": null,\n        \"observacao\": \"O plano registra essa destinação; não informa o estoque atual.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Alimentos para abrigos: estoque da merenda escolar no Depósito Central da Educação\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E6\",\n      \"destino\": \"E3\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Educação libera os alimentos mediante solicitação.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-15\",\n        \"fim\": null,\n        \"observacao\": \"Procedimento descrito no plano, sem atualização posterior fornecida.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"liberado pela Educação mediante solicitação.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E3\",\n      \"destino\": \"E5\",\n      \"tipo\": \"abastece\",\n      \"rotulo\": \"O estoque está previsto para fornecer alimentos a abrigos, incluindo o abrigo indicado no plano.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-15\",\n        \"fim\": null,\n        \"observacao\": \"O plano relaciona alimentos para abrigos e indica o Ginásio Sossego como abrigo; não afirma expressamente que o estoque se destina especificamente a esse ginásio.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Alimentos para abrigos: estoque da merenda escolar no Depósito Central da Educação\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Ginásio Sossego (110 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E5\",\n      \"destino\": \"E8\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O ginásio tem capacidade registrada para 110 pessoas; a ocupação atual não consta.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-15\",\n        \"fim\": null,\n        \"observacao\": \"Capacidade declarada no plano, não confirmação de ocupação.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Ginásio Sossego (110 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R7\",\n      \"origem\": \"E9\",\n      \"destino\": \"E2\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"A recomendação de elevar os alimentos foi feita após perdas ocorridas no depósito.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-05-24\",\n        \"fim\": null,\n        \"observacao\": \"Os documentos não registram se a recomendação foi implementada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Recomendação: estrados e prateleiras elevadas.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"pendencia_historica\",\n      \"descricao\": \"Em 2024 houve entrada de água no Depósito Central e perda de alimentos armazenados no chão; o relatório recomendou estrados e prateleiras elevadas. Não há registro de implementação da recomendação nos documentos fornecidos.\",\n      \"implicacao\": \"Como o alerta atual inclui a Rua Baixa e o plano situa ali o depósito, é pertinente confirmar a condição atual de armazenamento. O episódio de 2024 não comprova que o problema persista.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Foram perdidas 2,3 toneladas de alimentos armazenados no chão.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Recomendação: estrados e prateleiras elevadas.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"no Depósito Central da Educação (Rua Baixa, 12)\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"incluindo a Rua Baixa e a Av. das Flores.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T2\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O plano de 2025 identifica o depósito como fonte de alimentos para abrigos e estabelece liberação pela Educação mediante solicitação. O alerta de 2026 acrescenta que a Rua Baixa está entre as vias com alagamentos prováveis; não atualiza o procedimento de liberação nem informa condições de acesso ao depósito.\",\n      \"implicacao\": \"Convém confirmar se o procedimento e o acesso permitem atender a necessidade de alimentos, sem presumir que a via ou o depósito já estejam comprometidos.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"liberado pela Educação mediante solicitação.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"A recomendação de armazenar os alimentos em estrados e prateleiras elevadas foi implementada no Depósito Central e qual é a condição atual do estoque?\",\n      \"por_que_importa\": \"O relatório registrou perdas de alimentos armazenados no chão e recomendou elevá-los; o alerta atual inclui a rua onde o plano situa o depósito.\",\n      \"motivacao\": \"Perdas e recomendação documentadas em 2024, combinadas com a localização do depósito na Rua Baixa e o alerta de 2026.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E4\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Educação\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Foram perdidas 2,3 toneladas de alimentos armazenados no chão.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Recomendação: estrados e prateleiras elevadas.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"no Depósito Central da Educação (Rua Baixa, 12)\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"incluindo a Rua Baixa e a Av. das Flores.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a recomendação foi executada, como os alimentos estão armazenados atualmente e qual é a condição do estoque.\",\n      \"quem_pode_confirmar\": \"Secretaria de Educação, responsável pelo estoque segundo o Plano de Contingência.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"Diante do alerta que inclui a Rua Baixa, o acesso ao Depósito Central e a liberação de alimentos pela Educação mediante solicitação estão operacionais para a necessidade prevista?\",\n      \"por_que_importa\": \"O depósito fica em uma via incluída no alerta e é a fonte de alimentos para abrigos indicada no plano; os documentos não dizem se o acesso ou a liberação estão afetados.\",\n      \"motivacao\": \"A combinação entre a localização do depósito, o procedimento de liberação previsto no plano e a área indicada no alerta.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E4\",\n        \"E5\",\n        \"E6\",\n        \"E7\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Educação\",\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Alimentos para abrigos: estoque da merenda escolar no Depósito Central da Educação\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"liberado pela Educação mediante solicitação.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o acesso ao depósito e o procedimento de solicitação e liberação podem ser realizados nas condições atuais; os documentos não descrevem rotas, impedimentos ou alternativas.\",\n      \"quem_pode_confirmar\": \"Secretaria de Educação e COMPDEC, conforme suas atribuições documentadas; a divisão operacional entre os setores depende de confirmação institucional.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há atualização sobre a implementação da recomendação de elevar os alimentos, nem informação sobre a condição atual do depósito e do estoque.\",\n      \"por_que_importa\": \"Esses dados permitem avaliar se a vulnerabilidade registrada em 2024 foi tratada e se os alimentos previstos para abrigos podem ser utilizados.\"\n    },\n    {\n      \"descricao\": \"Não há informação sobre acesso ao Depósito Central durante o cenário descrito no alerta, nem atualização do procedimento de solicitação e liberação.\",\n      \"por_que_importa\": \"O plano depende desse depósito e da liberação pela Educação, enquanto o alerta inclui a via onde ele está situado.\"\n    },\n    {\n      \"descricao\": \"Não há dados sobre a ocupação atual do Ginásio Sossego ou sobre a quantidade de alimentos atualmente disponível.\",\n      \"por_que_importa\": \"A capacidade de 110 pessoas e a existência de um estoque previsto no plano não informam a demanda nem a disponibilidade atuais.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O relatório de 2024 comprova perdas naquele evento, mas não demonstra que o depósito esteja atualmente vulnerável ou que a recomendação tenha sido ignorada.\",\n    \"O alerta descreve alagamentos prováveis; não confirma que a Rua Baixa esteja alagada nem que o depósito esteja inacessível.\",\n    \"O Plano de Contingência é de 2025 e o alerta é de 2026, mas o alerta não declara alteração do procedimento de liberação de alimentos.\",\n    \"A capacidade de 110 pessoas no plano não deve ser interpretada como ocupação atual do abrigo.\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0892ecd1343ea08f016b070040268c87d2bee0639988768e02",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "all_turns",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2102,
+      "input_tokens_details": {
+        "cache_write_tokens": 308,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 308
+        },
+        "cached_tokens": 1791
+      },
+      "output_tokens": 3970,
+      "output_tokens_details": {
+        "reasoning_tokens": 325
+      },
+      "total_tokens": 6072
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\n  \"resumo_situacao\": \"O alerta de 2026 inclui a Rua Baixa, onde o Plano de Contingência localiza o Depósito Central da Educação, que guarda alimentos para abrigos. Um relatório de 2024 registra perdas por água no depósito e recomenda elevar os alimentos, mas os documentos não informam se a recomendação foi implementada. A pauta abaixo identifica pontos para confirmação humana, sem presumir danos ou indisponibilidade atuais.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de alagamento de 2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Cenário fictício de alerta que indica alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Depósito Central da Educação\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": \"Secretaria de Educação\",\n      \"descricao\": \"Local de armazenamento do estoque de merenda escolar destinado a alimentos para abrigos; situado na Rua Baixa, 12, segundo o plano.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Estoque de merenda escolar para abrigos\",\n      \"tipo\": \"recurso\",\n      \"setor_responsavel\": \"Secretaria de Educação\",\n      \"descricao\": \"Alimentos armazenados no Depósito Central e liberados pela Educação mediante solicitação.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Rua Baixa\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Via onde o Plano de Contingência situa o Depósito Central; está incluída na área mencionada pelo alerta.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Ginásio Sossego\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Abrigo indicado no Plano de Contingência, com capacidade registrada de 110 pessoas.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Secretaria de Educação\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Setor que, segundo o plano, libera os alimentos para abrigos mediante solicitação.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Fonte do Plano de Contingência de 2025.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"Pessoas atendidas pelo abrigo\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Grupo relacionado à capacidade declarada do Ginásio Sossego; os documentos não informam ocupação atual.\"\n    },\n    {\n      \"id\": \"E9\",\n      \"nome\": \"Recomendação de elevar alimentos em estrados e prateleiras\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"Secretaria de Educação\",\n      \"descricao\": \"Recomendação registrada após perdas de alimentos no Depósito Central em 2024.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E4\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta inclui a Rua Baixa na área com alagamentos prováveis.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-23\",\n        \"fim\": null,\n        \"observacao\": \"Cenário de alerta datado de 2026-11-23.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E2\",\n      \"destino\": \"E4\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O Depósito Central fica na Rua Baixa, 12.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-15\",\n        \"fim\": null,\n        \"observacao\": \"Localização registrada no Plano de Contingência; não há confirmação posterior nos documentos.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"no Depósito Central da Educação (Rua Baixa, 12)\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E2\",\n      \"destino\": \"E3\",\n      \"tipo\": \"armazena\",\n      \"rotulo\": \"O depósito guarda o estoque de merenda indicado para alimentos de abrigos.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-15\",\n        \"fim\": null,\n        \"observacao\": \"O plano registra essa destinação; não informa o estoque atual.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Alimentos para abrigos: estoque da merenda escolar no Depósito Central da Educação\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E6\",\n      \"destino\": \"E3\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Educação libera os alimentos mediante solicitação.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-15\",\n        \"fim\": null,\n        \"observacao\": \"Procedimento descrito no plano, sem atualização posterior fornecida.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"liberado pela Educação mediante solicitação.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E3\",\n      \"destino\": \"E5\",\n      \"tipo\": \"abastece\",\n      \"rotulo\": \"O estoque está previsto para fornecer alimentos a abrigos, incluindo o abrigo indicado no plano.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-15\",\n        \"fim\": null,\n        \"observacao\": \"O plano relaciona alimentos para abrigos e indica o Ginásio Sossego como abrigo; não afirma expressamente que o estoque se destina especificamente a esse ginásio.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Alimentos para abrigos: estoque da merenda escolar no Depósito Central da Educação\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Ginásio Sossego (110 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E5\",\n      \"destino\": \"E8\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O ginásio tem capacidade registrada para 110 pessoas; a ocupação atual não consta.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-15\",\n        \"fim\": null,\n        \"observacao\": \"Capacidade declarada no plano, não confirmação de ocupação.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Ginásio Sossego (110 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R7\",\n      \"origem\": \"E9\",\n      \"destino\": \"E2\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"A recomendação de elevar os alimentos foi feita após perdas ocorridas no depósito.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-05-24\",\n        \"fim\": null,\n        \"observacao\": \"Os documentos não registram se a recomendação foi implementada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Recomendação: estrados e prateleiras elevadas.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"pendencia_historica\",\n      \"descricao\": \"Em 2024 houve entrada de água no Depósito Central e perda de alimentos armazenados no chão; o relatório recomendou estrados e prateleiras elevadas. Não há registro de implementação da recomendação nos documentos fornecidos.\",\n      \"implicacao\": \"Como o alerta atual inclui a Rua Baixa e o plano situa ali o depósito, é pertinente confirmar a condição atual de armazenamento. O episódio de 2024 não comprova que o problema persista.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Foram perdidas 2,3 toneladas de alimentos armazenados no chão.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Recomendação: estrados e prateleiras elevadas.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"no Depósito Central da Educação (Rua Baixa, 12)\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"incluindo a Rua Baixa e a Av. das Flores.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T2\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O plano de 2025 identifica o depósito como fonte de alimentos para abrigos e estabelece liberação pela Educação mediante solicitação. O alerta de 2026 acrescenta que a Rua Baixa está entre as vias com alagamentos prováveis; não atualiza o procedimento de liberação nem informa condições de acesso ao depósito.\",\n      \"implicacao\": \"Convém confirmar se o procedimento e o acesso permitem atender a necessidade de alimentos, sem presumir que a via ou o depósito já estejam comprometidos.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"liberado pela Educação mediante solicitação.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"A recomendação de armazenar os alimentos em estrados e prateleiras elevadas foi implementada no Depósito Central e qual é a condição atual do estoque?\",\n      \"por_que_importa\": \"O relatório registrou perdas de alimentos armazenados no chão e recomendou elevá-los; o alerta atual inclui a rua onde o plano situa o depósito.\",\n      \"motivacao\": \"Perdas e recomendação documentadas em 2024, combinadas com a localização do depósito na Rua Baixa e o alerta de 2026.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E4\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Educação\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Foram perdidas 2,3 toneladas de alimentos armazenados no chão.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Recomendação: estrados e prateleiras elevadas.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"no Depósito Central da Educação (Rua Baixa, 12)\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"incluindo a Rua Baixa e a Av. das Flores.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a recomendação foi executada, como os alimentos estão armazenados atualmente e qual é a condição do estoque.\",\n      \"quem_pode_confirmar\": \"Secretaria de Educação, responsável pelo estoque segundo o Plano de Contingência.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"Diante do alerta que inclui a Rua Baixa, o acesso ao Depósito Central e a liberação de alimentos pela Educação mediante solicitação estão operacionais para a necessidade prevista?\",\n      \"por_que_importa\": \"O depósito fica em uma via incluída no alerta e é a fonte de alimentos para abrigos indicada no plano; os documentos não dizem se o acesso ou a liberação estão afetados.\",\n      \"motivacao\": \"A combinação entre a localização do depósito, o procedimento de liberação previsto no plano e a área indicada no alerta.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E4\",\n        \"E5\",\n        \"E6\",\n        \"E7\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Educação\",\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Alimentos para abrigos: estoque da merenda escolar no Depósito Central da Educação\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"liberado pela Educação mediante solicitação.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o acesso ao depósito e o procedimento de solicitação e liberação podem ser realizados nas condições atuais; os documentos não descrevem rotas, impedimentos ou alternativas.\",\n      \"quem_pode_confirmar\": \"Secretaria de Educação e COMPDEC, conforme suas atribuições documentadas; a divisão operacional entre os setores depende de confirmação institucional.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há atualização sobre a implementação da recomendação de elevar os alimentos, nem informação sobre a condição atual do depósito e do estoque.\",\n      \"por_que_importa\": \"Esses dados permitem avaliar se a vulnerabilidade registrada em 2024 foi tratada e se os alimentos previstos para abrigos podem ser utilizados.\"\n    },\n    {\n      \"descricao\": \"Não há informação sobre acesso ao Depósito Central durante o cenário descrito no alerta, nem atualização do procedimento de solicitação e liberação.\",\n      \"por_que_importa\": \"O plano depende desse depósito e da liberação pela Educação, enquanto o alerta inclui a via onde ele está situado.\"\n    },\n    {\n      \"descricao\": \"Não há dados sobre a ocupação atual do Ginásio Sossego ou sobre a quantidade de alimentos atualmente disponível.\",\n      \"por_que_importa\": \"A capacidade de 110 pessoas e a existência de um estoque previsto no plano não informam a demanda nem a disponibilidade atuais.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O relatório de 2024 comprova perdas naquele evento, mas não demonstra que o depósito esteja atualmente vulnerável ou que a recomendação tenha sido ignorada.\",\n    \"O alerta descreve alagamentos prováveis; não confirma que a Rua Baixa esteja alagada nem que o depósito esteja inacessível.\",\n    \"O Plano de Contingência é de 2025 e o alerta é de 2026, mas o alerta não declara alteração do procedimento de liberação de alimentos.\",\n    \"A capacidade de 110 pessoas no plano não deve ser interpretada como ocupação atual do abrigo.\"\n  ]\n}"
+  }
+}

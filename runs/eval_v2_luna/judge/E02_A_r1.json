@@ -1,0 +1,125 @@
+{
+  "run_file": "E02_A_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-6.1-terra",
+    "reasoning_effort": "medium",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_064971bea3d56510016b0700991ddc87d2965da6ccd0e5fb63",
+  "model_reported": "gpt-6.1-terra",
+  "usage": {
+    "input_tokens": 6681,
+    "output_tokens": 1344,
+    "reasoning_tokens": 508
+  },
+  "latency_ms": 28233,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V1"
+        ],
+        "justificativa": "Verifica a condição e os testes do gerador, mas não menciona diesel ou bateria."
+      },
+      {
+        "id": "G2",
+        "resultado": "ausente",
+        "ids_saida": [],
+        "justificativa": "Não verifica rota alternativa à Rua do Cais para a transferência."
+      },
+      {
+        "id": "G3",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V2"
+        ],
+        "justificativa": "Verifica a execução da transferência após quatro horas, incluindo meios e responsáveis."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V1",
+          "V2",
+          "R2",
+          "R6",
+          "R8"
+        ],
+        "justificativa": "Relaciona o risco elétrico ao gerador e à rede de frio, mas não reconhece a falha de 2024 por falta de diesel e bateria."
+      },
+      {
+        "id": "P2",
+        "resultado": "ausente",
+        "ids_saida": [],
+        "justificativa": "Não relaciona o alagamento da Rua do Cais ao acesso do veículo e à transferência."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "ausente",
+        "ids_saida": [],
+        "justificativa": "A saída não menciona a solicitação de orçamento de 2024 nem a falta de registro de execução da manutenção."
+      }
+    ],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "reconhecido",
+        "ids_saida": [
+          "V1",
+          "T3"
+        ],
+        "justificativa": "A saída explicita que a condição atual e os testes do gerador não estão confirmados."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "V1",
+        "justificativa": "A saída pergunta sobre a condição do gerador, sem afirmar defeito atual."
+      },
+      {
+        "id": "X2",
+        "violado": false,
+        "onde": "V1",
+        "justificativa": "A saída não afirma que a rede de frio está segura ou garantida."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Cobre parcialmente a verificação do estado e dos testes do gerador em G1."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Cobre a prontidão do procedimento de transferência em G3."
+      },
+      {
+        "id": "V3",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "Verifica a função da UBS como ponto de vacinação diante do risco de alagamento."
+      },
+      {
+        "id": "V4",
+        "classificacao": "irrelevante",
+        "justificativa": "A pendência do ar-condicionado da sala de espera não tem relação documentada com o alerta ou a rede de frio."
+      },
+      {
+        "id": "V5",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "Verifica condicionalmente o acompanhamento dos abrigos previsto no plano."
+      }
+    ],
+    "afirmacoes_sem_respaldo": []
+  }
+}

@@ -1,0 +1,1367 @@
+{
+  "meta": {
+    "scenario": "E01",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v2_luna",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D3",
+      "D2"
+    ],
+    "user_message_chars": 2040,
+    "user_message_sha12": "ee480b2e5552"
+  },
+  "user_message": "Município (fictício): Vila das Águas\nData de referência da análise: 2026-11-24\nDocumentos disponíveis (3), em ordem cronológica:\n\n### [D1] Plano Municipal de Contingência para Inundações — versão 2025 (trecho)\nTipo: Plano de contingência | Fonte: Coordenadoria Municipal de Proteção e Defesa Civil (COMPDEC) | Data: 2025-08-12\n\n4. ABRIGOS TEMPORÁRIOS\n4.1 Abrigo da Escola Municipal Lírio do Vale (Rua das Palmeiras, 300), bairro Alto do Ribeirão. Capacidade: 180 pessoas. Atende prioritariamente famílias dos bairros Várzea e Alto do Ribeirão.\n4.2 Abrigo do Ginásio Poliesportivo Central. Capacidade: 220 pessoas.\n5. ACIONAMENTO\n5.1 Ao receber alerta de nível laranja ou superior, a COMPDEC convoca o Grupo de Ações Coordenadas (GRAC) em até 2 horas.\n5.2 A Secretaria de Assistência Social prepara os abrigos e o cadastro das famílias.\n6. TRANSPORTE\n6.1 A Secretaria de Obras disponibiliza dois caminhões e um micro-ônibus para deslocamento de famílias aos abrigos.\n\n---\n\n### [D3] Ofício 214/2026 — Secretaria de Obras — situação da frota\nTipo: Atualização de secretaria | Fonte: Secretaria Municipal de Obras | Data: 2026-10-30\n\nInformamos que, dos dois caminhões previstos no plano de contingência, um encontra-se em manutenção com previsão de retorno em 15/12/2026. O micro-ônibus está operacional. Solicitamos que eventuais necessidades adicionais sejam comunicadas com 24 horas de antecedência para locação emergencial.\n\n---\n\n### [D2] Boletim de alerta hidrológico (cenário fictício de exercício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-24\n\nNÍVEL: LARANJA. Previsão de chuva acumulada de 120 a 160 mm em 72 horas na bacia do Ribeirão das Águas.\nCota do ribeirão pode superar 4,2 m na régua da Ponte dos Tropeiros entre a madrugada de 26/11 e a tarde de 27/11.\nHá possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio e de restrição de tráfego em pontes de pequeno porte.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_0491b8602398b65d016b070020834c87d2b6147b1f8b104447",
+  "model_reported": "gpt-6-luna",
+  "usage": {
+    "input_tokens": 2365,
+    "output_tokens": 6725,
+    "reasoning_tokens": 0
+  },
+  "latency_ms": 37934,
+  "started_at": "2026-11-25T15:34:56.101Z",
+  "output": {
+    "resumo_situacao": "O boletim de 24/11/2026 informa alerta hidrológico nível laranja, com possibilidade de transbordamento em trechos baixos da Várzea e do Beira-Rio e restrição de tráfego em pontes pequenas. O plano prevê convocação do GRAC, preparação de abrigos e transporte de famílias; uma atualização de Obras informa que um dos dois caminhões está em manutenção até previsão de retorno em 15/12/2026. A pauta abaixo identifica pontos a confirmar, sem presumir que as medidas já foram acionadas ou que a previsão se concretizará.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Alerta hidrológico nível laranja",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Cenário fictício informado em 24/11/2026, com previsão de chuva acumulada e possibilidade de transbordamento e restrição de tráfego."
+      },
+      {
+        "id": "E2",
+        "nome": "Ribeirão das Águas",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Bacia abrangida pela previsão de chuva e curso d'água cuja cota pode superar 4,2 m na régua da Ponte dos Tropeiros."
+      },
+      {
+        "id": "E3",
+        "nome": "Várzea",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Bairro citado como sujeito a possível transbordamento em trechos baixos e atendido prioritariamente por um dos abrigos do plano."
+      },
+      {
+        "id": "E4",
+        "nome": "Alto do Ribeirão",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Bairro atendido prioritariamente pelo abrigo da Escola Municipal Lírio do Vale."
+      },
+      {
+        "id": "E5",
+        "nome": "Beira-Rio",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Bairro citado no alerta como sujeito a possível transbordamento em trechos baixos."
+      },
+      {
+        "id": "E6",
+        "nome": "Ponte dos Tropeiros",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Local de referência da régua em que a cota do ribeirão pode superar 4,2 m."
+      },
+      {
+        "id": "E7",
+        "nome": "Pontes de pequeno porte",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Tipo de infraestrutura em que o alerta menciona possível restrição de tráfego; não são identificadas individualmente."
+      },
+      {
+        "id": "E8",
+        "nome": "COMPDEC",
+        "tipo": "setor",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Setor que, conforme o plano, convoca o GRAC em até 2 horas ao receber alerta nível laranja ou superior."
+      },
+      {
+        "id": "E9",
+        "nome": "Grupo de Ações Coordenadas (GRAC)",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": null,
+        "descricao": "Grupo que o plano prevê convocar após alerta nível laranja ou superior."
+      },
+      {
+        "id": "E10",
+        "nome": "Secretaria de Assistência Social",
+        "tipo": "setor",
+        "setor_responsavel": "Secretaria de Assistência Social",
+        "descricao": "Setor indicado no plano para preparar os abrigos e o cadastro das famílias."
+      },
+      {
+        "id": "E11",
+        "nome": "Abrigo da Escola Municipal Lírio do Vale",
+        "tipo": "servico",
+        "setor_responsavel": "Secretaria de Assistência Social",
+        "descricao": "Abrigo na Rua das Palmeiras, 300, com capacidade documentada de 180 pessoas; atende prioritariamente Várzea e Alto do Ribeirão."
+      },
+      {
+        "id": "E12",
+        "nome": "Abrigo do Ginásio Poliesportivo Central",
+        "tipo": "servico",
+        "setor_responsavel": "Secretaria de Assistência Social",
+        "descricao": "Abrigo com capacidade documentada de 220 pessoas."
+      },
+      {
+        "id": "E13",
+        "nome": "Secretaria Municipal de Obras",
+        "tipo": "setor",
+        "setor_responsavel": "Secretaria Municipal de Obras",
+        "descricao": "Setor indicado para disponibilizar transporte no plano e autor da atualização de situação da frota."
+      },
+      {
+        "id": "E14",
+        "nome": "Dois caminhões previstos no plano",
+        "tipo": "equipamento",
+        "setor_responsavel": "Secretaria Municipal de Obras",
+        "descricao": "O plano prevê dois caminhões; a atualização de 30/10/2026 informa que um está em manutenção, com retorno previsto para 15/12/2026."
+      },
+      {
+        "id": "E15",
+        "nome": "Micro-ônibus",
+        "tipo": "equipamento",
+        "setor_responsavel": "Secretaria Municipal de Obras",
+        "descricao": "Veículo previsto no plano e informado como operacional em 30/10/2026."
+      },
+      {
+        "id": "E16",
+        "nome": "Famílias dos bairros atendidos pelos abrigos",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": null,
+        "descricao": "Famílias que o plano prevê cadastrar e, conforme a necessidade, deslocar aos abrigos; o alerta não informa quantidade ou necessidade de deslocamento."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta prevê chuva acumulada na bacia do Ribeirão das Águas.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-24",
+          "fim": "2026-11-27",
+          "observacao": "Previsão de chuva acumulada em 72 horas; período exato de início não especificado."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Previsão de chuva acumulada de 120 a 160 mm em 72 horas na bacia do Ribeirão das Águas."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E1",
+        "destino": "E3",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta aponta possível transbordamento em trechos baixos da Várzea.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-26",
+          "fim": "2026-11-27",
+          "observacao": "Janela provável de elevação da cota, não de transbordamento confirmado."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E1",
+        "destino": "E5",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta aponta possível transbordamento em trechos baixos do Beira-Rio.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-26",
+          "fim": "2026-11-27",
+          "observacao": "Janela provável de elevação da cota, não de transbordamento confirmado."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio"
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E1",
+        "destino": "E6",
+        "tipo": "afetado_por",
+        "rotulo": "A cota na régua da Ponte dos Tropeiros pode superar 4,2 m.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-26",
+          "fim": "2026-11-27",
+          "observacao": "Entre a madrugada de 26/11 e a tarde de 27/11."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Cota do ribeirão pode superar 4,2 m na régua da Ponte dos Tropeiros entre a madrugada de 26/11 e a tarde de 27/11."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E1",
+        "destino": "E7",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta menciona possível restrição de tráfego em pontes pequenas.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-24",
+          "fim": "2026-11-27",
+          "observacao": "O alerta não identifica quais pontes nem horários de eventual restrição."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "e de restrição de tráfego em pontes de pequeno porte."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E8",
+        "destino": "E9",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC convoca o GRAC em até 2 horas após receber alerta nível laranja ou superior.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-08-12",
+          "fim": null,
+          "observacao": "Plano versão 2025; os documentos não informam alteração posterior."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Ao receber alerta de nível laranja ou superior, a COMPDEC convoca o Grupo de Ações Coordenadas (GRAC) em até 2 horas."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E10",
+        "destino": "E11",
+        "tipo": "responsavel_por",
+        "rotulo": "A Assistência Social prepara os abrigos e o cadastro das famílias, conforme o plano.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-08-12",
+          "fim": null,
+          "observacao": "Não há atualização sobre execução para este alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A Secretaria de Assistência Social prepara os abrigos e o cadastro das famílias."
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E10",
+        "destino": "E12",
+        "tipo": "responsavel_por",
+        "rotulo": "A Assistência Social prepara os abrigos e o cadastro das famílias, conforme o plano.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-08-12",
+          "fim": null,
+          "observacao": "Não há atualização sobre execução para este alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A Secretaria de Assistência Social prepara os abrigos e o cadastro das famílias."
+          }
+        ]
+      },
+      {
+        "id": "R9",
+        "origem": "E11",
+        "destino": "E3",
+        "tipo": "atende",
+        "rotulo": "O abrigo atende prioritariamente famílias da Várzea e do Alto do Ribeirão.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-08-12",
+          "fim": null,
+          "observacao": "Capacidade documentada no plano; condição atual não atualizada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Atende prioritariamente famílias dos bairros Várzea e Alto do Ribeirão."
+          }
+        ]
+      },
+      {
+        "id": "R10",
+        "origem": "E11",
+        "destino": "E4",
+        "tipo": "atende",
+        "rotulo": "O abrigo atende prioritariamente famílias da Várzea e do Alto do Ribeirão.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-08-12",
+          "fim": null,
+          "observacao": "Capacidade documentada no plano; condição atual não atualizada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Atende prioritariamente famílias dos bairros Várzea e Alto do Ribeirão."
+          }
+        ]
+      },
+      {
+        "id": "R11",
+        "origem": "E13",
+        "destino": "E14",
+        "tipo": "abastece",
+        "rotulo": "Obras disponibiliza caminhões para deslocamento de famílias; um está em manutenção segundo atualização posterior.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-10-30",
+          "fim": "2026-12-15",
+          "observacao": "Retorno do caminhão apenas previsto para 15/12/2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A Secretaria de Obras disponibiliza dois caminhões e um micro-ônibus para deslocamento de famílias aos abrigos."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "um encontra-se em manutenção com previsão de retorno em 15/12/2026."
+          }
+        ]
+      },
+      {
+        "id": "R12",
+        "origem": "E13",
+        "destino": "E15",
+        "tipo": "abastece",
+        "rotulo": "Obras disponibiliza o micro-ônibus para deslocamento; a atualização informa que está operacional.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-10-30",
+          "fim": null,
+          "observacao": "Estado operacional informado em 30/10/2026, sem nova confirmação para a data do alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "O micro-ônibus está operacional."
+          }
+        ]
+      },
+      {
+        "id": "R13",
+        "origem": "E14",
+        "destino": "E11",
+        "tipo": "depende_de",
+        "rotulo": "O deslocamento de famílias aos abrigos depende, entre outros meios previstos, da frota de Obras; a disponibilidade de um caminhão está reduzida.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2026-11-24",
+          "fim": "2026-11-27",
+          "observacao": "Relação operacional inferida do plano e da atualização da frota, não confirmação de necessidade de transporte."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "para deslocamento de famílias aos abrigos."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "um encontra-se em manutenção com previsão de retorno em 15/12/2026."
+          }
+        ]
+      },
+      {
+        "id": "R14",
+        "origem": "E13",
+        "destino": "E14",
+        "tipo": "comunica",
+        "rotulo": "Obras solicita aviso com 24 horas de antecedência para necessidades adicionais destinadas à locação emergencial.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-10-30",
+          "fim": null,
+          "observacao": "A atualização não esclarece se o prazo pode ser atendido neste cenário."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "necessidades adicionais sejam comunicadas com 24 horas de antecedência para locação emergencial."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "O plano de 2025 prevê dois caminhões e um micro-ônibus. Em 30/10/2026, Obras informou que um caminhão está em manutenção até retorno previsto em 15/12/2026 e que o micro-ônibus está operacional.",
+        "implicacao": "Na data de referência e na janela do alerta, a capacidade de transporte prevista no plano não deve ser presumida integralmente disponível. Não há informação sobre o estado do outro caminhão nem confirmação de retorno do veículo em manutenção.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "disponibiliza dois caminhões e um micro-ônibus"
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "um encontra-se em manutenção com previsão de retorno em 15/12/2026."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "pendencia_historica",
+        "descricao": "A locação emergencial de transporte adicional depende, segundo o ofício, de comunicação com 24 horas de antecedência. O documento não esclarece a disponibilidade de locação, o procedimento de solicitação ou se o prazo é viável para a janela indicada no alerta.",
+        "implicacao": "Convém confirmar com Obras, sem presumir que a locação foi solicitada ou contratada.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "eventuais necessidades adicionais sejam comunicadas com 24 horas de antecedência para locação emergencial."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "A COMPDEC recebeu o alerta nível laranja e convocou o GRAC dentro do prazo previsto no plano?",
+        "por_que_importa": "O nível informado no boletim corresponde ao critério de acionamento previsto no plano.",
+        "motivacao": "O boletim de 24/11/2026 registra nível laranja; o plano prevê convocação do GRAC em até 2 horas após o recebimento.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E8",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: LARANJA."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "a COMPDEC convoca o Grupo de Ações Coordenadas (GRAC) em até 2 horas."
+          }
+        ],
+        "o_que_falta_saber": "Horário de recebimento do boletim pela COMPDEC e se, quando e a que horas o GRAC foi convocado.",
+        "quem_pode_confirmar": "COMPDEC",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "Como a Secretaria de Obras confirma a disponibilidade dos veículos para a janela de 26 a 27/11, considerando o caminhão em manutenção e o prazo de 24 horas para comunicar necessidades adicionais?",
+        "por_que_importa": "O alerta aponta possíveis impactos em bairros atendidos por abrigo, enquanto o plano depende de veículos de Obras para deslocar famílias.",
+        "motivacao": "O plano prevê dois caminhões e um micro-ônibus; o ofício informa um caminhão em manutenção com retorno previsto somente em 15/12/2026, e pede aviso prévio de 24 horas para locação emergencial.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E3",
+          "E11",
+          "E13",
+          "E14",
+          "E15",
+          "E16"
+        ],
+        "setores_relacionados": [
+          "Secretaria Municipal de Obras",
+          "COMPDEC",
+          "Secretaria de Assistência Social"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A Secretaria de Obras disponibiliza dois caminhões e um micro-ônibus para deslocamento de famílias aos abrigos."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "O micro-ônibus está operacional."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "eventuais necessidades adicionais sejam comunicadas com 24 horas de antecedência para locação emergencial."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio"
+          }
+        ],
+        "o_que_falta_saber": "Estado atual do outro caminhão, necessidade estimada de transporte, possibilidade e prazo para locação, e se já houve comunicação ou providência.",
+        "quem_pode_confirmar": "Secretaria Municipal de Obras, em articulação com COMPDEC e Secretaria de Assistência Social.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "A Secretaria de Assistência Social está preparando os dois abrigos e o cadastro das famílias, e há informação atual sobre capacidade e condições de uso para este cenário?",
+        "por_que_importa": "O plano atribui essa preparação à Assistência Social, mas os documentos não registram sua execução para o alerta atual nem atualização das capacidades.",
+        "motivacao": "O alerta aponta possível transbordamento na Várzea, bairro atendido prioritariamente pelo abrigo da Escola Lírio do Vale; o plano também prevê o Ginásio Central.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E3",
+          "E10",
+          "E11",
+          "E12",
+          "E16"
+        ],
+        "setores_relacionados": [
+          "Secretaria de Assistência Social"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A Secretaria de Assistência Social prepara os abrigos e o cadastro das famílias."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Capacidade: 180 pessoas."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Capacidade: 220 pessoas."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio"
+          }
+        ],
+        "o_que_falta_saber": "Se os abrigos foram preparados para este cenário, se as capacidades indicadas seguem válidas e qual é a estimativa de famílias que poderiam necessitar de atendimento.",
+        "quem_pode_confirmar": "Secretaria de Assistência Social",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V4",
+        "pergunta": "Quais pontes de pequeno porte podem ter restrição de tráfego, e como essa informação será confirmada e comunicada às equipes que organizem o deslocamento?",
+        "por_que_importa": "Uma possível restrição em pontes pode afetar o planejamento de deslocamento aos abrigos, mas o alerta não identifica as pontes nem os locais afetados.",
+        "motivacao": "O boletim aponta possibilidade de restrição em pontes pequenas e de transbordamento em trechos baixos da Várzea e do Beira-Rio; o plano prevê transporte de famílias aos abrigos.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E3",
+          "E5",
+          "E7",
+          "E11",
+          "E12",
+          "E13"
+        ],
+        "setores_relacionados": [
+          "Secretaria Municipal de Obras",
+          "COMPDEC"
+        ],
+        "status_epistemico": "inferencia",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "e de restrição de tráfego em pontes de pequeno porte."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "para deslocamento de famílias aos abrigos."
+          }
+        ],
+        "o_que_falta_saber": "Identificação das pontes, condições observadas, eventual restrição efetiva e setor responsável por acompanhar e comunicar mudanças.",
+        "quem_pode_confirmar": "Secretaria Municipal de Obras e COMPDEC; a divisão institucional de acompanhamento não está especificada nos documentos.",
+        "prioridade": "media"
+      },
+      {
+        "id": "V5",
+        "pergunta": "A previsão de cota na régua da Ponte dos Tropeiros está sendo acompanhada, e existe procedimento vigente para comunicar mudanças relevantes às equipes municipais?",
+        "por_que_importa": "O alerta traz uma janela temporal e um valor de referência para a cota, mas não informa quem fará o acompanhamento local nem como atualizações serão distribuídas.",
+        "motivacao": "A cota pode superar 4,2 m entre a madrugada de 26/11 e a tarde de 27/11.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E6",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Cota do ribeirão pode superar 4,2 m na régua da Ponte dos Tropeiros entre a madrugada de 26/11 e a tarde de 27/11."
+          }
+        ],
+        "o_que_falta_saber": "Se há acompanhamento da régua para este cenário, quem o realiza e qual fluxo de comunicação de atualizações se aplica.",
+        "quem_pode_confirmar": "COMPDEC; o responsável pelo acompanhamento hidrológico não está identificado nos documentos.",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há registro de recebimento do alerta pela COMPDEC, horário ou convocação efetiva do GRAC.",
+        "por_que_importa": "Esses dados permitem verificar a aplicação do prazo de acionamento previsto no plano."
+      },
+      {
+        "descricao": "Não há atualização da situação do segundo caminhão, nem confirmação de retorno do veículo em manutenção antes de 15/12/2026.",
+        "por_que_importa": "A condição da frota influencia o planejamento de transporte previsto no plano."
+      },
+      {
+        "descricao": "Não há estimativa de famílias que possam necessitar de transporte ou abrigo, nem informação atual sobre condições e capacidade dos abrigos.",
+        "por_que_importa": "Sem esses dados não é possível relacionar a capacidade documentada à necessidade deste cenário."
+      },
+      {
+        "descricao": "O alerta não identifica as pontes de pequeno porte sujeitas a possível restrição nem descreve o fluxo local para acompanhar e comunicar mudanças de tráfego.",
+        "por_que_importa": "Essas informações podem ser relevantes para o planejamento dos deslocamentos, sem que se presuma uma restrição efetiva."
+      },
+      {
+        "descricao": "Não há informação sobre quem acompanha a régua da Ponte dos Tropeiros ou como eventuais atualizações de cota serão comunicadas à prefeitura.",
+        "por_que_importa": "O boletim delimita uma janela provável, mas não documenta a organização do acompanhamento local."
+      }
+    ],
+    "cautelas": [
+      "O cenário é fictício e a análise usa somente os três documentos fornecidos.",
+      "A possibilidade de transbordamento ou restrição de tráfego não confirma que esses eventos ocorrerão.",
+      "O plano é de 2025 e não há documento que o revogue ou atualize integralmente; a atualização de Obras trata especificamente da frota, não de todo o plano.",
+      "A previsão de retorno do caminhão em 15/12/2026 não confirma que ele estará disponível antes ou durante a janela do alerta.",
+      "A operacionalidade do micro-ônibus foi informada em 30/10/2026 e não foi novamente confirmada para 24/11/2026.",
+      "Não se deve inferir necessidade de deslocamento, ocupação de abrigos ou restrição efetiva de pontes sem confirmação.",
+      "As verificações são pontos para revisão humana e não constituem decisão sobre risco, evacuação, interdição ou prontidão municipal."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 16,
+    "n_relacoes": 14,
+    "n_verificacoes": 5,
+    "n_temporais": 2,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D2",
+        "trecho": "Previsão de chuva acumulada de 120 a 160 mm em 72 horas na bacia do Ribeirão das Águas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Cota do ribeirão pode superar 4,2 m na régua da Ponte dos Tropeiros entre a madrugada de 26/11 e a tarde de 27/11.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "e de restrição de tráfego em pontes de pequeno porte.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Ao receber alerta de nível laranja ou superior, a COMPDEC convoca o Grupo de Ações Coordenadas (GRAC) em até 2 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Secretaria de Assistência Social prepara os abrigos e o cadastro das famílias.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Secretaria de Assistência Social prepara os abrigos e o cadastro das famílias.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Atende prioritariamente famílias dos bairros Várzea e Alto do Ribeirão.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R9"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Atende prioritariamente famílias dos bairros Várzea e Alto do Ribeirão.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R10"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Secretaria de Obras disponibiliza dois caminhões e um micro-ônibus para deslocamento de famílias aos abrigos.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R11"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "um encontra-se em manutenção com previsão de retorno em 15/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R11"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "O micro-ônibus está operacional.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R12"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "para deslocamento de famílias aos abrigos.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R13"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "um encontra-se em manutenção com previsão de retorno em 15/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R13"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "necessidades adicionais sejam comunicadas com 24 horas de antecedência para locação emergencial.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R14"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "disponibiliza dois caminhões e um micro-ônibus",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "um encontra-se em manutenção com previsão de retorno em 15/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "eventuais necessidades adicionais sejam comunicadas com 24 horas de antecedência para locação emergencial.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: LARANJA.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "a COMPDEC convoca o Grupo de Ações Coordenadas (GRAC) em até 2 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Secretaria de Obras disponibiliza dois caminhões e um micro-ônibus para deslocamento de famílias aos abrigos.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "O micro-ônibus está operacional.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "eventuais necessidades adicionais sejam comunicadas com 24 horas de antecedência para locação emergencial.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Secretaria de Assistência Social prepara os abrigos e o cadastro das famílias.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Capacidade: 180 pessoas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Capacidade: 220 pessoas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "e de restrição de tráfego em pontes de pequeno porte.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "para deslocamento de famílias aos abrigos.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Cota do ribeirão pode superar 4,2 m na régua da Ponte dos Tropeiros entre a madrugada de 26/11 e a tarde de 27/11.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      }
+    ],
+    "n_citacoes": 32,
+    "n_citacoes_literais": 32,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795620933,
+    "created_at": 1795620896,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_0491b8602398b65d016b070020834c87d2b6147b1f8b104447",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-6-luna",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"resumo_situacao\": \"O boletim de 24/11/2026 informa alerta hidrológico nível laranja, com possibilidade de transbordamento em trechos baixos da Várzea e do Beira-Rio e restrição de tráfego em pontes pequenas. O plano prevê convocação do GRAC, preparação de abrigos e transporte de famílias; uma atualização de Obras informa que um dos dois caminhões está em manutenção até previsão de retorno em 15/12/2026. A pauta abaixo identifica pontos a confirmar, sem presumir que as medidas já foram acionadas ou que a previsão se concretizará.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta hidrológico nível laranja\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Cenário fictício informado em 24/11/2026, com previsão de chuva acumulada e possibilidade de transbordamento e restrição de tráfego.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Ribeirão das Águas\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Bacia abrangida pela previsão de chuva e curso d'água cuja cota pode superar 4,2 m na régua da Ponte dos Tropeiros.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Várzea\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Bairro citado como sujeito a possível transbordamento em trechos baixos e atendido prioritariamente por um dos abrigos do plano.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Alto do Ribeirão\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Bairro atendido prioritariamente pelo abrigo da Escola Municipal Lírio do Vale.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Beira-Rio\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Bairro citado no alerta como sujeito a possível transbordamento em trechos baixos.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Ponte dos Tropeiros\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local de referência da régua em que a cota do ribeirão pode superar 4,2 m.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Pontes de pequeno porte\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Tipo de infraestrutura em que o alerta menciona possível restrição de tráfego; não são identificadas individualmente.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Setor que, conforme o plano, convoca o GRAC em até 2 horas ao receber alerta nível laranja ou superior.\"\n    },\n    {\n      \"id\": \"E9\",\n      \"nome\": \"Grupo de Ações Coordenadas (GRAC)\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Grupo que o plano prevê convocar após alerta nível laranja ou superior.\"\n    },\n    {\n      \"id\": \"E10\",\n      \"nome\": \"Secretaria de Assistência Social\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Secretaria de Assistência Social\",\n      \"descricao\": \"Setor indicado no plano para preparar os abrigos e o cadastro das famílias.\"\n    },\n    {\n      \"id\": \"E11\",\n      \"nome\": \"Abrigo da Escola Municipal Lírio do Vale\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Secretaria de Assistência Social\",\n      \"descricao\": \"Abrigo na Rua das Palmeiras, 300, com capacidade documentada de 180 pessoas; atende prioritariamente Várzea e Alto do Ribeirão.\"\n    },\n    {\n      \"id\": \"E12\",\n      \"nome\": \"Abrigo do Ginásio Poliesportivo Central\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Secretaria de Assistência Social\",\n      \"descricao\": \"Abrigo com capacidade documentada de 220 pessoas.\"\n    },\n    {\n      \"id\": \"E13\",\n      \"nome\": \"Secretaria Municipal de Obras\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Secretaria Municipal de Obras\",\n      \"descricao\": \"Setor indicado para disponibilizar transporte no plano e autor da atualização de situação da frota.\"\n    },\n    {\n      \"id\": \"E14\",\n      \"nome\": \"Dois caminhões previstos no plano\",\n      \"tipo\": \"equipamento\",\n      \"setor_responsavel\": \"Secretaria Municipal de Obras\",\n      \"descricao\": \"O plano prevê dois caminhões; a atualização de 30/10/2026 informa que um está em manutenção, com retorno previsto para 15/12/2026.\"\n    },\n    {\n      \"id\": \"E15\",\n      \"nome\": \"Micro-ônibus\",\n      \"tipo\": \"equipamento\",\n      \"setor_responsavel\": \"Secretaria Municipal de Obras\",\n      \"descricao\": \"Veículo previsto no plano e informado como operacional em 30/10/2026.\"\n    },\n    {\n      \"id\": \"E16\",\n      \"nome\": \"Famílias dos bairros atendidos pelos abrigos\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Famílias que o plano prevê cadastrar e, conforme a necessidade, deslocar aos abrigos; o alerta não informa quantidade ou necessidade de deslocamento.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta prevê chuva acumulada na bacia do Ribeirão das Águas.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-24\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"Previsão de chuva acumulada em 72 horas; período exato de início não especificado.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Previsão de chuva acumulada de 120 a 160 mm em 72 horas na bacia do Ribeirão das Águas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E1\",\n      \"destino\": \"E3\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta aponta possível transbordamento em trechos baixos da Várzea.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"Janela provável de elevação da cota, não de transbordamento confirmado.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E1\",\n      \"destino\": \"E5\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta aponta possível transbordamento em trechos baixos do Beira-Rio.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"Janela provável de elevação da cota, não de transbordamento confirmado.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E1\",\n      \"destino\": \"E6\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"A cota na régua da Ponte dos Tropeiros pode superar 4,2 m.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"Entre a madrugada de 26/11 e a tarde de 27/11.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Cota do ribeirão pode superar 4,2 m na régua da Ponte dos Tropeiros entre a madrugada de 26/11 e a tarde de 27/11.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E1\",\n      \"destino\": \"E7\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta menciona possível restrição de tráfego em pontes pequenas.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-24\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"O alerta não identifica quais pontes nem horários de eventual restrição.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"e de restrição de tráfego em pontes de pequeno porte.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E8\",\n      \"destino\": \"E9\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A COMPDEC convoca o GRAC em até 2 horas após receber alerta nível laranja ou superior.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-08-12\",\n        \"fim\": null,\n        \"observacao\": \"Plano versão 2025; os documentos não informam alteração posterior.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Ao receber alerta de nível laranja ou superior, a COMPDEC convoca o Grupo de Ações Coordenadas (GRAC) em até 2 horas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R7\",\n      \"origem\": \"E10\",\n      \"destino\": \"E11\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Assistência Social prepara os abrigos e o cadastro das famílias, conforme o plano.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-08-12\",\n        \"fim\": null,\n        \"observacao\": \"Não há atualização sobre execução para este alerta.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Assistência Social prepara os abrigos e o cadastro das famílias.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R8\",\n      \"origem\": \"E10\",\n      \"destino\": \"E12\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Assistência Social prepara os abrigos e o cadastro das famílias, conforme o plano.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-08-12\",\n        \"fim\": null,\n        \"observacao\": \"Não há atualização sobre execução para este alerta.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Assistência Social prepara os abrigos e o cadastro das famílias.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R9\",\n      \"origem\": \"E11\",\n      \"destino\": \"E3\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O abrigo atende prioritariamente famílias da Várzea e do Alto do Ribeirão.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-08-12\",\n        \"fim\": null,\n        \"observacao\": \"Capacidade documentada no plano; condição atual não atualizada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Atende prioritariamente famílias dos bairros Várzea e Alto do Ribeirão.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R10\",\n      \"origem\": \"E11\",\n      \"destino\": \"E4\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O abrigo atende prioritariamente famílias da Várzea e do Alto do Ribeirão.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-08-12\",\n        \"fim\": null,\n        \"observacao\": \"Capacidade documentada no plano; condição atual não atualizada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Atende prioritariamente famílias dos bairros Várzea e Alto do Ribeirão.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R11\",\n      \"origem\": \"E13\",\n      \"destino\": \"E14\",\n      \"tipo\": \"abastece\",\n      \"rotulo\": \"Obras disponibiliza caminhões para deslocamento de famílias; um está em manutenção segundo atualização posterior.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-10-30\",\n        \"fim\": \"2026-12-15\",\n        \"observacao\": \"Retorno do caminhão apenas previsto para 15/12/2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Obras disponibiliza dois caminhões e um micro-ônibus para deslocamento de famílias aos abrigos.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"um encontra-se em manutenção com previsão de retorno em 15/12/2026.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R12\",\n      \"origem\": \"E13\",\n      \"destino\": \"E15\",\n      \"tipo\": \"abastece\",\n      \"rotulo\": \"Obras disponibiliza o micro-ônibus para deslocamento; a atualização informa que está operacional.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-10-30\",\n        \"fim\": null,\n        \"observacao\": \"Estado operacional informado em 30/10/2026, sem nova confirmação para a data do alerta.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"O micro-ônibus está operacional.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R13\",\n      \"origem\": \"E14\",\n      \"destino\": \"E11\",\n      \"tipo\": \"depende_de\",\n      \"rotulo\": \"O deslocamento de famílias aos abrigos depende, entre outros meios previstos, da frota de Obras; a disponibilidade de um caminhão está reduzida.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-24\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"Relação operacional inferida do plano e da atualização da frota, não confirmação de necessidade de transporte.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"para deslocamento de famílias aos abrigos.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"um encontra-se em manutenção com previsão de retorno em 15/12/2026.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R14\",\n      \"origem\": \"E13\",\n      \"destino\": \"E14\",\n      \"tipo\": \"comunica\",\n      \"rotulo\": \"Obras solicita aviso com 24 horas de antecedência para necessidades adicionais destinadas à locação emergencial.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-10-30\",\n        \"fim\": null,\n        \"observacao\": \"A atualização não esclarece se o prazo pode ser atendido neste cenário.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"necessidades adicionais sejam comunicadas com 24 horas de antecedência para locação emergencial.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O plano de 2025 prevê dois caminhões e um micro-ônibus. Em 30/10/2026, Obras informou que um caminhão está em manutenção até retorno previsto em 15/12/2026 e que o micro-ônibus está operacional.\",\n      \"implicacao\": \"Na data de referência e na janela do alerta, a capacidade de transporte prevista no plano não deve ser presumida integralmente disponível. Não há informação sobre o estado do outro caminhão nem confirmação de retorno do veículo em manutenção.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"disponibiliza dois caminhões e um micro-ônibus\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"um encontra-se em manutenção com previsão de retorno em 15/12/2026.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T2\",\n      \"tipo\": \"pendencia_historica\",\n      \"descricao\": \"A locação emergencial de transporte adicional depende, segundo o ofício, de comunicação com 24 horas de antecedência. O documento não esclarece a disponibilidade de locação, o procedimento de solicitação ou se o prazo é viável para a janela indicada no alerta.\",\n      \"implicacao\": \"Convém confirmar com Obras, sem presumir que a locação foi solicitada ou contratada.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"eventuais necessidades adicionais sejam comunicadas com 24 horas de antecedência para locação emergencial.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"A COMPDEC recebeu o alerta nível laranja e convocou o GRAC dentro do prazo previsto no plano?\",\n      \"por_que_importa\": \"O nível informado no boletim corresponde ao critério de acionamento previsto no plano.\",\n      \"motivacao\": \"O boletim de 24/11/2026 registra nível laranja; o plano prevê convocação do GRAC em até 2 horas após o recebimento.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E8\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: LARANJA.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"a COMPDEC convoca o Grupo de Ações Coordenadas (GRAC) em até 2 horas.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Horário de recebimento do boletim pela COMPDEC e se, quando e a que horas o GRAC foi convocado.\",\n      \"quem_pode_confirmar\": \"COMPDEC\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"Como a Secretaria de Obras confirma a disponibilidade dos veículos para a janela de 26 a 27/11, considerando o caminhão em manutenção e o prazo de 24 horas para comunicar necessidades adicionais?\",\n      \"por_que_importa\": \"O alerta aponta possíveis impactos em bairros atendidos por abrigo, enquanto o plano depende de veículos de Obras para deslocar famílias.\",\n      \"motivacao\": \"O plano prevê dois caminhões e um micro-ônibus; o ofício informa um caminhão em manutenção com retorno previsto somente em 15/12/2026, e pede aviso prévio de 24 horas para locação emergencial.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E11\",\n        \"E13\",\n        \"E14\",\n        \"E15\",\n        \"E16\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria Municipal de Obras\",\n        \"COMPDEC\",\n        \"Secretaria de Assistência Social\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Obras disponibiliza dois caminhões e um micro-ônibus para deslocamento de famílias aos abrigos.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"O micro-ônibus está operacional.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"eventuais necessidades adicionais sejam comunicadas com 24 horas de antecedência para locação emergencial.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Estado atual do outro caminhão, necessidade estimada de transporte, possibilidade e prazo para locação, e se já houve comunicação ou providência.\",\n      \"quem_pode_confirmar\": \"Secretaria Municipal de Obras, em articulação com COMPDEC e Secretaria de Assistência Social.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V3\",\n      \"pergunta\": \"A Secretaria de Assistência Social está preparando os dois abrigos e o cadastro das famílias, e há informação atual sobre capacidade e condições de uso para este cenário?\",\n      \"por_que_importa\": \"O plano atribui essa preparação à Assistência Social, mas os documentos não registram sua execução para o alerta atual nem atualização das capacidades.\",\n      \"motivacao\": \"O alerta aponta possível transbordamento na Várzea, bairro atendido prioritariamente pelo abrigo da Escola Lírio do Vale; o plano também prevê o Ginásio Central.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E10\",\n        \"E11\",\n        \"E12\",\n        \"E16\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Assistência Social\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Assistência Social prepara os abrigos e o cadastro das famílias.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Capacidade: 180 pessoas.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Capacidade: 220 pessoas.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se os abrigos foram preparados para este cenário, se as capacidades indicadas seguem válidas e qual é a estimativa de famílias que poderiam necessitar de atendimento.\",\n      \"quem_pode_confirmar\": \"Secretaria de Assistência Social\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V4\",\n      \"pergunta\": \"Quais pontes de pequeno porte podem ter restrição de tráfego, e como essa informação será confirmada e comunicada às equipes que organizem o deslocamento?\",\n      \"por_que_importa\": \"Uma possível restrição em pontes pode afetar o planejamento de deslocamento aos abrigos, mas o alerta não identifica as pontes nem os locais afetados.\",\n      \"motivacao\": \"O boletim aponta possibilidade de restrição em pontes pequenas e de transbordamento em trechos baixos da Várzea e do Beira-Rio; o plano prevê transporte de famílias aos abrigos.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E5\",\n        \"E7\",\n        \"E11\",\n        \"E12\",\n        \"E13\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria Municipal de Obras\",\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"inferencia\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"e de restrição de tráfego em pontes de pequeno porte.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"para deslocamento de famílias aos abrigos.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Identificação das pontes, condições observadas, eventual restrição efetiva e setor responsável por acompanhar e comunicar mudanças.\",\n      \"quem_pode_confirmar\": \"Secretaria Municipal de Obras e COMPDEC; a divisão institucional de acompanhamento não está especificada nos documentos.\",\n      \"prioridade\": \"media\"\n    },\n    {\n      \"id\": \"V5\",\n      \"pergunta\": \"A previsão de cota na régua da Ponte dos Tropeiros está sendo acompanhada, e existe procedimento vigente para comunicar mudanças relevantes às equipes municipais?\",\n      \"por_que_importa\": \"O alerta traz uma janela temporal e um valor de referência para a cota, mas não informa quem fará o acompanhamento local nem como atualizações serão distribuídas.\",\n      \"motivacao\": \"A cota pode superar 4,2 m entre a madrugada de 26/11 e a tarde de 27/11.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E6\",\n        \"E8\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Cota do ribeirão pode superar 4,2 m na régua da Ponte dos Tropeiros entre a madrugada de 26/11 e a tarde de 27/11.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se há acompanhamento da régua para este cenário, quem o realiza e qual fluxo de comunicação de atualizações se aplica.\",\n      \"quem_pode_confirmar\": \"COMPDEC; o responsável pelo acompanhamento hidrológico não está identificado nos documentos.\",\n      \"prioridade\": \"media\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há registro de recebimento do alerta pela COMPDEC, horário ou convocação efetiva do GRAC.\",\n      \"por_que_importa\": \"Esses dados permitem verificar a aplicação do prazo de acionamento previsto no plano.\"\n    },\n    {\n      \"descricao\": \"Não há atualização da situação do segundo caminhão, nem confirmação de retorno do veículo em manutenção antes de 15/12/2026.\",\n      \"por_que_importa\": \"A condição da frota influencia o planejamento de transporte previsto no plano.\"\n    },\n    {\n      \"descricao\": \"Não há estimativa de famílias que possam necessitar de transporte ou abrigo, nem informação atual sobre condições e capacidade dos abrigos.\",\n      \"por_que_importa\": \"Sem esses dados não é possível relacionar a capacidade documentada à necessidade deste cenário.\"\n    },\n    {\n      \"descricao\": \"O alerta não identifica as pontes de pequeno porte sujeitas a possível restrição nem descreve o fluxo local para acompanhar e comunicar mudanças de tráfego.\",\n      \"por_que_importa\": \"Essas informações podem ser relevantes para o planejamento dos deslocamentos, sem que se presuma uma restrição efetiva.\"\n    },\n    {\n      \"descricao\": \"Não há informação sobre quem acompanha a régua da Ponte dos Tropeiros ou como eventuais atualizações de cota serão comunicadas à prefeitura.\",\n      \"por_que_importa\": \"O boletim delimita uma janela provável, mas não documenta a organização do acompanhamento local.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O cenário é fictício e a análise usa somente os três documentos fornecidos.\",\n    \"A possibilidade de transbordamento ou restrição de tráfego não confirma que esses eventos ocorrerão.\",\n    \"O plano é de 2025 e não há documento que o revogue ou atualize integralmente; a atualização de Obras trata especificamente da frota, não de todo o plano.\",\n    \"A previsão de retorno do caminhão em 15/12/2026 não confirma que ele estará disponível antes ou durante a janela do alerta.\",\n    \"A operacionalidade do micro-ônibus foi informada em 30/10/2026 e não foi novamente confirmada para 24/11/2026.\",\n    \"Não se deve inferir necessidade de deslocamento, ocupação de abrigos ou restrição efetiva de pontes sem confirmação.\",\n    \"As verificações são pontos para revisão humana e não constituem decisão sobre risco, evacuação, interdição ou prontidão municipal.\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0491b8602398b65d016b0700216b1487d28ef88cce1bf73afd",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "all_turns",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2365,
+      "input_tokens_details": {
+        "cache_write_tokens": 571,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 571
+        },
+        "cached_tokens": 1791
+      },
+      "output_tokens": 6725,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 9090
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\n  \"resumo_situacao\": \"O boletim de 24/11/2026 informa alerta hidrológico nível laranja, com possibilidade de transbordamento em trechos baixos da Várzea e do Beira-Rio e restrição de tráfego em pontes pequenas. O plano prevê convocação do GRAC, preparação de abrigos e transporte de famílias; uma atualização de Obras informa que um dos dois caminhões está em manutenção até previsão de retorno em 15/12/2026. A pauta abaixo identifica pontos a confirmar, sem presumir que as medidas já foram acionadas ou que a previsão se concretizará.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta hidrológico nível laranja\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Cenário fictício informado em 24/11/2026, com previsão de chuva acumulada e possibilidade de transbordamento e restrição de tráfego.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Ribeirão das Águas\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Bacia abrangida pela previsão de chuva e curso d'água cuja cota pode superar 4,2 m na régua da Ponte dos Tropeiros.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Várzea\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Bairro citado como sujeito a possível transbordamento em trechos baixos e atendido prioritariamente por um dos abrigos do plano.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Alto do Ribeirão\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Bairro atendido prioritariamente pelo abrigo da Escola Municipal Lírio do Vale.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Beira-Rio\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Bairro citado no alerta como sujeito a possível transbordamento em trechos baixos.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Ponte dos Tropeiros\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local de referência da régua em que a cota do ribeirão pode superar 4,2 m.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Pontes de pequeno porte\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Tipo de infraestrutura em que o alerta menciona possível restrição de tráfego; não são identificadas individualmente.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Setor que, conforme o plano, convoca o GRAC em até 2 horas ao receber alerta nível laranja ou superior.\"\n    },\n    {\n      \"id\": \"E9\",\n      \"nome\": \"Grupo de Ações Coordenadas (GRAC)\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Grupo que o plano prevê convocar após alerta nível laranja ou superior.\"\n    },\n    {\n      \"id\": \"E10\",\n      \"nome\": \"Secretaria de Assistência Social\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Secretaria de Assistência Social\",\n      \"descricao\": \"Setor indicado no plano para preparar os abrigos e o cadastro das famílias.\"\n    },\n    {\n      \"id\": \"E11\",\n      \"nome\": \"Abrigo da Escola Municipal Lírio do Vale\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Secretaria de Assistência Social\",\n      \"descricao\": \"Abrigo na Rua das Palmeiras, 300, com capacidade documentada de 180 pessoas; atende prioritariamente Várzea e Alto do Ribeirão.\"\n    },\n    {\n      \"id\": \"E12\",\n      \"nome\": \"Abrigo do Ginásio Poliesportivo Central\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Secretaria de Assistência Social\",\n      \"descricao\": \"Abrigo com capacidade documentada de 220 pessoas.\"\n    },\n    {\n      \"id\": \"E13\",\n      \"nome\": \"Secretaria Municipal de Obras\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Secretaria Municipal de Obras\",\n      \"descricao\": \"Setor indicado para disponibilizar transporte no plano e autor da atualização de situação da frota.\"\n    },\n    {\n      \"id\": \"E14\",\n      \"nome\": \"Dois caminhões previstos no plano\",\n      \"tipo\": \"equipamento\",\n      \"setor_responsavel\": \"Secretaria Municipal de Obras\",\n      \"descricao\": \"O plano prevê dois caminhões; a atualização de 30/10/2026 informa que um está em manutenção, com retorno previsto para 15/12/2026.\"\n    },\n    {\n      \"id\": \"E15\",\n      \"nome\": \"Micro-ônibus\",\n      \"tipo\": \"equipamento\",\n      \"setor_responsavel\": \"Secretaria Municipal de Obras\",\n      \"descricao\": \"Veículo previsto no plano e informado como operacional em 30/10/2026.\"\n    },\n    {\n      \"id\": \"E16\",\n      \"nome\": \"Famílias dos bairros atendidos pelos abrigos\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Famílias que o plano prevê cadastrar e, conforme a necessidade, deslocar aos abrigos; o alerta não informa quantidade ou necessidade de deslocamento.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta prevê chuva acumulada na bacia do Ribeirão das Águas.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-24\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"Previsão de chuva acumulada em 72 horas; período exato de início não especificado.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Previsão de chuva acumulada de 120 a 160 mm em 72 horas na bacia do Ribeirão das Águas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E1\",\n      \"destino\": \"E3\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta aponta possível transbordamento em trechos baixos da Várzea.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"Janela provável de elevação da cota, não de transbordamento confirmado.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E1\",\n      \"destino\": \"E5\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta aponta possível transbordamento em trechos baixos do Beira-Rio.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"Janela provável de elevação da cota, não de transbordamento confirmado.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E1\",\n      \"destino\": \"E6\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"A cota na régua da Ponte dos Tropeiros pode superar 4,2 m.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"Entre a madrugada de 26/11 e a tarde de 27/11.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Cota do ribeirão pode superar 4,2 m na régua da Ponte dos Tropeiros entre a madrugada de 26/11 e a tarde de 27/11.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E1\",\n      \"destino\": \"E7\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta menciona possível restrição de tráfego em pontes pequenas.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-24\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"O alerta não identifica quais pontes nem horários de eventual restrição.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"e de restrição de tráfego em pontes de pequeno porte.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E8\",\n      \"destino\": \"E9\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A COMPDEC convoca o GRAC em até 2 horas após receber alerta nível laranja ou superior.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-08-12\",\n        \"fim\": null,\n        \"observacao\": \"Plano versão 2025; os documentos não informam alteração posterior.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Ao receber alerta de nível laranja ou superior, a COMPDEC convoca o Grupo de Ações Coordenadas (GRAC) em até 2 horas.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R7\",\n      \"origem\": \"E10\",\n      \"destino\": \"E11\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Assistência Social prepara os abrigos e o cadastro das famílias, conforme o plano.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-08-12\",\n        \"fim\": null,\n        \"observacao\": \"Não há atualização sobre execução para este alerta.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Assistência Social prepara os abrigos e o cadastro das famílias.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R8\",\n      \"origem\": \"E10\",\n      \"destino\": \"E12\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Assistência Social prepara os abrigos e o cadastro das famílias, conforme o plano.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-08-12\",\n        \"fim\": null,\n        \"observacao\": \"Não há atualização sobre execução para este alerta.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Assistência Social prepara os abrigos e o cadastro das famílias.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R9\",\n      \"origem\": \"E11\",\n      \"destino\": \"E3\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O abrigo atende prioritariamente famílias da Várzea e do Alto do Ribeirão.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-08-12\",\n        \"fim\": null,\n        \"observacao\": \"Capacidade documentada no plano; condição atual não atualizada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Atende prioritariamente famílias dos bairros Várzea e Alto do Ribeirão.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R10\",\n      \"origem\": \"E11\",\n      \"destino\": \"E4\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O abrigo atende prioritariamente famílias da Várzea e do Alto do Ribeirão.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-08-12\",\n        \"fim\": null,\n        \"observacao\": \"Capacidade documentada no plano; condição atual não atualizada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Atende prioritariamente famílias dos bairros Várzea e Alto do Ribeirão.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R11\",\n      \"origem\": \"E13\",\n      \"destino\": \"E14\",\n      \"tipo\": \"abastece\",\n      \"rotulo\": \"Obras disponibiliza caminhões para deslocamento de famílias; um está em manutenção segundo atualização posterior.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-10-30\",\n        \"fim\": \"2026-12-15\",\n        \"observacao\": \"Retorno do caminhão apenas previsto para 15/12/2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Obras disponibiliza dois caminhões e um micro-ônibus para deslocamento de famílias aos abrigos.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"um encontra-se em manutenção com previsão de retorno em 15/12/2026.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R12\",\n      \"origem\": \"E13\",\n      \"destino\": \"E15\",\n      \"tipo\": \"abastece\",\n      \"rotulo\": \"Obras disponibiliza o micro-ônibus para deslocamento; a atualização informa que está operacional.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-10-30\",\n        \"fim\": null,\n        \"observacao\": \"Estado operacional informado em 30/10/2026, sem nova confirmação para a data do alerta.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"O micro-ônibus está operacional.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R13\",\n      \"origem\": \"E14\",\n      \"destino\": \"E11\",\n      \"tipo\": \"depende_de\",\n      \"rotulo\": \"O deslocamento de famílias aos abrigos depende, entre outros meios previstos, da frota de Obras; a disponibilidade de um caminhão está reduzida.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-24\",\n        \"fim\": \"2026-11-27\",\n        \"observacao\": \"Relação operacional inferida do plano e da atualização da frota, não confirmação de necessidade de transporte.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"para deslocamento de famílias aos abrigos.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"um encontra-se em manutenção com previsão de retorno em 15/12/2026.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R14\",\n      \"origem\": \"E13\",\n      \"destino\": \"E14\",\n      \"tipo\": \"comunica\",\n      \"rotulo\": \"Obras solicita aviso com 24 horas de antecedência para necessidades adicionais destinadas à locação emergencial.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-10-30\",\n        \"fim\": null,\n        \"observacao\": \"A atualização não esclarece se o prazo pode ser atendido neste cenário.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"necessidades adicionais sejam comunicadas com 24 horas de antecedência para locação emergencial.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O plano de 2025 prevê dois caminhões e um micro-ônibus. Em 30/10/2026, Obras informou que um caminhão está em manutenção até retorno previsto em 15/12/2026 e que o micro-ônibus está operacional.\",\n      \"implicacao\": \"Na data de referência e na janela do alerta, a capacidade de transporte prevista no plano não deve ser presumida integralmente disponível. Não há informação sobre o estado do outro caminhão nem confirmação de retorno do veículo em manutenção.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"disponibiliza dois caminhões e um micro-ônibus\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"um encontra-se em manutenção com previsão de retorno em 15/12/2026.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T2\",\n      \"tipo\": \"pendencia_historica\",\n      \"descricao\": \"A locação emergencial de transporte adicional depende, segundo o ofício, de comunicação com 24 horas de antecedência. O documento não esclarece a disponibilidade de locação, o procedimento de solicitação ou se o prazo é viável para a janela indicada no alerta.\",\n      \"implicacao\": \"Convém confirmar com Obras, sem presumir que a locação foi solicitada ou contratada.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"eventuais necessidades adicionais sejam comunicadas com 24 horas de antecedência para locação emergencial.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"A COMPDEC recebeu o alerta nível laranja e convocou o GRAC dentro do prazo previsto no plano?\",\n      \"por_que_importa\": \"O nível informado no boletim corresponde ao critério de acionamento previsto no plano.\",\n      \"motivacao\": \"O boletim de 24/11/2026 registra nível laranja; o plano prevê convocação do GRAC em até 2 horas após o recebimento.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E8\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: LARANJA.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"a COMPDEC convoca o Grupo de Ações Coordenadas (GRAC) em até 2 horas.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Horário de recebimento do boletim pela COMPDEC e se, quando e a que horas o GRAC foi convocado.\",\n      \"quem_pode_confirmar\": \"COMPDEC\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"Como a Secretaria de Obras confirma a disponibilidade dos veículos para a janela de 26 a 27/11, considerando o caminhão em manutenção e o prazo de 24 horas para comunicar necessidades adicionais?\",\n      \"por_que_importa\": \"O alerta aponta possíveis impactos em bairros atendidos por abrigo, enquanto o plano depende de veículos de Obras para deslocar famílias.\",\n      \"motivacao\": \"O plano prevê dois caminhões e um micro-ônibus; o ofício informa um caminhão em manutenção com retorno previsto somente em 15/12/2026, e pede aviso prévio de 24 horas para locação emergencial.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E11\",\n        \"E13\",\n        \"E14\",\n        \"E15\",\n        \"E16\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria Municipal de Obras\",\n        \"COMPDEC\",\n        \"Secretaria de Assistência Social\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Obras disponibiliza dois caminhões e um micro-ônibus para deslocamento de famílias aos abrigos.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"O micro-ônibus está operacional.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"eventuais necessidades adicionais sejam comunicadas com 24 horas de antecedência para locação emergencial.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Estado atual do outro caminhão, necessidade estimada de transporte, possibilidade e prazo para locação, e se já houve comunicação ou providência.\",\n      \"quem_pode_confirmar\": \"Secretaria Municipal de Obras, em articulação com COMPDEC e Secretaria de Assistência Social.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V3\",\n      \"pergunta\": \"A Secretaria de Assistência Social está preparando os dois abrigos e o cadastro das famílias, e há informação atual sobre capacidade e condições de uso para este cenário?\",\n      \"por_que_importa\": \"O plano atribui essa preparação à Assistência Social, mas os documentos não registram sua execução para o alerta atual nem atualização das capacidades.\",\n      \"motivacao\": \"O alerta aponta possível transbordamento na Várzea, bairro atendido prioritariamente pelo abrigo da Escola Lírio do Vale; o plano também prevê o Ginásio Central.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E10\",\n        \"E11\",\n        \"E12\",\n        \"E16\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Assistência Social\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Assistência Social prepara os abrigos e o cadastro das famílias.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Capacidade: 180 pessoas.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Capacidade: 220 pessoas.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se os abrigos foram preparados para este cenário, se as capacidades indicadas seguem válidas e qual é a estimativa de famílias que poderiam necessitar de atendimento.\",\n      \"quem_pode_confirmar\": \"Secretaria de Assistência Social\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V4\",\n      \"pergunta\": \"Quais pontes de pequeno porte podem ter restrição de tráfego, e como essa informação será confirmada e comunicada às equipes que organizem o deslocamento?\",\n      \"por_que_importa\": \"Uma possível restrição em pontes pode afetar o planejamento de deslocamento aos abrigos, mas o alerta não identifica as pontes nem os locais afetados.\",\n      \"motivacao\": \"O boletim aponta possibilidade de restrição em pontes pequenas e de transbordamento em trechos baixos da Várzea e do Beira-Rio; o plano prevê transporte de famílias aos abrigos.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E5\",\n        \"E7\",\n        \"E11\",\n        \"E12\",\n        \"E13\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria Municipal de Obras\",\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"inferencia\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"e de restrição de tráfego em pontes de pequeno porte.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"para deslocamento de famílias aos abrigos.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Identificação das pontes, condições observadas, eventual restrição efetiva e setor responsável por acompanhar e comunicar mudanças.\",\n      \"quem_pode_confirmar\": \"Secretaria Municipal de Obras e COMPDEC; a divisão institucional de acompanhamento não está especificada nos documentos.\",\n      \"prioridade\": \"media\"\n    },\n    {\n      \"id\": \"V5\",\n      \"pergunta\": \"A previsão de cota na régua da Ponte dos Tropeiros está sendo acompanhada, e existe procedimento vigente para comunicar mudanças relevantes às equipes municipais?\",\n      \"por_que_importa\": \"O alerta traz uma janela temporal e um valor de referência para a cota, mas não informa quem fará o acompanhamento local nem como atualizações serão distribuídas.\",\n      \"motivacao\": \"A cota pode superar 4,2 m entre a madrugada de 26/11 e a tarde de 27/11.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E6\",\n        \"E8\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Cota do ribeirão pode superar 4,2 m na régua da Ponte dos Tropeiros entre a madrugada de 26/11 e a tarde de 27/11.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se há acompanhamento da régua para este cenário, quem o realiza e qual fluxo de comunicação de atualizações se aplica.\",\n      \"quem_pode_confirmar\": \"COMPDEC; o responsável pelo acompanhamento hidrológico não está identificado nos documentos.\",\n      \"prioridade\": \"media\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há registro de recebimento do alerta pela COMPDEC, horário ou convocação efetiva do GRAC.\",\n      \"por_que_importa\": \"Esses dados permitem verificar a aplicação do prazo de acionamento previsto no plano.\"\n    },\n    {\n      \"descricao\": \"Não há atualização da situação do segundo caminhão, nem confirmação de retorno do veículo em manutenção antes de 15/12/2026.\",\n      \"por_que_importa\": \"A condição da frota influencia o planejamento de transporte previsto no plano.\"\n    },\n    {\n      \"descricao\": \"Não há estimativa de famílias que possam necessitar de transporte ou abrigo, nem informação atual sobre condições e capacidade dos abrigos.\",\n      \"por_que_importa\": \"Sem esses dados não é possível relacionar a capacidade documentada à necessidade deste cenário.\"\n    },\n    {\n      \"descricao\": \"O alerta não identifica as pontes de pequeno porte sujeitas a possível restrição nem descreve o fluxo local para acompanhar e comunicar mudanças de tráfego.\",\n      \"por_que_importa\": \"Essas informações podem ser relevantes para o planejamento dos deslocamentos, sem que se presuma uma restrição efetiva.\"\n    },\n    {\n      \"descricao\": \"Não há informação sobre quem acompanha a régua da Ponte dos Tropeiros ou como eventuais atualizações de cota serão comunicadas à prefeitura.\",\n      \"por_que_importa\": \"O boletim delimita uma janela provável, mas não documenta a organização do acompanhamento local.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O cenário é fictício e a análise usa somente os três documentos fornecidos.\",\n    \"A possibilidade de transbordamento ou restrição de tráfego não confirma que esses eventos ocorrerão.\",\n    \"O plano é de 2025 e não há documento que o revogue ou atualize integralmente; a atualização de Obras trata especificamente da frota, não de todo o plano.\",\n    \"A previsão de retorno do caminhão em 15/12/2026 não confirma que ele estará disponível antes ou durante a janela do alerta.\",\n    \"A operacionalidade do micro-ônibus foi informada em 30/10/2026 e não foi novamente confirmada para 24/11/2026.\",\n    \"Não se deve inferir necessidade de deslocamento, ocupação de abrigos ou restrição efetiva de pontes sem confirmação.\",\n    \"As verificações são pontos para revisão humana e não constituem decisão sobre risco, evacuação, interdição ou prontidão municipal.\"\n  ]\n}"
+  }
+}

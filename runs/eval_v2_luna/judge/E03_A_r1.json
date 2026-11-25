@@ -1,0 +1,137 @@
+{
+  "run_file": "E03_A_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-6.1-terra",
+    "reasoning_effort": "medium",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_0bc695423fe059b9016b070099176c87d29bf78e4ce693ab50",
+  "model_reported": "gpt-6.1-terra",
+  "usage": {
+    "input_tokens": 5029,
+    "output_tokens": 1521,
+    "reasoning_tokens": 574
+  },
+  "latency_ms": 31493,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V3"
+        ],
+        "justificativa": "As verificações perguntam sobre contrato ou instrumento vigente para mobilizar caminhão-pipa."
+      },
+      {
+        "id": "G2",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V2"
+        ],
+        "justificativa": "V2 aborda a operação da captação, mas não sua proteção nem a elevação do painel."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V2",
+          "R2",
+          "R3",
+          "R8"
+        ],
+        "justificativa": "A saída relaciona o rio e a captação ao abastecimento, mas não identifica a inundação da casa de bombas a 7,1 m."
+      },
+      {
+        "id": "P2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V3",
+          "T1",
+          "R4",
+          "R5",
+          "R6"
+        ],
+        "justificativa": "A saída relaciona a contingência de água nos abrigos ao caminhão-pipa e ao contrato vencido."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "ausente",
+        "ids_saida": [],
+        "justificativa": "A saída não menciona a pendência histórica de elevação do painel nem a ausência de orçamento em 2024."
+      },
+      {
+        "id": "T2",
+        "resultado": "correto",
+        "ids_saida": [
+          "V1",
+          "V3",
+          "T1",
+          "R6"
+        ],
+        "justificativa": "A saída reconhece que a vigência do contrato terminou antes do alerta."
+      }
+    ],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "nao_reconhecido",
+        "ids_saida": [],
+        "justificativa": "A saída aponta falta de informação operacional, mas não explicita a falta de informação atual sobre a proteção da casa de bombas."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não afirma que haverá interrupção do abastecimento."
+      },
+      {
+        "id": "X2",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída trata o contrato identificado como vencido e pergunta se existe solução vigente."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à confirmação de contrato ou arranjo vigente para caminhão-pipa."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Cobre parcialmente G2 ao perguntar sobre a operação da captação, sem abordar sua proteção."
+      },
+      {
+        "id": "V3",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Aborda a contingência dos abrigos e a existência de instrumento vigente para mobilização."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "V2.por_que_importa",
+        "afirmacao": "Os documentos não descrevem efeitos na estação: D4 descreve a inundação da casa de bombas e a queima dos motores em 2024."
+      },
+      {
+        "onde": "informacoes_ausentes[0].descricao",
+        "afirmacao": "Não há informação sobre o efeito dos níveis previstos na operação da estação: D4 registra efeitos históricos a 7,1 m, embora não estabeleça o impacto do cenário atual."
+      },
+      {
+        "onde": "achados_temporais[T1].descricao",
+        "afirmacao": "O extrato registra que não há prorrogação: D3 informa apenas que não há prorrogação registrada."
+      }
+    ]
+  }
+}

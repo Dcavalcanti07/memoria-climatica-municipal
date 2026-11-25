@@ -1,0 +1,132 @@
+{
+  "run_file": "E06_B_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-6.1-terra",
+    "reasoning_effort": "medium",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_01fd9dafd6ac2f7c016b070099192c87d2a365e55f87fec8a8",
+  "model_reported": "gpt-6.1-terra",
+  "usage": {
+    "input_tokens": 5667,
+    "output_tokens": 1461,
+    "reasoning_tokens": 454
+  },
+  "latency_ms": 28857,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V1",
+          "V2",
+          "T1"
+        ],
+        "justificativa": "A saída pergunta sobre o reparo e a revisão formal da capacidade, mas não pede explicitamente a capacidade real atual do ginásio."
+      },
+      {
+        "id": "G2",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V3",
+          "T3"
+        ],
+        "justificativa": "A saída aborda a escola e seus arranjos, mas não verifica um abrigo adicional ou plano para excedentes; a falta de abrigos alternativos aparece em informações ausentes."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V2",
+          "V3",
+          "T3",
+          "R2",
+          "R3"
+        ],
+        "justificativa": "Os números e a superlotação são apresentados, mas a relação causal entre a capacidade reduzida do ginásio e o excedente enviado à escola não é explicitada."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "correto",
+        "ids_saida": [
+          "V1",
+          "V2",
+          "T1"
+        ],
+        "justificativa": "A saída contrasta os 200 do plano com os 80 efetivos em 2024 e informa que o reparo não foi confirmado."
+      }
+    ],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "reconhecido",
+        "ids_saida": [
+          "V1",
+          "T1"
+        ],
+        "justificativa": "A ausência de confirmação da execução do reparo é explicitada também em informações ausentes."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "V1, V2, T1 e R2",
+        "justificativa": "Os 200 lugares são atribuídos ao plano com ressalva sobre a capacidade atual."
+      },
+      {
+        "id": "X2",
+        "violado": false,
+        "onde": "V1 e T1",
+        "justificativa": "A interdição da ala é apresentada como fato de 2024, não como situação atual confirmada."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Cobre o reparo do telhado e a condição atual de uso, partes de G1."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Aborda a divergência de capacidade do ginásio e sua revisão no plano, relacionada a G1."
+      },
+      {
+        "id": "V3",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Aborda parcialmente G2 ao verificar a escola e seus arranjos após a superlotação."
+      },
+      {
+        "id": "V4",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "A disponibilidade e a condição dos kits e colchões previstos no plano são relevantes para possível abrigamento."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "V4.quem_pode_confirmar",
+        "afirmacao": "O plano indica a Secretaria de Assistência Social como responsável pelo almoxarifado; ele apenas o identifica como almoxarifado da Assistência Social."
+      },
+      {
+        "onde": "R6.periodo e R7.periodo",
+        "afirmacao": "O uso do ginásio e da escola ocorreu precisamente em 2024-06-02; essa é a data do relatório, não necessariamente a data da ocorrência."
+      },
+      {
+        "onde": "R8.periodo",
+        "afirmacao": "A dependência do reparo em relação à licitação terminou em 2025; a ata apenas previa a licitação para aquele ano."
+      },
+      {
+        "onde": "R10.periodo",
+        "afirmacao": "O período de possibilidade de desalojamento termina em 2026-11-23; sem horário de emissão, o prazo de 36 horas não determina essa data com precisão."
+      }
+    ]
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "run_file": "E25_A_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-6.1-terra",
+    "reasoning_effort": "medium",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_00098cf24fbf8b18016b07003e2f4887d294c364f8f19243fd",
+  "model_reported": "gpt-6.1-terra",
+  "usage": {
+    "input_tokens": 4391,
+    "output_tokens": 1265,
+    "reasoning_tokens": 516
+  },
+  "latency_ms": 27988,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V2"
+        ],
+        "justificativa": "V2 pergunta pela disponibilidade do único operador habilitado durante o alerta."
+      },
+      {
+        "id": "G2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V4"
+        ],
+        "justificativa": "V4 busca confirmar o apoio dos Bombeiros para o alerta."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V2",
+          "R1",
+          "R2",
+          "R3",
+          "R6"
+        ],
+        "justificativa": "A saída relaciona o possível isolamento ao acesso por barco e à necessidade de confirmar o único operador habilitado."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "T1",
+          "R4"
+        ],
+        "justificativa": "A saída registra a instalação e a revisão do motor, mas não reconhece que isso resolveu a falta de motor registrada em 2024."
+      }
+    ],
+    "gold_insuficiente": [],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída pergunta sobre a prontidão do barco e afirma que ele tem motor, sem declará-lo indisponível."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "A prontidão operacional do barco é específica e relevante, mas não é uma verificação prevista no gabarito."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à verificação da disponibilidade do único operador habilitado em G1."
+      },
+      {
+        "id": "V3",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "A suficiência dos 12 coletes é relevante para o transporte e o resgate durante a cheia."
+      },
+      {
+        "id": "V4",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à confirmação do apoio dos Bombeiros prevista em G2."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "R4.periodo.inicio",
+        "afirmacao": "O motor foi instalado em 2025-01-01; D3 informa apenas o ano de 2025."
+      },
+      {
+        "onde": "R6.periodo.fim",
+        "afirmacao": "O prazo terminou em 2027-03-01; D3 informa apenas o mês 03/2027."
+      },
+      {
+        "onde": "achados_temporais.T2.tipo",
+        "afirmacao": "A classificação 'vigencia_encerrada' não é sustentada para o prazo de 03/2027 na data de referência, embora a descrição e a implicação reconheçam corretamente que o prazo é futuro."
+      }
+    ]
+  }
+}

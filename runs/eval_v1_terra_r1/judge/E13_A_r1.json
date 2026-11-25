@@ -1,0 +1,116 @@
+{
+  "run_file": "E13_A_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-6.1-terra",
+    "reasoning_effort": "medium",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_04feb0ef4e6f59b9016b070020a1f087d29c36b22785d1b98a",
+  "model_reported": "gpt-6.1-terra",
+  "usage": {
+    "input_tokens": 5103,
+    "output_tokens": 1331,
+    "reasoning_tokens": 460
+  },
+  "latency_ms": 29791,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V1",
+          "V2"
+        ],
+        "justificativa": "V1 pergunta sobre rota alternativa para o TFD em geral, mas não sobre um plano específico para os 9 pacientes de hemodiálise."
+      },
+      {
+        "id": "G2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V2",
+          "V4"
+        ],
+        "justificativa": "V2 verifica o transporte programado para hemodiálise e oncologia durante o alerta."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V1",
+          "V2",
+          "R4",
+          "R10"
+        ],
+        "justificativa": "A saída relaciona o risco de bloqueio ao transporte de TFD e identifica os pacientes de hemodiálise, mas não menciona que a RM-120 é o único acesso pavimentado."
+      }
+    ],
+    "gold_temporal": [],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "nao_reconhecido",
+        "ids_saida": [],
+        "justificativa": "A saída não menciona a estrada do Caí nem a falta de informação atual sobre sua condição."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não afirma que a estrada vicinal do Caí está transitável."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Aborda parcialmente a manutenção do transporte TFD e a necessidade de rota alternativa."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Verifica a programação do transporte para hemodiálise e oncologia durante o alerta."
+      },
+      {
+        "id": "V3",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "Verifica a retaguarda de urgência e internação do hospital citado no plano."
+      },
+      {
+        "id": "V4",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Aborda parcialmente a agenda dos pacientes TFD, ao perguntar sobre sua reorganização em caso de bloqueio."
+      },
+      {
+        "id": "V5",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "Confirma a quantidade de pacientes TFD para dimensionar o transporte durante o alerta."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "achados_temporais.T1.descricao",
+        "afirmacao": "A relação de TFD de 2026 é nominal: D3 apresenta quantidades, não nomes."
+      },
+      {
+        "onde": "relacoes.R1.periodo.observacao",
+        "afirmacao": "A dependência da frota da Saúde foi mantida na atualização de 2026: D3 não aborda a frota."
+      },
+      {
+        "onde": "informacoes_ausentes[0].descricao",
+        "afirmacao": "Não há no material descrição de rotas alternativas: D4 descreve o uso da estrada vicinal do Caí e o acréscimo de duas horas ao trajeto."
+      },
+      {
+        "onde": "cautelas[3]",
+        "afirmacao": "Não foi identificado documento que diga que o bloqueio já ocorreu: D4 relata o bloqueio da RM-120 em 2024."
+      }
+    ]
+  }
+}

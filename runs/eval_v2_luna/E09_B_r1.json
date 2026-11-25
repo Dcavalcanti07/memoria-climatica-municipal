@@ -1,0 +1,1025 @@
+{
+  "meta": {
+    "scenario": "E09",
+    "condicao": "B",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v2_luna",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D4",
+      "D1",
+      "D3",
+      "D2"
+    ],
+    "user_message_chars": 1485,
+    "user_message_sha12": "273612867974"
+  },
+  "user_message": "Município (fictício): Santa Clara do Rio\nData de referência da análise: 2026-11-25\nDocumentos disponíveis (4), em ordem cronológica:\n\n### [D4] Relatório — uso da Escola Iracema como abrigo em 2024\nTipo: Relatório de ocorrência | Fonte: Secretaria de Educação | Data: 2024-07-15\n\nA Escola Iracema funcionou como abrigo por 23 dias. As aulas ficaram suspensas no período e a reposição se estendeu até janeiro. As rotas do transporte escolar foram alteradas sem aviso prévio às famílias. Recomendação: prever escola alternativa para aulas e comunicação às famílias.\n\n---\n\n### [D1] Plano de Contingência (2025)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2025-06-30\n\nAbrigo 1: Escola Municipal Professora Iracema (220 pessoas).\nAbrigo 2: Centro Comunitário do Bairro Novo (70 pessoas).\nA Secretaria de Educação libera a escola mediante solicitação da COMPDEC.\n\n---\n\n### [D3] Calendário escolar 2026 — Educação\nTipo: Atualização de secretaria | Fonte: Secretaria de Educação | Data: 2026-02-01\n\nAvaliações finais: 30/11 a 11/12/2026. Encerramento do ano letivo: 18/12/2026. A Escola Iracema atende 640 estudantes em dois turnos.\n\n---\n\n### [D2] Alerta de inundação (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-25\n\nNÍVEL: LARANJA. Rio Santa Clara em elevação; possibilidade de inundação prolongada (mais de 5 dias) nas áreas baixas.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_001f3286d94ac7d4016b070020863087d2b5de672ff2cc65f1",
+  "model_reported": "gpt-6-luna",
+  "usage": {
+    "input_tokens": 2212,
+    "output_tokens": 4114,
+    "reasoning_tokens": 234
+  },
+  "latency_ms": 25214,
+  "started_at": "2026-11-25T15:34:56.112Z",
+  "output": {
+    "resumo_situacao": "O cenário de alerta de 25/11/2026 informa elevação do Rio Santa Clara e possibilidade de inundação prolongada nas áreas baixas. O Plano de Contingência prevê a Escola Iracema e o Centro Comunitário do Bairro Novo como abrigos; o calendário escolar indica avaliações finais a partir de 30/11. Um relatório de 2024 registra impactos sobre aulas e transporte quando a escola foi usada como abrigo.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Alerta de inundação de 25/11/2026",
+        "tipo": "evento",
+        "setor_responsavel": "Sala de Situação Regional",
+        "descricao": "Cenário fictício de nível laranja, com o Rio Santa Clara em elevação e possibilidade de inundação prolongada nas áreas baixas."
+      },
+      {
+        "id": "E2",
+        "nome": "Plano de Contingência (2025)",
+        "tipo": "norma_documento",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Documento que identifica dois abrigos e prevê solicitação da COMPDEC para liberação da escola."
+      },
+      {
+        "id": "E3",
+        "nome": "Escola Municipal Professora Iracema",
+        "tipo": "infraestrutura",
+        "setor_responsavel": "Secretaria de Educação",
+        "descricao": "Abrigo previsto no plano, com capacidade indicada de 220 pessoas; atende 640 estudantes em dois turnos."
+      },
+      {
+        "id": "E4",
+        "nome": "Centro Comunitário do Bairro Novo",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Segundo abrigo indicado no Plano de Contingência, com capacidade indicada de 70 pessoas."
+      },
+      {
+        "id": "E5",
+        "nome": "Avaliações finais de 2026",
+        "tipo": "servico",
+        "setor_responsavel": "Secretaria de Educação",
+        "descricao": "Período escolar informado de 30/11 a 11/12/2026."
+      },
+      {
+        "id": "E6",
+        "nome": "Estudantes da Escola Iracema",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": "Secretaria de Educação",
+        "descricao": "Grupo de 640 estudantes atendidos em dois turnos, conforme atualização de 2026."
+      },
+      {
+        "id": "E7",
+        "nome": "Transporte escolar",
+        "tipo": "servico",
+        "setor_responsavel": "Secretaria de Educação",
+        "descricao": "Serviço cujas rotas foram alteradas sem aviso prévio às famílias durante uso anterior da escola como abrigo."
+      },
+      {
+        "id": "E8",
+        "nome": "COMPDEC",
+        "tipo": "setor",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Setor cuja solicitação é prevista para a Secretaria de Educação liberar a escola como abrigo."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E3",
+        "tipo": "outro",
+        "rotulo": "O alerta pode motivar a avaliação do uso da escola como abrigo, sem confirmar que ela será utilizada.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2026-11-25",
+          "fim": null,
+          "observacao": "O alerta informa possibilidade de inundação prolongada; não determina uso de abrigo."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "possibilidade de inundação prolongada (mais de 5 dias) nas áreas baixas."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo 1: Escola Municipal Professora Iracema (220 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E8",
+        "destino": "E3",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC solicita à Secretaria de Educação a liberação da escola.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-06-30",
+          "fim": null,
+          "observacao": "Procedimento descrito no Plano de Contingência de 2025; não há atualização do procedimento nos documentos."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A Secretaria de Educação libera a escola mediante solicitação da COMPDEC."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E3",
+        "destino": "E5",
+        "tipo": "afetado_por",
+        "rotulo": "O uso da escola como abrigo pode coincidir com o período de avaliações finais.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2026-11-30",
+          "fim": "2026-12-11",
+          "observacao": "A coincidência depende de eventual uso da escola como abrigo."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Avaliações finais: 30/11 a 11/12/2026."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo 1: Escola Municipal Professora Iracema (220 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E3",
+        "destino": "E6",
+        "tipo": "atende",
+        "rotulo": "A escola atende 640 estudantes em dois turnos.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-02-01",
+          "fim": null,
+          "observacao": "Informação da atualização escolar de 2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "A Escola Iracema atende 640 estudantes em dois turnos."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E3",
+        "destino": "E7",
+        "tipo": "outro",
+        "rotulo": "Em uso anterior da escola como abrigo, as rotas do transporte escolar foram alteradas sem aviso prévio às famílias.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-07-15",
+          "fim": null,
+          "observacao": "Registro histórico; não confirma que o problema persista."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D4",
+            "trecho": "As rotas do transporte escolar foram alteradas sem aviso prévio às famílias."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "pendencia_historica",
+        "descricao": "Em 2024, o uso da Escola Iracema como abrigo durou 23 dias; houve suspensão das aulas, reposição até janeiro e alteração de rotas sem aviso prévio às famílias. O relatório recomendou prever escola alternativa para aulas e comunicação às famílias.",
+        "implicacao": "É um antecedente relevante para verificar planejamento escolar e comunicação caso a escola venha a ser utilizada agora, mas não demonstra que esses problemas continuem nem que tenham sido resolvidos.",
+        "evidencias": [
+          {
+            "doc_id": "D4",
+            "trecho": "A Escola Iracema funcionou como abrigo por 23 dias."
+          },
+          {
+            "doc_id": "D4",
+            "trecho": "Recomendação: prever escola alternativa para aulas e comunicação às famílias."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "atualizacao",
+        "descricao": "A atualização escolar de 2026 registra avaliações finais de 30/11 a 11/12 e encerramento do ano letivo em 18/12, dados posteriores ao Plano de Contingência de 2025.",
+        "implicacao": "O calendário atual permite identificar possível coincidência entre eventual uso da escola como abrigo e as avaliações; os documentos não informam se o plano foi ajustado para esse calendário.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Avaliações finais: 30/11 a 11/12/2026. Encerramento do ano letivo: 18/12/2026."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "Se houver necessidade de usar a Escola Iracema como abrigo, como a Secretaria de Educação e a COMPDEC vão compatibilizar essa decisão com as avaliações finais de 30/11 a 11/12?",
+        "por_que_importa": "As avaliações estão próximas da data de referência e o plano prevê a escola como abrigo. O uso anterior da escola suspendeu aulas, mas não há registro de como o calendário de 2026 seria tratado.",
+        "motivacao": "Alerta de 25/11/2026, previsão de avaliações a partir de 30/11 e previsão da Escola Iracema como abrigo.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E5",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Secretaria de Educação"
+        ],
+        "status_epistemico": "inferencia",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Rio Santa Clara em elevação; possibilidade de inundação prolongada (mais de 5 dias) nas áreas baixas."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Avaliações finais: 30/11 a 11/12/2026."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "A Secretaria de Educação libera a escola mediante solicitação da COMPDEC."
+          }
+        ],
+        "o_que_falta_saber": "Se há planejamento para manter ou reorganizar as avaliações caso a escola seja solicitada como abrigo, e quem coordena essa articulação.",
+        "quem_pode_confirmar": "COMPDEC e Secretaria de Educação, conforme os setores citados nos documentos.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "Caso a Escola Iracema seja utilizada como abrigo, existe uma alternativa prevista para as aulas e um plano de comunicação às famílias sobre eventuais mudanças?",
+        "por_que_importa": "O relatório de 2024 registra suspensão de aulas e recomenda prever escola alternativa e comunicação às famílias. Os documentos não mostram se essa recomendação foi incorporada ao planejamento atual.",
+        "motivacao": "Experiência documentada de uso da escola como abrigo em 2024 e possibilidade atual de inundação prolongada.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E3",
+          "E6",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "Secretaria de Educação",
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D4",
+            "trecho": "As aulas ficaram suspensas no período e a reposição se estendeu até janeiro."
+          },
+          {
+            "doc_id": "D4",
+            "trecho": "Recomendação: prever escola alternativa para aulas e comunicação às famílias."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo 1: Escola Municipal Professora Iracema (220 pessoas)."
+          }
+        ],
+        "o_que_falta_saber": "Se a recomendação de 2024 foi implementada, qual seria a alternativa e como as famílias seriam informadas.",
+        "quem_pode_confirmar": "Secretaria de Educação; a COMPDEC pode confirmar a articulação para eventual solicitação do abrigo.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "Caso o uso da escola altere as rotas do transporte escolar, como as famílias serão avisadas antes da mudança?",
+        "por_que_importa": "Em 2024, as rotas foram alteradas sem aviso prévio às famílias. Não há informação sobre as providências atuais nem confirmação de que haverá alteração desta vez.",
+        "motivacao": "Problema específico documentado durante uso anterior da Escola Iracema como abrigo.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E3",
+          "E7",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "Secretaria de Educação",
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D4",
+            "trecho": "As rotas do transporte escolar foram alteradas sem aviso prévio às famílias."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "A Secretaria de Educação libera a escola mediante solicitação da COMPDEC."
+          }
+        ],
+        "o_que_falta_saber": "Se o uso da escola afetaria rotas e qual seria o procedimento de comunicação prévia às famílias.",
+        "quem_pode_confirmar": "Secretaria de Educação; a COMPDEC pode confirmar se há articulação prevista para a eventual solicitação.",
+        "prioridade": "media"
+      },
+      {
+        "id": "V4",
+        "pergunta": "A capacidade indicada para os dois abrigos e o procedimento de liberação da Escola Iracema foram revisados desde o Plano de Contingência de 2025 para este cenário?",
+        "por_que_importa": "O plano informa capacidades e procedimento de liberação, mas os documentos não trazem atualização posterior desses dados. A possibilidade de inundação prolongada torna pertinente confirmar se o plano de 2025 é a referência operacional vigente.",
+        "motivacao": "Plano de 2025 diante de alerta de 2026 com possibilidade de inundação por mais de cinco dias.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E4",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Secretaria de Educação"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo 2: Centro Comunitário do Bairro Novo (70 pessoas)."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "A Secretaria de Educação libera a escola mediante solicitação da COMPDEC."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "possibilidade de inundação prolongada (mais de 5 dias) nas áreas baixas."
+          }
+        ],
+        "o_que_falta_saber": "Se as capacidades e o procedimento continuam vigentes e se houve revisão posterior do plano; os documentos não registram essa confirmação.",
+        "quem_pode_confirmar": "COMPDEC e Secretaria de Educação, conforme as responsabilidades descritas no plano.",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há atualização do Plano de Contingência posterior a 2025, nem registro de revisão de suas capacidades ou do procedimento de liberação.",
+        "por_que_importa": "Sem essa informação, não é possível concluir se os dados do plano continuam vigentes no cenário de 2026."
+      },
+      {
+        "descricao": "Não há registro de implementação das recomendações de 2024 sobre escola alternativa e comunicação às famílias.",
+        "por_que_importa": "Essas medidas tratam de impactos que ocorreram durante o uso anterior da escola como abrigo."
+      },
+      {
+        "descricao": "O alerta não identifica quais áreas baixas seriam inundadas nem informa se a Escola Iracema ou o Centro Comunitário do Bairro Novo estão nessas áreas.",
+        "por_que_importa": "Os documentos não permitem estabelecer a localização dos abrigos em relação às áreas mencionadas no cenário."
+      }
+    ],
+    "cautelas": [
+      "O cenário informa possibilidade de inundação prolongada, não confirmação de que ocorrerá nem decisão de ativar qualquer abrigo.",
+      "O registro de 2024 é histórico e não demonstra que os mesmos problemas persistem em 2026.",
+      "A capacidade indicada no Plano de Contingência não é confirmação de capacidade operacional atual.",
+      "A análise não recomenda decisões de abrigo, interrupção de aulas, alteração de rotas ou outras medidas; essas decisões cabem às autoridades e aos protocolos aplicáveis."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 8,
+    "n_relacoes": 5,
+    "n_verificacoes": 4,
+    "n_temporais": 2,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D2",
+        "trecho": "possibilidade de inundação prolongada (mais de 5 dias) nas áreas baixas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo 1: Escola Municipal Professora Iracema (220 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Secretaria de Educação libera a escola mediante solicitação da COMPDEC.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Avaliações finais: 30/11 a 11/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo 1: Escola Municipal Professora Iracema (220 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "A Escola Iracema atende 640 estudantes em dois turnos.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "As rotas do transporte escolar foram alteradas sem aviso prévio às famílias.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "A Escola Iracema funcionou como abrigo por 23 dias.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "Recomendação: prever escola alternativa para aulas e comunicação às famílias.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Avaliações finais: 30/11 a 11/12/2026. Encerramento do ano letivo: 18/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Rio Santa Clara em elevação; possibilidade de inundação prolongada (mais de 5 dias) nas áreas baixas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Avaliações finais: 30/11 a 11/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Secretaria de Educação libera a escola mediante solicitação da COMPDEC.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "As aulas ficaram suspensas no período e a reposição se estendeu até janeiro.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "Recomendação: prever escola alternativa para aulas e comunicação às famílias.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo 1: Escola Municipal Professora Iracema (220 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "As rotas do transporte escolar foram alteradas sem aviso prévio às famílias.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Secretaria de Educação libera a escola mediante solicitação da COMPDEC.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo 2: Centro Comunitário do Bairro Novo (70 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Secretaria de Educação libera a escola mediante solicitação da COMPDEC.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "possibilidade de inundação prolongada (mais de 5 dias) nas áreas baixas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      }
+    ],
+    "n_citacoes": 21,
+    "n_citacoes_literais": 21,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795620921,
+    "created_at": 1795620896,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_001f3286d94ac7d4016b070020863087d2b5de672ff2cc65f1",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-6-luna",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBwAjXs78KT5TzhZwO1GvXdaXmWkdYbeYYq9nDJ2uZ60O7b3-YCt4FTk6UlJfHvZ-qz7CJ9a-3U2KHIUayD7xVsKg8CUA7P-LB1NwEf6MeJTwy8a30QX8O0o-bl3QgloRcQBpOvifJ3rKBu7QG82KJQskpSTvTnMpTtdVK8f-ldHdIF30Nl-tDftuZE7NOHXOK1282qsUCiZryGnjQduh0yg94Eqb1R9TK1oC1GwMC3WL5kqzrcg2BWrAYZoA20pMrDa5O262xYEmW9CRGDwxBqxsS7ljpFTY54y6cX4lVbXswIHjZd792QghuIvnokbGvsY4dltDyZtENjjeoY7_HhAUmxsPJYHP6Io1CUb-Z1COJJeUUqJ2pt3_R4px4eXV_FYc8rZFCkEvRsmK33u7-OopnqI3YCLE9q7XAUplnw9w6Z1HRNEvxvAPmaec792Ix9mb_XRdl9VYOTxx5nSsCP-DNXVG1RXILnsLK21TYdIAxHlVSjRMk-kLyKILm1DUzsERwkWEnCxYIP0Okh-9fxjfpJ9uw_kDpw1srwKvZbEfnplDWsMI6OGARe-GDHhF0JlPaR6sqb7bn1As23OIEETlyp_h3co1aYihCLHAzVUdb8jrwvDQ7hVpX6YsodDbnWWsECqosCd0VzK1BwfiX1UYJOJCoJ6QbxMZHU-iNfpX9-S-hnA5Lg7gZxSBJuHMGO5LxViWR5sI47szKsmFMoQ3_Ot6TMaDs0BQ8aHaS6NGji5hhrDumRx4o_iXYx9fNTqzp9d3MDXM4oqc_L5FVc7BfAebgIWVy0mpf4gOwwLWzgft6B6nbFYdjG5uGe5yb1lknGc0sClBI5abXJV5VP5GgHTRZGxE5UG0ODEd7GUym-K54HhsK1LeFxWJhyXAQOtZ2IfPKG3E3tjdJw5b8iylfQgW9FQ14VnkU00TwW62H3UUWZeTlb1WpPs0oZwxx6HA_DRRbt64yjybzzkjejV48CXKmiecrCyGU4Maog6cBnTiwM0RZs_fWkzLP0do0EPXdGPEJxkCafwlOEpULLmAuUMTpYZRbT8DU1EYUPptqHYAaGGACdumT2iDXkop032AyiLHpMS-23XfwQmBt59hpnGWU-G8NB5anpZE_zEN0lO7oB-qiBRLGpv3JsXgEvzQY-rM1ZajgmmCfdZjY9D02GI26xamhh39KpAqChZhuAdjdugrvRmD8iLSR03pBIdzpz9XZFVIsx-anYSH6XA3ygsb6yP4-vs-UVU460FW93onI-FbYUZaGpkwVHnNUXT1gS0ldNRpi6VFCNgL9JS6SIu7CmipTtFVGdfBKsnIvTlEUyDHFK466fH53KDdvbm2WeY6M3mDnpJGeQwrhlNDalY6fnNPZrfupUryITBQWXUKheoueFGnu2qu2nTrSuLL3G-YAPZpTxLfccAV5iRDSlST0blE0Gf3RJRCgmLQfqZB_2Zi3RhpHaQFE8-StDcAxQ15VOzb_1ZJF_WyXft7eYsr6a0Y_pYCOTgv5MY6c0mWM5MpZGJHO_lVq35B0VWd9_6zHxOSGMWulO0zZKoZ7f2kuvxokf19FfcTTNpmHzaQqfuAT1c-omxY62eNg1nJ05P4jsK7Iv9em8k1HbIvWSP_7Frvr7OAMFCLVAVWkfCoJufcX8nPYlK589ut6UciEvu0kplbFPDhO3wr-2psbo7FfSCiFGAFrTNVS1hh4Ea4yyL_OwjO5Dn55a51hUugtWXIICfo9J9kB1zi6_Br-pbrjZqOJare5oZyLWpewkkMe9CeW2F65BwwukIcC7VGFv5pDXh7iPmZUyjlJs6wr6CvL72c8i8iKNKsD8USpmZX5JJ69Tb5KVfcDbZwmYtMiwhtnLcKRBUDvXTQurKr5LxDz0WgnSv4OQaKTXYoPN-eF2o3HsH1mu_ttZ7ug9d-1OPTwKFs6mzPaJwVuE-oua1HTtRT5XS2ZFJGXkhSTLF_oV5FBFuwE7kkPB2Zyh51m7QkAuSO-Ajn6PXsRZmgKyA7CcROPUmSmamgZQTrWRR0Wdiq1Y_Pe_UQTJxVTJAmeJcm5jQCKtV544Z18dqUBOROh7NG7ZwiRd-geg1XlBj7zyib4wq3St378WNwrblz7pc7J7DJLEMLq9UMSVeoEQ460QRWIFzCQGp61HY5vCoN49taJ_giGRHW6WbOSkFheRuamvr_f_PPy0008SxRIxZTpPOMuJDtwUSnJGfppJVdN3FxGHtuZC8HsfVqr4W3MQwH50IY8DSkwq6m3SRFsCKIH80qCiTSUKWumHeULPIYJBi0BInsW_zcXd2Sjzl_66aOJnF1WRbSMONNl1BNi90LZydG09Pw41ERk07gpLcbZrNO2YcCarL1wIiOopqZSNDoN6w9sKpTq0eWFo0QBmgGx0TaSVUGXmPaVxXnCAESpcGTyEMOUvZ0xtSfrq096kmYWqlhKjoLEZjuhFPv8Lto9qoTEoVbN5ofvpcMSvYEZMN9SFv3ERpo3359zi06b909klIktozm_j1L60OXQ_Ac8nD2gaO5NsJV2Nigiushjtz8mtdOseG3Vbi2h02k8ZNiGwazuNIOEcJaPwk3RrfOtvOSOosoo8zBQ3FTztjv_xIVQChBsVABQp-ll_PLO5BmhVUG1qtrYPqBHADV-FBsxdlH7cTJpOHIT3CWO4fKAUsKMJZQ0B8o6UeZsZ6FzEx7MdOYOBZnkVX4_5PD2wYSbt9ziQNWvQhvAtrclNpTb0RA0I3_VKM1Ub7_XkTwhZ714YPisfnhWkv_lBdEun6TFf6k8Fo46RzB_-_h3fryPLzt8T9EunNUCTqE02K_Nz2ryLrHCMkURP8lWsddCX6kAR9JB5kcun4neeYsmUeP-wmYLFV0NiQjzGNnr6rap3fDxVunfi1tgrd4aVD3IF80PmjTv1iBVeR5zMFzhcI6ingbAbt-Oz05fjvLop2KRfu0rPijG_xhL7ra3gJQVWFp5joeUhJkt0X33yVWWu-7vYp8Xh5k0_fevbaVhh63O3pDjOHTorlYTGXjwriE0_JF4lHM_bswGAlNwNGFpfN57t-dud18DcIKWqWAj8DtEy75QKgqQjsACfDmiEqtaMWdRrgjJDLsor6VKdbxy_YbbkFZGAO6uqZ0AnvvisRNs3BVpIaf6Ns1vmTgYzbdIVZUchI2O65C3eOTUzd2D_lMYMuefYleM-TVaa11Ujgd3j8mOjNEGBvBFwy70u_UtIEupyhsxubq6mzbPdwxeKhY0G5Ua0QTqWbbbDUvRD98z4qSXHvhhl8H2aDZzhBytoLelQfnjUWZsfnPgwQ6HHgfwWei8MrjxmEx31G9V1KIX1GjIpp5vOAWSHLv0GB2U8MFtEtyneHTM1XArJIgZMObTIUYCt-VrQAaL4T00LxCemPWXwXZU255RTpVMK28oxv2qUP6kd6URxX_IKBFKPHRPBgU9ActlOIZzc0xatNtKeQQguADXkBPJs6tCs_xmAOfBFRVycJy-_QgOiN48JoYGJrkKD04VvSSupqCWDvbCj0gSLhzuEFp8f7JUD-OXTK7gGGdlgGyiPptrvY2SHouGw7PjPST2pvTV5KHR_JR-zruEqsXB3rAsk7Vzm_FQYOkJOc3HUlGqajot8uAydFvGO7hGM_d4IELbRiPs8Vpa86sD4hPkSDdeDDfaUYC-xDzLJsQoUQS_ktFcBBY5fQ4688dcrAN-ucjfpuZElyN-2MQHjnLDA0eg-LvcMgMXh2RygvJdsit_lDhn1lvAfWxs4xsyFun9htcfaQ1mRVXgZQpBLzgwBUmleGV13QGOBUoeVV1Pi8z_jiv4I5Sty5chWYg3jpx2BxmA_8k0oKcfbTSYvm6ghWCoxwHyGZao39rEck0aGBkiWJbXcF_RjyuO-Xl84znWlehaQecUFIcyiFG9sBG8Wfb9WRwZEwxx2qwmaWpjIE47a53T5kA_57GRpYXe-l1lybds1xWN82PcTdzfjtp9uw_LRatdSm7m6sWSAFlBDrohEyq005rvnM5aZzqwbDaFr_ySCgb66Mu7aEOHhkVoABqxCamSVDx_L7yhIDFZqsBwTOTfLApVkiIGUkX6koq9Fr9wyy_UeSJA0g2v44ae8oAMAyHH37pWNFj090AWWwv-rXvZcaEbaJTynOQYStGsuylKAkp53zWc3aoNbT8snQeymgihP2fYyeuXxdqAKap3zo-_fuIkoxHRXInLnHrV8DkpzA_y176SFJuSwPXGR2vl3beFjLYfUmvutVrU9R0m2J-Mu1adaPIm1OWVP2gPprb0KKoiBswAsxeGqqPaUArKntqEPB-6zRBeBHK5n7l44ozLrDb9rw7bPv0BNUZ4Ve4tKF1AMbHRPKRq1U16EUg8lzyRloep-n-hJ5v7WIp9J-9eDlN2XU65a_661UgnYixbjIMojKbRQKpMRV1dXMSSrK2NqQi7jSVhREMtrt724P0nGeUfScm8Wwb_I9IajIQaXczJ0zurg8bH3pTH5EEvGbtHm0YXCT1hPB9bnPQDZiwMa4bAwhhjnIbyurQNGHMn4WUmZJRJz_RM_W9QkatF_6zIb3PmJH1TFigsrfo0AZ9ELEzpCIxdqOCxIR4YhVHS-YDV4NMvFufM4LSROceqsaCVTrj14W9WruyF-hOVWccBalPK_L4yFogvN6rHvqr6n4BGvd1pbJD6aw5wisnkbkTfV2ABN1fZGNVSIlUEKiL1dr7i023C-jfmEz51LxhBvNQRZHn54caKYidp0iJMzGyH68RMzg1rsxyYXukqDkMT6CMcN4oW9STOi4Q952zFf_AN0c16nhvl-dY-dAkSkvhOp0jvjM0tRjhLVqu4LmM80UEhFr7b8qAXZV5JUSSDwEV4WNiAEbn-lNKVHQX0aEUtCcLRh7R5sEy7Rvp9yneWY5Y3EXUUnEMVWnfkk9-soylmiRu",
+        "id": "rs_001f3286d94ac7d4016b070023576087d298a9af08c1c10a47",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"resumo_situacao\": \"O cenário de alerta de 25/11/2026 informa elevação do Rio Santa Clara e possibilidade de inundação prolongada nas áreas baixas. O Plano de Contingência prevê a Escola Iracema e o Centro Comunitário do Bairro Novo como abrigos; o calendário escolar indica avaliações finais a partir de 30/11. Um relatório de 2024 registra impactos sobre aulas e transporte quando a escola foi usada como abrigo.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de inundação de 25/11/2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": \"Sala de Situação Regional\",\n      \"descricao\": \"Cenário fictício de nível laranja, com o Rio Santa Clara em elevação e possibilidade de inundação prolongada nas áreas baixas.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Plano de Contingência (2025)\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Documento que identifica dois abrigos e prevê solicitação da COMPDEC para liberação da escola.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Escola Municipal Professora Iracema\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": \"Secretaria de Educação\",\n      \"descricao\": \"Abrigo previsto no plano, com capacidade indicada de 220 pessoas; atende 640 estudantes em dois turnos.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Centro Comunitário do Bairro Novo\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Segundo abrigo indicado no Plano de Contingência, com capacidade indicada de 70 pessoas.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Avaliações finais de 2026\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Secretaria de Educação\",\n      \"descricao\": \"Período escolar informado de 30/11 a 11/12/2026.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Estudantes da Escola Iracema\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": \"Secretaria de Educação\",\n      \"descricao\": \"Grupo de 640 estudantes atendidos em dois turnos, conforme atualização de 2026.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Transporte escolar\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Secretaria de Educação\",\n      \"descricao\": \"Serviço cujas rotas foram alteradas sem aviso prévio às famílias durante uso anterior da escola como abrigo.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Setor cuja solicitação é prevista para a Secretaria de Educação liberar a escola como abrigo.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E3\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"O alerta pode motivar a avaliação do uso da escola como abrigo, sem confirmar que ela será utilizada.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-25\",\n        \"fim\": null,\n        \"observacao\": \"O alerta informa possibilidade de inundação prolongada; não determina uso de abrigo.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de inundação prolongada (mais de 5 dias) nas áreas baixas.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo 1: Escola Municipal Professora Iracema (220 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E8\",\n      \"destino\": \"E3\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A COMPDEC solicita à Secretaria de Educação a liberação da escola.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-06-30\",\n        \"fim\": null,\n        \"observacao\": \"Procedimento descrito no Plano de Contingência de 2025; não há atualização do procedimento nos documentos.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Educação libera a escola mediante solicitação da COMPDEC.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E3\",\n      \"destino\": \"E5\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O uso da escola como abrigo pode coincidir com o período de avaliações finais.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-30\",\n        \"fim\": \"2026-12-11\",\n        \"observacao\": \"A coincidência depende de eventual uso da escola como abrigo.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Avaliações finais: 30/11 a 11/12/2026.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo 1: Escola Municipal Professora Iracema (220 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E3\",\n      \"destino\": \"E6\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"A escola atende 640 estudantes em dois turnos.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-02-01\",\n        \"fim\": null,\n        \"observacao\": \"Informação da atualização escolar de 2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"A Escola Iracema atende 640 estudantes em dois turnos.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E3\",\n      \"destino\": \"E7\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"Em uso anterior da escola como abrigo, as rotas do transporte escolar foram alteradas sem aviso prévio às famílias.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-07-15\",\n        \"fim\": null,\n        \"observacao\": \"Registro histórico; não confirma que o problema persista.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D4\",\n          \"trecho\": \"As rotas do transporte escolar foram alteradas sem aviso prévio às famílias.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"pendencia_historica\",\n      \"descricao\": \"Em 2024, o uso da Escola Iracema como abrigo durou 23 dias; houve suspensão das aulas, reposição até janeiro e alteração de rotas sem aviso prévio às famílias. O relatório recomendou prever escola alternativa para aulas e comunicação às famílias.\",\n      \"implicacao\": \"É um antecedente relevante para verificar planejamento escolar e comunicação caso a escola venha a ser utilizada agora, mas não demonstra que esses problemas continuem nem que tenham sido resolvidos.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D4\",\n          \"trecho\": \"A Escola Iracema funcionou como abrigo por 23 dias.\"\n        },\n        {\n          \"doc_id\": \"D4\",\n          \"trecho\": \"Recomendação: prever escola alternativa para aulas e comunicação às famílias.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T2\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"A atualização escolar de 2026 registra avaliações finais de 30/11 a 11/12 e encerramento do ano letivo em 18/12, dados posteriores ao Plano de Contingência de 2025.\",\n      \"implicacao\": \"O calendário atual permite identificar possível coincidência entre eventual uso da escola como abrigo e as avaliações; os documentos não informam se o plano foi ajustado para esse calendário.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Avaliações finais: 30/11 a 11/12/2026. Encerramento do ano letivo: 18/12/2026.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Se houver necessidade de usar a Escola Iracema como abrigo, como a Secretaria de Educação e a COMPDEC vão compatibilizar essa decisão com as avaliações finais de 30/11 a 11/12?\",\n      \"por_que_importa\": \"As avaliações estão próximas da data de referência e o plano prevê a escola como abrigo. O uso anterior da escola suspendeu aulas, mas não há registro de como o calendário de 2026 seria tratado.\",\n      \"motivacao\": \"Alerta de 25/11/2026, previsão de avaliações a partir de 30/11 e previsão da Escola Iracema como abrigo.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E5\",\n        \"E8\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\",\n        \"Secretaria de Educação\"\n      ],\n      \"status_epistemico\": \"inferencia\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Rio Santa Clara em elevação; possibilidade de inundação prolongada (mais de 5 dias) nas áreas baixas.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Avaliações finais: 30/11 a 11/12/2026.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Educação libera a escola mediante solicitação da COMPDEC.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se há planejamento para manter ou reorganizar as avaliações caso a escola seja solicitada como abrigo, e quem coordena essa articulação.\",\n      \"quem_pode_confirmar\": \"COMPDEC e Secretaria de Educação, conforme os setores citados nos documentos.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"Caso a Escola Iracema seja utilizada como abrigo, existe uma alternativa prevista para as aulas e um plano de comunicação às famílias sobre eventuais mudanças?\",\n      \"por_que_importa\": \"O relatório de 2024 registra suspensão de aulas e recomenda prever escola alternativa e comunicação às famílias. Os documentos não mostram se essa recomendação foi incorporada ao planejamento atual.\",\n      \"motivacao\": \"Experiência documentada de uso da escola como abrigo em 2024 e possibilidade atual de inundação prolongada.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E6\",\n        \"E8\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Educação\",\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D4\",\n          \"trecho\": \"As aulas ficaram suspensas no período e a reposição se estendeu até janeiro.\"\n        },\n        {\n          \"doc_id\": \"D4\",\n          \"trecho\": \"Recomendação: prever escola alternativa para aulas e comunicação às famílias.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo 1: Escola Municipal Professora Iracema (220 pessoas).\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a recomendação de 2024 foi implementada, qual seria a alternativa e como as famílias seriam informadas.\",\n      \"quem_pode_confirmar\": \"Secretaria de Educação; a COMPDEC pode confirmar a articulação para eventual solicitação do abrigo.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V3\",\n      \"pergunta\": \"Caso o uso da escola altere as rotas do transporte escolar, como as famílias serão avisadas antes da mudança?\",\n      \"por_que_importa\": \"Em 2024, as rotas foram alteradas sem aviso prévio às famílias. Não há informação sobre as providências atuais nem confirmação de que haverá alteração desta vez.\",\n      \"motivacao\": \"Problema específico documentado durante uso anterior da Escola Iracema como abrigo.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E3\",\n        \"E7\",\n        \"E8\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Educação\",\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D4\",\n          \"trecho\": \"As rotas do transporte escolar foram alteradas sem aviso prévio às famílias.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Educação libera a escola mediante solicitação da COMPDEC.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o uso da escola afetaria rotas e qual seria o procedimento de comunicação prévia às famílias.\",\n      \"quem_pode_confirmar\": \"Secretaria de Educação; a COMPDEC pode confirmar se há articulação prevista para a eventual solicitação.\",\n      \"prioridade\": \"media\"\n    },\n    {\n      \"id\": \"V4\",\n      \"pergunta\": \"A capacidade indicada para os dois abrigos e o procedimento de liberação da Escola Iracema foram revisados desde o Plano de Contingência de 2025 para este cenário?\",\n      \"por_que_importa\": \"O plano informa capacidades e procedimento de liberação, mas os documentos não trazem atualização posterior desses dados. A possibilidade de inundação prolongada torna pertinente confirmar se o plano de 2025 é a referência operacional vigente.\",\n      \"motivacao\": \"Plano de 2025 diante de alerta de 2026 com possibilidade de inundação por mais de cinco dias.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E4\",\n        \"E8\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\",\n        \"Secretaria de Educação\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo 2: Centro Comunitário do Bairro Novo (70 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Educação libera a escola mediante solicitação da COMPDEC.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de inundação prolongada (mais de 5 dias) nas áreas baixas.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se as capacidades e o procedimento continuam vigentes e se houve revisão posterior do plano; os documentos não registram essa confirmação.\",\n      \"quem_pode_confirmar\": \"COMPDEC e Secretaria de Educação, conforme as responsabilidades descritas no plano.\",\n      \"prioridade\": \"media\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há atualização do Plano de Contingência posterior a 2025, nem registro de revisão de suas capacidades ou do procedimento de liberação.\",\n      \"por_que_importa\": \"Sem essa informação, não é possível concluir se os dados do plano continuam vigentes no cenário de 2026.\"\n    },\n    {\n      \"descricao\": \"Não há registro de implementação das recomendações de 2024 sobre escola alternativa e comunicação às famílias.\",\n      \"por_que_importa\": \"Essas medidas tratam de impactos que ocorreram durante o uso anterior da escola como abrigo.\"\n    },\n    {\n      \"descricao\": \"O alerta não identifica quais áreas baixas seriam inundadas nem informa se a Escola Iracema ou o Centro Comunitário do Bairro Novo estão nessas áreas.\",\n      \"por_que_importa\": \"Os documentos não permitem estabelecer a localização dos abrigos em relação às áreas mencionadas no cenário.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O cenário informa possibilidade de inundação prolongada, não confirmação de que ocorrerá nem decisão de ativar qualquer abrigo.\",\n    \"O registro de 2024 é histórico e não demonstra que os mesmos problemas persistem em 2026.\",\n    \"A capacidade indicada no Plano de Contingência não é confirmação de capacidade operacional atual.\",\n    \"A análise não recomenda decisões de abrigo, interrupção de aulas, alteração de rotas ou outras medidas; essas decisões cabem às autoridades e aos protocolos aplicáveis.\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_001f3286d94ac7d4016b0700237be487d2b0e872824c11f8e8",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "all_turns",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2212,
+      "input_tokens_details": {
+        "cache_write_tokens": 418,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 418
+        },
+        "cached_tokens": 1791
+      },
+      "output_tokens": 4114,
+      "output_tokens_details": {
+        "reasoning_tokens": 234
+      },
+      "total_tokens": 6326
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\n  \"resumo_situacao\": \"O cenário de alerta de 25/11/2026 informa elevação do Rio Santa Clara e possibilidade de inundação prolongada nas áreas baixas. O Plano de Contingência prevê a Escola Iracema e o Centro Comunitário do Bairro Novo como abrigos; o calendário escolar indica avaliações finais a partir de 30/11. Um relatório de 2024 registra impactos sobre aulas e transporte quando a escola foi usada como abrigo.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de inundação de 25/11/2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": \"Sala de Situação Regional\",\n      \"descricao\": \"Cenário fictício de nível laranja, com o Rio Santa Clara em elevação e possibilidade de inundação prolongada nas áreas baixas.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Plano de Contingência (2025)\",\n      \"tipo\": \"norma_documento\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Documento que identifica dois abrigos e prevê solicitação da COMPDEC para liberação da escola.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Escola Municipal Professora Iracema\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": \"Secretaria de Educação\",\n      \"descricao\": \"Abrigo previsto no plano, com capacidade indicada de 220 pessoas; atende 640 estudantes em dois turnos.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Centro Comunitário do Bairro Novo\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Segundo abrigo indicado no Plano de Contingência, com capacidade indicada de 70 pessoas.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Avaliações finais de 2026\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Secretaria de Educação\",\n      \"descricao\": \"Período escolar informado de 30/11 a 11/12/2026.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Estudantes da Escola Iracema\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": \"Secretaria de Educação\",\n      \"descricao\": \"Grupo de 640 estudantes atendidos em dois turnos, conforme atualização de 2026.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Transporte escolar\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Secretaria de Educação\",\n      \"descricao\": \"Serviço cujas rotas foram alteradas sem aviso prévio às famílias durante uso anterior da escola como abrigo.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Setor cuja solicitação é prevista para a Secretaria de Educação liberar a escola como abrigo.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E3\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"O alerta pode motivar a avaliação do uso da escola como abrigo, sem confirmar que ela será utilizada.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-25\",\n        \"fim\": null,\n        \"observacao\": \"O alerta informa possibilidade de inundação prolongada; não determina uso de abrigo.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de inundação prolongada (mais de 5 dias) nas áreas baixas.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo 1: Escola Municipal Professora Iracema (220 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E8\",\n      \"destino\": \"E3\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A COMPDEC solicita à Secretaria de Educação a liberação da escola.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-06-30\",\n        \"fim\": null,\n        \"observacao\": \"Procedimento descrito no Plano de Contingência de 2025; não há atualização do procedimento nos documentos.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Educação libera a escola mediante solicitação da COMPDEC.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E3\",\n      \"destino\": \"E5\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O uso da escola como abrigo pode coincidir com o período de avaliações finais.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-30\",\n        \"fim\": \"2026-12-11\",\n        \"observacao\": \"A coincidência depende de eventual uso da escola como abrigo.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Avaliações finais: 30/11 a 11/12/2026.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo 1: Escola Municipal Professora Iracema (220 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E3\",\n      \"destino\": \"E6\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"A escola atende 640 estudantes em dois turnos.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-02-01\",\n        \"fim\": null,\n        \"observacao\": \"Informação da atualização escolar de 2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"A Escola Iracema atende 640 estudantes em dois turnos.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E3\",\n      \"destino\": \"E7\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"Em uso anterior da escola como abrigo, as rotas do transporte escolar foram alteradas sem aviso prévio às famílias.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-07-15\",\n        \"fim\": null,\n        \"observacao\": \"Registro histórico; não confirma que o problema persista.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D4\",\n          \"trecho\": \"As rotas do transporte escolar foram alteradas sem aviso prévio às famílias.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"pendencia_historica\",\n      \"descricao\": \"Em 2024, o uso da Escola Iracema como abrigo durou 23 dias; houve suspensão das aulas, reposição até janeiro e alteração de rotas sem aviso prévio às famílias. O relatório recomendou prever escola alternativa para aulas e comunicação às famílias.\",\n      \"implicacao\": \"É um antecedente relevante para verificar planejamento escolar e comunicação caso a escola venha a ser utilizada agora, mas não demonstra que esses problemas continuem nem que tenham sido resolvidos.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D4\",\n          \"trecho\": \"A Escola Iracema funcionou como abrigo por 23 dias.\"\n        },\n        {\n          \"doc_id\": \"D4\",\n          \"trecho\": \"Recomendação: prever escola alternativa para aulas e comunicação às famílias.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T2\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"A atualização escolar de 2026 registra avaliações finais de 30/11 a 11/12 e encerramento do ano letivo em 18/12, dados posteriores ao Plano de Contingência de 2025.\",\n      \"implicacao\": \"O calendário atual permite identificar possível coincidência entre eventual uso da escola como abrigo e as avaliações; os documentos não informam se o plano foi ajustado para esse calendário.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Avaliações finais: 30/11 a 11/12/2026. Encerramento do ano letivo: 18/12/2026.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Se houver necessidade de usar a Escola Iracema como abrigo, como a Secretaria de Educação e a COMPDEC vão compatibilizar essa decisão com as avaliações finais de 30/11 a 11/12?\",\n      \"por_que_importa\": \"As avaliações estão próximas da data de referência e o plano prevê a escola como abrigo. O uso anterior da escola suspendeu aulas, mas não há registro de como o calendário de 2026 seria tratado.\",\n      \"motivacao\": \"Alerta de 25/11/2026, previsão de avaliações a partir de 30/11 e previsão da Escola Iracema como abrigo.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E5\",\n        \"E8\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\",\n        \"Secretaria de Educação\"\n      ],\n      \"status_epistemico\": \"inferencia\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Rio Santa Clara em elevação; possibilidade de inundação prolongada (mais de 5 dias) nas áreas baixas.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Avaliações finais: 30/11 a 11/12/2026.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Educação libera a escola mediante solicitação da COMPDEC.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se há planejamento para manter ou reorganizar as avaliações caso a escola seja solicitada como abrigo, e quem coordena essa articulação.\",\n      \"quem_pode_confirmar\": \"COMPDEC e Secretaria de Educação, conforme os setores citados nos documentos.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"Caso a Escola Iracema seja utilizada como abrigo, existe uma alternativa prevista para as aulas e um plano de comunicação às famílias sobre eventuais mudanças?\",\n      \"por_que_importa\": \"O relatório de 2024 registra suspensão de aulas e recomenda prever escola alternativa e comunicação às famílias. Os documentos não mostram se essa recomendação foi incorporada ao planejamento atual.\",\n      \"motivacao\": \"Experiência documentada de uso da escola como abrigo em 2024 e possibilidade atual de inundação prolongada.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E6\",\n        \"E8\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Educação\",\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D4\",\n          \"trecho\": \"As aulas ficaram suspensas no período e a reposição se estendeu até janeiro.\"\n        },\n        {\n          \"doc_id\": \"D4\",\n          \"trecho\": \"Recomendação: prever escola alternativa para aulas e comunicação às famílias.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo 1: Escola Municipal Professora Iracema (220 pessoas).\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a recomendação de 2024 foi implementada, qual seria a alternativa e como as famílias seriam informadas.\",\n      \"quem_pode_confirmar\": \"Secretaria de Educação; a COMPDEC pode confirmar a articulação para eventual solicitação do abrigo.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V3\",\n      \"pergunta\": \"Caso o uso da escola altere as rotas do transporte escolar, como as famílias serão avisadas antes da mudança?\",\n      \"por_que_importa\": \"Em 2024, as rotas foram alteradas sem aviso prévio às famílias. Não há informação sobre as providências atuais nem confirmação de que haverá alteração desta vez.\",\n      \"motivacao\": \"Problema específico documentado durante uso anterior da Escola Iracema como abrigo.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E3\",\n        \"E7\",\n        \"E8\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Educação\",\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D4\",\n          \"trecho\": \"As rotas do transporte escolar foram alteradas sem aviso prévio às famílias.\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Educação libera a escola mediante solicitação da COMPDEC.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o uso da escola afetaria rotas e qual seria o procedimento de comunicação prévia às famílias.\",\n      \"quem_pode_confirmar\": \"Secretaria de Educação; a COMPDEC pode confirmar se há articulação prevista para a eventual solicitação.\",\n      \"prioridade\": \"media\"\n    },\n    {\n      \"id\": \"V4\",\n      \"pergunta\": \"A capacidade indicada para os dois abrigos e o procedimento de liberação da Escola Iracema foram revisados desde o Plano de Contingência de 2025 para este cenário?\",\n      \"por_que_importa\": \"O plano informa capacidades e procedimento de liberação, mas os documentos não trazem atualização posterior desses dados. A possibilidade de inundação prolongada torna pertinente confirmar se o plano de 2025 é a referência operacional vigente.\",\n      \"motivacao\": \"Plano de 2025 diante de alerta de 2026 com possibilidade de inundação por mais de cinco dias.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E4\",\n        \"E8\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\",\n        \"Secretaria de Educação\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo 2: Centro Comunitário do Bairro Novo (70 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"A Secretaria de Educação libera a escola mediante solicitação da COMPDEC.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"possibilidade de inundação prolongada (mais de 5 dias) nas áreas baixas.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se as capacidades e o procedimento continuam vigentes e se houve revisão posterior do plano; os documentos não registram essa confirmação.\",\n      \"quem_pode_confirmar\": \"COMPDEC e Secretaria de Educação, conforme as responsabilidades descritas no plano.\",\n      \"prioridade\": \"media\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há atualização do Plano de Contingência posterior a 2025, nem registro de revisão de suas capacidades ou do procedimento de liberação.\",\n      \"por_que_importa\": \"Sem essa informação, não é possível concluir se os dados do plano continuam vigentes no cenário de 2026.\"\n    },\n    {\n      \"descricao\": \"Não há registro de implementação das recomendações de 2024 sobre escola alternativa e comunicação às famílias.\",\n      \"por_que_importa\": \"Essas medidas tratam de impactos que ocorreram durante o uso anterior da escola como abrigo.\"\n    },\n    {\n      \"descricao\": \"O alerta não identifica quais áreas baixas seriam inundadas nem informa se a Escola Iracema ou o Centro Comunitário do Bairro Novo estão nessas áreas.\",\n      \"por_que_importa\": \"Os documentos não permitem estabelecer a localização dos abrigos em relação às áreas mencionadas no cenário.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O cenário informa possibilidade de inundação prolongada, não confirmação de que ocorrerá nem decisão de ativar qualquer abrigo.\",\n    \"O registro de 2024 é histórico e não demonstra que os mesmos problemas persistem em 2026.\",\n    \"A capacidade indicada no Plano de Contingência não é confirmação de capacidade operacional atual.\",\n    \"A análise não recomenda decisões de abrigo, interrupção de aulas, alteração de rotas ou outras medidas; essas decisões cabem às autoridades e aos protocolos aplicáveis.\"\n  ]\n}"
+  }
+}

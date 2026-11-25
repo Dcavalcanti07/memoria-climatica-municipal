@@ -1,0 +1,898 @@
+{
+  "meta": {
+    "scenario": "DV3",
+    "condicao": "B",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "dev_v3_luna",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D3",
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 861,
+    "user_message_sha12": "a721f2ba3f2d"
+  },
+  "user_message": "Município (fictício): Barra Serena\nData de referência da análise: 2026-11-12\nDocumentos disponíveis (3), em ordem cronológica:\n\n### [D3] Relatório — incêndio na restinga (2023)\nTipo: Relatório de ocorrência | Fonte: COMPDEC | Data: 2023-01-20\n\nIncêndio atingiu 12 hectares de restinga. Brigada voluntária atuou por 8 horas.\n\n---\n\n### [D1] Plano de Contingência (2025)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2025-09-09\n\nÁrea de risco de inundação: Beira-Mar Sul. Abrigo: Escola Barra Serena (90 pessoas). Plantão: COMPDEC.\n\n---\n\n### [D2] Alerta de ressaca e chuva (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-12\n\nNÍVEL: AMARELO. Chuva de 60 mm com maré alta; alagamentos pontuais na Beira-Mar Sul.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_07fc4635c3869cb3016b06fff612b887d28cd746310d754f16",
+  "model_reported": "gpt-6-luna",
+  "usage": {
+    "input_tokens": 2061,
+    "output_tokens": 3402,
+    "reasoning_tokens": 386
+  },
+  "latency_ms": 20840,
+  "started_at": "2026-11-25T15:34:13.551Z",
+  "output": {
+    "resumo_situacao": "O alerta de 12/11/2026 informa chuva de 60 mm com maré alta e alagamentos pontuais na Beira-Mar Sul, área indicada como de risco de inundação no plano municipal. O plano identifica a Escola Barra Serena como abrigo para 90 pessoas e registra plantão da COMPDEC, mas os documentos não informam se o abrigo está operacional nem como chegar até ele durante os alagamentos.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Beira-Mar Sul",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Área indicada no plano como de risco de inundação e onde o alerta registra alagamentos pontuais."
+      },
+      {
+        "id": "E2",
+        "nome": "Escola Barra Serena",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Local identificado no plano como abrigo, com capacidade informada para 90 pessoas."
+      },
+      {
+        "id": "E3",
+        "nome": "Abrigo da Escola Barra Serena",
+        "tipo": "servico",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Abrigo previsto no plano para 90 pessoas. O documento não detalha condições de funcionamento ou ativação."
+      },
+      {
+        "id": "E4",
+        "nome": "COMPDEC",
+        "tipo": "setor",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Setor indicado como responsável pelo plantão no plano de contingência."
+      },
+      {
+        "id": "E5",
+        "nome": "Plantão da COMPDEC",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Plantão indicado no plano de contingência, sem detalhes adicionais sobre atribuições ou meios de contato."
+      },
+      {
+        "id": "E6",
+        "nome": "Alerta de ressaca e chuva de 12/11/2026",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Cenário fictício classificado como nível amarelo, com chuva de 60 mm, maré alta e alagamentos pontuais na Beira-Mar Sul."
+      },
+      {
+        "id": "E7",
+        "nome": "Pessoas atendidas pelo abrigo",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": null,
+        "descricao": "Grupo para o qual o plano informa capacidade de abrigo de 90 pessoas."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E6",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta registra alagamentos pontuais na Beira-Mar Sul.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-12",
+          "fim": null,
+          "observacao": "Conforme o cenário fictício do alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "alagamentos pontuais na Beira-Mar Sul."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "localizado_em",
+        "rotulo": "A relação espacial entre o abrigo e a Beira-Mar Sul não é informada; é necessário confirmar localização e acesso.",
+        "status_epistemico": "informacao_insuficiente",
+        "periodo": {
+          "inicio": null,
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": []
+      },
+      {
+        "id": "R3",
+        "origem": "E3",
+        "destino": "E2",
+        "tipo": "localizado_em",
+        "rotulo": "O abrigo indicado no plano fica na Escola Barra Serena.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-09-09",
+          "fim": null,
+          "observacao": "O plano não especifica prazo de vigência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Barra Serena (90 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E3",
+        "destino": "E7",
+        "tipo": "atende",
+        "rotulo": "O plano prevê capacidade para 90 pessoas.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-09-09",
+          "fim": null,
+          "observacao": "Capacidade registrada no plano; condição atual não informada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Escola Barra Serena (90 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E5",
+        "destino": "E4",
+        "tipo": "responsavel_por",
+        "rotulo": "O plantão está associado à COMPDEC no plano.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-09-09",
+          "fim": null,
+          "observacao": "O documento não detalha a escala ou as atribuições do plantão."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Plantão: COMPDEC."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E4",
+        "destino": "E3",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC consta como plantão, mas sua responsabilidade operacional pelo abrigo não está explicitada.",
+        "status_epistemico": "informacao_insuficiente",
+        "periodo": {
+          "inicio": null,
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": []
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "O alerta de 12/11/2026 é posterior ao plano de 09/09/2025 e registra alagamentos pontuais na mesma área que o plano identifica como de risco de inundação.",
+        "implicacao": "A informação do alerta acrescenta uma condição atual ao registro do plano, mas não informa alteração do abrigo, de sua capacidade ou das responsabilidades previstas.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Área de risco de inundação: Beira-Mar Sul."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "alagamentos pontuais na Beira-Mar Sul."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "O abrigo da Escola Barra Serena continua previsto e está em condições de receber pessoas no contexto do alerta atual?",
+        "por_que_importa": "O plano identifica o local como abrigo para 90 pessoas, e o alerta registra alagamentos na área de risco de inundação. Não há informação atual sobre funcionamento ou ativação do abrigo.",
+        "motivacao": "Plano de 2025 prevê o abrigo; alerta de 2026 registra alagamentos pontuais na Beira-Mar Sul.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E6"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "inferencia",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Barra Serena (90 pessoas)."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "alagamentos pontuais na Beira-Mar Sul."
+          }
+        ],
+        "o_que_falta_saber": "Se o abrigo está operacional, se a capacidade registrada continua válida e se houve decisão ou procedimento de ativação aplicável ao cenário.",
+        "quem_pode_confirmar": "COMPDEC, indicada como plantão no plano; a atribuição de confirmar a operação do abrigo depende de confirmação institucional.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "Há rota de acesso ao abrigo da Escola Barra Serena que permaneça utilizável diante dos alagamentos pontuais informados?",
+        "por_que_importa": "O plano indica um abrigo e o alerta registra alagamentos na Beira-Mar Sul, mas nenhum documento informa a localização relativa entre a escola e a área alagada nem as rotas de acesso.",
+        "motivacao": "A combinação do abrigo previsto no plano com o registro atual de alagamentos deixa sem resposta a condição de acesso.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E6"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Barra Serena (90 pessoas)."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "alagamentos pontuais na Beira-Mar Sul."
+          }
+        ],
+        "o_que_falta_saber": "A localização da escola em relação aos pontos alagados, as rotas consideradas e as condições atuais de acesso.",
+        "quem_pode_confirmar": "COMPDEC, indicada como plantão no plano; a definição de outros setores responsáveis depende de confirmação institucional.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "O plano de contingência de 2025 continua sendo a referência vigente para a área e para o abrigo neste cenário?",
+        "por_que_importa": "O plano antecede o alerta em mais de um ano, e os documentos não informam sua vigência, revisão posterior ou eventual substituição.",
+        "motivacao": "O alerta atual ocorre em 2026, enquanto a única informação sobre área de risco, abrigo e plantão está no plano datado de 2025.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Área de risco de inundação: Beira-Mar Sul."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: AMARELO."
+          }
+        ],
+        "o_que_falta_saber": "Se o plano foi mantido, revisado ou substituído desde a data do documento, e se as informações sobre abrigo e plantão seguem aplicáveis.",
+        "quem_pode_confirmar": "COMPDEC, fonte do plano e setor indicado como plantão; a vigência depende de confirmação institucional.",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há informação sobre a localização da Escola Barra Serena em relação à Beira-Mar Sul, rotas de acesso ou efeitos dos alagamentos sobre essas rotas.",
+        "por_que_importa": "Sem essa informação, não é possível avaliar documentalmente o acesso ao abrigo no cenário descrito."
+      },
+      {
+        "descricao": "Não há atualização sobre a operação, ativação ou condição atual do abrigo, nem sobre a manutenção da capacidade de 90 pessoas.",
+        "por_que_importa": "A capacidade consta no plano de 2025, mas os documentos não confirmam a situação no momento do alerta."
+      },
+      {
+        "descricao": "Não há indicação de vigência, revisão ou substituição do Plano de Contingência após 09/09/2025.",
+        "por_que_importa": "É necessário confirmar se as informações do plano seguem aplicáveis ao alerta de 2026."
+      }
+    ],
+    "cautelas": [
+      "O relatório sobre incêndio na restinga descreve um evento de outro tipo e não apresenta vínculo documentado com o alerta de ressaca e chuva; por isso, não fundamenta verificações nesta pauta.",
+      "O alerta é um cenário fictício e informa nível amarelo; esta análise não altera o nível, prevê impactos adicionais nem define medidas operacionais.",
+      "A capacidade de 90 pessoas e a indicação de plantão são registros do plano, não confirmação de disponibilidade atual ou de responsabilidades operacionais detalhadas.",
+      "As verificações são perguntas para revisão humana e não constituem decisão de ativação, evacuação, remoção, interdição ou suspensão."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 7,
+    "n_relacoes": 6,
+    "n_verificacoes": 3,
+    "n_temporais": 1,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D2",
+        "trecho": "alagamentos pontuais na Beira-Mar Sul.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Barra Serena (90 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Escola Barra Serena (90 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Plantão: COMPDEC.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Área de risco de inundação: Beira-Mar Sul.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "alagamentos pontuais na Beira-Mar Sul.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Barra Serena (90 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "alagamentos pontuais na Beira-Mar Sul.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Barra Serena (90 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "alagamentos pontuais na Beira-Mar Sul.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Área de risco de inundação: Beira-Mar Sul.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: AMARELO.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      }
+    ],
+    "n_citacoes": 12,
+    "n_citacoes_literais": 12,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795620874,
+    "created_at": 1795620854,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_07fc4635c3869cb3016b06fff612b887d28cd746310d754f16",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-6-luna",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBv_5DNlRiR0PTNPeohSZ3sCnUJlNLAjjIFbjvbsch2eqyVKidwAMO6ckc3co1oZjOzL7GOCY4bxu_IkyiHsru5inJk-XGwAf2lJcxYz6JRUl_4HB_49Pbpl8nJQRvhndmF7b4KXsuF6oQhu7wNaXWr4_ebNi8g8C5-51fHuXgJi832okB9ekcnImRAOtbtaoubj3vCKA7dhD3STkO3nA0gz81EoZqDcc358LImq3Ed7BCsHHc40ALLRhhnd9Becef1SWAJPQkqG58xET-q72BJ9Vx9eGUv9V8d6iAOu30EJWm_EoFRcxGptkx9ANgOlBSo2NtvMYekTWeZYxXCNiVOC51WaKPpiMLIb07-zEy__8u3HoUm_IxVaRHaODk2_kcag-LMs1kHYNiZoTRQDVzqwp32VoXFCqYf2YuOkjhSg4QcwQpA1hipXX_yeRl0M9o3n9bbHfZyKtcW5WpKFjN5ZZeePMWDwrQISkFneZmYs-al_hPflkSIyXdC50ye1aLiepTP6yD8SNAB954CwhCpywyrCHapzcazwPSM8lpa1w62ZjLEL2JkV4YIhEsXw2B4_HonD7TWkZw2COQOxVgSfWHnDRib49JXdy_e3DYFdFBttHh8dOQnFXUrwEoN0LvkxGdXN7nfJdLWigiNCWowRfmBvu2jZ5AVfTE1CxGaqQs8ADLqVjE2etw_FQ3djslIj-VGM2dbPhsveiO8vjGHp5UUCOsTbcAd31QsxjnfC-R_s1NjgZDoOMrCh1amA_iL0ISOB6URQCkSR8AZcB-a_3iVro1RaN96vetR2fyPR59Wg2rSqyvTctO1tMx5VQDMUoC9UUE6vJyEiMDuCRK5qHD9FmT67UUoWR9llEfSKV4UkAiAtvapTbUgaT3uavm2sHn6azGE6tGWeOiKmahM2iPfYbBR1Lq4lIugQSr1jceyYggwsitGCp2S0gS1kPaIwgE7jgOOb16K_ejZWBL6cBEG_bS8h2sfkIRf1ZlS4miB2tQCkxjr1mhk8BP8Z4IoCyNwNkXLPRoP_jXX7oFCXEOuT8iZHKoWq79gZsfX0VFndAUuTQv5xNmjBi26eAvbe8cnZv3uvUwO8DcvZLBjMarMkPr39UOXYJNfuN01pS5tIJ_yKoiwsl7_DhDgYBuUhIkXEpAUhRIlWVXAtXVi6ETmKbv-OFKGzMd2bgsoh9ohUCIcZaPc9oifXJfMcCObd3o03_ySalRhhxXDxK3abjKuHCfbUtfAnzmpuJmQ3pE3o_xh2tFUNY5o3B1j1Gko2WBUzyKUfiE_sXRwXjloV0539A8IVj4qfdiqJJc8Rtmg-lo856dJjJUG97iqx4R1Ftqd0_v2OSBmVgAmgUOUPyPoEaZmzWKTLIu49ifwTAjHvyFnjzo52KC3zoPahjRFg5-KQ4zUoBCCtx5d2XgyDq4eazNpXfzghB9s3ZZbWfwPxd0XdXgEky-eOqEJpua7_cHrjvxwVaJ-j3W9e-y3sTNFPOur5e1jAti044a2VnaASqnD6ciMPh55IIQ9R8Fqva7Gjp3s48Jp3-I-VsyU1HDqft4hwbmW94BU3yZITt47YF-_O7BoMm8qURNiAF0TXHSVcmwjU8B5vq0zEPktN6oXlg3PB3AIWb50lQizyo7lpy0RrIXprudFVuBXJIPY3y-q6VXLme55igRtH1JGnSw4RFlrnNybSGKPaDPfKfOxMMy5u0SQPy-r1kC0L30UtEZ3RT1_Q0XXAM35YMvqBM_4AT-uPqx2D6FFN0mwIvAJKb_tNZTspZ-caMQ5pRjAQoXlBcq5-GVdALHDOuRx6Xg7VXZ3h2b_OpyvQYOzcUV0l7vSMLcD5Ba79UiW750ZomwHLq2GovjlrfRtHo66CSI3k1yr3AJY300nBUi9e367h5hTPUbhaAHydVNKj4ooimzshH0RRZo8b4SVBKk7g6zi5rF_b-J6-fjFbOAUwBjCKIK2ShPCTLAkWiUgi6csWmBzeik1ejxjakMA6MYHrQkIuTYmjiq6_0EqRVop7q1mkdKVF3T8uM_MAT0h_SwwueDJOsamPYYKW0L5PKs0uBRu1csaAFaZJ8f2CoM11WRZn0C60aZGS327K6OtRDBpez68uk1oIg4Q7qLHooQFQyyp5nd9SVMEO7g3tdPFOm7dt7NIUwuL4oeZbN8MIhhZF9RVkdzQreHSQogLqH9lAI7lm0Zx5YGcdr1DAfZ0sZT5QbwVz44Zanj96VWpdaBykj3Q2NFCFMqhgpE_WRrkgF_cejpsHTS8-qceDYjHd9dlbifldduKtXDANyp9N-jQ7GvJlS2YDazswej_wm7KW-6U06Tyf-z_47K5zvLwZNWcMbOJrgMyltykGNSAOmCT3F7gjgcA0wCcxFxEmVgI49a9yhmA978hgCoPS8CiJBkMPZle3sYDx0JpMLGfrza8TZYR0jthFN99vT1qac_fBbl9Xl-2ACuQg9ENRjGhVEBTHc2rQ6dGQOf5lx6ZAQTpbYFP0H7BbVEG9F2_ZDLTsCIoQxJpHuABQtT9Q6XwhsU6pUP5aXwuuSTUfvi5aJAALd0xauVjxtisjV4gniDdhkCFFXflHn_SXKqQZPKnmq7NeoYMjA7nrowI7u0AkV2P6sj9m9L9dw6fPtoRNzaq2QLGY7I5XlIXjTp3ZMa3UdAfKz5U83HUOToTTy7q11BFdYj40HQCDHmiGojTfxuJHVZNegRHIccVV6im48WhaE4vAoPCqIH_prmb5ehmNq1p6x2Td0mpkgHsaLvi7BMo0RSyfEylCW8cqdhSr4ja6JRNrpjD0wATbAmyVO5CuvnkRosU3juor2VKbMuo3UAu3Hqjsu7L2DtFLErrHlDEmQ8SAKK3vUgddYZ-vKyv20aWTbF1jGE-OO4cTyKSgh9WupQJEpGt5XJmfymTQoOPqUtuXvMfX-zhCCPCKuM5c1T27KxBfdI52SEcTz629Jt9x0BYfQDC-1cykcH5O7_xxXC02rDK3W6gQOymC2HiVfNmbkgmXUtYbBEEhKIlt6C8wxPNe7kbOsyoY-ukjjx0KycGM-wOxzNKuVbwzl1JMSqhQn7Dn42qB47m5LQuM2TCKu57t6lFRbe2lSq_iYTdy7bCwf484cnkqGQZBn6zlMGreWPdFcfMX09qYgLVinD4SqQ6-OOlNNmu6NvfI_FWxJWRO8mWlT4cDn9Xmb__eD5ThVvzvTpbTdXSw1-4Hb0kBbfAAQfQBJTae0FywvXCdPe-4LyDxPJjg-GK1ZJJzgsuzysMWNFvKv5dGuy8jufEKKypUEWAV_ZV1lDTd_ulOFii02U3zn-T5MhVC61CJj7_H1v6REnIuqjTEziRhz1zDrTdyYxd1OwjcvREVN9Z3LUVMuFwiHqYsiyUkgt29WlGztpjiog0-i4ShnX9Do6-9HpDiB8f0VaxUPw6dBGdInH4_qrHA3cCKNTCt2UFwTEiEaWKQ3-6DoTe2MAG5-4Irkx9cHmN-scOBld5-U_Wuy1AUTrcbVapzbOv7ICf4EdvQYploDp1mKRqfPkxxG7AjSSPAPqHH8cAuzVI8lIcLzi8fqjZlmC0nAKMyLI6ihEZb4QIUw06Sh1_EgSPhpjwQTuvhwwJLwFgYGdidIEOrMI2EgGTRaXWvjtea1qVA9TMYeup0fiL81mhTFAbmagPwpbQlUwuTDHXpY-TgC2-nQy3GJvezOWfJRgjd-CoaOsfxXaSsds_Ohyr19worpeoWngqeDQjRAsw2Wa_c_pb8nSOA5FbvaN1vL8OHMbUoTHY1zSqip7kf7CbDi3At-G8zLlSzFIPHsyz1s_ge2Ma3ssSjWbihAmQMzzMs37YBSXKu9xMub-CzONSzd5Flp-mS31s64t3JUKauhGiMWFdVec8xJHGEpBg1C1oK7nzOeAcvKWlVtV3KzpNMd7fgzWbzJup-UrLUTeYOrDLSRV2oMDWThEmikvVv-PrXCVHZla7e0TZyuzr0Ww5BIkmqWY7c4M17C1cp0TFUG2BQKRkgpVHiuoWjif0IMR4HBlGjkDWF_QyqipWcKkRvYNTK3BpzWFNHCNNLX_yjc_gzlFv7fU_2OnJ4CKLUZSOzu6lBOTio-1_5dpRCM0k3uyU6sEz5y5nh1iOA6zIMOPKDrtRZHcOB2G6Ejly9ffi0XIvO6MmztBXn0UtFDR8U62CePSWHkPQN780kR5yOtM92hsEWZk3jHzMUcxUrMVEeI3dTAnRpsBq9HqZWOqDAQu7r7QczvTOXMMI6EDBMSmpVsPllvLNO-k-K7hozEWVvwMuOCLoKxE7cMvOAKdLtzeRaCOfTd1ppd-jR6t2gkZHIECmsGCjTvzZJSAur1Zcf4GbhYSQlDdzPByT5k4JLJYwZrksVEojG2zPSDxmGKIMLkMXj5Jyn5B5pT7fahxQnQSb7oltXDPO2K1SCsGrK-QB5qvC_7ph0WaNVGw3Ivmrf5T7CVTcBH4kQZUPohPtQxVCOB1VGUb0TmWY0nSSzE6qMMHrMmNJ8ZC984xvA8JRJwfnbL6UE8rwHvE2wrm_Qadyi6KjSBcypYDmFzHx1L4eNqZqFDuO2w0YeYNy9heba34jtHKbQXLIgbpbkYYPEj80rNFPL5j3f9B0Ujwi4xymBts58_kbqRvR15pVLZGdTX2bUxp_tN0u33NWw5McJyvTd1GwfvuQE7__aI3PCV0jDQjxFjuvLf7i3Y8A-avP4jvKV5a6v3hSWoJQTQ4TMzbiaZBOfLhUj0E8XTBC4ebqGg2mfwDiKmK0S_3Y0205xRuszH7QLnOoPCwMuzhjBxa8eqDqy-n0Iv5b9gm4gwf96hicIeuetRCaj7fxZpU-5MrgyDb2spQst6I0Hm8tZ8H-HnSiVJ724bSSaxod37hCku4JT4Ado5RUazEc0xYg2CgXM4LhQYpiGgdNf_xSF807fbOb7rK3YBel0Qobi6alT0mbUE-n0-PaBqNW2X1olXxpkJjiT0-9LH4lBhzAoqPIlIRLWgBml2bGxKQ-kK66oE9cLdaf502uTET3NTAiyd_PRenjiJWfeGU4BN6SlxgM3zspzhfMB-J1ZRS8jkqnlqXpjncBe2KfdFONk__Gi5p1MRQg-ZCUFLWlg5HR5vY5CPLRF29BpD0AVwHfjhi58Q5tNG7fFT34csQtq00l2Tqg-SOh0eexFeAQdBWtxjtr0sfQSPb7rYh_foYP98bKyt9rmikhEX2qIIVDrar1V_-tVB7xtWJuEjcBj75WHA4nmJaURqOkrIjy7PaVz8idwF7mxNYdrqIlpNuaUQPNCxKAirXAASQ13lFR6X2LgBAGXtIMvNzqkvwXSpPFKqVsx1COjY95yVuwW7zcBx_pbKYKZ4eqVtO5qzE__BG16siUgXQKlh2pCDSOoH-2_eXiMobmhuQronAlfLmYUqNgs2uUoMEMyVQONg_uUR51lhAamJZ62SAxT5EgOYvMFfKzzGHq_L6FIsEEqHuXsFVaH4xGK0tv-O2LQkbrTEpvcuOhQ3FJt2jXAWOgHL7Jf0KGdv_GCQC05-ckCAvM8HcqIddk80QJCB-whsq6MbQyDBOpDYpZfPxSSldSNu51rqBPs2eQaUF6l0jPYtlZ_DQnGgY0u7krkuNuNaZ5R_EWWO5aINhWJ1Ua8QLeY3O9fL2TwvWaSn4ljtMDaEvbqT2XLNkuc8qF8cZhemavmd0ibZm2dNB7ZshaZwaN4AL5C5ekDvmJJpYcLKQsLHXNqPGkok44fL3biyA4Ft6zqHITkJzG-Gbi9z55HGtv7NbZA1eMVMUwhieI5634oj2lJA3BnNbNx1ES_Ngez7ZIMiA7O_AxH5H9OWPOhnbMl00qlEZywPPodIE1V74EjJmMSnugLzsj3EFjCziuMMzRj7F1hebMI-r5h8yTEEpBTFLWeWcedzYXzZUvUhieFobLP2VhhQ6CMZSACO4ROZCg9I8C_OSwX3Jv_03wnr3jOirOERFQsL6LhJfMZKrD3f4lMlD-iP6iqo5PUk9FsDvGwjyhjBoFVfZF6j8jOBa2QIyZx2_0ssqGduwkERXZjtFR20AbDMSpqopUFrKWoITU6FkRPxnvkjAG5GIWZ9r8SCY0zOjuNpHE74ah_eWZs6uqvt4BGtauc6Ju3zxiNhhTbhLad4rBWghTmx9dozfLddX7_6qwyOHBYsHbXbIMISFmSNYtm14oV7J8YOrQXqxj3ciqrLXaZQvuMwUPul1qwvNJ6UymyhicFDK1OeTENsKRzYwOzx8yhr5wgLpjWj2bWBrjsbyvxYeqvs35n3anam0duXvk2egqqsrPVIkI9VdjD6lEvaoLIDwMJYrRjEK5WEGxTwX9oGvmBjrkwSRoLrqCvIQw5cSFKhYkieiVZVklrzazVzzuIq8rGq6H2Oru8qULem9_kjsO9xC7Pp32fPej1_rVuJywip4ALkO-ciF6DDJvEnH4paC-b993xe2ibti_zHxz5v7BSP0JUYD8JQ6ThQFqdUqu9wBI0ObQyyDk5PK2WurdiHOiy591fzWIlNwuU5QNxStedzobbzL0qcalkx3HdLT65EPJVdy2gpTrs3paB-C0hblETKL0V43tp6L_TPgy747Ig5BhEB8GgxMAc_n7AIgGo6WO4wrQ751uU_wYibuaHTo2Y_A1goIQB8vcOKOkA5uV-50xqZfdPPoA2iuU1RYXzMNCCgbo4S5CjG5kzngg0rg0HRd4i6DmDbRQf8QCZ8Z7Dgus2h6jGaa5TsNgZx1Bd1Se6MOntZD79joZDcbwGXiR98RyN-J2VeqS7K8rdBqi89",
+        "id": "rs_07fc4635c3869cb3016b06fff9975887d287675532845822b7",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"resumo_situacao\": \"O alerta de 12/11/2026 informa chuva de 60 mm com maré alta e alagamentos pontuais na Beira-Mar Sul, área indicada como de risco de inundação no plano municipal. O plano identifica a Escola Barra Serena como abrigo para 90 pessoas e registra plantão da COMPDEC, mas os documentos não informam se o abrigo está operacional nem como chegar até ele durante os alagamentos.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Beira-Mar Sul\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Área indicada no plano como de risco de inundação e onde o alerta registra alagamentos pontuais.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Escola Barra Serena\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local identificado no plano como abrigo, com capacidade informada para 90 pessoas.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Abrigo da Escola Barra Serena\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Abrigo previsto no plano para 90 pessoas. O documento não detalha condições de funcionamento ou ativação.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Setor indicado como responsável pelo plantão no plano de contingência.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Plantão da COMPDEC\",\n      \"tipo\": \"funcao_responsavel\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Plantão indicado no plano de contingência, sem detalhes adicionais sobre atribuições ou meios de contato.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Alerta de ressaca e chuva de 12/11/2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Cenário fictício classificado como nível amarelo, com chuva de 60 mm, maré alta e alagamentos pontuais na Beira-Mar Sul.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Pessoas atendidas pelo abrigo\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Grupo para o qual o plano informa capacidade de abrigo de 90 pessoas.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E6\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta registra alagamentos pontuais na Beira-Mar Sul.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-12\",\n        \"fim\": null,\n        \"observacao\": \"Conforme o cenário fictício do alerta.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"alagamentos pontuais na Beira-Mar Sul.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"A relação espacial entre o abrigo e a Beira-Mar Sul não é informada; é necessário confirmar localização e acesso.\",\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": []\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E3\",\n      \"destino\": \"E2\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O abrigo indicado no plano fica na Escola Barra Serena.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-09-09\",\n        \"fim\": null,\n        \"observacao\": \"O plano não especifica prazo de vigência.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Barra Serena (90 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E3\",\n      \"destino\": \"E7\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O plano prevê capacidade para 90 pessoas.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-09-09\",\n        \"fim\": null,\n        \"observacao\": \"Capacidade registrada no plano; condição atual não informada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Escola Barra Serena (90 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E5\",\n      \"destino\": \"E4\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"O plantão está associado à COMPDEC no plano.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-09-09\",\n        \"fim\": null,\n        \"observacao\": \"O documento não detalha a escala ou as atribuições do plantão.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Plantão: COMPDEC.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E4\",\n      \"destino\": \"E3\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A COMPDEC consta como plantão, mas sua responsabilidade operacional pelo abrigo não está explicitada.\",\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": []\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O alerta de 12/11/2026 é posterior ao plano de 09/09/2025 e registra alagamentos pontuais na mesma área que o plano identifica como de risco de inundação.\",\n      \"implicacao\": \"A informação do alerta acrescenta uma condição atual ao registro do plano, mas não informa alteração do abrigo, de sua capacidade ou das responsabilidades previstas.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Área de risco de inundação: Beira-Mar Sul.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"alagamentos pontuais na Beira-Mar Sul.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"O abrigo da Escola Barra Serena continua previsto e está em condições de receber pessoas no contexto do alerta atual?\",\n      \"por_que_importa\": \"O plano identifica o local como abrigo para 90 pessoas, e o alerta registra alagamentos na área de risco de inundação. Não há informação atual sobre funcionamento ou ativação do abrigo.\",\n      \"motivacao\": \"Plano de 2025 prevê o abrigo; alerta de 2026 registra alagamentos pontuais na Beira-Mar Sul.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E6\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"inferencia\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Barra Serena (90 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"alagamentos pontuais na Beira-Mar Sul.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o abrigo está operacional, se a capacidade registrada continua válida e se houve decisão ou procedimento de ativação aplicável ao cenário.\",\n      \"quem_pode_confirmar\": \"COMPDEC, indicada como plantão no plano; a atribuição de confirmar a operação do abrigo depende de confirmação institucional.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"Há rota de acesso ao abrigo da Escola Barra Serena que permaneça utilizável diante dos alagamentos pontuais informados?\",\n      \"por_que_importa\": \"O plano indica um abrigo e o alerta registra alagamentos na Beira-Mar Sul, mas nenhum documento informa a localização relativa entre a escola e a área alagada nem as rotas de acesso.\",\n      \"motivacao\": \"A combinação do abrigo previsto no plano com o registro atual de alagamentos deixa sem resposta a condição de acesso.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E6\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Barra Serena (90 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"alagamentos pontuais na Beira-Mar Sul.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"A localização da escola em relação aos pontos alagados, as rotas consideradas e as condições atuais de acesso.\",\n      \"quem_pode_confirmar\": \"COMPDEC, indicada como plantão no plano; a definição de outros setores responsáveis depende de confirmação institucional.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V3\",\n      \"pergunta\": \"O plano de contingência de 2025 continua sendo a referência vigente para a área e para o abrigo neste cenário?\",\n      \"por_que_importa\": \"O plano antecede o alerta em mais de um ano, e os documentos não informam sua vigência, revisão posterior ou eventual substituição.\",\n      \"motivacao\": \"O alerta atual ocorre em 2026, enquanto a única informação sobre área de risco, abrigo e plantão está no plano datado de 2025.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E4\",\n        \"E5\",\n        \"E6\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Área de risco de inundação: Beira-Mar Sul.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: AMARELO.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o plano foi mantido, revisado ou substituído desde a data do documento, e se as informações sobre abrigo e plantão seguem aplicáveis.\",\n      \"quem_pode_confirmar\": \"COMPDEC, fonte do plano e setor indicado como plantão; a vigência depende de confirmação institucional.\",\n      \"prioridade\": \"media\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há informação sobre a localização da Escola Barra Serena em relação à Beira-Mar Sul, rotas de acesso ou efeitos dos alagamentos sobre essas rotas.\",\n      \"por_que_importa\": \"Sem essa informação, não é possível avaliar documentalmente o acesso ao abrigo no cenário descrito.\"\n    },\n    {\n      \"descricao\": \"Não há atualização sobre a operação, ativação ou condição atual do abrigo, nem sobre a manutenção da capacidade de 90 pessoas.\",\n      \"por_que_importa\": \"A capacidade consta no plano de 2025, mas os documentos não confirmam a situação no momento do alerta.\"\n    },\n    {\n      \"descricao\": \"Não há indicação de vigência, revisão ou substituição do Plano de Contingência após 09/09/2025.\",\n      \"por_que_importa\": \"É necessário confirmar se as informações do plano seguem aplicáveis ao alerta de 2026.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O relatório sobre incêndio na restinga descreve um evento de outro tipo e não apresenta vínculo documentado com o alerta de ressaca e chuva; por isso, não fundamenta verificações nesta pauta.\",\n    \"O alerta é um cenário fictício e informa nível amarelo; esta análise não altera o nível, prevê impactos adicionais nem define medidas operacionais.\",\n    \"A capacidade de 90 pessoas e a indicação de plantão são registros do plano, não confirmação de disponibilidade atual ou de responsabilidades operacionais detalhadas.\",\n    \"As verificações são perguntas para revisão humana e não constituem decisão de ativação, evacuação, remoção, interdição ou suspensão.\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_07fc4635c3869cb3016b06fff9ba4887d2ba2572aef756fa32",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "all_turns",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2061,
+      "input_tokens_details": {
+        "cache_write_tokens": 267,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 267
+        },
+        "cached_tokens": 1791
+      },
+      "output_tokens": 3402,
+      "output_tokens_details": {
+        "reasoning_tokens": 386
+      },
+      "total_tokens": 5463
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\n  \"resumo_situacao\": \"O alerta de 12/11/2026 informa chuva de 60 mm com maré alta e alagamentos pontuais na Beira-Mar Sul, área indicada como de risco de inundação no plano municipal. O plano identifica a Escola Barra Serena como abrigo para 90 pessoas e registra plantão da COMPDEC, mas os documentos não informam se o abrigo está operacional nem como chegar até ele durante os alagamentos.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Beira-Mar Sul\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Área indicada no plano como de risco de inundação e onde o alerta registra alagamentos pontuais.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Escola Barra Serena\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local identificado no plano como abrigo, com capacidade informada para 90 pessoas.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Abrigo da Escola Barra Serena\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Abrigo previsto no plano para 90 pessoas. O documento não detalha condições de funcionamento ou ativação.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Setor indicado como responsável pelo plantão no plano de contingência.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Plantão da COMPDEC\",\n      \"tipo\": \"funcao_responsavel\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Plantão indicado no plano de contingência, sem detalhes adicionais sobre atribuições ou meios de contato.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Alerta de ressaca e chuva de 12/11/2026\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Cenário fictício classificado como nível amarelo, com chuva de 60 mm, maré alta e alagamentos pontuais na Beira-Mar Sul.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Pessoas atendidas pelo abrigo\",\n      \"tipo\": \"grupo_populacional\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Grupo para o qual o plano informa capacidade de abrigo de 90 pessoas.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E6\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta registra alagamentos pontuais na Beira-Mar Sul.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-12\",\n        \"fim\": null,\n        \"observacao\": \"Conforme o cenário fictício do alerta.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"alagamentos pontuais na Beira-Mar Sul.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"A relação espacial entre o abrigo e a Beira-Mar Sul não é informada; é necessário confirmar localização e acesso.\",\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": []\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E3\",\n      \"destino\": \"E2\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O abrigo indicado no plano fica na Escola Barra Serena.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-09-09\",\n        \"fim\": null,\n        \"observacao\": \"O plano não especifica prazo de vigência.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Barra Serena (90 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E3\",\n      \"destino\": \"E7\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"O plano prevê capacidade para 90 pessoas.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-09-09\",\n        \"fim\": null,\n        \"observacao\": \"Capacidade registrada no plano; condição atual não informada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Escola Barra Serena (90 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E5\",\n      \"destino\": \"E4\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"O plantão está associado à COMPDEC no plano.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-09-09\",\n        \"fim\": null,\n        \"observacao\": \"O documento não detalha a escala ou as atribuições do plantão.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Plantão: COMPDEC.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E4\",\n      \"destino\": \"E3\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A COMPDEC consta como plantão, mas sua responsabilidade operacional pelo abrigo não está explicitada.\",\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"periodo\": {\n        \"inicio\": null,\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": []\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O alerta de 12/11/2026 é posterior ao plano de 09/09/2025 e registra alagamentos pontuais na mesma área que o plano identifica como de risco de inundação.\",\n      \"implicacao\": \"A informação do alerta acrescenta uma condição atual ao registro do plano, mas não informa alteração do abrigo, de sua capacidade ou das responsabilidades previstas.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Área de risco de inundação: Beira-Mar Sul.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"alagamentos pontuais na Beira-Mar Sul.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"O abrigo da Escola Barra Serena continua previsto e está em condições de receber pessoas no contexto do alerta atual?\",\n      \"por_que_importa\": \"O plano identifica o local como abrigo para 90 pessoas, e o alerta registra alagamentos na área de risco de inundação. Não há informação atual sobre funcionamento ou ativação do abrigo.\",\n      \"motivacao\": \"Plano de 2025 prevê o abrigo; alerta de 2026 registra alagamentos pontuais na Beira-Mar Sul.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E6\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"inferencia\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Barra Serena (90 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"alagamentos pontuais na Beira-Mar Sul.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o abrigo está operacional, se a capacidade registrada continua válida e se houve decisão ou procedimento de ativação aplicável ao cenário.\",\n      \"quem_pode_confirmar\": \"COMPDEC, indicada como plantão no plano; a atribuição de confirmar a operação do abrigo depende de confirmação institucional.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"Há rota de acesso ao abrigo da Escola Barra Serena que permaneça utilizável diante dos alagamentos pontuais informados?\",\n      \"por_que_importa\": \"O plano indica um abrigo e o alerta registra alagamentos na Beira-Mar Sul, mas nenhum documento informa a localização relativa entre a escola e a área alagada nem as rotas de acesso.\",\n      \"motivacao\": \"A combinação do abrigo previsto no plano com o registro atual de alagamentos deixa sem resposta a condição de acesso.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E6\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Barra Serena (90 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"alagamentos pontuais na Beira-Mar Sul.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"A localização da escola em relação aos pontos alagados, as rotas consideradas e as condições atuais de acesso.\",\n      \"quem_pode_confirmar\": \"COMPDEC, indicada como plantão no plano; a definição de outros setores responsáveis depende de confirmação institucional.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V3\",\n      \"pergunta\": \"O plano de contingência de 2025 continua sendo a referência vigente para a área e para o abrigo neste cenário?\",\n      \"por_que_importa\": \"O plano antecede o alerta em mais de um ano, e os documentos não informam sua vigência, revisão posterior ou eventual substituição.\",\n      \"motivacao\": \"O alerta atual ocorre em 2026, enquanto a única informação sobre área de risco, abrigo e plantão está no plano datado de 2025.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E3\",\n        \"E4\",\n        \"E5\",\n        \"E6\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Área de risco de inundação: Beira-Mar Sul.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"NÍVEL: AMARELO.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o plano foi mantido, revisado ou substituído desde a data do documento, e se as informações sobre abrigo e plantão seguem aplicáveis.\",\n      \"quem_pode_confirmar\": \"COMPDEC, fonte do plano e setor indicado como plantão; a vigência depende de confirmação institucional.\",\n      \"prioridade\": \"media\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há informação sobre a localização da Escola Barra Serena em relação à Beira-Mar Sul, rotas de acesso ou efeitos dos alagamentos sobre essas rotas.\",\n      \"por_que_importa\": \"Sem essa informação, não é possível avaliar documentalmente o acesso ao abrigo no cenário descrito.\"\n    },\n    {\n      \"descricao\": \"Não há atualização sobre a operação, ativação ou condição atual do abrigo, nem sobre a manutenção da capacidade de 90 pessoas.\",\n      \"por_que_importa\": \"A capacidade consta no plano de 2025, mas os documentos não confirmam a situação no momento do alerta.\"\n    },\n    {\n      \"descricao\": \"Não há indicação de vigência, revisão ou substituição do Plano de Contingência após 09/09/2025.\",\n      \"por_que_importa\": \"É necessário confirmar se as informações do plano seguem aplicáveis ao alerta de 2026.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O relatório sobre incêndio na restinga descreve um evento de outro tipo e não apresenta vínculo documentado com o alerta de ressaca e chuva; por isso, não fundamenta verificações nesta pauta.\",\n    \"O alerta é um cenário fictício e informa nível amarelo; esta análise não altera o nível, prevê impactos adicionais nem define medidas operacionais.\",\n    \"A capacidade de 90 pessoas e a indicação de plantão são registros do plano, não confirmação de disponibilidade atual ou de responsabilidades operacionais detalhadas.\",\n    \"As verificações são perguntas para revisão humana e não constituem decisão de ativação, evacuação, remoção, interdição ou suspensão.\"\n  ]\n}"
+  }
+}

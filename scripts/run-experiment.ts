@@ -15,7 +15,7 @@ import { callStructured, type LLMConfig } from '../src/core/llm';
 import { assertShape, validateAnalysis } from '../src/core/validate';
 
 loadEnv();
-const cfgAll = readJSON(path.join(root, 'config/experiment.json'));
+const cfgAll = readJSON(path.join(root, 'config', arg('config', 'experiment.json')));
 const cfg: LLMConfig = cfgAll.analysis;
 const promptFile = path.join(root, 'prompts', cfgAll.prompt_file);
 const system = fs.readFileSync(promptFile, 'utf8');

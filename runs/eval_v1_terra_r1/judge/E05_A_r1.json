@@ -1,0 +1,112 @@
+{
+  "run_file": "E05_A_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-6.1-terra",
+    "reasoning_effort": "medium",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_0866365c7ce10c40016b070020920c87d294974861eefdff38",
+  "model_reported": "gpt-6.1-terra",
+  "usage": {
+    "input_tokens": 5060,
+    "output_tokens": 1352,
+    "reasoning_tokens": 604
+  },
+  "latency_ms": 32398,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V2"
+        ],
+        "justificativa": "V1 confirma o plantão do Saneamento e V2 aborda o acionamento na cota de alerta."
+      },
+      {
+        "id": "G2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V4"
+        ],
+        "justificativa": "V4 pergunta sobre a disponibilidade da escola e a vigência do termo."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V2",
+          "R1",
+          "R2",
+          "R3"
+        ],
+        "justificativa": "A saída relaciona a estação ao Jardim Primavera, à cota de alerta e ao operador de plantão."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "correto",
+        "ids_saida": [
+          "T1",
+          "T3"
+        ],
+        "justificativa": "A saída registra a substituição e o teste normal e não trata a falha antiga como vigente."
+      }
+    ],
+    "gold_insuficiente": [],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída pergunta sobre a condição atual, mas não afirma defeito ou falha futura."
+      },
+      {
+        "id": "X2",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A falha antiga é tratada como não vigente, com menção à substituição e ao teste."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Cobre a confirmação do operador de plantão prevista em G1."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Cobre a prontidão e o acionamento da EBAP-JP na cota de alerta previstos em G1."
+      },
+      {
+        "id": "V3",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "A confirmação atual das bombas e do gerador é específica e apoiada no teste anterior."
+      },
+      {
+        "id": "V4",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Cobre a disponibilidade do abrigo e o termo de cooperação previstos em G2."
+      },
+      {
+        "id": "V5",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "A checagem localizada de acúmulo de água e obstruções é pertinente ao risco de alagamento."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "R5.periodo.inicio",
+        "afirmacao": "As duas bombas compõem a EBAP-JP desde 01/03/2025: o relatório informa março de 2025, sem especificar o dia."
+      }
+    ]
+  }
+}

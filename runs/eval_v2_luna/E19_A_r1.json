@@ -1,0 +1,1012 @@
+{
+  "meta": {
+    "scenario": "E19",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v2_luna",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 827,
+    "user_message_sha12": "9a4efc0339cb"
+  },
+  "user_message": "Município (fictício): Ribeirão Manso\nData de referência da análise: 2026-11-26\nDocumentos disponíveis (2), em ordem cronológica:\n\n### [D1] Plano de Contingência (2024)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2024-11-30\n\nAbrigo: Escola Municipal Ribeirinha (100 pessoas). Água do abrigo: poço artesiano com bomba elétrica.\nArticulação com a concessionária de energia: COMPDEC informa as áreas de risco quando houver alerta.\n\n---\n\n### [D2] Alerta de inundação (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-26\n\nNÍVEL: LARANJA. Inundação provável na faixa ribeirinha do Ribeirão Manso; a concessionária pode realizar desligamentos preventivos de energia por segurança.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_0202554cbab0ea3f016b070037a2dc87d2b615f58a86ae04ec",
+  "model_reported": "gpt-6-luna",
+  "usage": {
+    "input_tokens": 2025,
+    "output_tokens": 4277,
+    "reasoning_tokens": 483
+  },
+  "latency_ms": 26058,
+  "started_at": "2026-11-25T15:35:19.439Z",
+  "output": {
+    "resumo_situacao": "O alerta de 2026-11-26 indica inundação provável na faixa ribeirinha e possibilidade de desligamentos preventivos de energia. O plano de 2024 informa que o abrigo da Escola Municipal Ribeirinha obtém água de poço com bomba elétrica e prevê comunicação da COMPDEC à concessionária quando houver alerta. Os documentos não confirmam se essa comunicação ocorreu nem se o abrigo está na área afetada.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Alerta de inundação de 2026-11-26",
+        "tipo": "evento",
+        "setor_responsavel": "Sala de Situação Regional",
+        "descricao": "Cenário fictício de nível laranja, com inundação provável na faixa ribeirinha e possibilidade de desligamentos preventivos de energia."
+      },
+      {
+        "id": "E2",
+        "nome": "Faixa ribeirinha do Ribeirão Manso",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Área indicada no alerta como sujeita a inundação provável."
+      },
+      {
+        "id": "E3",
+        "nome": "COMPDEC",
+        "tipo": "setor",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Setor que, segundo o plano de 2024, informa à concessionária as áreas de risco quando houver alerta."
+      },
+      {
+        "id": "E4",
+        "nome": "Concessionária de energia",
+        "tipo": "servico",
+        "setor_responsavel": null,
+        "descricao": "Concessionária que pode realizar desligamentos preventivos de energia por segurança, conforme o alerta."
+      },
+      {
+        "id": "E5",
+        "nome": "Abrigo da Escola Municipal Ribeirinha",
+        "tipo": "servico",
+        "setor_responsavel": null,
+        "descricao": "Abrigo indicado no plano de 2024, com capacidade informada de 100 pessoas."
+      },
+      {
+        "id": "E6",
+        "nome": "Escola Municipal Ribeirinha",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Local indicado no plano como sede do abrigo."
+      },
+      {
+        "id": "E7",
+        "nome": "Poço artesiano do abrigo",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Fonte de água indicada para o abrigo no plano de 2024."
+      },
+      {
+        "id": "E8",
+        "nome": "Bomba elétrica do poço",
+        "tipo": "equipamento",
+        "setor_responsavel": null,
+        "descricao": "Bomba elétrica indicada no plano como parte do abastecimento de água do abrigo."
+      },
+      {
+        "id": "E9",
+        "nome": "Energia elétrica",
+        "tipo": "servico",
+        "setor_responsavel": "Concessionária de energia",
+        "descricao": "Serviço sujeito a possíveis desligamentos preventivos segundo o alerta."
+      },
+      {
+        "id": "E10",
+        "nome": "Sala de Situação Regional",
+        "tipo": "setor",
+        "setor_responsavel": "Sala de Situação Regional",
+        "descricao": "Fonte indicada para o alerta fictício de inundação."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E5",
+        "destino": "E6",
+        "tipo": "localizado_em",
+        "rotulo": "O abrigo funciona na Escola Municipal Ribeirinha.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-11-30",
+          "fim": null,
+          "observacao": "Informação registrada no plano de 2024; os documentos não confirmam se permanece atual."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Municipal Ribeirinha (100 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E5",
+        "destino": "E7",
+        "tipo": "abastece",
+        "rotulo": "O poço artesiano é indicado como fonte de água do abrigo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-11-30",
+          "fim": null,
+          "observacao": "Informação do plano de 2024; situação atual não confirmada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Água do abrigo: poço artesiano com bomba elétrica."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E7",
+        "destino": "E8",
+        "tipo": "depende_de",
+        "rotulo": "O abastecimento indicado depende de uma bomba elétrica.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-11-30",
+          "fim": null,
+          "observacao": "Informação do plano de 2024; funcionamento atual não confirmado."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Água do abrigo: poço artesiano com bomba elétrica."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E8",
+        "destino": "E9",
+        "tipo": "depende_de",
+        "rotulo": "A bomba é elétrica; a dependência de energia para seu funcionamento é indicada pelo plano.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2024-11-30",
+          "fim": null,
+          "observacao": "A consequência de um desligamento para o abastecimento deve ser confirmada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Água do abrigo: poço artesiano com bomba elétrica."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "a concessionária pode realizar desligamentos preventivos de energia por segurança."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E3",
+        "destino": "E4",
+        "tipo": "comunica",
+        "rotulo": "O plano prevê que a COMPDEC informe áreas de risco à concessionária quando houver alerta.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-11-30",
+          "fim": null,
+          "observacao": "O plano descreve o procedimento, mas não registra comunicação relativa ao alerta atual."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "COMPDEC informa as áreas de risco quando houver alerta."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta indica inundação provável na faixa ribeirinha.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-26",
+          "fim": null,
+          "observacao": "Cenário de alerta datado de 2026-11-26."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Inundação provável na faixa ribeirinha do Ribeirão Manso"
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E1",
+        "destino": "E9",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta informa que podem ocorrer desligamentos preventivos de energia.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-26",
+          "fim": null,
+          "observacao": "O documento registra uma possibilidade, não a ocorrência de um desligamento."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "a concessionária pode realizar desligamentos preventivos de energia por segurança."
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E10",
+        "destino": "E1",
+        "tipo": "responsavel_por",
+        "rotulo": "A Sala de Situação Regional é indicada como fonte do alerta.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-26",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Fonte: Sala de Situação Regional (fictícia)"
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "Em 2026-11-26 foi emitido cenário de alerta de inundação, posterior ao plano de contingência de 2024. O alerta acrescenta a possibilidade de desligamentos preventivos de energia; não informa que um desligamento já ocorreu.",
+        "implicacao": "A combinação com o plano torna pertinente confirmar a comunicação prevista entre COMPDEC e concessionária e avaliar se eventual interrupção afetaria a bomba do poço do abrigo. O alerta não confirma a localização do abrigo em relação à faixa ribeirinha.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "COMPDEC informa as áreas de risco quando houver alerta."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "a concessionária pode realizar desligamentos preventivos de energia por segurança."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "Para este alerta, a COMPDEC já informou à concessionária as áreas de risco, conforme previsto no plano?",
+        "por_que_importa": "O plano prevê essa comunicação e o alerta atual informa que a concessionária pode fazer desligamentos preventivos; não há registro nos documentos de que a comunicação deste alerta ocorreu.",
+        "motivacao": "Plano de 2024 prevê comunicação quando houver alerta; cenário de 2026 menciona possível desligamento de energia.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E3",
+          "E4"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Concessionária de energia"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "COMPDEC informa as áreas de risco quando houver alerta."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "a concessionária pode realizar desligamentos preventivos de energia por segurança."
+          }
+        ],
+        "o_que_falta_saber": "Se a comunicação referente ao alerta de 2026-11-26 foi enviada e quais áreas foram informadas.",
+        "quem_pode_confirmar": "COMPDEC e concessionária de energia, conforme atribuições indicadas nos documentos.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "A Escola Municipal Ribeirinha está na faixa ribeirinha indicada no alerta ou em área que possa ser abrangida por eventual desligamento preventivo?",
+        "por_que_importa": "O plano identifica a escola como abrigo, mas não informa sua localização em relação à faixa indicada no alerta nem a área que poderia ser abrangida por desligamentos.",
+        "motivacao": "O alerta delimita a inundação provável à faixa ribeirinha e menciona possíveis desligamentos; o plano identifica o local do abrigo, sem relacioná-lo a essa faixa.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E4",
+          "E5",
+          "E6"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Concessionária de energia"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Municipal Ribeirinha (100 pessoas)."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Inundação provável na faixa ribeirinha do Ribeirão Manso"
+          }
+        ],
+        "o_que_falta_saber": "A localização da escola em relação à faixa alertada e, caso pertinente, se ela está entre as áreas consideradas para desligamento.",
+        "quem_pode_confirmar": "COMPDEC e concessionária de energia; a confirmação institucional da localização do abrigo também pode ser necessária.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "Se houver desligamento que alcance o abrigo, como será mantido o abastecimento de água, considerando que o plano indica uma bomba elétrica no poço?",
+        "por_que_importa": "O plano associa a água do abrigo a um poço com bomba elétrica, enquanto o alerta informa a possibilidade de desligamentos preventivos. Os documentos não descrevem alternativa de abastecimento nem o efeito de uma interrupção.",
+        "motivacao": "Dependência indicada no plano de 2024 combinada com possibilidade de desligamento registrada no alerta de 2026.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E4",
+          "E5",
+          "E7",
+          "E8",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Setor municipal responsável pelo abrigo, a confirmar institucionalmente"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Água do abrigo: poço artesiano com bomba elétrica."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "a concessionária pode realizar desligamentos preventivos de energia por segurança."
+          }
+        ],
+        "o_que_falta_saber": "Se a bomba depende da rede elétrica durante a operação, se o abrigo pode ser afetado por eventual desligamento e quais medidas de continuidade de água estão previstas, se houver.",
+        "quem_pode_confirmar": "COMPDEC e setor municipal responsável pelo abrigo, a confirmar institucionalmente; a concessionária pode confirmar eventual abrangência de desligamentos.",
+        "prioridade": "alta"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Os documentos não informam se a Escola Municipal Ribeirinha está localizada na faixa ribeirinha indicada no alerta ou em área abrangida por eventual desligamento.",
+        "por_que_importa": "Sem essa informação, não é possível determinar a relação do abrigo com as áreas do cenário atual."
+      },
+      {
+        "descricao": "Não há registro de comunicação da COMPDEC à concessionária referente ao alerta de 2026-11-26.",
+        "por_que_importa": "O plano prevê comunicação quando houver alerta, e o cenário atual menciona possíveis desligamentos."
+      },
+      {
+        "descricao": "Não há informação sobre medidas alternativas de abastecimento de água para o abrigo se a bomba elétrica não puder operar.",
+        "por_que_importa": "O plano indica que a água do abrigo vem de poço com bomba elétrica, e o alerta menciona possíveis desligamentos."
+      },
+      {
+        "descricao": "Os documentos não confirmam se a capacidade, o uso do abrigo e as condições da bomba e do poço continuam conforme o plano de 2024.",
+        "por_que_importa": "O plano é anterior ao alerta e não há atualização dessas informações no material fornecido."
+      }
+    ],
+    "cautelas": [
+      "O alerta descreve uma possibilidade de desligamento preventivo, não confirma que ele ocorreu ou ocorrerá.",
+      "A capacidade de 100 pessoas e as informações sobre o abrigo, poço e bomba constam do plano de 2024; os documentos não confirmam sua situação atual.",
+      "Não se deve concluir que o abrigo está na faixa alertada apenas pelo nome da escola.",
+      "A análise não define medidas operacionais nem substitui decisões das autoridades municipais e dos protocolos oficiais."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 10,
+    "n_relacoes": 8,
+    "n_verificacoes": 3,
+    "n_temporais": 1,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Municipal Ribeirinha (100 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Água do abrigo: poço artesiano com bomba elétrica.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Água do abrigo: poço artesiano com bomba elétrica.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Água do abrigo: poço artesiano com bomba elétrica.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "a concessionária pode realizar desligamentos preventivos de energia por segurança.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "COMPDEC informa as áreas de risco quando houver alerta.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Inundação provável na faixa ribeirinha do Ribeirão Manso",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "a concessionária pode realizar desligamentos preventivos de energia por segurança.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Fonte: Sala de Situação Regional (fictícia)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "COMPDEC informa as áreas de risco quando houver alerta.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "a concessionária pode realizar desligamentos preventivos de energia por segurança.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "COMPDEC informa as áreas de risco quando houver alerta.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "a concessionária pode realizar desligamentos preventivos de energia por segurança.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Municipal Ribeirinha (100 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Inundação provável na faixa ribeirinha do Ribeirão Manso",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Água do abrigo: poço artesiano com bomba elétrica.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "a concessionária pode realizar desligamentos preventivos de energia por segurança.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      }
+    ],
+    "n_citacoes": 17,
+    "n_citacoes_literais": 17,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795620945,
+    "created_at": 1795620919,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_0202554cbab0ea3f016b070037a2dc87d2b615f58a86ae04ec",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-6-luna",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBwA8OI-nPvpZ0Wl00OCgSzU-4Mvhtcyej6v6-lBuNldOx-mDpfonD9LWYA5uDdILPa01Qrh3x6jchlIm2GPw3UBMOos7wSn7wrZSPZE2nHJbsz1TC43hiXfF6MjQSfpVjfUa_xzUaE539mzRu2ialDw1ShaA6m2A0Mvadyl4uUv5rGwtZGxqwv-q416KuQcUfqvuMS9mLRVEaZ0utlFgyc0574Ef_4S6zcuHln2Bnk2suvjeatOXtin22iqe8BSDGYPB7CJ30HDnIY0GkBp7lEg7xEQi4fEeA26ufffEbhQ1OaZLL3U1KknNvGmRZppbTUBhmV_uE7F7kY50kuvD9idmNuAmpfpCvEUNoCw1wiv33A7fdY4A0_qNAVQ5QKTDEIyqC7wUFx09lTUYg3Jhxp4wPVzWyXj3QGd3rOO1q7k0jkpwHHZoheGknoxtTBIR6-aALxMbGLVKQPQY8Qyo0W_gZ4mCX0Q6PEWHFECaHSl59QPhzybYusnoC9EfUojWTqajS1Q1EqKx7MbSCXSTWxJgmdUBkedd2L_lbQX-DyX_JLM1RurG4z0bAC5BRlyyehldo9CBODMQORr8kNPjk6EuvOocs4QdpuCllyJAH9YqooFfy4wHfo54giO3MKxGwFKEnOou9L-SqDNViqerKA0hCulVpSUev1gw0STBIGk9B6wvyIcrYYkTjZliXyJumfbYtu6FDI-pYQhvg38oOBWWoox1cGXoFIOGx19D3ThJ91LHjn2q7pZnJrULNOMF8WmfrJwepuawIyU5xrNCaKpOYJgi5XObCG0By68OkAgH342d9r_KuNLd0vRNo3hmJEtsgGarKFxRBrWJOcH1IozIHwvHvczRMzBZuW5gqF7IdfaCljCnL2rpBo48V_tYULW4spG5VfWtx7M5_SaSbHAMoJB9D5LqkSER93Yd70leq0D1bYScKFgFgWpMoBuS8oRb1PD_feWt9dm8Cr9mp1xBlWA4YASa5Y93JCLOM_S2lyjzdpiVcmV1fxYUu4bNiLSoGGK0QdKl_CGnHNIWGNzjVoKxhcqlYJ5gEbPT83ZnvdmGHIYkzxGOJftbPa9TSl53u0XTIaSXE7SitC22upWpc2ZOqmrclHARjyLduGZxJO0b3Wi7_1Lk8BwZm001wzAbAc7-VeqJI93BgC4iOUAkQKBokY_BReyX1avB_WKYwrEk3p405zQt1ssNss5Ncqo4_pCVMgvyi4ihD-Lgp3qmLk5qH3Bkj4kPlsFgR4a73pzUAn8ryp6BnYEPNo5N-c5Tb1vbkYoXI2zyV_boOOjz8tol_lPYSXSi0UT1qwQymK9aKjqTf2IEbzU0eFLw1P32g2pHGHdo2XB9TGk8-DZZZEgt5y1l4t-2DvFgN8errg7RKenLQNLvS0fnyPhcFY16BrUkyyAM469QBNVBykhMmfjs_shS4ZH-z9vzIBvCnS-GZwyZ0nWg9JOghYoZdJqfWbMoEIwphsdVg3hzIyseQ_zkbJg1gLPsrx4ETqxbBf6D6QTpID1cupMAXuD1ckIteQ5Q-8VAFb5wLuz4MuCNkUYWi_CS1fJ-GMKj2CMIs2T6AOR26BMqGXe9HtQw2JN6Z3YcTQaANmCDTmBZxDNwPIM7PKIHiIaRzVhommLTMTX6fbO8cXhcYFtWNSf2t-mvKH4Va1gx3aWnBcGeh_FxHHTb3TpBxx7s--r5X-9EBz6DQn73BL4oTt2YKrzC9IoCSk4CEN3TP76KU2aW1eiHVQW_4YzUnPF5ueF6e8HdbdDys_INmejOytRovZjy2TvKAOI2uER7FOEvsAXezkUlj2EVPtm8fkGLT-gTq0wYvTs3ve5KgzOa1yfWV1Nd0dhaQx1klJBIlnz_lwMaCocSjZ0o5S3At_n1-xjjEQT-uRsRaO3azUTcQq_PiHN1Dzfv8b4LwvX0LMGliXLS2iVFEPU9C8mJGkQ_fk0ipLJ9fJZw-WOPU5rnpShuHbwh-XpGKjcLkgM7583XwwmZ5GG4LK1mUiTajWWr2zQTZu03w2yVldueoe7JsWNLNRwVon9yvGy7IVoCc1ifbtzzlVABT_jveKQiH2UqAAt3aelYEb3EIHq91Izrtn8JD02uf4e4tGoGI76gLilDGJLsAUduGphnU7TCP0lBZtpw44uqZRmVYPogLA7V4OSlIeyswXAATCwMS-jclwIi_cSkpYNo5FBBqrX_QFo2f8V9ENy6Z57rDC-vTXId-EnB9Tsx30HKH5ZPh5uHU5ceu94i2jvbRK9aNO-Bp2VBvb2XCt0alSBm_YzVk3W0n9rNPBIPWO-1Eq9WSYBrMQBLmJJS6xMZTlUT9sOEzgAuH4Rm4x6hveBQxNNKKcTtXl24fP5c3v-d4vMigt8J4wtzhP-UM3ekf_v7dyni7j74fAtFKfsKVXqQI9m4lC-iC7YrATVul_Fjq7shkzAcRHxhjlKBAzlwvZ_0-wwXwdI0f7iAq9_eORcpvMYa4vXIPMWFKrtIy_Y9E7usBt28m131QVbYpRdnCgrGiI7c_HMl7XRYawgpmT5cFqWchHa-fKmcTKc2_6Gd_N7uRaEURd4aQgHGQeqe9xZf39PfggJAyYkDmPPnjFqntqaoZdu9JrQoqa_b1D6IGzdMbDlIqYdF5BJ0OOL0fAKoYTd4tSjv7zynsLo3a2W3R6bJEvrrIMTmYKe8KTx2Z7Bs8Uzkux-PsrS8b0fSXvbNBAAUFX5F3IpSHA-Z6cqkEL08II4Edx5WOVFppavrm7H0PMVVlHdPrdN49y-NerEy0j6WSoZHgP6O3oqWYsjnt-CVj_tRnXa_0Ao30aLWKpOWkaqlryvDt17N3SnmgGZgrj8V2YrzVjy3_Nrq2N6bKErHM4jULwwKnOda_IgXutzPVfd-CxXThnCcZXfF3LuJZlzdE1E8xg7WU52THzFLKACbZZuJHLT8ZR976wy57h7voR0TwBCSo0MOTF11gAyXRNChesmyhz4N2SgLS6Qf89bxlORXVOccYJ5IGmQ7yoKa1mJb99noHPtIRSfatM8DQwmPc-boGQcTMOtFPcQ9nmA2lcWABQlduB8d7xzdZ0e8jWfJ46gWRIGz_dJE_O_r7Mj2hpxO7bmnqL6rdlSA_8qJwn_iAEZbhDNhRYaI6aWP2fTs6GTcLGfpW5TfoDeUcpqeNxzVlwvgwFAklsyDpoZq6SE4QAdonEqJqClAX4nXF98-pI_Zzm7moSrAXJ8xVf6MjacV5YF-_i3HC6JkE1yipeumHuFypIeb3heyROdzTjT8s-54oSFrQUb7Oh7Jnoef-aC07iIGfRscg0bdlNRjv85oi_litTlNyXiU-09LGR0PNL9saylE0ek-Ico0uASqmDO38LD1RtEZy6Pdrcy3ZNHODvzCH2Jw0IW1ulyBThHuqgH01w_1BHkGHZ_4p6W4UEk7HfOcTBxXzJPqlowNMmk4mcHXGGIRNR_0_GQjh_kyWAnrym7F6qmbp4ePZcAo96S8q7SWQ3d19TtoGS8gv0F8kFQaVBMmUvvnzpgvpPhrYOCNF2FwFZx1PdGtg7eZqcPl2vw1bOiu9qaAgiu-pS6oRArY5RnLKYQ-WP535sEKE2HoLrkeAJ5JrJyT1FTfxekjIRMhWv-gjEkuC3aiIGLERiPPS-OM-2rVve68TLQF4Jur25CEM1tA1UpJKx7pZF6pOew3IWXLJEKCWpGqLig-ipzknw8ruDAJQ2qmW7_H-TLLxgWM-dauB1W8GdFlN14BYLI8F-oKldGElQRdVMxi9O7Cw7wD4Qsxhv2Y22X3h1D1iWahKBXPIQZihq3HjSTM-dxxXmzxm5a_fX0Zqpn9DnNojHA9-3GMlf3zDJHpOkVFbCzZgnAel5f8fNpfpRLfswVeJsN8idPI5avWc3or1-0kZKDZA6VARnsJIRAD9JpD8UgpP6FmXCui_yN8pcSjwVOqPT2ek4uAH_oMCC1HCyWIvOQtLAQXew-UIpvC--W2pELON_oTh4hGcJ3BmA8HCpN2qRA61s6U3yjAIiPFlueHKZRo0ovmdWx_MV1czf6SEDHjMTuZ__eOLAHUqdd2uxjadmVnleR8Gy99vrnZZTVXcKZRWk9quz461geN14xaoZ-JKeWOfznbB4KBKj6X89VXw38bM_wzsiQlPhXglZvmNPYB7G6-1ubyKm8BpAQRtin1Wt_nClOxl_yVHMBYkLnbsZ2YYbViubPhvwM86iGaeb8s6TEzgWp9ixn9sg7zwOzQV59lMf39TT-abSCdHe9RW9TnTsvhy-5lpcMJbFpUUp7cHtgnr51czMd-0NDz1hC9ILGdiCWJ9IMyjbhkYTFHpjhlnQEYMhQl4YmnhHjI9KVU_RfPCRjvaueENiZsJZWYTrm849R6OXAWPs8tx-RW8x4yqVlsJC5pkHbY6zrQ0ABJRT2SgoS5_j9JDVMTyTam0kyiTUD-W64Iv5m02k-9Rrmz_QovqhfOEv_xAEdDnz-eN3Im_Jffd52QcPC1pBQwNOcnHlWPZHfwlQfQZAsqqbx5WFa80xnERckRwVRSqcN4DPxKTIAISXldNGRm6_a5KBaFs60dT_PfRiGdtdYEO2MQdqRJQ8LWbsJ_ckVm-TeyLxejDzi2hYSoVfzv6rpx_TTFgp00m9cmrWFsO2TKM-JH9WaR6z7zqVufcsAc1vi5qNOR-vCrXsdQBJ5JxtrFqm5ocP8-Jj0bZTBkvcKrlKtOixPHMaoc4LJCyyp7nka6a7L3hJADSg5JqTkVn087GpSRIml3EyPyTzpKxMd5HdVsKd7ZltWd-hT6lKdNeYX-usIVzhK-uZZDXFia9rVTBw343LXWQArP5W9nQVUnnBSGLQDtEkxyWFKi-i2Tu7rejCxTSjy9MuN3VVkqWnpPW9s8XPZND4dGzJ_T0DbLvJ7WWaFqrbyg8IXG2HCEPchjvQ2Nw8oe15tWyZE1bQSZ_YeQtnDsbDIEB4CUgqWO6Ym_PazA0NrJdgEPCpBtOSAx4WDDX5IkxgO7l6Iujm895AH4PF4K6lGHYDSrpTKGGJfPjl7VEZXgn9Pb8wSBMK2vnMddPHlPVjeU75-XLjoq8Eo8jBnviIl-O-NnB3hQFIPip3SbpHw3lfcA2NLXHqU__xLbZH-xi1qcgbsgYoWL3FDHxPeAJVtCQec59iRt0OJ8tY3jP6zvusMEenBpTBlm14poKQV-FNnELlptcNHnohycTRRWbDb6xMkKI5yWECsY_Sd7822p08oAVSfRRs_L5mjPc4B67lhKPfF8EP2jnHgU7_CP_4y7oNGc3lV5HQFgvbY_1gbXAANP3mbGrpvBbOPTDxX_Lqmza03ICx4L046qpNgidoIIduBlQ6JsuftjK8HDaqh57LLqPwK6YUN07P8H5imGe3KiPrIoxNutM2cVKleXAGgG_h7u-I47NXICzblFUXB5VAFv69cPQWHCPjtOyuWhKKLW0ssct0ijUYpGl2VxrrOdbKFXAsg2kyd0WNCamF_8YrhYuhdiR5_-PRzAOmAlkZ4TQPwkFRcyq9bgpBQMVlv291RJ0MXdNeWkUmXeNmeB2O7P3EATbY3tjO2bTtit_13o3cr_3gq1jtO8yCxxQNuhG9DdjAEu_e5B3L5PlNh91lm2HBTEBAjUwGePMr_MRCKnmWmQvK024Ml0DNQyWs2BtCBy1YoZ29gDE8WgJtrbMuC4SSunoQzGzCdcK1v2fsFVQO61cT06fJmgRyvSLk7PiMyUoW-cYRRR0iBwbV1vRTb55WTnmg-ZBV3DG-7zf0vgzJuCFDvZAd7jj5Fq5JrGKga3DSQv2_ooakFB6NMkiRR_11HNmVifnTb0j0FGc2JhKleXKBcE7OCudJ_KU0utuSIFKS4lQ6b9GpJS9g7qXGW3BqC4zqG4jEDBbUEMZoEU8ibt4faHgKZcRAtLL2UWTnib_Bii9LKHGrT-L2idcS3slqvWCp7p0goWxQ-oR4JAC7Zt8SsCgwmhxIGWbfGT0oEnSyjCDZus6J2k9iXxW4RXiftA8D00Bsn5BY5vQFxW_oScelSeBHRRIPa5YIcxzDFpOwJ6UpWdVv_QRS2YwzweJ5SuesXvrR0jfN_UJaplHjotx7ygpyP-KWvaRCG1BoB7dKuBkAiGgKRuBUeZfayKk0LRr4Tqp0kCZU2dkzCYPPXf9UM29RZ68IX6OnpZLiq2CTOuz90SCVQPiw8UWvFQN3nN6UMW7bwoIgzduB6PKSJ24SU5OgPryRcPZE7A-kUGkMKcR4Qf-5AVyjHMDmEYXyMpQiz6JJgdGxwktYsW4ps-f0Q1Q0uiBqxT5MuwHpomSKrJzuQbx6i4wbPFeX8AnCQlhjkziqtFjW0-83QA_I4n6b57U5WOqQ8XwRNlRtnaN7bR8CL7WJr7dZ_vJZ3erkJ8Uc8ZxJygevU3-mDSSNK3fdC_mmvLvq0LG-nvWf2VGOUWYBnYZp2N8O-MB7PR8LKI6eG3qEsPJ_CCU5VZFbbMDJ8l2iN45tnkwsax4cp1ODvM5zSR3dzXGHOtbmWolUKalnI8HtX0dHr29OuULHAHHSiDeHiJTAyzCtVpslj5VN_APt_kqR_uvqLQwVsK7ZQvavUGx00JhU2GGNM5duIf0FGn7h-xX4McMJp0i6lsqLpcIaqUYHm5i21f0bm_f279GnCRQ4YwcQzkRb3lhBOkxD4OwUoFg1FK7PzizAlBgxDX1H3RN8JIYUKcGuyPHRJkUBEprr1e4p6so17L4sQ3DLxkPpBxCvKN6OebGv-nhGCi8uU6dI2t2ZHgBOJjRyQ4Zpdu0p4Ald272ZkAU6f586bPMXkimvN1DOp5twYdOrWdpQfyZaChUe7Rd3Ezjs8Vv5Z6qYxfxLhkNDqGf7dxNcKmrPfaIvSPjikUo5zjW4Psos3a_y1ucGnrwsbLwDBz6E48iZEHoJVGsa2PC4iI5y3-6LVJcMWMNcy-WUfeTixFh_3ZLMzWBqjy0XcOJt4GKWElA4TymK6VDuyAIcmnacZgS3Anqagb1tTCjSbdDufiCKTYYrFwyb34qd47TcOoa7ndwZbJuepEIxDW_AC7DfFpxXb9wXfyXdN6sZk7xA0pUQbgAFzu8ujjoAtBGQO47fp4MoIJOylPvUd6Gq4xaHidOAeAaf1lt-vknbf-LrzrTqGoVI9yZPblOKWWLRJEG9bNcCg4u9KaGZFbazNsVDVphVFdCPbpVEQDZFJSsZ1w8L_3g0D3c9L58lP12GqPsGNIXbmyEik5r-bLhT91_jZvWsrGqqnovWjGWoT061n7oMiWIawiLmCf-WiqjI-1Nf9803BsIRf1N2oafyyqSVAria1rZVHELT7LzmrFco2Hkgf8HzAKeKseXuPLB_TZWZtXf9TnosgMUGHf4WPUGX_eG4Dx9OWyTWsSwJ-j-3nOdEgbKz6n2x0vCrI3DDHKquUDOFY2zg7Bm6WRW8BkMBlrfdZjatELnhtUP_HLdLL4Y3G1xBryTnKXt2h70xaU4n3vBiPLq96a0VUNrg5_HXhxkvfVzC18Ih14h7gH7AOZbGazLfBWSezsxvuvioc1AC7hVdLRlPV6mLaLKDT_QE5XPKLAdKEadQvp7e1BTfgVHLFS52Vch_r6GTqx4eM9mTzGndJja4H-FJXV1ZAEiHFr-H4ZjjHJr4JEpqaEVZ508UBVFbzWEAnLdBznXhy1UiZS8GGSb3NgNCnhP4XsOGO0KcUAT4XBn0AWzOKQfUWGqxWKe63FGMyxZaik_-ZD74lTyqxnm35Pwc4rwwHSU994FaUq3psDFRiBYT8m-UrUYeXtFtKpZKl5l_aEo1o41e2iUt6tmr3wxi4O3ujxG8YLSiS9kMBZ16fVP0xdbJlZibdrq1xRmtqWQDH_4GdA4rLm0bv0kYLfE0DU8MaOCLCrnPgW0iHOQ4OBBuuOeHqP60Fdg2diYPeCGP8s_BwgOmnhE6zso7sh2MKS4yQUSKmeGTMR30nG5io335DXVpsPts3LdZOVmvHbPLukqltzGxcRu2sXTCdwjshi0NqzHJnC0bZq7NhpQY6vyRftIJoZ7KgZnAh-ZOy8tTtt5Sz-VvrpeXmHSDp95K2GFVKkZJeZ1FKLMakOGKJZhXlPL4q9WtI8sCUUzJBRHAiFcFO0sEismYqN7iIzA5ih4z5adic-DdiUoHvSJxJ-8HbvMj-cK190W4n0fwtZk0ggqbYVEwd5dQi_D3FS4SX3Jk1HupDhRYMwxvH_pZDKoI026KbcA19mnlk=",
+        "id": "rs_0202554cbab0ea3f016b07003c0e6c87d2b00d8559df306b4b",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"resumo_situacao\": \"O alerta de 2026-11-26 indica inundação provável na faixa ribeirinha e possibilidade de desligamentos preventivos de energia. O plano de 2024 informa que o abrigo da Escola Municipal Ribeirinha obtém água de poço com bomba elétrica e prevê comunicação da COMPDEC à concessionária quando houver alerta. Os documentos não confirmam se essa comunicação ocorreu nem se o abrigo está na área afetada.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de inundação de 2026-11-26\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": \"Sala de Situação Regional\",\n      \"descricao\": \"Cenário fictício de nível laranja, com inundação provável na faixa ribeirinha e possibilidade de desligamentos preventivos de energia.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Faixa ribeirinha do Ribeirão Manso\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Área indicada no alerta como sujeita a inundação provável.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Setor que, segundo o plano de 2024, informa à concessionária as áreas de risco quando houver alerta.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Concessionária de energia\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Concessionária que pode realizar desligamentos preventivos de energia por segurança, conforme o alerta.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Abrigo da Escola Municipal Ribeirinha\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Abrigo indicado no plano de 2024, com capacidade informada de 100 pessoas.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Escola Municipal Ribeirinha\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local indicado no plano como sede do abrigo.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Poço artesiano do abrigo\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Fonte de água indicada para o abrigo no plano de 2024.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"Bomba elétrica do poço\",\n      \"tipo\": \"equipamento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Bomba elétrica indicada no plano como parte do abastecimento de água do abrigo.\"\n    },\n    {\n      \"id\": \"E9\",\n      \"nome\": \"Energia elétrica\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Concessionária de energia\",\n      \"descricao\": \"Serviço sujeito a possíveis desligamentos preventivos segundo o alerta.\"\n    },\n    {\n      \"id\": \"E10\",\n      \"nome\": \"Sala de Situação Regional\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Sala de Situação Regional\",\n      \"descricao\": \"Fonte indicada para o alerta fictício de inundação.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E5\",\n      \"destino\": \"E6\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O abrigo funciona na Escola Municipal Ribeirinha.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-11-30\",\n        \"fim\": null,\n        \"observacao\": \"Informação registrada no plano de 2024; os documentos não confirmam se permanece atual.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Municipal Ribeirinha (100 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E5\",\n      \"destino\": \"E7\",\n      \"tipo\": \"abastece\",\n      \"rotulo\": \"O poço artesiano é indicado como fonte de água do abrigo.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-11-30\",\n        \"fim\": null,\n        \"observacao\": \"Informação do plano de 2024; situação atual não confirmada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Água do abrigo: poço artesiano com bomba elétrica.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E7\",\n      \"destino\": \"E8\",\n      \"tipo\": \"depende_de\",\n      \"rotulo\": \"O abastecimento indicado depende de uma bomba elétrica.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-11-30\",\n        \"fim\": null,\n        \"observacao\": \"Informação do plano de 2024; funcionamento atual não confirmado.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Água do abrigo: poço artesiano com bomba elétrica.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E8\",\n      \"destino\": \"E9\",\n      \"tipo\": \"depende_de\",\n      \"rotulo\": \"A bomba é elétrica; a dependência de energia para seu funcionamento é indicada pelo plano.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2024-11-30\",\n        \"fim\": null,\n        \"observacao\": \"A consequência de um desligamento para o abastecimento deve ser confirmada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Água do abrigo: poço artesiano com bomba elétrica.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"a concessionária pode realizar desligamentos preventivos de energia por segurança.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E3\",\n      \"destino\": \"E4\",\n      \"tipo\": \"comunica\",\n      \"rotulo\": \"O plano prevê que a COMPDEC informe áreas de risco à concessionária quando houver alerta.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-11-30\",\n        \"fim\": null,\n        \"observacao\": \"O plano descreve o procedimento, mas não registra comunicação relativa ao alerta atual.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"COMPDEC informa as áreas de risco quando houver alerta.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta indica inundação provável na faixa ribeirinha.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": null,\n        \"observacao\": \"Cenário de alerta datado de 2026-11-26.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Inundação provável na faixa ribeirinha do Ribeirão Manso\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R7\",\n      \"origem\": \"E1\",\n      \"destino\": \"E9\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta informa que podem ocorrer desligamentos preventivos de energia.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": null,\n        \"observacao\": \"O documento registra uma possibilidade, não a ocorrência de um desligamento.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"a concessionária pode realizar desligamentos preventivos de energia por segurança.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R8\",\n      \"origem\": \"E10\",\n      \"destino\": \"E1\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Sala de Situação Regional é indicada como fonte do alerta.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Fonte: Sala de Situação Regional (fictícia)\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"Em 2026-11-26 foi emitido cenário de alerta de inundação, posterior ao plano de contingência de 2024. O alerta acrescenta a possibilidade de desligamentos preventivos de energia; não informa que um desligamento já ocorreu.\",\n      \"implicacao\": \"A combinação com o plano torna pertinente confirmar a comunicação prevista entre COMPDEC e concessionária e avaliar se eventual interrupção afetaria a bomba do poço do abrigo. O alerta não confirma a localização do abrigo em relação à faixa ribeirinha.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"COMPDEC informa as áreas de risco quando houver alerta.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"a concessionária pode realizar desligamentos preventivos de energia por segurança.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Para este alerta, a COMPDEC já informou à concessionária as áreas de risco, conforme previsto no plano?\",\n      \"por_que_importa\": \"O plano prevê essa comunicação e o alerta atual informa que a concessionária pode fazer desligamentos preventivos; não há registro nos documentos de que a comunicação deste alerta ocorreu.\",\n      \"motivacao\": \"Plano de 2024 prevê comunicação quando houver alerta; cenário de 2026 menciona possível desligamento de energia.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E4\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\",\n        \"Concessionária de energia\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"COMPDEC informa as áreas de risco quando houver alerta.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"a concessionária pode realizar desligamentos preventivos de energia por segurança.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a comunicação referente ao alerta de 2026-11-26 foi enviada e quais áreas foram informadas.\",\n      \"quem_pode_confirmar\": \"COMPDEC e concessionária de energia, conforme atribuições indicadas nos documentos.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"A Escola Municipal Ribeirinha está na faixa ribeirinha indicada no alerta ou em área que possa ser abrangida por eventual desligamento preventivo?\",\n      \"por_que_importa\": \"O plano identifica a escola como abrigo, mas não informa sua localização em relação à faixa indicada no alerta nem a área que poderia ser abrangida por desligamentos.\",\n      \"motivacao\": \"O alerta delimita a inundação provável à faixa ribeirinha e menciona possíveis desligamentos; o plano identifica o local do abrigo, sem relacioná-lo a essa faixa.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E4\",\n        \"E5\",\n        \"E6\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\",\n        \"Concessionária de energia\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Municipal Ribeirinha (100 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Inundação provável na faixa ribeirinha do Ribeirão Manso\"\n        }\n      ],\n      \"o_que_falta_saber\": \"A localização da escola em relação à faixa alertada e, caso pertinente, se ela está entre as áreas consideradas para desligamento.\",\n      \"quem_pode_confirmar\": \"COMPDEC e concessionária de energia; a confirmação institucional da localização do abrigo também pode ser necessária.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V3\",\n      \"pergunta\": \"Se houver desligamento que alcance o abrigo, como será mantido o abastecimento de água, considerando que o plano indica uma bomba elétrica no poço?\",\n      \"por_que_importa\": \"O plano associa a água do abrigo a um poço com bomba elétrica, enquanto o alerta informa a possibilidade de desligamentos preventivos. Os documentos não descrevem alternativa de abastecimento nem o efeito de uma interrupção.\",\n      \"motivacao\": \"Dependência indicada no plano de 2024 combinada com possibilidade de desligamento registrada no alerta de 2026.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E4\",\n        \"E5\",\n        \"E7\",\n        \"E8\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\",\n        \"Setor municipal responsável pelo abrigo, a confirmar institucionalmente\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Água do abrigo: poço artesiano com bomba elétrica.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"a concessionária pode realizar desligamentos preventivos de energia por segurança.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a bomba depende da rede elétrica durante a operação, se o abrigo pode ser afetado por eventual desligamento e quais medidas de continuidade de água estão previstas, se houver.\",\n      \"quem_pode_confirmar\": \"COMPDEC e setor municipal responsável pelo abrigo, a confirmar institucionalmente; a concessionária pode confirmar eventual abrangência de desligamentos.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Os documentos não informam se a Escola Municipal Ribeirinha está localizada na faixa ribeirinha indicada no alerta ou em área abrangida por eventual desligamento.\",\n      \"por_que_importa\": \"Sem essa informação, não é possível determinar a relação do abrigo com as áreas do cenário atual.\"\n    },\n    {\n      \"descricao\": \"Não há registro de comunicação da COMPDEC à concessionária referente ao alerta de 2026-11-26.\",\n      \"por_que_importa\": \"O plano prevê comunicação quando houver alerta, e o cenário atual menciona possíveis desligamentos.\"\n    },\n    {\n      \"descricao\": \"Não há informação sobre medidas alternativas de abastecimento de água para o abrigo se a bomba elétrica não puder operar.\",\n      \"por_que_importa\": \"O plano indica que a água do abrigo vem de poço com bomba elétrica, e o alerta menciona possíveis desligamentos.\"\n    },\n    {\n      \"descricao\": \"Os documentos não confirmam se a capacidade, o uso do abrigo e as condições da bomba e do poço continuam conforme o plano de 2024.\",\n      \"por_que_importa\": \"O plano é anterior ao alerta e não há atualização dessas informações no material fornecido.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O alerta descreve uma possibilidade de desligamento preventivo, não confirma que ele ocorreu ou ocorrerá.\",\n    \"A capacidade de 100 pessoas e as informações sobre o abrigo, poço e bomba constam do plano de 2024; os documentos não confirmam sua situação atual.\",\n    \"Não se deve concluir que o abrigo está na faixa alertada apenas pelo nome da escola.\",\n    \"A análise não define medidas operacionais nem substitui decisões das autoridades municipais e dos protocolos oficiais.\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0202554cbab0ea3f016b07003c33cc87d2b4ee4adea471daaa",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "all_turns",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2025,
+      "input_tokens_details": {
+        "cache_write_tokens": 231,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 231
+        },
+        "cached_tokens": 1791
+      },
+      "output_tokens": 4277,
+      "output_tokens_details": {
+        "reasoning_tokens": 483
+      },
+      "total_tokens": 6302
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\n  \"resumo_situacao\": \"O alerta de 2026-11-26 indica inundação provável na faixa ribeirinha e possibilidade de desligamentos preventivos de energia. O plano de 2024 informa que o abrigo da Escola Municipal Ribeirinha obtém água de poço com bomba elétrica e prevê comunicação da COMPDEC à concessionária quando houver alerta. Os documentos não confirmam se essa comunicação ocorreu nem se o abrigo está na área afetada.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Alerta de inundação de 2026-11-26\",\n      \"tipo\": \"evento\",\n      \"setor_responsavel\": \"Sala de Situação Regional\",\n      \"descricao\": \"Cenário fictício de nível laranja, com inundação provável na faixa ribeirinha e possibilidade de desligamentos preventivos de energia.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Faixa ribeirinha do Ribeirão Manso\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Área indicada no alerta como sujeita a inundação provável.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"COMPDEC\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"COMPDEC\",\n      \"descricao\": \"Setor que, segundo o plano de 2024, informa à concessionária as áreas de risco quando houver alerta.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Concessionária de energia\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Concessionária que pode realizar desligamentos preventivos de energia por segurança, conforme o alerta.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Abrigo da Escola Municipal Ribeirinha\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Abrigo indicado no plano de 2024, com capacidade informada de 100 pessoas.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Escola Municipal Ribeirinha\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local indicado no plano como sede do abrigo.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Poço artesiano do abrigo\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Fonte de água indicada para o abrigo no plano de 2024.\"\n    },\n    {\n      \"id\": \"E8\",\n      \"nome\": \"Bomba elétrica do poço\",\n      \"tipo\": \"equipamento\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Bomba elétrica indicada no plano como parte do abastecimento de água do abrigo.\"\n    },\n    {\n      \"id\": \"E9\",\n      \"nome\": \"Energia elétrica\",\n      \"tipo\": \"servico\",\n      \"setor_responsavel\": \"Concessionária de energia\",\n      \"descricao\": \"Serviço sujeito a possíveis desligamentos preventivos segundo o alerta.\"\n    },\n    {\n      \"id\": \"E10\",\n      \"nome\": \"Sala de Situação Regional\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": \"Sala de Situação Regional\",\n      \"descricao\": \"Fonte indicada para o alerta fictício de inundação.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E5\",\n      \"destino\": \"E6\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"O abrigo funciona na Escola Municipal Ribeirinha.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-11-30\",\n        \"fim\": null,\n        \"observacao\": \"Informação registrada no plano de 2024; os documentos não confirmam se permanece atual.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Municipal Ribeirinha (100 pessoas).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E5\",\n      \"destino\": \"E7\",\n      \"tipo\": \"abastece\",\n      \"rotulo\": \"O poço artesiano é indicado como fonte de água do abrigo.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-11-30\",\n        \"fim\": null,\n        \"observacao\": \"Informação do plano de 2024; situação atual não confirmada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Água do abrigo: poço artesiano com bomba elétrica.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E7\",\n      \"destino\": \"E8\",\n      \"tipo\": \"depende_de\",\n      \"rotulo\": \"O abastecimento indicado depende de uma bomba elétrica.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-11-30\",\n        \"fim\": null,\n        \"observacao\": \"Informação do plano de 2024; funcionamento atual não confirmado.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Água do abrigo: poço artesiano com bomba elétrica.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E8\",\n      \"destino\": \"E9\",\n      \"tipo\": \"depende_de\",\n      \"rotulo\": \"A bomba é elétrica; a dependência de energia para seu funcionamento é indicada pelo plano.\",\n      \"status_epistemico\": \"inferencia\",\n      \"periodo\": {\n        \"inicio\": \"2024-11-30\",\n        \"fim\": null,\n        \"observacao\": \"A consequência de um desligamento para o abastecimento deve ser confirmada.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Água do abrigo: poço artesiano com bomba elétrica.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"a concessionária pode realizar desligamentos preventivos de energia por segurança.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E3\",\n      \"destino\": \"E4\",\n      \"tipo\": \"comunica\",\n      \"rotulo\": \"O plano prevê que a COMPDEC informe áreas de risco à concessionária quando houver alerta.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2024-11-30\",\n        \"fim\": null,\n        \"observacao\": \"O plano descreve o procedimento, mas não registra comunicação relativa ao alerta atual.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"COMPDEC informa as áreas de risco quando houver alerta.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R6\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta indica inundação provável na faixa ribeirinha.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": null,\n        \"observacao\": \"Cenário de alerta datado de 2026-11-26.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Inundação provável na faixa ribeirinha do Ribeirão Manso\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R7\",\n      \"origem\": \"E1\",\n      \"destino\": \"E9\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"O alerta informa que podem ocorrer desligamentos preventivos de energia.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": null,\n        \"observacao\": \"O documento registra uma possibilidade, não a ocorrência de um desligamento.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"a concessionária pode realizar desligamentos preventivos de energia por segurança.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R8\",\n      \"origem\": \"E10\",\n      \"destino\": \"E1\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Sala de Situação Regional é indicada como fonte do alerta.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-11-26\",\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Fonte: Sala de Situação Regional (fictícia)\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"Em 2026-11-26 foi emitido cenário de alerta de inundação, posterior ao plano de contingência de 2024. O alerta acrescenta a possibilidade de desligamentos preventivos de energia; não informa que um desligamento já ocorreu.\",\n      \"implicacao\": \"A combinação com o plano torna pertinente confirmar a comunicação prevista entre COMPDEC e concessionária e avaliar se eventual interrupção afetaria a bomba do poço do abrigo. O alerta não confirma a localização do abrigo em relação à faixa ribeirinha.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"COMPDEC informa as áreas de risco quando houver alerta.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"a concessionária pode realizar desligamentos preventivos de energia por segurança.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"Para este alerta, a COMPDEC já informou à concessionária as áreas de risco, conforme previsto no plano?\",\n      \"por_que_importa\": \"O plano prevê essa comunicação e o alerta atual informa que a concessionária pode fazer desligamentos preventivos; não há registro nos documentos de que a comunicação deste alerta ocorreu.\",\n      \"motivacao\": \"Plano de 2024 prevê comunicação quando houver alerta; cenário de 2026 menciona possível desligamento de energia.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E3\",\n        \"E4\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\",\n        \"Concessionária de energia\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"COMPDEC informa as áreas de risco quando houver alerta.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"a concessionária pode realizar desligamentos preventivos de energia por segurança.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a comunicação referente ao alerta de 2026-11-26 foi enviada e quais áreas foram informadas.\",\n      \"quem_pode_confirmar\": \"COMPDEC e concessionária de energia, conforme atribuições indicadas nos documentos.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"A Escola Municipal Ribeirinha está na faixa ribeirinha indicada no alerta ou em área que possa ser abrangida por eventual desligamento preventivo?\",\n      \"por_que_importa\": \"O plano identifica a escola como abrigo, mas não informa sua localização em relação à faixa indicada no alerta nem a área que poderia ser abrangida por desligamentos.\",\n      \"motivacao\": \"O alerta delimita a inundação provável à faixa ribeirinha e menciona possíveis desligamentos; o plano identifica o local do abrigo, sem relacioná-lo a essa faixa.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E4\",\n        \"E5\",\n        \"E6\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\",\n        \"Concessionária de energia\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo: Escola Municipal Ribeirinha (100 pessoas).\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Inundação provável na faixa ribeirinha do Ribeirão Manso\"\n        }\n      ],\n      \"o_que_falta_saber\": \"A localização da escola em relação à faixa alertada e, caso pertinente, se ela está entre as áreas consideradas para desligamento.\",\n      \"quem_pode_confirmar\": \"COMPDEC e concessionária de energia; a confirmação institucional da localização do abrigo também pode ser necessária.\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V3\",\n      \"pergunta\": \"Se houver desligamento que alcance o abrigo, como será mantido o abastecimento de água, considerando que o plano indica uma bomba elétrica no poço?\",\n      \"por_que_importa\": \"O plano associa a água do abrigo a um poço com bomba elétrica, enquanto o alerta informa a possibilidade de desligamentos preventivos. Os documentos não descrevem alternativa de abastecimento nem o efeito de uma interrupção.\",\n      \"motivacao\": \"Dependência indicada no plano de 2024 combinada com possibilidade de desligamento registrada no alerta de 2026.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E4\",\n        \"E5\",\n        \"E7\",\n        \"E8\",\n        \"E9\"\n      ],\n      \"setores_relacionados\": [\n        \"COMPDEC\",\n        \"Setor municipal responsável pelo abrigo, a confirmar institucionalmente\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Água do abrigo: poço artesiano com bomba elétrica.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"a concessionária pode realizar desligamentos preventivos de energia por segurança.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a bomba depende da rede elétrica durante a operação, se o abrigo pode ser afetado por eventual desligamento e quais medidas de continuidade de água estão previstas, se houver.\",\n      \"quem_pode_confirmar\": \"COMPDEC e setor municipal responsável pelo abrigo, a confirmar institucionalmente; a concessionária pode confirmar eventual abrangência de desligamentos.\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Os documentos não informam se a Escola Municipal Ribeirinha está localizada na faixa ribeirinha indicada no alerta ou em área abrangida por eventual desligamento.\",\n      \"por_que_importa\": \"Sem essa informação, não é possível determinar a relação do abrigo com as áreas do cenário atual.\"\n    },\n    {\n      \"descricao\": \"Não há registro de comunicação da COMPDEC à concessionária referente ao alerta de 2026-11-26.\",\n      \"por_que_importa\": \"O plano prevê comunicação quando houver alerta, e o cenário atual menciona possíveis desligamentos.\"\n    },\n    {\n      \"descricao\": \"Não há informação sobre medidas alternativas de abastecimento de água para o abrigo se a bomba elétrica não puder operar.\",\n      \"por_que_importa\": \"O plano indica que a água do abrigo vem de poço com bomba elétrica, e o alerta menciona possíveis desligamentos.\"\n    },\n    {\n      \"descricao\": \"Os documentos não confirmam se a capacidade, o uso do abrigo e as condições da bomba e do poço continuam conforme o plano de 2024.\",\n      \"por_que_importa\": \"O plano é anterior ao alerta e não há atualização dessas informações no material fornecido.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O alerta descreve uma possibilidade de desligamento preventivo, não confirma que ele ocorreu ou ocorrerá.\",\n    \"A capacidade de 100 pessoas e as informações sobre o abrigo, poço e bomba constam do plano de 2024; os documentos não confirmam sua situação atual.\",\n    \"Não se deve concluir que o abrigo está na faixa alertada apenas pelo nome da escola.\",\n    \"A análise não define medidas operacionais nem substitui decisões das autoridades municipais e dos protocolos oficiais.\"\n  ]\n}"
+  }
+}
