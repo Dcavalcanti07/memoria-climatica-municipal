@@ -71,7 +71,8 @@ export function Method() {
         <h2>Desenho experimental</h2>
         <ul>
           <li><b>Hipótese:</b> com o contexto atual e a memória de eventos anteriores, a IA identifica dependências e verificações relevantes que passariam despercebidas só com as informações atuais.</li>
-          <li><b>Condição A:</b> plano vigente, cenário de alerta e informações atuais. <b>Condição B:</b> os mesmos documentos + registros históricos.</li>
+          <li><b>Condição A:</b> plano vigente, cenário de alerta e informações atuais.</li>
+          <li><b>Condição B:</b> os mesmos documentos + registros históricos.</li>
           <li><b>Amostra:</b> 36 cenários fictícios (6 de desenvolvimento, usados para ajustar instruções; 30 de avaliação final), 3 a 6 documentos cada. Inclui casos em que a memória ajuda, é irrelevante, já foi superada, traz contradições ou pode induzir exagero.</li>
           <li><b>Gabaritos:</b> escritos antes das execuções finais e congelados com hash SHA-256 em commit no repositório. Cada item indica se depende do contexto atual ou da memória, o que separa omissão de limitação legítima de acesso.</li>
           <li><b>Repetições:</b> parte da amostra foi executada mais vezes para observar estabilidade.</li>

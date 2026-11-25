@@ -94,7 +94,14 @@ Feita durante o desenvolvimento pelo assistente de IA usado no projeto (Claude C
 - Revisão crítica contra o enunciado oficial: todos os itens atendidos; riscos de enquadramento corrigidos na Parte 2. Suposições do município explicitadas (inclusive a de que os registros existem), bloco "Como levaria para a equipe" com a oficina sem aplicativo, linguagem de métricas simplificada e figura legível (mapa com o caminho destacado e a mesma pergunta sem e com memória, trechos reais da execução armazenada).
 - O app ganhou link direto para uma verificação (`?modo=A|B|BU&v=V2`), usado para gerar a figura.
 
-## 14. O que não foi feito ou ficou limitado
+## 14. Ajustes de texto e animação
+
+- Travessões retirados das entregas (app, README, docs e Parte 2). A Parte 1 fica como foi fornecida. Nos títulos dos documentos fictícios, o travessão vira dois-pontos só na exibição do app; o texto enviado ao modelo e guardado em `data/` não mudou.
+- Datas de execução retiradas da interface e dos documentos de apoio.
+- Exemplo ilustrativo da página inicial refeito como vídeo com HyperFrames (fonte em `video/hero`), com capa estática para quem prefere menos movimento.
+- Diagrama de arquitetura refeito em duas camadas: o que acontece, em linguagem simples, e o detalhe técnico.
+
+## 15. O que não foi feito ou ficou limitado
 
 - Nenhum teste com servidores municipais. O indicador TCPM não foi medido; há protocolo proposto.
 - Um único modelo de análise. Sem comparação entre provedores.

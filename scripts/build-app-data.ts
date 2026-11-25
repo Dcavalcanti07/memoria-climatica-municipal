@@ -43,7 +43,10 @@ for (const it of index) {
   if (t) for (const c of ['A', 'B']) { const r = loadRun(t, `${it.id}_${c}_r1.json`, c); if (r) runs[c] = r; }
   if (updTag) { const r = loadRun(updTag, `${it.id}_BU_r1.json`, 'BU'); if (r) runs.BU = r; }
   if (!Object.keys(runs).length) continue;
-  fs.writeFileSync(path.join(out, 'scenario', `${it.id}.json`), JSON.stringify({ ...s, atualizacao: runs.BU ? s.atualizacao ?? [] : [], runs, gold }));
+  // só na exibição: pontuação dos títulos sem travessão (o texto enviado ao modelo não muda)
+  const tidy = (t: string) => { let n = 0; return t.replace(/ — /g, () => (n++ === 0 ? ': ' : ', ')); };
+  const show = (d: any) => ({ ...d, titulo: tidy(d.titulo) });
+  fs.writeFileSync(path.join(out, 'scenario', `${it.id}.json`), JSON.stringify({ ...s, docs: s.docs.map(show), atualizacao: (runs.BU ? s.atualizacao ?? [] : []).map(show), runs, gold }));
   const alerta = s.docs.find((d: any) => d.tipo === 'alerta_simulado')?.texto.match(/NÍVEL:\s*([A-ZÁÉ]+)/)?.[1] ?? '';
   scenOut.push({ id: it.id, split: it.split, municipio: it.municipio, categoria: it.categoria, titulo: it.titulo, alerta, n_docs: s.docs.length, metrics: Object.fromEntries(Object.entries(runs).map(([k, r]) => [k, r.metrics])) });
 }
