@@ -81,7 +81,13 @@ Resultados e casos: ver `docs/resultados.md`.
 
 - Depois da revisão visual, a autora pediu um grafo mais próximo da visualização do Obsidian: layout orgânico por forças, nós circulares por grau, vizinhança destacada ao passar o mouse, zoom e arraste. A implementação foi delegada ao Codex com a mesma regra: nós e relações vêm só das saídas do modelo.
 
-## 12. O que não foi feito ou ficou limitado
+## 12. Revisão visual, publicação e PDF
+
+- O Codex não tinha acesso a navegador; a conferência visual foi feita depois, no navegador do app e com capturas do Chrome headless. Problemas encontrados e corrigidos: arestas empacotadas e coluna vazia (layout em colunas), enquadramento inicial animado que podia ser capturado no meio do caminho, nós sem rótulo, imports ESM da função de análise ao vivo.
+- Publicação autorizada pela autora: repositório público no GitHub e app na Vercel **sem** análise ao vivo (nenhuma chave enviada à Vercel; a função responde 503 "desativada").
+- PDF da submissão (4 páginas A4) gerado fora do repositório. A Parte 1 foi diagramada a partir do texto fornecido e conferida palavra por palavra (978 palavras, sem alteração).
+
+## 13. O que não foi feito ou ficou limitado
 
 - Nenhum teste com servidores municipais. O indicador TCPM não foi medido; há protocolo proposto.
 - Um único modelo de análise. Sem comparação entre provedores.
