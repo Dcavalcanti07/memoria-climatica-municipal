@@ -1,0 +1,1051 @@
+{
+  "meta": {
+    "scenario": "E11",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 3,
+    "tag": "eval_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 873,
+    "user_message_sha12": "5a64762e9bd1"
+  },
+  "user_message": "Município (fictício): Nova Esperança do Vale\nData de referência da análise: 2026-11-19\nDocumentos disponíveis (2), em ordem cronológica:\n\n### [D1] Plano de Contingência — revisão 2026\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2026-04-22\n\nAbrigos ativos: Centro Comunitário São Lucas (120 pessoas) e Escola Municipal Vale Alto (90 pessoas).\nAlteração em relação à versão anterior: a Igreja Matriz foi retirada da lista de abrigos em razão de obras de restauração do prédio (previsão de término: 2027).\n\n---\n\n### [D2] Alerta de inundação (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-19\n\nNÍVEL: LARANJA. Possível transbordamento do Rio do Vale no Centro Histórico e no bairro Ponte Seca nas próximas 24 a 48 horas.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_04c002bb1ba5e8c5016b06ed241ac487d2b1764340994a9dfd",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 2041,
+    "output_tokens": 3060,
+    "reasoning_tokens": 90
+  },
+  "latency_ms": 19496,
+  "started_at": "2026-11-25T14:13:55.538Z",
+  "output": {
+    "resumo_situacao": "Há um alerta de inundação para o Rio do Vale, com possível transbordamento no Centro Histórico e no bairro Ponte Seca nas próximas 24 a 48 horas. O plano vigente informa dois abrigos ativos e registra a retirada da Igreja Matriz da lista por causa de obras. A análise abaixo separa o que está documentado do que ainda precisa ser confirmado pela prefeitura.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Plano de Contingência — revisão 2026",
+        "tipo": "norma_documento",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Plano de contingência em revisão de 2026, com relação de abrigos ativos e alteração em relação à versão anterior."
+      },
+      {
+        "id": "E2",
+        "nome": "Alerta de inundação (cenário fictício)",
+        "tipo": "evento",
+        "setor_responsavel": "Sala de Situação Regional (fictícia)",
+        "descricao": "Alerta de nível laranja emitido em 2026-11-19 para possível transbordamento nas próximas 24 a 48 horas."
+      },
+      {
+        "id": "E3",
+        "nome": "Rio do Vale",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Curso d'água mencionado no alerta como sujeito a possível transbordamento."
+      },
+      {
+        "id": "E4",
+        "nome": "Centro Histórico",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Área indicada no alerta como possível afetada pelo transbordamento."
+      },
+      {
+        "id": "E5",
+        "nome": "bairro Ponte Seca",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Bairro indicado no alerta como possível afetado pelo transbordamento."
+      },
+      {
+        "id": "E6",
+        "nome": "Centro Comunitário São Lucas",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Abrigo ativo listado no plano, com capacidade indicada de 120 pessoas."
+      },
+      {
+        "id": "E7",
+        "nome": "Escola Municipal Vale Alto",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Abrigo ativo listado no plano, com capacidade indicada de 90 pessoas."
+      },
+      {
+        "id": "E8",
+        "nome": "Igreja Matriz",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Local que foi retirado da lista de abrigos no plano devido a obras de restauração."
+      },
+      {
+        "id": "E9",
+        "nome": "obras de restauração do prédio",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Motivo registrado para a retirada da Igreja Matriz da lista de abrigos, com previsão de término em 2027."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E6",
+        "tipo": "atende",
+        "rotulo": "O plano lista o Centro Comunitário São Lucas como abrigo ativo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-04-22",
+          "fim": null,
+          "observacao": "Vigência informada indiretamente pela revisão de 2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigos ativos: Centro Comunitário São Lucas (120 pessoas)"
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E1",
+        "destino": "E7",
+        "tipo": "atende",
+        "rotulo": "O plano lista a Escola Municipal Vale Alto como abrigo ativo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-04-22",
+          "fim": null,
+          "observacao": "Vigência informada indiretamente pela revisão de 2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "e Escola Municipal Vale Alto (90 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E1",
+        "destino": "E8",
+        "tipo": "substitui",
+        "rotulo": "A revisão retirou a Igreja Matriz da lista de abrigos.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-04-22",
+          "fim": "2027",
+          "observacao": "A retirada ocorre por causa de obras com término previsto para 2027."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "a Igreja Matriz foi retirada da lista de abrigos"
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E8",
+        "destino": "E9",
+        "tipo": "afetado_por",
+        "rotulo": "A Igreja Matriz está afetada por obras de restauração.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-04-22",
+          "fim": "2027",
+          "observacao": "Previsão de término registrada no documento."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "em razão de obras de restauração do prédio (previsão de término: 2027)"
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E2",
+        "destino": "E3",
+        "tipo": "outro",
+        "rotulo": "O alerta aponta o Rio do Vale como curso sujeito a transbordamento.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-19",
+          "fim": "2026-11-21",
+          "observacao": "Janela indicada de 24 a 48 horas."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Possível transbordamento do Rio do Vale"
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E2",
+        "destino": "E4",
+        "tipo": "afetado_por",
+        "rotulo": "O Centro Histórico está na área indicada pelo alerta.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-19",
+          "fim": "2026-11-21",
+          "observacao": "Janela indicada de 24 a 48 horas."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "no Centro Histórico"
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E2",
+        "destino": "E5",
+        "tipo": "afetado_por",
+        "rotulo": "O bairro Ponte Seca está na área indicada pelo alerta.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-19",
+          "fim": "2026-11-21",
+          "observacao": "Janela indicada de 24 a 48 horas."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "e no bairro Ponte Seca nas próximas 24 a 48 horas."
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "outro",
+        "rotulo": "O plano de contingência é a referência documental mais recente sobre abrigos ativos antes do alerta.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2026-04-22",
+          "fim": "2026-11-19",
+          "observacao": "Não há documento intermediário com atualização dos abrigos."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigos ativos: Centro Comunitário São Lucas (120 pessoas)"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: LARANJA."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "vigencia_encerrada",
+        "descricao": "A Igreja Matriz deixou de constar como abrigo ativo na revisão de 2026.",
+        "implicacao": "Não deve ser tratada automaticamente como abrigo disponível neste cenário sem nova confirmação institucional.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "a Igreja Matriz foi retirada da lista de abrigos"
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "atualizacao",
+        "descricao": "O plano de 2026 registra dois abrigos ativos e uma mudança em relação à versão anterior.",
+        "implicacao": "A lista de abrigos usada na pauta deve partir dessa revisão, sem presumir que houve alteração posterior.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigos ativos: Centro Comunitário São Lucas (120 pessoas) e Escola Municipal Vale Alto (90 pessoas)."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "Os dois abrigos ativos do plano continuam disponíveis para uso no cenário atual?",
+        "por_que_importa": "O alerta afeta áreas com possível necessidade de acolhimento e o plano traz os locais de abrigo já definidos.",
+        "motivacao": "O plano lista abrigos ativos, mas não há documento posterior confirmando se permanecem operacionais no dia do alerta.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E6",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigos ativos: Centro Comunitário São Lucas (120 pessoas) e Escola Municipal Vale Alto (90 pessoas)."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: LARANJA."
+          }
+        ],
+        "o_que_falta_saber": "Se o Centro Comunitário São Lucas e a Escola Municipal Vale Alto seguem acessíveis, sem impedimentos operacionais.",
+        "quem_pode_confirmar": "COMPDEC ou setor responsável pela gestão dos abrigos",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "A capacidade informada para o Centro Comunitário São Lucas e a Escola Municipal Vale Alto continua válida no momento do alerta?",
+        "por_que_importa": "A organização preventiva depende da capacidade real de cada abrigo, não apenas da lista nominal.",
+        "motivacao": "O documento informa capacidade, mas não registra checagem recente nem eventual alteração.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E6",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Centro Comunitário São Lucas (120 pessoas) e Escola Municipal Vale Alto (90 pessoas)."
+          }
+        ],
+        "o_que_falta_saber": "Se as capacidades de 120 e 90 pessoas permanecem corretas após inspeção recente.",
+        "quem_pode_confirmar": "COMPDEC ou administração dos locais",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "A Igreja Matriz segue indisponível como abrigo por causa das obras de restauração?",
+        "por_que_importa": "O plano indica retirada por obras; é preciso confirmar se isso continua válido antes de qualquer uso eventual.",
+        "motivacao": "Há uma mudança temporal explícita, com previsão de término em 2027, mas sem confirmação de eventual reversão.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E8",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "a Igreja Matriz foi retirada da lista de abrigos"
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "previsão de término: 2027"
+          }
+        ],
+        "o_que_falta_saber": "Se as obras seguem em andamento e se o prédio permanece sem condições de receber pessoas.",
+        "quem_pode_confirmar": "Setor responsável pelas obras e COMPDEC",
+        "prioridade": "media"
+      },
+      {
+        "id": "V4",
+        "pergunta": "O Centro Histórico e o bairro Ponte Seca têm pontos específicos de atenção já definidos no planejamento para este alerta?",
+        "por_que_importa": "O alerta indica as áreas potencialmente afetadas, mas o documento não informa rotas, pontos críticos ou referências operacionais.",
+        "motivacao": "A informação geográfica existe, porém faltam detalhes operacionais para orientar checagens preventivas localizadas.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E4",
+          "E5",
+          "E2"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "no Centro Histórico e no bairro Ponte Seca"
+          }
+        ],
+        "o_que_falta_saber": "Se há pontos críticos, rotas de acesso ou locais prioritários já previstos para essas duas áreas.",
+        "quem_pode_confirmar": "COMPDEC ou defesa civil local",
+        "prioridade": "media"
+      },
+      {
+        "id": "V5",
+        "pergunta": "A comunicação de prontidão entre a Sala de Situação Regional e a COMPDEC já foi acionada para este alerta?",
+        "por_que_importa": "O alerta vem de uma fonte regional fictícia e precisa chegar ao setor municipal responsável por executar a pauta preventiva.",
+        "motivacao": "O documento do alerta não informa se houve repasse formal à gestão municipal.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Fonte: Sala de Situação Regional (fictícia)"
+          }
+        ],
+        "o_que_falta_saber": "Se a COMPDEC recebeu e validou o alerta para início das providências internas.",
+        "quem_pode_confirmar": "COMPDEC e Sala de Situação Regional",
+        "prioridade": "alta"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há no conjunto documental rotas de acesso, pontos de encontro, equipes designadas ou responsáveis nominais pelos abrigos.",
+        "por_que_importa": "Sem isso, a pauta preventiva não consegue detalhar quem faz o quê nem como chegar aos locais."
+      },
+      {
+        "descricao": "Não há informação sobre transporte, suprimentos, energia, água ou comunicação dos abrigos.",
+        "por_que_importa": "Esses itens costumam ser essenciais para confirmar a prontidão operacional dos locais de abrigo."
+      },
+      {
+        "descricao": "Não há registro de checagem recente do nível do rio ou de observações de campo.",
+        "por_que_importa": "O alerta existe, mas a análise não pode concluir a situação hidrológica real além do que foi escrito."
+      }
+    ],
+    "cautelas": [
+      "O alerta é de nível laranja, mas esta análise não define risco nem recomenda evacuação.",
+      "A Igreja Matriz aparece apenas como abrigo retirado do plano; não deve ser tratada como disponível sem confirmação.",
+      "Os abrigos ativos foram extraídos de um plano de abril de 2026 e não há atualização posterior nos documentos fornecidos.",
+      "Eventos anteriores, séries históricas ou dados externos não foram usados porque não constam dos documentos."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 9,
+    "n_relacoes": 8,
+    "n_verificacoes": 5,
+    "n_temporais": 2,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigos ativos: Centro Comunitário São Lucas (120 pessoas)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "e Escola Municipal Vale Alto (90 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "a Igreja Matriz foi retirada da lista de abrigos",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "em razão de obras de restauração do prédio (previsão de término: 2027)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Possível transbordamento do Rio do Vale",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "no Centro Histórico",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "e no bairro Ponte Seca nas próximas 24 a 48 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigos ativos: Centro Comunitário São Lucas (120 pessoas)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: LARANJA.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "a Igreja Matriz foi retirada da lista de abrigos",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigos ativos: Centro Comunitário São Lucas (120 pessoas) e Escola Municipal Vale Alto (90 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigos ativos: Centro Comunitário São Lucas (120 pessoas) e Escola Municipal Vale Alto (90 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: LARANJA.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Centro Comunitário São Lucas (120 pessoas) e Escola Municipal Vale Alto (90 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "a Igreja Matriz foi retirada da lista de abrigos",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "previsão de término: 2027",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "no Centro Histórico e no bairro Ponte Seca",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Fonte: Sala de Situação Regional (fictícia)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      }
+    ],
+    "n_citacoes": 18,
+    "n_citacoes_literais": 18,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795616055,
+    "created_at": 1795616036,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_04c002bb1ba5e8c5016b06ed241ac487d2b1764340994a9dfd",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBu0lbVkQOqiL24KXxjuWvQIopi3FQ6bwv2DIw_Iqezn4B5bWxPpWLLxKpgvDrAmjZClPfJR8sj0P6rW7OcGbzKaHTa2oVy_-sH45zWcB6P91QkTCvZxGDTaBCqY-JJmcfWgzj-7lq24geyKXz8cHUN_dP4Un5BqU6NiEaXdL2maKAFGnx7QeFmaYuNZoHRgZnbOjgB2xtGNGRI84IxMLh0KNMqwvZsLskUjRofuaVhk7HBPNUNB01xyesF53G0VGE79lHEFtqY4eUUExdhd-tmuOI_Wp304vPA9VupSLI1WSvqVx3eqvqxFRdbUeIXOUwOD8plGkfeYrGmnfijNjwgvP_Z2eljy1eST3VMQPzfMzeUod6rDdGCGvvGWe90hPIFL4gewurMoqliKIJtKE-IdUoefQ5BfP3a_eSlEg2pA2-72kDOflZyBHfvWtVQ4QeYRWUxLZxxH87TW7yx6c1FTcDSngsFig-zMAzFkUJ33bNZVxHbgtJNH2C-UElbHcddO17L2IFyhjqrYen9fpySmMsesG01HqszXmN5lz3HYYz05zkXbOVGTb0jw1_dVkL5P0m9_nNTwTYYFix3lNIjBZ6SG-HF7APlrXT8mhEeolGVGH1D4jpfAoMVcbGa1XWqFxD8hNgWIYCAy7QT9cXWSNcY8TIPmueT0YD3dDgB3etxiVhBlL4lYXS49-PiJwbO98_KgK3wY1xemLpPpnEWo4PJ2oo_eyxQDE4p9eX8r7mYXSK5znRDSntiYoU3oqGW1_oi-1fDTpkxJ-Xl_DKVPvXspVZZRNGIXtFWwpWHfICO9Tll0N43237tnHAWZv-YVwG8bqtyJftUyd9n4q-bXOztWl0wQKgd3uInXvCkQ8Ug3nGlw6RZAM1NtK1nXyGE0cqrC-Lh7yWUp26ZP9carxGutERZAf-a1sgp-K3xxEMyD-rigwAbztuM91Zgzrtn_rlLG4hyxNMiKCA-TkKCGQDjISVXRZCfS4YMoLhCS97D4KEee2xnEwtyoJ2Fq1CjmgIuqDti3YMWjTHnhhD-mCq0Zv8514HHBiQAnxoLH-P_cvQI2bIP6KvAuLiLSggPd0qJezCipt45wfAm_ntTutbL1KW3SFEFuLSrz0Sj4ZPSy4EyhrGjNOFIaq6Oi5LHk0nANDenPjrR37j8ICQmIyqhIo8eb6im-2e52lq35YYMhGto5UPNhNQwk1iS-SLIX9LYaF8jwRIf5T0oRg-kG3MJw-xg-1nAEDdU_I2og42lK87DoK909pLNH2LDhWIR16Xwg_88Z7DC4HziP9ukR4f-SbnG5BAZOguQLfZSOJIyk3KfPJVw2KU5rDQd5AFgS8ejFcpBDGyatuWqWZZuQWwFzWGQ5tVqkQTo_1hN_bBA-YkPaqtGYx77r9pubxNfTKyZGqQIFn94SuPhYWb9MrZnnzBu69xGxGYurO6w1IQixLq--98H6dzscsK-88YBVv6XXw1oFmATT7kOsmZwTpMRAknxF5TDwg4WHxfb_LDETtF-YNm8dz47eMyxFOGS1mU-SEJ0xwZ3yq6COepb-R6KOTiMvSng_u6BUgIWmuDGpYYUFsbPGBWpJS8GlqtGif4BjgjXEQkW3hlCEJQG7fVQ-5uhHSkBJehD7DSWyiuuRa9plsPdJa0Gn-u7Wdwb0eWI6klcX5WCWA_j_EYXZVL0CU6jdxpKJz-_ZeWNl--jwWk7U7NJeXPADeD45AwHLR3Lt0t1-3NGUmljjVQpLf_4EfvcY4opYQDIxYWCSY-6lxiJOZft6PJwRglkPNwROURPLGZVT9aENaVE5YjuxlvMHjm0LlGTZK1UFAHB3CAoPQIydCmq8naFEoZ_stche3UYwQpOCLPTQKHfZYZTrIaTSdxE73kAi9rOUaGjJz_EJ-eAw-7vNAztoLGKkTLkGcuQUVFkLQFzL3lmfLvKRmyjryfftpflSXpcRzL58s_9CEaw40SPwezQQvelIVD5zYbqrX4ON73YDwxVWgha-Oj49UndfgaeTmxpodc6eHmUqg6A-eib5ySqgwAcyfte9MnhP8kyHcmy39oGgHh4ALQafMjlg-O88kLk4p2scSuxuVHmE68grLc9eOI_6pVuJQnvziG__liEFwAgvgKA32djCKzYnKrSaP4sPpsn-lTL4Ixl-Ev-Or6N2aLm_SOqTfSHXPIY_Ngc6btqiajJ6vIHckwfM7lmvtLa6HSGBEpOOFCQqL7gRpyHg7XUQEVOrSfoJgNORNLiNbaVe9O0eCMOGRph9b0pw6Jw16LUUPujx9AhCKHIAQ2RXmTZAZ4lPs1ZLNBVvpnyOIBghDw7ldCcVS5AYudMPadsyVZxQduPotluH-zaSLEiAPeq8zKzucdB3OYqkPPsa2q4dtf8o9XuSXXyaAAU4IGdCj4C9f3zhNpkXPlM6qshso5paE04kfgWvG08ytTeNJoMZXQTn76Mj_GoE9Xw-94J7kI84vi1bLlghoQS9XZdutHPi6duKVLNm6ywYGW5RRB-R_jpZu3Um7OL_KVXD2xclDK7PuPdFnXgSApew6QITaVDyfECSL3Q7P6uIm7YsPswaire-t_9yM1uRxAgGRna0DiT7TzEczL5Q5YhWuf8aGmFKqRRUIwOU4z8K677gtRI8GOtT8HHn1O4myslD6GE9E4iHM3VtmAHGWS5_7WeTbyM7X-RB66E3z6J52fueJvJdUqX8AbrUVsqAD8afju3B8vXdNG5zo53JfBQTssuR3rIu_XV5f8NT-OyM9xbTr9ug3PYk8K5o2greAHIseqqNDNiXYKL5bdoaqFFGllDGnDCh9DyuRli6ohNcFEQgMTxpodEthCw==",
+        "id": "rs_04c002bb1ba5e8c5016b06ed25657087d2a76f660eff6ea411",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"Há um alerta de inundação para o Rio do Vale, com possível transbordamento no Centro Histórico e no bairro Ponte Seca nas próximas 24 a 48 horas. O plano vigente informa dois abrigos ativos e registra a retirada da Igreja Matriz da lista por causa de obras. A análise abaixo separa o que está documentado do que ainda precisa ser confirmado pela prefeitura.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Plano de Contingência — revisão 2026\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Plano de contingência em revisão de 2026, com relação de abrigos ativos e alteração em relação à versão anterior.\"},{\"id\":\"E2\",\"nome\":\"Alerta de inundação (cenário fictício)\",\"tipo\":\"evento\",\"setor_responsavel\":\"Sala de Situação Regional (fictícia)\",\"descricao\":\"Alerta de nível laranja emitido em 2026-11-19 para possível transbordamento nas próximas 24 a 48 horas.\"},{\"id\":\"E3\",\"nome\":\"Rio do Vale\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Curso d'água mencionado no alerta como sujeito a possível transbordamento.\"},{\"id\":\"E4\",\"nome\":\"Centro Histórico\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área indicada no alerta como possível afetada pelo transbordamento.\"},{\"id\":\"E5\",\"nome\":\"bairro Ponte Seca\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Bairro indicado no alerta como possível afetado pelo transbordamento.\"},{\"id\":\"E6\",\"nome\":\"Centro Comunitário São Lucas\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Abrigo ativo listado no plano, com capacidade indicada de 120 pessoas.\"},{\"id\":\"E7\",\"nome\":\"Escola Municipal Vale Alto\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Abrigo ativo listado no plano, com capacidade indicada de 90 pessoas.\"},{\"id\":\"E8\",\"nome\":\"Igreja Matriz\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Local que foi retirado da lista de abrigos no plano devido a obras de restauração.\"},{\"id\":\"E9\",\"nome\":\"obras de restauração do prédio\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Motivo registrado para a retirada da Igreja Matriz da lista de abrigos, com previsão de término em 2027.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E6\",\"tipo\":\"atende\",\"rotulo\":\"O plano lista o Centro Comunitário São Lucas como abrigo ativo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-04-22\",\"fim\":null,\"observacao\":\"Vigência informada indiretamente pela revisão de 2026.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigos ativos: Centro Comunitário São Lucas (120 pessoas)\"}]},{\"id\":\"R2\",\"origem\":\"E1\",\"destino\":\"E7\",\"tipo\":\"atende\",\"rotulo\":\"O plano lista a Escola Municipal Vale Alto como abrigo ativo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-04-22\",\"fim\":null,\"observacao\":\"Vigência informada indiretamente pela revisão de 2026.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"e Escola Municipal Vale Alto (90 pessoas).\"}]},{\"id\":\"R3\",\"origem\":\"E1\",\"destino\":\"E8\",\"tipo\":\"substitui\",\"rotulo\":\"A revisão retirou a Igreja Matriz da lista de abrigos.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-04-22\",\"fim\":\"2027\",\"observacao\":\"A retirada ocorre por causa de obras com término previsto para 2027.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"a Igreja Matriz foi retirada da lista de abrigos\"}]},{\"id\":\"R4\",\"origem\":\"E8\",\"destino\":\"E9\",\"tipo\":\"afetado_por\",\"rotulo\":\"A Igreja Matriz está afetada por obras de restauração.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-04-22\",\"fim\":\"2027\",\"observacao\":\"Previsão de término registrada no documento.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"em razão de obras de restauração do prédio (previsão de término: 2027)\"}]},{\"id\":\"R5\",\"origem\":\"E2\",\"destino\":\"E3\",\"tipo\":\"outro\",\"rotulo\":\"O alerta aponta o Rio do Vale como curso sujeito a transbordamento.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-19\",\"fim\":\"2026-11-21\",\"observacao\":\"Janela indicada de 24 a 48 horas.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Possível transbordamento do Rio do Vale\"}]},{\"id\":\"R6\",\"origem\":\"E2\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"O Centro Histórico está na área indicada pelo alerta.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-19\",\"fim\":\"2026-11-21\",\"observacao\":\"Janela indicada de 24 a 48 horas.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"no Centro Histórico\"}]},{\"id\":\"R7\",\"origem\":\"E2\",\"destino\":\"E5\",\"tipo\":\"afetado_por\",\"rotulo\":\"O bairro Ponte Seca está na área indicada pelo alerta.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-19\",\"fim\":\"2026-11-21\",\"observacao\":\"Janela indicada de 24 a 48 horas.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"e no bairro Ponte Seca nas próximas 24 a 48 horas.\"}]},{\"id\":\"R8\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"outro\",\"rotulo\":\"O plano de contingência é a referência documental mais recente sobre abrigos ativos antes do alerta.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2026-04-22\",\"fim\":\"2026-11-19\",\"observacao\":\"Não há documento intermediário com atualização dos abrigos.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigos ativos: Centro Comunitário São Lucas (120 pessoas)\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"vigencia_encerrada\",\"descricao\":\"A Igreja Matriz deixou de constar como abrigo ativo na revisão de 2026.\",\"implicacao\":\"Não deve ser tratada automaticamente como abrigo disponível neste cenário sem nova confirmação institucional.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"a Igreja Matriz foi retirada da lista de abrigos\"}]},{\"id\":\"T2\",\"tipo\":\"atualizacao\",\"descricao\":\"O plano de 2026 registra dois abrigos ativos e uma mudança em relação à versão anterior.\",\"implicacao\":\"A lista de abrigos usada na pauta deve partir dessa revisão, sem presumir que houve alteração posterior.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigos ativos: Centro Comunitário São Lucas (120 pessoas) e Escola Municipal Vale Alto (90 pessoas).\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"Os dois abrigos ativos do plano continuam disponíveis para uso no cenário atual?\",\"por_que_importa\":\"O alerta afeta áreas com possível necessidade de acolhimento e o plano traz os locais de abrigo já definidos.\",\"motivacao\":\"O plano lista abrigos ativos, mas não há documento posterior confirmando se permanecem operacionais no dia do alerta.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E6\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigos ativos: Centro Comunitário São Lucas (120 pessoas) e Escola Municipal Vale Alto (90 pessoas).\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA.\"}],\"o_que_falta_saber\":\"Se o Centro Comunitário São Lucas e a Escola Municipal Vale Alto seguem acessíveis, sem impedimentos operacionais.\",\"quem_pode_confirmar\":\"COMPDEC ou setor responsável pela gestão dos abrigos\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A capacidade informada para o Centro Comunitário São Lucas e a Escola Municipal Vale Alto continua válida no momento do alerta?\",\"por_que_importa\":\"A organização preventiva depende da capacidade real de cada abrigo, não apenas da lista nominal.\",\"motivacao\":\"O documento informa capacidade, mas não registra checagem recente nem eventual alteração.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E6\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Centro Comunitário São Lucas (120 pessoas) e Escola Municipal Vale Alto (90 pessoas).\"}],\"o_que_falta_saber\":\"Se as capacidades de 120 e 90 pessoas permanecem corretas após inspeção recente.\",\"quem_pode_confirmar\":\"COMPDEC ou administração dos locais\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"A Igreja Matriz segue indisponível como abrigo por causa das obras de restauração?\",\"por_que_importa\":\"O plano indica retirada por obras; é preciso confirmar se isso continua válido antes de qualquer uso eventual.\",\"motivacao\":\"Há uma mudança temporal explícita, com previsão de término em 2027, mas sem confirmação de eventual reversão.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E8\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"a Igreja Matriz foi retirada da lista de abrigos\"},{\"doc_id\":\"D1\",\"trecho\":\"previsão de término: 2027\"}],\"o_que_falta_saber\":\"Se as obras seguem em andamento e se o prédio permanece sem condições de receber pessoas.\",\"quem_pode_confirmar\":\"Setor responsável pelas obras e COMPDEC\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"O Centro Histórico e o bairro Ponte Seca têm pontos específicos de atenção já definidos no planejamento para este alerta?\",\"por_que_importa\":\"O alerta indica as áreas potencialmente afetadas, mas o documento não informa rotas, pontos críticos ou referências operacionais.\",\"motivacao\":\"A informação geográfica existe, porém faltam detalhes operacionais para orientar checagens preventivas localizadas.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E4\",\"E5\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"no Centro Histórico e no bairro Ponte Seca\"}],\"o_que_falta_saber\":\"Se há pontos críticos, rotas de acesso ou locais prioritários já previstos para essas duas áreas.\",\"quem_pode_confirmar\":\"COMPDEC ou defesa civil local\",\"prioridade\":\"media\"},{\"id\":\"V5\",\"pergunta\":\"A comunicação de prontidão entre a Sala de Situação Regional e a COMPDEC já foi acionada para este alerta?\",\"por_que_importa\":\"O alerta vem de uma fonte regional fictícia e precisa chegar ao setor municipal responsável por executar a pauta preventiva.\",\"motivacao\":\"O documento do alerta não informa se houve repasse formal à gestão municipal.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Fonte: Sala de Situação Regional (fictícia)\"}],\"o_que_falta_saber\":\"Se a COMPDEC recebeu e validou o alerta para início das providências internas.\",\"quem_pode_confirmar\":\"COMPDEC e Sala de Situação Regional\",\"prioridade\":\"alta\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há no conjunto documental rotas de acesso, pontos de encontro, equipes designadas ou responsáveis nominais pelos abrigos.\",\"por_que_importa\":\"Sem isso, a pauta preventiva não consegue detalhar quem faz o quê nem como chegar aos locais.\"},{\"descricao\":\"Não há informação sobre transporte, suprimentos, energia, água ou comunicação dos abrigos.\",\"por_que_importa\":\"Esses itens costumam ser essenciais para confirmar a prontidão operacional dos locais de abrigo.\"},{\"descricao\":\"Não há registro de checagem recente do nível do rio ou de observações de campo.\",\"por_que_importa\":\"O alerta existe, mas a análise não pode concluir a situação hidrológica real além do que foi escrito.\"}],\"cautelas\":[\"O alerta é de nível laranja, mas esta análise não define risco nem recomenda evacuação.\",\"A Igreja Matriz aparece apenas como abrigo retirado do plano; não deve ser tratada como disponível sem confirmação.\",\"Os abrigos ativos foram extraídos de um plano de abril de 2026 e não há atualização posterior nos documentos fornecidos.\",\"Eventos anteriores, séries históricas ou dados externos não foram usados porque não constam dos documentos.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_04c002bb1ba5e8c5016b06ed2585fc87d29b648ef41d9aeef2",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2041,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 1920
+      },
+      "output_tokens": 3060,
+      "output_tokens_details": {
+        "reasoning_tokens": 90
+      },
+      "total_tokens": 5101
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"Há um alerta de inundação para o Rio do Vale, com possível transbordamento no Centro Histórico e no bairro Ponte Seca nas próximas 24 a 48 horas. O plano vigente informa dois abrigos ativos e registra a retirada da Igreja Matriz da lista por causa de obras. A análise abaixo separa o que está documentado do que ainda precisa ser confirmado pela prefeitura.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Plano de Contingência — revisão 2026\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Plano de contingência em revisão de 2026, com relação de abrigos ativos e alteração em relação à versão anterior.\"},{\"id\":\"E2\",\"nome\":\"Alerta de inundação (cenário fictício)\",\"tipo\":\"evento\",\"setor_responsavel\":\"Sala de Situação Regional (fictícia)\",\"descricao\":\"Alerta de nível laranja emitido em 2026-11-19 para possível transbordamento nas próximas 24 a 48 horas.\"},{\"id\":\"E3\",\"nome\":\"Rio do Vale\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Curso d'água mencionado no alerta como sujeito a possível transbordamento.\"},{\"id\":\"E4\",\"nome\":\"Centro Histórico\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área indicada no alerta como possível afetada pelo transbordamento.\"},{\"id\":\"E5\",\"nome\":\"bairro Ponte Seca\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Bairro indicado no alerta como possível afetado pelo transbordamento.\"},{\"id\":\"E6\",\"nome\":\"Centro Comunitário São Lucas\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Abrigo ativo listado no plano, com capacidade indicada de 120 pessoas.\"},{\"id\":\"E7\",\"nome\":\"Escola Municipal Vale Alto\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Abrigo ativo listado no plano, com capacidade indicada de 90 pessoas.\"},{\"id\":\"E8\",\"nome\":\"Igreja Matriz\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Local que foi retirado da lista de abrigos no plano devido a obras de restauração.\"},{\"id\":\"E9\",\"nome\":\"obras de restauração do prédio\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Motivo registrado para a retirada da Igreja Matriz da lista de abrigos, com previsão de término em 2027.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E6\",\"tipo\":\"atende\",\"rotulo\":\"O plano lista o Centro Comunitário São Lucas como abrigo ativo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-04-22\",\"fim\":null,\"observacao\":\"Vigência informada indiretamente pela revisão de 2026.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigos ativos: Centro Comunitário São Lucas (120 pessoas)\"}]},{\"id\":\"R2\",\"origem\":\"E1\",\"destino\":\"E7\",\"tipo\":\"atende\",\"rotulo\":\"O plano lista a Escola Municipal Vale Alto como abrigo ativo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-04-22\",\"fim\":null,\"observacao\":\"Vigência informada indiretamente pela revisão de 2026.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"e Escola Municipal Vale Alto (90 pessoas).\"}]},{\"id\":\"R3\",\"origem\":\"E1\",\"destino\":\"E8\",\"tipo\":\"substitui\",\"rotulo\":\"A revisão retirou a Igreja Matriz da lista de abrigos.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-04-22\",\"fim\":\"2027\",\"observacao\":\"A retirada ocorre por causa de obras com término previsto para 2027.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"a Igreja Matriz foi retirada da lista de abrigos\"}]},{\"id\":\"R4\",\"origem\":\"E8\",\"destino\":\"E9\",\"tipo\":\"afetado_por\",\"rotulo\":\"A Igreja Matriz está afetada por obras de restauração.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-04-22\",\"fim\":\"2027\",\"observacao\":\"Previsão de término registrada no documento.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"em razão de obras de restauração do prédio (previsão de término: 2027)\"}]},{\"id\":\"R5\",\"origem\":\"E2\",\"destino\":\"E3\",\"tipo\":\"outro\",\"rotulo\":\"O alerta aponta o Rio do Vale como curso sujeito a transbordamento.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-19\",\"fim\":\"2026-11-21\",\"observacao\":\"Janela indicada de 24 a 48 horas.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Possível transbordamento do Rio do Vale\"}]},{\"id\":\"R6\",\"origem\":\"E2\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"O Centro Histórico está na área indicada pelo alerta.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-19\",\"fim\":\"2026-11-21\",\"observacao\":\"Janela indicada de 24 a 48 horas.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"no Centro Histórico\"}]},{\"id\":\"R7\",\"origem\":\"E2\",\"destino\":\"E5\",\"tipo\":\"afetado_por\",\"rotulo\":\"O bairro Ponte Seca está na área indicada pelo alerta.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-19\",\"fim\":\"2026-11-21\",\"observacao\":\"Janela indicada de 24 a 48 horas.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"e no bairro Ponte Seca nas próximas 24 a 48 horas.\"}]},{\"id\":\"R8\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"outro\",\"rotulo\":\"O plano de contingência é a referência documental mais recente sobre abrigos ativos antes do alerta.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2026-04-22\",\"fim\":\"2026-11-19\",\"observacao\":\"Não há documento intermediário com atualização dos abrigos.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigos ativos: Centro Comunitário São Lucas (120 pessoas)\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"vigencia_encerrada\",\"descricao\":\"A Igreja Matriz deixou de constar como abrigo ativo na revisão de 2026.\",\"implicacao\":\"Não deve ser tratada automaticamente como abrigo disponível neste cenário sem nova confirmação institucional.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"a Igreja Matriz foi retirada da lista de abrigos\"}]},{\"id\":\"T2\",\"tipo\":\"atualizacao\",\"descricao\":\"O plano de 2026 registra dois abrigos ativos e uma mudança em relação à versão anterior.\",\"implicacao\":\"A lista de abrigos usada na pauta deve partir dessa revisão, sem presumir que houve alteração posterior.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigos ativos: Centro Comunitário São Lucas (120 pessoas) e Escola Municipal Vale Alto (90 pessoas).\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"Os dois abrigos ativos do plano continuam disponíveis para uso no cenário atual?\",\"por_que_importa\":\"O alerta afeta áreas com possível necessidade de acolhimento e o plano traz os locais de abrigo já definidos.\",\"motivacao\":\"O plano lista abrigos ativos, mas não há documento posterior confirmando se permanecem operacionais no dia do alerta.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E6\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigos ativos: Centro Comunitário São Lucas (120 pessoas) e Escola Municipal Vale Alto (90 pessoas).\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA.\"}],\"o_que_falta_saber\":\"Se o Centro Comunitário São Lucas e a Escola Municipal Vale Alto seguem acessíveis, sem impedimentos operacionais.\",\"quem_pode_confirmar\":\"COMPDEC ou setor responsável pela gestão dos abrigos\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A capacidade informada para o Centro Comunitário São Lucas e a Escola Municipal Vale Alto continua válida no momento do alerta?\",\"por_que_importa\":\"A organização preventiva depende da capacidade real de cada abrigo, não apenas da lista nominal.\",\"motivacao\":\"O documento informa capacidade, mas não registra checagem recente nem eventual alteração.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E6\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Centro Comunitário São Lucas (120 pessoas) e Escola Municipal Vale Alto (90 pessoas).\"}],\"o_que_falta_saber\":\"Se as capacidades de 120 e 90 pessoas permanecem corretas após inspeção recente.\",\"quem_pode_confirmar\":\"COMPDEC ou administração dos locais\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"A Igreja Matriz segue indisponível como abrigo por causa das obras de restauração?\",\"por_que_importa\":\"O plano indica retirada por obras; é preciso confirmar se isso continua válido antes de qualquer uso eventual.\",\"motivacao\":\"Há uma mudança temporal explícita, com previsão de término em 2027, mas sem confirmação de eventual reversão.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E8\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"a Igreja Matriz foi retirada da lista de abrigos\"},{\"doc_id\":\"D1\",\"trecho\":\"previsão de término: 2027\"}],\"o_que_falta_saber\":\"Se as obras seguem em andamento e se o prédio permanece sem condições de receber pessoas.\",\"quem_pode_confirmar\":\"Setor responsável pelas obras e COMPDEC\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"O Centro Histórico e o bairro Ponte Seca têm pontos específicos de atenção já definidos no planejamento para este alerta?\",\"por_que_importa\":\"O alerta indica as áreas potencialmente afetadas, mas o documento não informa rotas, pontos críticos ou referências operacionais.\",\"motivacao\":\"A informação geográfica existe, porém faltam detalhes operacionais para orientar checagens preventivas localizadas.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E4\",\"E5\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"no Centro Histórico e no bairro Ponte Seca\"}],\"o_que_falta_saber\":\"Se há pontos críticos, rotas de acesso ou locais prioritários já previstos para essas duas áreas.\",\"quem_pode_confirmar\":\"COMPDEC ou defesa civil local\",\"prioridade\":\"media\"},{\"id\":\"V5\",\"pergunta\":\"A comunicação de prontidão entre a Sala de Situação Regional e a COMPDEC já foi acionada para este alerta?\",\"por_que_importa\":\"O alerta vem de uma fonte regional fictícia e precisa chegar ao setor municipal responsável por executar a pauta preventiva.\",\"motivacao\":\"O documento do alerta não informa se houve repasse formal à gestão municipal.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Fonte: Sala de Situação Regional (fictícia)\"}],\"o_que_falta_saber\":\"Se a COMPDEC recebeu e validou o alerta para início das providências internas.\",\"quem_pode_confirmar\":\"COMPDEC e Sala de Situação Regional\",\"prioridade\":\"alta\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há no conjunto documental rotas de acesso, pontos de encontro, equipes designadas ou responsáveis nominais pelos abrigos.\",\"por_que_importa\":\"Sem isso, a pauta preventiva não consegue detalhar quem faz o quê nem como chegar aos locais.\"},{\"descricao\":\"Não há informação sobre transporte, suprimentos, energia, água ou comunicação dos abrigos.\",\"por_que_importa\":\"Esses itens costumam ser essenciais para confirmar a prontidão operacional dos locais de abrigo.\"},{\"descricao\":\"Não há registro de checagem recente do nível do rio ou de observações de campo.\",\"por_que_importa\":\"O alerta existe, mas a análise não pode concluir a situação hidrológica real além do que foi escrito.\"}],\"cautelas\":[\"O alerta é de nível laranja, mas esta análise não define risco nem recomenda evacuação.\",\"A Igreja Matriz aparece apenas como abrigo retirado do plano; não deve ser tratada como disponível sem confirmação.\",\"Os abrigos ativos foram extraídos de um plano de abril de 2026 e não há atualização posterior nos documentos fornecidos.\",\"Eventos anteriores, séries históricas ou dados externos não foram usados porque não constam dos documentos.\"]}"
+  }
+}

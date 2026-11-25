@@ -3,7 +3,6 @@
  * (A × B × B+atualização). Nada aqui inventa relações: nós e arestas vêm 100% das saídas do modelo.
  * O pareamento entre execuções é determinístico (similaridade de rótulos).
  */
-import { forceSimulation, forceLink, forceManyBody, forceCollide, forceX, forceY } from 'd3-force';
 import type { Analise, Doc } from '../../core/schema';
 
 export const LANES = [
@@ -77,19 +76,25 @@ export function buildUnion(runs: { key: string; out: Analise }[], docs: Doc[], w
   }
   for (const e of edges) { nodes.find((n) => n.key === e.s)!.degree++; nodes.find((n) => n.key === e.t)!.degree++; }
 
-  // layout: faixas semânticas da esquerda (eventos) para a direita (pessoas/setores)
-  const padX = 90, laneW = (width - padX * 2) / (LANES.length - 1);
-  const sim2 = forceSimulation(nodes as any)
-    .force('link', forceLink(edges.map((e) => ({ source: e.s, target: e.t }))).id((d: any) => d.key).distance(90).strength(0.25))
-    .force('charge', forceManyBody().strength(-260))
-    .force('collide', forceCollide().radius((d: any) => 26 + Math.min(d.label.length, 26) * 1.6))
-    .force('x', forceX((d: any) => padX + d.lane * laneW).strength(0.55))
-    .force('y', forceY(height / 2 + 12).strength(0.06))
-    .stop();
-  // semente determinística
-  nodes.forEach((n, i) => { n.x = padX + n.lane * laneW + ((i * 37) % 40) - 20; n.y = 60 + ((i * 97) % Math.max(1, height - 120)); });
-  for (let i = 0; i < 400; i++) sim2.tick();
-  for (const n of nodes) { n.x = Math.max(70, Math.min(width - 70, n.x)); n.y = Math.max(48, Math.min(height - 30, n.y)); }
+  // layout determinístico em colunas semânticas (eventos → infraestrutura → serviços → pessoas/setores).
+  // Dentro de cada coluna, ordenação baricêntrica para reduzir cruzamentos; espaçamento uniforme.
+  const padX = 110, laneW = (width - padX * 2) / (LANES.length - 1);
+  const top = 56, bottom = height - 40;
+  const nbrs = new Map<string, string[]>(nodes.map((n) => [n.key, []]));
+  for (const e of edges) { nbrs.get(e.s)!.push(e.t); nbrs.get(e.t)!.push(e.s); }
+  const lanes: GNode[][] = LANES.map((_, i) => nodes.filter((n) => n.lane === i).sort((a, b) => b.degree - a.degree || a.label.localeCompare(b.label)));
+  const place = () => lanes.forEach((ln, li) => {
+    const span = bottom - top; const step = span / Math.max(1, ln.length);
+    ln.forEach((n, i) => { n.x = padX + li * laneW + (ln.length > 6 ? (i % 2 ? 26 : -26) : 0); n.y = top + step * (i + 0.5); });
+  });
+  place();
+  for (let it = 0; it < 6; it++) {
+    for (const ln of lanes) {
+      const bc = new Map(ln.map((n) => { const ns = nbrs.get(n.key)!.map((k) => nodes.find((m) => m.key === k)!.y); return [n.key, ns.length ? ns.reduce((a, b) => a + b, 0) / ns.length : n.y]; }));
+      ln.sort((a, b) => bc.get(a.key)! - bc.get(b.key)!);
+    }
+    place();
+  }
   return { nodes, edges, runs: runs.map((r) => r.key) };
 }
 

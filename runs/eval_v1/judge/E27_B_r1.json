@@ -1,0 +1,104 @@
+{
+  "run_file": "E27_B_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-5.4-2026-03-05",
+    "reasoning_effort": "low",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_0f8ed957b77682be016b06ee5230b487d2b152fdf195bbde9a",
+  "model_reported": "gpt-5.4-2026-03-05",
+  "usage": {
+    "input_tokens": 5673,
+    "output_tokens": 681,
+    "reasoning_tokens": 33
+  },
+  "latency_ms": 10164,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "R3"
+        ],
+        "justificativa": "V1 pergunta explicitamente se a Rua do Porto já está sendo monitorada conforme o gatilho de 6,0 m; R3 registra a regra do plano."
+      },
+      {
+        "id": "G2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V2"
+        ],
+        "justificativa": "V2 trata diretamente das primeiras casas da Rua do Porto atingidas acima de 6,2 m no trecho pertinente ao cenário previsto."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V2",
+          "T3",
+          "resumo_situacao"
+        ],
+        "justificativa": "A saída conecta explicitamente a previsão de 6,3–6,6 m ao limiar de 6,2 m em que a água atinge as casas da Rua do Porto."
+      }
+    ],
+    "gold_temporal": [],
+    "gold_insuficiente": [],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída evita equiparar o cenário atual à cheia de 2024 e não propõe evacuação ou mobilização dos cinco bairros; ao contrário, faz a cautela explícita."
+      },
+      {
+        "id": "X2",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não recomenda remoção preventiva como decisão atual; apenas registra em R8 que no plano ela depende de decisão do coordenador na cota de 10,0 m."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde a G1 ao checar o monitoramento da Rua do Porto na cota de atenção."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde a G2 ao checar o atingimento das primeiras casas acima de 6,2 m."
+      },
+      {
+        "id": "V3",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É específica e relacionada ao trecho sensível da Rua do Porto, embora o gabarito não peça essa comunicação preventiva."
+      },
+      {
+        "id": "V4",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É uma verificação específica sobre prontidão de abrigos diante de possível evolução, sem tratar a mobilização como vigente agora."
+      },
+      {
+        "id": "V5",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É relevante por evitar antecipar avisos aos bairros previstos apenas para 8,0 m, ainda que não esteja no gabarito."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "V4.motivacao",
+        "afirmacao": "A previsão ainda não chega a 8,0 m, mas está próxima do patamar de atenção operacional inicial e pode evoluir."
+      },
+      {
+        "onde": "informacoes_ausentes[2].descricao",
+        "afirmacao": "Não há definição de quem, dentro da COMPDEC, faz o monitoramento operacional da Rua do Porto."
+      }
+    ]
+  }
+}

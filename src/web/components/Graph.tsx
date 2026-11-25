@@ -55,7 +55,7 @@ export function Graph({ g, width, height, run, base, cutoff, highlightNodes, hig
     for (const e of g.edges) if (e.byRun[run] && (e.s === hover || e.t === hover)) { s.add(e.s); s.add(e.t); }
     return s;
   }, [hover, g, run]);
-  const padX = 90, laneW = (width - padX * 2) / (LANES.length - 1);
+  const padX = 110, laneW = (width - padX * 2) / (LANES.length - 1);
 
   return (
     <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Grafo de conhecimento construído a partir da análise da IA">
@@ -101,7 +101,9 @@ export function Graph({ g, width, height, run, base, cutoff, highlightNodes, hig
           const hl = highlightNodes?.has(n.key);
           const dim = vis && ((hasHl && !hl) || (hoverNbrs && !hoverNbrs.has(n.key)));
           const r = 7 + Math.min(n.degree, 6) * 1.2;
-          const label = n.label.length > 34 ? n.label.slice(0, 32) + '…' : n.label;
+          const words = n.label.split(' '); const lines: string[] = [''];
+          for (const w of words) { if ((lines[lines.length - 1] + ' ' + w).trim().length > 24 && lines.length < 2) lines.push(w); else lines[lines.length - 1] = (lines[lines.length - 1] + ' ' + w).trim(); }
+          if (lines[1] && lines[1].length > 26) lines[1] = lines[1].slice(0, 25) + '…';
           return (
             <g
               key={n.key}
@@ -115,9 +117,9 @@ export function Graph({ g, width, height, run, base, cutoff, highlightNodes, hig
               aria-label={`${n.label} (${n.tipo})`}
               onKeyDown={(ev) => { if (ev.key === 'Enter') onNode?.(n); }}
             >
-              <circle className="halo" r={r + 9} />
+              <circle className="halo" r={r + 6} />
               <Glyph tipo={n.tipo} r={r} />
-              <text className="label" y={r + 14} textAnchor="middle">{label}</text>
+              <text className="label" y={r + 14} textAnchor="middle">{lines.map((l, i) => <tspan key={i} x={0} dy={i ? 13 : 0}>{l}</tspan>)}</text>
             </g>
           );
         })}

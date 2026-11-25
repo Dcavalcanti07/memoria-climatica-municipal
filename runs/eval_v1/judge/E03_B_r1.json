@@ -1,0 +1,148 @@
+{
+  "run_file": "E03_B_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-5.4-2026-03-05",
+    "reasoning_effort": "low",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_0e3ce2ac335d1b7b016b06ed8db77087d28657200d987fe1b2",
+  "model_reported": "gpt-5.4-2026-03-05",
+  "usage": {
+    "input_tokens": 6384,
+    "output_tokens": 1959,
+    "reasoning_tokens": 1061
+  },
+  "latency_ms": 36345,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V3"
+        ],
+        "justificativa": "V3 pergunta exatamente se o contrato 041/2025 segue vigente após 31/10/2026 ou se houve novo instrumento."
+      },
+      {
+        "id": "G2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V5"
+        ],
+        "justificativa": "V1 e V5 checam se a captação/casa de bombas foi protegida para a faixa prevista, incluindo a pendência do painel e proteções operacionais para 7,0–7,6 m."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "R2",
+          "R8",
+          "R3",
+          "V5"
+        ],
+        "justificativa": "A saída reconhece a cadeia entre nível do rio/faixa crítica, inundação histórica da casa de bombas, dependência do abastecimento da cidade da captação e reflexo no abastecimento dos abrigos."
+      },
+      {
+        "id": "P2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V3",
+          "T5"
+        ],
+        "justificativa": "V3 e T5 explicitam que o abastecimento de água nos abrigos por caminhão-pipa depende de cobertura contratual que já teria se encerrado."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "correto",
+        "ids_saida": [
+          "T1",
+          "V1"
+        ],
+        "justificativa": "A saída trata a elevação do painel como pendência histórica sem presumir solução e pede confirmação atual."
+      },
+      {
+        "id": "T2",
+        "resultado": "incorreto",
+        "ids_saida": [
+          "resumo_situacao",
+          "T3"
+        ],
+        "justificativa": "Apesar de T5 reconhecer o vencimento, o resumo afirma 'há contrato vigente' e T3 fala em base documental atual para uso, tratando como vigente algo já encerrado na data de referência."
+      }
+    ],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "reconhecido",
+        "ids_saida": [
+          "V1",
+          "V5",
+          "informacoes_ausentes"
+        ],
+        "justificativa": "A saída explicita falta de informação atual sobre a proteção/estado da casa de bombas após 2024."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não afirma como fato que o abastecimento será interrompido; ao contrário, faz cautela explícita contra essa conclusão."
+      },
+      {
+        "id": "X2",
+        "violado": true,
+        "onde": "resumo_situacao; T3",
+        "justificativa": "O resumo diz 'Há contrato vigente de caminhão-pipa' e T3 fala em base documental atual para uso, contrariando a data de término anterior ao alerta."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde diretamente à checagem sobre elevação do painel/proteção da casa de bombas."
+      },
+      {
+        "id": "V2",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É uma checagem específica e relevante sobre a prontidão da captação, mas não consta no gabarito."
+      },
+      {
+        "id": "V3",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde diretamente à checagem sobre vigência do contrato de caminhão-pipa após 31/10/2026."
+      },
+      {
+        "id": "V4",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É específica e relacionada aos abrigos e à logística de abastecimento, embora não prevista no gabarito."
+      },
+      {
+        "id": "V5",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Retoma a mesma questão central da proteção da captação frente à faixa de nível prevista."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "resumo_situacao",
+        "afirmacao": "Há contrato vigente de caminhão-pipa até 31/10/2026."
+      },
+      {
+        "onde": "T2",
+        "afirmacao": "O problema dos motores queimados não deve ser tratado como pendência ativa sem evidência posterior."
+      },
+      {
+        "onde": "T3",
+        "afirmacao": "Há base documental atual para uso do caminhão-pipa em eventual apoio aos abrigos, dentro da vigência informada."
+      }
+    ]
+  }
+}

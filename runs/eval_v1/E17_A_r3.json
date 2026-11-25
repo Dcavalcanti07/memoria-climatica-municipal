@@ -1,0 +1,951 @@
+{
+  "meta": {
+    "scenario": "E17",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 3,
+    "tag": "eval_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 813,
+    "user_message_sha12": "99fd53fc756c"
+  },
+  "user_message": "Município (fictício): Barreiro Velho\nData de referência da análise: 2026-11-25\nDocumentos disponíveis (2), em ordem cronológica:\n\n### [D1] Plano de Contingência (2025) — Saneamento\nTipo: Plano de contingência | Fonte: Serviço Municipal de Água | Data: 2025-09-09\n\nA Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção construído em 2025 até a cota 8,5 m.\nEm caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.\n\n---\n\n### [D2] Boletim hidrológico (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-25\n\nNÍVEL: VERMELHO. O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_07dd107b28e47d92016b06ed330a4487d2a3ac7cefe1fe4480",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 2048,
+    "output_tokens": 3733,
+    "reasoning_tokens": 1034
+  },
+  "latency_ms": 23548,
+  "started_at": "2026-11-25T14:14:10.497Z",
+  "output": {
+    "resumo_situacao": "O boletim de alerta indica nível vermelho e prevê que o Rio Barreiro possa atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas. O plano de contingência informa que a ETA Barreiro é protegida por um muro de contenção construído em 2025 até a cota 8,5 m. Também consta que, em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "ETA Barreiro",
+        "tipo": "infraestrutura",
+        "setor_responsavel": "Serviço Municipal de Água",
+        "descricao": "Estação de Tratamento de Água mencionada no plano de contingência."
+      },
+      {
+        "id": "E2",
+        "nome": "muro de contenção",
+        "tipo": "infraestrutura",
+        "setor_responsavel": "Serviço Municipal de Água",
+        "descricao": "Muro construído em 2025 para proteção da ETA Barreiro, até a cota 8,5 m."
+      },
+      {
+        "id": "E3",
+        "nome": "Serviço Municipal de Água",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "Serviço Municipal de Água",
+        "descricao": "Órgão citado como fonte do plano e responsável por emitir aviso de racionamento em caso de risco à ETA."
+      },
+      {
+        "id": "E4",
+        "nome": "aviso de racionamento",
+        "tipo": "servico",
+        "setor_responsavel": "Serviço Municipal de Água",
+        "descricao": "Aviso emitido com 12 horas de antecedência quando houver risco à ETA."
+      },
+      {
+        "id": "E5",
+        "nome": "Rio Barreiro",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Curso d'água citado no boletim hidrológico, com previsão de elevação do nível na régua da cidade."
+      },
+      {
+        "id": "E6",
+        "nome": "régua da cidade",
+        "tipo": "equipamento",
+        "setor_responsavel": null,
+        "descricao": "Instrumento de medição citado no boletim para indicar o nível previsto do rio."
+      },
+      {
+        "id": "E7",
+        "nome": "Sala de Situação Regional",
+        "tipo": "setor",
+        "setor_responsavel": "Sala de Situação Regional",
+        "descricao": "Fonte do boletim hidrológico de 2026-11-25."
+      },
+      {
+        "id": "E8",
+        "nome": "nível vermelho",
+        "tipo": "evento",
+        "setor_responsavel": "Sala de Situação Regional",
+        "descricao": "Classificação do boletim hidrológico indicando condição de alerta."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "depende_de",
+        "rotulo": "A ETA Barreiro é protegida pelo muro de contenção.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-09-09",
+          "fim": null,
+          "observacao": "Construído em 2025 até a cota 8,5 m."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção construído em 2025 até a cota 8,5 m."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E3",
+        "destino": "E4",
+        "tipo": "responsavel_por",
+        "rotulo": "O Serviço Municipal de Água emite aviso de racionamento.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-09-09",
+          "fim": null,
+          "observacao": "Regra do plano de contingência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E4",
+        "destino": "E1",
+        "tipo": "afetado_por",
+        "rotulo": "O aviso de racionamento é acionado quando há risco à ETA.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-09-09",
+          "fim": null,
+          "observacao": "Condição prevista no plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E5",
+        "destino": "E6",
+        "tipo": "outro",
+        "rotulo": "O nível do Rio Barreiro é informado na régua da cidade.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-25",
+          "fim": null,
+          "observacao": "Previsão do boletim hidrológico."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E7",
+        "destino": "E8",
+        "tipo": "comunica",
+        "rotulo": "A Sala de Situação Regional publicou boletim em nível vermelho.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-25",
+          "fim": null,
+          "observacao": "Boletim de 2026-11-25."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: VERMELHO. O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E5",
+        "destino": "E1",
+        "tipo": "afetado_por",
+        "rotulo": "A elevação prevista do rio pode representar risco para a ETA Barreiro.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2026-11-25",
+          "fim": null,
+          "observacao": "Relação inferida pela combinação do alerta e do plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "A previsão de 8,3 m a 9,1 m na régua da cidade implica risco para a ETA Barreiro ou para o muro de contenção até a cota 8,5 m?",
+        "por_que_importa": "A decisão sobre o aviso de racionamento depende de confirmar se o cenário previsto alcança a condição de risco prevista no plano.",
+        "motivacao": "O boletim traz uma elevação prevista e o plano usa a cota 8,5 m como referência de proteção da ETA.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E5",
+          "E6"
+        ],
+        "setores_relacionados": [
+          "Serviço Municipal de Água",
+          "Sala de Situação Regional"
+        ],
+        "status_epistemico": "inferencia",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção construído em 2025 até a cota 8,5 m."
+          }
+        ],
+        "o_que_falta_saber": "Se a cota prevista para o rio se aproxima, alcança ou ultrapassa a condição de proteção da ETA no ponto crítico.",
+        "quem_pode_confirmar": "Serviço Municipal de Água, com apoio da Sala de Situação Regional",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "O Serviço Municipal de Água já avalia emitir aviso de racionamento com 12 horas de antecedência neste cenário de alerta?",
+        "por_que_importa": "O plano define uma ação específica quando houver risco à ETA, e a equipe precisa saber se essa regra será aplicada agora.",
+        "motivacao": "O boletim está em nível vermelho e o plano prevê aviso antecipado em caso de risco à ETA.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E3",
+          "E4",
+          "E1"
+        ],
+        "setores_relacionados": [
+          "Serviço Municipal de Água"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: VERMELHO."
+          }
+        ],
+        "o_que_falta_saber": "Se a avaliação interna de risco à ETA foi acionada e se a antecedência de 12 horas continua sendo a regra operacional vigente.",
+        "quem_pode_confirmar": "Serviço Municipal de Água",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "Houve atualização posterior ao plano de 2025 que altere a proteção da ETA Barreiro ou a antecedência do aviso de racionamento?",
+        "por_que_importa": "Uma mudança de protocolo pode alterar o que deve ser feito no alerta atual.",
+        "motivacao": "O documento mais recente é um boletim de alerta, mas não informa se o plano de 2025 continua integralmente válido.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E4"
+        ],
+        "setores_relacionados": [
+          "Serviço Municipal de Água"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção construído em 2025 até a cota 8,5 m."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência."
+          }
+        ],
+        "o_que_falta_saber": "Se existe ofício, atualização ou novo protocolo após 2025 que mantenha, ajuste ou substitua essas regras.",
+        "quem_pode_confirmar": "Serviço Municipal de Água",
+        "prioridade": "media"
+      },
+      {
+        "id": "V4",
+        "pergunta": "A régua da cidade usada no boletim é a mesma referência operacional considerada pelo plano para avaliar risco à ETA Barreiro?",
+        "por_que_importa": "Sem a mesma referência de medição, a comparação entre a previsão do rio e a proteção da ETA pode ficar imprecisa.",
+        "motivacao": "O boletim fala da régua da cidade, enquanto o plano informa uma cota de proteção da ETA.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E5",
+          "E6",
+          "E1",
+          "E2"
+        ],
+        "setores_relacionados": [
+          "Sala de Situação Regional",
+          "Serviço Municipal de Água"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "até a cota 8,5 m."
+          }
+        ],
+        "o_que_falta_saber": "Se a cota do muro e a régua do boletim referem-se ao mesmo padrão de leitura ou a referências diferentes.",
+        "quem_pode_confirmar": "Sala de Situação Regional e Serviço Municipal de Água",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há informação sobre outras medidas operacionais previstas para o cenário de nível vermelho além do aviso de racionamento.",
+        "por_que_importa": "Sem isso, a pauta só consegue verificar a ação explicitamente prevista no plano."
+      },
+      {
+        "descricao": "Não há registro histórico de eventos anteriores, ocorrências ou testes do muro de contenção.",
+        "por_que_importa": "Sem histórico, não dá para concluir se a proteção já foi testada em situação semelhante."
+      },
+      {
+        "descricao": "Não há documento que explique a relação operacional entre a Sala de Situação Regional e o Serviço Municipal de Água.",
+        "por_que_importa": "Essa relação pode ser necessária para coordenar a validação do risco e a comunicação ao público."
+      }
+    ],
+    "cautelas": [
+      "O boletim é fictício e não deve ser interpretado como alerta real.",
+      "A previsão de nível do rio não equivale automaticamente à cota de proteção da ETA; a comparação precisa ser confirmada tecnicamente.",
+      "Não há base documental para afirmar que a ETA será ou não atingida; apenas existe previsão de elevação do rio e uma referência de proteção no plano.",
+      "Não presumir que o plano de 2025 esteja integralmente vigente sem confirmação institucional."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 8,
+    "n_relacoes": 6,
+    "n_verificacoes": 4,
+    "n_temporais": 0,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção construído em 2025 até a cota 8,5 m.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: VERMELHO. O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção construído em 2025 até a cota 8,5 m.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: VERMELHO.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção construído em 2025 até a cota 8,5 m.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "até a cota 8,5 m.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      }
+    ],
+    "n_citacoes": 15,
+    "n_citacoes_literais": 15,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795616074,
+    "created_at": 1795616051,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_07dd107b28e47d92016b06ed330a4487d2a3ac7cefe1fe4480",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBu07Ay5rxmxoZJSj1Wt2cSJx2qMVNiiMIK-BT_d3IkCbMPOiEunhocctdWQqo13Kzin4EkNNxB8XeFY0ZDGfd8VmKlwityUeGW6Sx0C9DNHgyGeCSTYbbaZy_Vsa0dFFSQbdi3UHYVGa71U6OPND9p0KbYSTug5sIprTZujYNVWUXB8tLaiZ5eAuTEwoJBz6r-bPPjJtTiIX2EobdmRxA_B_QJaY7FmnE5Utauqr5kP031V-Z3xx4KZAlths7wexPB2cEzO5_bFc5CvoUk2H6MmJu3LIl0MsqpsntFysA5SsxVKWM2yXFT-MUkYtAqxRsLd0DmX_ydK8L0fSaLPRuS9pi1bFD2wLmFRUDOwP5x-K-lEqKR-Fdv3V5D7j4bB83Hun__egwQYzEPk5M8DUikIwGwnDoQq_T0rsr0NkliLgUtvVE8qKktffAqTrRFBDnDD3Vu8yKqHzMIoklcnUXGcwwSE6A2xxoEdiTuFpmHik5OeI_ETFCOH2BMC3r8uDr7O2KEk4bGJHzv7NIm4TwR57IKnw-Vl0BvO-deHP8EDe_or4rkbM8nJpdpF0NVM3TkMMW8lau4TPwnYgtJ5YDP7oGaK1APmar1x8a0F6EF6MGzRuNUYeDMIKNWahYg5J4x6lvDSvA3EIuAXVIjSK3IeAE4O6SfXLISE09ntpqamdrTiuJF5GOkYOWU8bRI1Z4xc4Hf5dGlvoOndY7YSEXpeb99OpGRYsUWplVj0AxxTmAJHLYQj25ArK2F8fEaE_c9_1EznCjxs6-Kle2Iryplgy65VZWO7IdfOEWMiJdesJIma4cLtTGX8M1Jq-GKBvBDX_0UmzfxICstSNntN7EtDbSxp78C_xI--pzY6A1_xiwT9AbylqP8wiyxB2LhrryWRRNQputk0zr0_oRNZEPeiqH_yXGt3MqvOrCZAvO94oxrTp_pU9rzqVIZ7kimX2c6zIMNiBFvoDR7En5mFYB3m3mzRX8KNtO2uy1cvjxlmKfVujQwi5azFbrn7bGMB8sIL34GOXPoVBiBGDGv3ULlc_8v8S0HS0rSDnDTOCauGntPq2ig5cwx1XzrQ5BZwLYCJt7W_bsWqkRI5yR8lqIZcvxT8zoqFeq3EzFi16oCN81wPxCrHMP4wVnmYJdk1R8wlC9FVYs7xenrXOLC0qacgSv4EZ4KMe-9c626O-Pcb9kxPRi_pc0QustT0SN1uElzvZoV-v-gTvsgAAwKCNLYeuB8WM5MnZ1rxXRBOIycp6FLZ_CjGmgdN2mfYcIdMu7OVkfu4NSv-TKa67Gg1JVPapWxu-aY6Cc2XLsKeSk-0HUHNKVOAb8NCN5vPmt1SHnumznbq-vnvdnwAf0IwEozP1bUbcap1YgjIUacIVn4mwxDDT2aI2RrGOlegds3kVrttV9Mc1XdRVAS8UESpHCID78RtwanwnnU-x1pPHCVLOG-DTHhGvuL9lYHUgIIcFb_CdRcjbVn1lNfg9BhdF_fGP80kTle2N4ttB8MKDZRdrjuvZCyhjrNWjBtzZjA3t1gW2qPYQYy3ntk3JZnP0EkjhgvYlWG5I0rQTN5ncsGSZDmXHqbb071pUCU4p8D2A0gLacYe9h3QGHq-PXVf6zCS_laezAuDnvkqPPVtAlo8CpXTZkbyqnt7aJTN6RA-XHRPyu_PEcA-G0-puiBPr5ZTkAHpXRllNQ8A9Gv04X3KYFpGCYcTWPQrmAcPXgF2JLsAh7gI7hnrt1oe1nYpxsx2jpmXNOlS3_U850mmKQVJrytx9JrycrXqSPRc0mhO0kV6v6WdIUKA-Hh_v6Vq0LQleWixvkC2J8bQIL4K8vnuhzZkSx3sKDTc42YNVV3-sNTVhe-cnvQFDYirnzo9njTVFnkDht1vrLiLsJ1wWcgrtMLYnTeoFpAEdtX1IGmQ3h1pFHqKwhhW8B-IlegK4GcpiXGU6bRJIvBA4BhAzOm3VIuNwAyT3nJ8qnxE7lfnNgvtUyFvn7oHN-93Lf2w2Tbmx-MCk1v1diWQkY3-rNqskmgi1Cjx7T4OWpUjshX1EV13e6WEFzCUSpYsghSRbD7cEYzGTF--DDZ0CVxXV9ADzrIZqaF_F1bkP62pu3wqWVU5KTnqCqpIx9AURnbLwB6kWVTCSwEW1g0kAUPW6z3nz_7jUBTUgy_Jkl56dXNF56BQStcgj_9YoFSuU1OiVf6JE2ifpGUaa3VDSwcq9CIg18e9ogttmOvmKHgkyJxrRDhaN9Wuydgt_7xeS5o8G-dYHSRBcfHTh2rLwQA611xX2dQ3xx7K-zWSJ0oL3l5y11YRm4rUjxg_oI_3ljbLIdbGQli1URgNT4Aq-pflEVbzDFediQKIujsvbJPMOt_si6k_mjUz8nBtFQZekQUyOBpAWCecbU07FOzVRJ8aTrr1tNMBlOrQa958yAqH0_MRPSxTGLlmb5nRqKsIgpEm0nLuioc1_ZdBRe-wuIzpOkIiZHhmMoT-GERr_TNQMZ3HEamzC-fLBlrhUL-kbCuXvrk0YGX8cUEmhU5CqykEQyXa1ak4T5R_nE5f9YwpJ2zpNvdkQMwbiRRNJ5_29ScQzGRkwwe6vR-l9ot4DleIxvMPNZkgU9esM0df9StHpii3wd1DcMBpOw88OKZFf3WZtIZ55ApJXOjYsnbNkxYjRCkdW7SvtoOKx4PnKBjN8RStYdwX7TTA0_5KcOJEpjIIQgbOGK5VDY5wvb5nJ0wH4Lb0Ee_OBBxmBdZc6Nj_XtmbcDQgQV8zEtshNahcexxRzcM0cPgutIZcxHUeJ5a4Su8uZZtZ6okBAxFPA5ppO6LyKRsvyx2qNwbVLRDTGiDn1vnvoLRBE5huGDVngG1Mi9GW1Z18x5I1Zxmv_rRAiqoOh95538OMZsYOr6-WhtYHwZFO3g3ljbnzpoDsSLiqtyNnylFr4xm75h-dhA-kfcs9lt16rWZQGZA6WLNwqmL2jH_0zAZvjQfX_twBchYzc7gBUa-uXsDIy72frCVR7h7JtRV4Ne1fFT8_4rTx14lAkKbG2s5hoZ6180n7wLG8rYrpACQfT6VSwLZxrUnS0VfRLk9PyqERQ-Sj5wgxcm-x5K-yAH0UEBkgxzUAXak3Fwn98UhTHZ3LP3GUeA48I--_-M5JN4Z6Viuxt5lVOg1MMEzNaWb6YW5dj7k1DcQEp4o-XSjJoiIqxMDT-TTvaxtVuujRPiUE2qDpzhwHKZXxZLZbbdmhasWitgkreM_AP0Neq6aKpb9RC3qK5th_4h7ZhWuyAMuUgRXHN9RgBUgeQVpFfA138JXQlYHwpT-n7H86c6-ybMwjwSBoqYKgRv0LhxN3iZHvIx7FVW3X8kIP5wutyJw-4n-94BAdmOYDgM3i5USSFLQHuykahNKnT7QMSM0JjUjvYUL0Q6pSULynzcGXaJ3HU3s0zf32XS7iB8SCSFTQy4_Mr8FizAkbuRNPXYv-6id9HMshbUDz9iJLxAUdXpbas7V15RJmrrxbEEM10Mfbb4Cj6WxSexs3dwXDdOeBPS3yzvqLkyCtCED1HQ8EcR1w2Oa0Wh_wv3wk-QJZ6YqzGIrN7-uWTPo6nUuYxtcHDddZV0Pt7SSrT1X15v6vkPKtq7ES75iAO6uKmq_6U5DlMrMJMU9TJYoYMJr3u1XZ66GGFWmlkB-am262vVjryh7L0H784KRX2xyS6_i71AzxFAZ0bpcwvFwAtdJc2RLz_6OzMaETTKbghvSoS3NGgPlBqOx60b2xGWV96XSx547DElcNqZyuEpBhPPm8EwsM52Bf7Dn-QImmkYV5qtNN8SEhYg6bH_EZ3iN5QHYFCCT7yqFgLQk-5Ai-0Fq1TBkUGVRO1djb8y0MZl0vog15AWW3djZZ_TcUGuRDkEObP5MEJDVCGOXihcS3gA1FPKnZzxA9kO3kLOhgzxQir3IHVjGbo8GdKE8UQXGA8zZc6HgEHIaMAz3gLrcENiJv3ZNJwVEa8vH4b319yjrNIFmNJXjBIUhYlyAEriU1sDafHvZN3orzUnmpAmCuXVdnLikneI4WAXKuqfsunHrkm0sOPgelxZcIc7Gr_GGjtagzT_ag6qPU5pXl2wf6d9538-U69OQ-4Od1rJFOR6lMBkrmJ8M3ykKjHYKK2zNLRSj9zq_ZsPmtXPrzBLtdA4mS03gSSPo0yqAO44l7tLTHM4DxWkz0Rso8TO58Gr8CHNh1hM2feihEHIX4Y1aYRmxxOJRovNmIpGOsoB0NrrQMMP6lIFWSTjgaivMjTH4v2uo3cLhXfIZk6ep8m_0FoR-5SiB88cRqU5gpRX9WxlKiBQn1Dd_QDTqJOTCnlyfoaF0wQa3JSA_DR2em72sr_z4VleilRI5DyjSfuSqVpt6B8_ywKdEEz_ZbBV0rNHoSnDP-39mAkDjoXTBhCiRTndjuwxZd8v9VPsR68KHkxnqwEE-h8czX3NdF9_dATm8p_0zak6i5Uk4j3bFuGlg3pRDbHf6TeyvD5j0DRppbwws8WCHoCbjA1iz57zt5uR3G573wVu0o1DC1sOBBOxLf0cH7OBgZ1AzFRpVrHfhofGPA-IXln5PKXh3DHwa2MsGt9UShNaq-AD6hwhFNAqTuknqNHyiZDUpk-3oWXBZttY-XhSKAihxvzpnq_EIMKwQCSPsdw-Y0zOMp2Jg7W-FhV28Wxz3nYE0WMeZz6rKyWXsjLFh3HM_MQv0Lvuax-x3ixdUTAOQv8fjXzGrb_2aNEaNowE0NbdAvRg47Mv0jcJntHHanadOilXDYHDYFA27DXX5jELpY7apjenLGYOjb4AXeTIV00MtNCoKNT6e9D2nEri91fx32DumJa7AXROsCZswU9n-W-8RAygOigmnRw5UPPI6ydtZj-YKgm4yyw7YDxyzFPyDhHDhosycF5N4g9xIiVrjzdpvWRj_7QaX8EWG2ImcTz2UXCi1iupZI8dJCSdWY10RtsCbPjcF8U1oe0KqukmU4J1BHS1nSL2c72HDa1uHNPxfimOcN5wAp-8SF9IMujmhBjiHSPCKOBhD0By9RDGLI-mus2YRdEdenjuSkFa_VKHUdjBjnH6bJOiziT4uGmDVVPLvz56dnSQPHnoOxwT-q1FqA0lVTDkuWBPqLDDDvBOyM_OHFheCKnI2f-hfys9PVOYqDvB0v0YEGTCo_Koc9l-mIwqxvM5r8DnWb1eb99utyIGk4df1r4l2yTHLf1QL5ljaypQLzdfa3zh5aBK1qK8Q5CYt6oXEXWlbHeBvYaZ62EQUpSbedJnj77zBOIWCVF4K6-vm9rGem8yCzgnuf3sy4TezbgBO9K8JU3Q43faWGSTlyi-MiXQgfWX_yIMN1u6F1BV5wE3viVdfxu93y8Jd6UcmSnvSeJk_uYjjawTzRaqDfyJLCp3iWIPyDUQ0-VxC1vGvQHrF_sptF5JUSM8px0wdiTBc6nQDEODL564qGkf7-3t2WOoXVJPvkoqKHPKWkyhSabO92DzzusAKq6mw8j-Dn9_HJ2BYRBIqWEmM8EdpBDTMAaA6DCfiMkPV01pm6S7xwoHFYEKCbSo6kPj6mO0H8aYh0zUWoKnO0OaQuvkMLAncMEt-LZFYIGM3qI0-vXKOJpNW5DdyzcUsqbQuJTDR2mgpCjrWK6i2X1OBH1d_s9yIMLwuzjMzXN0KWF7PKHDTXhXJQv8YjBH2jtkxrHCvH5ht1pCvsZuPQ-kYq4-bgs4lrteNhcjA3s7Daz8bolU6mrhVRwU70L6Sebcfhous4un9yXKUk2k4gCbB6NVXkhc_0_b3UZdXzao4q0X6XtUWbugZmzy1MYtCpoAXNgnyAGWbsVnuxPpUbv6kKWe4g-MahauSPXpdkrtKDkFx0_Q3VPy6evor1wQoG2tPj3CEn6AUWqcxbx4KiiyRRb2PYI1wkXxtA3BML4qfHpQjWBAli18DPWKLCENjGMaQWx_C8I0aQQaC6z9p7qfeDTNdt29TJCSxdld_RvLSOtaoZtv_UFRXE4p1x3JfMxrWzOXeoOMZ1Y4nI83oEo-2WDquELCvdrC7vWT_kzwFO2qXxFzjr4-Y_oBdOjM2DSyvyH7w6TiunhXhEhiHbAaED2UQQcYSB6uVrdduf9v_Er2fHMzzjRgXV_8XhK_FcSkpWMP6_BkH9DSCtbE8Y5lZDteygofCv68d3jp8xAAMOm6vc1PxDvKZ0eoPUlMoJEydAuw0oR1huv_jXY4l3i1tUT8I6YkflVUW_WL0hB2utEhWRcj0FIq38kxKBHpVq9y3lNvU0ot0_G7mQovVCIxI7WncO5nHlC0Y6yut3YCrhiyZ2ea4wbzLPQRmcPOu6oCzvv-QHuZjlBLYO91P4ckbY3cVP1gMcvJZqmSARVa3bd1fIz5PWhUoc7gkFUFztfiW28IpWS8tbuWVsDlX3j_JiQLrJTfhJctpRpD89C31EpJoIFxxas4lVjBFCcnBh8HeHbR-epS2NOOHuKlCyX_q9v4GavkfGO53t7xWlILnm7sfMt2edZw2DHFS0p0_zNnHE-NxJVW8TOzA08EbEEfPmw6ov3t7a_cZg_lsAgejFu9SEFUV2UrAySBc3ZdHjQyjdzJ0o76hZZB1z9ZHMf47lrAd4HDv4kbt32SRtJhqu2h9z5sw1F9ItsXvuG2soNob-ww0RLkH19rghSymIgtpzQRdkVm2z8TZGZ-Lei8JRbSzfIqIlI7OZM8AQiPygflAMPjGrcsIicJAaYPCpysT7852XUo-Fm5Ra3Tk-VBe-22HN9kdhs-Ym_RCN8wCenLclN_Aov3glUKTvxPssNA-BS_yTop683OYeX7ZwUX7StrmPmmZzSVWZE55qmbq7RLF6UOhRpIyw4gucMjz9sFGHzv39mwPgCzizzEVdq56GAvloHczlh6QHrgsshFBF7HhDKv-EoSZW6oKUdxg7t1q8v073Q8XRAW_lUzMBf44iJePOMw1sERnP-Bwv7SkfUC35ZDaR8Ed1Wi52b2yjcDZgvCELVskgGLHTPvOc5WPHlzPqnf20Q5xMV-NgiGPKby7Zs8RZOxM1pRIhdEFK6w6meWQpTr5RarhzAEOcLPy0ECfKrkwqHrDCf_7fGBd8PSsMsDSjgwcG_-z0k0ba8fSgc6zg503w8NU7PqE6mjOVR3gHNoShuEsN9CjgbTwhOKyc4HIxgFKSsM8I4divwaVYrnXQkq1VHsBjKHvfe99NLTWY7ETIsNw6F81C9cxGw3DFRzWwsLrktaIh7GtS1s3lxRwTEtd8dUbfTTbJD67nvL5YGpJU4p8AjQQ0KtW1pEwAuSeNVw6nlhhJEKzLBAoBkUxuObLG2ciEZRYN5lb_c63O0nExNQAjf8C537aBAWzfJ-n9vGVhO0kOtPhEkTZV-VYSppnisdq1mpegTFDttPIXDtrunMRePPaPzSxg0jQNPVrTx3HpUdxzv3qOsiVcZ6a84pi6etEFQqHrGChzuA671VNBKz-t13QpfmC_tOQr0nVEB32MhvISZ2jworDl6YBP7CHATnqXeBrp5qgoatYNFKXUqT0KqqDmQ8S1gZcAPJITyB40TjZ7Kbvo6PttFcfxMTnIHLfGNd665s2eXCBugoBfPcTBNsMOXMuNFcL3qaDzDnPgf4xFC58Kp4TbCDA8jnabhsA5gf5-_4R_-ctIufVVFRGer4z6hFNmTo-gOtDEtY2lpL_7oRM5Oa2GpCvVvo8BVd9WG_D6IWhEnnPGNORYaAJNeEjke09iaq0WbP2JpVSje1ngKGPWeVTARcvSUkbUxTyMrIvgMgIet0NbGka-3Eow3tX9CYseFRMelEA1s2l8Xrhr9ikRP5B4GK9NPAjz3ZVu9GNjQQ0OyMP7azpOfABQRFKrynVpuP--cTbYq7JC-LftMNnYtH9_4XnbwsZ0YcVQvnTEWAJU1OFhyNLQ4dCW5ngfH5VqZC2k9FtJi2cNPoZpzc-tNcxrsvROH029Z_u46dIltLl0jGDyqmJZ-br2tzs5xeMy65IAbEIQ7X9C5gkk1_KnWz78-gMJRf2fGvJDG_qLb2O83L6fjoUJopc81HGuSKWMXtk6WufdYsq1Y4n2xJhtMgq1Io2M1q9gccLx_Wc4qVpTe577QM78eO4GEgwJJ71OvIUT54FHxHtQcv7X6khB7KfHduU_8e3NhqSFgbTrYwtt46cQ6afkwC07xee_2cO2hHQWg0qYYbKaTJoaHbzk2ohNkCoc1OIHMji9vCjL3Pt2Qcrq2_DwWXBh4UOvSzk1y7uKjmpRu8Mk22SU2gBwWR3M9EHKxZSouxwthjJ7mz6ZFgNjESjHq_ZXl-WwG4hMvyIY-Gdy4z9JoczCSJxRVFLihWTabsHP6fmuv-MBaELjorYoU3qCfstpZpx0iTuJ0sheu2QQNH6uh0_xUKyg2lhp8dxRSOREfvMunG7xSAID6LgNjyjAbBVsmcgyPPeTMjyVYzCDLzCrx8Tb_MqYUsxnQHR189fIPwGFx22MKRRrKvq38-rAJGjqv_ofAaytokhOxxVGKKBj5yXmKOGJ6bECgJ226o_wr0ldv1wqC4qabdNBqFK1fq2CIjPMy8RzC5yn7Ws_KRI9MJrX9uoogHGTfqIXM3HRBstWRVoSxq1gG23vRdYv2aUqE98BLss70MvsJncyZz0ZDweYNBMpycoYvZCGCv-2Y20pc1DNf2r1eY1zo4TDgmljT-Qn77imnY26W65LN7S06pFwHh9AjMunQAoD3CTGdT19qlnRyFrQeuDmHiiyg9Vj9bhiwMUA4fIngRe7DVAonFyjJY9DajGdYhXuLPSLaz2bHDTN27nqf_om8r_lChB8wH0_WXFpjgcL2vqKqaRk4VZcS9U7F6ebEGsdJzubnIUmjG1cfaHSxnQExmn_B6x22aKRixWgQ03CknZd_jrt9_zu19TuGoM4BukMxWjj3Jgqpdl1MWRsYUNfPMuIw6qWlsXryGbdiL_6gvbIGR9hTXrDlSs4wiyCyqmnxPZCw0HGVH5hWPflS0CNHH8c-qVrRSymHQ3HDY-NlqOQB7hw-HljaXGy-xOPUrpP6FkuGs-CidMby4oZAuZGhP0ADM7ftrhMu0TkueOgqDK2TvWmxhiDOuX3VJZgNoLiGA0c4LaHMQmAKnLLlDqHLSJ7xzs-kUTf22EcAB-dx55cnPDM3TTePq14eFgN66s_rl55o9knfg5qb5_G3K6fK5XPjV6hW2NahFkpomCuc7Wktx2BeaQ6xhfQaFs2Bxsexveh1JloTJmLMPe29qWy_HWraqllkWW_kkKT87w2wgBsCRJpM7DYV32aGNvgmwU80cCvJsGWKTInsPJHLxHprIt3aRvoNh0XTC89mw0p0pP3WladjUR-sbEdyF9wI_jT3pPhtkfWZ4Gw7B56bdxn7KQqICYp8ZwfDYuPCB5f9lDKRnUxe0X0Wxjp7LpN0kb1FEmzRRttd2RXnF8EIrxMlMPPiU_b-w1zBmk_93Z6vc_8qXvd-pgsAfSw4RwCZymIfSL_lvnan-CuvqamB_RQTOFVf9bjacUa5fcS04brYkMDRzlsKNC7fvUl31Ea_s4ZjuEWqwER5t4mFuOoLPCbaaTjWpdY3Uv9Vp_F4M1cbMsjrNTWGVJnVPjog9Se38VCfWhiv3jWTteukoRMOEOiXlcKRV8E_tPF6siZAGFxMYLUbozB6utJG5FSelhn4si9uuUvlSIUlRlnDChcCYsxaXkr76RV1Z77TE4uyCoSRULGI3HWQas227nwNbTapeSpUCP0fdMtch7-6j3jTOiBYv_XllFPXoWNaemnsmPw1h9GIrs_Lt7IdzQ_KbMGa2DmV-cOlyXsK_Bgf42dnW8TL-dvojySE4_zyYwNwDPWolT2eyTPO_sjY0Iknoeg_-GMAv9fLAXNFCHNeZ7fke7Dz0AJCaUe_L09OEBFN8hELj_ydJeuaym0PWYAOxGgnVHYgMW-lLmQxlX_2V8R2mPPP2Kvr9IevsPvYYr3MUcby1U8I0udE1-LvTGFanuzRg-d9b4EfNaP2qycASjbSSNkan8NeSH22W7K6MIcQ7mbz34XDnjZx7hyN3A2nS_Ys0suNCNmxZNHqhah6ycPHOVDw4kXcZt11g-W2kuE7UY5B4D5JebWRBdnT3JVu1RsptmoQuzOfI5MzvDIgIu3sWQhfBJCuyYA-qpRGO1N6i48z0E4l-bLWjiU1j6jBpV0txObzqPBuYeeIO_EBl1uflLDa86cqq5QlRX5rspITLUPAljBMW-7x1hVAYCgB9uo-d-xuKicvZ89-5LiejHHYfO78SvJ_1QOsnF79VFQZEBa7m1g1VZdEkJCAaIg7-8NIKD4Kd8sjjF3p9OrqTPlaiVOlQNnYNurAx5YZwv07KFZxDbAzOp7DlC5y1_6YHOrRwFmcrcpumONt2a5J78qdX4MWJSZZTwQiMI90_fFGA6BISiRm2VLsM0MF5j1RdTGoHI-bm6Z3xlQFapJOoZkjBiVqKDXGybDSFlMEeze1szuBTB63I_yb9CZPePlYgVH4jgPSxZssU1usTGApJ8UrJg-Y1DXgmauH8h_bOnn7Aau5i7PW4xx1dFCbgcIKEsLgbPrIbRxUJCBm0AaZTlx8UOr5IZPsM7tHxIwe9r7Z4UfFAQSmNPM_SA8Pywou5bTymg0DIEPdc3ZllHrO3meQipfCZZ0bSeOR_THW9jISOlpeYw8JVTFZ3YyAPf5rEDlabniNVePfLgxUfVTcFwlEZBN4krqge3u50yUG1Ig6hPMZ1qsnbvVdUsO8Q8Az3UYMBfod8Lu4WzEAG1pUJjHCYH5l5D5PAJmYbEhhjSTP2dFQQrEbgXG1LYg51MhGMjN1OeTFgyP1TeaN9ZgZhOdchrSHdZUfV37nEuuIuqel3iSKWPc7UUxD5BSQKSWP5M1eJc2EzOFF6uIsJIlaU4vbPQFGE3jlCEq_SNaCAb3i2_l9_HN-GgT6ARagBQWXV_V9IP4JBx1-yk2MuOVrf_FrcYOIMGfW6fyxU9-5LPPyrE0r_574Nee1IYGhreOAAELtyU1yrfSvtLuY2KuHZiFzSaKeq2KnVihh95sUEHJMSryQwYGp60sBNHOCYOVHHIkrkGMFtZH_O0wVRBUX5TXv-RfxRi5YmU833Ib04iGBzNLGw8GyuC8cqqM-izgYBsI0TMQNOhFOemDRvLgF3xeSpLV5Addlz075MnHW6QGguLxXCpCoTgfNOPkURloMxM_0pQKOKvkcHGCFsXUj9UOOeMAa3RVRqYHBpuW2cC6icvT0vJ_ryVzCs_s8qeXZhTvKlEbrpSN5cH42M6CIBZi0Irkd4ExTkD8XlO9nUn0jQhQ_AkYw6sA_bj-JEZzLcftExn8LMCsK3ZWfHVp4yf8GYy8I8DHYe3AKPvJL1eIFI5RhGT9Sen6653Zto8KoL5U4hz4poP3tV4p2GxjuUuMMomoggipC6mt6LyKR6EaC_TDI__LmRWool7HtwFB-u083_-N5nKpHiZw9Ypio2aVFES-HUD3sguOL0xnFrGHfFtRYBaw1qeSmO1rd9XYBVMj7qsKV3ZLQcO0DAdlvRfq0nJdPDPTnabeLSi1jz2fhNNInxrQVSEvoAJKYltRyVujFCLtajB-gSzFRo3xEsmBkJpFcdZA1dp2gsMqBItaB0lGS2Tkht2F7a1fxW0G_ghp4W6W3w4eZlgx9PXwJCZOb3x8skZiUhmqaXg_34eEdEome5WCBDcra4P3MyXEBwmaqbcqnRmzOFu_D9V2IMJa637NDg0qEXecW18cqIR3qMYiowDrKOFkMlXDh4hnXYbvF7JFS_7FGknSP3P4Kaxy5pjKUvZ5eT6W7kc9xEWisvPxZ0U-IK-eqBKVOhEYgO6nyCWrAhSaa3It9cMpwrexJhYDrl04QRGNk3z5R9PkeY50vOrfIffmwSflKfndfSEKG_6359Ulj0u2WZnTCAUXT76CiCIhOUv9jtTej6YsuBoIB6Vh1hstiV0MeOAxS5omPiovsLprC0bMVl2bAkKdMm32herSbtT-Eiz3FCGdCN69Gt2_dKAU71BZd-Ulw7xB377SamPc2yKrT3d-tgExNlht3rpywoUBeXTB-R-B6x3KqXNyn0JuC7H9Yl6P_KJnO289T_x5ygv4qkRkQYKRBlDAIXA2KOYPZjn3K1caEJoiqy3zJLj1_axYGTlL4sR4MNAqXHI_C0jE1HuBFkYVgWWlI9Wy7QSrC_QyH6VzNQxYmRORqDTx9ru9OlO_-WjDbJcJlOteBQWxONxXjvGWYgoDCgPO-sfQupedT9Tyx5-XywynGfV54z7XcUftqAx1jxVm7Rr4PrsQFBwqH3x0MM8NXQgUZW5Vq7KPxgiNL8He-HNeqIyqDv-z4NvuFWMZMJAL5IcoblLvPBBFH_0g6QiQHCFR3baB46si8POOk3DfAYTOkNqGaS06okbBbWf33XUU_J30QYJFFbBlk4KTxloCnb4E5hGR5FPY5LXTz_F6YJ6fJ_kuYhGDgNbzdRldxFvhTausyIJ_u4rHHbSBXd8xuRanVfHcNP_Y7VFoIRdsvq86onkiXyPyDQicglhm0J-AfUTJPKIvpBilU28uY7p7UQLPpvFVGVVR_RPuRkYmn0X6z3oAnWUPfyq-SJA7KP81fVP-uwk770_W-uogCmh9QPwNtpxI_ZdN1UBvngwLpCDMgcqBSvWg8rVYb-iWSs32L7vR7kHMWUYeQgVly2Sc8gRmLQmRHYaE93LE98yklH6ewUqJpEckcvcMjMWVaeU3Vj1g2PkHz268te5QD2YUm7rAi3eHqdxLKXYH8G4Ed3fHhR6gyM5nJuC9BtXpCKTDzzbt-as-vl5JU4QnLmQBTF5xLodaDEFxmuRcShqrNr4ePBKoM15Ytuir0DgMc3-PG_UpfAP_A4DNMmkFYI6DGLrYb2xpgAcO1y0fFsFxviDn_IxglB_Uq6Hy5wzmcvCy-QtDcrCfg6EkooVM9eh_mkabLEn9l3RN_brCpR3Gz9sp5f1cHfwM3c4GGdveY1HCO8XMfnSCgbOLmyhiHSZNI8CbUjOIo3ptl1X3fgR8qFMJthjFgLvWEO9teQAbq3j7mwwnLQ5psQCSZipWo5fB4hrp4lS8rGF7NbTndXttrmTo5gbCJRF_4EOBo16eMmm39lQSqlXB-zaIQAGtF1wu12gbbDiijdG6OekCNL3whmEqIxg74qc0swKA8nVSFq54Qoxg95egAOn6QPblePYS70v3dsZyELlfn_x_1f1jrocu4vqCu7TlMjtdEDNbpvSSRBb8aeRaXNItlJd5cQDBYU-R-R8rijK5v-9dWn4bhYXM4eHPvbgk5BqYv8yfVmvcuzoMBO1voITRK8DSatKhhIa9nQvy6tOuy3-qRtGng6p3OP1top7u0h44Toqi6iul88BDpxZijZxazRSl6m-XhLriLWuq-gBOM-2qt9M3_xDsHomwUHfChL4QLcoI3OMWOdSDzmtIBSVoesuxblnoOZHzmZ7SFBzNNo8Y69E74uIu_cCtta6bnMh3PHjGTbJRjbwJHHxMK0f5Sk6nGzdINSx2TdAEBfV5Vg1fujz6vbdaUrTJZ-uXp1IE_6YDxoPvCkRvs5_b2GVV0fw2BwPb25uhaV3MUgJ0NEIOv_s_WvHTsRht1yL-r0FFWF2_Tj4cGYZTJAiHzSFvIzRaIXJR8iHYa9GtTNEVVcak4yevMmUVtb7cMGqgZtPRB6H3wppmgvyPf7HBY-7VL6fm_clm8cFui2UDoyVfRmkINx4ADWq7Y40TN4hq0ny66Wxr3AC8Z9iAEMANWZ4Z-qUqv35ay11tRypbzWt1xRHRzX9Na-oRCxx4GqOsfKmV7_V2qCw9d1g3RmloLPojGcBfOUPbbFaTrtjDDzrTHTHLa-mBEF9WNeCucbpA94S69adVJQGIUwZ3XQ6Pts7CSdz8h5HW9IcHrrkwXWwX1pTIG5u8i_EVU50BbF4TpuKm4e1ub23R4PILnwnzLtjQAD4ZXLWgmsqkPSWEnknuc2ESzuy3RRZpPycKpTxG0hWihdOx_jmct456Rc0XT0Bf1kQ5YyUERRl9U04JODUy4GloGVLDyySsqRrVqXOQZ9fIEBFvuImGUJ0ses33A9qLOeeSlPJRHj4pcNr11P59Qo2Tzo4_Y7OVU64eovPC6CsDELSuefYNFkQbfC0TNEte6nJyi0vRaem2GpF9AK1wPPliA4YbEGqcdh2uwU0YrH5P_Mk-Dw1eDhKJKTh1KeHyYuR0e5yW2I_BgcxKCjctGzeotSDXYlQIbkyw-Q8YoPmWvy81cmo1ol_UnuExaSrEgMWjosBjTw2A-Vn5i4FdlGK0EfygtfAWza6-vz60hCWS3CYpS6u1YsI4iCDlwwZ6UrUtActQkG_I-b6jz44ygAt__rs-P6jhYGmyhVA-9HXXmtgAae07kR19Dm0MaU_R9vXd4hETnVOIYJXPJp1hIukDlCYbWh4pvnFmfHjiQI949eoG1VOrjTTdF6oHC5LBIoFYzPHq0He6io3Q1Pn3jd32jsu8sRoXt1BHXmlZoqQvD_KgDyo81t0qMNmzPIUfySa0FrUhu3LVck7LNz-2IWT15pcMus_1xBVug0qrBPdwfbRIvqP7cxMMRW7QItPgDJq5QRIHC3O6L4bcshQWwWaA=",
+        "id": "rs_07dd107b28e47d92016b06ed37698087d295c26e38237f8fcd",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"O boletim de alerta indica nível vermelho e prevê que o Rio Barreiro possa atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas. O plano de contingência informa que a ETA Barreiro é protegida por um muro de contenção construído em 2025 até a cota 8,5 m. Também consta que, em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"ETA Barreiro\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Estação de Tratamento de Água mencionada no plano de contingência.\"},{\"id\":\"E2\",\"nome\":\"muro de contenção\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Muro construído em 2025 para proteção da ETA Barreiro, até a cota 8,5 m.\"},{\"id\":\"E3\",\"nome\":\"Serviço Municipal de Água\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Órgão citado como fonte do plano e responsável por emitir aviso de racionamento em caso de risco à ETA.\"},{\"id\":\"E4\",\"nome\":\"aviso de racionamento\",\"tipo\":\"servico\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Aviso emitido com 12 horas de antecedência quando houver risco à ETA.\"},{\"id\":\"E5\",\"nome\":\"Rio Barreiro\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Curso d'água citado no boletim hidrológico, com previsão de elevação do nível na régua da cidade.\"},{\"id\":\"E6\",\"nome\":\"régua da cidade\",\"tipo\":\"equipamento\",\"setor_responsavel\":null,\"descricao\":\"Instrumento de medição citado no boletim para indicar o nível previsto do rio.\"},{\"id\":\"E7\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"setor\",\"setor_responsavel\":\"Sala de Situação Regional\",\"descricao\":\"Fonte do boletim hidrológico de 2026-11-25.\"},{\"id\":\"E8\",\"nome\":\"nível vermelho\",\"tipo\":\"evento\",\"setor_responsavel\":\"Sala de Situação Regional\",\"descricao\":\"Classificação do boletim hidrológico indicando condição de alerta.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"depende_de\",\"rotulo\":\"A ETA Barreiro é protegida pelo muro de contenção.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-09-09\",\"fim\":null,\"observacao\":\"Construído em 2025 até a cota 8,5 m.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção construído em 2025 até a cota 8,5 m.\"}]},{\"id\":\"R2\",\"origem\":\"E3\",\"destino\":\"E4\",\"tipo\":\"responsavel_por\",\"rotulo\":\"O Serviço Municipal de Água emite aviso de racionamento.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-09-09\",\"fim\":null,\"observacao\":\"Regra do plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.\"}]},{\"id\":\"R3\",\"origem\":\"E4\",\"destino\":\"E1\",\"tipo\":\"afetado_por\",\"rotulo\":\"O aviso de racionamento é acionado quando há risco à ETA.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-09-09\",\"fim\":null,\"observacao\":\"Condição prevista no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.\"}]},{\"id\":\"R4\",\"origem\":\"E5\",\"destino\":\"E6\",\"tipo\":\"outro\",\"rotulo\":\"O nível do Rio Barreiro é informado na régua da cidade.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-25\",\"fim\":null,\"observacao\":\"Previsão do boletim hidrológico.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.\"}]},{\"id\":\"R5\",\"origem\":\"E7\",\"destino\":\"E8\",\"tipo\":\"comunica\",\"rotulo\":\"A Sala de Situação Regional publicou boletim em nível vermelho.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-25\",\"fim\":null,\"observacao\":\"Boletim de 2026-11-25.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: VERMELHO. O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.\"}]},{\"id\":\"R6\",\"origem\":\"E5\",\"destino\":\"E1\",\"tipo\":\"afetado_por\",\"rotulo\":\"A elevação prevista do rio pode representar risco para a ETA Barreiro.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2026-11-25\",\"fim\":null,\"observacao\":\"Relação inferida pela combinação do alerta e do plano.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.\"},{\"doc_id\":\"D1\",\"trecho\":\"Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.\"}]}],\"achados_temporais\":[],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"A previsão de 8,3 m a 9,1 m na régua da cidade implica risco para a ETA Barreiro ou para o muro de contenção até a cota 8,5 m?\",\"por_que_importa\":\"A decisão sobre o aviso de racionamento depende de confirmar se o cenário previsto alcança a condição de risco prevista no plano.\",\"motivacao\":\"O boletim traz uma elevação prevista e o plano usa a cota 8,5 m como referência de proteção da ETA.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E5\",\"E6\"],\"setores_relacionados\":[\"Serviço Municipal de Água\",\"Sala de Situação Regional\"],\"status_epistemico\":\"inferencia\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.\"},{\"doc_id\":\"D1\",\"trecho\":\"A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção construído em 2025 até a cota 8,5 m.\"}],\"o_que_falta_saber\":\"Se a cota prevista para o rio se aproxima, alcança ou ultrapassa a condição de proteção da ETA no ponto crítico.\",\"quem_pode_confirmar\":\"Serviço Municipal de Água, com apoio da Sala de Situação Regional\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"O Serviço Municipal de Água já avalia emitir aviso de racionamento com 12 horas de antecedência neste cenário de alerta?\",\"por_que_importa\":\"O plano define uma ação específica quando houver risco à ETA, e a equipe precisa saber se essa regra será aplicada agora.\",\"motivacao\":\"O boletim está em nível vermelho e o plano prevê aviso antecipado em caso de risco à ETA.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E3\",\"E4\",\"E1\"],\"setores_relacionados\":[\"Serviço Municipal de Água\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: VERMELHO.\"}],\"o_que_falta_saber\":\"Se a avaliação interna de risco à ETA foi acionada e se a antecedência de 12 horas continua sendo a regra operacional vigente.\",\"quem_pode_confirmar\":\"Serviço Municipal de Água\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"Houve atualização posterior ao plano de 2025 que altere a proteção da ETA Barreiro ou a antecedência do aviso de racionamento?\",\"por_que_importa\":\"Uma mudança de protocolo pode alterar o que deve ser feito no alerta atual.\",\"motivacao\":\"O documento mais recente é um boletim de alerta, mas não informa se o plano de 2025 continua integralmente válido.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\",\"E4\"],\"setores_relacionados\":[\"Serviço Municipal de Água\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção construído em 2025 até a cota 8,5 m.\"},{\"doc_id\":\"D1\",\"trecho\":\"Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.\"}],\"o_que_falta_saber\":\"Se existe ofício, atualização ou novo protocolo após 2025 que mantenha, ajuste ou substitua essas regras.\",\"quem_pode_confirmar\":\"Serviço Municipal de Água\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"A régua da cidade usada no boletim é a mesma referência operacional considerada pelo plano para avaliar risco à ETA Barreiro?\",\"por_que_importa\":\"Sem a mesma referência de medição, a comparação entre a previsão do rio e a proteção da ETA pode ficar imprecisa.\",\"motivacao\":\"O boletim fala da régua da cidade, enquanto o plano informa uma cota de proteção da ETA.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E5\",\"E6\",\"E1\",\"E2\"],\"setores_relacionados\":[\"Sala de Situação Regional\",\"Serviço Municipal de Água\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.\"},{\"doc_id\":\"D1\",\"trecho\":\"até a cota 8,5 m.\"}],\"o_que_falta_saber\":\"Se a cota do muro e a régua do boletim referem-se ao mesmo padrão de leitura ou a referências diferentes.\",\"quem_pode_confirmar\":\"Sala de Situação Regional e Serviço Municipal de Água\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há informação sobre outras medidas operacionais previstas para o cenário de nível vermelho além do aviso de racionamento.\",\"por_que_importa\":\"Sem isso, a pauta só consegue verificar a ação explicitamente prevista no plano.\"},{\"descricao\":\"Não há registro histórico de eventos anteriores, ocorrências ou testes do muro de contenção.\",\"por_que_importa\":\"Sem histórico, não dá para concluir se a proteção já foi testada em situação semelhante.\"},{\"descricao\":\"Não há documento que explique a relação operacional entre a Sala de Situação Regional e o Serviço Municipal de Água.\",\"por_que_importa\":\"Essa relação pode ser necessária para coordenar a validação do risco e a comunicação ao público.\"}],\"cautelas\":[\"O boletim é fictício e não deve ser interpretado como alerta real.\",\"A previsão de nível do rio não equivale automaticamente à cota de proteção da ETA; a comparação precisa ser confirmada tecnicamente.\",\"Não há base documental para afirmar que a ETA será ou não atingida; apenas existe previsão de elevação do rio e uma referência de proteção no plano.\",\"Não presumir que o plano de 2025 esteja integralmente vigente sem confirmação institucional.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_07dd107b28e47d92016b06ed3b6bd887d2ab51ec7a73b54545",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2048,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 1920
+      },
+      "output_tokens": 3733,
+      "output_tokens_details": {
+        "reasoning_tokens": 1034
+      },
+      "total_tokens": 5781
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"O boletim de alerta indica nível vermelho e prevê que o Rio Barreiro possa atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas. O plano de contingência informa que a ETA Barreiro é protegida por um muro de contenção construído em 2025 até a cota 8,5 m. Também consta que, em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"ETA Barreiro\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Estação de Tratamento de Água mencionada no plano de contingência.\"},{\"id\":\"E2\",\"nome\":\"muro de contenção\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Muro construído em 2025 para proteção da ETA Barreiro, até a cota 8,5 m.\"},{\"id\":\"E3\",\"nome\":\"Serviço Municipal de Água\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Órgão citado como fonte do plano e responsável por emitir aviso de racionamento em caso de risco à ETA.\"},{\"id\":\"E4\",\"nome\":\"aviso de racionamento\",\"tipo\":\"servico\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Aviso emitido com 12 horas de antecedência quando houver risco à ETA.\"},{\"id\":\"E5\",\"nome\":\"Rio Barreiro\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Curso d'água citado no boletim hidrológico, com previsão de elevação do nível na régua da cidade.\"},{\"id\":\"E6\",\"nome\":\"régua da cidade\",\"tipo\":\"equipamento\",\"setor_responsavel\":null,\"descricao\":\"Instrumento de medição citado no boletim para indicar o nível previsto do rio.\"},{\"id\":\"E7\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"setor\",\"setor_responsavel\":\"Sala de Situação Regional\",\"descricao\":\"Fonte do boletim hidrológico de 2026-11-25.\"},{\"id\":\"E8\",\"nome\":\"nível vermelho\",\"tipo\":\"evento\",\"setor_responsavel\":\"Sala de Situação Regional\",\"descricao\":\"Classificação do boletim hidrológico indicando condição de alerta.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"depende_de\",\"rotulo\":\"A ETA Barreiro é protegida pelo muro de contenção.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-09-09\",\"fim\":null,\"observacao\":\"Construído em 2025 até a cota 8,5 m.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção construído em 2025 até a cota 8,5 m.\"}]},{\"id\":\"R2\",\"origem\":\"E3\",\"destino\":\"E4\",\"tipo\":\"responsavel_por\",\"rotulo\":\"O Serviço Municipal de Água emite aviso de racionamento.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-09-09\",\"fim\":null,\"observacao\":\"Regra do plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.\"}]},{\"id\":\"R3\",\"origem\":\"E4\",\"destino\":\"E1\",\"tipo\":\"afetado_por\",\"rotulo\":\"O aviso de racionamento é acionado quando há risco à ETA.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-09-09\",\"fim\":null,\"observacao\":\"Condição prevista no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.\"}]},{\"id\":\"R4\",\"origem\":\"E5\",\"destino\":\"E6\",\"tipo\":\"outro\",\"rotulo\":\"O nível do Rio Barreiro é informado na régua da cidade.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-25\",\"fim\":null,\"observacao\":\"Previsão do boletim hidrológico.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.\"}]},{\"id\":\"R5\",\"origem\":\"E7\",\"destino\":\"E8\",\"tipo\":\"comunica\",\"rotulo\":\"A Sala de Situação Regional publicou boletim em nível vermelho.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-25\",\"fim\":null,\"observacao\":\"Boletim de 2026-11-25.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: VERMELHO. O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.\"}]},{\"id\":\"R6\",\"origem\":\"E5\",\"destino\":\"E1\",\"tipo\":\"afetado_por\",\"rotulo\":\"A elevação prevista do rio pode representar risco para a ETA Barreiro.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2026-11-25\",\"fim\":null,\"observacao\":\"Relação inferida pela combinação do alerta e do plano.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.\"},{\"doc_id\":\"D1\",\"trecho\":\"Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.\"}]}],\"achados_temporais\":[],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"A previsão de 8,3 m a 9,1 m na régua da cidade implica risco para a ETA Barreiro ou para o muro de contenção até a cota 8,5 m?\",\"por_que_importa\":\"A decisão sobre o aviso de racionamento depende de confirmar se o cenário previsto alcança a condição de risco prevista no plano.\",\"motivacao\":\"O boletim traz uma elevação prevista e o plano usa a cota 8,5 m como referência de proteção da ETA.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E5\",\"E6\"],\"setores_relacionados\":[\"Serviço Municipal de Água\",\"Sala de Situação Regional\"],\"status_epistemico\":\"inferencia\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.\"},{\"doc_id\":\"D1\",\"trecho\":\"A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção construído em 2025 até a cota 8,5 m.\"}],\"o_que_falta_saber\":\"Se a cota prevista para o rio se aproxima, alcança ou ultrapassa a condição de proteção da ETA no ponto crítico.\",\"quem_pode_confirmar\":\"Serviço Municipal de Água, com apoio da Sala de Situação Regional\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"O Serviço Municipal de Água já avalia emitir aviso de racionamento com 12 horas de antecedência neste cenário de alerta?\",\"por_que_importa\":\"O plano define uma ação específica quando houver risco à ETA, e a equipe precisa saber se essa regra será aplicada agora.\",\"motivacao\":\"O boletim está em nível vermelho e o plano prevê aviso antecipado em caso de risco à ETA.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E3\",\"E4\",\"E1\"],\"setores_relacionados\":[\"Serviço Municipal de Água\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: VERMELHO.\"}],\"o_que_falta_saber\":\"Se a avaliação interna de risco à ETA foi acionada e se a antecedência de 12 horas continua sendo a regra operacional vigente.\",\"quem_pode_confirmar\":\"Serviço Municipal de Água\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"Houve atualização posterior ao plano de 2025 que altere a proteção da ETA Barreiro ou a antecedência do aviso de racionamento?\",\"por_que_importa\":\"Uma mudança de protocolo pode alterar o que deve ser feito no alerta atual.\",\"motivacao\":\"O documento mais recente é um boletim de alerta, mas não informa se o plano de 2025 continua integralmente válido.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\",\"E4\"],\"setores_relacionados\":[\"Serviço Municipal de Água\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção construído em 2025 até a cota 8,5 m.\"},{\"doc_id\":\"D1\",\"trecho\":\"Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.\"}],\"o_que_falta_saber\":\"Se existe ofício, atualização ou novo protocolo após 2025 que mantenha, ajuste ou substitua essas regras.\",\"quem_pode_confirmar\":\"Serviço Municipal de Água\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"A régua da cidade usada no boletim é a mesma referência operacional considerada pelo plano para avaliar risco à ETA Barreiro?\",\"por_que_importa\":\"Sem a mesma referência de medição, a comparação entre a previsão do rio e a proteção da ETA pode ficar imprecisa.\",\"motivacao\":\"O boletim fala da régua da cidade, enquanto o plano informa uma cota de proteção da ETA.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E5\",\"E6\",\"E1\",\"E2\"],\"setores_relacionados\":[\"Sala de Situação Regional\",\"Serviço Municipal de Água\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.\"},{\"doc_id\":\"D1\",\"trecho\":\"até a cota 8,5 m.\"}],\"o_que_falta_saber\":\"Se a cota do muro e a régua do boletim referem-se ao mesmo padrão de leitura ou a referências diferentes.\",\"quem_pode_confirmar\":\"Sala de Situação Regional e Serviço Municipal de Água\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há informação sobre outras medidas operacionais previstas para o cenário de nível vermelho além do aviso de racionamento.\",\"por_que_importa\":\"Sem isso, a pauta só consegue verificar a ação explicitamente prevista no plano.\"},{\"descricao\":\"Não há registro histórico de eventos anteriores, ocorrências ou testes do muro de contenção.\",\"por_que_importa\":\"Sem histórico, não dá para concluir se a proteção já foi testada em situação semelhante.\"},{\"descricao\":\"Não há documento que explique a relação operacional entre a Sala de Situação Regional e o Serviço Municipal de Água.\",\"por_que_importa\":\"Essa relação pode ser necessária para coordenar a validação do risco e a comunicação ao público.\"}],\"cautelas\":[\"O boletim é fictício e não deve ser interpretado como alerta real.\",\"A previsão de nível do rio não equivale automaticamente à cota de proteção da ETA; a comparação precisa ser confirmada tecnicamente.\",\"Não há base documental para afirmar que a ETA será ou não atingida; apenas existe previsão de elevação do rio e uma referência de proteção no plano.\",\"Não presumir que o plano de 2025 esteja integralmente vigente sem confirmação institucional.\"]}"
+  }
+}

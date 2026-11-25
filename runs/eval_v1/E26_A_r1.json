@@ -1,0 +1,1036 @@
+{
+  "meta": {
+    "scenario": "E26",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D3",
+      "D2"
+    ],
+    "user_message_chars": 1059,
+    "user_message_sha12": "48ce8f20caaa"
+  },
+  "user_message": "Município (fictício): Cerro Largo do Norte\nData de referência da análise: 2026-11-22\nDocumentos disponíveis (3), em ordem cronológica:\n\n### [D1] Plano de Contingência — Saúde (2025)\nTipo: Plano de contingência | Fonte: Secretaria de Saúde | Data: 2025-06-06\n\nPartos e gestação de alto risco: referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.\nAmbulâncias: 3 (uma básica, uma avançada e uma de transporte).\n\n---\n\n### [D3] Acompanhamento pré-natal — Atenção Básica — novembro/2026\nTipo: Atualização de secretaria | Fonte: Atenção Básica | Data: 2026-11-10\n\nGestantes de alto risco em acompanhamento: 6, sendo 2 com data provável de parto até 05/12/2026.\n\n---\n\n### [D2] Alerta (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-22\n\nNÍVEL: LARANJA. Chuva intensa na bacia do Rio Três Rios; possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_0b813c1ebf7cdb91016b06ec9cb92487d2b2a90f980ca69276",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 2116,
+    "output_tokens": 3397,
+    "reasoning_tokens": 278
+  },
+  "latency_ms": 21828,
+  "started_at": "2026-11-25T14:11:40.177Z",
+  "output": {
+    "resumo_situacao": "O alerta atual aponta chuva intensa com possibilidade de alagamento na RC-30, no trecho do km 18 ao km 24. Nos documentos de saúde, há referência para gestação de alto risco pela mesma rodovia, e a Atenção Básica informa 6 gestantes em acompanhamento, sendo 2 com parto provável até 05/12/2026.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Maternidade Regional de Três Rios",
+        "tipo": "local",
+        "setor_responsavel": "Saúde",
+        "descricao": "Unidade de referência para partos e gestação de alto risco."
+      },
+      {
+        "id": "E2",
+        "nome": "Rodovia RC-30",
+        "tipo": "infraestrutura",
+        "setor_responsavel": "Infraestrutura/Vias",
+        "descricao": "Rodovia citada como acesso para a referência de alto risco e afetada pelo alerta no trecho do km 18 ao km 24."
+      },
+      {
+        "id": "E3",
+        "nome": "Ambulâncias da Saúde",
+        "tipo": "recurso",
+        "setor_responsavel": "Saúde",
+        "descricao": "Conjunto de 3 ambulâncias informado no plano: uma básica, uma avançada e uma de transporte."
+      },
+      {
+        "id": "E4",
+        "nome": "Gestantes de alto risco",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": "Saúde",
+        "descricao": "Grupo acompanhado pela Atenção Básica; 6 gestantes registradas em novembro de 2026."
+      },
+      {
+        "id": "E5",
+        "nome": "Atenção Básica",
+        "tipo": "setor",
+        "setor_responsavel": "Saúde",
+        "descricao": "Setor que informou o acompanhamento pré-natal em novembro de 2026."
+      },
+      {
+        "id": "E6",
+        "nome": "Plano de Contingência — Saúde (2025)",
+        "tipo": "norma_documento",
+        "setor_responsavel": "Saúde",
+        "descricao": "Plano que registra a referência para maternidade e a frota de ambulâncias."
+      },
+      {
+        "id": "E7",
+        "nome": "Alerta de chuva intensa na bacia do Rio Três Rios",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Cenário de alerta em nível laranja com possibilidade de alagamento na RC-30."
+      },
+      {
+        "id": "E8",
+        "nome": "Trecho km 18 ao km 24 da RC-30",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Segmento da rodovia citado como com possibilidade de alagamento no alerta."
+      },
+      {
+        "id": "E9",
+        "nome": "Acompanhamento pré-natal — novembro/2026",
+        "tipo": "norma_documento",
+        "setor_responsavel": "Saúde",
+        "descricao": "Atualização da Atenção Básica com o número de gestantes acompanhadas e datas prováveis de parto."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E4",
+        "destino": "E1",
+        "tipo": "depende_de",
+        "rotulo": "Gestantes de alto risco têm referência na maternidade regional.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-06-06",
+          "fim": null,
+          "observacao": "Referência registrada no plano e ainda sem substituição documentada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Partos e gestação de alto risco: referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "acesso_por",
+        "rotulo": "O acesso informado para a referência é pela RC-30.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-06-06",
+          "fim": null,
+          "observacao": "Acesso descrito no plano de contingência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E7",
+        "destino": "E2",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta indica possibilidade de alagamento na RC-30.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-22",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E8",
+        "destino": "E2",
+        "tipo": "localizado_em",
+        "rotulo": "O trecho km 18 ao km 24 pertence à RC-30.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-22",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "incluindo a RC-30 no trecho do km 18 ao km 24."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E5",
+        "destino": "E4",
+        "tipo": "atende",
+        "rotulo": "A Atenção Básica acompanha gestantes de alto risco.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-10",
+          "fim": null,
+          "observacao": "Informação da atualização de novembro de 2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Gestantes de alto risco em acompanhamento: 6"
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E3",
+        "destino": "E4",
+        "tipo": "atende",
+        "rotulo": "As ambulâncias são recurso potencial para deslocamento de gestantes em situação de referência.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2025-06-06",
+          "fim": null,
+          "observacao": "Inferido pela existência da referência para maternidade e da frota disponível."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Ambulâncias: 3 (uma básica, uma avançada e uma de transporte)."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Partos e gestação de alto risco: referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E3",
+        "destino": "E6",
+        "tipo": "abastece",
+        "rotulo": "O plano registra a frota de ambulâncias como recurso de saúde.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-06-06",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Ambulâncias: 3 (uma básica, uma avançada e uma de transporte)."
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E9",
+        "destino": "E4",
+        "tipo": "outro",
+        "rotulo": "A atualização informa o total de gestantes acompanhadas e as datas prováveis de parto.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-10",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Gestantes de alto risco em acompanhamento: 6, sendo 2 com data provável de parto até 05/12/2026."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "Em 10/11/2026, a Atenção Básica atualizou o acompanhamento pré-natal e registrou 6 gestantes de alto risco, com 2 previstas para parto até 05/12/2026.",
+        "implicacao": "Há demanda atual e imediata de acompanhamento, com parte do grupo perto da data provável de parto.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Gestantes de alto risco em acompanhamento: 6, sendo 2 com data provável de parto até 05/12/2026."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "O trecho da RC-30 entre o km 18 e o km 24 está trafegável para eventual deslocamento de gestantes de alto risco até a referência em Três Rios?",
+        "por_que_importa": "A rota de referência da gestação de alto risco passa pela RC-30, e o alerta indica possibilidade de alagamento nesse trecho.",
+        "motivacao": "O plano de saúde aponta a RC-30 como acesso à maternidade de referência, e o alerta menciona alagamento no mesmo trecho.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E7",
+          "E8",
+          "E4"
+        ],
+        "setores_relacionados": [
+          "Saúde",
+          "Infraestrutura/Vias"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24."
+          }
+        ],
+        "o_que_falta_saber": "Se houve alagamento, interdição, desvio ou condição de passagem no trecho citado.",
+        "quem_pode_confirmar": "Sala de Situação Regional, Defesa Civil e setor responsável por vias/obras, se houver confirmação institucional.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "A referência para a Maternidade Regional de Três Rios continua sendo o fluxo previsto para gestação e parto de alto risco neste cenário?",
+        "por_que_importa": "Se a rota de referência estiver comprometida, a equipe precisa saber se há orientação formal atualizada para manter ou ajustar esse fluxo.",
+        "motivacao": "O plano traz a referência e o alerta incide sobre a rodovia usada para esse deslocamento.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E4",
+          "E6",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "Saúde",
+          "Atenção Básica"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Partos e gestação de alto risco: referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24."
+          }
+        ],
+        "o_que_falta_saber": "Se houve atualização do fluxo de referência, alternativa de encaminhamento ou orientação específica para o cenário atual.",
+        "quem_pode_confirmar": "Secretaria de Saúde e Atenção Básica, conforme o fluxo interno de referência.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "As 3 ambulâncias informadas no plano estão todas disponíveis para eventuais remoções relacionadas às gestantes de alto risco?",
+        "por_que_importa": "O documento de 2025 registra a frota, mas não informa a situação operacional atual nem eventual indisponibilidade.",
+        "motivacao": "Há 6 gestantes em acompanhamento e 2 com data provável de parto até 05/12/2026, o que pode exigir remoção.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E3",
+          "E4",
+          "E6",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "Saúde"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Ambulâncias: 3 (uma básica, uma avançada e uma de transporte)."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Gestantes de alto risco em acompanhamento: 6, sendo 2 com data provável de parto até 05/12/2026."
+          }
+        ],
+        "o_que_falta_saber": "Se alguma ambulância está em manutenção, em uso externo ou sem equipe/combustível para deslocamento.",
+        "quem_pode_confirmar": "Coordenação da Saúde ou responsável pela frota de ambulâncias, conforme definição institucional.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V4",
+        "pergunta": "As 2 gestantes com data provável de parto até 05/12/2026 já têm definição de unidade de referência e meio de transporte compatível com a situação da RC-30?",
+        "por_que_importa": "São os casos com maior urgência temporal dentro do grupo acompanhado e podem depender do mesmo corredor viário afetado.",
+        "motivacao": "A atualização de novembro aponta partos próximos, enquanto o alerta afeta a rota de referência.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E4",
+          "E7",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "Saúde",
+          "Atenção Básica"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "sendo 2 com data provável de parto até 05/12/2026."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24."
+          }
+        ],
+        "o_que_falta_saber": "Se houve classificação de prioridade, agendamento, plano de remoção ou retaguarda específica para esses dois casos.",
+        "quem_pode_confirmar": "Atenção Básica e setor de regulação/apoio da Saúde, se existente no fluxo local.",
+        "prioridade": "alta"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há documento com orientação operacional específica para o cenário laranja no setor de Saúde.",
+        "por_que_importa": "Sem essa orientação, não é possível saber se o fluxo de referência ou de transporte mudou por causa do alerta."
+      },
+      {
+        "descricao": "Não há informação sobre condição atual da RC-30, desvio ou interdição no trecho km 18 ao km 24.",
+        "por_que_importa": "A rota é central para o acesso à maternidade de referência e pode ser afetada pelo alerta."
+      },
+      {
+        "descricao": "Não há registro sobre disponibilidade operacional das ambulâncias em 22/11/2026.",
+        "por_que_importa": "A frota existe no plano, mas não se sabe se está apta para uso imediato."
+      }
+    ],
+    "cautelas": [
+      "O plano de 2025 e a atualização de 2026 devem ser lidos em conjunto; o documento mais recente não substitui automaticamente o anterior em todos os pontos.",
+      "A informação sobre a Maternidade Regional de Três Rios é uma referência documentada, não uma garantia de que o deslocamento continuará possível no cenário atual.",
+      "As verificações foram limitadas ao que aparece nos documentos e ao vínculo direto com o alerta de chuva e a assistência a gestantes de alto risco."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 9,
+    "n_relacoes": 8,
+    "n_verificacoes": 4,
+    "n_temporais": 1,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Partos e gestação de alto risco: referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "incluindo a RC-30 no trecho do km 18 ao km 24.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Gestantes de alto risco em acompanhamento: 6",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Ambulâncias: 3 (uma básica, uma avançada e uma de transporte).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Partos e gestação de alto risco: referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Ambulâncias: 3 (uma básica, uma avançada e uma de transporte).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Gestantes de alto risco em acompanhamento: 6, sendo 2 com data provável de parto até 05/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Gestantes de alto risco em acompanhamento: 6, sendo 2 com data provável de parto até 05/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Partos e gestação de alto risco: referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Ambulâncias: 3 (uma básica, uma avançada e uma de transporte).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Gestantes de alto risco em acompanhamento: 6, sendo 2 com data provável de parto até 05/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "sendo 2 com data provável de parto até 05/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      }
+    ],
+    "n_citacoes": 18,
+    "n_citacoes_literais": 18,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795615922,
+    "created_at": 1795615900,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_0b813c1ebf7cdb91016b06ec9cb92487d2b2a90f980ca69276",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBuyfj6GqKOPFYHxvrRdRjggKr7iA6fuQVXPgbHkY-kNvFBIKaoiTXGVIWK-0MmS5-7aONx7KnkgmqRxT-oEBZHp-zuz3byjcVrfjDxUa4BTfkykJs0duirk8cqEOxy1ZyxDthOv0ACOhIUx5ccOrGC2NCRv9tQvV7RqhQj7n9hU4HSWhyP2RF6Yqn-Z5xhw5DBvkJzzX0n_F9oim1krI3D-tJETk7Qm4jbqpxjvuobsY34lmWe8GDZ-Ug0cjFrVO-TR0_5nwLSitwwcB_r1gJH3kV03Wq-3is-EeBC9lzvN_G5j743EV5EUxQ0mz6m8XxNotNNYBBcx-43PduFSYYK1IHQNzmoHZlFwfmKfkhZ0QjM6dR03ZB6F5UR6BXQ-LBDCMHly1uJ5TZJkMm7NOOdvNVZoXvYlG1cYEkCsP310O_kbt3h-gIZKCyHDi6Caj5FqemwhGrdnuUHyO3Sq6HJ4kC9R2LduLT-VQD9Js85bN_lIWYldPPdSRs-47qW8nK3ieOTQlE3D5wmP6ysOZdVF5u9tpOKTlQUWzwkQaSDQPJZAUuBTGQH4oUErB3yDfa69jtRIjU4tVf5ctVdr9iPD-UcVSX0SUCqGd9wn7MWB06ePeN8xJmNF1aCtmj1LTqqAVFFrstphOCVVnfp23I24UGpBZ53RZj4raDwoklvKXrl34m1GizitkeEUNwc5J-M1k_yvlwjrT509O3F3HULA91H-JrVzHp7kRPKEUoUTeATu4FdCyFHWLpUYpIOVMxqIPxI1G5MzSZlvgNtVkFoxMJ0XM6a8wc6oMHcKAkXsn2JN5-_ar8IBU_dkNQwHyavnWATqQbhPFxLDy6NI1De8h1pLkamfnpFErspC1xpuJuhHd7XrIy87PLsnSzRRu_vHJ95CmLPVP00KXJ_dPjuiIC-vskrbsHFol4Dxx_IUkT8afCFFy2q1ZucZt3ZYrqaWCAvBbNLRQUtPmJTAdVnIUn59PIUIvZSzKjrhcGXkd9kzr4KZXt2Eqp5-DfxGN20_PvkFyhLc-AU4Dlw8KScxa3ZGnkWT8IMUZ1Zt0ARZfjz4qpbfGHFQjjREYtkNeAvY9CmzC8Q-GnjSyo6LjUgLNKzJ8ZT5O1cWFSvTFY1lF-ZM29SY6QBjTE6Vzpd8aId686IzCJKF534zjjRBr1g1gCbaCZWTfXB4d56woY8lBZvTqbe5kZuyRm0YYhHH4jKmr75zG14jcDRA9nm_Y_Grs84yRyffLTYPlOctgPUhXNk5xFnyId6lrF37HPPClop0CUjsJRZBjD1Nl7k2H04BiYpx3JGtOk8L6v8qe5Nt0Yt484iDMikaG2FFe6PvLyOEykYkzvEWlpwphI6KLfZb_HXSQG-_6j5hKt1dpS_tWBJs3UuVCDWfP27IWUBCccV53zeiWNXeP19MyamujJVLV0bhrJtsQxdgBT23kZ0NvlVWmbUE0KWsgc_-1IxGp2wzqOSosdhh47C3bDn4i_qseM_eVv21PFaBkTbjhEycG_X--iVvMns_EeWkCZu8SIzQ_-DGyVoJeMUYcC3uTopDQbglqJsIJozHLd67dSHyJY7Ov_jTmVOas1WRv82W1ybQ7bNxgl-NLof_j4pQQmcyw2MXsjzDbk_Fb-ATp13ZsFKHuc0yItj9RftLiYA86CoQSCq_vJ9BWK-Wkop5JIAnIxF3udlKGfU74oc56pKSG6VHIFmHy-tXq2FkXddohujtEqmQih8fy8xifgQbgyni_pU0Kv9Xty1uzHrMO0ExV9Xu-ojZBpC0ZHL524WU0xHzODqsB7m0kyqgn8K1-r4CMlJBc6IlIVy9CLhfVZd1MDHgfXUJ5oGoi4U-34oyUwwILRZJnacwjeUU8lWa2re9sDHiqXxBFv8jxLCmhUDitUWrXV1hM7-hJ1be2dvrDqKxyAyj_jYlJ6YpcpI56AMT8d3XgPHjDrrRXVWi3CWgZyTdl6G8HFr8TuYpipxwJkBAbsxNAiWDLM4Cm5rubbXW8FBk1lsgOb-vHDidc8I8YkQKPiv4xPyrJoiv6gLbSO-Pmwmly7q2fw4u26OHyqx5UNCi_7ssVU6xz6FSXXUJuaqugBWQwHNtyDc20NLFOLR6d6cBjs-qcOaXB970JJsk0Z9w6E3niTYY75-_NmG7fRn5JHjUvHQvTylftUU7lTjU9uywe2OmD513RFSYf9-ipoP39euqPPSTibUPEacKt_c4NI6IhBRgSWkd1l4R4TrJRAUgqF9WWWfESWcW2xiCu4jC8MWMkXcQXSxmhYbMf7AhYeE48_qKS7V5uRLe_9N_YpB92DH9De8ERvXb7LKQyjMBknFNez046tKldhU2tNCTNM5o_OrUJISW8ddOQ77-kUTISESh4BOtXJqK0rY8UrjeS0rFzq7_ruodqukTQYsSpudI1jw3ykRs1Nd7ktyGudPkX1Vdvd5_w3TKkTMBe8Jyu4hjd7VgEzfHxuVVIUUrTfdpEpoml7Pvf391Vb5nkmAHreld0gnlFGMko5IPSQDMb0T7uK1Dv_oE1n_YOFj3dlqvpM92Y00zYLKiB8wMXAjNWxdWQVatsedOw41fG_VPD7hU2Os85VVogaGc9Ohu-9lL0nufomAhhiIoV3ij7w2qX2NWdtI76ISRVlxLcawY3AYSw1-Z3ESivagE29XUqagOL7hhwumIjbuShGMA4DxPU0tbS9JKmSi9EgTNWuAdrUevklH3dDg8mvk6LL0SbUEBCojMnXluTZX65cA_Hany4IpThE8xNwhJaKdvOsw_P5S0x8Ysdm8-0ohnXvJX8bT9vldAmz3_t9OK_3iHS4NJsayJnCZFrMYc8pZU5-k2UJBOqiZ7G4EzVHVdjWSVS1QzCpODRmIIminCv9TbSa1b6W-lvuzX8J2RX8srqXNNgAamKj0wnEkvRgMBZLwQfRXoDn2yWwf8SDmmzfNl-V_8EwWJn1HTAwGh5hG-5RmHqOSolnM1czC_MWedUZOivF_ye1rGdon9wLv_USdy68lK_jDOTqFu330NmJTIXpvuS8fI75QLM3Sm6dprsPJJ35RczTpBb3bas7DTIvaTABR5Uwbdcrdm9dNobdhOhMUqfRouUcgsVMahFfVKnzyD2YKKaRDkBk1DqlVd9AvCNApl8_JokVfZumNrqDULZivfRH9Ef6vxGtotsHBJgdr4VYHEQ0F2viyMQqYX6-9KivsLnhLIKFIt1MrQyOM7MBEzrtXIoSETdSe-s44KPVE95CpM-yhF-CvnWSMYzHb6uNjcVV3e7OYeLC-MXC8SS2CKkWg9gSU49tYyiG_yjdzWGqP2bjeW6d0pn8aptWkiAzpqjXZNogQeNn0QRHitTMP5vny75ztX8wugK67YoXnPo3Ylc_FquTba6EkY2aLrEYQ3rwoCXj5HFCKBqiUgTDz2j0pxC2FRB5297CWSkJcTaZ5hwgQDWnz-757OXlc36l8nSJo-lwh9fWqmhetyOldNah6K6YJgI34uO30J0RGJrrd3d2MyHIAc1kIQD-juHfmr18mFQiURcO982ucY7MoMgP00Q49UFStOzdUN0u2JO7L95Af9OPecg_ncQ4gcVaEB0C2_AE2W9L-yXQyVvZiqJNJcDOl8Aejk1zrCFhI5urRU1x1yO3fo9aW8UR0actLAIng8oEFG8ak0fPyJa-LKz_iyEfQ3WR12sSsA8WlF4-Qj06PUxPiTNibl2Rj0glms1iweHYi5YgL2ABY6zTZuGWyFskiS5n2JV3wGCePeAx21IjtDl0_5S1W1oUhX0kHXa11Xlo4hFJS4BOnobKQ-AInOCMDgDR3QOOB-FdlXGMQ2KakkkJhn1cidEh_hBIII6_BE9EWyNe_NROjSSvuOpYAB7tPrCFjnWhMO9PKevW8K3V-hKsWK_gJ8DtLrppgpkCzav8Z_MDiMV8sj4VWYY_xg7pL2YtEhtEQ43U7sNIL1aYVU5hDXO7ufyomak__Pw4L9F-9EHxyoKnRVWSd_GQgZJy-HZ6BV4EQRvKVvjFznhmJxA3v0WP2lfC_zXN7kLZi9hzUDUz3Yu9y6x5nTwUPHG4y-sPNK5qkBK7iNScD0q7tcNjLFzCXAPaPEV_KWYLiH6_Gwh-beoLFbzsWKxqjpH-OEHILsmD0I2LpPO8pwtb0pBV4UiwPPsWIUzeQaLMJUbSfjTiKE267xt7wgHGVAit7hcakaNsqn5mfEUns8pd8W5zR6qi73qazLJPuK38z-an_rdStYwKVRDg5ROMwZe8wYuLiTJvZgxkBLCi7sh938UOOQA9qBiv08mCE1BOAoAo--6tOdjtiIt8SmW7YNPssRoX5h5olPFS_ND5zgRUyH4fZDHs7yTt_EXjlQIPCN7kCeT9zeMar8-6Gifu5geE6cUB_FMapr2hOsaerRHVVv1lKiLmBe5rCxy_9jJAQXQQb0lIH23TwnxHMfCFdz8Lo357xVoQbxQRFOLGzzojPsnPP8AxECW6g77lw1ITK3OnqK8OMlfLkwXp6AINuhUzlARN1tYHhmhqPn-O3SCjYZV_qKnKwO7VjUwpyzPFh6kXkSRNAQq_X0UENuJ_A26rZfKJu0RKJ_mn_1g144W8jq0hOEh0tLrRVe1uoxv1eEKe4qnIUqxE1Njxg2H6lpkPXrfoAvIE9xy8MsAENT8ji5Ub-PV6RTABmteUMk0g3WON6AVW89DiPM4c_NTldXldGdYFn-gDI4lvhrBAJsXRHgRZZpLtb3s7P1G5yVrRb6FDsGq7cK_Cq_X-EsrCBD1VTA_rWcV168ulleCVYsVe6ISF9pr1RVYVWxv3dPJRYbiiuy9mPhPBRcr2Y49hSLgyt-a_DjDbSFFZWXccKO9flHQf7WUgAoo32vp7CVqQD6TQV2nYhXatLiJ6zxh3mfWh8Ocunia93a7nJsyBpkspu1oPps2qO0OBwOlP9of0tvX6uhwHBmmPbXphPMARWbv6cHKmaZYsHJ5MjJN3k4QYj-x3XgyL8qAytW_aPYoSWi2m4OAOmaMMS4JrRkIvib0mcaxHb589CVwfTuTDfius8SeiKRl3hsdQpWdBooGQKAdvVgw4GdOEdLC3WhM7t-T0XFY1mIwe-nUfVBGAV9sTdffAE654A0XEkZFF_DiyWkVBarK9fOU-PuMIcPkkreYan2pE2tobYizUtuY-S0McSGP8ezpyJxu5KuKEnmakf96ddjoFkuulbJJzQ==",
+        "id": "rs_0b813c1ebf7cdb91016b06ec9f9e8887d29b436d6120099b77",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"O alerta atual aponta chuva intensa com possibilidade de alagamento na RC-30, no trecho do km 18 ao km 24. Nos documentos de saúde, há referência para gestação de alto risco pela mesma rodovia, e a Atenção Básica informa 6 gestantes em acompanhamento, sendo 2 com parto provável até 05/12/2026.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Maternidade Regional de Três Rios\",\"tipo\":\"local\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Unidade de referência para partos e gestação de alto risco.\"},{\"id\":\"E2\",\"nome\":\"Rodovia RC-30\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"Infraestrutura/Vias\",\"descricao\":\"Rodovia citada como acesso para a referência de alto risco e afetada pelo alerta no trecho do km 18 ao km 24.\"},{\"id\":\"E3\",\"nome\":\"Ambulâncias da Saúde\",\"tipo\":\"recurso\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Conjunto de 3 ambulâncias informado no plano: uma básica, uma avançada e uma de transporte.\"},{\"id\":\"E4\",\"nome\":\"Gestantes de alto risco\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Grupo acompanhado pela Atenção Básica; 6 gestantes registradas em novembro de 2026.\"},{\"id\":\"E5\",\"nome\":\"Atenção Básica\",\"tipo\":\"setor\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Setor que informou o acompanhamento pré-natal em novembro de 2026.\"},{\"id\":\"E6\",\"nome\":\"Plano de Contingência — Saúde (2025)\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Plano que registra a referência para maternidade e a frota de ambulâncias.\"},{\"id\":\"E7\",\"nome\":\"Alerta de chuva intensa na bacia do Rio Três Rios\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Cenário de alerta em nível laranja com possibilidade de alagamento na RC-30.\"},{\"id\":\"E8\",\"nome\":\"Trecho km 18 ao km 24 da RC-30\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Segmento da rodovia citado como com possibilidade de alagamento no alerta.\"},{\"id\":\"E9\",\"nome\":\"Acompanhamento pré-natal — novembro/2026\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Atualização da Atenção Básica com o número de gestantes acompanhadas e datas prováveis de parto.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E4\",\"destino\":\"E1\",\"tipo\":\"depende_de\",\"rotulo\":\"Gestantes de alto risco têm referência na maternidade regional.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-06-06\",\"fim\":null,\"observacao\":\"Referência registrada no plano e ainda sem substituição documentada.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Partos e gestação de alto risco: referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.\"}]},{\"id\":\"R2\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"acesso_por\",\"rotulo\":\"O acesso informado para a referência é pela RC-30.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-06-06\",\"fim\":null,\"observacao\":\"Acesso descrito no plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.\"}]},{\"id\":\"R3\",\"origem\":\"E7\",\"destino\":\"E2\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta indica possibilidade de alagamento na RC-30.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-22\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24.\"}]},{\"id\":\"R4\",\"origem\":\"E8\",\"destino\":\"E2\",\"tipo\":\"localizado_em\",\"rotulo\":\"O trecho km 18 ao km 24 pertence à RC-30.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-22\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"incluindo a RC-30 no trecho do km 18 ao km 24.\"}]},{\"id\":\"R5\",\"origem\":\"E5\",\"destino\":\"E4\",\"tipo\":\"atende\",\"rotulo\":\"A Atenção Básica acompanha gestantes de alto risco.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-10\",\"fim\":null,\"observacao\":\"Informação da atualização de novembro de 2026.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Gestantes de alto risco em acompanhamento: 6\"}]},{\"id\":\"R6\",\"origem\":\"E3\",\"destino\":\"E4\",\"tipo\":\"atende\",\"rotulo\":\"As ambulâncias são recurso potencial para deslocamento de gestantes em situação de referência.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2025-06-06\",\"fim\":null,\"observacao\":\"Inferido pela existência da referência para maternidade e da frota disponível.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ambulâncias: 3 (uma básica, uma avançada e uma de transporte).\"},{\"doc_id\":\"D1\",\"trecho\":\"Partos e gestação de alto risco: referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.\"}]},{\"id\":\"R7\",\"origem\":\"E3\",\"destino\":\"E6\",\"tipo\":\"abastece\",\"rotulo\":\"O plano registra a frota de ambulâncias como recurso de saúde.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-06-06\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ambulâncias: 3 (uma básica, uma avançada e uma de transporte).\"}]},{\"id\":\"R8\",\"origem\":\"E9\",\"destino\":\"E4\",\"tipo\":\"outro\",\"rotulo\":\"A atualização informa o total de gestantes acompanhadas e as datas prováveis de parto.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-10\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Gestantes de alto risco em acompanhamento: 6, sendo 2 com data provável de parto até 05/12/2026.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"Em 10/11/2026, a Atenção Básica atualizou o acompanhamento pré-natal e registrou 6 gestantes de alto risco, com 2 previstas para parto até 05/12/2026.\",\"implicacao\":\"Há demanda atual e imediata de acompanhamento, com parte do grupo perto da data provável de parto.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Gestantes de alto risco em acompanhamento: 6, sendo 2 com data provável de parto até 05/12/2026.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"O trecho da RC-30 entre o km 18 e o km 24 está trafegável para eventual deslocamento de gestantes de alto risco até a referência em Três Rios?\",\"por_que_importa\":\"A rota de referência da gestação de alto risco passa pela RC-30, e o alerta indica possibilidade de alagamento nesse trecho.\",\"motivacao\":\"O plano de saúde aponta a RC-30 como acesso à maternidade de referência, e o alerta menciona alagamento no mesmo trecho.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E7\",\"E8\",\"E4\"],\"setores_relacionados\":[\"Saúde\",\"Infraestrutura/Vias\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.\"},{\"doc_id\":\"D2\",\"trecho\":\"possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24.\"}],\"o_que_falta_saber\":\"Se houve alagamento, interdição, desvio ou condição de passagem no trecho citado.\",\"quem_pode_confirmar\":\"Sala de Situação Regional, Defesa Civil e setor responsável por vias/obras, se houver confirmação institucional.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A referência para a Maternidade Regional de Três Rios continua sendo o fluxo previsto para gestação e parto de alto risco neste cenário?\",\"por_que_importa\":\"Se a rota de referência estiver comprometida, a equipe precisa saber se há orientação formal atualizada para manter ou ajustar esse fluxo.\",\"motivacao\":\"O plano traz a referência e o alerta incide sobre a rodovia usada para esse deslocamento.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E4\",\"E6\",\"E7\"],\"setores_relacionados\":[\"Saúde\",\"Atenção Básica\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Partos e gestação de alto risco: referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.\"},{\"doc_id\":\"D2\",\"trecho\":\"possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24.\"}],\"o_que_falta_saber\":\"Se houve atualização do fluxo de referência, alternativa de encaminhamento ou orientação específica para o cenário atual.\",\"quem_pode_confirmar\":\"Secretaria de Saúde e Atenção Básica, conforme o fluxo interno de referência.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"As 3 ambulâncias informadas no plano estão todas disponíveis para eventuais remoções relacionadas às gestantes de alto risco?\",\"por_que_importa\":\"O documento de 2025 registra a frota, mas não informa a situação operacional atual nem eventual indisponibilidade.\",\"motivacao\":\"Há 6 gestantes em acompanhamento e 2 com data provável de parto até 05/12/2026, o que pode exigir remoção.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E3\",\"E4\",\"E6\",\"E9\"],\"setores_relacionados\":[\"Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ambulâncias: 3 (uma básica, uma avançada e uma de transporte).\"},{\"doc_id\":\"D3\",\"trecho\":\"Gestantes de alto risco em acompanhamento: 6, sendo 2 com data provável de parto até 05/12/2026.\"}],\"o_que_falta_saber\":\"Se alguma ambulância está em manutenção, em uso externo ou sem equipe/combustível para deslocamento.\",\"quem_pode_confirmar\":\"Coordenação da Saúde ou responsável pela frota de ambulâncias, conforme definição institucional.\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"As 2 gestantes com data provável de parto até 05/12/2026 já têm definição de unidade de referência e meio de transporte compatível com a situação da RC-30?\",\"por_que_importa\":\"São os casos com maior urgência temporal dentro do grupo acompanhado e podem depender do mesmo corredor viário afetado.\",\"motivacao\":\"A atualização de novembro aponta partos próximos, enquanto o alerta afeta a rota de referência.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\",\"E4\",\"E7\",\"E9\"],\"setores_relacionados\":[\"Saúde\",\"Atenção Básica\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"sendo 2 com data provável de parto até 05/12/2026.\"},{\"doc_id\":\"D2\",\"trecho\":\"possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24.\"}],\"o_que_falta_saber\":\"Se houve classificação de prioridade, agendamento, plano de remoção ou retaguarda específica para esses dois casos.\",\"quem_pode_confirmar\":\"Atenção Básica e setor de regulação/apoio da Saúde, se existente no fluxo local.\",\"prioridade\":\"alta\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há documento com orientação operacional específica para o cenário laranja no setor de Saúde.\",\"por_que_importa\":\"Sem essa orientação, não é possível saber se o fluxo de referência ou de transporte mudou por causa do alerta.\"},{\"descricao\":\"Não há informação sobre condição atual da RC-30, desvio ou interdição no trecho km 18 ao km 24.\",\"por_que_importa\":\"A rota é central para o acesso à maternidade de referência e pode ser afetada pelo alerta.\"},{\"descricao\":\"Não há registro sobre disponibilidade operacional das ambulâncias em 22/11/2026.\",\"por_que_importa\":\"A frota existe no plano, mas não se sabe se está apta para uso imediato.\"}],\"cautelas\":[\"O plano de 2025 e a atualização de 2026 devem ser lidos em conjunto; o documento mais recente não substitui automaticamente o anterior em todos os pontos.\",\"A informação sobre a Maternidade Regional de Três Rios é uma referência documentada, não uma garantia de que o deslocamento continuará possível no cenário atual.\",\"As verificações foram limitadas ao que aparece nos documentos e ao vínculo direto com o alerta de chuva e a assistência a gestantes de alto risco.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0b813c1ebf7cdb91016b06ec9fbeb887d2abce140a43908289",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2116,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 3397,
+      "output_tokens_details": {
+        "reasoning_tokens": 278
+      },
+      "total_tokens": 5513
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"O alerta atual aponta chuva intensa com possibilidade de alagamento na RC-30, no trecho do km 18 ao km 24. Nos documentos de saúde, há referência para gestação de alto risco pela mesma rodovia, e a Atenção Básica informa 6 gestantes em acompanhamento, sendo 2 com parto provável até 05/12/2026.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Maternidade Regional de Três Rios\",\"tipo\":\"local\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Unidade de referência para partos e gestação de alto risco.\"},{\"id\":\"E2\",\"nome\":\"Rodovia RC-30\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"Infraestrutura/Vias\",\"descricao\":\"Rodovia citada como acesso para a referência de alto risco e afetada pelo alerta no trecho do km 18 ao km 24.\"},{\"id\":\"E3\",\"nome\":\"Ambulâncias da Saúde\",\"tipo\":\"recurso\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Conjunto de 3 ambulâncias informado no plano: uma básica, uma avançada e uma de transporte.\"},{\"id\":\"E4\",\"nome\":\"Gestantes de alto risco\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Grupo acompanhado pela Atenção Básica; 6 gestantes registradas em novembro de 2026.\"},{\"id\":\"E5\",\"nome\":\"Atenção Básica\",\"tipo\":\"setor\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Setor que informou o acompanhamento pré-natal em novembro de 2026.\"},{\"id\":\"E6\",\"nome\":\"Plano de Contingência — Saúde (2025)\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Plano que registra a referência para maternidade e a frota de ambulâncias.\"},{\"id\":\"E7\",\"nome\":\"Alerta de chuva intensa na bacia do Rio Três Rios\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Cenário de alerta em nível laranja com possibilidade de alagamento na RC-30.\"},{\"id\":\"E8\",\"nome\":\"Trecho km 18 ao km 24 da RC-30\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Segmento da rodovia citado como com possibilidade de alagamento no alerta.\"},{\"id\":\"E9\",\"nome\":\"Acompanhamento pré-natal — novembro/2026\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Atualização da Atenção Básica com o número de gestantes acompanhadas e datas prováveis de parto.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E4\",\"destino\":\"E1\",\"tipo\":\"depende_de\",\"rotulo\":\"Gestantes de alto risco têm referência na maternidade regional.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-06-06\",\"fim\":null,\"observacao\":\"Referência registrada no plano e ainda sem substituição documentada.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Partos e gestação de alto risco: referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.\"}]},{\"id\":\"R2\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"acesso_por\",\"rotulo\":\"O acesso informado para a referência é pela RC-30.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-06-06\",\"fim\":null,\"observacao\":\"Acesso descrito no plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.\"}]},{\"id\":\"R3\",\"origem\":\"E7\",\"destino\":\"E2\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta indica possibilidade de alagamento na RC-30.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-22\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24.\"}]},{\"id\":\"R4\",\"origem\":\"E8\",\"destino\":\"E2\",\"tipo\":\"localizado_em\",\"rotulo\":\"O trecho km 18 ao km 24 pertence à RC-30.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-22\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"incluindo a RC-30 no trecho do km 18 ao km 24.\"}]},{\"id\":\"R5\",\"origem\":\"E5\",\"destino\":\"E4\",\"tipo\":\"atende\",\"rotulo\":\"A Atenção Básica acompanha gestantes de alto risco.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-10\",\"fim\":null,\"observacao\":\"Informação da atualização de novembro de 2026.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Gestantes de alto risco em acompanhamento: 6\"}]},{\"id\":\"R6\",\"origem\":\"E3\",\"destino\":\"E4\",\"tipo\":\"atende\",\"rotulo\":\"As ambulâncias são recurso potencial para deslocamento de gestantes em situação de referência.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2025-06-06\",\"fim\":null,\"observacao\":\"Inferido pela existência da referência para maternidade e da frota disponível.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ambulâncias: 3 (uma básica, uma avançada e uma de transporte).\"},{\"doc_id\":\"D1\",\"trecho\":\"Partos e gestação de alto risco: referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.\"}]},{\"id\":\"R7\",\"origem\":\"E3\",\"destino\":\"E6\",\"tipo\":\"abastece\",\"rotulo\":\"O plano registra a frota de ambulâncias como recurso de saúde.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-06-06\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ambulâncias: 3 (uma básica, uma avançada e uma de transporte).\"}]},{\"id\":\"R8\",\"origem\":\"E9\",\"destino\":\"E4\",\"tipo\":\"outro\",\"rotulo\":\"A atualização informa o total de gestantes acompanhadas e as datas prováveis de parto.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-10\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Gestantes de alto risco em acompanhamento: 6, sendo 2 com data provável de parto até 05/12/2026.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"Em 10/11/2026, a Atenção Básica atualizou o acompanhamento pré-natal e registrou 6 gestantes de alto risco, com 2 previstas para parto até 05/12/2026.\",\"implicacao\":\"Há demanda atual e imediata de acompanhamento, com parte do grupo perto da data provável de parto.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Gestantes de alto risco em acompanhamento: 6, sendo 2 com data provável de parto até 05/12/2026.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"O trecho da RC-30 entre o km 18 e o km 24 está trafegável para eventual deslocamento de gestantes de alto risco até a referência em Três Rios?\",\"por_que_importa\":\"A rota de referência da gestação de alto risco passa pela RC-30, e o alerta indica possibilidade de alagamento nesse trecho.\",\"motivacao\":\"O plano de saúde aponta a RC-30 como acesso à maternidade de referência, e o alerta menciona alagamento no mesmo trecho.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E7\",\"E8\",\"E4\"],\"setores_relacionados\":[\"Saúde\",\"Infraestrutura/Vias\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.\"},{\"doc_id\":\"D2\",\"trecho\":\"possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24.\"}],\"o_que_falta_saber\":\"Se houve alagamento, interdição, desvio ou condição de passagem no trecho citado.\",\"quem_pode_confirmar\":\"Sala de Situação Regional, Defesa Civil e setor responsável por vias/obras, se houver confirmação institucional.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A referência para a Maternidade Regional de Três Rios continua sendo o fluxo previsto para gestação e parto de alto risco neste cenário?\",\"por_que_importa\":\"Se a rota de referência estiver comprometida, a equipe precisa saber se há orientação formal atualizada para manter ou ajustar esse fluxo.\",\"motivacao\":\"O plano traz a referência e o alerta incide sobre a rodovia usada para esse deslocamento.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E4\",\"E6\",\"E7\"],\"setores_relacionados\":[\"Saúde\",\"Atenção Básica\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Partos e gestação de alto risco: referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.\"},{\"doc_id\":\"D2\",\"trecho\":\"possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24.\"}],\"o_que_falta_saber\":\"Se houve atualização do fluxo de referência, alternativa de encaminhamento ou orientação específica para o cenário atual.\",\"quem_pode_confirmar\":\"Secretaria de Saúde e Atenção Básica, conforme o fluxo interno de referência.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"As 3 ambulâncias informadas no plano estão todas disponíveis para eventuais remoções relacionadas às gestantes de alto risco?\",\"por_que_importa\":\"O documento de 2025 registra a frota, mas não informa a situação operacional atual nem eventual indisponibilidade.\",\"motivacao\":\"Há 6 gestantes em acompanhamento e 2 com data provável de parto até 05/12/2026, o que pode exigir remoção.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E3\",\"E4\",\"E6\",\"E9\"],\"setores_relacionados\":[\"Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ambulâncias: 3 (uma básica, uma avançada e uma de transporte).\"},{\"doc_id\":\"D3\",\"trecho\":\"Gestantes de alto risco em acompanhamento: 6, sendo 2 com data provável de parto até 05/12/2026.\"}],\"o_que_falta_saber\":\"Se alguma ambulância está em manutenção, em uso externo ou sem equipe/combustível para deslocamento.\",\"quem_pode_confirmar\":\"Coordenação da Saúde ou responsável pela frota de ambulâncias, conforme definição institucional.\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"As 2 gestantes com data provável de parto até 05/12/2026 já têm definição de unidade de referência e meio de transporte compatível com a situação da RC-30?\",\"por_que_importa\":\"São os casos com maior urgência temporal dentro do grupo acompanhado e podem depender do mesmo corredor viário afetado.\",\"motivacao\":\"A atualização de novembro aponta partos próximos, enquanto o alerta afeta a rota de referência.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\",\"E4\",\"E7\",\"E9\"],\"setores_relacionados\":[\"Saúde\",\"Atenção Básica\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"sendo 2 com data provável de parto até 05/12/2026.\"},{\"doc_id\":\"D2\",\"trecho\":\"possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24.\"}],\"o_que_falta_saber\":\"Se houve classificação de prioridade, agendamento, plano de remoção ou retaguarda específica para esses dois casos.\",\"quem_pode_confirmar\":\"Atenção Básica e setor de regulação/apoio da Saúde, se existente no fluxo local.\",\"prioridade\":\"alta\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há documento com orientação operacional específica para o cenário laranja no setor de Saúde.\",\"por_que_importa\":\"Sem essa orientação, não é possível saber se o fluxo de referência ou de transporte mudou por causa do alerta.\"},{\"descricao\":\"Não há informação sobre condição atual da RC-30, desvio ou interdição no trecho km 18 ao km 24.\",\"por_que_importa\":\"A rota é central para o acesso à maternidade de referência e pode ser afetada pelo alerta.\"},{\"descricao\":\"Não há registro sobre disponibilidade operacional das ambulâncias em 22/11/2026.\",\"por_que_importa\":\"A frota existe no plano, mas não se sabe se está apta para uso imediato.\"}],\"cautelas\":[\"O plano de 2025 e a atualização de 2026 devem ser lidos em conjunto; o documento mais recente não substitui automaticamente o anterior em todos os pontos.\",\"A informação sobre a Maternidade Regional de Três Rios é uma referência documentada, não uma garantia de que o deslocamento continuará possível no cenário atual.\",\"As verificações foram limitadas ao que aparece nos documentos e ao vínculo direto com o alerta de chuva e a assistência a gestantes de alto risco.\"]}"
+  }
+}

@@ -1,0 +1,1092 @@
+{
+  "meta": {
+    "scenario": "E21",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 2,
+    "tag": "eval_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 774,
+    "user_message_sha12": "3a21a0e83c57"
+  },
+  "user_message": "Município (fictício): Pinhal Seco\nData de referência da análise: 2026-11-22\nDocumentos disponíveis (2), em ordem cronológica:\n\n### [D1] Plano de Contingência (2026)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2026-02-18\n\nAbrigo: Ginásio Pinhal (140 pessoas).\nMateriais de assistência humanitária (colchões, kits de higiene e cobertores) ficam na Central de Logística Municipal (Rodovia PS-10, km 3), inaugurada em 2025.\n\n---\n\n### [D2] Alerta de inundação (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-22\n\nNÍVEL: LARANJA. Possível transbordamento do Arroio Pinhal com desalojamento de famílias nas próximas 24 horas.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_069d18b62784a674016b06ecf6a7bc87d29431abbb64c967f7",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 2027,
+    "output_tokens": 2969,
+    "reasoning_tokens": 33
+  },
+  "latency_ms": 18660,
+  "started_at": "2026-11-25T14:13:10.119Z",
+  "output": {
+    "resumo_situacao": "O plano de contingência informa um abrigo e um ponto de guarda de materiais de assistência humanitária. O alerta atual fala em nível laranja por possível transbordamento do Arroio Pinhal, com desalojamento de famílias nas próximas 24 horas. A análise identifica dependências entre o alerta e a capacidade de abrigo e logística já descritas no plano.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Ginásio Pinhal",
+        "tipo": "local",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Abrigo previsto no plano de contingência, com capacidade para 140 pessoas."
+      },
+      {
+        "id": "E2",
+        "nome": "Central de Logística Municipal",
+        "tipo": "infraestrutura",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Local onde ficam os materiais de assistência humanitária."
+      },
+      {
+        "id": "E3",
+        "nome": "materiais de assistência humanitária",
+        "tipo": "recurso",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Conjunto de colchões, kits de higiene e cobertores guardados para apoio à resposta."
+      },
+      {
+        "id": "E4",
+        "nome": "Arroio Pinhal",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Curso d'água citado no alerta como possível ponto de transbordamento."
+      },
+      {
+        "id": "E5",
+        "nome": "famílias desalojadas",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": null,
+        "descricao": "Grupo populacional mencionado como possível afetado pelo cenário de inundação."
+      },
+      {
+        "id": "E6",
+        "nome": "Plano de Contingência (2026)",
+        "tipo": "norma_documento",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Documento de referência com abrigo e logística de apoio humanitário."
+      },
+      {
+        "id": "E7",
+        "nome": "Alerta de inundação (cenário fictício)",
+        "tipo": "evento",
+        "setor_responsavel": "Sala de Situação Regional",
+        "descricao": "Alerta de nível laranja emitido em 2026-11-22, com possibilidade de transbordamento em 24 horas."
+      },
+      {
+        "id": "E8",
+        "nome": "COMPDEC",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Órgão citado como fonte do plano de contingência."
+      },
+      {
+        "id": "E9",
+        "nome": "Sala de Situação Regional",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": null,
+        "descricao": "Fonte do alerta de inundação."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E6",
+        "destino": "E1",
+        "tipo": "outro",
+        "rotulo": "O plano prevê o Ginásio Pinhal como abrigo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-02-18",
+          "fim": null,
+          "observacao": "Vigência explícita não informada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Ginásio Pinhal (140 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E6",
+        "destino": "E2",
+        "tipo": "outro",
+        "rotulo": "O plano vincula a logística humanitária à Central de Logística Municipal.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-02-18",
+          "fim": null,
+          "observacao": "Vigência explícita não informada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Materiais de assistência humanitária (...) ficam na Central de Logística Municipal"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E2",
+        "destino": "E3",
+        "tipo": "armazena",
+        "rotulo": "A Central de Logística Municipal armazena materiais de assistência humanitária.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-01-01",
+          "fim": null,
+          "observacao": "A inauguração ocorreu em 2025, sem data precisa."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "ficam na Central de Logística Municipal (Rodovia PS-10, km 3), inaugurada em 2025."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E7",
+        "destino": "E4",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta aponta possível transbordamento do Arroio Pinhal.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-22",
+          "fim": "2026-11-23",
+          "observacao": "Janela de 24 horas indicada no alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Possível transbordamento do Arroio Pinhal"
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E7",
+        "destino": "E5",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta indica possibilidade de desalojamento de famílias.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-22",
+          "fim": "2026-11-23",
+          "observacao": "Nas próximas 24 horas."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "com desalojamento de famílias nas próximas 24 horas."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E7",
+        "destino": "E6",
+        "tipo": "depende_de",
+        "rotulo": "A resposta ao alerta depende do que o plano já prevê para abrigo e apoio humanitário.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2026-11-22",
+          "fim": null,
+          "observacao": "Conexão inferida pela combinação dos documentos."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Possível transbordamento do Arroio Pinhal"
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Ginásio Pinhal (140 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E1",
+        "destino": "E5",
+        "tipo": "atende",
+        "rotulo": "O abrigo pode atender famílias desalojadas, conforme o plano.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2026-02-18",
+          "fim": null,
+          "observacao": "Capacidade informada no plano, sem confirmação de ocupação atual."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Ginásio Pinhal (140 pessoas)."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "desalojamento de famílias"
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E8",
+        "destino": "E6",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC é a fonte indicada do plano de contingência.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-02-18",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Fonte: COMPDEC"
+          }
+        ]
+      },
+      {
+        "id": "R9",
+        "origem": "E9",
+        "destino": "E7",
+        "tipo": "responsavel_por",
+        "rotulo": "A Sala de Situação Regional é a fonte do alerta.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-22",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Fonte: Sala de Situação Regional (fictícia)"
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "O plano de contingência é de 2026 e registra abrigo e logística de apoio humanitário, enquanto o alerta é de 2026-11-22.",
+        "implicacao": "A pauta de verificação deve usar o plano como referência operacional e confrontá-lo com o cenário atual do alerta.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Plano de Contingência (2026)"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Data: 2026-11-22"
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "solucao_parcial",
+        "descricao": "A Central de Logística Municipal já existe e foi inaugurada em 2025, o que indica infraestrutura disponível antes do alerta.",
+        "implicacao": "Vale verificar se o material citado no plano permanece no local e acessível para uso na resposta.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Central de Logística Municipal (Rodovia PS-10, km 3), inaugurada em 2025."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "O Ginásio Pinhal continua apto a funcionar como abrigo para até 140 pessoas neste momento?",
+        "por_que_importa": "O alerta prevê possível desalojamento de famílias e o plano indica esse local como abrigo principal.",
+        "motivacao": "Convergência entre o abrigo previsto no plano e o cenário de desalojamento nas próximas 24 horas.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E5",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Ginásio Pinhal (140 pessoas)."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "com desalojamento de famílias nas próximas 24 horas."
+          }
+        ],
+        "o_que_falta_saber": "Se o espaço está disponível, preparado e sem impedimentos de uso.",
+        "quem_pode_confirmar": "COMPDEC ou equipe responsável pelo abrigo, conforme organização local.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "Os colchões, kits de higiene e cobertores seguem na Central de Logística Municipal e podem ser distribuídos se houver necessidade?",
+        "por_que_importa": "Esses itens são parte do apoio imediato previsto no plano e podem ser necessários diante do cenário de desalojamento.",
+        "motivacao": "O plano informa a localização dos materiais, mas não confirma disponibilidade operacional na data do alerta.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E2",
+          "E3",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Materiais de assistência humanitária (colchões, kits de higiene e cobertores) ficam na Central de Logística Municipal"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Possível transbordamento do Arroio Pinhal"
+          }
+        ],
+        "o_que_falta_saber": "Se os itens estão no estoque, em quantidade útil e com acesso liberado.",
+        "quem_pode_confirmar": "COMPDEC ou setor de logística municipal.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "A rota até a Central de Logística Municipal, na Rodovia PS-10, km 3, permanece acessível para retirada de materiais?",
+        "por_que_importa": "Se houver restrição de acesso, o apoio humanitário previsto no plano pode atrasar.",
+        "motivacao": "O plano fixa a localização da central, e o alerta indica cenário de inundação com possível impacto em circulação local.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E2",
+          "E3",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Central de Logística Municipal (Rodovia PS-10, km 3)"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Possível transbordamento do Arroio Pinhal"
+          }
+        ],
+        "o_que_falta_saber": "Se há bloqueio, alagamento ou dificuldade de acesso ao endereço da central.",
+        "quem_pode_confirmar": "COMPDEC, logística municipal ou setor de obras/transportes, se houver articulação institucional.",
+        "prioridade": "media"
+      },
+      {
+        "id": "V4",
+        "pergunta": "O alerta de nível laranja foi encaminhado aos responsáveis pelo abrigo e pela logística previstos no plano?",
+        "por_que_importa": "A comunicação rápida entre quem emite o alerta e quem executa o plano é necessária para acionar as medidas previstas.",
+        "motivacao": "O alerta veio da Sala de Situação Regional e o plano é da COMPDEC, mas os documentos não mostram a comunicação entre eles.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E6",
+          "E7",
+          "E8",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Fonte: COMPDEC"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Fonte: Sala de Situação Regional (fictícia)"
+          }
+        ],
+        "o_que_falta_saber": "Se houve repasse formal do alerta para a equipe que opera o plano.",
+        "quem_pode_confirmar": "Sala de Situação Regional e COMPDEC.",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há no material regras de acionamento, fluxo de comunicação ou responsáveis operacionais detalhados para o abrigo e para a logística.",
+        "por_que_importa": "Sem isso, não é possível verificar quem aciona cada etapa nem como a resposta deve ser coordenada."
+      },
+      {
+        "descricao": "Não há informação sobre estado atual do Ginásio Pinhal, de ocupação, de acessibilidade ou de equipamentos internos.",
+        "por_que_importa": "Esses dados são essenciais para confirmar se o abrigo do plano pode ser usado agora."
+      },
+      {
+        "descricao": "Não há dados sobre volume de estoque, reposição ou acesso imediato aos materiais de assistência humanitária.",
+        "por_que_importa": "Sem essa informação, não se confirma a capacidade real de apoio prevista no plano."
+      }
+    ],
+    "cautelas": [
+      "O alerta é fictício e os documentos não trazem mapa, cotas, histórico de cheias ou dados de impacto anterior; portanto, não se deve ampliar o cenário além do que está escrito.",
+      "A existência do abrigo e da central de logística no plano não comprova disponibilidade operacional na data do alerta.",
+      "Não há base documental para afirmar que o transbordamento ocorrerá; o texto apenas registra possibilidade nas próximas 24 horas."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 9,
+    "n_relacoes": 9,
+    "n_verificacoes": 4,
+    "n_temporais": 2,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Ginásio Pinhal (140 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Materiais de assistência humanitária (...) ficam na Central de Logística Municipal",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "ficam na Central de Logística Municipal (Rodovia PS-10, km 3), inaugurada em 2025.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Possível transbordamento do Arroio Pinhal",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "com desalojamento de famílias nas próximas 24 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Possível transbordamento do Arroio Pinhal",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Ginásio Pinhal (140 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Ginásio Pinhal (140 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "desalojamento de famílias",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Fonte: COMPDEC",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Fonte: Sala de Situação Regional (fictícia)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R9"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Plano de Contingência (2026)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Data: 2026-11-22",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Central de Logística Municipal (Rodovia PS-10, km 3), inaugurada em 2025.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Ginásio Pinhal (140 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "com desalojamento de famílias nas próximas 24 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Materiais de assistência humanitária (colchões, kits de higiene e cobertores) ficam na Central de Logística Municipal",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Possível transbordamento do Arroio Pinhal",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Central de Logística Municipal (Rodovia PS-10, km 3)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Possível transbordamento do Arroio Pinhal",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Fonte: COMPDEC",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Fonte: Sala de Situação Regional (fictícia)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      }
+    ],
+    "n_citacoes": 22,
+    "n_citacoes_literais": 22,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795616009,
+    "created_at": 1795615990,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_069d18b62784a674016b06ecf6a7bc87d29431abbb64c967f7",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBuz3XL5jI9WubgoPmjN2FT99dpeR_7OEO1PzX8Ul2AJH3jEObtkXdfKv8HNedr0WTBlSx9XvJOUlEsCRM4oFNENqLBl5IhAqrBeTP2AeUIRYyqIFhkpkt2DUYSAV6ia1lgtkdkjqXXeMQUX08NPyr9F7uhS_rJ4ROh28Yw42dM6zTENwYJzSu3IgrX3DSB9X99wNn7j59Xv64Oyz3KJcl907zba43umixlpMUfYI51m-LUG2Fvpqu2y7WGPFrHXr4x0O_lFrOIPLwkKXKblcfcQBRrIBsJcRjYUm5AplWO54xIFQPC7kIEurFi50w2xEe7dBfcPKdx996EWYTGZzB8aDZJ_Rqkg6YH5BpGxkxfhSiuVON7U2K1zrgoh2f4q1sDAFa58lKfyx33bLkS7-P7SedNLH9l5zP-wU-9OY_7LkVKm2oIKVs8_9XS6O5z_NLKahT186iImRcUzF4DeN66XxhAukgFGaOqTaAbyilIjJOvnqO8iyiqFFBdWlpg_0uHcoCSTHX5KZ-Io6RaOS_-XkJDt3cMCF6MsxPgm74W_R9fsQxVsay-92Mn8o36riDXwQzUq0gkq_WtjHpmT-hkEt1juW1jCaFgwkz7dtHa23kBtuZemV6MB-cEG7hQ9OHTCH3YMeEonsx5gJpCAD0Lbgx-m3bxMie7aBCVcd98P25QGH-M92lsOy2leS0JXQGVbc1F41RecYaFCLQKcdgpGdM5EDnkHkN7OIPGReX8PG5CClpruiVOoclRGtRWdvZUuENLdsx2C25a2gubs5xhZnks2-vsbkeoHowkWTOEzgWuwVg2-gR086gkNXQ-m-JobO3Wc5_JWZ2_4HHIo4I24dAg26wfmpt7hj-fKpWfO6OVrQBRM0A75uimK8inxLK5GPBVI0t-9fWFR6ZItnD_PzOHTAzgv44Ogli8HAa8WoIO3lqGHxp_hZvpS3KEi_kpNJ7tTGZsutNn6TFmeu9IH8toGiJRQFThkl2eP2DeQZCBtzHaH0H-usow4rJmmMvVOVgAJJ4nXpyVI4YgX5YCN5iXluUN6ohHi1lZOYUg1Lsk_KXIuoRfFzddG_ipGUrmqSKFgnvZND_lI1SMv4FFL7gOk_C9UB3oMhjuDqFfqlBbbcnuutN6wLIL4Rl3V2fQFofQRIOwDPx93UB7lYgU3hpIXbQA-e2tHeV13Q1vBWvhTic3RHa8_hh1hrq3L3qR7rliBvN7BnOtRjIniAtrfFaAkAbqUgEaxcpwsT3Am_gjznFVFafHhD7oATza92SnjjJxHVQlVymyzvBOrUah-XC4jLkmO4i0ND4oQ5yLcrxw7QL_l1w0k1_KtV1lu_VrXACgEgJT0FSy_UVZvgrmnRCVecbE1IKu2AmrP6o8YfK-wPUDHdDybgPxhv1sGdTvmD44FnYZKVmKwvvjKJLiW_BQkAUSXq-d1uOjO5wP4yyH03UYMFsopUOKl2jQ8ocTEXSFp03xLmehcCpfWeqb2Oa6cRBrupcG2e1y7G8I9G2MkxuXp0qb6puLm9j7HmJpKqcGOfe7pd6G-HhlJqBzfOcqZpn1IFIhD5xnSintvdZds8ERrBqgwoA5P_GDWWDWv08XA4tqFEKfR8AKWsX7J-cX22mVc7IeMHpJlh2ILRLbsXQLLtKS3LHYT0R3fzEw0Q9LQmvpW7mjWEFggJ3ZKIF_xF2PvXQGuVE9i-CZbz0ZHH6vojbojwj5669Tk5Qa3cyd9Dv7_vQ7CBD__dmXaPcLQH8bdwXgmjS5UTHSRxKlfXy0hs6DB2JKdYllkSQa30Gj8a3NKPufdNkW-T9RlmbJJ2Wj1VuHlB-LQopLgqy_JRumaZn7P0s_M4f66DUVGHW8hYMK4pDLoPry72X2_849AQWo2--JTl7Kle_hrzz1UXXA61REcUDxWKJRc2pw-xAtwPMiJTz4Qvjrv8IM4lgici83_wMORq8IlR_20UXrIqmGAFCDdiUlzchZ-tKIJrs-UO_7WDEcysfUJJij1ntXGMpzIO8CvMHbWG3Sseco-xe4Uk31D2W074EPRWAv1IrWOCth5aARaToXZe-rXTFWQG-2ibnfcoqVT0UlVX3Uc=",
+        "id": "rs_069d18b62784a674016b06ecf75ea087d2ad3ed8460228fc98",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"O plano de contingência informa um abrigo e um ponto de guarda de materiais de assistência humanitária. O alerta atual fala em nível laranja por possível transbordamento do Arroio Pinhal, com desalojamento de famílias nas próximas 24 horas. A análise identifica dependências entre o alerta e a capacidade de abrigo e logística já descritas no plano.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Ginásio Pinhal\",\"tipo\":\"local\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Abrigo previsto no plano de contingência, com capacidade para 140 pessoas.\"},{\"id\":\"E2\",\"nome\":\"Central de Logística Municipal\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Local onde ficam os materiais de assistência humanitária.\"},{\"id\":\"E3\",\"nome\":\"materiais de assistência humanitária\",\"tipo\":\"recurso\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Conjunto de colchões, kits de higiene e cobertores guardados para apoio à resposta.\"},{\"id\":\"E4\",\"nome\":\"Arroio Pinhal\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Curso d'água citado no alerta como possível ponto de transbordamento.\"},{\"id\":\"E5\",\"nome\":\"famílias desalojadas\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":null,\"descricao\":\"Grupo populacional mencionado como possível afetado pelo cenário de inundação.\"},{\"id\":\"E6\",\"nome\":\"Plano de Contingência (2026)\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Documento de referência com abrigo e logística de apoio humanitário.\"},{\"id\":\"E7\",\"nome\":\"Alerta de inundação (cenário fictício)\",\"tipo\":\"evento\",\"setor_responsavel\":\"Sala de Situação Regional\",\"descricao\":\"Alerta de nível laranja emitido em 2026-11-22, com possibilidade de transbordamento em 24 horas.\"},{\"id\":\"E8\",\"nome\":\"COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Órgão citado como fonte do plano de contingência.\"},{\"id\":\"E9\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":null,\"descricao\":\"Fonte do alerta de inundação.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E6\",\"destino\":\"E1\",\"tipo\":\"outro\",\"rotulo\":\"O plano prevê o Ginásio Pinhal como abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-02-18\",\"fim\":null,\"observacao\":\"Vigência explícita não informada.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Pinhal (140 pessoas).\"}]},{\"id\":\"R2\",\"origem\":\"E6\",\"destino\":\"E2\",\"tipo\":\"outro\",\"rotulo\":\"O plano vincula a logística humanitária à Central de Logística Municipal.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-02-18\",\"fim\":null,\"observacao\":\"Vigência explícita não informada.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Materiais de assistência humanitária (...) ficam na Central de Logística Municipal\"}]},{\"id\":\"R3\",\"origem\":\"E2\",\"destino\":\"E3\",\"tipo\":\"armazena\",\"rotulo\":\"A Central de Logística Municipal armazena materiais de assistência humanitária.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-01-01\",\"fim\":null,\"observacao\":\"A inauguração ocorreu em 2025, sem data precisa.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"ficam na Central de Logística Municipal (Rodovia PS-10, km 3), inaugurada em 2025.\"}]},{\"id\":\"R4\",\"origem\":\"E7\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta aponta possível transbordamento do Arroio Pinhal.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-22\",\"fim\":\"2026-11-23\",\"observacao\":\"Janela de 24 horas indicada no alerta.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Possível transbordamento do Arroio Pinhal\"}]},{\"id\":\"R5\",\"origem\":\"E7\",\"destino\":\"E5\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta indica possibilidade de desalojamento de famílias.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-22\",\"fim\":\"2026-11-23\",\"observacao\":\"Nas próximas 24 horas.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"com desalojamento de famílias nas próximas 24 horas.\"}]},{\"id\":\"R6\",\"origem\":\"E7\",\"destino\":\"E6\",\"tipo\":\"depende_de\",\"rotulo\":\"A resposta ao alerta depende do que o plano já prevê para abrigo e apoio humanitário.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2026-11-22\",\"fim\":null,\"observacao\":\"Conexão inferida pela combinação dos documentos.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Possível transbordamento do Arroio Pinhal\"},{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Pinhal (140 pessoas).\"}]},{\"id\":\"R7\",\"origem\":\"E1\",\"destino\":\"E5\",\"tipo\":\"atende\",\"rotulo\":\"O abrigo pode atender famílias desalojadas, conforme o plano.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2026-02-18\",\"fim\":null,\"observacao\":\"Capacidade informada no plano, sem confirmação de ocupação atual.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Pinhal (140 pessoas).\"},{\"doc_id\":\"D2\",\"trecho\":\"desalojamento de famílias\"}]},{\"id\":\"R8\",\"origem\":\"E8\",\"destino\":\"E6\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC é a fonte indicada do plano de contingência.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-02-18\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Fonte: COMPDEC\"}]},{\"id\":\"R9\",\"origem\":\"E9\",\"destino\":\"E7\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A Sala de Situação Regional é a fonte do alerta.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-22\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Fonte: Sala de Situação Regional (fictícia)\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"O plano de contingência é de 2026 e registra abrigo e logística de apoio humanitário, enquanto o alerta é de 2026-11-22.\",\"implicacao\":\"A pauta de verificação deve usar o plano como referência operacional e confrontá-lo com o cenário atual do alerta.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plano de Contingência (2026)\"},{\"doc_id\":\"D2\",\"trecho\":\"Data: 2026-11-22\"}]},{\"id\":\"T2\",\"tipo\":\"solucao_parcial\",\"descricao\":\"A Central de Logística Municipal já existe e foi inaugurada em 2025, o que indica infraestrutura disponível antes do alerta.\",\"implicacao\":\"Vale verificar se o material citado no plano permanece no local e acessível para uso na resposta.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Central de Logística Municipal (Rodovia PS-10, km 3), inaugurada em 2025.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"O Ginásio Pinhal continua apto a funcionar como abrigo para até 140 pessoas neste momento?\",\"por_que_importa\":\"O alerta prevê possível desalojamento de famílias e o plano indica esse local como abrigo principal.\",\"motivacao\":\"Convergência entre o abrigo previsto no plano e o cenário de desalojamento nas próximas 24 horas.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E5\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Pinhal (140 pessoas).\"},{\"doc_id\":\"D2\",\"trecho\":\"com desalojamento de famílias nas próximas 24 horas.\"}],\"o_que_falta_saber\":\"Se o espaço está disponível, preparado e sem impedimentos de uso.\",\"quem_pode_confirmar\":\"COMPDEC ou equipe responsável pelo abrigo, conforme organização local.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"Os colchões, kits de higiene e cobertores seguem na Central de Logística Municipal e podem ser distribuídos se houver necessidade?\",\"por_que_importa\":\"Esses itens são parte do apoio imediato previsto no plano e podem ser necessários diante do cenário de desalojamento.\",\"motivacao\":\"O plano informa a localização dos materiais, mas não confirma disponibilidade operacional na data do alerta.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Materiais de assistência humanitária (colchões, kits de higiene e cobertores) ficam na Central de Logística Municipal\"},{\"doc_id\":\"D2\",\"trecho\":\"Possível transbordamento do Arroio Pinhal\"}],\"o_que_falta_saber\":\"Se os itens estão no estoque, em quantidade útil e com acesso liberado.\",\"quem_pode_confirmar\":\"COMPDEC ou setor de logística municipal.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"A rota até a Central de Logística Municipal, na Rodovia PS-10, km 3, permanece acessível para retirada de materiais?\",\"por_que_importa\":\"Se houver restrição de acesso, o apoio humanitário previsto no plano pode atrasar.\",\"motivacao\":\"O plano fixa a localização da central, e o alerta indica cenário de inundação com possível impacto em circulação local.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Central de Logística Municipal (Rodovia PS-10, km 3)\"},{\"doc_id\":\"D2\",\"trecho\":\"Possível transbordamento do Arroio Pinhal\"}],\"o_que_falta_saber\":\"Se há bloqueio, alagamento ou dificuldade de acesso ao endereço da central.\",\"quem_pode_confirmar\":\"COMPDEC, logística municipal ou setor de obras/transportes, se houver articulação institucional.\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"O alerta de nível laranja foi encaminhado aos responsáveis pelo abrigo e pela logística previstos no plano?\",\"por_que_importa\":\"A comunicação rápida entre quem emite o alerta e quem executa o plano é necessária para acionar as medidas previstas.\",\"motivacao\":\"O alerta veio da Sala de Situação Regional e o plano é da COMPDEC, mas os documentos não mostram a comunicação entre eles.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E6\",\"E7\",\"E8\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Fonte: COMPDEC\"},{\"doc_id\":\"D2\",\"trecho\":\"Fonte: Sala de Situação Regional (fictícia)\"}],\"o_que_falta_saber\":\"Se houve repasse formal do alerta para a equipe que opera o plano.\",\"quem_pode_confirmar\":\"Sala de Situação Regional e COMPDEC.\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há no material regras de acionamento, fluxo de comunicação ou responsáveis operacionais detalhados para o abrigo e para a logística.\",\"por_que_importa\":\"Sem isso, não é possível verificar quem aciona cada etapa nem como a resposta deve ser coordenada.\"},{\"descricao\":\"Não há informação sobre estado atual do Ginásio Pinhal, de ocupação, de acessibilidade ou de equipamentos internos.\",\"por_que_importa\":\"Esses dados são essenciais para confirmar se o abrigo do plano pode ser usado agora.\"},{\"descricao\":\"Não há dados sobre volume de estoque, reposição ou acesso imediato aos materiais de assistência humanitária.\",\"por_que_importa\":\"Sem essa informação, não se confirma a capacidade real de apoio prevista no plano.\"}],\"cautelas\":[\"O alerta é fictício e os documentos não trazem mapa, cotas, histórico de cheias ou dados de impacto anterior; portanto, não se deve ampliar o cenário além do que está escrito.\",\"A existência do abrigo e da central de logística no plano não comprova disponibilidade operacional na data do alerta.\",\"Não há base documental para afirmar que o transbordamento ocorrerá; o texto apenas registra possibilidade nas próximas 24 horas.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_069d18b62784a674016b06ecf7845c87d285f50af5684c8e12",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2027,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 1920
+      },
+      "output_tokens": 2969,
+      "output_tokens_details": {
+        "reasoning_tokens": 33
+      },
+      "total_tokens": 4996
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"O plano de contingência informa um abrigo e um ponto de guarda de materiais de assistência humanitária. O alerta atual fala em nível laranja por possível transbordamento do Arroio Pinhal, com desalojamento de famílias nas próximas 24 horas. A análise identifica dependências entre o alerta e a capacidade de abrigo e logística já descritas no plano.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Ginásio Pinhal\",\"tipo\":\"local\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Abrigo previsto no plano de contingência, com capacidade para 140 pessoas.\"},{\"id\":\"E2\",\"nome\":\"Central de Logística Municipal\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Local onde ficam os materiais de assistência humanitária.\"},{\"id\":\"E3\",\"nome\":\"materiais de assistência humanitária\",\"tipo\":\"recurso\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Conjunto de colchões, kits de higiene e cobertores guardados para apoio à resposta.\"},{\"id\":\"E4\",\"nome\":\"Arroio Pinhal\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Curso d'água citado no alerta como possível ponto de transbordamento.\"},{\"id\":\"E5\",\"nome\":\"famílias desalojadas\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":null,\"descricao\":\"Grupo populacional mencionado como possível afetado pelo cenário de inundação.\"},{\"id\":\"E6\",\"nome\":\"Plano de Contingência (2026)\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Documento de referência com abrigo e logística de apoio humanitário.\"},{\"id\":\"E7\",\"nome\":\"Alerta de inundação (cenário fictício)\",\"tipo\":\"evento\",\"setor_responsavel\":\"Sala de Situação Regional\",\"descricao\":\"Alerta de nível laranja emitido em 2026-11-22, com possibilidade de transbordamento em 24 horas.\"},{\"id\":\"E8\",\"nome\":\"COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Órgão citado como fonte do plano de contingência.\"},{\"id\":\"E9\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":null,\"descricao\":\"Fonte do alerta de inundação.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E6\",\"destino\":\"E1\",\"tipo\":\"outro\",\"rotulo\":\"O plano prevê o Ginásio Pinhal como abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-02-18\",\"fim\":null,\"observacao\":\"Vigência explícita não informada.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Pinhal (140 pessoas).\"}]},{\"id\":\"R2\",\"origem\":\"E6\",\"destino\":\"E2\",\"tipo\":\"outro\",\"rotulo\":\"O plano vincula a logística humanitária à Central de Logística Municipal.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-02-18\",\"fim\":null,\"observacao\":\"Vigência explícita não informada.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Materiais de assistência humanitária (...) ficam na Central de Logística Municipal\"}]},{\"id\":\"R3\",\"origem\":\"E2\",\"destino\":\"E3\",\"tipo\":\"armazena\",\"rotulo\":\"A Central de Logística Municipal armazena materiais de assistência humanitária.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-01-01\",\"fim\":null,\"observacao\":\"A inauguração ocorreu em 2025, sem data precisa.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"ficam na Central de Logística Municipal (Rodovia PS-10, km 3), inaugurada em 2025.\"}]},{\"id\":\"R4\",\"origem\":\"E7\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta aponta possível transbordamento do Arroio Pinhal.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-22\",\"fim\":\"2026-11-23\",\"observacao\":\"Janela de 24 horas indicada no alerta.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Possível transbordamento do Arroio Pinhal\"}]},{\"id\":\"R5\",\"origem\":\"E7\",\"destino\":\"E5\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta indica possibilidade de desalojamento de famílias.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-22\",\"fim\":\"2026-11-23\",\"observacao\":\"Nas próximas 24 horas.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"com desalojamento de famílias nas próximas 24 horas.\"}]},{\"id\":\"R6\",\"origem\":\"E7\",\"destino\":\"E6\",\"tipo\":\"depende_de\",\"rotulo\":\"A resposta ao alerta depende do que o plano já prevê para abrigo e apoio humanitário.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2026-11-22\",\"fim\":null,\"observacao\":\"Conexão inferida pela combinação dos documentos.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Possível transbordamento do Arroio Pinhal\"},{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Pinhal (140 pessoas).\"}]},{\"id\":\"R7\",\"origem\":\"E1\",\"destino\":\"E5\",\"tipo\":\"atende\",\"rotulo\":\"O abrigo pode atender famílias desalojadas, conforme o plano.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2026-02-18\",\"fim\":null,\"observacao\":\"Capacidade informada no plano, sem confirmação de ocupação atual.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Pinhal (140 pessoas).\"},{\"doc_id\":\"D2\",\"trecho\":\"desalojamento de famílias\"}]},{\"id\":\"R8\",\"origem\":\"E8\",\"destino\":\"E6\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC é a fonte indicada do plano de contingência.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-02-18\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Fonte: COMPDEC\"}]},{\"id\":\"R9\",\"origem\":\"E9\",\"destino\":\"E7\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A Sala de Situação Regional é a fonte do alerta.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-22\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Fonte: Sala de Situação Regional (fictícia)\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"O plano de contingência é de 2026 e registra abrigo e logística de apoio humanitário, enquanto o alerta é de 2026-11-22.\",\"implicacao\":\"A pauta de verificação deve usar o plano como referência operacional e confrontá-lo com o cenário atual do alerta.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plano de Contingência (2026)\"},{\"doc_id\":\"D2\",\"trecho\":\"Data: 2026-11-22\"}]},{\"id\":\"T2\",\"tipo\":\"solucao_parcial\",\"descricao\":\"A Central de Logística Municipal já existe e foi inaugurada em 2025, o que indica infraestrutura disponível antes do alerta.\",\"implicacao\":\"Vale verificar se o material citado no plano permanece no local e acessível para uso na resposta.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Central de Logística Municipal (Rodovia PS-10, km 3), inaugurada em 2025.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"O Ginásio Pinhal continua apto a funcionar como abrigo para até 140 pessoas neste momento?\",\"por_que_importa\":\"O alerta prevê possível desalojamento de famílias e o plano indica esse local como abrigo principal.\",\"motivacao\":\"Convergência entre o abrigo previsto no plano e o cenário de desalojamento nas próximas 24 horas.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E5\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Ginásio Pinhal (140 pessoas).\"},{\"doc_id\":\"D2\",\"trecho\":\"com desalojamento de famílias nas próximas 24 horas.\"}],\"o_que_falta_saber\":\"Se o espaço está disponível, preparado e sem impedimentos de uso.\",\"quem_pode_confirmar\":\"COMPDEC ou equipe responsável pelo abrigo, conforme organização local.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"Os colchões, kits de higiene e cobertores seguem na Central de Logística Municipal e podem ser distribuídos se houver necessidade?\",\"por_que_importa\":\"Esses itens são parte do apoio imediato previsto no plano e podem ser necessários diante do cenário de desalojamento.\",\"motivacao\":\"O plano informa a localização dos materiais, mas não confirma disponibilidade operacional na data do alerta.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Materiais de assistência humanitária (colchões, kits de higiene e cobertores) ficam na Central de Logística Municipal\"},{\"doc_id\":\"D2\",\"trecho\":\"Possível transbordamento do Arroio Pinhal\"}],\"o_que_falta_saber\":\"Se os itens estão no estoque, em quantidade útil e com acesso liberado.\",\"quem_pode_confirmar\":\"COMPDEC ou setor de logística municipal.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"A rota até a Central de Logística Municipal, na Rodovia PS-10, km 3, permanece acessível para retirada de materiais?\",\"por_que_importa\":\"Se houver restrição de acesso, o apoio humanitário previsto no plano pode atrasar.\",\"motivacao\":\"O plano fixa a localização da central, e o alerta indica cenário de inundação com possível impacto em circulação local.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Central de Logística Municipal (Rodovia PS-10, km 3)\"},{\"doc_id\":\"D2\",\"trecho\":\"Possível transbordamento do Arroio Pinhal\"}],\"o_que_falta_saber\":\"Se há bloqueio, alagamento ou dificuldade de acesso ao endereço da central.\",\"quem_pode_confirmar\":\"COMPDEC, logística municipal ou setor de obras/transportes, se houver articulação institucional.\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"O alerta de nível laranja foi encaminhado aos responsáveis pelo abrigo e pela logística previstos no plano?\",\"por_que_importa\":\"A comunicação rápida entre quem emite o alerta e quem executa o plano é necessária para acionar as medidas previstas.\",\"motivacao\":\"O alerta veio da Sala de Situação Regional e o plano é da COMPDEC, mas os documentos não mostram a comunicação entre eles.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E6\",\"E7\",\"E8\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Fonte: COMPDEC\"},{\"doc_id\":\"D2\",\"trecho\":\"Fonte: Sala de Situação Regional (fictícia)\"}],\"o_que_falta_saber\":\"Se houve repasse formal do alerta para a equipe que opera o plano.\",\"quem_pode_confirmar\":\"Sala de Situação Regional e COMPDEC.\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há no material regras de acionamento, fluxo de comunicação ou responsáveis operacionais detalhados para o abrigo e para a logística.\",\"por_que_importa\":\"Sem isso, não é possível verificar quem aciona cada etapa nem como a resposta deve ser coordenada.\"},{\"descricao\":\"Não há informação sobre estado atual do Ginásio Pinhal, de ocupação, de acessibilidade ou de equipamentos internos.\",\"por_que_importa\":\"Esses dados são essenciais para confirmar se o abrigo do plano pode ser usado agora.\"},{\"descricao\":\"Não há dados sobre volume de estoque, reposição ou acesso imediato aos materiais de assistência humanitária.\",\"por_que_importa\":\"Sem essa informação, não se confirma a capacidade real de apoio prevista no plano.\"}],\"cautelas\":[\"O alerta é fictício e os documentos não trazem mapa, cotas, histórico de cheias ou dados de impacto anterior; portanto, não se deve ampliar o cenário além do que está escrito.\",\"A existência do abrigo e da central de logística no plano não comprova disponibilidade operacional na data do alerta.\",\"Não há base documental para afirmar que o transbordamento ocorrerá; o texto apenas registra possibilidade nas próximas 24 horas.\"]}"
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "run_file": "E07_A_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-5.4-2026-03-05",
+    "reasoning_effort": "low",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_0500f181396570c7016b06edc0946487d29c49dcc5bfed65b1",
+  "model_reported": "gpt-5.4-2026-03-05",
+  "usage": {
+    "input_tokens": 4559,
+    "output_tokens": 935,
+    "reasoning_tokens": 332
+  },
+  "latency_ms": 16103,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "T1",
+          "T2",
+          "R4"
+        ],
+        "justificativa": "A saída verifica a mudança de responsável do Transporte Sanitário e explicita Carlos Menezes como designado desde 02/2025, contrastando com o plano que citava Ana Ribeiro."
+      },
+      {
+        "id": "G2",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V2"
+        ],
+        "justificativa": "A saída pergunta se a lista de acamados do Junco Baixo está atualizada, mas não recupera explicitamente o antecedente de 2024 de lista desatualizada nem o impacto de 7 horas na remoção."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V2",
+          "R1",
+          "R3",
+          "R4"
+        ],
+        "justificativa": "A saída cobre que a remoção de acamados depende do Transporte Sanitário e da lista mantida pelas equipes de Saúde da Família, incluindo a mudança de responsável."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "correto",
+        "ids_saida": [
+          "T1",
+          "T2",
+          "R2",
+          "R4"
+        ],
+        "justificativa": "A saída reconhece explicitamente que Ana Ribeiro não é mais a responsável e que Carlos Menezes foi designado em 2025."
+      }
+    ],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "reconhecido",
+        "ids_saida": [
+          "informacoes_ausentes[1]"
+        ],
+        "justificativa": "A saída explicita que não há documento com contatos atualizados do responsável atual pelo Transporte Sanitário."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída trata a referência a Ana Ribeiro como superada e não a indica como responsável vigente."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde diretamente à checagem esperada sobre o responsável atual pelo Transporte Sanitário."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à checagem sobre a atualização da lista de pessoas acamadas do Junco Baixo, ainda que sem recuperar todo o contexto de 2024."
+      },
+      {
+        "id": "V3",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É uma verificação específica e relevante sobre capacidade operacional no prazo do alerta, sustentada pelos documentos, mas não prevista no gabarito."
+      },
+      {
+        "id": "V4",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É específica ao escopo territorial do alerta e busca evitar extrapolação além dos documentos, embora não conste no gabarito."
+      }
+    ],
+    "afirmacoes_sem_respaldo": []
+  }
+}

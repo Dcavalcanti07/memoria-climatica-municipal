@@ -1,0 +1,1101 @@
+{
+  "meta": {
+    "scenario": "E17",
+    "condicao": "B",
+    "com_atualizacao": false,
+    "rep": 3,
+    "tag": "eval_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D3",
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 1125,
+    "user_message_sha12": "503342696732"
+  },
+  "user_message": "Município (fictício): Barreiro Velho\nData de referência da análise: 2026-11-25\nDocumentos disponíveis (3), em ordem cronológica:\n\n### [D3] Relatório — ETA na cheia de 2024\nTipo: Relatório de ocorrência | Fonte: Serviço Municipal de Água | Data: 2024-05-31\n\nEm 2024 o Rio Barreiro atingiu 8,9 m e a água entrou na ETA, interrompendo o tratamento por 6 dias. Hospital e abrigos foram abastecidos por caminhão-pipa de municípios vizinhos.\n\n---\n\n### [D1] Plano de Contingência (2025) — Saneamento\nTipo: Plano de contingência | Fonte: Serviço Municipal de Água | Data: 2025-09-09\n\nA Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção construído em 2025 até a cota 8,5 m.\nEm caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.\n\n---\n\n### [D2] Boletim hidrológico (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-25\n\nNÍVEL: VERMELHO. O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_01fbfd0bc6f8d4c7016b06ed3332cc87d2a47d74d72fce07ae",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 2139,
+    "output_tokens": 3961,
+    "reasoning_tokens": 771
+  },
+  "latency_ms": 25174,
+  "started_at": "2026-11-25T14:14:10.646Z",
+  "output": {
+    "resumo_situacao": "O cenário atual é de atenção para a ETA Barreiro porque o rio pode chegar a níveis próximos ou acima da cota de proteção informada. Há histórico de entrada de água na ETA em 2024 e um plano de 2025 com muro de contenção e aviso de racionamento com antecedência.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Rio Barreiro",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Rio citado como referência hidrológica e como fonte de risco para a ETA e a cidade."
+      },
+      {
+        "id": "E2",
+        "nome": "ETA Barreiro",
+        "tipo": "infraestrutura",
+        "setor_responsavel": "Serviço Municipal de Água",
+        "descricao": "Estação de Tratamento de Água mencionada como ponto sensível ao avanço do rio."
+      },
+      {
+        "id": "E3",
+        "nome": "Serviço Municipal de Água",
+        "tipo": "setor",
+        "setor_responsavel": "Serviço Municipal de Água",
+        "descricao": "Fonte dos documentos sobre saneamento e responsável pelo plano de contingência citado."
+      },
+      {
+        "id": "E4",
+        "nome": "muro de contenção",
+        "tipo": "infraestrutura",
+        "setor_responsavel": "Serviço Municipal de Água",
+        "descricao": "Estrutura construída em 2025 para proteção da ETA até a cota informada."
+      },
+      {
+        "id": "E5",
+        "nome": "aviso de racionamento",
+        "tipo": "servico",
+        "setor_responsavel": "Serviço Municipal de Água",
+        "descricao": "Comunicação preventiva prevista no plano em caso de risco à ETA."
+      },
+      {
+        "id": "E6",
+        "nome": "Hospital",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Equipamento/local citado como destinatário de abastecimento emergencial no evento de 2024."
+      },
+      {
+        "id": "E7",
+        "nome": "abrigos",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Locais citados como destinatários de abastecimento emergencial no evento de 2024."
+      },
+      {
+        "id": "E8",
+        "nome": "caminhão-pipa",
+        "tipo": "recurso",
+        "setor_responsavel": null,
+        "descricao": "Recurso usado no evento de 2024 para abastecimento emergencial."
+      },
+      {
+        "id": "E9",
+        "nome": "municípios vizinhos",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Origem do abastecimento emergencial mencionado no relatório de 2024."
+      },
+      {
+        "id": "E10",
+        "nome": "Sala de Situação Regional",
+        "tipo": "setor",
+        "setor_responsavel": "Sala de Situação Regional",
+        "descricao": "Fonte do boletim hidrológico de 2026 com o nível vermelho."
+      },
+      {
+        "id": "E11",
+        "nome": "Nível vermelho",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Classificação do boletim hidrológico de 2026 para o cenário de alerta."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "afetado_por",
+        "rotulo": "O rio pode afetar a ETA.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-05-31",
+          "fim": "2026-11-25",
+          "observacao": "Houve impacto em 2024 e novo alerta em 2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "a água entrou na ETA, interrompendo o tratamento por 6 dias"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m"
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E4",
+        "destino": "E2",
+        "tipo": "responsavel_por",
+        "rotulo": "O muro protege a ETA.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-09-09",
+          "fim": null,
+          "observacao": "Proteção informada no plano de 2025."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E3",
+        "destino": "E5",
+        "tipo": "responsavel_por",
+        "rotulo": "O serviço emite o aviso de racionamento.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-09-09",
+          "fim": null,
+          "observacao": "Procedimento previsto no plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "o serviço de água emite aviso de racionamento com 12 horas de antecedência"
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E8",
+        "destino": "E6",
+        "tipo": "abastece",
+        "rotulo": "Caminhão-pipa abasteceu o hospital.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-05-31",
+          "fim": "2024-05-31",
+          "observacao": "Registro do evento de 2024."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Hospital e abrigos foram abastecidos por caminhão-pipa"
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E8",
+        "destino": "E7",
+        "tipo": "abastece",
+        "rotulo": "Caminhão-pipa abasteceu os abrigos.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-05-31",
+          "fim": "2024-05-31",
+          "observacao": "Registro do evento de 2024."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Hospital e abrigos foram abastecidos por caminhão-pipa"
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E9",
+        "destino": "E8",
+        "tipo": "abastece",
+        "rotulo": "Municípios vizinhos forneceram o abastecimento emergencial.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-05-31",
+          "fim": "2024-05-31",
+          "observacao": "Registro do evento de 2024."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "por caminhão-pipa de municípios vizinhos"
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E10",
+        "destino": "E11",
+        "tipo": "outro",
+        "rotulo": "O boletim classificou o cenário como vermelho.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-25",
+          "fim": "2026-11-25",
+          "observacao": "Classificação do boletim atual."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: VERMELHO."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "pendencia_historica",
+        "descricao": "Em 2024 houve entrada de água na ETA e interrupção do tratamento por 6 dias.",
+        "implicacao": "O histórico mostra vulnerabilidade do sistema quando o rio sobe, o que justifica checagens específicas no cenário atual.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "a água entrou na ETA, interrompendo o tratamento por 6 dias"
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "atualizacao",
+        "descricao": "Em 2025 foi informado um muro de contenção para a ETA até a cota 8,5 m e a regra de aviso de racionamento com 12 horas de antecedência.",
+        "implicacao": "O plano atualizou a proteção e o procedimento de comunicação, mas os documentos não dizem se a medida foi testada no campo.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "protegida por muro de contenção construído em 2025 até a cota 8,5 m"
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "emite aviso de racionamento com 12 horas de antecedência"
+          }
+        ]
+      },
+      {
+        "id": "T3",
+        "tipo": "atualizacao",
+        "descricao": "Em 2026 o boletim hidrológico colocou o cenário em nível vermelho e indicou possibilidade de atingir 8,3 m a 9,1 m em 48 horas.",
+        "implicacao": "O valor superior do intervalo informado pode ultrapassar a cota de proteção descrita no plano, então a compatibilidade precisa ser verificada.",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m em 48 horas."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "O muro de contenção da ETA Barreiro está íntegro e operacional diante da previsão de 8,3 m a 9,1 m?",
+        "por_que_importa": "O plano informa proteção até 8,5 m, e o boletim atual pode indicar nível acima dessa cota.",
+        "motivacao": "Combinação do plano de 2025 com o boletim de 2026 e o histórico de 2024.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E4",
+          "E10"
+        ],
+        "setores_relacionados": [
+          "Serviço Municipal de Água",
+          "Sala de Situação Regional"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "muro de contenção construído em 2025 até a cota 8,5 m"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m em 48 horas."
+          }
+        ],
+        "o_que_falta_saber": "Se a estrutura suporta a condição prevista, se há pontos de entrada de água e se existe reforço complementar.",
+        "quem_pode_confirmar": "Serviço Municipal de Água, especialmente a área responsável pela ETA.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "O aviso de racionamento com 12 horas de antecedência continua sendo acionado sempre que houver risco à ETA?",
+        "por_que_importa": "Esse é o procedimento de comunicação previsto no plano e precisa ser confirmado no cenário atual.",
+        "motivacao": "O plano de 2025 define um gatilho operacional para risco à ETA.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E2",
+          "E3",
+          "E5"
+        ],
+        "setores_relacionados": [
+          "Serviço Municipal de Água"
+        ],
+        "status_epistemico": "fato_documentado",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "o serviço de água emite aviso de racionamento com 12 horas de antecedência"
+          }
+        ],
+        "o_que_falta_saber": "Se o aviso já foi preparado para este evento e qual setor fará a comunicação.",
+        "quem_pode_confirmar": "Serviço Municipal de Água.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "Existe abastecimento alternativo pronto para o hospital e os abrigos caso a ETA precise interromper o tratamento?",
+        "por_que_importa": "Em 2024 houve abastecimento emergencial por caminhão-pipa para esses locais, mas o documento atual não diz se a medida está prevista agora.",
+        "motivacao": "Histórico de interrupção em 2024 e cenário de alerta atual.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E2",
+          "E6",
+          "E7",
+          "E8",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "Serviço Municipal de Água"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Hospital e abrigos foram abastecidos por caminhão-pipa"
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "por caminhão-pipa de municípios vizinhos"
+          }
+        ],
+        "o_que_falta_saber": "Se há acordo, frota ou rota definidos para novo abastecimento emergencial.",
+        "quem_pode_confirmar": "Serviço Municipal de Água e, se houver articulação, a defesa civil ou setor operacional correspondente.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V4",
+        "pergunta": "Há alguma medida adicional de proteção da ETA acima da cota de 8,5 m prevista no plano?",
+        "por_que_importa": "O nível previsto no boletim chega a 9,1 m, acima da cota de proteção descrita no plano.",
+        "motivacao": "Descompasso possível entre a cota informada no plano e o valor máximo do alerta atual.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E4",
+          "E10"
+        ],
+        "setores_relacionados": [
+          "Serviço Municipal de Água",
+          "Sala de Situação Regional"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "até a cota 8,5 m"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m"
+          }
+        ],
+        "o_que_falta_saber": "Se há proteção complementar, operação de emergência ou outra cota de referência.",
+        "quem_pode_confirmar": "Serviço Municipal de Água.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V5",
+        "pergunta": "A ETA Barreiro tem plano operacional específico para reduzir ou manter o tratamento se a água do rio alcançar a área da estação?",
+        "por_que_importa": "Em 2024 o tratamento foi interrompido por 6 dias, então é útil confirmar o procedimento atual para esse mesmo tipo de ocorrência.",
+        "motivacao": "Registro histórico de interrupção do tratamento e alerta atual de cheia.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3"
+        ],
+        "setores_relacionados": [
+          "Serviço Municipal de Água"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "interrompendo o tratamento por 6 dias"
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Em caso de risco à ETA"
+          }
+        ],
+        "o_que_falta_saber": "Quais etapas operacionais serão executadas se houver entrada de água na ETA.",
+        "quem_pode_confirmar": "Equipe técnica da ETA e gestão do Serviço Municipal de Água.",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há documento dizendo se o muro de contenção foi testado, inspecionado ou reforçado após a construção.",
+        "por_que_importa": "Sem isso, não dá para concluir se a proteção atual é suficiente para a previsão do boletim."
+      },
+      {
+        "descricao": "Não há confirmação de que o aviso de racionamento já foi emitido neste cenário de 2026.",
+        "por_que_importa": "O plano prevê o aviso, mas o documento atual não registra sua execução."
+      },
+      {
+        "descricao": "Não há atualização sobre abastecimento emergencial para hospital e abrigos no cenário atual.",
+        "por_que_importa": "O histórico de 2024 mostra a necessidade, mas não informa a resposta planejada para 2026."
+      }
+    ],
+    "cautelas": [
+      "O relatório de 2024 descreve um evento histórico e não deve ser tratado como situação atual sem confirmação.",
+      "A cota de 8,5 m do plano não pode ser interpretada automaticamente como limite absoluto de segurança em 2026.",
+      "O boletim hidrológico é fictício e deve ser usado apenas como cenário de alerta documental.",
+      "Não foi identificado documento sobre outras fontes de água, evacuação ou interdição; portanto, nada disso deve ser presumido."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 11,
+    "n_relacoes": 7,
+    "n_verificacoes": 5,
+    "n_temporais": 3,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D3",
+        "trecho": "a água entrou na ETA, interrompendo o tratamento por 6 dias",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "o serviço de água emite aviso de racionamento com 12 horas de antecedência",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Hospital e abrigos foram abastecidos por caminhão-pipa",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Hospital e abrigos foram abastecidos por caminhão-pipa",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "por caminhão-pipa de municípios vizinhos",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: VERMELHO.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "a água entrou na ETA, interrompendo o tratamento por 6 dias",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "protegida por muro de contenção construído em 2025 até a cota 8,5 m",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "emite aviso de racionamento com 12 horas de antecedência",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m em 48 horas.",
+        "doc_valido": true,
+        "literal": false,
+        "onde": "temporal:T3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "muro de contenção construído em 2025 até a cota 8,5 m",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m em 48 horas.",
+        "doc_valido": true,
+        "literal": false,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "o serviço de água emite aviso de racionamento com 12 horas de antecedência",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Hospital e abrigos foram abastecidos por caminhão-pipa",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "por caminhão-pipa de municípios vizinhos",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "até a cota 8,5 m",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "O Rio Barreiro pode atingir entre 8,3 m e 9,1 m",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "interrompendo o tratamento por 6 dias",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Em caso de risco à ETA",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      }
+    ],
+    "n_citacoes": 21,
+    "n_citacoes_literais": 19,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795616075,
+    "created_at": 1795616051,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_01fbfd0bc6f8d4c7016b06ed3332cc87d2a47d74d72fce07ae",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBu05CC98m1um3r8Cv3iHfvvJkuKSBLY9FvpNukDvc-fs1SMq1clLNwyIRfjHjOZMH1ZvH-J_LWIhDdk-wPvmZ7-RobMdDj6S4f3eTHFVsiIJKBEkvcGLX5UIjWKR3ilYUd8iCeHf9HPDOakoTKB3JNjs2J_cKcVV6hF7GMDFwFvKkJyblk2Leiica_rnJCh9awtdBmzky5sz5UdvDT7aJ3PnI71WApVOaeShWgxgpx17a4afRKlmHn1H3-yzqyVT4Tqr5EDqRZchwdhAji-EjZe_pYpnagIabcd2nLMbJal-SZ4C1u4R20APk1m4WM2bIxKbLiZ29RSZy_jPsFNLzNYYrKkWrLNPkDT4bu8NYIELm7uWl-2DOUyATJYNnxRpyEI2jQdd9a2Gv5zQsDMR-a05YPoJTNqMUZQQqBIvBaCOI-jsGtvifa9P5QMSYwE9QJMhfCigMEZIJx-6VEW79l2_iCOzPeiIH_QYlNHEKcXmkiZxO8I_gwLJNLRwEpeHdq5Di4kDSC1rvh785nY6XFFAIvyyZZkddzHKozk40Qbv5tx_j-R_i7YC88jV2I1UUJ6eCezdiZaZuOhEGg2Oceyyyp9E1a5uW-uXYwrs3d2IhPvA-DL52mwzT5u03lT54fz8hq8WxtjBUjyYAgbBBZzTJBc5og6efe8VTq7IUVm2hh80Vs0HYlpwaq5jyYNsyrbW8Qf3oHdL-NZw5moQ9_0f7LMBzuVK4L2966sZpFMkEEMH7yoC5IWy41l1eqRKLd8ypie_v7lnDP0U7F35cl_IzJQxBsMAkrpr6NqgVTyeCZbxNxLzfYfev_w6G4iNbW2OWjV78CKbsPc3lm4w-dx8sXcFfbOM3qjzEVhNQk15lY1YQ9gAu6UvTchMujJ97utfwzzDezw_FgfN6yXgObqC6u_823JA6t2Lxj-gwupjFEPAaHMf-znue_gU5MLRPHdpnTYPRTbscczIFTT4yDQnLxXgeEwb1DocC0lKBbOTljVaCBsKvqCeaICGeuvTC49WhIy82FIGTu3DhYljng-lZIdNewWxvB2q1KU5hXQcwuffeALfW89kOn7mKw3ZOooC6uWmSiG3sAh7LBo2rPzYDmDcFQ-TlqwuefhqJTA8p7gv0VZAMPPFqz5o2LVtiXsq81RXLoVGeYrG-FUudZm0dZTjU2mn9GjCvTANW9esTIXlU3lfF8Zw3y2l_NCtGxXaU1FpzbkuFkmC9-O2iqbDWS41OvLsBMFyvvxRKg1uGmORNaPUNEWIMf2bhWvlmzmixxtjb5qiDdx5OUmM1CZS6_t-6ih-p__hXJhkCmYTZXXh6wmL0auf88LLu2JkkOWzQodKklp6kJsqmN0zVZYcd1HCh0SAF_HXA6fCs-bDsAZfmxC0dSj-xlRRRHaK1DAnnTjAH0YVs2cqOQ-6PBWXwj3rPoi3m_cG6PaD2PAOgCwIBa7vFZmhj1cs74sEVvLhuZsfJ_hAGemUNCxZFJpP3Kr1UBtw50GDEyH-PtkSu8r3k0HB3gNq4l0s8MX5J9ctnAay5jzIVD-zQ9tr1QuGjeVFLh7cXk3KzGM2ZFQG40otd9J6JgMDw8_Y7HuZOLYcE7bVuGbXk3IqDMsZ4TqL9pku0oyPolZBt0uYrozRGwK9gfMQUfsQliZ21KA2kSnicSAAnoqlH1P0fHsEFjb1Y5zhVIv-46YKdsRaDzmd9V4E7VY2gWNozOic--rM7ejV6WIvNg2unz_4IM7o_gcBssa83vtKHvFiY6E_tabQdTv64E2VJtmAfGAfqWyqh_oIy0UUa_eL9rVsl3BRKgGqBbrqjjXKLlY54PNxXRfTzp2Y2LZZvGsefpSecXqOrmOJlwxMOBk_B66xFPO8DJaFym7SvSWF_qgL3UFVtCAFUNBLTGvd9HQH38PNEYGWOLR5v4-yZt-fhiD9XwPtOYX0GjsxDyuTNxJXWwzhUt1r33GOQqw5ah_Sw0UWzI1cJXL5vguzfs-Zmu_3Fkh3C2C7NNWxi9ULtyxcCH6H6qo1615nDgmOc6UApsux8OjppbTbk3CFpPoXYK90tJIvQIJfbUIpjRFfJHiaQR7teAW47QTyt8Sjndj89X8G__YgLeNH6ypX5DNDcAtcuHfNo1mcBjmrVW037ZVtRdEmdOHHLhObw0deswBlfugyK8hW_0LjBCOQ9ec_a5lKwpqdkZ3MQDYqLY_Gki97SgPAcSnHvec1Cs1cKRw9BunpyK7Kd118-mG_XGtU284jEL4BQXum1RAiJ2Q69UyHYw6imOtFx_p0cwRSXvIbJdIUOzzuhzadgti0GxVCSh1Zx9pESL7edjIvpsZqjHGAw_IcDm2X7ZspQvDzBoMejXm5p2BGcOB-p_EpCuDnVfXn8WSxQ_ADWfGAo98AI6RxjkmjfsfX0H9-6DS-uHhxdDB2scuMKUhv2B-KgCOyxJ7ugDpO0k8rz2Uv65Tgg4zH0D9zjxdMTBkOOaZ1EpXc57PoRsK7Ds7roeSKveB-kkmr5_CAii6hwG7GA_yDH6IRLV_UleHfxH7_VokCmapxV8z9Gw7wbMQMMPs9yd3nyqHzb9I_VSIuQSEDZKQ59aGBONkYiRxHVBfnOl82ilsVpmFir2lBBCtN6TC3HC2rfa9SwgJL2B57hstMnZ1eYoUO1KEnw0_X5g5pb_bv0VbsVCCRg81Yi3sT8LD66FP6LNskAQ681tEnZLMch1SINYpauTm1h3bhG0tLSMepDvkT8xDarh8bkrchYiQyb_1W9cmcQ_aRMUQWCA9mOZY5izQfyulbwxa9yE5Wzu08BUuyksULw9TjUdQA_q0hVPRWoQEGR4KsRx_0ZcddaaY5_rgyr_yBt9NFUaJN0l9UwIQBy-d_RkYG4EzpTjTPctbkRlFTzH8oxp-K0EM8by7E3xdw6-7dQq-ylcryFtPws1GaDDKwAq19RPh8sxUhAK9t7fPU9nKLOIjYJR8EDlOIPi-vc3vI1KZ6RrveKdEsP4vhjrhoS2IA5gbdJp3HnKYXZQRZfclSj38o-wrd6fDPA4lBxGRFqT7i8wA56lVNR6AWEOB_FCxGFw1Cg4GaGJxNQqILpZprIYwLsD2NbCjO-IB0jEnEoiYcSyqRHdzvm1ckwImX4qNgE-UDbqmAO-fV1v0b5aFxqLttbbC98XaiiHMTv69sxC59Z9KzVhq6QwPQjp28MGKl_Hw9-u_9FSGbqb0CNP5Sb5G4a39STKSHuhNPzSCjQqe2j2311ZLBgI7ztrXUWjT9t1SE_8Y1jEj47hX8h-a9wBc1UG938Col4UE1MPm5zJfJK2RDCDy2YisCuzsEqcP31XZvSOcIBV9qqaUz2-1FVaT-ApSInpwvHCyjxhNigM_0s5DnwrLaarElZp1lrNU1dkw-NbDN87NxpjpcFUl58Puy13OqcX8DyHUVzYywRu5fLvNPxeW1I1eNpvAP9amjM-l8mUCBz_UD17bDE7TmgWPe9_JeFD3TJSY9hZoQIsFAz0H6URjgowyIRmTKfh_Xkx3j5B6A9CZWoE7IUslRw5zOnM_tWNRMT4CBU5lqdwpm7uNB4V1ngKbGxFlYyKlGIQgqV8zevYkfkd4cm2R-aA6TBFprkwcgwpCQGDcMlhDdBIQoHQp45jlaCpFHVRk5-frUmGbwp30_BMN-JNp7Ed0hmrGERrf40BbUpBftjw6dkpNzNimwHg4xMyK-KIYV74SmYJvoB-4alsIr6Qse4Hh4rr6MoAla-Jojarz0T9vbKDE7QEs-JDuh5KjxSaGSMQVPPFOsLcPtS5idY7cxDewNGMJxr8I7iczWPoF55HHEA-nYutCG-2wr1kaOmz-5UNVxbiHEl4Q8n1pR7DIyNTS5noUR1kvFZGzZkk6RJwirm555ojTtSB70E3hNx-9W9YGH4onhVsgA4g45WEASpOzAyS8WoPb4rPoK5BgR6N9IgpunX9zJYOa7U0b0gwq34vbZENmZPRHJVi-Q7OH0sH8PMzqylNgYIGkd0mCSR4LfrcfCOCLTvOrY2wmSHGlY29uEpG_ZDEebLRP0IvpYcckZnQtc80ibPMzq2DhpLSaNBw7Z4pzTN38obxo4SLBslUa_DsAkY1btoflCyAenl1hUcGmyFZzQlMlEFbEAubKa8bZ-6epv_IarkClkv-4001sHa5701nkkVjDLT6SjMT-NsTOurbAqPxgK11IHXytc9mWl2niW9MULUGHmtsGGbSu1ksu_YJ4UqVl7aDGup0MByuvZr9AkWliF9CSx9bk7n6abve6qTxD-lDM-UgY7S_8avEQIs7BNDcdUDfMCT4WWDg1arDPmVaPh4KYz_WtQj8lCb__nYdj52HvEP0CvyxGKBnDphwVsL2mdUt0vaowaHorOzy2K1MeXRnzgx5kwb-2RqEf9jXQsjYB1kcyOrAzs_GlqU3nx69H0KIrfODj3yjylTgBETahSO2u0EVLd32ChzEjKDcgIihFBfuLS5MBrXndLqZkwxI4KFmXJNhYfAp6faGbR3-LdFvF_-tqCvC19ryvCBbiWXH2D9sZolvkHpF9PCApovSfCuiDyLGUopoazESmxjaORHxOwvJ3hWRA95sW449ng1QyU3-It4VbNeBRO6w25RIxFq0Pdi0qngnSiJWbk_PdqmmvDr60Dny220A43yOlTy-CVIGU0EdiTR5VbSCeu-HRmS-qpQCprSP9hgMV45Moc-q9N0Ig7Vxp8py2tOUV8UstlnEgz7AwB_pArf733XfRNd-yYtlHpIoxmczbGmBEjdytHRu7yR6cA0GI3kLuLIl_UJgGsvmbT06oHoyJkke7PSsVDz2pDUZpFcyARrWAxX4XX8lxUKQhGFRN86qe6wZgGCfqbCXPh6pACYQfM82EEmU7FCSzw3FuJRO76LzCDF8vEDD6Tw7CERx2DfuamRod-whkkjpqlASnwTa1Joz9Twu5hu18kR86oQ7KlueyUcqgdTk64ghlWVhQjsgzjwCmr58l63s04RCtZiKbvpxSszVKKFmPQUZMF6aJNBdfRZt701ocYayETfMvJe_sV9eAuxilkCGs8B0yOnOTOsArZLva7Gmfzunj3hDg9BwCOpz0zGdlxuJhmlk1WBT4VKUaWiCmlMGth-_6LJPBX7-Jh4OYNWDNtHmybrouFGC1-pwKr-eSvBY-Qqbxy6jwebkhicSrdcAambYxZn3RlZxcGIvGx6HZrR8WBsDfqeVroS7xjWLjOMWzGEQza8f11-iyuiwe866LFWlNL7Z7Saw6NC6NPf8TqgYT8ploWK97u8dyHiCTjZgZsOaSsNvpbdzTOi1NzgMzaiUXyxuYzSAB7iChPBie6q67zXwuJnO_q1SZer0uNfexvh8xWJfDmqr13Kez2KkHiwZBbamJBFKVNWf7VBp_Au1Y_c-5BxQTPTTzTR5pWnZ7Wtd_JC7V1osnqcKwOHc-yPfJAo8I9R0io7MQsUWlSEygeI7SUMN0pE7QUl9Wu3zTxoS0pyigOsfshPNM77pJ-MV0-tvTB28Xho374CzWf-oQF6XfnZNgudD4QDWraDWxZEH3rdo2pJbfk0Mgtnpytw3LheMzma9dvVNPOn-Z_bTK7iPhA9cfEWJamD8758vELaxPibsX8lLD57Spi0wdVMhlSDGNL3Yhl8gePoLcpEv16jVP5qOY846sstA3VwVftbDlS7j0pmwWweKfbdWur9iRGS_RdKh-Bam_4zYSVgLFo979HBCnRtKkYcl1WnFgA3iav37d9qhuNOwDiriIcbzeTWhVyz98bkyQSl_66MNAZu5uZRpabLEsW6ejxW_cfXbSiIqrFW05BnUulHLMcn-eyxPPf-qHrVpVZipQJSWEP63OpaRSxASCWtonXKpaa2-mjTRyUpigwFWleeAOPMlh-NXerU8rKEgqRU-CY1QsAFyIn5hna4cQ4RyCPCUXl2qhin0A-uC1ylNP3zbnQMmrFgnzHeG6dN1ohnWvpwafhXfATmPdwpcLmftnUEVkoBhzE0QH3GLPoIsdoF0OvPKaIQbhoRxnkB3J0NC1Wc5OmX4-ezhwhBeJqxgtFlI3BbR3rYcszOU97sPeG_kHdo53rT1D3ZLF-0bk3wDVGlpIgtkbLqb0rhWy5EAXr8O7VU_9RK3lXLZFmk6LbSUcBrDuzEb-0QjlFITzqCX5MUYl1taZDPKwLh2UUYup05f0WWiBZrnVDHAr19yhLypYoExbqbZ1G_dqtENes8qTCWyq1Pu_ZJlspA8HarASmNbIBqC8O3Kv5qR4u0Ql8OjRaAoeOES--BAsXN6EtA0tTqGNVEYwmNEBYHsdF1w1Mx00SSU-iSPsTwDFgaQeTBVbRJHmvB9x4nTZYha_jLpNvkBJe50m_rlJ8aMPo57BGEStZU3nFWLBXHlXSwF2VNadyYXzlgOVK2CNSj_Dq_e3vxa642Uy6_sUpTtfqNI-sCGAi8CsQ5CaZtFPLCV4v1410kwiGwFP4q0CdnFomlRf35yFWQjdN1DgKmqhqauKPp7Hrx3GazGV_eL9BUSScP6h2BfSsgYYbv28qr7ipDJJxaha6gnAOPiEGmSq85bDjGBNlDd_r0BBkK_c2-Krx58M5hUHkBc2rr9aWEAYQ6k7Dy014sRIRMfeCPOr_dAlmi80D2xzC1ibJ-gWf-1Uqbg8waBLtwBXzd1xOGYbkFONAwgQ7Q2H2pTFDndgGPUKussu4wqoR4kx9PRKdHqqxTdp0Z5IQT65_MuEoQfT-OWKE9fCXWi0Y1QpTtXWdaDyTWRbOLMktREE10XbgG96GZwzsEGuZZ6qGrYjc2tDIcQBmPXz4nXrj2jVEEW_yUFoc1Rbkyov-wNtORUwLATUPhhRcmSg28mJ7mRhtG1_Z02Wlk1Dzt1p0qcbNmYu18QEBjfbuCXcD7XbYgNTI6rBWqVyh6JomxAbEhNjDylv_XNwVl5zXurGD5Ot4glqm-0iWgDibsRsY3XZYkpnSHoggTFUejr1gBEBEsotO7p3Ic4pso-1cxj67zBKSRJ5bctS4hJQFUaVAmb4axtmJvTsBaVv53McnBv-ojVigH-Wf6YdjvvWoI5CVuQAuJI0LXBNkR6l9Jk4FElbp9ljqPE3flASCSimUNMm2KpEArJ-MIMMfxftEalgkkU7ziUna1GbjG_Wc3j2QCG4iZUlWDiCW9u-2jvWxKkdAYu8KcU0cCDd4rKjvlLuyNhvyGUmlrfKKYW6MAwuxI3dn0_LCjgFX6eFdLNNdkjXgw4Qhi2J0S9El5wuXYopWbyNDXaIIZq9Uc5Xtnsu52O0F2lohck6cy9L9sSiEkW1qQL9_isKv17p5lgPVE-5j4bmlVQ1OcjnXejtk2xaXjMZzyu5bXmSvo1SRZNJjqodKYpJTy0ookBSYBk-T7eE7fdOwzCeX8zSFK404RPbCHMIM8KsnkYjPs5QULVbHIG0T5VeEZY3Hb7Vc6oksQ0Fs4_BtjkOu8qr97BG1rt40Iy9wDzYlPkDTQSr6CtTpVfUStNxTs7gpUJMVOyEui1XD2zwvVPBZhPICWjjx1qv5s5ZOqNtKTKqd63Q15SrI-6I4aKhKweGUoI6QbzLfQw3B8Z5DEo9l3mPGSn6dHkJyw0NjN-xsRCyZv4LNmQhfnpH1eCRGRt53yS480lrxwf30pVrRzvxstobuLIaY1FDaqZEZ0FYBdfZeX5xAyX7mQWeLs9ZcUFHSab4dvCSp4rw6fSg8nczTw_iPoHopEb8pZWkYbiv_RmcVkuZLfIl4S8CGPv5GSIpPeH1XecmW1-ZqeUQ_sRAcP2I8ytPEcdHVvF5Nvzo-9WspKkY7wKvunEyGr77D6PmcSZWvgugEERBhfTYuXED1TpP3nRiUUng3uFdDaYEQl1jAenppE9Ey0m8naEitYd2AV-OZP-KPvhfXZmtnIUs96zygGbZU3MHKgiH3FxxbXQvNOaE240EOduT8mHeZSm-k6v_ZQHIVfY-vuWIAJwodm4Z3jVhpyx7eii5NLogiQbZvhYKCdRsQDy-cJLo8bcY4K-jXxL7Uz5upotdchaWSs_xXFMyv04kEgzzx7Grao6WWqpdpwX1rwomW6v4VSrD2WluzZyCu0V2HvebBG42eEA_W34tRrekJtoeQx8d66lUTKnmcnbd1zEthyj7hrFLvJS9Yidnp7lSBw-v7FjpFETTN7YyKmOmWnglbG11zjSdOUbseiSwD8uWG0noJDAZ9C5gh7fFWCnfH3y1MZocn3gxlw2Xz5dsxnRHOMSQs8DBdazGn_dJwswVhSmK8a9fTR7eeE2FAqmSa8h0PUWj5oQmdkAK8TZujvL_5YVFZwG60TxS8dAOQNxrJvQRkYnOsYHMMrj1hHJ4rL1kwUamZfeQEgwdb5du6R4GJGjVvrYhe8HbeUcNWYbdqg3oCXtaKNKcQYdjtvmI4nPsKmlyCok_Y8Ba1S0atxC4iD5A-nIx1D6KaxD3UyyYxqS4isnDDO9n2Apz-0lkPp_Q-eYQIzF6g3P9j0oMWRCQuf3YiftE7HrbUhbJwpwkl19Y90aPIYDHy5Hk4FPH2PBawUyTWGrvw1oLJvzWEfgovDW8OlHoqRavaooKFQXYGsr7FSqQ40ngGQF3L_1bCNPrJNxjm4QJIvsmIAaxgvufmeVrJ23zE2v_ybF9ZTVkgv1qSWxI1oPUor9o1jklQkqXAs9kLPhWT2VwglXQj0p6gFCpKfw1zmTa-Ir_3AWPz717E_eQFr-PYAvP2dZFU4tgPhHJbSoUCQ2ujwco3OxTSnUA8X_5ZPpkk8WwuBUCgQM9dckeTGXdV3PCP9WJCiIvAZvzb2WrD8wZjHyy2Na2MjYAH53Gjm0j6JstN59KuvvfPPorSqVhDdfhe0rRlT9yDNukPYBIvG1Zf_Fy9rtAjNx_TOcPWpm7yHEN7BV_LvlFcwYmLFCoptM2S0bqpsEs4n81fZiej1wsU-enxXeIH8UUwctZJxi5gyyRgTzRQ2_ipqJRpgwPjZ0GcYVBb84JzxA8XWvV9RYel_sjV47IQLx8f-JEmjMLMsoOU1Ef-QRuMOcacxrCX6RFVcFIU4ZY_D-_8z59pHf90Y5ymMrXotEBbypi5AluW8oB_1kAnVsPzcnw8o3vugcQ8HWi0wOGAtOEsERgNnsb1WF5o1J1035U_44xJMfVz_2LZn4p0oy-vwM3nfwtqkSoRTIQNYMbVv8dPqp6DimiqHXBI0-z5dzxFg5S6_md8yD-bxv-C73XqiDSPbg8ZV0v2Fe8O25Fir1DMxbUV5kw-hUm_nPXDtjZVh0TamYq5R58-0EcfvyIvxdEkq7WPD6RMiaEaDQxJ-_c1UUyrhpgP3C9CtE3m7vYU57JZMCPVnWJbk-asV49oQXvDYKE-bOdjhfQhk-_gcbn7Nz1v5awxaQUMkJWFVnpTRSx1ecMI-lmlezsSd42mqBojJ62lbuwUaDAyShySoAwxEYp35QmBMB9Gucc2iAUDp24xXiUv1pueK-l_rXAk2pYsRFMMCeqJPTvmc0MoWmzIJInVg1cwL662Dk2vJwBw0PHyV4_I5gzaK4QlAplLgS9TQMyHMwm-jib4JTZWjGqO_a13R2mtDFUkZIHtDM9YkrXaXZljWD-gx74Zx3ykpBZaiY7A3xmEcU2ZQJJMHqahJwBQ-n4LgRBSNQVmjS8PD3oz0CT5RVyxw2rjpmTbZBBbIQDYWeFErr3_-d7F3M7VUdI4_VjZi4DzW4pXVbP2kaitXyEQBtZhV8g6qyaY0Nlb0PQo2l-V83bmbKjdDyLV3ptOTdQq0l1QKABLzf-RjzbQYQml4DPIE1znwRm-rmHi6oFnziMC8TFw_ilFy7t9uJ4rDAO6FANs-CQYax6pId3YGu6SHHBrwBc_75w-5alCAQLvBNkmJNJJj1BxwI85pPwG2XggB0skCWeGRIAkvvwlcwOo5i6Khg_9p5kw9iJW-DwzuddGuDzKrcept2dcD3-VuQaOVQGhBpvUH8a9sMkydOmMAYO7x4aFWjRJdLEdXosOCAJ16t9nNqjwzShT8mDkSzZt7BsWPkZZb_3cJeb0Qi9dr24gPnF_YAxs_6-8AjZRs8XnwmrbVSc9uolSo0VOboZeDYZrzdWofuoBN7e7WcXug-g8ADn52lD6lj2zj9x3_-N9Y8kU1BwNRYaQDPRZasTMFsCv8QOHBodsVFnuHKyfQBTdXyh4CnWpZXAhzHdBl9VYeEvOsuMWglJZpkMbs6LOCwCQvxTjeTzbaPcYWAXAYzD0Dna_WjjdCAbMoqn8sNsx-4YWYAQLvONOdubvyFMvmPYGZYxAgECVlScaZY1pvpyDIv-LWHBflcgzRYXhqz0F9Xpj-e4DA3l9ilpV2vVeCuoIJoPFrgBrNB-N8CBpPhsE6Upz_2ndyVVz3QXvsQyrTVwv1LBBV1x9jGzciuR52_l1P2ArdArRvOeJZpRMGZzwYTNmUFIRg5rzRMhAhcQ6atdWcEKRzwM9wsl7BfmanAhXNpXMyU2wD1dZjh-Lg2ltfBAUPJp4cE58aQFcjT141FL9-VTXmBOxgQM5BOV8MuKfuKFxRT1rN8N46l87sD7xEP47rLYubu0Ao2uLmW7BzH4lFT5Pgat95gA9BAL785iqX4ru89SR5D5aefFsl4iW79lm5tmP61etZBTAxt_Zq7hpItiT8a-yEnfBXhMeZAOAjXOey2pa2FCQ7lQ50QBVZl_dMCqKsHuKrDbgX-zlYKUYe4AvHm3e1bGNlSG2k2VUBUwFDMwPP1wdoYfP2LI9mUaWHki69WmnQNCjmvzRYXhqcq-lxjK7PlE-E2PCdm_aSVtZ-CZxswcWJnnpoyo_Luuo8scOkUfnAWdQErP7o44xc8dTU78K_-kPemgt5fAkCTnFG0E7JThjXcxs7UIt0D4yM687Sq9E9wgUom6Zj2TVUMTX70_hSaahdyldh9CY8XArWzU9gxETUaIxOYtljh7b9jSt8FDwo6EUv1hEOBEkt8clqwCC7JZ8yn7bYURcllEL84YxTwjixGI11Z31-UcfgRPf0GW9-LxA7_GmUdIB3sd2IDI1gjx-V0Ul1CwC9IYVAyYbYOUOEX6ODzpWRTDE-d9d1wrZKzQYGDKjhHz4pHvy9e_pxog8yuwX37Qm7kL2mm_W5Vo6OluzGgiI4cC-Bng3WhLGj5y5eSZrpwPyQpz6gPi2ZlZ0MBUvB2RQltWt43MnecZ6Sj5cLPZqRKPiX9qM8IkN1Vu8Tgd7fLpnSw_OARE-WNAbyFRspqV_sDZdGM_5MlMg-ShHlt6jxQUP-tXGxUPM-0ZaOITwTbwdsWs9qBBAf8oC3YS29WfOM9bjFqVCmyKYh3XwhTMDlNBVN4sA9S3oap33cO6fZenxRakXPZgVsrm7FAB4tkV4_TUcxBEWy1tCL2t1SrNby8fW6w1GXVyGymybELrWpPl4ZkdYC8y9o9_6rWsR-O85eUnLGJ32q3gBFgmG6FHvjZphKjX_GGMbcZELRH9XmogT35P6e5hQCqDBgiJKu_2DllnDLQfZoZs4a_HvjJ0-3bQd_AYzv6EqOqUcsh1knDGVqJdnIgVNhejEWhwnV6qEV2m_4AWeUL9080o0RunFcJLAmjCta4YRfHAIE6J85uLzbQK6itbe21-QY59tiXwNlGD0ldR6Fm62VgDt",
+        "id": "rs_01fbfd0bc6f8d4c7016b06ed37e0e887d2aedd87020b51e6e8",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"O cenário atual é de atenção para a ETA Barreiro porque o rio pode chegar a níveis próximos ou acima da cota de proteção informada. Há histórico de entrada de água na ETA em 2024 e um plano de 2025 com muro de contenção e aviso de racionamento com antecedência.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Rio Barreiro\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Rio citado como referência hidrológica e como fonte de risco para a ETA e a cidade.\"},{\"id\":\"E2\",\"nome\":\"ETA Barreiro\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Estação de Tratamento de Água mencionada como ponto sensível ao avanço do rio.\"},{\"id\":\"E3\",\"nome\":\"Serviço Municipal de Água\",\"tipo\":\"setor\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Fonte dos documentos sobre saneamento e responsável pelo plano de contingência citado.\"},{\"id\":\"E4\",\"nome\":\"muro de contenção\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Estrutura construída em 2025 para proteção da ETA até a cota informada.\"},{\"id\":\"E5\",\"nome\":\"aviso de racionamento\",\"tipo\":\"servico\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Comunicação preventiva prevista no plano em caso de risco à ETA.\"},{\"id\":\"E6\",\"nome\":\"Hospital\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Equipamento/local citado como destinatário de abastecimento emergencial no evento de 2024.\"},{\"id\":\"E7\",\"nome\":\"abrigos\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Locais citados como destinatários de abastecimento emergencial no evento de 2024.\"},{\"id\":\"E8\",\"nome\":\"caminhão-pipa\",\"tipo\":\"recurso\",\"setor_responsavel\":null,\"descricao\":\"Recurso usado no evento de 2024 para abastecimento emergencial.\"},{\"id\":\"E9\",\"nome\":\"municípios vizinhos\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Origem do abastecimento emergencial mencionado no relatório de 2024.\"},{\"id\":\"E10\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"setor\",\"setor_responsavel\":\"Sala de Situação Regional\",\"descricao\":\"Fonte do boletim hidrológico de 2026 com o nível vermelho.\"},{\"id\":\"E11\",\"nome\":\"Nível vermelho\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Classificação do boletim hidrológico de 2026 para o cenário de alerta.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"afetado_por\",\"rotulo\":\"O rio pode afetar a ETA.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-31\",\"fim\":\"2026-11-25\",\"observacao\":\"Houve impacto em 2024 e novo alerta em 2026.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"a água entrou na ETA, interrompendo o tratamento por 6 dias\"},{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m\"}]},{\"id\":\"R2\",\"origem\":\"E4\",\"destino\":\"E2\",\"tipo\":\"responsavel_por\",\"rotulo\":\"O muro protege a ETA.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-09-09\",\"fim\":null,\"observacao\":\"Proteção informada no plano de 2025.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção\"}]},{\"id\":\"R3\",\"origem\":\"E3\",\"destino\":\"E5\",\"tipo\":\"responsavel_por\",\"rotulo\":\"O serviço emite o aviso de racionamento.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-09-09\",\"fim\":null,\"observacao\":\"Procedimento previsto no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"o serviço de água emite aviso de racionamento com 12 horas de antecedência\"}]},{\"id\":\"R4\",\"origem\":\"E8\",\"destino\":\"E6\",\"tipo\":\"abastece\",\"rotulo\":\"Caminhão-pipa abasteceu o hospital.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-31\",\"fim\":\"2024-05-31\",\"observacao\":\"Registro do evento de 2024.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Hospital e abrigos foram abastecidos por caminhão-pipa\"}]},{\"id\":\"R5\",\"origem\":\"E8\",\"destino\":\"E7\",\"tipo\":\"abastece\",\"rotulo\":\"Caminhão-pipa abasteceu os abrigos.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-31\",\"fim\":\"2024-05-31\",\"observacao\":\"Registro do evento de 2024.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Hospital e abrigos foram abastecidos por caminhão-pipa\"}]},{\"id\":\"R6\",\"origem\":\"E9\",\"destino\":\"E8\",\"tipo\":\"abastece\",\"rotulo\":\"Municípios vizinhos forneceram o abastecimento emergencial.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-31\",\"fim\":\"2024-05-31\",\"observacao\":\"Registro do evento de 2024.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"por caminhão-pipa de municípios vizinhos\"}]},{\"id\":\"R7\",\"origem\":\"E10\",\"destino\":\"E11\",\"tipo\":\"outro\",\"rotulo\":\"O boletim classificou o cenário como vermelho.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-25\",\"fim\":\"2026-11-25\",\"observacao\":\"Classificação do boletim atual.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: VERMELHO.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"pendencia_historica\",\"descricao\":\"Em 2024 houve entrada de água na ETA e interrupção do tratamento por 6 dias.\",\"implicacao\":\"O histórico mostra vulnerabilidade do sistema quando o rio sobe, o que justifica checagens específicas no cenário atual.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"a água entrou na ETA, interrompendo o tratamento por 6 dias\"}]},{\"id\":\"T2\",\"tipo\":\"atualizacao\",\"descricao\":\"Em 2025 foi informado um muro de contenção para a ETA até a cota 8,5 m e a regra de aviso de racionamento com 12 horas de antecedência.\",\"implicacao\":\"O plano atualizou a proteção e o procedimento de comunicação, mas os documentos não dizem se a medida foi testada no campo.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"protegida por muro de contenção construído em 2025 até a cota 8,5 m\"},{\"doc_id\":\"D1\",\"trecho\":\"emite aviso de racionamento com 12 horas de antecedência\"}]},{\"id\":\"T3\",\"tipo\":\"atualizacao\",\"descricao\":\"Em 2026 o boletim hidrológico colocou o cenário em nível vermelho e indicou possibilidade de atingir 8,3 m a 9,1 m em 48 horas.\",\"implicacao\":\"O valor superior do intervalo informado pode ultrapassar a cota de proteção descrita no plano, então a compatibilidade precisa ser verificada.\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m em 48 horas.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"O muro de contenção da ETA Barreiro está íntegro e operacional diante da previsão de 8,3 m a 9,1 m?\",\"por_que_importa\":\"O plano informa proteção até 8,5 m, e o boletim atual pode indicar nível acima dessa cota.\",\"motivacao\":\"Combinação do plano de 2025 com o boletim de 2026 e o histórico de 2024.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E4\",\"E10\"],\"setores_relacionados\":[\"Serviço Municipal de Água\",\"Sala de Situação Regional\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"muro de contenção construído em 2025 até a cota 8,5 m\"},{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m em 48 horas.\"}],\"o_que_falta_saber\":\"Se a estrutura suporta a condição prevista, se há pontos de entrada de água e se existe reforço complementar.\",\"quem_pode_confirmar\":\"Serviço Municipal de Água, especialmente a área responsável pela ETA.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"O aviso de racionamento com 12 horas de antecedência continua sendo acionado sempre que houver risco à ETA?\",\"por_que_importa\":\"Esse é o procedimento de comunicação previsto no plano e precisa ser confirmado no cenário atual.\",\"motivacao\":\"O plano de 2025 define um gatilho operacional para risco à ETA.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E5\"],\"setores_relacionados\":[\"Serviço Municipal de Água\"],\"status_epistemico\":\"fato_documentado\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"o serviço de água emite aviso de racionamento com 12 horas de antecedência\"}],\"o_que_falta_saber\":\"Se o aviso já foi preparado para este evento e qual setor fará a comunicação.\",\"quem_pode_confirmar\":\"Serviço Municipal de Água.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"Existe abastecimento alternativo pronto para o hospital e os abrigos caso a ETA precise interromper o tratamento?\",\"por_que_importa\":\"Em 2024 houve abastecimento emergencial por caminhão-pipa para esses locais, mas o documento atual não diz se a medida está prevista agora.\",\"motivacao\":\"Histórico de interrupção em 2024 e cenário de alerta atual.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E6\",\"E7\",\"E8\",\"E9\"],\"setores_relacionados\":[\"Serviço Municipal de Água\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Hospital e abrigos foram abastecidos por caminhão-pipa\"},{\"doc_id\":\"D3\",\"trecho\":\"por caminhão-pipa de municípios vizinhos\"}],\"o_que_falta_saber\":\"Se há acordo, frota ou rota definidos para novo abastecimento emergencial.\",\"quem_pode_confirmar\":\"Serviço Municipal de Água e, se houver articulação, a defesa civil ou setor operacional correspondente.\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"Há alguma medida adicional de proteção da ETA acima da cota de 8,5 m prevista no plano?\",\"por_que_importa\":\"O nível previsto no boletim chega a 9,1 m, acima da cota de proteção descrita no plano.\",\"motivacao\":\"Descompasso possível entre a cota informada no plano e o valor máximo do alerta atual.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E4\",\"E10\"],\"setores_relacionados\":[\"Serviço Municipal de Água\",\"Sala de Situação Regional\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"até a cota 8,5 m\"},{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m\"}],\"o_que_falta_saber\":\"Se há proteção complementar, operação de emergência ou outra cota de referência.\",\"quem_pode_confirmar\":\"Serviço Municipal de Água.\",\"prioridade\":\"alta\"},{\"id\":\"V5\",\"pergunta\":\"A ETA Barreiro tem plano operacional específico para reduzir ou manter o tratamento se a água do rio alcançar a área da estação?\",\"por_que_importa\":\"Em 2024 o tratamento foi interrompido por 6 dias, então é útil confirmar o procedimento atual para esse mesmo tipo de ocorrência.\",\"motivacao\":\"Registro histórico de interrupção do tratamento e alerta atual de cheia.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\"],\"setores_relacionados\":[\"Serviço Municipal de Água\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"interrompendo o tratamento por 6 dias\"},{\"doc_id\":\"D1\",\"trecho\":\"Em caso de risco à ETA\"}],\"o_que_falta_saber\":\"Quais etapas operacionais serão executadas se houver entrada de água na ETA.\",\"quem_pode_confirmar\":\"Equipe técnica da ETA e gestão do Serviço Municipal de Água.\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há documento dizendo se o muro de contenção foi testado, inspecionado ou reforçado após a construção.\",\"por_que_importa\":\"Sem isso, não dá para concluir se a proteção atual é suficiente para a previsão do boletim.\"},{\"descricao\":\"Não há confirmação de que o aviso de racionamento já foi emitido neste cenário de 2026.\",\"por_que_importa\":\"O plano prevê o aviso, mas o documento atual não registra sua execução.\"},{\"descricao\":\"Não há atualização sobre abastecimento emergencial para hospital e abrigos no cenário atual.\",\"por_que_importa\":\"O histórico de 2024 mostra a necessidade, mas não informa a resposta planejada para 2026.\"}],\"cautelas\":[\"O relatório de 2024 descreve um evento histórico e não deve ser tratado como situação atual sem confirmação.\",\"A cota de 8,5 m do plano não pode ser interpretada automaticamente como limite absoluto de segurança em 2026.\",\"O boletim hidrológico é fictício e deve ser usado apenas como cenário de alerta documental.\",\"Não foi identificado documento sobre outras fontes de água, evacuação ou interdição; portanto, nada disso deve ser presumido.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_01fbfd0bc6f8d4c7016b06ed39d23c87d280b428fa403d2319",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2139,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 1920
+      },
+      "output_tokens": 3961,
+      "output_tokens_details": {
+        "reasoning_tokens": 771
+      },
+      "total_tokens": 6100
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"O cenário atual é de atenção para a ETA Barreiro porque o rio pode chegar a níveis próximos ou acima da cota de proteção informada. Há histórico de entrada de água na ETA em 2024 e um plano de 2025 com muro de contenção e aviso de racionamento com antecedência.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Rio Barreiro\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Rio citado como referência hidrológica e como fonte de risco para a ETA e a cidade.\"},{\"id\":\"E2\",\"nome\":\"ETA Barreiro\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Estação de Tratamento de Água mencionada como ponto sensível ao avanço do rio.\"},{\"id\":\"E3\",\"nome\":\"Serviço Municipal de Água\",\"tipo\":\"setor\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Fonte dos documentos sobre saneamento e responsável pelo plano de contingência citado.\"},{\"id\":\"E4\",\"nome\":\"muro de contenção\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Estrutura construída em 2025 para proteção da ETA até a cota informada.\"},{\"id\":\"E5\",\"nome\":\"aviso de racionamento\",\"tipo\":\"servico\",\"setor_responsavel\":\"Serviço Municipal de Água\",\"descricao\":\"Comunicação preventiva prevista no plano em caso de risco à ETA.\"},{\"id\":\"E6\",\"nome\":\"Hospital\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Equipamento/local citado como destinatário de abastecimento emergencial no evento de 2024.\"},{\"id\":\"E7\",\"nome\":\"abrigos\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Locais citados como destinatários de abastecimento emergencial no evento de 2024.\"},{\"id\":\"E8\",\"nome\":\"caminhão-pipa\",\"tipo\":\"recurso\",\"setor_responsavel\":null,\"descricao\":\"Recurso usado no evento de 2024 para abastecimento emergencial.\"},{\"id\":\"E9\",\"nome\":\"municípios vizinhos\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Origem do abastecimento emergencial mencionado no relatório de 2024.\"},{\"id\":\"E10\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"setor\",\"setor_responsavel\":\"Sala de Situação Regional\",\"descricao\":\"Fonte do boletim hidrológico de 2026 com o nível vermelho.\"},{\"id\":\"E11\",\"nome\":\"Nível vermelho\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Classificação do boletim hidrológico de 2026 para o cenário de alerta.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"afetado_por\",\"rotulo\":\"O rio pode afetar a ETA.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-31\",\"fim\":\"2026-11-25\",\"observacao\":\"Houve impacto em 2024 e novo alerta em 2026.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"a água entrou na ETA, interrompendo o tratamento por 6 dias\"},{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m\"}]},{\"id\":\"R2\",\"origem\":\"E4\",\"destino\":\"E2\",\"tipo\":\"responsavel_por\",\"rotulo\":\"O muro protege a ETA.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-09-09\",\"fim\":null,\"observacao\":\"Proteção informada no plano de 2025.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção\"}]},{\"id\":\"R3\",\"origem\":\"E3\",\"destino\":\"E5\",\"tipo\":\"responsavel_por\",\"rotulo\":\"O serviço emite o aviso de racionamento.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-09-09\",\"fim\":null,\"observacao\":\"Procedimento previsto no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"o serviço de água emite aviso de racionamento com 12 horas de antecedência\"}]},{\"id\":\"R4\",\"origem\":\"E8\",\"destino\":\"E6\",\"tipo\":\"abastece\",\"rotulo\":\"Caminhão-pipa abasteceu o hospital.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-31\",\"fim\":\"2024-05-31\",\"observacao\":\"Registro do evento de 2024.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Hospital e abrigos foram abastecidos por caminhão-pipa\"}]},{\"id\":\"R5\",\"origem\":\"E8\",\"destino\":\"E7\",\"tipo\":\"abastece\",\"rotulo\":\"Caminhão-pipa abasteceu os abrigos.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-31\",\"fim\":\"2024-05-31\",\"observacao\":\"Registro do evento de 2024.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Hospital e abrigos foram abastecidos por caminhão-pipa\"}]},{\"id\":\"R6\",\"origem\":\"E9\",\"destino\":\"E8\",\"tipo\":\"abastece\",\"rotulo\":\"Municípios vizinhos forneceram o abastecimento emergencial.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-31\",\"fim\":\"2024-05-31\",\"observacao\":\"Registro do evento de 2024.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"por caminhão-pipa de municípios vizinhos\"}]},{\"id\":\"R7\",\"origem\":\"E10\",\"destino\":\"E11\",\"tipo\":\"outro\",\"rotulo\":\"O boletim classificou o cenário como vermelho.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-25\",\"fim\":\"2026-11-25\",\"observacao\":\"Classificação do boletim atual.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: VERMELHO.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"pendencia_historica\",\"descricao\":\"Em 2024 houve entrada de água na ETA e interrupção do tratamento por 6 dias.\",\"implicacao\":\"O histórico mostra vulnerabilidade do sistema quando o rio sobe, o que justifica checagens específicas no cenário atual.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"a água entrou na ETA, interrompendo o tratamento por 6 dias\"}]},{\"id\":\"T2\",\"tipo\":\"atualizacao\",\"descricao\":\"Em 2025 foi informado um muro de contenção para a ETA até a cota 8,5 m e a regra de aviso de racionamento com 12 horas de antecedência.\",\"implicacao\":\"O plano atualizou a proteção e o procedimento de comunicação, mas os documentos não dizem se a medida foi testada no campo.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"protegida por muro de contenção construído em 2025 até a cota 8,5 m\"},{\"doc_id\":\"D1\",\"trecho\":\"emite aviso de racionamento com 12 horas de antecedência\"}]},{\"id\":\"T3\",\"tipo\":\"atualizacao\",\"descricao\":\"Em 2026 o boletim hidrológico colocou o cenário em nível vermelho e indicou possibilidade de atingir 8,3 m a 9,1 m em 48 horas.\",\"implicacao\":\"O valor superior do intervalo informado pode ultrapassar a cota de proteção descrita no plano, então a compatibilidade precisa ser verificada.\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m em 48 horas.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"O muro de contenção da ETA Barreiro está íntegro e operacional diante da previsão de 8,3 m a 9,1 m?\",\"por_que_importa\":\"O plano informa proteção até 8,5 m, e o boletim atual pode indicar nível acima dessa cota.\",\"motivacao\":\"Combinação do plano de 2025 com o boletim de 2026 e o histórico de 2024.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E4\",\"E10\"],\"setores_relacionados\":[\"Serviço Municipal de Água\",\"Sala de Situação Regional\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"muro de contenção construído em 2025 até a cota 8,5 m\"},{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m em 48 horas.\"}],\"o_que_falta_saber\":\"Se a estrutura suporta a condição prevista, se há pontos de entrada de água e se existe reforço complementar.\",\"quem_pode_confirmar\":\"Serviço Municipal de Água, especialmente a área responsável pela ETA.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"O aviso de racionamento com 12 horas de antecedência continua sendo acionado sempre que houver risco à ETA?\",\"por_que_importa\":\"Esse é o procedimento de comunicação previsto no plano e precisa ser confirmado no cenário atual.\",\"motivacao\":\"O plano de 2025 define um gatilho operacional para risco à ETA.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E5\"],\"setores_relacionados\":[\"Serviço Municipal de Água\"],\"status_epistemico\":\"fato_documentado\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"o serviço de água emite aviso de racionamento com 12 horas de antecedência\"}],\"o_que_falta_saber\":\"Se o aviso já foi preparado para este evento e qual setor fará a comunicação.\",\"quem_pode_confirmar\":\"Serviço Municipal de Água.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"Existe abastecimento alternativo pronto para o hospital e os abrigos caso a ETA precise interromper o tratamento?\",\"por_que_importa\":\"Em 2024 houve abastecimento emergencial por caminhão-pipa para esses locais, mas o documento atual não diz se a medida está prevista agora.\",\"motivacao\":\"Histórico de interrupção em 2024 e cenário de alerta atual.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E6\",\"E7\",\"E8\",\"E9\"],\"setores_relacionados\":[\"Serviço Municipal de Água\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Hospital e abrigos foram abastecidos por caminhão-pipa\"},{\"doc_id\":\"D3\",\"trecho\":\"por caminhão-pipa de municípios vizinhos\"}],\"o_que_falta_saber\":\"Se há acordo, frota ou rota definidos para novo abastecimento emergencial.\",\"quem_pode_confirmar\":\"Serviço Municipal de Água e, se houver articulação, a defesa civil ou setor operacional correspondente.\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"Há alguma medida adicional de proteção da ETA acima da cota de 8,5 m prevista no plano?\",\"por_que_importa\":\"O nível previsto no boletim chega a 9,1 m, acima da cota de proteção descrita no plano.\",\"motivacao\":\"Descompasso possível entre a cota informada no plano e o valor máximo do alerta atual.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E4\",\"E10\"],\"setores_relacionados\":[\"Serviço Municipal de Água\",\"Sala de Situação Regional\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"até a cota 8,5 m\"},{\"doc_id\":\"D2\",\"trecho\":\"O Rio Barreiro pode atingir entre 8,3 m e 9,1 m\"}],\"o_que_falta_saber\":\"Se há proteção complementar, operação de emergência ou outra cota de referência.\",\"quem_pode_confirmar\":\"Serviço Municipal de Água.\",\"prioridade\":\"alta\"},{\"id\":\"V5\",\"pergunta\":\"A ETA Barreiro tem plano operacional específico para reduzir ou manter o tratamento se a água do rio alcançar a área da estação?\",\"por_que_importa\":\"Em 2024 o tratamento foi interrompido por 6 dias, então é útil confirmar o procedimento atual para esse mesmo tipo de ocorrência.\",\"motivacao\":\"Registro histórico de interrupção do tratamento e alerta atual de cheia.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\"],\"setores_relacionados\":[\"Serviço Municipal de Água\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"interrompendo o tratamento por 6 dias\"},{\"doc_id\":\"D1\",\"trecho\":\"Em caso de risco à ETA\"}],\"o_que_falta_saber\":\"Quais etapas operacionais serão executadas se houver entrada de água na ETA.\",\"quem_pode_confirmar\":\"Equipe técnica da ETA e gestão do Serviço Municipal de Água.\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há documento dizendo se o muro de contenção foi testado, inspecionado ou reforçado após a construção.\",\"por_que_importa\":\"Sem isso, não dá para concluir se a proteção atual é suficiente para a previsão do boletim.\"},{\"descricao\":\"Não há confirmação de que o aviso de racionamento já foi emitido neste cenário de 2026.\",\"por_que_importa\":\"O plano prevê o aviso, mas o documento atual não registra sua execução.\"},{\"descricao\":\"Não há atualização sobre abastecimento emergencial para hospital e abrigos no cenário atual.\",\"por_que_importa\":\"O histórico de 2024 mostra a necessidade, mas não informa a resposta planejada para 2026.\"}],\"cautelas\":[\"O relatório de 2024 descreve um evento histórico e não deve ser tratado como situação atual sem confirmação.\",\"A cota de 8,5 m do plano não pode ser interpretada automaticamente como limite absoluto de segurança em 2026.\",\"O boletim hidrológico é fictício e deve ser usado apenas como cenário de alerta documental.\",\"Não foi identificado documento sobre outras fontes de água, evacuação ou interdição; portanto, nada disso deve ser presumido.\"]}"
+  }
+}

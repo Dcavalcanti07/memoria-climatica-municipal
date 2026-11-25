@@ -1,0 +1,141 @@
+{
+  "run_file": "E06_B_r2.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-5.4-2026-03-05",
+    "reasoning_effort": "low",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_055a7fdef172cf04016b06edbe748087d2b81a7cbbb2f66996",
+  "model_reported": "gpt-5.4-2026-03-05",
+  "usage": {
+    "input_tokens": 5634,
+    "output_tokens": 903,
+    "reasoning_tokens": 15
+  },
+  "latency_ms": 14359,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V2"
+        ],
+        "justificativa": "V1 checa a condição atual de uso e o reparo do telhado; V2 checa a capacidade real atual versus o registro de 2024."
+      },
+      {
+        "id": "G2",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V3",
+          "T2"
+        ],
+        "justificativa": "V3 e T2 reconhecem o risco de excedente e superlotação da escola, mas não perguntam explicitamente por abrigo adicional ou plano alternativo para excedentes."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V2",
+          "V3",
+          "T2",
+          "T3",
+          "R7"
+        ],
+        "justificativa": "A saída conecta a discrepância de capacidade do ginásio ao envio de excedentes para a escola e à operação acima da capacidade."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "correto",
+        "ids_saida": [
+          "T1",
+          "T3",
+          "V2"
+        ],
+        "justificativa": "A saída explicita a contradição entre 200 no plano e 80 efetivos em 2024 e também que não há confirmação posterior do reparo."
+      }
+    ],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "reconhecido",
+        "ids_saida": [
+          "V1",
+          "T1"
+        ],
+        "justificativa": "A saída afirma que falta confirmação de execução do reparo e pede verificação posterior."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não afirma sem ressalva que o ginásio comporta 200 pessoas; ao contrário, problematiza essa capacidade."
+      },
+      {
+        "id": "X2",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída menciona interdição parcial em 2024 como fato histórico, sem afirmar interdição atual como fato."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à checagem do reparo do telhado e condição atual do ginásio."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à checagem da capacidade real atual do ginásio frente à divergência 200 vs 80."
+      },
+      {
+        "id": "V3",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Cobre parcialmente o item sobre excedente e limitação da escola, ligado ao problema previsto no gabarito."
+      },
+      {
+        "id": "V4",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É específica, relevante ao abrigamento e sustentada pelo plano, embora não conste no gabarito."
+      },
+      {
+        "id": "V5",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É uma checagem específica e sustentada pelos documentos sobre eventual atualização formal do plano."
+      },
+      {
+        "id": "V6",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É relevante ao cenário de desalojamento e sustentada pelo alerta, embora não prevista no gabarito."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "achados_temporais.T1.tipo",
+        "afirmacao": "Classificar o achado como \"problema_resolvido\" não é sustentado pelos documentos, que indicam ausência de confirmação de conclusão do reparo."
+      },
+      {
+        "onde": "relacoes.R8.periodo.fim",
+        "afirmacao": "Fixar o fim em 2025-12-31 para a dependência de licitação não é informado pelos documentos; a ata apenas diz \"licitação prevista para 2025\"."
+      },
+      {
+        "onde": "relacoes.R6.periodo.fim",
+        "afirmacao": "Deixar em aberto como se a interdição parcial perdurasse sem delimitação temporal explícita pode sugerir continuidade não documentada."
+      },
+      {
+        "onde": "resumo_situacao",
+        "afirmacao": "\"Em 2024, a obra informou\" atribui a manifestação à obra de modo singular; o documento registra que \"Obras informou\", não sendo erro material relevante, mas é uma reformulação não literal."
+      }
+    ]
+  }
+}

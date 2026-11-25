@@ -1,0 +1,1080 @@
+{
+  "meta": {
+    "scenario": "E29",
+    "condicao": "B",
+    "com_atualizacao": false,
+    "rep": 2,
+    "tag": "eval_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D3",
+      "D4",
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 1231,
+    "user_message_sha12": "acd1de45c641"
+  },
+  "user_message": "Município (fictício): Taquaruçu do Campo\nData de referência da análise: 2026-11-23\nDocumentos disponíveis (4), em ordem cronológica:\n\n### [D3] Relatório da Secretaria de Agricultura — estradas rurais (2024)\nTipo: Relatório de ocorrência | Fonte: Secretaria de Agricultura | Data: 2024-05-22\n\nA Estrada Vicinal TC-08 ficou intransitável entre 04 e 08/05/2024 por erosão no km 6.\n\n---\n\n### [D4] Relatório da COMPDEC — evacuação rural (2024)\nTipo: Relatório de ocorrência | Fonte: COMPDEC | Data: 2024-05-25\n\nA evacuação da Linha Taquara foi feita pela TC-08 em 05/05/2024, com restrição a veículos leves; 22 pessoas chegaram ao abrigo Santa Rita.\n\n---\n\n### [D1] Plano de Contingência (2025) — zona rural\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2025-07-21\n\nRota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08 até a Escola Rural Santa Rita (abrigo, 70 pessoas).\n\n---\n\n### [D2] Alerta (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-23\n\nNÍVEL: LARANJA. Chuva intensa na zona rural norte; risco de alagamento de estradas vicinais e transbordamento de arroios.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_0fa48122ccbe4d50016b06ed0677ac87d2b8e4357e4762b296",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 2168,
+    "output_tokens": 4620,
+    "reasoning_tokens": 1382
+  },
+  "latency_ms": 31232,
+  "started_at": "2026-11-25T14:13:25.884Z",
+  "output": {
+    "resumo_situacao": "O alerta atual fala em chuva intensa na zona rural norte, com risco de alagamento de estradas vicinais e transbordamento de arroios. Nos documentos anteriores, a TC-08 já ficou intransitável por erosão e foi usada como rota de evacuação da Linha Taquara até o abrigo Santa Rita. O plano de 2025 mantém a TC-08 como rota de evacuação para a comunidade.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Estrada Vicinal TC-08",
+        "tipo": "infraestrutura",
+        "setor_responsavel": "Secretaria de Agricultura",
+        "descricao": "Estrada vicinal citada como rota de evacuação e como trecho que já ficou intransitável por erosão."
+      },
+      {
+        "id": "E2",
+        "nome": "Linha Taquara",
+        "tipo": "local",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Comunidade rural citada nos registros de evacuação e no plano de contingência."
+      },
+      {
+        "id": "E3",
+        "nome": "Escola Rural Santa Rita",
+        "tipo": "local",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Destino previsto da rota de evacuação da Linha Taquara no plano de contingência."
+      },
+      {
+        "id": "E4",
+        "nome": "Abrigo Santa Rita",
+        "tipo": "local",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Abrigo citado na ocorrência de 2024 e no plano como referência para acolhimento de pessoas."
+      },
+      {
+        "id": "E5",
+        "nome": "COMPDEC",
+        "tipo": "servico",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Órgão que produziu o relatório de evacuação e o plano de contingência."
+      },
+      {
+        "id": "E6",
+        "nome": "Secretaria de Agricultura",
+        "tipo": "setor",
+        "setor_responsavel": "Secretaria de Agricultura",
+        "descricao": "Setor que registrou a ocorrência de interdição da TC-08 em 2024."
+      },
+      {
+        "id": "E7",
+        "nome": "Zona rural norte",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Área citada no alerta atual como afetada por chuva intensa."
+      },
+      {
+        "id": "E8",
+        "nome": "Arroios",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Elemento hidrológico citado no alerta atual com risco de transbordamento."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E2",
+        "destino": "E1",
+        "tipo": "depende_de",
+        "rotulo": "A evacuação da Linha Taquara usa a TC-08 como rota.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-07-21",
+          "fim": null,
+          "observacao": "Consta no plano de contingência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08"
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E1",
+        "destino": "E3",
+        "tipo": "atende",
+        "rotulo": "A TC-08 leva até a Escola Rural Santa Rita na rota prevista.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-07-21",
+          "fim": null,
+          "observacao": "Consta no plano de contingência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Estrada Vicinal TC-08 até a Escola Rural Santa Rita"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E2",
+        "destino": "E4",
+        "tipo": "acesso_por",
+        "rotulo": "Na ocorrência de 2024, a evacuação chegou ao abrigo Santa Rita.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-05-05",
+          "fim": null,
+          "observacao": "Registro histórico da evacuação."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D4",
+            "trecho": "22 pessoas chegaram ao abrigo Santa Rita."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E1",
+        "destino": "E7",
+        "tipo": "localizado_em",
+        "rotulo": "A estrada é relevante para a zona rural afetada pelo alerta.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2026-11-23",
+          "fim": null,
+          "observacao": "Relação inferida pela presença da estrada na área rural do cenário de alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Chuva intensa na zona rural norte; risco de alagamento de estradas vicinais"
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E7",
+        "destino": "E8",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta atual menciona risco de transbordamento de arroios na zona rural norte.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-23",
+          "fim": null,
+          "observacao": "Cenário de alerta atual."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "risco de alagamento de estradas vicinais e transbordamento de arroios."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E6",
+        "destino": "E1",
+        "tipo": "responsavel_por",
+        "rotulo": "A Secretaria de Agricultura registrou a condição da TC-08 em 2024.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-05-22",
+          "fim": null,
+          "observacao": "Relatório de ocorrência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "A Estrada Vicinal TC-08 ficou intransitável entre 04 e 08/05/2024"
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E5",
+        "destino": "E2",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC elaborou o plano de contingência da zona rural para a comunidade.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-07-21",
+          "fim": null,
+          "observacao": "Plano de contingência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Plano de Contingência (2025) — zona rural"
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E5",
+        "destino": "E4",
+        "tipo": "atende",
+        "rotulo": "A COMPDEC vinculou o abrigo Santa Rita ao acolhimento na ocorrência.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-05-25",
+          "fim": null,
+          "observacao": "Relatório de ocorrência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D4",
+            "trecho": "22 pessoas chegaram ao abrigo Santa Rita."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "pendencia_historica",
+        "descricao": "A TC-08 ficou intransitável por erosão no km 6 entre 04 e 08/05/2024.",
+        "implicacao": "Esse histórico justifica conferir se o trecho voltou a apresentar problema no cenário atual de chuva intensa.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "A Estrada Vicinal TC-08 ficou intransitável entre 04 e 08/05/2024 por erosão no km 6."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "pendencia_historica",
+        "descricao": "Em 05/05/2024, a Linha Taquara foi evacuada pela TC-08 com restrição a veículos leves, e 22 pessoas chegaram ao abrigo Santa Rita.",
+        "implicacao": "O histórico mostra uso operacional da rota e do abrigo, mas não confirma que a mesma condição continua hoje.",
+        "evidencias": [
+          {
+            "doc_id": "D4",
+            "trecho": "A evacuação da Linha Taquara foi feita pela TC-08 em 05/05/2024, com restrição a veículos leves; 22 pessoas chegaram ao abrigo Santa Rita."
+          }
+        ]
+      },
+      {
+        "id": "T3",
+        "tipo": "atualizacao",
+        "descricao": "O plano de 2025 manteve a TC-08 como rota de evacuação da Linha Taquara até a Escola Rural Santa Rita.",
+        "implicacao": "Há um protocolo mais recente que confirma a rota prevista, mas não informa a situação física atual da estrada.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08 até a Escola Rural Santa Rita (abrigo, 70 pessoas)."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "A Estrada Vicinal TC-08 continua trafegável no trecho do km 6 durante a chuva atual?",
+        "por_que_importa": "A rota de evacuação da Linha Taquara depende dessa estrada, e há histórico de interrupção por erosão no mesmo ponto.",
+        "motivacao": "O plano de 2025 mantém a TC-08 como rota, e o relatório de 2024 registra intransitabilidade no km 6.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E2"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Secretaria de Agricultura"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08"
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "A Estrada Vicinal TC-08 ficou intransitável entre 04 e 08/05/2024 por erosão no km 6."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: LARANJA. Chuva intensa na zona rural norte"
+          }
+        ],
+        "o_que_falta_saber": "Se houve erosão, alagamento ou outro bloqueio atual na TC-08, principalmente no km 6.",
+        "quem_pode_confirmar": "Secretaria de Agricultura ou equipe de campo da COMPDEC.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "A rota prevista para a Linha Taquara segue sendo a TC-08 até a Escola Rural Santa Rita no cenário atual?",
+        "por_que_importa": "A pauta precisa saber se o trajeto do plano continua sendo o mesmo protocolo de referência para a verificação preventiva.",
+        "motivacao": "O plano de 2025 fixa essa rota, e o alerta atual envolve risco para estradas vicinais na zona rural.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E5"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08 até a Escola Rural Santa Rita (abrigo, 70 pessoas)."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "risco de alagamento de estradas vicinais"
+          }
+        ],
+        "o_que_falta_saber": "Se o protocolo foi mantido sem alteração ou se houve atualização operacional para este alerta.",
+        "quem_pode_confirmar": "COMPDEC.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "O abrigo Santa Rita está apto a receber até 70 pessoas, como previsto no plano?",
+        "por_que_importa": "A capacidade prevista no plano precisa ser confirmada antes de eventual uso na ocorrência atual.",
+        "motivacao": "O plano informa 70 pessoas, e a ocorrência de 2024 mostra uso do abrigo por 22 pessoas.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E4",
+          "E5"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "(abrigo, 70 pessoas)"
+          },
+          {
+            "doc_id": "D4",
+            "trecho": "22 pessoas chegaram ao abrigo Santa Rita."
+          }
+        ],
+        "o_que_falta_saber": "Se o abrigo mantém espaço, acesso e condições para acolhimento no volume previsto.",
+        "quem_pode_confirmar": "COMPDEC ou responsável pelo abrigo Santa Rita.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V4",
+        "pergunta": "A restrição a veículos leves usada em 2024 precisa voltar a ser aplicada na TC-08 nesta situação?",
+        "por_que_importa": "O histórico mostra que a evacuação anterior ocorreu com restrição, o que pode orientar a checagem operacional atual sem presumir que a medida continua válida.",
+        "motivacao": "Em 2024 houve evacuação com restrição a veículos leves na mesma estrada.",
+        "base": "registro_historico",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E5"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D4",
+            "trecho": "A evacuação da Linha Taquara foi feita pela TC-08 em 05/05/2024, com restrição a veículos leves"
+          }
+        ],
+        "o_que_falta_saber": "Se a condição da via atual exige a mesma restrição ou outra medida de tráfego.",
+        "quem_pode_confirmar": "COMPDEC e Secretaria de Agricultura.",
+        "prioridade": "media"
+      },
+      {
+        "id": "V5",
+        "pergunta": "Há pontos de alagamento ou transbordamento de arroios que possam afetar o acesso da zona rural norte à Linha Taquara e à TC-08?",
+        "por_que_importa": "O alerta atual cita risco de alagamento de estradas vicinais e transbordamento de arroios, fatores que podem interferir no acesso.",
+        "motivacao": "O cenário atual menciona os dois riscos hidrológicos na mesma área de interesse.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E7",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Chuva intensa na zona rural norte; risco de alagamento de estradas vicinais e transbordamento de arroios."
+          }
+        ],
+        "o_que_falta_saber": "Quais trechos específicos estão vulneráveis e se há pontos de bloqueio já observados.",
+        "quem_pode_confirmar": "COMPDEC e equipe de vistoria de campo.",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há documento atual descrevendo a condição física da TC-08 em 2026.",
+        "por_que_importa": "Sem isso, não dá para saber se a rota do plano está operacional no alerta atual."
+      },
+      {
+        "descricao": "Não há informação sobre a situação atual do abrigo Santa Rita, incluindo lotação e condições de uso.",
+        "por_que_importa": "A capacidade prevista no plano precisa ser confirmada antes de qualquer acionamento."
+      },
+      {
+        "descricao": "Não há registro recente de vistoria sobre alagamento de arroios ou pontos críticos de acesso.",
+        "por_que_importa": "O alerta atual menciona esse risco, mas faltam trechos identificados como críticos."
+      }
+    ],
+    "cautelas": [
+      "O relatório de 2024 descreve um evento passado e não deve ser tratado como condição atual sem confirmação.",
+      "O plano de 2025 confirma a rota prevista, mas não comprova que a estrada esteja livre hoje.",
+      "O alerta atual é genérico para a zona rural norte; não há nos documentos um mapeamento detalhado dos pontos afetados.",
+      "Não assumir que a restrição a veículos leves de 2024 continua valendo sem confirmação institucional.",
+      "O abrigo Santa Rita aparece como referência de acolhimento, mas sua disponibilidade atual não está documentada."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 8,
+    "n_relacoes": 8,
+    "n_verificacoes": 5,
+    "n_temporais": 3,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Estrada Vicinal TC-08 até a Escola Rural Santa Rita",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "22 pessoas chegaram ao abrigo Santa Rita.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Chuva intensa na zona rural norte; risco de alagamento de estradas vicinais",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "risco de alagamento de estradas vicinais e transbordamento de arroios.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "A Estrada Vicinal TC-08 ficou intransitável entre 04 e 08/05/2024",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Plano de Contingência (2025) — zona rural",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "22 pessoas chegaram ao abrigo Santa Rita.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "A Estrada Vicinal TC-08 ficou intransitável entre 04 e 08/05/2024 por erosão no km 6.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "A evacuação da Linha Taquara foi feita pela TC-08 em 05/05/2024, com restrição a veículos leves; 22 pessoas chegaram ao abrigo Santa Rita.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08 até a Escola Rural Santa Rita (abrigo, 70 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "A Estrada Vicinal TC-08 ficou intransitável entre 04 e 08/05/2024 por erosão no km 6.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: LARANJA. Chuva intensa na zona rural norte",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08 até a Escola Rural Santa Rita (abrigo, 70 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "risco de alagamento de estradas vicinais",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "(abrigo, 70 pessoas)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "22 pessoas chegaram ao abrigo Santa Rita.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "A evacuação da Linha Taquara foi feita pela TC-08 em 05/05/2024, com restrição a veículos leves",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Chuva intensa na zona rural norte; risco de alagamento de estradas vicinais e transbordamento de arroios.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      }
+    ],
+    "n_citacoes": 20,
+    "n_citacoes_literais": 20,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795616037,
+    "created_at": 1795616006,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_0fa48122ccbe4d50016b06ed0677ac87d2b8e4357e4762b296",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBu0SMmuRtZQbKhkyodSzZGvTSPNlVO4DE9vOEiHpoz50EJLrTjlSMxnUVQFftcgp8BKWGsrTNp3GRN0tXoLcXbNAtMTAjAjUR1Em898KXHGWr8YoOdR0tVxf6ooYKLK3szph9t0WOjThLmrRoW5DNiF9o3BCdSDF0aivzlHQp3slbDa2AFBytrC8gNjVao8L-tYJd5WKIdMQL6o9KZfCBoIKj5daLefUKhcCFBJwYroXSNu4ZFIqySRIE3ENFCBdUeF2eJCfDncuHdFxevwW8NkyFM3fo7A_JfPWk0TTE9qOxHMZixgi_lhI7iYVShG8F941_pSc7URYufvltWJrCbMWENMjRgUMiWKstlTzfQIOZeNUKcUZgcaTQ8EzCzbCLWlba5qZcn6kNzsEzVdOwFqXKzJ0ihNv303GcWk4GywRLjUuLG_eNxb880ubtgsT4GVj9Af0OAgTfiAghdLMgrKowxQGzSMcJNIx8pgU7k49ODtINs46lrhHSCjsX46dV09tpUt10L5rdXzr3pt9VPYEbrRc-OSSBo5oauJx_Dcv9Cw9dcU-n-zk3tZorstPnKQ4dbZ_t17-Ur3y1msTh_73if_SDGIuOgwhRcbj0DAi8e-xZSsqYVOBALc96vZEL0sGP_-PI2lk0Muo1-KuaUW-w7KfXu5o84WaCEKiXuPR7HCzYsSj994l8VWXWNWUw1pQ8nhogQq_GEUtefcsyC1iHzrOd4sXsGhWPbxwiiuJmfFQuwzQbDoLBbAWUk5cRC8lz2r_ahBOVYNtOcIPwOXmTZdjeQolAaQMXwsKzG53_H5IKjpfQo3DDSnJ9PD5v31QCNwDSHBNcYv5P6ZXyyP4SA4RCLbU68yaGoRvES5F_GbWXzn_B9l0NPRk1P7a8ndS6-umIB-x5nHlugzqmGWB84IQBW-3-pk0JaU8emcLQ81snVJiFs2p2hhttYzPoWXRCQZCeEHmUaoUZ2Pj2rHD-MZdo7YAJhHqZxR5QLQcNosYzqninxqnur0jE0URlvPfU2Yen56K3I16nQO59Biuk1e6sh-IPPEJ12jHeleTaUMyaIxJ_1V6SmLFv1A_HH-LrgX0Z140nB3z3HRgpltWtomYLYgzGeAV9Ji1SmMFtzJ-ZPv8u7xbqOisNRTSzI1i4T_gmJKFzdAsBCAlZE0g5BaI4KlkjFaKGvVEZh9Bv97B_PCxXYYIz4gZvwJ4zvPuwHrh_Z_fQ2WG6yJIfBHrVw5JOjjByGtHfO6tCVmi89XKhu-WBbq9lKoOzs0zIW77-C3zsGLrrZG9OEHgVyyL-vYeWPm44rek22GUabOJCENiNI57yUpiRa1fOmptRq_HK61aWdgAOhW-TnJqFfP0vInevpsLi5z9QPZEyzP7flOC19DDrTEGo1C6ZAwa5rNdHZQJAG2JK2wxieFXEnrtW8ZNURO4qMrL_YD0K4UgJMkkkDUr3EgxNGxfsAKNWu80zd21cTG271Fnr3L4W61binr3qOGq-ofJVKXo4MvYoKVY-pTGz0JEgC_k9zHDXhYQ8uooCncGT4I2EXnR4mBS6Q0q1EeDDtSPvWyXqIL3i0ICELCBLA0JvWEkaZF6GZT7FF1_XhUg3ICf3LYXcV_cjDObMs89ufHOwRNQgUs9a6jM4jpptvYnRoQM8XLIZRAimF6tLo571I2HU_CSTulNbXl6k7daBgE4epgAD2o2k_-mlNoHXGZ_WGBSnbotMF-RVowaO0ooOMpU6iH_CWkg3iTryJRw_4lZSCeAYN-SqW3ORAJtM6DIKxvF4RJK6mmzs9knfo0jq9KMhujBFexb98MBOHb1lm4FaAz2DtQ3aMpTRNCN7lkCH68DF2I04H7a8GJ0ZXztNlloZamTkvKSmKUHSHjUrivxR_xgslCqZNB2kzH6t6Px_4fF_8c7-YHYnJgKHUCFcLfQ7T_CbW05CHlKPgM6JKEmlDmx0B8xHzU0Be22Y8vpW0rnVKPIV421Nj33xMwSYvG2jjLsjWEz2rbEFGp91UdMlwGIqN6gxqZFgrs98kJN6DTAOXn-lkMqlqTpJgTQAX7cNTH1n3fvr71PEA_qhsUin4t8ekRqTWIv1DGQ7p9g_AYzllmjcUxWPBpBagltyjt4tIJagmDSeebl1Xphpe1TjlwNA9MCdfGA9S-wVybnBBQYSomGNSy7bpKK_rHMon6Z_91DoPGiGxxMCRn6M_TDpMqqq0XsErhRN0eJu4xZKT_gntL-GxVV2ZTNtMOB6VH8BxhL8RNLWBtjuPIuTZmXjoWjKcFVdUMKazo7Ud-oNaBFbFZgxMCczvMn5uztrKfDQFEAwr3kY96of4y-akOmxDaoEMYem39xAsVjdr1-lBtNYZ3nS4ZqcQ6jkFiljV75O9QLM-jnPvlbTpDQJfXpEPdJMAZHjRcQJouxbdv5cwjCH6nImpdxxQ-EmxMrMCSRC4ylN3I9oh6kg5LLIsg7OmkZTBocAzK6HEF9kTiNrzUaRcNVittwuSIzgyQwr26acwVGZBwyqEzxRHk40aFjszLyz3RIR7GXCgBnIZsUhpXKQsKv4pewJyXZ7Q6S0EVJitWwJFyBVPVyZHlrauioC5LGd3DL3ziOPS_4vaEz0SGwciI84JzSBzG02dMNpQ6p2fku-DJ3lh48mpz7dw0DrXUELsbEGVGW7vC5lYCbsf3ofnmClCHCwIJwlI2DsHWG6Bfn8h2LmZlrk7GMvlMAvkDXzjhg527EZGAE7Z_fMiw6pXBZwxgriPKYOu3Cd_J9XdLbrzpRidSD3iBv4lziFet_CwTYLVLGcr1NDFtyzZYgL5m-ZHxu7ZUYLkBNQYCVc9xkIppDy__AfcHfhY5ihO2A_nD6BFSxtAAXhZUApqBFI24kun6MK_6l_ag-8GHCdMCDcIAkrg2tb02KMYkLhhKMgwV5XIDm8TW18fyXuqAhDduN8FO1aZafZUUFise-FbW9iJnJ0Ogic8qv-Ki6rXzMzcjwkrSbhQQqZRCUACbeNa3hBlaC2F5-sKM_UOJbHBMN6fTok8Yzvqimfk_iTj1ZystP96c5TV4mi1E-yDkLmJvFTULtJbgEY3aYE7SeD7O3jAWy9G_NHJIexsQWjP0qytv2heZRytNh5tCphCXNOCxZENtj2UzlgL8_8w_dHqysqdQ86IBNOFBVMTClPkxHmyZ4J6gWz6sYeASTjgSccT1DquvOJreOjb7MBMods3WBtn08iAamDmYV5R614eQ_xik1QRz5ydde6aUxntS6ENC8PgcfEhgATnONEJrWRlrdoXCkiMyA3INcwEVRAqxcprg7qsNNwj5Yx6fGhLFWrkmv4qGs-_tjrNkxNn7jaUbvL7h2xmbdTdOzlpPH7_ZyxzUuvGcZzDdKepEyUW_JwFUjwKh-fD94ourZd72XnQBWzSJXhI4LQMrA326c3lGb3tQhZLtVmHIyszL9DsUFVBCtyW1M7W-CQ1giYzY7A_0LwKZcZ66TliuljNJ1Vba1oI31jjv91Kbb9TLCz9eHTAzOFOrpTUjIzCdoctWBj6Ktc58gGce79B2XRbTjlEUXcm9ZGvVuPFEnl3YYRp8PPQGxa83LZ5aKsAXYGOIZu9IacuDx6iDK419lDjrTku2B53URYeLFoZ8QQxGZbt87tCkhok3pflQis-Xl2TTvFp3b9WUj5T9qVs7OJ2ofBBokz-kcNi_iC_FeU56QvIAae6FwOPEb-ktboD08BQwzYXMj0wxzuSXlbxj_uaoQM9zdXWGBUCRFlC1W7PCjdq2DEAB7wwdyMFiyNxz0mS268MnrJMk1pcYxRlB_ZPYgwpu1BlIBgGCdxHdRvgdyQfayxikDvSLrz7rqq_2_X42s5KJgILY6FRbx7GFGfunSTkcdUTR6mUbqj3luDoy2L7rfPDaKovllxC7Do_JkA8pY9R1yFhelKnWEa2TtKNo-nPUPo6dON6Nr2J3h9L10bGcIIpTsJJrJm3Zn6LvEuCs15e3eRDWrxeeozMlWOQXf33L7KlHsX8GSFpXWC2S26EC1NY7-_JlvJMeO1F_ptnd9MqpOcQX9R5WZh6alTLY4AmtQTyT-40-vUhZiVctvtrbILu5mTs8JWH33t02Pf5AeHaT1mDaX0XnBYuXJ5xaIZsDd8LSTStj6hJzOb6nR_rUSuCLZ415_ck_ov10lyAHDYHtqJ_XPxd37n1HabAyyMP6KI-pIyypaqBFiy-cDaaLKePY1sfgSwWb66lFHEXGw0BW7n1t7xPZU75MIYLALsz2RUuGtTcDrF_hI_FiUJXOcdX9gZqSYAoyghmpGwKgOEBbVIHLv4lC8vHv6S8I-FiRNxPdB6ynUuNr4RLbm04kVdZgul1xUHFPzpxrmTr-TsNp8r1Ebfi94ToLvZFTfak9CR2sOk2Bw1IdpE1No3rKlf61DKjkQJ4Cu8wk9CiuP9CbjpWYR-IAZLsiTW0rgY9E9ZqDAQtfkikbpYhzjTJofG3tWB6iad0buc2RBcsTKknetbAiwl01Csha4rWciA2F8vZZHhNVqH2dEYFHwQuhqVGUH1jdYhXHN1cDRcva0ptIEbIswOvAMT3gU7metvlJyITos20b2DfFQmQIC-HMzhrzo3XT1aJKMCxvnl4RRGg0-QevjEqFvuwZkqonm4_LVc4IkheQKmHyGud2Q9cBrlJOMuNiD2_bea_ujRkyAL1EVDGPcCtJYUS_2wmopHB0GGPIRRhVeD8H2Y__DNpifvJxJFc6dbA1fghVyh_-Eh0Eb63joaEvQCFlGy08sNlaNpljmTZRXSMKY912sCWCFDdL8NKLv4Fp2HBE6tyCcOR76PVR_6vTnR4LTPU2zNm7EBGJZOZsvzqkgpneLPYurCB-9TGvErA_Pwhc1uBg4jU956agv_SMma29nSjyToNiVb0aVWWLK18lD8_apr6u4jh3OjqtyP2M-6cYo6YiHcnzGdIq-G_-JoUCCOe36sZuRy5YLWZ1aaP4fZFPduv2gROj_OGf0Yyz5GDS5FboMAF-eBioer6te0ZpmDiIyBG36ouWbtPa6q4JLbr_df2L73F0kMTmy8yUNPj7PUqA-xGOfiyt2KyOtyqVT4GF1n_w28Flgad6PFIobupugqtZOpGi54mLUfNOt2dDwZUhQ5eBeQDAuC8pXr47T4wc-845jIjMoYc19OrnZn5iikwRCLmNyMYgzB417RCpGTS-OP0EIqRrjjQHLYva_6K9qE5Eip3Ego2kyVk6qojemvwL4jr4RTmhe1KUybIALDHDQ1OJRYAzOBY26VBW_2YrUSvCZYQDCxa482B9q4FkudT3zVfHCQfP4brTt86CTQ29VcT5u6OLWObEmfyomP1bzK-wTFSezYeE0dsTiS0If-jOyFvdYf-d1levZEaT3qZu1O9dQ9NdOLNqUK1eduoV8F45obdQo0Qy8kFYN6tJiIh0SFsroTtiAx16IJjm_FPi9GhwQYsVkSmpHh4xE2HY7CQlEGeGh6lWlj0YjOxJkgQ3J8v2jNowatMvQl43v2MTamHumzv-AknE2q4aQhKTJ2khDTDfCfaiFuwMhI11D6ItIpXg1sBfacJs885RtFpZ4Y8-CJIvIPZtPn-808ijOHfVz6FzcqAq9nQd7vkEPGbw4P_7zLRosHaYvGyCg0xBh9xcq69Rrr4-82TNQCpCSLFMkYiyv_ajAFzB_uOK6ZtzBnW2bu3ohsYmvbinIsHml75POJCAjVqGvS5KqmyOc1eN02i5LzvK0eALkQPnax3bDCl1hQRdQyaYHm7O4A__KzWjEsHnqgLSiZbNfFigomhGQjVbtE_w_6xxwP8AWydMkJV1vF8Cyg4mGyMKFs9UM_f47eFGcm0d3Pj7jXZLG_gEY_69E85GGJLWj9M_uokGN9YXX--s8Ehglk9Rarlc53NsG11Xeb3FlniFDJzScqYhq_AVlLvXvyrRJS21YeHGAQyLXwlP4K0IVKAn0ifUTLb9p6ZtAlQLX8idx_C4o3sQ-XHov4MFhOqs94booiKX1KkGRmqLxcZPPMlA4ecGWoXt0PR8IwDB_gWXzsr1bstJPKgN9tkvcTcA4nxWhs6tt5UXUL3wQuPhoE8ar1IOg_-ppqBMA3fC2EeHAUPWG8QBXBwGeDNvm-fqmRY4qmxne08qXLqQ1NJowwDspv9kYlDB-ZsWtAONouu4X6ziTt22uiB5OHGaK6s3Ra1m0L25xaJdcOqaOpMuown_3IpOo8YCeQ5xOGVElS1P5kAjNNyiXCxKWq1DMARqAofKmb1F_SG8a2O59mLOSig2sKGVfn92lqOjrjo7FfnGTn5TNWGJ-TRF-gfsVqjKZOGGd5jtQnmlo6r5r9NgmgK12l1upirweCtr9Biy6UuoeDu_yA8ExxGLY9MK6wcIPcKgxMzpiXU4ScdU4_PMtJ_akp258R12jnMBAUpCVCuZOwvmqjDoBrfX_KifLSzHzaHdOKO1xA5sP5BPF1ue5F1SDMbMuWZDcesNf6R2Uh-QQFE105HEbkvqqUZtEkKMk3slDCjXXj7YwltOmcM3vIgPWVE63qyVDJ-JSrza73OhIBb7LObHZmkswS5hkROx9PvTy6RIU8WRf_BL3IvNRf_X1T2gVhnCnJholkcnX7Vv4UovbHooOR-gUY-k1KY-8qN2nRrt7uxHmTtO7Gr78eJKDVXFwjoKaHnqdrMMYYwkObwgq-vn5NzqpzKAQQrilzjrAse-zgW7hTlozJi2VOOaz8ZjPwFsNufq0FOCf47nIN6edWsRNUYoEqgQyUOznA3JkZlgEmHjKNVZhYwb4H7h5-vDnrxfCs2vzKRYzoJgxbnG0joPtd9kv18dz1Tl6-SplO0kyMDrtsMbUy2HUbLV6NIUtxPz7ooEchCjWQMEJqOhL1LfHF8wxme5sQavp9EQsbzJg9qcZi7s8CnrxQm9ALuxFYoSRi30_0wlupzakQtQVzwaqGQ8BgFUBKy3kkGKQIhFaWFIv_hynmzf6vkxEmqhrLzV9wktqcTxPR84QL8IGqnXS8NwnnJcPAkj5h1DXXzX0KBPq0wEkuqX0JGNy86cq7PSsQzeg8nVcj-dSGskoqiWS-bubGe4tClmIwy9oopi2Co9Gu2JMDtHzEyEHsGwx_uF-jZaxxuyu-QnAzyRlBTOUBUAAR_D9wBW2939E7UqQPHQ8tB8kh8B1D2c1X4MolOmxbgH6Qo6nm7zTaOa-pMJIG3egpimqwjFdyIJ6O8K7itSDX7vtpgSJHW8nC-vivTwQ3DhB_FL5KBTGcmQI3fF3w2QzO06MoWvkzVc3eEXXV2m_zstDlATjzH5DsStDwt5aADJU67rkVzKc9GR3Ue-XKaW6yU2IMIye99O9qrUErhsjjq6aHEDuMI18cMAyYltfoPwv7T4BMm_v60txLXidvnY1DonjOphdU3DRICyGkFowVnxgpuRFMJeZqb1bByUo03pezYQlK3KNHHIx6-xWBD_gfhDsN6vzGPB0n6yoPPydTfPW-W0yIb9GADnxrRRbBy2yQLSnH7qywsuzTWwoRpI4yNc4RDNYqF3s57Z1pkqOiCGwxhWWs28d8KLoxk7t37Ygiy0BcSYnEsIuyjPxYSdPhpCQTpPiR8uhlnVnh9ZhZeQ4umoMXQ8FBdtA9EWvYjuJ8qjc0jQncKdm2GmRxmi2J2dRIGCxGk26MC4XB-EPXpEIX8AnaMtbk4soRmv0_hPESpdk8U8IkjCGPvrVNrnWNve_MzWAybxMZpa_Ik9E_QXsif3p_2VfbrAxaMc7fcaflWwJQMadTtUKqajQVL1JHpXnmhctW6R7Im_1sP3cqwjJ7DIB29jv6L_ngZf7uUvFcHYm0DFJmtWcrl65yTOQnTddvArZexMiAOqFnp2bjdQAF30xiGR8AarbyedFs4mpu7JS0Wa6bKVEANqCAq4HpeOT8BMVYyslVLmDdcFXNvokjWNw2a_2IXGjxW4oQrZtvqA-oj9JrfSic4Cizwf5ZFIW3KwJH45RsOgtQ83vN7TTYelaNQQW1WKIVAU1jJe2jO1_dpBjGd84jNa1qgR5zfb9isZ_OtsjXqi6KAixhubKAnJWYNlCDvsBld-I4Rm5mMFmjMxgWpHjckB-nAXCXYUeLcFUcBGDg7y-bnlhUZhWJmLiqe9hNqj3xg6xhYt3OHB_GiS94IoqLChvqKz9jL2Ot3bsSkbEE4nyygPphTiQTjnEOwRFE9N3J9l613muQmVZ90ZiJSo3kwWhqB45q2dKiP_5X8D35Lne0EFJZdS0Eg3Wul-lmQa7mpvdtDPbe5UeR1r-0kg3SIKgirPg1EyWLrlncilkOt7l97PzSLodpFBjhA7pdQBX3aXyMKCwSg4kGW3eGvDg-YiX9lOMf4Uqnb-ANB-QMIRm-nFQzyD9vJNbocJF6xqMUMu5repz_NJ2LIGsCLIYWtFiKbBJJatO0-FO35dn_wxUVFU4kWIFKljJpwCdTJiBHb2pI-yczx4hHocm1QfeVIMtp-I2Tvux2m8tTLeDN8T_6wev6zPtUfhnhyjNu5wNN30ApjCbTnE1KZS8BfLwLnMQ2bWM3rwHbIYK5KDHaDF0lrq7lRwIL688cEIAvFegiwfQLAB2FkaA-Bd4L0-yve0HW9f1ZYa87rlXhfYBL9oDnSTesYtmJUryMiA_iNEolNLFlaSdY9FysTvBcFBO4P9CifGy1vVJF3jvWhcMZTn3CpHcHyVBKOG1K37lVuJ1mf9Kt-_V9uWLpdjmsuhpvrOmX8P1kdZYNZdds-oSFK3CE6a7lwjPgDEy-myRBLXny67t2tUUSU_38Igg6TJb4X6tHQzgnp-ZxEXA_3sBX_Roz9A-AaPiu6yO2oURXIduGId_D9j2pKtV9jDZa4waai0NkPEqO8u6F1Acc_wxAG1pAKgRYlAT2KB8Nd5MfV_u9DW3W3cumpehBB3vVZXGZdsqZUk81BZ847FneF0-lG8HNcpNT2T5oORS3b8bUIoRnketWnRmTJ-72L88isq0JOj32uqP_jeRQTSDzetjqwII8wzESdGCg9dY1cCLzpQypaNpVpJKq_eNFLLNVbsRvLxyJNas3lmD-X9kaNQuyKmFuYcIvUYm84_gWbrGMtVtBCpw1P3DA9dpL19OJWGogyHEDvLSIyYkUKvwIHS9ZK26jtx_hIBA2GZt415TB9cYdsge5mrEBitIRpHKTH7YHGVIsHdVtl3LdXpZXs4QGgm7zPp9hvUDzf5IVGVDLD_HXNWYBLBunF6SJrbQgUz2l8fRtMJLh9ZL2SY0lkbqcNwifJHudNWyV9NoYry_aGWLr1coeLIjYOEgpXFARHS_jm9ytw0w-xY169VqWCIR5W-YsiEJJaGRd_Jx7ashcTaEo5OGggzjDbiGwwA3D_uQTE9NTMFw5iUoJu_7zY4vBSeb9yKJuI8VZQ1tp5BDt8pNd76ov3xxsxEfqMQjHRZRYrD4YMVTo-_xcbUVlD-axwkZVwPSoYm-2QVYYVcHD3a7sprGg5n_ZMa5xGX5ZB2RYllyERRTYawISEmFw3fdrSH0FTIjXKlk2MDXzVUHW-Q4Vq81d-nfTi78n9gq3wtK6Qi54ZrQq9-NEUlcvKxf1U4TnxLPL5BPEPnbKc-q8CljujYkPYtBzU50eK_qHsFfq60a7VTcAEKM8wyHQusw4HIaERjf4GsX1TBVErzHqKQ_k7RYSNLRO_lxhTSGb-1lBaBh9KgDJGp-tEI9T_zwc3c5KdB_hyqgT7gh9HpHN4Kndo1RGaRebGMlIwMALGzSUV-cpU-s1k2SPAP8-mvep3OndBkUTp2othhouCcpAQ5732R-jahtwQRuJG9e-W167a2m4oaUGoGoCH-fR4z0dMyjFcQFz7dAwy7P4ZSVgq-08QElZSdNjG5WCijFhl0Xq3N3-QW3-ovBOS9TNyUtrFs0pQK2MAANXYMvY2LBGiGt5MFeK8d0s4X8hRhzkER08vHwARC5OUBMmoi7nu1CkIZiVqu0h5jwmpOl6a1P486aeH0MrBVQy0JVC0bc7OXaE3eVc9th3vNa-cO4evQS8To4-ZVkcjTnwYgsT1gqqniSjMU7vkO5bMogDwLHnuSoZhrEIjZaPJ2eBKsfD9SwMfSLSQs5KeSjGSJp1Yw8wFF45i8TjRtQ0kYxHRYrbG-zzAlL4xaUBH1xbRaR4FD2N7DRVkS6zNaqQbvs5-FQU-8y9ODPEIflN31W-e-rhK0J5asVnFsSbt5hjlNG-HNDruynp-CEaBZ68n6Alsf0kMxjAbtVLnVLuF0iK_MLHUdlHLkmvNzRwZP6fDOmITlsRzgUfC9eOBG1UAcEeASmdje8eC9rUO0c5O-pKFDg5yoOuzGEii80ycIfNLdy3bavqK3KNUVKZZ66EVYPU_TfcbhHB6GNvuR51A0ar-pSZgDxMiZOOkNfCjLqN6aWZP9vZQN3_uIe96FT1Nuj2DQyio-D8OmbSRolcCRBjKsLyzHpQJZ4qL2010awSIi8MmpSGDoqew8lNxvMDPThedBapABcH3FCq6B1BRwETByR7p-rLcEOpsmI8DX582BWtiqoyQSkA-LkaK7jaOLbTS5F5UhQFURyXvMvi2vQ7rS6m98wMWhzRculyssszq3msGh4PYnHRMhs9wwDQT1V-p0IfVFvN_jfrBsN5HjAPd4X4WFVpaMyhuHtNGL3sHtyy5DLi6NP6MMP-XP4Bejyz0JvfDeQQ6sVyDUlL_w_Zis_3IMAm0kCVpi6kjSeIH3HocMogPsfddNuoInoJNZkchJbyc9hUnmG70HsyaF2PjfIRnvrTyPsvmrLBZ5rco3qxxZVL5C62VY5FnYFEBZvQs-fXMR8myZJD9i-Sm4ETLAfbsSj5-EgJJnmC98n5PuNK-c-T8lN2ERpWz8WIa0lWQZSJgiG7LvUcx-S6mpOYxXJAHVsVbPpJsR8004kUlnLZqtXhE8dgripLp_QhgiSZ9Itt0UN8_onbw-7VuyaA82Hrt7ZsQZz3KXp4IilRpdH0p30-34V64JusqN2fTgKNJ-RxKFN_NPDAokvOFSXrmdLfq5qXkpJ6pzuvdiio94dw_ffz6o6CaYO1Ebx4TPNCfEfXEODeK-ZXUD--ecp5xZSY3EzivbAnzl7e5kSYFVIwvBIZT4ayG6qFQsjkP5mZok7GqoSF2U_zzqLMahBfwV_ELsB05U-o2IRT9QWcLUJbf1ACtgZP8mSTnEMUrZuummtCC-M5w1zBoOQvt-9Wk6u77ZDRTldAj0I8gDN-m_5ohjfDZDEfFlnITUUlGXXRwUvsvDKrrC73EDXvgstZkntfKqhaXlB4qHNSOJWIT_Y-lfN9gYiSAeS_1WIRlSTL168_wwT2vVvh5T-eWZklHgqpjEq-rv0TwdIvbn-ARQqOiYVd_z8wwFIeEWHDiKzFIdTJK3CP5rkKBupYecEZnWNbQ8E7rwFW__5avxgXL-jOTgDOe0yrGsMe7iVnLSg6kFxmUG5Mk8sN6vrdv1Tq7QtOrwGC9T_5fnWK-dnJgGvy00PSWALRNLB0LObHUoD6lOHIy3xjcI_uT9JgbQRzRCxAriBBMImCpiJCyNHRh_NMta6P0Fg6ZFxCW9Qt9bTIbGxwXVPFanm0AYkgzCBh-oZsmV-nA3ezpTvzRZDWhCG5LT_hPFmY672FBiBwc1xvRItWu1GvusKBvPePv8MTrrcEuzS6MOt4WU6Wo-oXfwHrCLfQQCE7oVMBDnPkB8wexxvaTQZ8ov1yQ35JX_XHh-xGRjdkpxOTryxuQW7uAw1CqQCbenhTMwdYEXiUxXqcXSP9nNM_uuQhglbDhq-xa1RCNAZ5UQ53Ll7e0Uum2COkbyLlWfl455OEn6u1QproOfEK0utum5WCsYY5Oz1BWmRBtTkvjRC6fau_wb3NrnI7X8tQSYlweJZRSHIPi9h3dcuS6l8eI9txYgSXfb36r2x44oql4IWuLuKdX0-r91V75KTqR2LohycRpMs3uvZEJGe67ZYrV-Wc8pN18aYi-9tReQE-56okfoGhbuYyZc5VjWfjg2bG4DAs87yi_g1VzFA3Y9aPZC62iRIMQKbS0nWRagEgPj6GLKySAeGRfeuTgVqMq8kkf7mMhzRR7anHXrjbn-tDajFz1x4PDZx7GvAt3obgTu8eUPYTPLC0EL0ic49YZWE56SXHWBb9ngbRlWvjhiuP7IXEjb6R_grLbUiS5sRLJU5Dg7bjM45gUMSlRIPUoyyfaPBwonwVQKH7_GF-6EDirR8oEiDC0uTe0SVFTYFPOYaLLGUfr2ntOPNTzHT8CH2o95WfryfFI9x8Xg9iV9X_m0ow3dby96LbjMy4tV8EpOcwuwrDv--MMjrhcY8-tHxa6wJqODiIxumika4hI17PEIbV0JRHpu6_Rv2gN0GS9w4t1yewbvlFwYYng8O6_beGqdYP-TySWh03kpQg1rf3r7NauUNg8QHxJ4x307b12rCvr5aAybKEDs_C-s8uUjxWIxD09z3w5eHvH-qaP3AeJxehHex7ZXHP-vY945Td2KIhWo2i8qOigRi4SvcWeAlad_slh2d3ANQw3mU2L6EmLE5ZMZTaOoIbf7gPqQa188jPmZpG4_H6bHXwsTokxqWeKz85OSeWmfgQU76lK7pU_Dp5s60N86K83Je4WValXUsKKOZmD1bi24WzrRP5g3tNJuPdFlVd6uETYU3dzbn3HjpF8XvZy-I_IiKyrIByLC86tfa3GOIbfONTpCbgLXdOsdbBuw9QT_noHCjLvgoHei99LKu-V2t3yxPUNT9h6tKLQNZoU4x6LxtywNbkTW5ovG2Wvcq0_kl_8vudnhvUmz6EyjivBxk1k-Bj8WP71S2RSYS-EEJkx-k-4E6PypZsF-tWus9Y6qLRkZccavwTHKL0J8kWKlTJZt7WKgtv1zOplVgAiLj8owJqRY-qfdvnXRBH8890PmtKfE9LhFJwaICIXWhXvboTZZ-LsJh1VkxvtbKnjgDQJui5W9Du2hPVkI0F8Okn0dKnhRwLyR8dq4OvhXd8O_7HVXHJnq5LDbIqjLwetMzOxqfquIJwRnKiilHeBgRJm_5MzbJIqatBLwYi7UNmHNkK7CTCCoIkMTJn2vTbgDgEExS2aEAPooCv7V76WUkyjyrF8L90IHrNTxQTv6r9pnlOYLLnu70PLCGE9ct6OaNDBmAo8CfSKMtDdEPl5EY9UzRHZK4mI7LK4IllGVmC3eYedUvUAQga1mkmOkzDIX-zPsIileO_EvZxHRHAGryCiaZMNzZdxDcxwJAP8Qy2-CDO3abvJoJoWsnJtEHuSd7DD5isLjvBRY6wdKrpKhngOafUKRdrh8PmhPnAiiCh6yZo1xjPhw7QJdHLBe-rc2TXOkrGvDqFOiWv39rgKPFwNf16XITSRCLzbrlBcELL9bDsz1Vq3CCOXNmcMVCok0h0uxfK6roi93D2gnhoXh7m25VMGtBfUTbPsfEm8r4bv26DI5s3uUX18LgZrGQgcjige2iIFjegg2SMg5NDm3w5LdiJH9jpy43e2C73lRnMbgpcg7diZHn_lMET9xyTWqYDM6x8JF4h8Tf-eCot80jAQfzMzMRqHKkK9YV87yfkfWi0FguHO4oxRL1h4iPVKJFNdk0zK1cQ1juhqp2j-qxjiooCoooxMnyF28ahQyM733Bl8xLsxc8Tr0KGSFe-tnrMeUmGCOYMMJtZwvHF6LK6Y_Iq5DVfi9AiH2-nhijoJeDYajizwWZZQoJ_8Fu5a2LT9eoML7XkWqfNR5ltVFCZ61mKXSF_0podj-9-cvt36wfU8OtYg8P0RgMLp47vhNhj_aqRtXOJ9tdyYDK0wTNDghOSSzJvh4dx38shXUxiLKAka9w0oihVvvdPC5-kxhzxYVXaLOE0zmhuapUBGJFyIAIE3ResEilamj-wL1inWnEEXe24M7Y9tqRceT2rFsR55CSXA0S6k5BTUXgH2PChZM2JnCDD-jyJ9OQMjMlraDr0SFAduv0JEdDPL4NLy3RnBRpGNJDe8Rkz2cMwrOhtDhMjJe35xV3sovZp5GeP-ehdqZmFPcelxk9ittmAVbuWE9e6hoflLl1bmUkfGBt-qjW3U5FTUSHVsZ4vC_Zsmv8OuP97Ns2av669zFbw7M3kTO3_5hf_4ptlydeoFwI5mjGYBEnPqnfYyoLgBAWSJ-bC02fh7FR8QGV5JfqU9M9GI0dolfwg-WbrKMrPekGFbIpEX7E-SmQVs6c8K7jPxgi_IKXz4KIeGz3JbdPTyjGmXgQvzK_kumHUz2_odzvzpClVMXyOA560qrivWn7WRQGWNTPAa3KJX9UMdSyQ8am8q9kKstubQRfczWvzyP0OTOE4JCk1OueBcii8CQhG9JyEUCjv9wO2bbgT-noSJEGXex0sdo94_X2ELCUH5-7W_GdhUt2o2fqOEVgUHHpdDkWtaq-VXkryQFy7ebjqp57wtsYsliryNJ5MZ2WwkTI5pAoNOa46lBJumqt5eGMRIUY2Hfb6AkWI38axNMGr4rIzCJ0ue93AEO033yIaGmV6k1EZhlH6JO6HlSABZFqD5M6jih9QiKQ_43yzb44oeDXEWehZxH3qyJuLkcVuRSDTydzpD5O7J053Cm9dCWb14eE5-rGrEnL5J88qi9Ja7c_-XmC-ATeWH4UicyBAvdlriX0J1BF1uQ3TMmnbFhJ2kD-nG2QTkWQAJf4OpVeal9FLjTA-Bk7kzIx6289N2W6Ee98jR7n13d5hJ4TdPTVqeDt_smhL8gk-VDh7ZSGh6gbwSfH7edcg_CU4atBqEaqSLUig0RpUWzJ4FLriKZZKXVU98JZ1-4q22O7rYAE3GvQ9oMFMRKAh3_wW4FV21hK9zTKgfTq8GPmt4RvU7NofzVfre7EPkmLDFYTa5T5RmtjlW2KoA_mL4ztv05VM4VyYX6nyzIY9LRApbclty8dcZorn146kM03xi74XTXI_RIGKhh6t5JYEpu6nwjX0TKsjqJTI5UukYIkQs8nWWK6ODtpgcmLB6CI1Ogs0_IP9fZsSY00fdrcnEiKdTIO1qtRDiY7HD9cr9_P3ZUj4BliTXLP92W4jtTySDJTSrLzc4XPXGagaiiD88Jez7DKEi7FjJWbXl4a6_VkjkS7JfrdIt08XlLjCdu3RiooJnZfVeDy2ncTu14AVtSnir6to46u8on100vd3-OJE0TFPlUat4EojrIp65r_SGhCQlv9a3TYj5T9Y2ObEv2A6NxqD8s2JFaCwfIS-LwiE7OrPj2draRFZ0-Ivd6JUm2VWW8ray2wPus0b8iyxGbDokv_uTqAPiJtUSrVJUg0ScuOCgqFXAPXOTpdquEKrHy50AJswUEajPAT0WxPCFXES_SYzeqD2Hy70BymydnQmK-vdK4otAVZwktOT_ZOG2s4KgTIxfCCEEcdcKOQ-xvZY68VFNnJmzPScykk7RV2zm7l2C6-Rx3I18omIqn7Ko3wSYJFiWyMLtnJ_UtPWnInosDB3Ornz5Ihhyn-16mzbTI7wE44fMEzm4ErOCLaGE3A9q74KEDW-fQ2S9VI4IjVEgfkafg-kXTZJeKEtGpvp3lKlXaqdLibCYaZ34BNKos9_eQ0-gC3NpMWVFhsq4CiH3B6pxKeShpM1dhUIDSnu0NZZUOvJq8_efDUhYTPiJJ5I-_-40WHF2oPtbIpOgUE2PxGv66IwtIFPqSnD56QVTfSdijURujUYnpBJ6er5bu8ZRe7Gu6c8UnZS2nArlTh5vwDarC_IqTGQltXqPnHKUnpOalwGvoo1EGnjIMnBIh4wNoorpCvNlgLyCKSET1vKP12ZeeBSzcrTFYg3BbxxO_hmo4qQjHonbLXkxGW-Yb15pVeplhLLTh0uuz7gVUG9qyRWrPAg8nu5wUx7vWYtSveK20izmIUnY5_BKDLry8EpE80PTvCbmyV4LQE6DRGG37ya8SGN4BSnzgs37J_WnDEe4-XcyL43tWGBZLNWKEzaEDbDMXaK_7hYRJ2OgrEclwf13i20FZqfo1gOZx_-QbBe-05eX9MXbKCFnWCwWL0rveSpCh5qzC3w0c6xuxcnKV74EgleDQHQO53B_o0cxejlW0aeMs3q_gl31AdN-rwrVebgONguxTH-vP8y5rfVxoojUJanLKdVbsCJC7tjlPtEL0XBw2C2hD1JPlb4MaxraMcQzip2fqUM1PTO8eGtCuj5zXmQ33f9PJeOZXx32oCawtMw6O5YAmo56d5bkRq8fmPzciVtoqpmArDKqd0CdfWZm31dBTtnoChheJfBbKptm-5tK_Ja2IvqmTAFDMiSh20Gi8AW_r0I9yhqqxxrXVx9rBEwDg6OdSoFETddpUneHTUa8rf5DkWFsp4SccA6oPnTdY5o_fNUjtI_bix9OTZYRwHz6SGTRnvQRJKU3UybBe85u7dxCXl5sS6375aew0Hmk3AmTkxP3RJExHhJOzJMO-slfn6GFLGvoZHuLShzASkIaZAZ3Y4MepnAhVCyOWqB7z9Q7p7IAMX84JNtBDSGQBl6zDfqSHkwPJKJlT3TslsTjZWZ38HBLhvWh_a2V8WiDVcPia6oWT50pitSUj2OkwtQVg2HFEQsRUHMyoeOumsPmNkQ4h_bd-y-8G27tJLBlquyvBKqaWAoSId5sS6dku7dj-6X0Y9KwcQcBrqK6KUaXOcuhaTw0zDAfYkgA-jNKuAtJcK790xqJNO0f2s04IJCCNcJ882ob4Pf8DsqhrVDHa-YX2PuUJFGSn2hlFwOXdYFEFlYx2NZRrQuMRfoqvq8zyCj17J1A3mwdDqxtAZhkghd2kXyoH7tny0gxhabonJ9wjKrqemwh5Us5B9MGVxD_vDBwTXOmIhRgTCxw-lI6uysyhUwECsabKNkvbI2gw-c1saEiu5BqvdwxCcpyRcm4_Wvp3JQ62fjzmLT5alzgoLQFV1eZF8Z4HGRxnNMro59TwTkYUj_clO9HTCYThGQVG1Ib2RLuiCGLEyI_QmK237sgtwx2B25rN_QYf9S--L1-gqB6hsmYIhsqC8_l5_roSUYOxOneSzPhLhIIAXgf0UhSUo_hfrw9BAGbYncHbynv1J3uzAnzs5tI8poMB0Dt_uihIHWiyN3IwOC-8zdt3_qtBfzWVShKm2OdTkmGYTCkvzYQx8jnMLOEMNDYXryaBUB48ltL4Zv9PWCtXS79UZCf7QYqcvyRGmEPo21o02Jol0WCH8XbvW_JTNVO3-109ijVtY0rnHUvM8o2DNbG_Z01uuNzlJ8uQaCObt2PkSQnbHpHbUMEVKdDzsWJYRQKN6QBoPnrP-KIg8uI7ITTZuW-q1JuAIgzfZaWz28CtlWwkc2X5rleS2vG1-0_tcBuGpX27DFaX33WA4vvgcWf4iR5qmZVNV7svQAbOiqbGuXzdSHPuGVJK0TBKue8j2bbImGsWg3j4QkXt8so04lUN806IP8SeBpdOPlsaUaQ2mv8uJL_PnkABIhCVq7307PcwAzxqt88APRWg78loqb3NnsewOsXMW_Zt1fYROH4bC0eV2IXif3j5LkK_dblkhDecLGn9XB79BiWbgJ_Dg_pqf7nS-hKglRyEffGg_7YKTTLuFw4n0kEsNh7k01BD_HuW4d8bT9ufctx-dPxW7fhRevRObS9NLITeLZQnQAFrcxu68DByc3Jxo2qW64mhYYQ_zq80WtLIcBwME9mumC0qf5p1az71tHX_oAc9WMZA8WNeg7W6muGhXs_m1HKfrr5WAIJxORpdIJlkdFv1RBoyRBHeHpWOsslAeCOXVVCeKSw9_UumC46GSNbAINEV9H0YSO5vfhOJ67Jww0M6KFxSkXa5WGa3UWRn7xE8Xvq6_i14dkXMlK1AtAWv4WaaBAbHpkshtpMzuHooFLlUn_MFQqrYPdCsDPEzYKGZF-vUnMBxV_LC_XGbUWPtj4Tc93XC-OcB2LFRdGWfb3jZqEMGR03ZszaLb6uyhiwxuAJnhZKl0hJI6LA2eXFsOdfiO-67G_13X8GIr0MFlYX9mXh5z2fcCpNGVS1CH_Y70wZxH72xjxyUTsES2WmVumoe0ZUqC3qsjEWm6dzdWpOa0PQ0l4DiGXa0WVdm-3-scXmJQoC1Zc0JvSFmqLGDSIr7VeePde-2jOpB8zYXMPo2MNm6WwxA8vK6owOhiOatP1ab6LeGAztKPDg9JirG_AkZjZi781JtiFkSPURkYOLT1LFTxJHhyubF3LJV66IXGezeIMM5CZTZSCpcgMiW1XwDnbxaBO2NTd1hDmhQQmq0f-dpcBJI0SvYHeADQSb6soewpN_XpazR9Wc-j1POOCXN8OHgswoom5HxD7nFP8VUFoNfQZVegM81SQMXGVhuO1TB6kqv4eDXx4EeSq9ZgpKpGzAlE6tf6L5rPmrP_vbpfVf0__1n1fv3Yc4Jlgl5vs2IfDVmwN6CC_jiQkw_x1AyG2oQeK8AALybjQ7Kf1thD56clhSHo3Qzw3jCr2mzYJdW_IdVQ8xQ50bdz8jsnesdaSivFc-8WJ4oZvZDq4HcFnxRNAqln501g7UhP0z7BqZtJqmkSnh6U5pghxLNDXgTu0IRfppWtq0R4bHkcpF7CCzPEU9jDu95-nX1ZEWaUyhRv6d81yBWdiVPJoRbTWTvwCYOsqt-78PnxhvBVYf1WVE77gUNmEiSgDsK0gEnKhPsJYE5LGS52ZGoFxV5Pm_C9HadsLbIHCG3b0MQWMW_YUNBf6k3t80EppvQdC99gdPpaKHP4QQIxI2CpsKei-nw6andZ67NS6BT11Z1-DIq3BwhB5zpynANFBZGevzSgGtyrTBcMWPSwagLii9sNu12eZwd5XDzV2hZaabAqaDohlT3P5UyxHsRSE73dleUBsRca2bqqlumrlvgo3OFr0aTi0MWHbp-YkFhmsvzDKNjvMDxEtkwZhUj21vIxXg6bpc-ZdRORNbYqhIL7DySRkB-bcZum-VnIcddlGIswe4vA_AaZaz2JESjG9KU5pDgy8Lbt_6Hau9x5OEAWK_EA09jj_yhg-BSQHCzu5CQO4pDG8uUDcT_9UiQXO-RnTHsF96XCy1wnBACZpgiSyNCzQ4YBbyF3qkGX-9VxSW8ElzOkyyJtbUfJiEPGFnNpsVwOqIxQ2O3v-kKWNUawquJ05XANBk9ZvmM86MILWN6eCFNwRwMiSgAn8cl680SWQnuq6RN3vF_QCml4ZIrDQ9YXupLiP6VxBJCjrvuTLk-QIUN2QPEeO0lvmXOO2OuZQmc9TkxI4eew-xxVuai4gJCJgnZ1By01CD0WiFbEFhnBiv7bd-NHKKOw9xgXXrFdPN4MuviX5d37sb3veftYyoNbcDGCyK8I7Nf1Gr1IJ6pTblOA--njcI1fvHvUxmEp0GTpZbOCJMSnw2AbqC0OD-rKhh9G_wm6EPVOdbvYObDQoagExnFWo3wU7JCho5JJkF_sNuNvcroy0X6ZWxXQqeCJ56N1MpCZvTpXQs12eSQUcuRZHHubiKH17G8j3QicfDDK_5A_S5AlWI2BBCzVEl8IPLEP59sQ6a7hvEJ24jUDd6K5qjyu35kMKKGNh6_jjex6mGEmBvCMUEExkV9U5qqHjT-M4nyp-sUkQoPvYIALz_Oh11Ca0tWnZG-Ah3rK9ZmyTrqRmdqaQyTkJyyq_IboNtcv2i6i7ai1-Wl7vNUzI0nE8is9DRB8veeR-5JqJu1DGqygjIVdm9QEqFWKa2G1Vl7BaQR0t_jj3RqxuFGZRS0h5KRvfelLpIUAVhF_FjsQ6p0=",
+        "id": "rs_0fa48122ccbe4d50016b06ed0b759487d29a45446b18ef8684",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"O alerta atual fala em chuva intensa na zona rural norte, com risco de alagamento de estradas vicinais e transbordamento de arroios. Nos documentos anteriores, a TC-08 já ficou intransitável por erosão e foi usada como rota de evacuação da Linha Taquara até o abrigo Santa Rita. O plano de 2025 mantém a TC-08 como rota de evacuação para a comunidade.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Estrada Vicinal TC-08\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"Secretaria de Agricultura\",\"descricao\":\"Estrada vicinal citada como rota de evacuação e como trecho que já ficou intransitável por erosão.\"},{\"id\":\"E2\",\"nome\":\"Linha Taquara\",\"tipo\":\"local\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Comunidade rural citada nos registros de evacuação e no plano de contingência.\"},{\"id\":\"E3\",\"nome\":\"Escola Rural Santa Rita\",\"tipo\":\"local\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Destino previsto da rota de evacuação da Linha Taquara no plano de contingência.\"},{\"id\":\"E4\",\"nome\":\"Abrigo Santa Rita\",\"tipo\":\"local\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Abrigo citado na ocorrência de 2024 e no plano como referência para acolhimento de pessoas.\"},{\"id\":\"E5\",\"nome\":\"COMPDEC\",\"tipo\":\"servico\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Órgão que produziu o relatório de evacuação e o plano de contingência.\"},{\"id\":\"E6\",\"nome\":\"Secretaria de Agricultura\",\"tipo\":\"setor\",\"setor_responsavel\":\"Secretaria de Agricultura\",\"descricao\":\"Setor que registrou a ocorrência de interdição da TC-08 em 2024.\"},{\"id\":\"E7\",\"nome\":\"Zona rural norte\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área citada no alerta atual como afetada por chuva intensa.\"},{\"id\":\"E8\",\"nome\":\"Arroios\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":null,\"descricao\":\"Elemento hidrológico citado no alerta atual com risco de transbordamento.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E2\",\"destino\":\"E1\",\"tipo\":\"depende_de\",\"rotulo\":\"A evacuação da Linha Taquara usa a TC-08 como rota.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-07-21\",\"fim\":null,\"observacao\":\"Consta no plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08\"}]},{\"id\":\"R2\",\"origem\":\"E1\",\"destino\":\"E3\",\"tipo\":\"atende\",\"rotulo\":\"A TC-08 leva até a Escola Rural Santa Rita na rota prevista.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-07-21\",\"fim\":null,\"observacao\":\"Consta no plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Estrada Vicinal TC-08 até a Escola Rural Santa Rita\"}]},{\"id\":\"R3\",\"origem\":\"E2\",\"destino\":\"E4\",\"tipo\":\"acesso_por\",\"rotulo\":\"Na ocorrência de 2024, a evacuação chegou ao abrigo Santa Rita.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-05\",\"fim\":null,\"observacao\":\"Registro histórico da evacuação.\"},\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"22 pessoas chegaram ao abrigo Santa Rita.\"}]},{\"id\":\"R4\",\"origem\":\"E1\",\"destino\":\"E7\",\"tipo\":\"localizado_em\",\"rotulo\":\"A estrada é relevante para a zona rural afetada pelo alerta.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":\"Relação inferida pela presença da estrada na área rural do cenário de alerta.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Chuva intensa na zona rural norte; risco de alagamento de estradas vicinais\"}]},{\"id\":\"R5\",\"origem\":\"E7\",\"destino\":\"E8\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta atual menciona risco de transbordamento de arroios na zona rural norte.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":\"Cenário de alerta atual.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"risco de alagamento de estradas vicinais e transbordamento de arroios.\"}]},{\"id\":\"R6\",\"origem\":\"E6\",\"destino\":\"E1\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A Secretaria de Agricultura registrou a condição da TC-08 em 2024.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-22\",\"fim\":null,\"observacao\":\"Relatório de ocorrência.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"A Estrada Vicinal TC-08 ficou intransitável entre 04 e 08/05/2024\"}]},{\"id\":\"R7\",\"origem\":\"E5\",\"destino\":\"E2\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC elaborou o plano de contingência da zona rural para a comunidade.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-07-21\",\"fim\":null,\"observacao\":\"Plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plano de Contingência (2025) — zona rural\"}]},{\"id\":\"R8\",\"origem\":\"E5\",\"destino\":\"E4\",\"tipo\":\"atende\",\"rotulo\":\"A COMPDEC vinculou o abrigo Santa Rita ao acolhimento na ocorrência.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-25\",\"fim\":null,\"observacao\":\"Relatório de ocorrência.\"},\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"22 pessoas chegaram ao abrigo Santa Rita.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"pendencia_historica\",\"descricao\":\"A TC-08 ficou intransitável por erosão no km 6 entre 04 e 08/05/2024.\",\"implicacao\":\"Esse histórico justifica conferir se o trecho voltou a apresentar problema no cenário atual de chuva intensa.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"A Estrada Vicinal TC-08 ficou intransitável entre 04 e 08/05/2024 por erosão no km 6.\"}]},{\"id\":\"T2\",\"tipo\":\"pendencia_historica\",\"descricao\":\"Em 05/05/2024, a Linha Taquara foi evacuada pela TC-08 com restrição a veículos leves, e 22 pessoas chegaram ao abrigo Santa Rita.\",\"implicacao\":\"O histórico mostra uso operacional da rota e do abrigo, mas não confirma que a mesma condição continua hoje.\",\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"A evacuação da Linha Taquara foi feita pela TC-08 em 05/05/2024, com restrição a veículos leves; 22 pessoas chegaram ao abrigo Santa Rita.\"}]},{\"id\":\"T3\",\"tipo\":\"atualizacao\",\"descricao\":\"O plano de 2025 manteve a TC-08 como rota de evacuação da Linha Taquara até a Escola Rural Santa Rita.\",\"implicacao\":\"Há um protocolo mais recente que confirma a rota prevista, mas não informa a situação física atual da estrada.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08 até a Escola Rural Santa Rita (abrigo, 70 pessoas).\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"A Estrada Vicinal TC-08 continua trafegável no trecho do km 6 durante a chuva atual?\",\"por_que_importa\":\"A rota de evacuação da Linha Taquara depende dessa estrada, e há histórico de interrupção por erosão no mesmo ponto.\",\"motivacao\":\"O plano de 2025 mantém a TC-08 como rota, e o relatório de 2024 registra intransitabilidade no km 6.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\",\"Secretaria de Agricultura\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08\"},{\"doc_id\":\"D3\",\"trecho\":\"A Estrada Vicinal TC-08 ficou intransitável entre 04 e 08/05/2024 por erosão no km 6.\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Chuva intensa na zona rural norte\"}],\"o_que_falta_saber\":\"Se houve erosão, alagamento ou outro bloqueio atual na TC-08, principalmente no km 6.\",\"quem_pode_confirmar\":\"Secretaria de Agricultura ou equipe de campo da COMPDEC.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A rota prevista para a Linha Taquara segue sendo a TC-08 até a Escola Rural Santa Rita no cenário atual?\",\"por_que_importa\":\"A pauta precisa saber se o trajeto do plano continua sendo o mesmo protocolo de referência para a verificação preventiva.\",\"motivacao\":\"O plano de 2025 fixa essa rota, e o alerta atual envolve risco para estradas vicinais na zona rural.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\",\"E5\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08 até a Escola Rural Santa Rita (abrigo, 70 pessoas).\"},{\"doc_id\":\"D2\",\"trecho\":\"risco de alagamento de estradas vicinais\"}],\"o_que_falta_saber\":\"Se o protocolo foi mantido sem alteração ou se houve atualização operacional para este alerta.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"O abrigo Santa Rita está apto a receber até 70 pessoas, como previsto no plano?\",\"por_que_importa\":\"A capacidade prevista no plano precisa ser confirmada antes de eventual uso na ocorrência atual.\",\"motivacao\":\"O plano informa 70 pessoas, e a ocorrência de 2024 mostra uso do abrigo por 22 pessoas.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E4\",\"E5\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"(abrigo, 70 pessoas)\"},{\"doc_id\":\"D4\",\"trecho\":\"22 pessoas chegaram ao abrigo Santa Rita.\"}],\"o_que_falta_saber\":\"Se o abrigo mantém espaço, acesso e condições para acolhimento no volume previsto.\",\"quem_pode_confirmar\":\"COMPDEC ou responsável pelo abrigo Santa Rita.\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"A restrição a veículos leves usada em 2024 precisa voltar a ser aplicada na TC-08 nesta situação?\",\"por_que_importa\":\"O histórico mostra que a evacuação anterior ocorreu com restrição, o que pode orientar a checagem operacional atual sem presumir que a medida continua válida.\",\"motivacao\":\"Em 2024 houve evacuação com restrição a veículos leves na mesma estrada.\",\"base\":\"registro_historico\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E5\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"A evacuação da Linha Taquara foi feita pela TC-08 em 05/05/2024, com restrição a veículos leves\"}],\"o_que_falta_saber\":\"Se a condição da via atual exige a mesma restrição ou outra medida de tráfego.\",\"quem_pode_confirmar\":\"COMPDEC e Secretaria de Agricultura.\",\"prioridade\":\"media\"},{\"id\":\"V5\",\"pergunta\":\"Há pontos de alagamento ou transbordamento de arroios que possam afetar o acesso da zona rural norte à Linha Taquara e à TC-08?\",\"por_que_importa\":\"O alerta atual cita risco de alagamento de estradas vicinais e transbordamento de arroios, fatores que podem interferir no acesso.\",\"motivacao\":\"O cenário atual menciona os dois riscos hidrológicos na mesma área de interesse.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E7\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Chuva intensa na zona rural norte; risco de alagamento de estradas vicinais e transbordamento de arroios.\"}],\"o_que_falta_saber\":\"Quais trechos específicos estão vulneráveis e se há pontos de bloqueio já observados.\",\"quem_pode_confirmar\":\"COMPDEC e equipe de vistoria de campo.\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há documento atual descrevendo a condição física da TC-08 em 2026.\",\"por_que_importa\":\"Sem isso, não dá para saber se a rota do plano está operacional no alerta atual.\"},{\"descricao\":\"Não há informação sobre a situação atual do abrigo Santa Rita, incluindo lotação e condições de uso.\",\"por_que_importa\":\"A capacidade prevista no plano precisa ser confirmada antes de qualquer acionamento.\"},{\"descricao\":\"Não há registro recente de vistoria sobre alagamento de arroios ou pontos críticos de acesso.\",\"por_que_importa\":\"O alerta atual menciona esse risco, mas faltam trechos identificados como críticos.\"}],\"cautelas\":[\"O relatório de 2024 descreve um evento passado e não deve ser tratado como condição atual sem confirmação.\",\"O plano de 2025 confirma a rota prevista, mas não comprova que a estrada esteja livre hoje.\",\"O alerta atual é genérico para a zona rural norte; não há nos documentos um mapeamento detalhado dos pontos afetados.\",\"Não assumir que a restrição a veículos leves de 2024 continua valendo sem confirmação institucional.\",\"O abrigo Santa Rita aparece como referência de acolhimento, mas sua disponibilidade atual não está documentada.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0fa48122ccbe4d50016b06ed1262e887d297303c60ae557adb",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2168,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 2048
+      },
+      "output_tokens": 4620,
+      "output_tokens_details": {
+        "reasoning_tokens": 1382
+      },
+      "total_tokens": 6788
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"O alerta atual fala em chuva intensa na zona rural norte, com risco de alagamento de estradas vicinais e transbordamento de arroios. Nos documentos anteriores, a TC-08 já ficou intransitável por erosão e foi usada como rota de evacuação da Linha Taquara até o abrigo Santa Rita. O plano de 2025 mantém a TC-08 como rota de evacuação para a comunidade.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Estrada Vicinal TC-08\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":\"Secretaria de Agricultura\",\"descricao\":\"Estrada vicinal citada como rota de evacuação e como trecho que já ficou intransitável por erosão.\"},{\"id\":\"E2\",\"nome\":\"Linha Taquara\",\"tipo\":\"local\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Comunidade rural citada nos registros de evacuação e no plano de contingência.\"},{\"id\":\"E3\",\"nome\":\"Escola Rural Santa Rita\",\"tipo\":\"local\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Destino previsto da rota de evacuação da Linha Taquara no plano de contingência.\"},{\"id\":\"E4\",\"nome\":\"Abrigo Santa Rita\",\"tipo\":\"local\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Abrigo citado na ocorrência de 2024 e no plano como referência para acolhimento de pessoas.\"},{\"id\":\"E5\",\"nome\":\"COMPDEC\",\"tipo\":\"servico\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Órgão que produziu o relatório de evacuação e o plano de contingência.\"},{\"id\":\"E6\",\"nome\":\"Secretaria de Agricultura\",\"tipo\":\"setor\",\"setor_responsavel\":\"Secretaria de Agricultura\",\"descricao\":\"Setor que registrou a ocorrência de interdição da TC-08 em 2024.\"},{\"id\":\"E7\",\"nome\":\"Zona rural norte\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área citada no alerta atual como afetada por chuva intensa.\"},{\"id\":\"E8\",\"nome\":\"Arroios\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":null,\"descricao\":\"Elemento hidrológico citado no alerta atual com risco de transbordamento.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E2\",\"destino\":\"E1\",\"tipo\":\"depende_de\",\"rotulo\":\"A evacuação da Linha Taquara usa a TC-08 como rota.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-07-21\",\"fim\":null,\"observacao\":\"Consta no plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08\"}]},{\"id\":\"R2\",\"origem\":\"E1\",\"destino\":\"E3\",\"tipo\":\"atende\",\"rotulo\":\"A TC-08 leva até a Escola Rural Santa Rita na rota prevista.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-07-21\",\"fim\":null,\"observacao\":\"Consta no plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Estrada Vicinal TC-08 até a Escola Rural Santa Rita\"}]},{\"id\":\"R3\",\"origem\":\"E2\",\"destino\":\"E4\",\"tipo\":\"acesso_por\",\"rotulo\":\"Na ocorrência de 2024, a evacuação chegou ao abrigo Santa Rita.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-05\",\"fim\":null,\"observacao\":\"Registro histórico da evacuação.\"},\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"22 pessoas chegaram ao abrigo Santa Rita.\"}]},{\"id\":\"R4\",\"origem\":\"E1\",\"destino\":\"E7\",\"tipo\":\"localizado_em\",\"rotulo\":\"A estrada é relevante para a zona rural afetada pelo alerta.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":\"Relação inferida pela presença da estrada na área rural do cenário de alerta.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Chuva intensa na zona rural norte; risco de alagamento de estradas vicinais\"}]},{\"id\":\"R5\",\"origem\":\"E7\",\"destino\":\"E8\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta atual menciona risco de transbordamento de arroios na zona rural norte.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":\"Cenário de alerta atual.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"risco de alagamento de estradas vicinais e transbordamento de arroios.\"}]},{\"id\":\"R6\",\"origem\":\"E6\",\"destino\":\"E1\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A Secretaria de Agricultura registrou a condição da TC-08 em 2024.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-22\",\"fim\":null,\"observacao\":\"Relatório de ocorrência.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"A Estrada Vicinal TC-08 ficou intransitável entre 04 e 08/05/2024\"}]},{\"id\":\"R7\",\"origem\":\"E5\",\"destino\":\"E2\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC elaborou o plano de contingência da zona rural para a comunidade.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-07-21\",\"fim\":null,\"observacao\":\"Plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plano de Contingência (2025) — zona rural\"}]},{\"id\":\"R8\",\"origem\":\"E5\",\"destino\":\"E4\",\"tipo\":\"atende\",\"rotulo\":\"A COMPDEC vinculou o abrigo Santa Rita ao acolhimento na ocorrência.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-25\",\"fim\":null,\"observacao\":\"Relatório de ocorrência.\"},\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"22 pessoas chegaram ao abrigo Santa Rita.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"pendencia_historica\",\"descricao\":\"A TC-08 ficou intransitável por erosão no km 6 entre 04 e 08/05/2024.\",\"implicacao\":\"Esse histórico justifica conferir se o trecho voltou a apresentar problema no cenário atual de chuva intensa.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"A Estrada Vicinal TC-08 ficou intransitável entre 04 e 08/05/2024 por erosão no km 6.\"}]},{\"id\":\"T2\",\"tipo\":\"pendencia_historica\",\"descricao\":\"Em 05/05/2024, a Linha Taquara foi evacuada pela TC-08 com restrição a veículos leves, e 22 pessoas chegaram ao abrigo Santa Rita.\",\"implicacao\":\"O histórico mostra uso operacional da rota e do abrigo, mas não confirma que a mesma condição continua hoje.\",\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"A evacuação da Linha Taquara foi feita pela TC-08 em 05/05/2024, com restrição a veículos leves; 22 pessoas chegaram ao abrigo Santa Rita.\"}]},{\"id\":\"T3\",\"tipo\":\"atualizacao\",\"descricao\":\"O plano de 2025 manteve a TC-08 como rota de evacuação da Linha Taquara até a Escola Rural Santa Rita.\",\"implicacao\":\"Há um protocolo mais recente que confirma a rota prevista, mas não informa a situação física atual da estrada.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08 até a Escola Rural Santa Rita (abrigo, 70 pessoas).\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"A Estrada Vicinal TC-08 continua trafegável no trecho do km 6 durante a chuva atual?\",\"por_que_importa\":\"A rota de evacuação da Linha Taquara depende dessa estrada, e há histórico de interrupção por erosão no mesmo ponto.\",\"motivacao\":\"O plano de 2025 mantém a TC-08 como rota, e o relatório de 2024 registra intransitabilidade no km 6.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\",\"Secretaria de Agricultura\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08\"},{\"doc_id\":\"D3\",\"trecho\":\"A Estrada Vicinal TC-08 ficou intransitável entre 04 e 08/05/2024 por erosão no km 6.\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Chuva intensa na zona rural norte\"}],\"o_que_falta_saber\":\"Se houve erosão, alagamento ou outro bloqueio atual na TC-08, principalmente no km 6.\",\"quem_pode_confirmar\":\"Secretaria de Agricultura ou equipe de campo da COMPDEC.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A rota prevista para a Linha Taquara segue sendo a TC-08 até a Escola Rural Santa Rita no cenário atual?\",\"por_que_importa\":\"A pauta precisa saber se o trajeto do plano continua sendo o mesmo protocolo de referência para a verificação preventiva.\",\"motivacao\":\"O plano de 2025 fixa essa rota, e o alerta atual envolve risco para estradas vicinais na zona rural.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\",\"E5\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08 até a Escola Rural Santa Rita (abrigo, 70 pessoas).\"},{\"doc_id\":\"D2\",\"trecho\":\"risco de alagamento de estradas vicinais\"}],\"o_que_falta_saber\":\"Se o protocolo foi mantido sem alteração ou se houve atualização operacional para este alerta.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"O abrigo Santa Rita está apto a receber até 70 pessoas, como previsto no plano?\",\"por_que_importa\":\"A capacidade prevista no plano precisa ser confirmada antes de eventual uso na ocorrência atual.\",\"motivacao\":\"O plano informa 70 pessoas, e a ocorrência de 2024 mostra uso do abrigo por 22 pessoas.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E4\",\"E5\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"(abrigo, 70 pessoas)\"},{\"doc_id\":\"D4\",\"trecho\":\"22 pessoas chegaram ao abrigo Santa Rita.\"}],\"o_que_falta_saber\":\"Se o abrigo mantém espaço, acesso e condições para acolhimento no volume previsto.\",\"quem_pode_confirmar\":\"COMPDEC ou responsável pelo abrigo Santa Rita.\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"A restrição a veículos leves usada em 2024 precisa voltar a ser aplicada na TC-08 nesta situação?\",\"por_que_importa\":\"O histórico mostra que a evacuação anterior ocorreu com restrição, o que pode orientar a checagem operacional atual sem presumir que a medida continua válida.\",\"motivacao\":\"Em 2024 houve evacuação com restrição a veículos leves na mesma estrada.\",\"base\":\"registro_historico\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E5\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"A evacuação da Linha Taquara foi feita pela TC-08 em 05/05/2024, com restrição a veículos leves\"}],\"o_que_falta_saber\":\"Se a condição da via atual exige a mesma restrição ou outra medida de tráfego.\",\"quem_pode_confirmar\":\"COMPDEC e Secretaria de Agricultura.\",\"prioridade\":\"media\"},{\"id\":\"V5\",\"pergunta\":\"Há pontos de alagamento ou transbordamento de arroios que possam afetar o acesso da zona rural norte à Linha Taquara e à TC-08?\",\"por_que_importa\":\"O alerta atual cita risco de alagamento de estradas vicinais e transbordamento de arroios, fatores que podem interferir no acesso.\",\"motivacao\":\"O cenário atual menciona os dois riscos hidrológicos na mesma área de interesse.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E7\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Chuva intensa na zona rural norte; risco de alagamento de estradas vicinais e transbordamento de arroios.\"}],\"o_que_falta_saber\":\"Quais trechos específicos estão vulneráveis e se há pontos de bloqueio já observados.\",\"quem_pode_confirmar\":\"COMPDEC e equipe de vistoria de campo.\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há documento atual descrevendo a condição física da TC-08 em 2026.\",\"por_que_importa\":\"Sem isso, não dá para saber se a rota do plano está operacional no alerta atual.\"},{\"descricao\":\"Não há informação sobre a situação atual do abrigo Santa Rita, incluindo lotação e condições de uso.\",\"por_que_importa\":\"A capacidade prevista no plano precisa ser confirmada antes de qualquer acionamento.\"},{\"descricao\":\"Não há registro recente de vistoria sobre alagamento de arroios ou pontos críticos de acesso.\",\"por_que_importa\":\"O alerta atual menciona esse risco, mas faltam trechos identificados como críticos.\"}],\"cautelas\":[\"O relatório de 2024 descreve um evento passado e não deve ser tratado como condição atual sem confirmação.\",\"O plano de 2025 confirma a rota prevista, mas não comprova que a estrada esteja livre hoje.\",\"O alerta atual é genérico para a zona rural norte; não há nos documentos um mapeamento detalhado dos pontos afetados.\",\"Não assumir que a restrição a veículos leves de 2024 continua valendo sem confirmação institucional.\",\"O abrigo Santa Rita aparece como referência de acolhimento, mas sua disponibilidade atual não está documentada.\"]}"
+  }
+}

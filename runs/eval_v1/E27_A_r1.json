@@ -1,0 +1,1089 @@
+{
+  "meta": {
+    "scenario": "E27",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 797,
+    "user_message_sha12": "2b054101919b"
+  },
+  "user_message": "Município (fictício): Ponte Alta do Rio Verde\nData de referência da análise: 2026-11-21\nDocumentos disponíveis (2), em ordem cronológica:\n\n### [D1] Plano de Contingência (2025) — Níveis\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2025-08-01\n\nCota 6,0 m: atenção — monitoramento da Rua do Porto.\nCota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.\nCota 10,0 m: alarme — remoção preventiva conforme decisão do coordenador da COMPDEC.\n\n---\n\n### [D2] Boletim hidrológico (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-21\n\nNÍVEL: AMARELO. O Rio Verde pode chegar a 6,3 m a 6,6 m na régua municipal em 36 horas.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_0fe916e079ab0c73016b06ec9fab5c87d283fb664e92af65d5",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 2049,
+    "output_tokens": 3615,
+    "reasoning_tokens": 346
+  },
+  "latency_ms": 22443,
+  "started_at": "2026-11-25T14:11:43.058Z",
+  "output": {
+    "resumo_situacao": "O plano de contingência fixa três faixas de atuação por cota do Rio Verde. No boletim de hoje, a previsão é de 6,3 m a 6,6 m em 36 horas, acima do ponto de atenção de 6,0 m. Isso pede checagem preventiva do monitoramento da Rua do Porto e da leitura operacional dos próximos passos, sem assumir medidas que ainda dependem de confirmação humana.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "COMPDEC",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Coordenadoria citada no plano como responsável pela decisão de remoção preventiva na cota de 10,0 m."
+      },
+      {
+        "id": "E2",
+        "nome": "Rio Verde",
+        "tipo": "recurso",
+        "setor_responsavel": null,
+        "descricao": "Curso d'água monitorado no plano e no boletim hidrológico."
+      },
+      {
+        "id": "E3",
+        "nome": "Régua municipal",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Referência usada no boletim para estimativa do nível do rio."
+      },
+      {
+        "id": "E4",
+        "nome": "Rua do Porto",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Local citado para monitoramento na cota de 6,0 m."
+      },
+      {
+        "id": "E5",
+        "nome": "Bairro Porto",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Bairro avisado na cota de 8,0 m."
+      },
+      {
+        "id": "E6",
+        "nome": "Bairro Cais",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Bairro avisado na cota de 8,0 m."
+      },
+      {
+        "id": "E7",
+        "nome": "Bairro Olaria",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Bairro avisado na cota de 8,0 m."
+      },
+      {
+        "id": "E8",
+        "nome": "Abrigos",
+        "tipo": "recurso",
+        "setor_responsavel": null,
+        "descricao": "Recurso cuja mobilização está prevista no plano para a cota de 8,0 m."
+      },
+      {
+        "id": "E9",
+        "nome": "Sala de Situação Regional",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": null,
+        "descricao": "Fonte do boletim hidrológico fictício."
+      },
+      {
+        "id": "E10",
+        "nome": "Cenário de alerta amarelo",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Classificação informada no boletim de 2026-11-21."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E9",
+        "destino": "E2",
+        "tipo": "comunica",
+        "rotulo": "Emite boletim sobre o Rio Verde.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-21",
+          "fim": null,
+          "observacao": "Boletim atual."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: AMARELO. O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E2",
+        "destino": "E3",
+        "tipo": "acesso_por",
+        "rotulo": "Nível é estimado na régua municipal.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-21",
+          "fim": null,
+          "observacao": "Previsão atual."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "na régua municipal em 36 horas."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E2",
+        "destino": "E4",
+        "tipo": "afetado_por",
+        "rotulo": "Na cota de 6,0 m, aciona monitoramento da Rua do Porto.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-08-01",
+          "fim": null,
+          "observacao": "Regra do plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Cota 6,0 m: atenção — monitoramento da Rua do Porto."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E2",
+        "destino": "E5",
+        "tipo": "afetado_por",
+        "rotulo": "Na cota de 8,0 m, exige aviso ao Bairro Porto.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-08-01",
+          "fim": null,
+          "observacao": "Regra do plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E2",
+        "destino": "E6",
+        "tipo": "afetado_por",
+        "rotulo": "Na cota de 8,0 m, exige aviso ao Bairro Cais.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-08-01",
+          "fim": null,
+          "observacao": "Regra do plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E2",
+        "destino": "E7",
+        "tipo": "afetado_por",
+        "rotulo": "Na cota de 8,0 m, exige aviso ao Bairro Olaria.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-08-01",
+          "fim": null,
+          "observacao": "Regra do plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E2",
+        "destino": "E8",
+        "tipo": "abastece",
+        "rotulo": "Na cota de 8,0 m, demanda mobilização de abrigos.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-08-01",
+          "fim": null,
+          "observacao": "Regra do plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Cota 8,0 m: alerta — mobilização de abrigos"
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "responsavel_por",
+        "rotulo": "Decide remoção preventiva na cota de 10,0 m.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-08-01",
+          "fim": null,
+          "observacao": "Regra do plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Cota 10,0 m: alarme — remoção preventiva conforme decisão do coordenador da COMPDEC."
+          }
+        ]
+      },
+      {
+        "id": "R9",
+        "origem": "E10",
+        "destino": "E2",
+        "tipo": "outro",
+        "rotulo": "Cenário atual indica possibilidade de elevação do Rio Verde.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-21",
+          "fim": null,
+          "observacao": "Boletim atual."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "O plano de 2025 continua sendo a referência de faixas operacionais, e o boletim de 2026 traz uma previsão compatível com a faixa de atenção de 6,0 m.",
+        "implicacao": "A pauta preventiva deve focar na checagem das ações já previstas para 6,0 m, sem presumir a adoção de medidas de 8,0 m.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Cota 6,0 m: atenção — monitoramento da Rua do Porto."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "O monitoramento da Rua do Porto foi acionado ou está em curso para a faixa de 6,0 m prevista no plano?",
+        "por_que_importa": "O boletim de hoje projeta nível acima da cota de atenção e o plano vincula essa faixa ao monitoramento de um local específico.",
+        "motivacao": "Previsão de 6,3 m a 6,6 m e regra do plano para 6,0 m.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E2",
+          "E4",
+          "E1"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Cota 6,0 m: atenção — monitoramento da Rua do Porto."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas."
+          }
+        ],
+        "o_que_falta_saber": "Se a rotina de monitoramento da Rua do Porto já começou, com qual frequência e por qual equipe.",
+        "quem_pode_confirmar": "COMPDEC, ou a equipe responsável pelo monitoramento hidrológico municipal.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "A faixa prevista para as próximas 36 horas exige preparar a mobilização de abrigos, ou ainda não há necessidade por ficar abaixo de 8,0 m?",
+        "por_que_importa": "O plano relaciona a mobilização de abrigos à cota de 8,0 m, e a previsão atual fica abaixo desse patamar, mas próxima dele.",
+        "motivacao": "Previsão atual de 6,3 m a 6,6 m e gatilho de 8,0 m no plano.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E2",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Cota 8,0 m: alerta — mobilização de abrigos"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas."
+          }
+        ],
+        "o_que_falta_saber": "Se existe orientação operacional para preparação antecipada antes de atingir 8,0 m.",
+        "quem_pode_confirmar": "COMPDEC.",
+        "prioridade": "media"
+      },
+      {
+        "id": "V3",
+        "pergunta": "Os bairros Porto, Cais e Olaria já precisam ser avisados agora, ou o aviso continua vinculado apenas à cota de 8,0 m?",
+        "por_que_importa": "O plano associa aviso aos bairros a um patamar superior ao previsto no boletim, e é importante evitar antecipar ou atrasar comunicação sem base documental.",
+        "motivacao": "O boletim indica previsão entre 6,3 m e 6,6 m, abaixo do gatilho de aviso do plano.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E5",
+          "E6",
+          "E7",
+          "E2"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas."
+          }
+        ],
+        "o_que_falta_saber": "Se houve orientação posterior para comunicação preventiva fora da cota de 8,0 m.",
+        "quem_pode_confirmar": "COMPDEC ou setor de comunicação de emergência, se houver.",
+        "prioridade": "media"
+      },
+      {
+        "id": "V4",
+        "pergunta": "A régua municipal está funcionando e com leitura atual confiável para sustentar a previsão informada no boletim?",
+        "por_que_importa": "A previsão depende da régua municipal; se a leitura estiver indisponível ou inconsistente, a interpretação operacional fica prejudicada.",
+        "motivacao": "O boletim menciona estimativa na régua municipal, mas não informa a condição do equipamento.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E3",
+          "E9",
+          "E2"
+        ],
+        "setores_relacionados": [
+          "Sala de Situação Regional"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "na régua municipal em 36 horas."
+          }
+        ],
+        "o_que_falta_saber": "Se a régua municipal está operando normalmente e se a última leitura foi validada.",
+        "quem_pode_confirmar": "Sala de Situação Regional e a equipe municipal que lê a régua.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V5",
+        "pergunta": "A COMPDEC confirmou algum critério operacional adicional para passar da faixa de atenção para a de alerta neste cenário?",
+        "por_que_importa": "A previsão atual está acima de 6,0 m, mas abaixo de 8,0 m; a equipe precisa saber se há algum procedimento intermediário documentado.",
+        "motivacao": "Diferença entre a faixa de atenção do plano e a previsão do boletim.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E2"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Cota 6,0 m: atenção — monitoramento da Rua do Porto."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria."
+          }
+        ],
+        "o_que_falta_saber": "Se existe orientação formal entre 6,0 m e 8,0 m além do monitoramento.",
+        "quem_pode_confirmar": "COMPDEC.",
+        "prioridade": "baixa"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há documento com atualização formal do plano após 2025-08-01.",
+        "por_que_importa": "Sem atualização, não dá para saber se os gatilhos do plano permanecem exatamente os mesmos."
+      },
+      {
+        "descricao": "Não há registro de operação anterior, ata ou relatório de ocorrência sobre enchente neste conjunto.",
+        "por_que_importa": "Sem histórico, não é possível saber se medidas anteriores já foram testadas, ajustadas ou superadas."
+      },
+      {
+        "descricao": "Não há descrição de abrigos específicos, locais de abrigo ou responsáveis pela mobilização.",
+        "por_que_importa": "Isso impede verificar onde os abrigos seriam ativados e por quem."
+      }
+    ],
+    "cautelas": [
+      "O boletim é um cenário de alerta fictício e traz previsão, não confirmação de transbordamento.",
+      "A cota de 8,0 m não deve ser tratada como já atingida; ela é apenas um gatilho previsto no plano.",
+      "Não há base documental para afirmar que avisos a bairros ou mobilização de abrigos já devam ocorrer neste momento.",
+      "Não se presume que o plano de 2025 esteja revogado; apenas não há atualização posterior nos documentos fornecidos."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 10,
+    "n_relacoes": 9,
+    "n_verificacoes": 5,
+    "n_temporais": 1,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: AMARELO. O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.",
+        "doc_valido": true,
+        "literal": false,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "na régua municipal em 36 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Cota 6,0 m: atenção — monitoramento da Rua do Porto.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Cota 8,0 m: alerta — mobilização de abrigos",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Cota 10,0 m: alarme — remoção preventiva conforme decisão do coordenador da COMPDEC.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.",
+        "doc_valido": true,
+        "literal": false,
+        "onde": "relacao:R9"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Cota 6,0 m: atenção — monitoramento da Rua do Porto.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.",
+        "doc_valido": true,
+        "literal": false,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Cota 6,0 m: atenção — monitoramento da Rua do Porto.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.",
+        "doc_valido": true,
+        "literal": false,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Cota 8,0 m: alerta — mobilização de abrigos",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.",
+        "doc_valido": true,
+        "literal": false,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.",
+        "doc_valido": true,
+        "literal": false,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "na régua municipal em 36 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Cota 6,0 m: atenção — monitoramento da Rua do Porto.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      }
+    ],
+    "n_citacoes": 20,
+    "n_citacoes_literais": 14,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795615925,
+    "created_at": 1795615904,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_0fe916e079ab0c73016b06ec9fab5c87d283fb664e92af65d5",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBuyjU78YQCp-BcpE30QiCwcPnN5Wr4tdiP_G04zTsNBL21ui21gjwSA5z1h7oFuXxLBgd0mRb1bePDVwV2V8Xa6RuCcL_854XicEvNxeaMdGIQHr74ORiotnmpYEUlN6Bxx9yp5ji8UOCe68AZmlKSs_zhPrehP8A8jDqYosaGb0DR2MhsxHbjryFgjN129JPOwJyJTMJOZ5RIExsCLigjq_4Lioku4s9fsJjjH37uZKHKYJRgjTdIwvFZGXa5EJs0dW0kL62jZpsqFxCa5gaHEzMyJSy3D_6Jv2p5elQ3bT3q2zyaEUydi1TKY9Dk4sVvislVmWIA_eqKituSHAaWsDOhKplRGKZe_wi7GDL721Rv_sMCr5WtQIfrGoE66N52rMJ_Hra3_jCQajh4lmRomfyVZyHOGAJX0UOUwmZeRNGLgpFV3h3NlP77ZQkveSfCF8Nw81ZLbtrln-eP5CS-5R3_jdTwknlUWUqrdblIeQ1rXezYPWeq8jARk3HKXhbEMgd7SDRTu1ZnGcg2wawG36hx9WhC4TzmnlpR6vMwhEL5mZon74jb8XmLm15R_VFP-dEJqPR1n1ZlJ9TeWD9rTSXLpm5r2HSQBgssQdIUkNYC1dnnQYEiB6cNhrv-_-6BgxuItfwdLBqFeIxS-YerSb_y4kOPWSm3Ug5lomHuc9pLgSNB5IxQy29_D3w6mIz5z4P9kGRq7B5YNfK9KE5W1uN7Bw09A8_wsUKEVm813WI5276wAfHFeEMgfRaMYWUtMaLIxR_pG2YffgUXS32BrqOvjc2DrenkgUJy4EvdevGhddhO2DSneSF0Rb_e2g382g2mTWcr7hkkWgDXI9OMVuqdTHLzsXJseRgjZp_JM1Wi-NnyVersnty3N9xKnE0WJlEaCqwOv719pUTMo6hliqFpLaD20B3M2wlUbETYS_su82sE4Udjx9tKjIqRUD6aeqxIhtmn9sqPVtfLq2UEOOiORMI7QocTRVeoBcAJHP_DbxZpUZwwHFu4EeCxdM_9yJMOJCYewmqKeQuJiRNGKPqrokjEl4aeFmWAADep54JqgVQBZQ6nLO555etIicWncPHkshZSDxTSi_DBce8i6DIWV7sNQHkLFpb3-kBdCd6SFyqt11Nb-WOo8j3UW1ZuJ7PuuoEuNUnv73-VPhh2_KgZQzlNiP4lPw0yRrwtJ4zdBWivHibr8qvuVaFnY1CeWsEh4oADRvE8W9X3B4xJEvlfxOuW03Y5CJTCbsJVB7w-d0_A6em0UEtl6rbIYjzFg_TFrYCJ_6feSNG4x70IC_905uSNCZsmtqEEzssyXm-kUJXOnxSBAg9_1fBPs2e7-LSe_W06LDi2q6BRLH_ovLwr6ihRsoAWkz4D3QhX1rRRd2OjtX_iXpj4Oek3S4FT9S-LFjViDmc8EGUWFoRYWJTfSUIvjTOgj51i2MKYPf6Q-Q1Fmq1WRg4yLO5SXEgvqJJ1-_O5Ql3sBGfBr5ZpUMzzvvPq_DK9p3pkFNWFCvBBcjq22UqyIYZKLWGHEhqQczFZFGvehA04kvUmOzCk3EcqCuxFQ1wDUnTvSYhBLXqS9WUivtqugowZYfaIJew-PgkCJRRcIumcF1wkrEPXEZIU2P7OXTPhEUoWMgn7gTrhe4wlN8nOwvmjyU4-_FnSoLPa6hM_cF-abEsvnOo2ot1HkSyXiCzxEVkejSIN5TEAJtZpa7thd9tT5tdVHekyryHJOOJlpPtJSa6OhS3Tr7Gp7zRsjVFB_4E0KlstIl_nV4nDY3RhpxHk-AMA56ECZqvQQ5_0GiVBr5N4yr8P701CqIvvXGUgNSRhb7OOI2EL3sLSFZZFDaXzzOKaJ42JtSz2EiJ1d4HpX6Ej7ccDoyhT4K7rTviiF9Qn82rrz4X69kw8OvmbpklWMWBd2qIFeWF8eJmt66CNn9EjKOxU4WlZD7G8Q0749y5rjW8r5I0pq5nBMVlIQQCqyu96oxLAYrSkkHZXVJ2QpBB3tXyEaegDD7qnh7hAy7ANPWml01qMrZuF7Zh3bb-ERoazlAod-orT4B8HTFoPN9gG3Ycd_h0zahMOcpIlFdWhofzHRnjGlaT_aEoQtVJhZ5APqrrv7Q1sYEtkDmlb_6OD9ksP9GhW7fFLSTuvVV8WZVyF7L6W5lhINW8OF04PVg8tvofzy7dWvelzSWPLbBBVXUOb927fDmqwfFpEcgTnAtelnvioERJhQGpbsFVQT28sMjg2_tg7gX_n0tGHzjbK1h3H51C0sCKMuw0IjUIXyNw9_suuvT8MfhOVr0Wj077XeuO4BL-dJFP1HnF0t5QcbbG81OiEWDr_yrofsFgsuA9ZuGKNZ42OvKwNiGpY1CimXpL915AzzJkV9Lk2kQlMaq6P2xeuqe-UNVlpPqAwonbLISq60Y91AtBlaNEGQ1JkMjeO_sFXanOvDLCGZewAMCcEZZhfA2Ym34ePtoJoLTKTaWLr7gr2EdMqhs6e6ga-R9DtUeb2djTiA8mHl2c39UXNXSvQUv_-axPLKsu446nC4O_BHzuGKfGQZp6-pB5lOXN4Th5Eht7A3nHvUCxsx2CJ05wC2Gm5jlIrguhiHPavUgj3EIiRkYGnNYtLZqwAqvc0VDYKADWFShA7hyW7eRbFNAzPnIeum-jATNOW0KY397xcp8LyDoR-J3XF_ZIyVg6mmJk9-6ahuJ-9XsBTlFrGhbwdIs7jC6PUvBxKVZUAPwcbVn58KkGvrRkU_s5D3bRHIIEGxFcKxXJJGbHo8zfWpvIeMiKbJlrKcYFYp7kNgjvprcKnjZ8LuxQQo1dTWD_N3ncsHCXJX9KPrkJxBUxM4K3lnfUX0iN7CDjvoKqOiSt2pBB7-hXssm0wCnb2vpFssogMc2x9edYtWDvlxzIAgrKklf0Slor4Lw1SfklBG2aamkLSNBkFBekkwqND7aZ_8MP1N8IkGrO_P4GnU1ErQYa9xgX2GRKviVmCfelNx2kMsUtHcg-gsBRD8SVuJjAjkISu9uE9OdgKVGLWVeO6lztTekbkgAhrIwxR2P9lZB3AZTv8KdkJAE0JwRBd1LU0nvI-nJdl5WWxTqdPs7TD_tAUUeAoRgozqpbtevIqUhMdzNRmEnBGO6skK7syKk6MUikF9rVYA3Rhbpnzfxv_HCUh2-M8gk2aKwUW0pUq9cJfnZSKabN4Uy0qycnosRe-iACPoQPNiafBYp1rPciyAQBTtyh2fAMhayJM0O6x1efzM2yx9IKuveBz97FJOWKx0bmF_AF1HE9rGnlWDvAiS3Dt5Ark-3fDCn0scS9c0YGqWS4vsxzHQHRbqTWvSa-B0uaVmKOo4ueXLdK-A-oZXX4t-KL0aPe06T8CoL01qkbuJDP-jhkHkS2EQcarzi2yjy1dhQ76oSoMvmT4efaVGkhIXN0iO9Y1frl22ds1MYwhbvZOE5lE_1B0xWPS8jZXM1H-ySK18xLb19Gv5bMNJNaKOJMi2FSjsOTzZUiNKQF_Hd4Enqn2kqcFVTYKEufe2qKLYhBGc7cPQtnFNNgkEyvM6_ufQeaqXY3yCQ9sCjZxL9FhTuG5q0WlrVexe9bKtoHAZRE3o50Mr4eO8svRJL4vc2TjcBTYhNUait0b9geY6-NypptDgmIKY4Lttl19y_XCwQMLLB72Hod6KKFBf8Jwgo1LEOq7OZ6VV4E5H8h2amC9-BypVV7F4cpXuirMX_MyXEMMFEKtz8rkJ_FqUj4VXzNkJT2zfjKoFj13jFkC2XBVLxargac3TSIgBqB-3h1mW9uRZj1Kx-FGXNkxlSSWz1VwYGwEPS5-mjK5DtbPwRn0n_jAqPoX8yZabsYkD0ewH5Bs3-429btIGx3pqyPU_6SIAJmmGdBi4XQoZBldGtJgl8fGdbe77d-6a1ifJUX1Wmy3xI8Es_1v4Fov5XRSZt_jqU55V61KS418Dg1ZsX9Lvftx8jLmeXecm-q-JUJEUDW3cl4nXwBMvAj6Ssny4DcTm40H8KMLt4oDyWRpop6OgR7qVHU71_eYDTswIqArbzNpyUOhtx8i1FBh0Sxlp09Xbp9zM_Zf3nO5pIqW21Hr9rD6XU7A6yohPaAhsSLkHkSqZCi90F2D8LeQL_S7nj5or53qw84K-FIZmt24XCYnkMK5Si9_GIWYK1KXSdw4qdjzaaMC-wiq2taljj64hhO1Im8OknYvaVG-DlzvctUoDUOp6Hr2QpCiSllyesAczGRgfJY6JUt4AObvZHVAdtwTn4MgQ6fVS5V2PKYGKA1hy69HQITlQU4nTHlCShmcLHC8j798zhxcyvy_y9s2jsLOhV16SLmgzhgfbFsGGd_lAEWd_VXl8_LVc0RV0P2Mks6apBFECdSsef-KzC0Z5xC8kwv5NKPp29twq7K2S-xCbSQYxL-gXBZ-bTkMnltjwBlYNh2CQfZ4EIvK-Pi3hM2srbLuOADa93r0hktSmLYChrAiFAnMZpbQTYNLSGlKCFY6sjDFYMasy9a4GO2zhadpChEdsfkw2O2LmbEM3Bk_DG0AAq480hUpbhbzqEgjjtkbzniiGus7SnGZCbq-NZkoMVs-0EWi5pd1zJRMVAsi2EVW21GMEH84MqZXXjGyBRY5Pg7NLYXzn2Pkph_nyIqiDO9cQw1AKFg8ig7FRnGffWAO4TjaLoQyI-44tSKFLI02KS_YwRKV1PuPrJBzogW-9AxwlMkOlBmzr3YkLo0f1afmAS1QRCorPwrUFMN_h34w4Yf0XZ5-arvLXApMqIHhQF4uGzWJ7JGxM6KydjWyFLAVFfESo1UOoy88hWritvvpaYZIcPl0XkYTcdlDxts5-8ZKRhRFoJFvNxPlTo8HudBa3Fgp0MKy9X51PMh-Y5_8WrNjrRKgzB8UttsWY3FCstM_LzIbVdKRtoebGVcNQQvax1evYY_HedtKivjMWd-4iKBDlf-vFClGBpCOmr86bGOL3a35hcg5DWTsfrELFJMtTAbBspFIyELcd_HKkwBTrcrBeFazxkgZXRqwH_8kGbnD7yGriyQAeQ47NrXcbI2CpFfdQa_yq-G1uM_whEjhMahewvByrbYZBqOo5g5DZLME_eXPbSLk7_DDQ-utL3a01qUdxQGUAVc8pnoiTHdZRpqXs2_pQNiD_5lkzURAwVg73hNlK9UYuf_39-VnGVl80FOmqgOv7iZXmmO_fHZ0HNoGmk_EmUfM071G9omKt-KziaZBUdfzULfEspfbzj-ThMTiqI2jA6JkElLfHEXGie8bxlcdpfV7jOd1rCf-e-LBA4QfPixFghd9qNbeFxGDHDHwOtqvJPzr71mvo4M5fKokQjHj7oqjvQ8XouVYCdtycZkiLRrf0kCs4WfY2WQDk07qgyhDTfTwGfKsbYj44lTOEgM5Ols5QLlB1ICe-VRJICIE3ZykeSJD-B8L6wRqJiVJYXr17W9csFs4Szgk_RrC3a_JrdRsggRuEGkYhxjxg3sd1KmtFUS9QqIWKO7T1FyGEUkgHYo_KTmNZ6jcUvswTDCorFTvYwXgK92z-1SuMX53FrSXDRYXf_UOyzb0fpSf84TKsGbqjZLQ4r8u0eqQIqkr2Eo5Ba4Ea9h3EynmldvyyElzoolhcuXUQozjUd-OGPCkcJgm3LjDsLQXAe-qya1bG59C_5AEFgSiUt_zDiMgLj18ex4ckl50WpkP4j7_pOqHzsGjk6putYLPS34p8sO1bS4Vap_TlWyvSa0JdEXG7MH_RJRAlcwfJdsUdclaKoyEuo5RpdGwujY53cyCeNeatSzdBY-oTs9UHJ0KHskdliPV_0i2xjwhRCZVSGk-kUkqO0GQcrYhoMQHYwqGk5XcJXzy3XDNuoaHk8dLnFSOpmZ3lrwQUuq_wn23n_lqqTjjagkHwlE4S19PyqNCJtvwjhCBlcsAprqB3tD-V6SryUss-sYhuZWqyLLiVc5HClJnpYf-EZ3BruXRN73Rtpliz2zxC61IMK4ayVSbfXNXwMMfL-E5rH0bHz-Hlx1Aa_1d1plxSr",
+        "id": "rs_0fe916e079ab0c73016b06eca3199c87d29c4d3e625a948ffd",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"O plano de contingência fixa três faixas de atuação por cota do Rio Verde. No boletim de hoje, a previsão é de 6,3 m a 6,6 m em 36 horas, acima do ponto de atenção de 6,0 m. Isso pede checagem preventiva do monitoramento da Rua do Porto e da leitura operacional dos próximos passos, sem assumir medidas que ainda dependem de confirmação humana.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Coordenadoria citada no plano como responsável pela decisão de remoção preventiva na cota de 10,0 m.\"},{\"id\":\"E2\",\"nome\":\"Rio Verde\",\"tipo\":\"recurso\",\"setor_responsavel\":null,\"descricao\":\"Curso d'água monitorado no plano e no boletim hidrológico.\"},{\"id\":\"E3\",\"nome\":\"Régua municipal\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":null,\"descricao\":\"Referência usada no boletim para estimativa do nível do rio.\"},{\"id\":\"E4\",\"nome\":\"Rua do Porto\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Local citado para monitoramento na cota de 6,0 m.\"},{\"id\":\"E5\",\"nome\":\"Bairro Porto\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Bairro avisado na cota de 8,0 m.\"},{\"id\":\"E6\",\"nome\":\"Bairro Cais\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Bairro avisado na cota de 8,0 m.\"},{\"id\":\"E7\",\"nome\":\"Bairro Olaria\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Bairro avisado na cota de 8,0 m.\"},{\"id\":\"E8\",\"nome\":\"Abrigos\",\"tipo\":\"recurso\",\"setor_responsavel\":null,\"descricao\":\"Recurso cuja mobilização está prevista no plano para a cota de 8,0 m.\"},{\"id\":\"E9\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":null,\"descricao\":\"Fonte do boletim hidrológico fictício.\"},{\"id\":\"E10\",\"nome\":\"Cenário de alerta amarelo\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Classificação informada no boletim de 2026-11-21.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E9\",\"destino\":\"E2\",\"tipo\":\"comunica\",\"rotulo\":\"Emite boletim sobre o Rio Verde.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Boletim atual.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: AMARELO. O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.\"}]},{\"id\":\"R2\",\"origem\":\"E2\",\"destino\":\"E3\",\"tipo\":\"acesso_por\",\"rotulo\":\"Nível é estimado na régua municipal.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Previsão atual.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"na régua municipal em 36 horas.\"}]},{\"id\":\"R3\",\"origem\":\"E2\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"Na cota de 6,0 m, aciona monitoramento da Rua do Porto.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-08-01\",\"fim\":null,\"observacao\":\"Regra do plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 6,0 m: atenção — monitoramento da Rua do Porto.\"}]},{\"id\":\"R4\",\"origem\":\"E2\",\"destino\":\"E5\",\"tipo\":\"afetado_por\",\"rotulo\":\"Na cota de 8,0 m, exige aviso ao Bairro Porto.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-08-01\",\"fim\":null,\"observacao\":\"Regra do plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.\"}]},{\"id\":\"R5\",\"origem\":\"E2\",\"destino\":\"E6\",\"tipo\":\"afetado_por\",\"rotulo\":\"Na cota de 8,0 m, exige aviso ao Bairro Cais.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-08-01\",\"fim\":null,\"observacao\":\"Regra do plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.\"}]},{\"id\":\"R6\",\"origem\":\"E2\",\"destino\":\"E7\",\"tipo\":\"afetado_por\",\"rotulo\":\"Na cota de 8,0 m, exige aviso ao Bairro Olaria.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-08-01\",\"fim\":null,\"observacao\":\"Regra do plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.\"}]},{\"id\":\"R7\",\"origem\":\"E2\",\"destino\":\"E8\",\"tipo\":\"abastece\",\"rotulo\":\"Na cota de 8,0 m, demanda mobilização de abrigos.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-08-01\",\"fim\":null,\"observacao\":\"Regra do plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 8,0 m: alerta — mobilização de abrigos\"}]},{\"id\":\"R8\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"responsavel_por\",\"rotulo\":\"Decide remoção preventiva na cota de 10,0 m.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-08-01\",\"fim\":null,\"observacao\":\"Regra do plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 10,0 m: alarme — remoção preventiva conforme decisão do coordenador da COMPDEC.\"}]},{\"id\":\"R9\",\"origem\":\"E10\",\"destino\":\"E2\",\"tipo\":\"outro\",\"rotulo\":\"Cenário atual indica possibilidade de elevação do Rio Verde.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Boletim atual.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"O plano de 2025 continua sendo a referência de faixas operacionais, e o boletim de 2026 traz uma previsão compatível com a faixa de atenção de 6,0 m.\",\"implicacao\":\"A pauta preventiva deve focar na checagem das ações já previstas para 6,0 m, sem presumir a adoção de medidas de 8,0 m.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 6,0 m: atenção — monitoramento da Rua do Porto.\"},{\"doc_id\":\"D2\",\"trecho\":\"O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"O monitoramento da Rua do Porto foi acionado ou está em curso para a faixa de 6,0 m prevista no plano?\",\"por_que_importa\":\"O boletim de hoje projeta nível acima da cota de atenção e o plano vincula essa faixa ao monitoramento de um local específico.\",\"motivacao\":\"Previsão de 6,3 m a 6,6 m e regra do plano para 6,0 m.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E4\",\"E1\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 6,0 m: atenção — monitoramento da Rua do Porto.\"},{\"doc_id\":\"D2\",\"trecho\":\"O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.\"}],\"o_que_falta_saber\":\"Se a rotina de monitoramento da Rua do Porto já começou, com qual frequência e por qual equipe.\",\"quem_pode_confirmar\":\"COMPDEC, ou a equipe responsável pelo monitoramento hidrológico municipal.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A faixa prevista para as próximas 36 horas exige preparar a mobilização de abrigos, ou ainda não há necessidade por ficar abaixo de 8,0 m?\",\"por_que_importa\":\"O plano relaciona a mobilização de abrigos à cota de 8,0 m, e a previsão atual fica abaixo desse patamar, mas próxima dele.\",\"motivacao\":\"Previsão atual de 6,3 m a 6,6 m e gatilho de 8,0 m no plano.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 8,0 m: alerta — mobilização de abrigos\"},{\"doc_id\":\"D2\",\"trecho\":\"O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.\"}],\"o_que_falta_saber\":\"Se existe orientação operacional para preparação antecipada antes de atingir 8,0 m.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"media\"},{\"id\":\"V3\",\"pergunta\":\"Os bairros Porto, Cais e Olaria já precisam ser avisados agora, ou o aviso continua vinculado apenas à cota de 8,0 m?\",\"por_que_importa\":\"O plano associa aviso aos bairros a um patamar superior ao previsto no boletim, e é importante evitar antecipar ou atrasar comunicação sem base documental.\",\"motivacao\":\"O boletim indica previsão entre 6,3 m e 6,6 m, abaixo do gatilho de aviso do plano.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E5\",\"E6\",\"E7\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.\"},{\"doc_id\":\"D2\",\"trecho\":\"O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.\"}],\"o_que_falta_saber\":\"Se houve orientação posterior para comunicação preventiva fora da cota de 8,0 m.\",\"quem_pode_confirmar\":\"COMPDEC ou setor de comunicação de emergência, se houver.\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"A régua municipal está funcionando e com leitura atual confiável para sustentar a previsão informada no boletim?\",\"por_que_importa\":\"A previsão depende da régua municipal; se a leitura estiver indisponível ou inconsistente, a interpretação operacional fica prejudicada.\",\"motivacao\":\"O boletim menciona estimativa na régua municipal, mas não informa a condição do equipamento.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E3\",\"E9\",\"E2\"],\"setores_relacionados\":[\"Sala de Situação Regional\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"na régua municipal em 36 horas.\"}],\"o_que_falta_saber\":\"Se a régua municipal está operando normalmente e se a última leitura foi validada.\",\"quem_pode_confirmar\":\"Sala de Situação Regional e a equipe municipal que lê a régua.\",\"prioridade\":\"alta\"},{\"id\":\"V5\",\"pergunta\":\"A COMPDEC confirmou algum critério operacional adicional para passar da faixa de atenção para a de alerta neste cenário?\",\"por_que_importa\":\"A previsão atual está acima de 6,0 m, mas abaixo de 8,0 m; a equipe precisa saber se há algum procedimento intermediário documentado.\",\"motivacao\":\"Diferença entre a faixa de atenção do plano e a previsão do boletim.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 6,0 m: atenção — monitoramento da Rua do Porto.\"},{\"doc_id\":\"D1\",\"trecho\":\"Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.\"}],\"o_que_falta_saber\":\"Se existe orientação formal entre 6,0 m e 8,0 m além do monitoramento.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"baixa\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há documento com atualização formal do plano após 2025-08-01.\",\"por_que_importa\":\"Sem atualização, não dá para saber se os gatilhos do plano permanecem exatamente os mesmos.\"},{\"descricao\":\"Não há registro de operação anterior, ata ou relatório de ocorrência sobre enchente neste conjunto.\",\"por_que_importa\":\"Sem histórico, não é possível saber se medidas anteriores já foram testadas, ajustadas ou superadas.\"},{\"descricao\":\"Não há descrição de abrigos específicos, locais de abrigo ou responsáveis pela mobilização.\",\"por_que_importa\":\"Isso impede verificar onde os abrigos seriam ativados e por quem.\"}],\"cautelas\":[\"O boletim é um cenário de alerta fictício e traz previsão, não confirmação de transbordamento.\",\"A cota de 8,0 m não deve ser tratada como já atingida; ela é apenas um gatilho previsto no plano.\",\"Não há base documental para afirmar que avisos a bairros ou mobilização de abrigos já devam ocorrer neste momento.\",\"Não se presume que o plano de 2025 esteja revogado; apenas não há atualização posterior nos documentos fornecidos.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0fe916e079ab0c73016b06eca33d0887d2bce6d9e45a5c9268",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2049,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 3615,
+      "output_tokens_details": {
+        "reasoning_tokens": 346
+      },
+      "total_tokens": 5664
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"O plano de contingência fixa três faixas de atuação por cota do Rio Verde. No boletim de hoje, a previsão é de 6,3 m a 6,6 m em 36 horas, acima do ponto de atenção de 6,0 m. Isso pede checagem preventiva do monitoramento da Rua do Porto e da leitura operacional dos próximos passos, sem assumir medidas que ainda dependem de confirmação humana.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Coordenadoria citada no plano como responsável pela decisão de remoção preventiva na cota de 10,0 m.\"},{\"id\":\"E2\",\"nome\":\"Rio Verde\",\"tipo\":\"recurso\",\"setor_responsavel\":null,\"descricao\":\"Curso d'água monitorado no plano e no boletim hidrológico.\"},{\"id\":\"E3\",\"nome\":\"Régua municipal\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":null,\"descricao\":\"Referência usada no boletim para estimativa do nível do rio.\"},{\"id\":\"E4\",\"nome\":\"Rua do Porto\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Local citado para monitoramento na cota de 6,0 m.\"},{\"id\":\"E5\",\"nome\":\"Bairro Porto\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Bairro avisado na cota de 8,0 m.\"},{\"id\":\"E6\",\"nome\":\"Bairro Cais\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Bairro avisado na cota de 8,0 m.\"},{\"id\":\"E7\",\"nome\":\"Bairro Olaria\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Bairro avisado na cota de 8,0 m.\"},{\"id\":\"E8\",\"nome\":\"Abrigos\",\"tipo\":\"recurso\",\"setor_responsavel\":null,\"descricao\":\"Recurso cuja mobilização está prevista no plano para a cota de 8,0 m.\"},{\"id\":\"E9\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":null,\"descricao\":\"Fonte do boletim hidrológico fictício.\"},{\"id\":\"E10\",\"nome\":\"Cenário de alerta amarelo\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Classificação informada no boletim de 2026-11-21.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E9\",\"destino\":\"E2\",\"tipo\":\"comunica\",\"rotulo\":\"Emite boletim sobre o Rio Verde.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Boletim atual.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: AMARELO. O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.\"}]},{\"id\":\"R2\",\"origem\":\"E2\",\"destino\":\"E3\",\"tipo\":\"acesso_por\",\"rotulo\":\"Nível é estimado na régua municipal.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Previsão atual.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"na régua municipal em 36 horas.\"}]},{\"id\":\"R3\",\"origem\":\"E2\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"Na cota de 6,0 m, aciona monitoramento da Rua do Porto.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-08-01\",\"fim\":null,\"observacao\":\"Regra do plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 6,0 m: atenção — monitoramento da Rua do Porto.\"}]},{\"id\":\"R4\",\"origem\":\"E2\",\"destino\":\"E5\",\"tipo\":\"afetado_por\",\"rotulo\":\"Na cota de 8,0 m, exige aviso ao Bairro Porto.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-08-01\",\"fim\":null,\"observacao\":\"Regra do plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.\"}]},{\"id\":\"R5\",\"origem\":\"E2\",\"destino\":\"E6\",\"tipo\":\"afetado_por\",\"rotulo\":\"Na cota de 8,0 m, exige aviso ao Bairro Cais.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-08-01\",\"fim\":null,\"observacao\":\"Regra do plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.\"}]},{\"id\":\"R6\",\"origem\":\"E2\",\"destino\":\"E7\",\"tipo\":\"afetado_por\",\"rotulo\":\"Na cota de 8,0 m, exige aviso ao Bairro Olaria.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-08-01\",\"fim\":null,\"observacao\":\"Regra do plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.\"}]},{\"id\":\"R7\",\"origem\":\"E2\",\"destino\":\"E8\",\"tipo\":\"abastece\",\"rotulo\":\"Na cota de 8,0 m, demanda mobilização de abrigos.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-08-01\",\"fim\":null,\"observacao\":\"Regra do plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 8,0 m: alerta — mobilização de abrigos\"}]},{\"id\":\"R8\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"responsavel_por\",\"rotulo\":\"Decide remoção preventiva na cota de 10,0 m.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-08-01\",\"fim\":null,\"observacao\":\"Regra do plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 10,0 m: alarme — remoção preventiva conforme decisão do coordenador da COMPDEC.\"}]},{\"id\":\"R9\",\"origem\":\"E10\",\"destino\":\"E2\",\"tipo\":\"outro\",\"rotulo\":\"Cenário atual indica possibilidade de elevação do Rio Verde.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Boletim atual.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"O plano de 2025 continua sendo a referência de faixas operacionais, e o boletim de 2026 traz uma previsão compatível com a faixa de atenção de 6,0 m.\",\"implicacao\":\"A pauta preventiva deve focar na checagem das ações já previstas para 6,0 m, sem presumir a adoção de medidas de 8,0 m.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 6,0 m: atenção — monitoramento da Rua do Porto.\"},{\"doc_id\":\"D2\",\"trecho\":\"O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"O monitoramento da Rua do Porto foi acionado ou está em curso para a faixa de 6,0 m prevista no plano?\",\"por_que_importa\":\"O boletim de hoje projeta nível acima da cota de atenção e o plano vincula essa faixa ao monitoramento de um local específico.\",\"motivacao\":\"Previsão de 6,3 m a 6,6 m e regra do plano para 6,0 m.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E4\",\"E1\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 6,0 m: atenção — monitoramento da Rua do Porto.\"},{\"doc_id\":\"D2\",\"trecho\":\"O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.\"}],\"o_que_falta_saber\":\"Se a rotina de monitoramento da Rua do Porto já começou, com qual frequência e por qual equipe.\",\"quem_pode_confirmar\":\"COMPDEC, ou a equipe responsável pelo monitoramento hidrológico municipal.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A faixa prevista para as próximas 36 horas exige preparar a mobilização de abrigos, ou ainda não há necessidade por ficar abaixo de 8,0 m?\",\"por_que_importa\":\"O plano relaciona a mobilização de abrigos à cota de 8,0 m, e a previsão atual fica abaixo desse patamar, mas próxima dele.\",\"motivacao\":\"Previsão atual de 6,3 m a 6,6 m e gatilho de 8,0 m no plano.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 8,0 m: alerta — mobilização de abrigos\"},{\"doc_id\":\"D2\",\"trecho\":\"O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.\"}],\"o_que_falta_saber\":\"Se existe orientação operacional para preparação antecipada antes de atingir 8,0 m.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"media\"},{\"id\":\"V3\",\"pergunta\":\"Os bairros Porto, Cais e Olaria já precisam ser avisados agora, ou o aviso continua vinculado apenas à cota de 8,0 m?\",\"por_que_importa\":\"O plano associa aviso aos bairros a um patamar superior ao previsto no boletim, e é importante evitar antecipar ou atrasar comunicação sem base documental.\",\"motivacao\":\"O boletim indica previsão entre 6,3 m e 6,6 m, abaixo do gatilho de aviso do plano.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E5\",\"E6\",\"E7\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.\"},{\"doc_id\":\"D2\",\"trecho\":\"O Rio Verde pode chegar a 6,3 m a 6,6 m em 36 horas.\"}],\"o_que_falta_saber\":\"Se houve orientação posterior para comunicação preventiva fora da cota de 8,0 m.\",\"quem_pode_confirmar\":\"COMPDEC ou setor de comunicação de emergência, se houver.\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"A régua municipal está funcionando e com leitura atual confiável para sustentar a previsão informada no boletim?\",\"por_que_importa\":\"A previsão depende da régua municipal; se a leitura estiver indisponível ou inconsistente, a interpretação operacional fica prejudicada.\",\"motivacao\":\"O boletim menciona estimativa na régua municipal, mas não informa a condição do equipamento.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E3\",\"E9\",\"E2\"],\"setores_relacionados\":[\"Sala de Situação Regional\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"na régua municipal em 36 horas.\"}],\"o_que_falta_saber\":\"Se a régua municipal está operando normalmente e se a última leitura foi validada.\",\"quem_pode_confirmar\":\"Sala de Situação Regional e a equipe municipal que lê a régua.\",\"prioridade\":\"alta\"},{\"id\":\"V5\",\"pergunta\":\"A COMPDEC confirmou algum critério operacional adicional para passar da faixa de atenção para a de alerta neste cenário?\",\"por_que_importa\":\"A previsão atual está acima de 6,0 m, mas abaixo de 8,0 m; a equipe precisa saber se há algum procedimento intermediário documentado.\",\"motivacao\":\"Diferença entre a faixa de atenção do plano e a previsão do boletim.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Cota 6,0 m: atenção — monitoramento da Rua do Porto.\"},{\"doc_id\":\"D1\",\"trecho\":\"Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.\"}],\"o_que_falta_saber\":\"Se existe orientação formal entre 6,0 m e 8,0 m além do monitoramento.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"baixa\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há documento com atualização formal do plano após 2025-08-01.\",\"por_que_importa\":\"Sem atualização, não dá para saber se os gatilhos do plano permanecem exatamente os mesmos.\"},{\"descricao\":\"Não há registro de operação anterior, ata ou relatório de ocorrência sobre enchente neste conjunto.\",\"por_que_importa\":\"Sem histórico, não é possível saber se medidas anteriores já foram testadas, ajustadas ou superadas.\"},{\"descricao\":\"Não há descrição de abrigos específicos, locais de abrigo ou responsáveis pela mobilização.\",\"por_que_importa\":\"Isso impede verificar onde os abrigos seriam ativados e por quem.\"}],\"cautelas\":[\"O boletim é um cenário de alerta fictício e traz previsão, não confirmação de transbordamento.\",\"A cota de 8,0 m não deve ser tratada como já atingida; ela é apenas um gatilho previsto no plano.\",\"Não há base documental para afirmar que avisos a bairros ou mobilização de abrigos já devam ocorrer neste momento.\",\"Não se presume que o plano de 2025 esteja revogado; apenas não há atualização posterior nos documentos fornecidos.\"]}"
+  }
+}

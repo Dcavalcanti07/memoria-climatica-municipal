@@ -1,0 +1,112 @@
+{
+  "run_file": "E13_A_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-5.4-2026-03-05",
+    "reasoning_effort": "low",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_0aaaff688cc91c2a016b06edeea7ac87d2972522b5e9a0e20e",
+  "model_reported": "gpt-5.4-2026-03-05",
+  "usage": {
+    "input_tokens": 5103,
+    "output_tokens": 1419,
+    "reasoning_tokens": 753
+  },
+  "latency_ms": 22731,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V1"
+        ],
+        "justificativa": "A saída pergunta sobre rota alternativa em caso de bloqueio, mas não focaliza especificamente os 9 pacientes de hemodiálise nem cita a estrada vicinal do Caí."
+      },
+      {
+        "id": "G2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V2",
+          "V4"
+        ],
+        "justificativa": "A saída verifica transporte/agenda dos pacientes TFD de hemodiálise e oncologia durante a janela do alerta."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V1",
+          "V2",
+          "R10"
+        ],
+        "justificativa": "A saída liga risco de bloqueio na RM-120 ao transporte de hemodiálise, mas não explicita que a estrada é o único acesso pavimentado a Monte Alto."
+      }
+    ],
+    "gold_temporal": [],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "nao_reconhecido",
+        "ids_saida": [
+          "V1"
+        ],
+        "justificativa": "A saída reconhece falta de informação sobre rotas alternativas em geral, mas não explicita a ausência de informação atual sobre a condição da estrada vicinal do Caí."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não afirma como fato que a estrada vicinal do Caí esteja transitável."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à checagem sobre manutenção do transporte TFD diante do risco de bloqueio, cobrindo parte do tema do plano alternativo."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde diretamente à verificação da agenda/transporte dos pacientes TFD de hemodiálise e oncologia durante o alerta."
+      },
+      {
+        "id": "V3",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É uma verificação específica e relacionada ao cenário de saúde, mas não prevista no gabarito."
+      },
+      {
+        "id": "V4",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Trata da reorganização da agenda dos pacientes TFD se houver bloqueio, cobrindo a mesma questão concreta do gabarito sobre agenda/transporte durante o alerta."
+      },
+      {
+        "id": "V5",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É específica e sustentada pelos documentos, mas não corresponde a item previsto no gabarito."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "achados_temporais.T2.implicacao",
+        "afirmacao": "\"Esses fluxos de transporte são atuais na data da análise\"."
+      },
+      {
+        "onde": "relacoes.R1.periodo.observacao",
+        "afirmacao": "\"Registro no plano de contingência e mantido na atualização de 2026.\""
+      },
+      {
+        "onde": "cautelas[3]",
+        "afirmacao": "\"Não foi identificado documento que diga que o problema de bloqueio já ocorreu ou que já tenha sido resolvido.\""
+      }
+    ]
+  }
+}

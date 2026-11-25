@@ -1,0 +1,110 @@
+{
+  "run_file": "E29_B_r2.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-5.4-2026-03-05",
+    "reasoning_effort": "low",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_051d4371e3d15417016b06ee606a3c87d2822b367f49250ad1",
+  "model_reported": "gpt-5.4-2026-03-05",
+  "usage": {
+    "input_tokens": 4973,
+    "output_tokens": 718,
+    "reasoning_tokens": 15
+  },
+  "latency_ms": 10271,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1"
+        ],
+        "justificativa": "V1 pergunta pela condição atual da TC-08 no km 6 e explicita falta de confirmação; cobre a checagem central sobre condição atual/recuperação do trecho problemático."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V2",
+          "R1"
+        ],
+        "justificativa": "A saída explicita que a evacuação da Linha Taquara depende da TC-08 e conecta essa dependência ao histórico de problema no km 6."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "T1",
+          "T2",
+          "V4"
+        ],
+        "justificativa": "A saída registra separadamente a intransitabilidade e a evacuação com restrição, e evita assumir vigência atual, mas não explicita a divergência/contradição entre os registros de 2024."
+      }
+    ],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "reconhecido",
+        "ids_saida": [
+          "informacoes_ausentes[0]",
+          "V1"
+        ],
+        "justificativa": "A saída afirma que não há documento atual sobre a condição física da TC-08 e pede confirmação da situação atual do km 6."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não escolhe uma das versões de 2024 como verdadeira sem ressalva; trata ambas como histórico e pede confirmação atual."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde diretamente à checagem esperada sobre a condição atual da TC-08 no km 6."
+      },
+      {
+        "id": "V2",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É relevante e específica sobre manutenção operacional da rota prevista, mas não é a mesma checagem do gabarito sobre a condição/recuperação do trecho contraditório."
+      },
+      {
+        "id": "V3",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É relevante ao possível uso do abrigo, específica e sustentada pelos documentos, embora não conste no gabarito."
+      },
+      {
+        "id": "V4",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É uma checagem operacional específica baseada no registro histórico de restrição a veículos leves, sem tratá-la como vigente."
+      },
+      {
+        "id": "V5",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É relevante ao alerta atual e sustentada por D2, embora mais ampla que o foco do gabarito."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "resumo_situacao",
+        "afirmacao": "\"a TC-08 já ficou intransitável por erosão e foi usada como rota de evacuação da Linha Taquara até o abrigo Santa Rita\" é apresentado de forma linear sem explicitar que os registros de 2024 divergem quanto à transitabilidade no mesmo período."
+      },
+      {
+        "onde": "R4",
+        "afirmacao": "\"A estrada é relevante para a zona rural afetada pelo alerta\" depende de inferência espacial não comprovada explicitamente pelos documentos."
+      }
+    ]
+  }
+}

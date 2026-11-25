@@ -1,0 +1,1202 @@
+{
+  "meta": {
+    "scenario": "E22",
+    "condicao": "B",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D3",
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 1113,
+    "user_message_sha12": "cefc95fc7730"
+  },
+  "user_message": "Município (fictício): Lajeado Claro\nData de referência da análise: 2026-11-24\nDocumentos disponíveis (3), em ordem cronológica:\n\n### [D3] Relatório — resistência à saída em 2024\nTipo: Relatório de ocorrência | Fonte: COMPDEC | Data: 2024-05-29\n\nNo Beco do Rio, 14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo. Seis delas precisaram de resgate por barco no dia seguinte.\nRecomendação: definir espaço para animais junto ao abrigo, em parceria com a Vigilância em Saúde.\n\n---\n\n### [D1] Plano de Contingência (2025)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2025-05-05\n\nAbrigo: Escola Estadual Lajeado (120 pessoas). Regras do abrigo: proibida a entrada de animais nas salas de aula.\nÁrea de risco prioritária: Beco do Rio (aprox. 45 famílias).\n\n---\n\n### [D2] Alerta de inundação (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-24\n\nNÍVEL: VERMELHO para o Beco do Rio. Elevação rápida do Rio Lajeado nas próximas 18 horas.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_0557575259b96683016b06ec867f4487d2ad2b2ed99c33cb04",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 2117,
+    "output_tokens": 3597,
+    "reasoning_tokens": 53
+  },
+  "latency_ms": 22212,
+  "started_at": "2026-11-25T14:11:17.962Z",
+  "output": {
+    "resumo_situacao": "Há um alerta vermelho para o Beco do Rio por elevação rápida do Rio Lajeado nas próximas 18 horas. O plano vigente cita o Beco do Rio como área prioritária e indica um abrigo na Escola Estadual Lajeado, com regra de não permitir animais nas salas de aula. Um relatório anterior mostra que a recusa em deixar as casas ocorreu por falta de espaço para cães e gatos no abrigo.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Beco do Rio",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Área de risco prioritária no plano e local diretamente citado no alerta e no relatório anterior."
+      },
+      {
+        "id": "E2",
+        "nome": "Rio Lajeado",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Curso d'água citado como em elevação rápida no alerta de inundação."
+      },
+      {
+        "id": "E3",
+        "nome": "Escola Estadual Lajeado",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Abrigo indicado no plano de contingência, com capacidade para 120 pessoas."
+      },
+      {
+        "id": "E4",
+        "nome": "Abrigo para pessoas desalojadas",
+        "tipo": "servico",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Serviço de acolhimento previsto no plano, associado à Escola Estadual Lajeado."
+      },
+      {
+        "id": "E5",
+        "nome": "Proibição de animais nas salas de aula",
+        "tipo": "norma_documento",
+        "setor_responsavel": null,
+        "descricao": "Regra do abrigo registrada no plano que impede a entrada de animais nas salas de aula."
+      },
+      {
+        "id": "E6",
+        "nome": "Famílias do Beco do Rio",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": null,
+        "descricao": "Grupo citado no relatório de 2024 e no plano como população exposta na área de risco."
+      },
+      {
+        "id": "E7",
+        "nome": "Cães e gatos",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": null,
+        "descricao": "Animais mencionados como motivo da recusa de saída no relatório de 2024."
+      },
+      {
+        "id": "E8",
+        "nome": "Vigilância em Saúde",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Setor citado como parceiro recomendado para definir espaço para animais junto ao abrigo."
+      },
+      {
+        "id": "E9",
+        "nome": "COMPDEC",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Órgão fonte dos documentos e provável responsável pelo planejamento e resposta de proteção e defesa civil."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "afetado_por",
+        "rotulo": "O Beco do Rio é atingido pela elevação do Rio Lajeado.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-24",
+          "fim": null,
+          "observacao": "Associado ao alerta de inundação."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: VERMELHO para o Beco do Rio. Elevação rápida do Rio Lajeado nas próximas 18 horas."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E1",
+        "destino": "E3",
+        "tipo": "atende",
+        "rotulo": "A Escola Estadual Lajeado é o abrigo previsto para atender a área do Beco do Rio.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2025-05-05",
+          "fim": null,
+          "observacao": "Plano de contingência vigente no conjunto documental."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas)."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Área de risco prioritária: Beco do Rio (aprox. 45 famílias)."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E4",
+        "destino": "E3",
+        "tipo": "localizado_em",
+        "rotulo": "O serviço de abrigo está localizado na Escola Estadual Lajeado.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2025-05-05",
+          "fim": null,
+          "observacao": "Inferido a partir do plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E3",
+        "destino": "E5",
+        "tipo": "contradiz",
+        "rotulo": "A regra do abrigo veda animais nas salas de aula.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-05-05",
+          "fim": null,
+          "observacao": "Regra registrada no plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Regras do abrigo: proibida a entrada de animais nas salas de aula."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E6",
+        "destino": "E4",
+        "tipo": "afetado_por",
+        "rotulo": "Famílias do Beco do Rio podem depender do abrigo para evacuação/acolhimento.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2024-05-29",
+          "fim": null,
+          "observacao": "Baseado no relato de resistência e no plano posterior."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Área de risco prioritária: Beco do Rio (aprox. 45 famílias)."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E7",
+        "destino": "E4",
+        "tipo": "afetado_por",
+        "rotulo": "A presença de cães e gatos no acolhimento é uma questão vinculada ao uso do abrigo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-05-29",
+          "fim": null,
+          "observacao": "Problema registrado em ocorrência anterior."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E8",
+        "destino": "E4",
+        "tipo": "outro",
+        "rotulo": "Foi recomendada parceria com a Vigilância em Saúde para definir espaço para animais junto ao abrigo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-05-29",
+          "fim": null,
+          "observacao": "Recomendação do relatório de 2024."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Recomendação: definir espaço para animais junto ao abrigo, em parceria com a Vigilância em Saúde."
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E9",
+        "destino": "E4",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC é a fonte dos documentos de plano e relatório e opera o planejamento de abrigo.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2024-05-29",
+          "fim": null,
+          "observacao": "Baseada na autoria dos documentos e no conteúdo do plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Fonte: COMPDEC"
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Fonte: COMPDEC"
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "pendencia_historica",
+        "descricao": "Em 2024 houve resistência à saída porque as famílias não podiam levar cães e gatos ao abrigo.",
+        "implicacao": "A questão dos animais apareceu como obstáculo concreto à adesão ao acolhimento e merece checagem se permanece no arranjo atual.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "atualizacao",
+        "descricao": "Em 2025 o plano passou a registrar o Beco do Rio como área de risco prioritária e definiu o abrigo na Escola Estadual Lajeado.",
+        "implicacao": "A organização formal da resposta foi atualizada depois do relatório de 2024, mas o documento não informa se a questão dos animais foi resolvida.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas)."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Área de risco prioritária: Beco do Rio (aprox. 45 famílias)."
+          }
+        ]
+      },
+      {
+        "id": "T3",
+        "tipo": "vigencia_encerrada",
+        "descricao": "O relatório de 2024 é um registro histórico de ocorrência e não confirma por si só a situação atual.",
+        "implicacao": "Ele serve como antecedente para verificações, mas não autoriza presumir que o mesmo problema continue igual em 2026.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Relatório — resistência à saída em 2024"
+          }
+        ]
+      },
+      {
+        "id": "T4",
+        "tipo": "alteracao_protocolo",
+        "descricao": "O conjunto documental mostra uma regra explícita do abrigo proibindo animais nas salas de aula, sem registro posterior de exceção ou solução operacional.",
+        "implicacao": "Há compatibilidade parcial entre a regra vigente e a dificuldade anterior; falta confirmar se existe alternativa para acomodar animais.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "proibida a entrada de animais nas salas de aula."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "definir espaço para animais junto ao abrigo"
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "Existe, hoje, espaço definido para cães e gatos junto ao abrigo da Escola Estadual Lajeado?",
+        "por_que_importa": "No relatório de 2024, a falta desse espaço impediu parte das famílias de sair de casa.",
+        "motivacao": "O problema foi registrado como barreira concreta à saída e aparece ligado ao mesmo abrigo do plano de 2025.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E3",
+          "E4",
+          "E7",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Vigilância em Saúde"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "definir espaço para animais junto ao abrigo, em parceria com a Vigilância em Saúde."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas)."
+          }
+        ],
+        "o_que_falta_saber": "Se foi criado um local separado para animais e como ele funciona na prática.",
+        "quem_pode_confirmar": "COMPDEC, com apoio da Vigilância em Saúde e da administração do abrigo.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "A regra de proibir animais nas salas de aula tem uma alternativa operacional prevista para acomodação dos animais das famílias evacuadas?",
+        "por_que_importa": "A regra do abrigo e a necessidade de levar animais podem entrar em conflito na operação de acolhimento.",
+        "motivacao": "O plano registra a proibição e o relatório anterior mostra que isso já afetou a adesão ao deslocamento.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E3",
+          "E5",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Vigilância em Saúde"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "proibida a entrada de animais nas salas de aula."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "porque não podiam levar cães e gatos ao abrigo."
+          }
+        ],
+        "o_que_falta_saber": "Se há área externa, sala separada ou outro arranjo para os animais.",
+        "quem_pode_confirmar": "COMPDEC e gestão da Escola Estadual Lajeado.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "A capacidade do abrigo de 120 pessoas é compatível com a estimativa de aproximadamente 45 famílias no Beco do Rio, sem considerar outros locais de origem?",
+        "por_que_importa": "A dimensão do público potencial orienta a suficiência do abrigo planejado.",
+        "motivacao": "O plano informa uma capacidade nominal e uma estimativa de famílias na área prioritária, mas não traz a conversão em pessoas nem se o abrigo atende apenas esse local.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E3",
+          "E4",
+          "E6"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas)."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Área de risco prioritária: Beco do Rio (aprox. 45 famílias)."
+          }
+        ],
+        "o_que_falta_saber": "Quantas pessoas compõem as 45 famílias e se há outros abrigos ou rotas previstas.",
+        "quem_pode_confirmar": "COMPDEC.",
+        "prioridade": "media"
+      },
+      {
+        "id": "V4",
+        "pergunta": "O abrigo da Escola Estadual Lajeado estará acessível e operacional durante a janela das próximas 18 horas do alerta?",
+        "por_que_importa": "O alerta exige saber se o ponto de acolhimento pode ser usado dentro do período crítico indicado.",
+        "motivacao": "O alerta é imediato e o plano aponta o abrigo como referência principal, mas não há documento sobre funcionamento no momento do alerta.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E2",
+          "E3",
+          "E4"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Elevação rápida do Rio Lajeado nas próximas 18 horas."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas)."
+          }
+        ],
+        "o_que_falta_saber": "Se o abrigo está aberto, com equipe, acesso e condições materiais para receber pessoas agora.",
+        "quem_pode_confirmar": "COMPDEC e administração da Escola Estadual Lajeado.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V5",
+        "pergunta": "As famílias do Beco do Rio receberam orientação atualizada sobre o abrigo e sobre o que fazer com animais domésticos?",
+        "por_que_importa": "A falta de orientação pode reproduzir a resistência registrada em 2024.",
+        "motivacao": "O mesmo obstáculo apareceu em evento anterior e o alerta atual envolve a mesma área.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E4",
+          "E6",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Vigilância em Saúde"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "14 famílias recusaram deixar as casas"
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "em parceria com a Vigilância em Saúde."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: VERMELHO para o Beco do Rio."
+          }
+        ],
+        "o_que_falta_saber": "Se houve comunicação preventiva com a comunidade e qual foi o conteúdo.",
+        "quem_pode_confirmar": "COMPDEC, com apoio da Vigilância em Saúde e lideranças locais, se houver.",
+        "prioridade": "alta"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há documento informando se a recomendação de 2024 sobre espaço para animais foi implantada.",
+        "por_que_importa": "Sem isso, não dá para saber se a barreira de adesão ao abrigo foi superada ou continua presente."
+      },
+      {
+        "descricao": "Não há registro sobre equipe, logística ou regras complementares de acolhimento para animais no abrigo.",
+        "por_que_importa": "Essa lacuna afeta a viabilidade de evacuação de famílias com cães e gatos."
+      },
+      {
+        "descricao": "Não há confirmação de que a Escola Estadual Lajeado esteja disponível e operacional na data do alerta.",
+        "por_que_importa": "O plano indica o abrigo, mas não sua situação funcional no momento do alerta."
+      },
+      {
+        "descricao": "Não há documento com detalhamento do número de pessoas nas 45 famílias do Beco do Rio.",
+        "por_que_importa": "Isso limita a avaliação da suficiência da capacidade nominal do abrigo."
+      }
+    ],
+    "cautelas": [
+      "O relatório de 2024 é antecedente histórico e não deve ser tratado como situação automaticamente vigente.",
+      "A regra de proibição de animais nas salas de aula está documentada, mas não informa como a prefeitura deve resolver o acolhimento de animais.",
+      "O alerta de 2026 indica elevação rápida do Rio Lajeado, mas não autoriza por si só concluir sobre desfecho da ocorrência.",
+      "Não foram usadas informações externas sobre o município, nem inferências sobre capacidade ou prontidão que não estejam sustentadas nos documentos."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 9,
+    "n_relacoes": 8,
+    "n_verificacoes": 5,
+    "n_temporais": 4,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: VERMELHO para o Beco do Rio. Elevação rápida do Rio Lajeado nas próximas 18 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Área de risco prioritária: Beco do Rio (aprox. 45 famílias).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Regras do abrigo: proibida a entrada de animais nas salas de aula.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Área de risco prioritária: Beco do Rio (aprox. 45 famílias).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Recomendação: definir espaço para animais junto ao abrigo, em parceria com a Vigilância em Saúde.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Fonte: COMPDEC",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Fonte: COMPDEC",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Área de risco prioritária: Beco do Rio (aprox. 45 famílias).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Relatório — resistência à saída em 2024",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "proibida a entrada de animais nas salas de aula.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "definir espaço para animais junto ao abrigo",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "definir espaço para animais junto ao abrigo, em parceria com a Vigilância em Saúde.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "proibida a entrada de animais nas salas de aula.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "porque não podiam levar cães e gatos ao abrigo.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Área de risco prioritária: Beco do Rio (aprox. 45 famílias).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Elevação rápida do Rio Lajeado nas próximas 18 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo: Escola Estadual Lajeado (120 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "14 famílias recusaram deixar as casas",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "em parceria com a Vigilância em Saúde.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: VERMELHO para o Beco do Rio.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      }
+    ],
+    "n_citacoes": 29,
+    "n_citacoes_literais": 29,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795615900,
+    "created_at": 1795615878,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_0557575259b96683016b06ec867f4487d2ad2b2ed99c33cb04",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBuyHHJmodb2lTGz6OuvPwcYT-roPUObgV4rP32-m5_Lk3Q04w6l3e8sZL8TmwF3K_KPaHQm3XW5z-rkxOm2Tud_kyerzU2m2rRsjrNIBQTsuZNsRNua5oL8q0iYmt6K9WaFpd888a1RaGlcPB2BOc0fLWFXc9JRErhSQQWe6_WEHOpAerlIAwJHXF1dL2yR3uB7Z-2cnX6A82wz_RXKx-dKE5Iac1qyAUBGtr6Q_uzdpXc6z9u8QOgAhr2_rhAE5Mdcj4y4VQvdlIS8xN703429TLws0dI8Ajqz9fXC3ScuEizv3nrb82cn6y9adIiVUEVZjNBOYI-LHfk50lB6vKay4fPq10QW-1fJvN3KkNFEJe0lI2QhFf-Wv1vx6WJOhT5LcBe2g-kONma5LmxUB3vaH2D_yCt8GPi8841evT-lML7DR0eMiFTyary_Z2mfhLuNYtQuoJSN2pZsYChZZX4uklgQvjjX9JWhjem9noNHcnnU3WoBF83fLG63AaVuNGlyLS6p5MEDSARduo1tOgfW5osemA86SZUZNRj9c7PSkpSl9c7Q8UdN2dpHI9XyekXrr-u5MPx5KS2E9VdO8Nk8pzWjxGHx6CC8PmHGVq_IW9L92HDNsnSYHtK3yWBIoWfFxtZjYNqZ044YZyrZbg9UJ-PspQ7fa04Yagfyi56YBq0BPlvL41rYtXfXReGaWyJrt94N4cvFkAyf7glYldzbEgz7ggthggmumFgoiDj7M7BlDkQP4wb_q99a_2yZKRqfe2taB7jaY47ES7CF4q1yApPaFhfM7CLEs_CGvPG7Op7SBiL7QPDEnriL0lwJw7z97-uXYBk9J6ZV6zT7fkFU_CqWcUIdlpUrdMqIkRJI7XitaC3iCWu10PRFNMuHih5lA6T-4zO9rKpREXApbCnWfOozYW8Pbh6qZOPofTBYGxfG9Y355cnPZKuoV3HI2MUzitmkA4wwTVMuEQZmgAK1ZAE7jAtwx_cLIUdefx57CK63JqGCcwXT30IApa23TAcIYtSACNhdLiaQ8H7v_8E8Em4emPOAZqraZi7zSusA00-Zp_yVNXSyV4AX3FkLS2oUMTTFKbow8K9eCWZd1zl9hQf225l7Gk810-_FaOYyeCkS2iRoWZu5I3Sf9-DOsx9JdZZGeblaGMcA21nebrz7YpuRJLmUFuRzFzeruH6hqn4LevxbjbKlUVApeeQoDRrabnbkpQxVc_nk4KtbROCeFZxikH811XxnSBJBMrshgs8qnp-JYd_tnOm1mdQbyPWIWZq7i4G-PW61gDyi8ApEsHSMD_GntlevDf3yYi9LFFcrc8M8JFgnhPUAg3hvLQBD9xi-Gl-QcCID6P2Aurn7iB2XUXgKprXg9y6iId-PZqb6JgLM4jCsBlVBIg0p0oYqU44Bvde0TKT7MSVAw-L5pMeSCT9w-7Z8PIVNsuybxYqRNcw7A_rSW2JDHTpw1CdrMfIOrl2h7KKpaK19KAd-31KKFGJMyu5FApmp-CCfrWTi7mJwLBVAXAhRIxuNMGuf3R9njZWnHr_QkwMn4ZwM-07iImiVuLJW2SVM4Yei46KrdWh98ZCIHuTcI9c_VBRdfta6CvODvn0mEeMlD_MUD34Qiv_vZCEl6jV2l6_JlCFZxNkFIehdBz59hlIf3ilbGNIwqwXw8Spg-VhvHgeXqC9CNis7YDAFwlJ_O-ZzToug8rLHAwNo7DWJyWIFX95fxaFhE8aok8qQlC1JFz7eC5d6SJzn_VHBn8GPQom0pHx6ow1acObhwIlUvqDpExipUHfy7-3Z5yLb2Tfwx0D5umTe9E5s7yWQ5p1vAIffMSGKAhZlZJN5qlN270tAFCElEAlOo6gCLZWOtwOgm6tqw6rGbkOP7mY0xkmY9CMFU76hSa_-7rScnHo_XhVw_LDXrStVLSWZq4g_JvobGUKXL4NC3dbWQ4BHOEVfuIh07CLK4QuRMMvXdIrO7cPulWXkNRXJT2eZOX8vt-1594OL12qZi3c2Otz18_h8mYZ-Ku_SD2n78BkVihIFGx8U18iHSiXSwzQYNb8vr0oZWGoFoP9Gb7cwCBtrXEHTmKTmKWXu_RVq7zhtE7vC0s24OL6Zo-SjFkVSAnnPF2PzJlIkpGjrN1M71-tKCppM3_rKJIXXb_UaWYug4Yz8nrSu62MZRaliyf0Mk9RZCVW__su0qZof1969Yh6iEfrDhN6N_DJs9tD6aCluu2zTuzCauOt61de8rnFBpqj9IXXHqwMoU69vO5j4Jcpe0OS7hmsDwXD4Dtw1g87X5DpVYu7PcWB9A2dUSMpr7lF7gyR76hlExZg==",
+        "id": "rs_0557575259b96683016b06ec874e8887d2ae4a0450b0d22c1a",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"Há um alerta vermelho para o Beco do Rio por elevação rápida do Rio Lajeado nas próximas 18 horas. O plano vigente cita o Beco do Rio como área prioritária e indica um abrigo na Escola Estadual Lajeado, com regra de não permitir animais nas salas de aula. Um relatório anterior mostra que a recusa em deixar as casas ocorreu por falta de espaço para cães e gatos no abrigo.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Beco do Rio\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área de risco prioritária no plano e local diretamente citado no alerta e no relatório anterior.\"},{\"id\":\"E2\",\"nome\":\"Rio Lajeado\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":null,\"descricao\":\"Curso d'água citado como em elevação rápida no alerta de inundação.\"},{\"id\":\"E3\",\"nome\":\"Escola Estadual Lajeado\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Abrigo indicado no plano de contingência, com capacidade para 120 pessoas.\"},{\"id\":\"E4\",\"nome\":\"Abrigo para pessoas desalojadas\",\"tipo\":\"servico\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Serviço de acolhimento previsto no plano, associado à Escola Estadual Lajeado.\"},{\"id\":\"E5\",\"nome\":\"Proibição de animais nas salas de aula\",\"tipo\":\"norma_documento\",\"setor_responsavel\":null,\"descricao\":\"Regra do abrigo registrada no plano que impede a entrada de animais nas salas de aula.\"},{\"id\":\"E6\",\"nome\":\"Famílias do Beco do Rio\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":null,\"descricao\":\"Grupo citado no relatório de 2024 e no plano como população exposta na área de risco.\"},{\"id\":\"E7\",\"nome\":\"Cães e gatos\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":null,\"descricao\":\"Animais mencionados como motivo da recusa de saída no relatório de 2024.\"},{\"id\":\"E8\",\"nome\":\"Vigilância em Saúde\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Setor citado como parceiro recomendado para definir espaço para animais junto ao abrigo.\"},{\"id\":\"E9\",\"nome\":\"COMPDEC\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Órgão fonte dos documentos e provável responsável pelo planejamento e resposta de proteção e defesa civil.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"afetado_por\",\"rotulo\":\"O Beco do Rio é atingido pela elevação do Rio Lajeado.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-24\",\"fim\":null,\"observacao\":\"Associado ao alerta de inundação.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: VERMELHO para o Beco do Rio. Elevação rápida do Rio Lajeado nas próximas 18 horas.\"}]},{\"id\":\"R2\",\"origem\":\"E1\",\"destino\":\"E3\",\"tipo\":\"atende\",\"rotulo\":\"A Escola Estadual Lajeado é o abrigo previsto para atender a área do Beco do Rio.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2025-05-05\",\"fim\":null,\"observacao\":\"Plano de contingência vigente no conjunto documental.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Estadual Lajeado (120 pessoas).\"},{\"doc_id\":\"D1\",\"trecho\":\"Área de risco prioritária: Beco do Rio (aprox. 45 famílias).\"}]},{\"id\":\"R3\",\"origem\":\"E4\",\"destino\":\"E3\",\"tipo\":\"localizado_em\",\"rotulo\":\"O serviço de abrigo está localizado na Escola Estadual Lajeado.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2025-05-05\",\"fim\":null,\"observacao\":\"Inferido a partir do plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Estadual Lajeado (120 pessoas).\"}]},{\"id\":\"R4\",\"origem\":\"E3\",\"destino\":\"E5\",\"tipo\":\"contradiz\",\"rotulo\":\"A regra do abrigo veda animais nas salas de aula.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-05-05\",\"fim\":null,\"observacao\":\"Regra registrada no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Regras do abrigo: proibida a entrada de animais nas salas de aula.\"}]},{\"id\":\"R5\",\"origem\":\"E6\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"Famílias do Beco do Rio podem depender do abrigo para evacuação/acolhimento.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2024-05-29\",\"fim\":null,\"observacao\":\"Baseado no relato de resistência e no plano posterior.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo.\"},{\"doc_id\":\"D1\",\"trecho\":\"Área de risco prioritária: Beco do Rio (aprox. 45 famílias).\"}]},{\"id\":\"R6\",\"origem\":\"E7\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"A presença de cães e gatos no acolhimento é uma questão vinculada ao uso do abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-29\",\"fim\":null,\"observacao\":\"Problema registrado em ocorrência anterior.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo.\"}]},{\"id\":\"R7\",\"origem\":\"E8\",\"destino\":\"E4\",\"tipo\":\"outro\",\"rotulo\":\"Foi recomendada parceria com a Vigilância em Saúde para definir espaço para animais junto ao abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-29\",\"fim\":null,\"observacao\":\"Recomendação do relatório de 2024.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Recomendação: definir espaço para animais junto ao abrigo, em parceria com a Vigilância em Saúde.\"}]},{\"id\":\"R8\",\"origem\":\"E9\",\"destino\":\"E4\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC é a fonte dos documentos de plano e relatório e opera o planejamento de abrigo.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2024-05-29\",\"fim\":null,\"observacao\":\"Baseada na autoria dos documentos e no conteúdo do plano.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Fonte: COMPDEC\"},{\"doc_id\":\"D1\",\"trecho\":\"Fonte: COMPDEC\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"pendencia_historica\",\"descricao\":\"Em 2024 houve resistência à saída porque as famílias não podiam levar cães e gatos ao abrigo.\",\"implicacao\":\"A questão dos animais apareceu como obstáculo concreto à adesão ao acolhimento e merece checagem se permanece no arranjo atual.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo.\"}]},{\"id\":\"T2\",\"tipo\":\"atualizacao\",\"descricao\":\"Em 2025 o plano passou a registrar o Beco do Rio como área de risco prioritária e definiu o abrigo na Escola Estadual Lajeado.\",\"implicacao\":\"A organização formal da resposta foi atualizada depois do relatório de 2024, mas o documento não informa se a questão dos animais foi resolvida.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Estadual Lajeado (120 pessoas).\"},{\"doc_id\":\"D1\",\"trecho\":\"Área de risco prioritária: Beco do Rio (aprox. 45 famílias).\"}]},{\"id\":\"T3\",\"tipo\":\"vigencia_encerrada\",\"descricao\":\"O relatório de 2024 é um registro histórico de ocorrência e não confirma por si só a situação atual.\",\"implicacao\":\"Ele serve como antecedente para verificações, mas não autoriza presumir que o mesmo problema continue igual em 2026.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Relatório — resistência à saída em 2024\"}]},{\"id\":\"T4\",\"tipo\":\"alteracao_protocolo\",\"descricao\":\"O conjunto documental mostra uma regra explícita do abrigo proibindo animais nas salas de aula, sem registro posterior de exceção ou solução operacional.\",\"implicacao\":\"Há compatibilidade parcial entre a regra vigente e a dificuldade anterior; falta confirmar se existe alternativa para acomodar animais.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"proibida a entrada de animais nas salas de aula.\"},{\"doc_id\":\"D3\",\"trecho\":\"definir espaço para animais junto ao abrigo\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"Existe, hoje, espaço definido para cães e gatos junto ao abrigo da Escola Estadual Lajeado?\",\"por_que_importa\":\"No relatório de 2024, a falta desse espaço impediu parte das famílias de sair de casa.\",\"motivacao\":\"O problema foi registrado como barreira concreta à saída e aparece ligado ao mesmo abrigo do plano de 2025.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E3\",\"E4\",\"E7\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\",\"Vigilância em Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo.\"},{\"doc_id\":\"D3\",\"trecho\":\"definir espaço para animais junto ao abrigo, em parceria com a Vigilância em Saúde.\"},{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Estadual Lajeado (120 pessoas).\"}],\"o_que_falta_saber\":\"Se foi criado um local separado para animais e como ele funciona na prática.\",\"quem_pode_confirmar\":\"COMPDEC, com apoio da Vigilância em Saúde e da administração do abrigo.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A regra de proibir animais nas salas de aula tem uma alternativa operacional prevista para acomodação dos animais das famílias evacuadas?\",\"por_que_importa\":\"A regra do abrigo e a necessidade de levar animais podem entrar em conflito na operação de acolhimento.\",\"motivacao\":\"O plano registra a proibição e o relatório anterior mostra que isso já afetou a adesão ao deslocamento.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E3\",\"E5\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\",\"Vigilância em Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"proibida a entrada de animais nas salas de aula.\"},{\"doc_id\":\"D3\",\"trecho\":\"porque não podiam levar cães e gatos ao abrigo.\"}],\"o_que_falta_saber\":\"Se há área externa, sala separada ou outro arranjo para os animais.\",\"quem_pode_confirmar\":\"COMPDEC e gestão da Escola Estadual Lajeado.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"A capacidade do abrigo de 120 pessoas é compatível com a estimativa de aproximadamente 45 famílias no Beco do Rio, sem considerar outros locais de origem?\",\"por_que_importa\":\"A dimensão do público potencial orienta a suficiência do abrigo planejado.\",\"motivacao\":\"O plano informa uma capacidade nominal e uma estimativa de famílias na área prioritária, mas não traz a conversão em pessoas nem se o abrigo atende apenas esse local.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E3\",\"E4\",\"E6\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Estadual Lajeado (120 pessoas).\"},{\"doc_id\":\"D1\",\"trecho\":\"Área de risco prioritária: Beco do Rio (aprox. 45 famílias).\"}],\"o_que_falta_saber\":\"Quantas pessoas compõem as 45 famílias e se há outros abrigos ou rotas previstas.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"O abrigo da Escola Estadual Lajeado estará acessível e operacional durante a janela das próximas 18 horas do alerta?\",\"por_que_importa\":\"O alerta exige saber se o ponto de acolhimento pode ser usado dentro do período crítico indicado.\",\"motivacao\":\"O alerta é imediato e o plano aponta o abrigo como referência principal, mas não há documento sobre funcionamento no momento do alerta.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E4\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Elevação rápida do Rio Lajeado nas próximas 18 horas.\"},{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Estadual Lajeado (120 pessoas).\"}],\"o_que_falta_saber\":\"Se o abrigo está aberto, com equipe, acesso e condições materiais para receber pessoas agora.\",\"quem_pode_confirmar\":\"COMPDEC e administração da Escola Estadual Lajeado.\",\"prioridade\":\"alta\"},{\"id\":\"V5\",\"pergunta\":\"As famílias do Beco do Rio receberam orientação atualizada sobre o abrigo e sobre o que fazer com animais domésticos?\",\"por_que_importa\":\"A falta de orientação pode reproduzir a resistência registrada em 2024.\",\"motivacao\":\"O mesmo obstáculo apareceu em evento anterior e o alerta atual envolve a mesma área.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E4\",\"E6\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\",\"Vigilância em Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"14 famílias recusaram deixar as casas\"},{\"doc_id\":\"D3\",\"trecho\":\"em parceria com a Vigilância em Saúde.\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: VERMELHO para o Beco do Rio.\"}],\"o_que_falta_saber\":\"Se houve comunicação preventiva com a comunidade e qual foi o conteúdo.\",\"quem_pode_confirmar\":\"COMPDEC, com apoio da Vigilância em Saúde e lideranças locais, se houver.\",\"prioridade\":\"alta\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há documento informando se a recomendação de 2024 sobre espaço para animais foi implantada.\",\"por_que_importa\":\"Sem isso, não dá para saber se a barreira de adesão ao abrigo foi superada ou continua presente.\"},{\"descricao\":\"Não há registro sobre equipe, logística ou regras complementares de acolhimento para animais no abrigo.\",\"por_que_importa\":\"Essa lacuna afeta a viabilidade de evacuação de famílias com cães e gatos.\"},{\"descricao\":\"Não há confirmação de que a Escola Estadual Lajeado esteja disponível e operacional na data do alerta.\",\"por_que_importa\":\"O plano indica o abrigo, mas não sua situação funcional no momento do alerta.\"},{\"descricao\":\"Não há documento com detalhamento do número de pessoas nas 45 famílias do Beco do Rio.\",\"por_que_importa\":\"Isso limita a avaliação da suficiência da capacidade nominal do abrigo.\"}],\"cautelas\":[\"O relatório de 2024 é antecedente histórico e não deve ser tratado como situação automaticamente vigente.\",\"A regra de proibição de animais nas salas de aula está documentada, mas não informa como a prefeitura deve resolver o acolhimento de animais.\",\"O alerta de 2026 indica elevação rápida do Rio Lajeado, mas não autoriza por si só concluir sobre desfecho da ocorrência.\",\"Não foram usadas informações externas sobre o município, nem inferências sobre capacidade ou prontidão que não estejam sustentadas nos documentos.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0557575259b96683016b06ec8767b487d287721091478b497c",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2117,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 3597,
+      "output_tokens_details": {
+        "reasoning_tokens": 53
+      },
+      "total_tokens": 5714
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"Há um alerta vermelho para o Beco do Rio por elevação rápida do Rio Lajeado nas próximas 18 horas. O plano vigente cita o Beco do Rio como área prioritária e indica um abrigo na Escola Estadual Lajeado, com regra de não permitir animais nas salas de aula. Um relatório anterior mostra que a recusa em deixar as casas ocorreu por falta de espaço para cães e gatos no abrigo.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Beco do Rio\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área de risco prioritária no plano e local diretamente citado no alerta e no relatório anterior.\"},{\"id\":\"E2\",\"nome\":\"Rio Lajeado\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":null,\"descricao\":\"Curso d'água citado como em elevação rápida no alerta de inundação.\"},{\"id\":\"E3\",\"nome\":\"Escola Estadual Lajeado\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Abrigo indicado no plano de contingência, com capacidade para 120 pessoas.\"},{\"id\":\"E4\",\"nome\":\"Abrigo para pessoas desalojadas\",\"tipo\":\"servico\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Serviço de acolhimento previsto no plano, associado à Escola Estadual Lajeado.\"},{\"id\":\"E5\",\"nome\":\"Proibição de animais nas salas de aula\",\"tipo\":\"norma_documento\",\"setor_responsavel\":null,\"descricao\":\"Regra do abrigo registrada no plano que impede a entrada de animais nas salas de aula.\"},{\"id\":\"E6\",\"nome\":\"Famílias do Beco do Rio\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":null,\"descricao\":\"Grupo citado no relatório de 2024 e no plano como população exposta na área de risco.\"},{\"id\":\"E7\",\"nome\":\"Cães e gatos\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":null,\"descricao\":\"Animais mencionados como motivo da recusa de saída no relatório de 2024.\"},{\"id\":\"E8\",\"nome\":\"Vigilância em Saúde\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Setor citado como parceiro recomendado para definir espaço para animais junto ao abrigo.\"},{\"id\":\"E9\",\"nome\":\"COMPDEC\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Órgão fonte dos documentos e provável responsável pelo planejamento e resposta de proteção e defesa civil.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"afetado_por\",\"rotulo\":\"O Beco do Rio é atingido pela elevação do Rio Lajeado.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-24\",\"fim\":null,\"observacao\":\"Associado ao alerta de inundação.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: VERMELHO para o Beco do Rio. Elevação rápida do Rio Lajeado nas próximas 18 horas.\"}]},{\"id\":\"R2\",\"origem\":\"E1\",\"destino\":\"E3\",\"tipo\":\"atende\",\"rotulo\":\"A Escola Estadual Lajeado é o abrigo previsto para atender a área do Beco do Rio.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2025-05-05\",\"fim\":null,\"observacao\":\"Plano de contingência vigente no conjunto documental.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Estadual Lajeado (120 pessoas).\"},{\"doc_id\":\"D1\",\"trecho\":\"Área de risco prioritária: Beco do Rio (aprox. 45 famílias).\"}]},{\"id\":\"R3\",\"origem\":\"E4\",\"destino\":\"E3\",\"tipo\":\"localizado_em\",\"rotulo\":\"O serviço de abrigo está localizado na Escola Estadual Lajeado.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2025-05-05\",\"fim\":null,\"observacao\":\"Inferido a partir do plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Estadual Lajeado (120 pessoas).\"}]},{\"id\":\"R4\",\"origem\":\"E3\",\"destino\":\"E5\",\"tipo\":\"contradiz\",\"rotulo\":\"A regra do abrigo veda animais nas salas de aula.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-05-05\",\"fim\":null,\"observacao\":\"Regra registrada no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Regras do abrigo: proibida a entrada de animais nas salas de aula.\"}]},{\"id\":\"R5\",\"origem\":\"E6\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"Famílias do Beco do Rio podem depender do abrigo para evacuação/acolhimento.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2024-05-29\",\"fim\":null,\"observacao\":\"Baseado no relato de resistência e no plano posterior.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo.\"},{\"doc_id\":\"D1\",\"trecho\":\"Área de risco prioritária: Beco do Rio (aprox. 45 famílias).\"}]},{\"id\":\"R6\",\"origem\":\"E7\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"A presença de cães e gatos no acolhimento é uma questão vinculada ao uso do abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-29\",\"fim\":null,\"observacao\":\"Problema registrado em ocorrência anterior.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo.\"}]},{\"id\":\"R7\",\"origem\":\"E8\",\"destino\":\"E4\",\"tipo\":\"outro\",\"rotulo\":\"Foi recomendada parceria com a Vigilância em Saúde para definir espaço para animais junto ao abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-29\",\"fim\":null,\"observacao\":\"Recomendação do relatório de 2024.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Recomendação: definir espaço para animais junto ao abrigo, em parceria com a Vigilância em Saúde.\"}]},{\"id\":\"R8\",\"origem\":\"E9\",\"destino\":\"E4\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC é a fonte dos documentos de plano e relatório e opera o planejamento de abrigo.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2024-05-29\",\"fim\":null,\"observacao\":\"Baseada na autoria dos documentos e no conteúdo do plano.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Fonte: COMPDEC\"},{\"doc_id\":\"D1\",\"trecho\":\"Fonte: COMPDEC\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"pendencia_historica\",\"descricao\":\"Em 2024 houve resistência à saída porque as famílias não podiam levar cães e gatos ao abrigo.\",\"implicacao\":\"A questão dos animais apareceu como obstáculo concreto à adesão ao acolhimento e merece checagem se permanece no arranjo atual.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo.\"}]},{\"id\":\"T2\",\"tipo\":\"atualizacao\",\"descricao\":\"Em 2025 o plano passou a registrar o Beco do Rio como área de risco prioritária e definiu o abrigo na Escola Estadual Lajeado.\",\"implicacao\":\"A organização formal da resposta foi atualizada depois do relatório de 2024, mas o documento não informa se a questão dos animais foi resolvida.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Estadual Lajeado (120 pessoas).\"},{\"doc_id\":\"D1\",\"trecho\":\"Área de risco prioritária: Beco do Rio (aprox. 45 famílias).\"}]},{\"id\":\"T3\",\"tipo\":\"vigencia_encerrada\",\"descricao\":\"O relatório de 2024 é um registro histórico de ocorrência e não confirma por si só a situação atual.\",\"implicacao\":\"Ele serve como antecedente para verificações, mas não autoriza presumir que o mesmo problema continue igual em 2026.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Relatório — resistência à saída em 2024\"}]},{\"id\":\"T4\",\"tipo\":\"alteracao_protocolo\",\"descricao\":\"O conjunto documental mostra uma regra explícita do abrigo proibindo animais nas salas de aula, sem registro posterior de exceção ou solução operacional.\",\"implicacao\":\"Há compatibilidade parcial entre a regra vigente e a dificuldade anterior; falta confirmar se existe alternativa para acomodar animais.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"proibida a entrada de animais nas salas de aula.\"},{\"doc_id\":\"D3\",\"trecho\":\"definir espaço para animais junto ao abrigo\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"Existe, hoje, espaço definido para cães e gatos junto ao abrigo da Escola Estadual Lajeado?\",\"por_que_importa\":\"No relatório de 2024, a falta desse espaço impediu parte das famílias de sair de casa.\",\"motivacao\":\"O problema foi registrado como barreira concreta à saída e aparece ligado ao mesmo abrigo do plano de 2025.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E3\",\"E4\",\"E7\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\",\"Vigilância em Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo.\"},{\"doc_id\":\"D3\",\"trecho\":\"definir espaço para animais junto ao abrigo, em parceria com a Vigilância em Saúde.\"},{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Estadual Lajeado (120 pessoas).\"}],\"o_que_falta_saber\":\"Se foi criado um local separado para animais e como ele funciona na prática.\",\"quem_pode_confirmar\":\"COMPDEC, com apoio da Vigilância em Saúde e da administração do abrigo.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A regra de proibir animais nas salas de aula tem uma alternativa operacional prevista para acomodação dos animais das famílias evacuadas?\",\"por_que_importa\":\"A regra do abrigo e a necessidade de levar animais podem entrar em conflito na operação de acolhimento.\",\"motivacao\":\"O plano registra a proibição e o relatório anterior mostra que isso já afetou a adesão ao deslocamento.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E3\",\"E5\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\",\"Vigilância em Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"proibida a entrada de animais nas salas de aula.\"},{\"doc_id\":\"D3\",\"trecho\":\"porque não podiam levar cães e gatos ao abrigo.\"}],\"o_que_falta_saber\":\"Se há área externa, sala separada ou outro arranjo para os animais.\",\"quem_pode_confirmar\":\"COMPDEC e gestão da Escola Estadual Lajeado.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"A capacidade do abrigo de 120 pessoas é compatível com a estimativa de aproximadamente 45 famílias no Beco do Rio, sem considerar outros locais de origem?\",\"por_que_importa\":\"A dimensão do público potencial orienta a suficiência do abrigo planejado.\",\"motivacao\":\"O plano informa uma capacidade nominal e uma estimativa de famílias na área prioritária, mas não traz a conversão em pessoas nem se o abrigo atende apenas esse local.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E3\",\"E4\",\"E6\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Estadual Lajeado (120 pessoas).\"},{\"doc_id\":\"D1\",\"trecho\":\"Área de risco prioritária: Beco do Rio (aprox. 45 famílias).\"}],\"o_que_falta_saber\":\"Quantas pessoas compõem as 45 famílias e se há outros abrigos ou rotas previstas.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"O abrigo da Escola Estadual Lajeado estará acessível e operacional durante a janela das próximas 18 horas do alerta?\",\"por_que_importa\":\"O alerta exige saber se o ponto de acolhimento pode ser usado dentro do período crítico indicado.\",\"motivacao\":\"O alerta é imediato e o plano aponta o abrigo como referência principal, mas não há documento sobre funcionamento no momento do alerta.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E4\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Elevação rápida do Rio Lajeado nas próximas 18 horas.\"},{\"doc_id\":\"D1\",\"trecho\":\"Abrigo: Escola Estadual Lajeado (120 pessoas).\"}],\"o_que_falta_saber\":\"Se o abrigo está aberto, com equipe, acesso e condições materiais para receber pessoas agora.\",\"quem_pode_confirmar\":\"COMPDEC e administração da Escola Estadual Lajeado.\",\"prioridade\":\"alta\"},{\"id\":\"V5\",\"pergunta\":\"As famílias do Beco do Rio receberam orientação atualizada sobre o abrigo e sobre o que fazer com animais domésticos?\",\"por_que_importa\":\"A falta de orientação pode reproduzir a resistência registrada em 2024.\",\"motivacao\":\"O mesmo obstáculo apareceu em evento anterior e o alerta atual envolve a mesma área.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E4\",\"E6\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\",\"Vigilância em Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"14 famílias recusaram deixar as casas\"},{\"doc_id\":\"D3\",\"trecho\":\"em parceria com a Vigilância em Saúde.\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: VERMELHO para o Beco do Rio.\"}],\"o_que_falta_saber\":\"Se houve comunicação preventiva com a comunidade e qual foi o conteúdo.\",\"quem_pode_confirmar\":\"COMPDEC, com apoio da Vigilância em Saúde e lideranças locais, se houver.\",\"prioridade\":\"alta\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há documento informando se a recomendação de 2024 sobre espaço para animais foi implantada.\",\"por_que_importa\":\"Sem isso, não dá para saber se a barreira de adesão ao abrigo foi superada ou continua presente.\"},{\"descricao\":\"Não há registro sobre equipe, logística ou regras complementares de acolhimento para animais no abrigo.\",\"por_que_importa\":\"Essa lacuna afeta a viabilidade de evacuação de famílias com cães e gatos.\"},{\"descricao\":\"Não há confirmação de que a Escola Estadual Lajeado esteja disponível e operacional na data do alerta.\",\"por_que_importa\":\"O plano indica o abrigo, mas não sua situação funcional no momento do alerta.\"},{\"descricao\":\"Não há documento com detalhamento do número de pessoas nas 45 famílias do Beco do Rio.\",\"por_que_importa\":\"Isso limita a avaliação da suficiência da capacidade nominal do abrigo.\"}],\"cautelas\":[\"O relatório de 2024 é antecedente histórico e não deve ser tratado como situação automaticamente vigente.\",\"A regra de proibição de animais nas salas de aula está documentada, mas não informa como a prefeitura deve resolver o acolhimento de animais.\",\"O alerta de 2026 indica elevação rápida do Rio Lajeado, mas não autoriza por si só concluir sobre desfecho da ocorrência.\",\"Não foram usadas informações externas sobre o município, nem inferências sobre capacidade ou prontidão que não estejam sustentadas nos documentos.\"]}"
+  }
+}

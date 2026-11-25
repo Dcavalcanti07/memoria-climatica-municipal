@@ -1,0 +1,1128 @@
+{
+  "meta": {
+    "scenario": "E07",
+    "condicao": "B",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D4",
+      "D3",
+      "D2"
+    ],
+    "user_message_chars": 1594,
+    "user_message_sha12": "c65b2dbda6f1"
+  },
+  "user_message": "Município (fictício): Barra do Junco\nData de referência da análise: 2026-11-23\nDocumentos disponíveis (4), em ordem cronológica:\n\n### [D1] Plano de Contingência (2023, vigente) — Saúde\nTipo: Plano de contingência | Fonte: COMPDEC / Saúde | Data: 2023-10-01\n\nA remoção de pessoas acamadas das áreas de risco é coordenada pelo Transporte Sanitário.\nResponsável: Ana Ribeiro (coordenadora do Transporte Sanitário) — ramal 2231.\nA lista de pessoas acamadas é mantida pelas equipes de Saúde da Família.\n\n---\n\n### [D4] Relatório — remoção de acamados — inundação de 2024\nTipo: Relatório de ocorrência | Fonte: Secretaria de Saúde | Data: 2024-05-25\n\nA remoção de 11 pessoas acamadas do Junco Baixo levou cerca de 7 horas. A lista das equipes de Saúde da Família estava desatualizada: 3 pessoas tinham mudado de endereço e 2 não constavam na lista. Recomendação: atualizar a lista semestralmente.\n\n---\n\n### [D3] Portaria 77/2025 — movimentação de pessoal\nTipo: Atualização de secretaria | Fonte: Gabinete do Prefeito | Data: 2025-02-03\n\nAna Ribeiro, matrícula 4412, passa a exercer a função de diretora administrativa na Secretaria de Educação. Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025.\n\n---\n\n### [D2] Alerta de inundação (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-23\n\nNÍVEL: VERMELHO para o bairro Junco Baixo. Elevação rápida do arroio, com possibilidade de atingir residências em 12 a 18 horas.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_08b6ea0661f5674a016b06ec2d5f5887d28a2fa61d8d230cf3",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 2244,
+    "output_tokens": 3284,
+    "reasoning_tokens": 33
+  },
+  "latency_ms": 22626,
+  "started_at": "2026-11-25T14:09:45.831Z",
+  "output": {
+    "resumo_situacao": "Há um alerta de inundação em nível vermelho para o bairro Junco Baixo, com possibilidade de atingir residências em 12 a 18 horas. Nos documentos de saúde, a remoção de pessoas acamadas das áreas de risco depende do Transporte Sanitário e da lista das equipes de Saúde da Família. Há um histórico de dificuldade na remoção em 2024 por lista desatualizada e uma mudança de responsável em 2025.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Transporte Sanitário",
+        "tipo": "servico",
+        "setor_responsavel": "Saúde",
+        "descricao": "Serviço que coordena a remoção de pessoas acamadas das áreas de risco."
+      },
+      {
+        "id": "E2",
+        "nome": "Lista de pessoas acamadas",
+        "tipo": "recurso",
+        "setor_responsavel": "Saúde",
+        "descricao": "Relação mantida pelas equipes de Saúde da Família para apoiar a remoção de pessoas acamadas."
+      },
+      {
+        "id": "E3",
+        "nome": "Equipes de Saúde da Família",
+        "tipo": "setor",
+        "setor_responsavel": "Saúde",
+        "descricao": "Equipes que mantêm a lista de pessoas acamadas."
+      },
+      {
+        "id": "E4",
+        "nome": "Ana Ribeiro",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "Saúde",
+        "descricao": "Ex-coordenadora do Transporte Sanitário; em 2025 passou a exercer função de diretora administrativa na Secretaria de Educação."
+      },
+      {
+        "id": "E5",
+        "nome": "Carlos Menezes",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "Saúde",
+        "descricao": "Designado para a coordenação do Transporte Sanitário a partir de 10/02/2025."
+      },
+      {
+        "id": "E6",
+        "nome": "Junco Baixo",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Bairro citado no alerta de inundação e no relatório de ocorrência de 2024."
+      },
+      {
+        "id": "E7",
+        "nome": "Pessoas acamadas",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": "Saúde",
+        "descricao": "Grupo cujo deslocamento das áreas de risco é tratado no plano de contingência."
+      },
+      {
+        "id": "E8",
+        "nome": "Alerta de inundação",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Cenário de alerta emitido em 2026-11-23 com nível vermelho para o bairro Junco Baixo."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E7",
+        "tipo": "atende",
+        "rotulo": "O Transporte Sanitário coordena a remoção de pessoas acamadas.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2023-10-01",
+          "fim": null,
+          "observacao": "Conforme o plano vigente e a atualização de 2025 sobre a chefia do serviço."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A remoção de pessoas acamadas das áreas de risco é coordenada pelo Transporte Sanitário."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E3",
+        "destino": "E2",
+        "tipo": "responsavel_por",
+        "rotulo": "As equipes de Saúde da Família mantêm a lista de pessoas acamadas.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2023-10-01",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A lista de pessoas acamadas é mantida pelas equipes de Saúde da Família."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E8",
+        "destino": "E6",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta de inundação abrange o bairro Junco Baixo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-23",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: VERMELHO para o bairro Junco Baixo."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E8",
+        "destino": "E7",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta indica possibilidade de atingir residências no intervalo citado.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-23",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "com possibilidade de atingir residências em 12 a 18 horas."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E1",
+        "destino": "E5",
+        "tipo": "responsavel_por",
+        "rotulo": "Carlos Menezes passa a coordenar o Transporte Sanitário.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-02-10",
+          "fim": null,
+          "observacao": "Substituição formal indicada na portaria."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E4",
+        "destino": "E1",
+        "tipo": "substitui",
+        "rotulo": "Ana Ribeiro deixou a coordenação do Transporte Sanitário e passou à Educação.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-02-03",
+          "fim": null,
+          "observacao": "Mudança de função registrada na portaria."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Ana Ribeiro, matrícula 4412, passa a exercer a função de diretora administrativa na Secretaria de Educação."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "depende_de",
+        "rotulo": "A remoção depende da lista atualizada de pessoas acamadas.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2023-10-01",
+          "fim": null,
+          "observacao": "A dependência é deduzida do plano e do problema relatado em 2024."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A lista de pessoas acamadas é mantida pelas equipes de Saúde da Família."
+          },
+          {
+            "doc_id": "D4",
+            "trecho": "A lista das equipes de Saúde da Família estava desatualizada:"
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E6",
+        "destino": "E2",
+        "tipo": "outro",
+        "rotulo": "Em 2024, a lista estava desatualizada no contexto de remoção em Junco Baixo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-05-25",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D4",
+            "trecho": "A lista das equipes de Saúde da Família estava desatualizada:"
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "contradicao",
+        "descricao": "A chefia do Transporte Sanitário mudou em 2025: Ana Ribeiro deixou a coordenação e Carlos Menezes foi designado para a função.",
+        "implicacao": "A pessoa indicada no plano de 2023 não deve ser tratada como responsável atual sem confirmação adicional.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Responsável: Ana Ribeiro (coordenadora do Transporte Sanitário)"
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "solucao_parcial",
+        "descricao": "Houve uma recomendação após a ocorrência de 2024 para atualizar a lista de pessoas acamadas semestralmente.",
+        "implicacao": "A lista é um ponto sensível para a remoção, mas não há documento posterior comprovando que a recomendação foi adotada.",
+        "evidencias": [
+          {
+            "doc_id": "D4",
+            "trecho": "Recomendação: atualizar a lista semestralmente."
+          }
+        ]
+      },
+      {
+        "id": "T3",
+        "tipo": "pendencia_historica",
+        "descricao": "O relatório de 2024 registrou desatualização da lista, com pessoas mudando de endereço e outras sem constar na lista.",
+        "implicacao": "Permanece a necessidade de confirmação atual da lista antes de usar o cadastro para a remoção preventiva.",
+        "evidencias": [
+          {
+            "doc_id": "D4",
+            "trecho": "3 pessoas tinham mudado de endereço e 2 não constavam na lista."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "Quem está atualmente responsável pela coordenação do Transporte Sanitário para a remoção de pessoas acamadas?",
+        "por_que_importa": "O plano vigente cita uma responsável antiga, mas há portaria posterior designando outra pessoa.",
+        "motivacao": "Mudança formal de responsável entre o plano de 2023 e a portaria de 2025.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E4",
+          "E5"
+        ],
+        "setores_relacionados": [
+          "Saúde"
+        ],
+        "status_epistemico": "contradicao",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Responsável: Ana Ribeiro (coordenadora do Transporte Sanitário)"
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025."
+          }
+        ],
+        "o_que_falta_saber": "Se a troca de coordenação foi operacionalizada e quem responde hoje pelo serviço.",
+        "quem_pode_confirmar": "Secretaria de Saúde ou a coordenação do Transporte Sanitário.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "A lista de pessoas acamadas está atualizada para o bairro Junco Baixo e demais áreas cobertas?",
+        "por_que_importa": "A remoção depende dessa lista, e o relatório de 2024 mostrou falhas concretas no cadastro.",
+        "motivacao": "Desatualização da lista e recomendação de atualização semestral após a ocorrência de 2024.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E2",
+          "E3",
+          "E6",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "Saúde"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A lista de pessoas acamadas é mantida pelas equipes de Saúde da Família."
+          },
+          {
+            "doc_id": "D4",
+            "trecho": "A lista das equipes de Saúde da Família estava desatualizada:"
+          },
+          {
+            "doc_id": "D4",
+            "trecho": "Recomendação: atualizar a lista semestralmente."
+          }
+        ],
+        "o_que_falta_saber": "Se a atualização recomendada foi feita e se o cadastro inclui as pessoas atualmente acamadas.",
+        "quem_pode_confirmar": "Equipes de Saúde da Família e Secretaria de Saúde.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "A lista atual permite localizar corretamente as pessoas acamadas que podem ser afetadas no Junco Baixo?",
+        "por_que_importa": "O relatório mostrou que algumas pessoas haviam mudado de endereço ou nem constavam na lista, o que pode atrasar a remoção.",
+        "motivacao": "Falhas registradas na remoção de 2024 no Junco Baixo.",
+        "base": "registro_historico",
+        "entidades_relacionadas": [
+          "E2",
+          "E6",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "Saúde"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D4",
+            "trecho": "3 pessoas tinham mudado de endereço e 2 não constavam na lista."
+          }
+        ],
+        "o_que_falta_saber": "Se houve conferência domiciliar ou atualização recente dos endereços e nomes.",
+        "quem_pode_confirmar": "Equipes de Saúde da Família.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V4",
+        "pergunta": "O Transporte Sanitário dispõe de equipe e meios para realizar a remoção de pessoas acamadas dentro do intervalo indicado no alerta?",
+        "por_que_importa": "O alerta dá uma janela curta de 12 a 18 horas, e a remoção anterior levou cerca de 7 horas para 11 pessoas.",
+        "motivacao": "Tempo gasto na ocorrência de 2024 e janela temporal do alerta atual.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E7",
+          "E8",
+          "E6"
+        ],
+        "setores_relacionados": [
+          "Saúde"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D4",
+            "trecho": "A remoção de 11 pessoas acamadas do Junco Baixo levou cerca de 7 horas."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "com possibilidade de atingir residências em 12 a 18 horas."
+          }
+        ],
+        "o_que_falta_saber": "Quantas pessoas acamadas podem precisar de remoção e se há capacidade operacional atual.",
+        "quem_pode_confirmar": "Coordenação do Transporte Sanitário e Secretaria de Saúde.",
+        "prioridade": "media"
+      },
+      {
+        "id": "V5",
+        "pergunta": "Existe algum procedimento atualizado para remoção de pessoas acamadas em situação de inundação diferente do plano de 2023?",
+        "por_que_importa": "Há um plano vigente, mas também um relatório posterior com problema operacional e mudança de responsável.",
+        "motivacao": "Possível necessidade de atualização do procedimento após 2024 e 2025.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E3",
+          "E4",
+          "E5"
+        ],
+        "setores_relacionados": [
+          "Saúde"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "A remoção de pessoas acamadas das áreas de risco é coordenada pelo Transporte Sanitário."
+          },
+          {
+            "doc_id": "D4",
+            "trecho": "Recomendação: atualizar a lista semestralmente."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025."
+          }
+        ],
+        "o_que_falta_saber": "Se houve revisão formal do plano ou orientação complementar após 2024/2025.",
+        "quem_pode_confirmar": "Gabinete do Prefeito, Secretaria de Saúde ou COMPDEC.",
+        "prioridade": "baixa"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há documento com a lista nominal atual das pessoas acamadas.",
+        "por_que_importa": "Sem essa lista não é possível verificar quem deve ser considerado na remoção preventiva."
+      },
+      {
+        "descricao": "Não há documento posterior confirmando a adoção da atualização semestral recomendada.",
+        "por_que_importa": "Não dá para assumir que a falha registrada em 2024 foi sanada."
+      },
+      {
+        "descricao": "Não há informação sobre a capacidade operacional atual do Transporte Sanitário.",
+        "por_que_importa": "A viabilidade da remoção no tempo disponível não pode ser estimada com segurança."
+      }
+    ],
+    "cautelas": [
+      "O alerta é específico para Junco Baixo; não ampliar conclusões para outros bairros sem vínculo documentado.",
+      "A referência do plano de 2023 sobre a coordenação de Ana Ribeiro foi superada pela portaria de 2025 para fins de responsável atual.",
+      "O relatório de 2024 é histórico e não comprova que o problema persistiu até 2026, apenas mostra que ele existiu.",
+      "Não assumir que a lista foi atualizada porque houve recomendação; falta documento confirmando a execução.",
+      "Evitar interpretar o nível vermelho como decisão administrativa; ele apenas fundamenta a pauta de verificações."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 8,
+    "n_relacoes": 8,
+    "n_verificacoes": 5,
+    "n_temporais": 3,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "A remoção de pessoas acamadas das áreas de risco é coordenada pelo Transporte Sanitário.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A lista de pessoas acamadas é mantida pelas equipes de Saúde da Família.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: VERMELHO para o bairro Junco Baixo.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "com possibilidade de atingir residências em 12 a 18 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Ana Ribeiro, matrícula 4412, passa a exercer a função de diretora administrativa na Secretaria de Educação.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A lista de pessoas acamadas é mantida pelas equipes de Saúde da Família.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "A lista das equipes de Saúde da Família estava desatualizada:",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "A lista das equipes de Saúde da Família estava desatualizada:",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Responsável: Ana Ribeiro (coordenadora do Transporte Sanitário)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "Recomendação: atualizar a lista semestralmente.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "3 pessoas tinham mudado de endereço e 2 não constavam na lista.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Responsável: Ana Ribeiro (coordenadora do Transporte Sanitário)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A lista de pessoas acamadas é mantida pelas equipes de Saúde da Família.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "A lista das equipes de Saúde da Família estava desatualizada:",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "Recomendação: atualizar a lista semestralmente.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "3 pessoas tinham mudado de endereço e 2 não constavam na lista.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "A remoção de 11 pessoas acamadas do Junco Baixo levou cerca de 7 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "com possibilidade de atingir residências em 12 a 18 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "A remoção de pessoas acamadas das áreas de risco é coordenada pelo Transporte Sanitário.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      },
+      {
+        "doc_id": "D4",
+        "trecho": "Recomendação: atualizar a lista semestralmente.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      }
+    ],
+    "n_citacoes": 24,
+    "n_citacoes_literais": 24,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795615808,
+    "created_at": 1795615789,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_08b6ea0661f5674a016b06ec2d5f5887d28a2fa61d8d230cf3",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBuwuvyl7F31KKtZr64AWVeSZrcp6GD_O6F5BiDT77Si0v-ClDE8dsGVm0FhZZDH8d5wugAy5niJzxafm1edfEr5sHnjUkrQqeqMhPNpJTkfHaQAsrmSqnpTEQV1a66GI4C-KcukEexI2tIMZukIs70XRvFY7xCUui9qyXytT4N5vHZohM6mGCHaBUGWL-RBfKp9eLf1WvNwbqsoxaIHjrQxNptqwQs34doZPx0VhsyXgjDSUHRJNcXIAQvVN2lXuKsTVDI2FA6XAztjZ5oUYAngZqa7p9WbHNpJQyaGzTcJlPy_VONGP47rEE5tnd7Tuj-4NZHIVbIOVdqUQ7WSdPT_XCsf_vBaDB3jf7V-BrTkySoQSAgpDdJStvpG2JYhzMHlrRbG14mczHWGbnelaVq4K7OPzjF7B-fI8Cyoxv5UeHnXokHnykHPU2YZucVYbEUM-9jqf0dneTLvsvqvELjzCbSSrEMPrhaYtZIAjvfQqSkvfX8eZOmsAW66YIhzwuGY5mCo3ldOLKutgB5Bytrngc4_aXG_L6_iKs9saY9gid9BfVA42tx42TGUWM5ZsdS4pwI2K4O2B2ByV58EIkcgPCgA4nJJw5oqeeALvSoTTlRHSZXnKL6-EtXI8FsaPcoMnRPXYsUacGQybDohEBDIQBvsUNV4HidksHfsoe0xPpWucyo9aZEMhkTbIWjkHJ8QwY1GzoJOJkXMK8pZPLWvsDaDKRNX2_UxKNw_UeRNBC9q3Y6TzJ1lDXJsj-cA9oC1BTV9qUed5JufJnKPvYaV25EEedYcVJ2mAHm6fWTA8K9K-8-k2Cnp3IKcAfL0kY2sQxPkowPURHJethWCavLsucVXfjAueUncCbdIr39KePhlaHVw_yM9srS5NOICVGgQTiu2qKqDt4HgchXW5zd9RZOO42890ddEuZMfAWD-IY92ssYfogJ5ERGW-i6GMeR-z9pu7lxwr3YUsUOoEI28b8uOKM4xcyJGBHvMx36hzlRggQ4fQ2nDIMClKKZoOnmXx5ot7ecXpnbhjbzQQHVaKUkKtUegQEXMShaJ6bXgDMcHNytlC4-UkzF44lD3Md9ZdoiP2xp6SEtRq6t1f09lfPEX2_6Pn-BKdnj6o7l8i2_MUmiDcfDo6KSURbw-IZstydOIJm89lHdNEQiKH7QeCXPviNuc__GSTp8XYlARdpbQF5p5vklUZyQN30ehIQdu-rmu8TaQeii-1vQQJ8Dw6haE10S64IO60olsg97kXOabqvumHBlvNHX2t_ONhOxZV4IOgD5inLItRj-I4ACKsJaFWXytnOYq9F1CFqYKeq629516qYIxP_fC42Hn5eiKaZqxWRal_JVR6-3n0zTRP6yMOIIuHYT3SHtW1tiENAC1loCddsGpj-Ji8CPKc-qZ3r4pF8p0aJwZfMXiv11k-vscxVzZEuV9JX400gZSwG44zUrqqB2s1G9Xoo-fmJ9-AD_oAXcBgoeoh3CctT4VHdn3Fn2hH2weNX3BSzC5se752wAKbsIQrp85BVAPHuTz_rC7h4pZNs73DmFqQuiiuNYqzhPyHfmFb6WV-f7rzCo2J9fxKs_CN5RYs-9bre3VmYUdRVbixQWqr4GxZz6RpsXovYSvgdmGOWRskvyb0pKq8oSxf9M7G0zo2q3fbqnDugJrQ2CLznXVChPUNkHsilaQlQmCstere4ehWmjuJxYGl5-Dppbuj7TJttgVZP86PQHe_HyHhUUlCK99xfxuTysg6CUESRHYiuJ57bjMlUEkcHbq8SL7j3J1pVapR6beoT2n7enoLcDR38fp5pE8KGuKavRS-0TmAenRb6VyebOR5Kh7G9W1jlJW-Amr9aXSPlqluKAWs-_mq0lDw-Bb_OyaeLYEASAmSrHX63uPgkPFDut-b5CbhAcJ31n30qikj2XcQTHf--aC3fmwFyZOtsAh4IzN1jw7IEi8PjfVtkzgJXZE2sLOc9jzffBu7aJt7BCr53bhq7zlKJgFej3KmiA3891YSdLcTfd1meLiBBh17Slhubu8zPiVJxOcZp4XZsxDtYXZ6RxD5MLsOQSXzdA==",
+        "id": "rs_08b6ea0661f5674a016b06ec2e16a887d2a8f9ae0bc16d0305",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"Há um alerta de inundação em nível vermelho para o bairro Junco Baixo, com possibilidade de atingir residências em 12 a 18 horas. Nos documentos de saúde, a remoção de pessoas acamadas das áreas de risco depende do Transporte Sanitário e da lista das equipes de Saúde da Família. Há um histórico de dificuldade na remoção em 2024 por lista desatualizada e uma mudança de responsável em 2025.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Transporte Sanitário\",\"tipo\":\"servico\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Serviço que coordena a remoção de pessoas acamadas das áreas de risco.\"},{\"id\":\"E2\",\"nome\":\"Lista de pessoas acamadas\",\"tipo\":\"recurso\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Relação mantida pelas equipes de Saúde da Família para apoiar a remoção de pessoas acamadas.\"},{\"id\":\"E3\",\"nome\":\"Equipes de Saúde da Família\",\"tipo\":\"setor\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Equipes que mantêm a lista de pessoas acamadas.\"},{\"id\":\"E4\",\"nome\":\"Ana Ribeiro\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Ex-coordenadora do Transporte Sanitário; em 2025 passou a exercer função de diretora administrativa na Secretaria de Educação.\"},{\"id\":\"E5\",\"nome\":\"Carlos Menezes\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Designado para a coordenação do Transporte Sanitário a partir de 10/02/2025.\"},{\"id\":\"E6\",\"nome\":\"Junco Baixo\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Bairro citado no alerta de inundação e no relatório de ocorrência de 2024.\"},{\"id\":\"E7\",\"nome\":\"Pessoas acamadas\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Grupo cujo deslocamento das áreas de risco é tratado no plano de contingência.\"},{\"id\":\"E8\",\"nome\":\"Alerta de inundação\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Cenário de alerta emitido em 2026-11-23 com nível vermelho para o bairro Junco Baixo.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E7\",\"tipo\":\"atende\",\"rotulo\":\"O Transporte Sanitário coordena a remoção de pessoas acamadas.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2023-10-01\",\"fim\":null,\"observacao\":\"Conforme o plano vigente e a atualização de 2025 sobre a chefia do serviço.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A remoção de pessoas acamadas das áreas de risco é coordenada pelo Transporte Sanitário.\"}]},{\"id\":\"R2\",\"origem\":\"E3\",\"destino\":\"E2\",\"tipo\":\"responsavel_por\",\"rotulo\":\"As equipes de Saúde da Família mantêm a lista de pessoas acamadas.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2023-10-01\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A lista de pessoas acamadas é mantida pelas equipes de Saúde da Família.\"}]},{\"id\":\"R3\",\"origem\":\"E8\",\"destino\":\"E6\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta de inundação abrange o bairro Junco Baixo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: VERMELHO para o bairro Junco Baixo.\"}]},{\"id\":\"R4\",\"origem\":\"E8\",\"destino\":\"E7\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta indica possibilidade de atingir residências no intervalo citado.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"com possibilidade de atingir residências em 12 a 18 horas.\"}]},{\"id\":\"R5\",\"origem\":\"E1\",\"destino\":\"E5\",\"tipo\":\"responsavel_por\",\"rotulo\":\"Carlos Menezes passa a coordenar o Transporte Sanitário.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-02-10\",\"fim\":null,\"observacao\":\"Substituição formal indicada na portaria.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025.\"}]},{\"id\":\"R6\",\"origem\":\"E4\",\"destino\":\"E1\",\"tipo\":\"substitui\",\"rotulo\":\"Ana Ribeiro deixou a coordenação do Transporte Sanitário e passou à Educação.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-02-03\",\"fim\":null,\"observacao\":\"Mudança de função registrada na portaria.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Ana Ribeiro, matrícula 4412, passa a exercer a função de diretora administrativa na Secretaria de Educação.\"}]},{\"id\":\"R7\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"depende_de\",\"rotulo\":\"A remoção depende da lista atualizada de pessoas acamadas.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2023-10-01\",\"fim\":null,\"observacao\":\"A dependência é deduzida do plano e do problema relatado em 2024.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A lista de pessoas acamadas é mantida pelas equipes de Saúde da Família.\"},{\"doc_id\":\"D4\",\"trecho\":\"A lista das equipes de Saúde da Família estava desatualizada:\"}]},{\"id\":\"R8\",\"origem\":\"E6\",\"destino\":\"E2\",\"tipo\":\"outro\",\"rotulo\":\"Em 2024, a lista estava desatualizada no contexto de remoção em Junco Baixo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-25\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"A lista das equipes de Saúde da Família estava desatualizada:\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"contradicao\",\"descricao\":\"A chefia do Transporte Sanitário mudou em 2025: Ana Ribeiro deixou a coordenação e Carlos Menezes foi designado para a função.\",\"implicacao\":\"A pessoa indicada no plano de 2023 não deve ser tratada como responsável atual sem confirmação adicional.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Responsável: Ana Ribeiro (coordenadora do Transporte Sanitário)\"},{\"doc_id\":\"D3\",\"trecho\":\"Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025.\"}]},{\"id\":\"T2\",\"tipo\":\"solucao_parcial\",\"descricao\":\"Houve uma recomendação após a ocorrência de 2024 para atualizar a lista de pessoas acamadas semestralmente.\",\"implicacao\":\"A lista é um ponto sensível para a remoção, mas não há documento posterior comprovando que a recomendação foi adotada.\",\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"Recomendação: atualizar a lista semestralmente.\"}]},{\"id\":\"T3\",\"tipo\":\"pendencia_historica\",\"descricao\":\"O relatório de 2024 registrou desatualização da lista, com pessoas mudando de endereço e outras sem constar na lista.\",\"implicacao\":\"Permanece a necessidade de confirmação atual da lista antes de usar o cadastro para a remoção preventiva.\",\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"3 pessoas tinham mudado de endereço e 2 não constavam na lista.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"Quem está atualmente responsável pela coordenação do Transporte Sanitário para a remoção de pessoas acamadas?\",\"por_que_importa\":\"O plano vigente cita uma responsável antiga, mas há portaria posterior designando outra pessoa.\",\"motivacao\":\"Mudança formal de responsável entre o plano de 2023 e a portaria de 2025.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E4\",\"E5\"],\"setores_relacionados\":[\"Saúde\"],\"status_epistemico\":\"contradicao\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Responsável: Ana Ribeiro (coordenadora do Transporte Sanitário)\"},{\"doc_id\":\"D3\",\"trecho\":\"Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025.\"}],\"o_que_falta_saber\":\"Se a troca de coordenação foi operacionalizada e quem responde hoje pelo serviço.\",\"quem_pode_confirmar\":\"Secretaria de Saúde ou a coordenação do Transporte Sanitário.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A lista de pessoas acamadas está atualizada para o bairro Junco Baixo e demais áreas cobertas?\",\"por_que_importa\":\"A remoção depende dessa lista, e o relatório de 2024 mostrou falhas concretas no cadastro.\",\"motivacao\":\"Desatualização da lista e recomendação de atualização semestral após a ocorrência de 2024.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E6\",\"E7\"],\"setores_relacionados\":[\"Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A lista de pessoas acamadas é mantida pelas equipes de Saúde da Família.\"},{\"doc_id\":\"D4\",\"trecho\":\"A lista das equipes de Saúde da Família estava desatualizada:\"},{\"doc_id\":\"D4\",\"trecho\":\"Recomendação: atualizar a lista semestralmente.\"}],\"o_que_falta_saber\":\"Se a atualização recomendada foi feita e se o cadastro inclui as pessoas atualmente acamadas.\",\"quem_pode_confirmar\":\"Equipes de Saúde da Família e Secretaria de Saúde.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"A lista atual permite localizar corretamente as pessoas acamadas que podem ser afetadas no Junco Baixo?\",\"por_que_importa\":\"O relatório mostrou que algumas pessoas haviam mudado de endereço ou nem constavam na lista, o que pode atrasar a remoção.\",\"motivacao\":\"Falhas registradas na remoção de 2024 no Junco Baixo.\",\"base\":\"registro_historico\",\"entidades_relacionadas\":[\"E2\",\"E6\",\"E7\"],\"setores_relacionados\":[\"Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"3 pessoas tinham mudado de endereço e 2 não constavam na lista.\"}],\"o_que_falta_saber\":\"Se houve conferência domiciliar ou atualização recente dos endereços e nomes.\",\"quem_pode_confirmar\":\"Equipes de Saúde da Família.\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"O Transporte Sanitário dispõe de equipe e meios para realizar a remoção de pessoas acamadas dentro do intervalo indicado no alerta?\",\"por_que_importa\":\"O alerta dá uma janela curta de 12 a 18 horas, e a remoção anterior levou cerca de 7 horas para 11 pessoas.\",\"motivacao\":\"Tempo gasto na ocorrência de 2024 e janela temporal do alerta atual.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E7\",\"E8\",\"E6\"],\"setores_relacionados\":[\"Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"A remoção de 11 pessoas acamadas do Junco Baixo levou cerca de 7 horas.\"},{\"doc_id\":\"D2\",\"trecho\":\"com possibilidade de atingir residências em 12 a 18 horas.\"}],\"o_que_falta_saber\":\"Quantas pessoas acamadas podem precisar de remoção e se há capacidade operacional atual.\",\"quem_pode_confirmar\":\"Coordenação do Transporte Sanitário e Secretaria de Saúde.\",\"prioridade\":\"media\"},{\"id\":\"V5\",\"pergunta\":\"Existe algum procedimento atualizado para remoção de pessoas acamadas em situação de inundação diferente do plano de 2023?\",\"por_que_importa\":\"Há um plano vigente, mas também um relatório posterior com problema operacional e mudança de responsável.\",\"motivacao\":\"Possível necessidade de atualização do procedimento após 2024 e 2025.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\",\"E4\",\"E5\"],\"setores_relacionados\":[\"Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A remoção de pessoas acamadas das áreas de risco é coordenada pelo Transporte Sanitário.\"},{\"doc_id\":\"D4\",\"trecho\":\"Recomendação: atualizar a lista semestralmente.\"},{\"doc_id\":\"D3\",\"trecho\":\"Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025.\"}],\"o_que_falta_saber\":\"Se houve revisão formal do plano ou orientação complementar após 2024/2025.\",\"quem_pode_confirmar\":\"Gabinete do Prefeito, Secretaria de Saúde ou COMPDEC.\",\"prioridade\":\"baixa\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há documento com a lista nominal atual das pessoas acamadas.\",\"por_que_importa\":\"Sem essa lista não é possível verificar quem deve ser considerado na remoção preventiva.\"},{\"descricao\":\"Não há documento posterior confirmando a adoção da atualização semestral recomendada.\",\"por_que_importa\":\"Não dá para assumir que a falha registrada em 2024 foi sanada.\"},{\"descricao\":\"Não há informação sobre a capacidade operacional atual do Transporte Sanitário.\",\"por_que_importa\":\"A viabilidade da remoção no tempo disponível não pode ser estimada com segurança.\"}],\"cautelas\":[\"O alerta é específico para Junco Baixo; não ampliar conclusões para outros bairros sem vínculo documentado.\",\"A referência do plano de 2023 sobre a coordenação de Ana Ribeiro foi superada pela portaria de 2025 para fins de responsável atual.\",\"O relatório de 2024 é histórico e não comprova que o problema persistiu até 2026, apenas mostra que ele existiu.\",\"Não assumir que a lista foi atualizada porque houve recomendação; falta documento confirmando a execução.\",\"Evitar interpretar o nível vermelho como decisão administrativa; ele apenas fundamenta a pauta de verificações.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_08b6ea0661f5674a016b06ec2e3aa487d2a611474833129bc1",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2244,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 3284,
+      "output_tokens_details": {
+        "reasoning_tokens": 33
+      },
+      "total_tokens": 5528
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"Há um alerta de inundação em nível vermelho para o bairro Junco Baixo, com possibilidade de atingir residências em 12 a 18 horas. Nos documentos de saúde, a remoção de pessoas acamadas das áreas de risco depende do Transporte Sanitário e da lista das equipes de Saúde da Família. Há um histórico de dificuldade na remoção em 2024 por lista desatualizada e uma mudança de responsável em 2025.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Transporte Sanitário\",\"tipo\":\"servico\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Serviço que coordena a remoção de pessoas acamadas das áreas de risco.\"},{\"id\":\"E2\",\"nome\":\"Lista de pessoas acamadas\",\"tipo\":\"recurso\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Relação mantida pelas equipes de Saúde da Família para apoiar a remoção de pessoas acamadas.\"},{\"id\":\"E3\",\"nome\":\"Equipes de Saúde da Família\",\"tipo\":\"setor\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Equipes que mantêm a lista de pessoas acamadas.\"},{\"id\":\"E4\",\"nome\":\"Ana Ribeiro\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Ex-coordenadora do Transporte Sanitário; em 2025 passou a exercer função de diretora administrativa na Secretaria de Educação.\"},{\"id\":\"E5\",\"nome\":\"Carlos Menezes\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Designado para a coordenação do Transporte Sanitário a partir de 10/02/2025.\"},{\"id\":\"E6\",\"nome\":\"Junco Baixo\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Bairro citado no alerta de inundação e no relatório de ocorrência de 2024.\"},{\"id\":\"E7\",\"nome\":\"Pessoas acamadas\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":\"Saúde\",\"descricao\":\"Grupo cujo deslocamento das áreas de risco é tratado no plano de contingência.\"},{\"id\":\"E8\",\"nome\":\"Alerta de inundação\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Cenário de alerta emitido em 2026-11-23 com nível vermelho para o bairro Junco Baixo.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E7\",\"tipo\":\"atende\",\"rotulo\":\"O Transporte Sanitário coordena a remoção de pessoas acamadas.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2023-10-01\",\"fim\":null,\"observacao\":\"Conforme o plano vigente e a atualização de 2025 sobre a chefia do serviço.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A remoção de pessoas acamadas das áreas de risco é coordenada pelo Transporte Sanitário.\"}]},{\"id\":\"R2\",\"origem\":\"E3\",\"destino\":\"E2\",\"tipo\":\"responsavel_por\",\"rotulo\":\"As equipes de Saúde da Família mantêm a lista de pessoas acamadas.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2023-10-01\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A lista de pessoas acamadas é mantida pelas equipes de Saúde da Família.\"}]},{\"id\":\"R3\",\"origem\":\"E8\",\"destino\":\"E6\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta de inundação abrange o bairro Junco Baixo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: VERMELHO para o bairro Junco Baixo.\"}]},{\"id\":\"R4\",\"origem\":\"E8\",\"destino\":\"E7\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta indica possibilidade de atingir residências no intervalo citado.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"com possibilidade de atingir residências em 12 a 18 horas.\"}]},{\"id\":\"R5\",\"origem\":\"E1\",\"destino\":\"E5\",\"tipo\":\"responsavel_por\",\"rotulo\":\"Carlos Menezes passa a coordenar o Transporte Sanitário.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-02-10\",\"fim\":null,\"observacao\":\"Substituição formal indicada na portaria.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025.\"}]},{\"id\":\"R6\",\"origem\":\"E4\",\"destino\":\"E1\",\"tipo\":\"substitui\",\"rotulo\":\"Ana Ribeiro deixou a coordenação do Transporte Sanitário e passou à Educação.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-02-03\",\"fim\":null,\"observacao\":\"Mudança de função registrada na portaria.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Ana Ribeiro, matrícula 4412, passa a exercer a função de diretora administrativa na Secretaria de Educação.\"}]},{\"id\":\"R7\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"depende_de\",\"rotulo\":\"A remoção depende da lista atualizada de pessoas acamadas.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2023-10-01\",\"fim\":null,\"observacao\":\"A dependência é deduzida do plano e do problema relatado em 2024.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A lista de pessoas acamadas é mantida pelas equipes de Saúde da Família.\"},{\"doc_id\":\"D4\",\"trecho\":\"A lista das equipes de Saúde da Família estava desatualizada:\"}]},{\"id\":\"R8\",\"origem\":\"E6\",\"destino\":\"E2\",\"tipo\":\"outro\",\"rotulo\":\"Em 2024, a lista estava desatualizada no contexto de remoção em Junco Baixo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-05-25\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"A lista das equipes de Saúde da Família estava desatualizada:\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"contradicao\",\"descricao\":\"A chefia do Transporte Sanitário mudou em 2025: Ana Ribeiro deixou a coordenação e Carlos Menezes foi designado para a função.\",\"implicacao\":\"A pessoa indicada no plano de 2023 não deve ser tratada como responsável atual sem confirmação adicional.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Responsável: Ana Ribeiro (coordenadora do Transporte Sanitário)\"},{\"doc_id\":\"D3\",\"trecho\":\"Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025.\"}]},{\"id\":\"T2\",\"tipo\":\"solucao_parcial\",\"descricao\":\"Houve uma recomendação após a ocorrência de 2024 para atualizar a lista de pessoas acamadas semestralmente.\",\"implicacao\":\"A lista é um ponto sensível para a remoção, mas não há documento posterior comprovando que a recomendação foi adotada.\",\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"Recomendação: atualizar a lista semestralmente.\"}]},{\"id\":\"T3\",\"tipo\":\"pendencia_historica\",\"descricao\":\"O relatório de 2024 registrou desatualização da lista, com pessoas mudando de endereço e outras sem constar na lista.\",\"implicacao\":\"Permanece a necessidade de confirmação atual da lista antes de usar o cadastro para a remoção preventiva.\",\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"3 pessoas tinham mudado de endereço e 2 não constavam na lista.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"Quem está atualmente responsável pela coordenação do Transporte Sanitário para a remoção de pessoas acamadas?\",\"por_que_importa\":\"O plano vigente cita uma responsável antiga, mas há portaria posterior designando outra pessoa.\",\"motivacao\":\"Mudança formal de responsável entre o plano de 2023 e a portaria de 2025.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E4\",\"E5\"],\"setores_relacionados\":[\"Saúde\"],\"status_epistemico\":\"contradicao\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Responsável: Ana Ribeiro (coordenadora do Transporte Sanitário)\"},{\"doc_id\":\"D3\",\"trecho\":\"Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025.\"}],\"o_que_falta_saber\":\"Se a troca de coordenação foi operacionalizada e quem responde hoje pelo serviço.\",\"quem_pode_confirmar\":\"Secretaria de Saúde ou a coordenação do Transporte Sanitário.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A lista de pessoas acamadas está atualizada para o bairro Junco Baixo e demais áreas cobertas?\",\"por_que_importa\":\"A remoção depende dessa lista, e o relatório de 2024 mostrou falhas concretas no cadastro.\",\"motivacao\":\"Desatualização da lista e recomendação de atualização semestral após a ocorrência de 2024.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E6\",\"E7\"],\"setores_relacionados\":[\"Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A lista de pessoas acamadas é mantida pelas equipes de Saúde da Família.\"},{\"doc_id\":\"D4\",\"trecho\":\"A lista das equipes de Saúde da Família estava desatualizada:\"},{\"doc_id\":\"D4\",\"trecho\":\"Recomendação: atualizar a lista semestralmente.\"}],\"o_que_falta_saber\":\"Se a atualização recomendada foi feita e se o cadastro inclui as pessoas atualmente acamadas.\",\"quem_pode_confirmar\":\"Equipes de Saúde da Família e Secretaria de Saúde.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"A lista atual permite localizar corretamente as pessoas acamadas que podem ser afetadas no Junco Baixo?\",\"por_que_importa\":\"O relatório mostrou que algumas pessoas haviam mudado de endereço ou nem constavam na lista, o que pode atrasar a remoção.\",\"motivacao\":\"Falhas registradas na remoção de 2024 no Junco Baixo.\",\"base\":\"registro_historico\",\"entidades_relacionadas\":[\"E2\",\"E6\",\"E7\"],\"setores_relacionados\":[\"Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"3 pessoas tinham mudado de endereço e 2 não constavam na lista.\"}],\"o_que_falta_saber\":\"Se houve conferência domiciliar ou atualização recente dos endereços e nomes.\",\"quem_pode_confirmar\":\"Equipes de Saúde da Família.\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"O Transporte Sanitário dispõe de equipe e meios para realizar a remoção de pessoas acamadas dentro do intervalo indicado no alerta?\",\"por_que_importa\":\"O alerta dá uma janela curta de 12 a 18 horas, e a remoção anterior levou cerca de 7 horas para 11 pessoas.\",\"motivacao\":\"Tempo gasto na ocorrência de 2024 e janela temporal do alerta atual.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E7\",\"E8\",\"E6\"],\"setores_relacionados\":[\"Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D4\",\"trecho\":\"A remoção de 11 pessoas acamadas do Junco Baixo levou cerca de 7 horas.\"},{\"doc_id\":\"D2\",\"trecho\":\"com possibilidade de atingir residências em 12 a 18 horas.\"}],\"o_que_falta_saber\":\"Quantas pessoas acamadas podem precisar de remoção e se há capacidade operacional atual.\",\"quem_pode_confirmar\":\"Coordenação do Transporte Sanitário e Secretaria de Saúde.\",\"prioridade\":\"media\"},{\"id\":\"V5\",\"pergunta\":\"Existe algum procedimento atualizado para remoção de pessoas acamadas em situação de inundação diferente do plano de 2023?\",\"por_que_importa\":\"Há um plano vigente, mas também um relatório posterior com problema operacional e mudança de responsável.\",\"motivacao\":\"Possível necessidade de atualização do procedimento após 2024 e 2025.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E3\",\"E4\",\"E5\"],\"setores_relacionados\":[\"Saúde\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"A remoção de pessoas acamadas das áreas de risco é coordenada pelo Transporte Sanitário.\"},{\"doc_id\":\"D4\",\"trecho\":\"Recomendação: atualizar a lista semestralmente.\"},{\"doc_id\":\"D3\",\"trecho\":\"Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025.\"}],\"o_que_falta_saber\":\"Se houve revisão formal do plano ou orientação complementar após 2024/2025.\",\"quem_pode_confirmar\":\"Gabinete do Prefeito, Secretaria de Saúde ou COMPDEC.\",\"prioridade\":\"baixa\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há documento com a lista nominal atual das pessoas acamadas.\",\"por_que_importa\":\"Sem essa lista não é possível verificar quem deve ser considerado na remoção preventiva.\"},{\"descricao\":\"Não há documento posterior confirmando a adoção da atualização semestral recomendada.\",\"por_que_importa\":\"Não dá para assumir que a falha registrada em 2024 foi sanada.\"},{\"descricao\":\"Não há informação sobre a capacidade operacional atual do Transporte Sanitário.\",\"por_que_importa\":\"A viabilidade da remoção no tempo disponível não pode ser estimada com segurança.\"}],\"cautelas\":[\"O alerta é específico para Junco Baixo; não ampliar conclusões para outros bairros sem vínculo documentado.\",\"A referência do plano de 2023 sobre a coordenação de Ana Ribeiro foi superada pela portaria de 2025 para fins de responsável atual.\",\"O relatório de 2024 é histórico e não comprova que o problema persistiu até 2026, apenas mostra que ele existiu.\",\"Não assumir que a lista foi atualizada porque houve recomendação; falta documento confirmando a execução.\",\"Evitar interpretar o nível vermelho como decisão administrativa; ele apenas fundamenta a pauta de verificações.\"]}"
+  }
+}

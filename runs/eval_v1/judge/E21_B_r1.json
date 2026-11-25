@@ -1,0 +1,121 @@
+{
+  "run_file": "E21_B_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-5.4-2026-03-05",
+    "reasoning_effort": "low",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_0f0eea4aaa94afce016b06ee283fa887d28f1f9c35a378380f",
+  "model_reported": "gpt-5.4-2026-03-05",
+  "usage": {
+    "input_tokens": 5191,
+    "output_tokens": 1517,
+    "reasoning_tokens": 785
+  },
+  "latency_ms": 22245,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V1",
+          "V2"
+        ],
+        "justificativa": "A saída cobre o acesso/liberação na Central, mas não explicita a confirmação do transporte dos materiais até o Ginásio."
+      },
+      {
+        "id": "G2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V2"
+        ],
+        "justificativa": "V2 pergunta diretamente se há mais de um responsável com acesso, em linha com o atraso de 2024."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V1",
+          "V3",
+          "R1",
+          "R3"
+        ],
+        "justificativa": "A saída reconhece o abrigo no Ginásio e os materiais na Central, mas a etapa de transporte até o abrigo não é tratada de forma explícita e central."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "correto",
+        "ids_saida": [
+          "T1",
+          "V5",
+          "R7",
+          "R9"
+        ],
+        "justificativa": "A saída trata explicitamente o arranjo de 2024 como histórico/superado pela Central de Logística em 2026."
+      }
+    ],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "reconhecido",
+        "ids_saida": [
+          "V1",
+          "V2"
+        ],
+        "justificativa": "A saída explicita que falta saber quem tem acesso operacional hoje e quantas pessoas têm acesso autorizado à Central."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída trata o almoxarifado do ginásio e a chave com o zelador apenas como informação histórica, não vigente."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde parcialmente ao G1 ao verificar acesso/liberação atual dos materiais na Central."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde diretamente ao G2 e também cobre parte do G1 sobre acesso à Central."
+      },
+      {
+        "id": "V3",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É uma checagem relevante e específica sobre a prontidão do abrigo, sustentada por D1 e D2, mas não prevista no gabarito."
+      },
+      {
+        "id": "V4",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É relevante e específica sobre prontidão operacional dos itens citados no plano, sem repetir item do gabarito."
+      },
+      {
+        "id": "V5",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É uma checagem específica sobre possível confusão entre arranjo antigo e atual, sustentada por D3 e D1, embora não conste no gabarito."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "achados_temporais.T2.descricao",
+        "afirmacao": "\"O problema de acesso ligado à única chave com o zelador (...) foi seguido por uma mudança de arranjo no plano de 2026\" trata a mudança como resposta ao problema, vínculo causal que os documentos não afirmam explicitamente."
+      },
+      {
+        "onde": "resumo_situacao",
+        "afirmacao": "\"o atraso (...) por problema de acesso à chave, depois superado pela centralização dos materiais\" sugere que o problema foi superado, mas os documentos não comprovam que o acesso atual esteja resolvido."
+      }
+    ]
+  }
+}

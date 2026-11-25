@@ -1,0 +1,108 @@
+{
+  "run_file": "E17_B_r2.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-5.4-2026-03-05",
+    "reasoning_effort": "low",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_09aeca17c4e7f963016b06ee131ef487d28579fa2d2f5f0002",
+  "model_reported": "gpt-5.4-2026-03-05",
+  "usage": {
+    "input_tokens": 4897,
+    "output_tokens": 1137,
+    "reasoning_tokens": 516
+  },
+  "latency_ms": 18074,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V2",
+          "V4"
+        ],
+        "justificativa": "A saída verifica tanto a superação potencial da cota do muro da ETA quanto o acionamento do aviso de racionamento com 12 horas."
+      },
+      {
+        "id": "G2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V3"
+        ],
+        "justificativa": "A saída verifica explicitamente o abastecimento alternativo para hospital e abrigos com base no antecedente de 2024."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V1",
+          "V3",
+          "V4"
+        ],
+        "justificativa": "A saída cobre a cota prevista acima do muro e também hospital/abrigos, mas não explicita de forma encadeada a cadeia completa ETA → tratamento de água → hospital e abrigos."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V4",
+          "V5",
+          "T1",
+          "T2"
+        ],
+        "justificativa": "A saída reconhece que houve resposta nova após 2024 e sugere vulnerabilidade residual, mas não enuncia claramente que o muro de 8,5 m fica abaixo dos 8,9 m de 2024 como solução apenas parcial."
+      }
+    ],
+    "gold_insuficiente": [],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída fala em risco e necessidade de verificação, sem afirmar como fato que a ETA será inundada."
+      },
+      {
+        "id": "X2",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não trata o muro como garantia de proteção; ao contrário, explicita cautela sobre níveis acima de 8,5 m."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à verificação da proteção da ETA diante de previsão que alcança/supera a cota do muro."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à verificação do acionamento do aviso de racionamento com 12 horas."
+      },
+      {
+        "id": "V3",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde à verificação de abastecimento alternativo para hospital e abrigos."
+      },
+      {
+        "id": "V4",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Retoma a mesma questão concreta de G1 sobre a previsão máxima acima da cota do muro e o risco para a ETA."
+      },
+      {
+        "id": "V5",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É uma verificação relevante e sustentada sobre incorporação das lições de 2024, mas não coincide diretamente com um item de gold_checks."
+      }
+    ],
+    "afirmacoes_sem_respaldo": []
+  }
+}

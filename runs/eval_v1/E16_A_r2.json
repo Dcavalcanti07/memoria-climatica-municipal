@@ -1,0 +1,1138 @@
+{
+  "meta": {
+    "scenario": "E16",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 2,
+    "tag": "eval_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 699,
+    "user_message_sha12": "b77a4d3284de"
+  },
+  "user_message": "Município (fictício): Córrego Fundo\nData de referência da análise: 2026-11-23\nDocumentos disponíveis (2), em ordem cronológica:\n\n### [D1] Plano de Contingência (2025) — Rotas\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2025-04-10\n\nRota de evacuação da comunidade Fundão: Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista (abrigo, 60 pessoas).\n\n---\n\n### [D2] Alerta de enxurrada (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-23\n\nNÍVEL: LARANJA. Chuva intensa pode elevar rapidamente o Córrego Fundo nas próximas 24 horas.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_0987e35714301fcf016b06ecf19de487d294dfbae64d0d9a94",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 2006,
+    "output_tokens": 3283,
+    "reasoning_tokens": 131
+  },
+  "latency_ms": 20673,
+  "started_at": "2026-11-25T14:13:05.061Z",
+  "output": {
+    "resumo_situacao": "Há um alerta de enxurrada com nível laranja para 2026-11-23, indicando que a chuva intensa pode elevar rapidamente o Córrego Fundo nas próximas 24 horas. O plano de contingência disponível traz uma rota de evacuação para a comunidade Fundão até a Escola Rural Boa Vista, usada como abrigo para 60 pessoas.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Córrego Fundo",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Curso d'água citado no alerta como podendo elevar rapidamente nas próximas 24 horas."
+      },
+      {
+        "id": "E2",
+        "nome": "Comunidade Fundão",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": null,
+        "descricao": "Comunidade mencionada no plano de contingência como origem da rota de evacuação."
+      },
+      {
+        "id": "E3",
+        "nome": "Ponte do Córrego Fundo",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Ponto inicial da rota de evacuação descrita no plano."
+      },
+      {
+        "id": "E4",
+        "nome": "Estrada Municipal 4",
+        "tipo": "infraestrutura",
+        "setor_responsavel": null,
+        "descricao": "Trecho da rota de evacuação descrita no plano."
+      },
+      {
+        "id": "E5",
+        "nome": "Escola Rural Boa Vista",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Destino da rota de evacuação; indicado como abrigo no plano."
+      },
+      {
+        "id": "E6",
+        "nome": "Abrigo para 60 pessoas",
+        "tipo": "servico",
+        "setor_responsavel": null,
+        "descricao": "Uso previsto para a Escola Rural Boa Vista no plano de contingência."
+      },
+      {
+        "id": "E7",
+        "nome": "Rota de evacuação da comunidade Fundão",
+        "tipo": "servico",
+        "setor_responsavel": null,
+        "descricao": "Percurso definido no plano: Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista."
+      },
+      {
+        "id": "E8",
+        "nome": "Chuva intensa",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Evento mencionado no alerta como causa potencial de elevação rápida do córrego."
+      },
+      {
+        "id": "E9",
+        "nome": "Alerta de enxurrada (cenário fictício)",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Documento de alerta com nível laranja e projeção para as próximas 24 horas."
+      },
+      {
+        "id": "E10",
+        "nome": "COMPDEC",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Fonte do plano de contingência de 2025."
+      },
+      {
+        "id": "E11",
+        "nome": "Sala de Situação Regional",
+        "tipo": "setor",
+        "setor_responsavel": "Sala de Situação Regional",
+        "descricao": "Fonte do alerta de 2026-11-23."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E7",
+        "destino": "E2",
+        "tipo": "atende",
+        "rotulo": "A rota atende a comunidade Fundão.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-04-10",
+          "fim": null,
+          "observacao": "Consta no plano de contingência de 2025."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Rota de evacuação da comunidade Fundão"
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E7",
+        "destino": "E3",
+        "tipo": "depende_de",
+        "rotulo": "A rota passa pela Ponte do Córrego Fundo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-04-10",
+          "fim": null,
+          "observacao": "Traçado descrito no plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Ponte do Córrego Fundo → Estrada Municipal 4"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E7",
+        "destino": "E4",
+        "tipo": "depende_de",
+        "rotulo": "A rota passa pela Estrada Municipal 4.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-04-10",
+          "fim": null,
+          "observacao": "Traçado descrito no plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista"
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E7",
+        "destino": "E5",
+        "tipo": "depende_de",
+        "rotulo": "A rota termina na Escola Rural Boa Vista.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-04-10",
+          "fim": null,
+          "observacao": "Destino indicado no plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "→ Escola Rural Boa Vista (abrigo, 60 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E5",
+        "destino": "E6",
+        "tipo": "atende",
+        "rotulo": "A Escola Rural Boa Vista é indicada como abrigo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-04-10",
+          "fim": null,
+          "observacao": "Indicação explícita no plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Escola Rural Boa Vista (abrigo, 60 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E8",
+        "destino": "E1",
+        "tipo": "afetado_por",
+        "rotulo": "A chuva intensa pode elevar rapidamente o Córrego Fundo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-23",
+          "fim": null,
+          "observacao": "Projeção do alerta para as próximas 24 horas."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Chuva intensa pode elevar rapidamente o Córrego Fundo nas próximas 24 horas."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E9",
+        "destino": "E1",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta se refere ao Córrego Fundo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-23",
+          "fim": null,
+          "observacao": "Alerta emitido na data de referência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: LARANJA. Chuva intensa pode elevar rapidamente o Córrego Fundo"
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E9",
+        "destino": "E2",
+        "tipo": "afetado_por",
+        "rotulo": "A comunidade Fundão pode ser impactada pela situação de enxurrada.",
+        "status_epistemico": "inferencia",
+        "periodo": {
+          "inicio": "2026-11-23",
+          "fim": null,
+          "observacao": "Inferido pela existência da rota de evacuação e pelo alerta no mesmo território."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Rota de evacuação da comunidade Fundão"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Chuva intensa pode elevar rapidamente o Córrego Fundo"
+          }
+        ]
+      },
+      {
+        "id": "R9",
+        "origem": "E10",
+        "destino": "E7",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC é a fonte do plano com a rota.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-04-10",
+          "fim": null,
+          "observacao": "Responsabilidade documental da fonte."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Fonte: COMPDEC"
+          }
+        ]
+      },
+      {
+        "id": "R10",
+        "origem": "E11",
+        "destino": "E9",
+        "tipo": "responsavel_por",
+        "rotulo": "A Sala de Situação Regional é a fonte do alerta.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-23",
+          "fim": null,
+          "observacao": "Responsabilidade documental da fonte."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Fonte: Sala de Situação Regional (fictícia)"
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "O documento mais recente é um alerta de 2026-11-23, enquanto a rota de evacuação disponível é de 2025-04-10.",
+        "implicacao": "A rota existe em documento anterior, mas não há confirmação de atualização, teste ou alteração no texto disponível.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Plano de Contingência (2025) — Rotas"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "D2] Alerta de enxurrada (cenário fictício)"
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "A rota de evacuação da comunidade Fundão continua livre e utilizável no trecho da Ponte do Córrego Fundo até a Escola Rural Boa Vista?",
+        "por_que_importa": "O plano depende desse percurso; o alerta indica elevação rápida do córrego nas próximas 24 horas.",
+        "motivacao": "O trajeto descrito no plano passa por ponte e estrada que podem ser sensíveis a enxurrada.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E2",
+          "E3",
+          "E4",
+          "E5",
+          "E7",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "inferencia",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Chuva intensa pode elevar rapidamente o Córrego Fundo nas próximas 24 horas."
+          }
+        ],
+        "o_que_falta_saber": "Se há bloqueios, danos, alagamento ou alteração de trânsito no trajeto.",
+        "quem_pode_confirmar": "COMPDEC ou setor responsável por vias/obras, conforme organização local.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "A Escola Rural Boa Vista está disponível e preparada para funcionar como abrigo para 60 pessoas neste momento?",
+        "por_que_importa": "O plano indica esse local como abrigo; é preciso confirmar se o uso ainda é possível e com capacidade compatível.",
+        "motivacao": "O documento define o abrigo, mas não informa situação operacional atual.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E5",
+          "E6",
+          "E7"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Escola Rural Boa Vista (abrigo, 60 pessoas)."
+          }
+        ],
+        "o_que_falta_saber": "Se o espaço está acessível, desocupado, com abertura autorizada e condições mínimas de uso.",
+        "quem_pode_confirmar": "Direção da Escola Rural Boa Vista, COMPDEC ou setor municipal responsável por abrigos.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "A Ponte do Córrego Fundo apresenta condição segura de passagem no cenário atual de chuva intensa?",
+        "por_que_importa": "A ponte é ponto inicial da rota e pode ser o primeiro trecho comprometido se o córrego subir rapidamente.",
+        "motivacao": "O alerta fala em elevação rápida do córrego, mas não informa a condição da ponte.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E3",
+          "E7",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Ponte do Córrego Fundo → Estrada Municipal 4"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Chuva intensa pode elevar rapidamente o Córrego Fundo"
+          }
+        ],
+        "o_que_falta_saber": "Se houve restrição, dano, transbordamento próximo ou necessidade de desvio.",
+        "quem_pode_confirmar": "Setor responsável por pontes/vias e COMPDEC.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V4",
+        "pergunta": "A Estrada Municipal 4 permanece desobstruída ao longo do trecho previsto na rota de evacuação?",
+        "por_que_importa": "A estrada integra a rota e precisa ser verificada antes de eventual deslocamento preventivo da comunidade.",
+        "motivacao": "O plano depende do trecho viário e o alerta aumenta a necessidade de confirmação operacional.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E4",
+          "E7",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: LARANJA."
+          }
+        ],
+        "o_que_falta_saber": "Se há atoleiro, queda de barreira, alagamento ou interdição no trajeto.",
+        "quem_pode_confirmar": "Setor municipal de obras/vias e COMPDEC.",
+        "prioridade": "media"
+      },
+      {
+        "id": "V5",
+        "pergunta": "A comunidade Fundão recebeu orientação atual sobre a rota de evacuação prevista no plano?",
+        "por_que_importa": "A existência da rota no plano não garante que a comunidade esteja informada no momento do alerta.",
+        "motivacao": "O alerta é atual e o documento da rota é anterior; a comunicação precisa ser checada.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E2",
+          "E7",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Rota de evacuação da comunidade Fundão"
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: LARANJA."
+          }
+        ],
+        "o_que_falta_saber": "Se houve aviso à comunidade, por qual meio e em qual horário.",
+        "quem_pode_confirmar": "COMPDEC ou setor de comunicação da prefeitura, se houver.",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há informação sobre condições atuais da ponte, da estrada e do abrigo.",
+        "por_que_importa": "Esses pontos sustentam a rota de evacuação descrita no plano."
+      },
+      {
+        "descricao": "Não há confirmação de atualização do plano de 2025 após o alerta de 2026-11-23.",
+        "por_que_importa": "Ajuda a saber se o roteiro ainda é o vigente ou se houve mudança documentada."
+      },
+      {
+        "descricao": "Não há registro de responsáveis operacionais específicos por vias, abrigo ou comunicação.",
+        "por_que_importa": "Isso limita a definição de quem pode confirmar cada verificação sem suposição institucional."
+      }
+    ],
+    "cautelas": [
+      "O alerta é fictício e o nível laranja foi tratado apenas como dado documental.",
+      "A rota de evacuação foi registrada em documento anterior; não foi assumido que ela continue igual sem confirmação.",
+      "Não há base documental para concluir que o abrigo esteja aberto, pronto ou acessível.",
+      "As verificações foram formuladas para checagem humana, sem recomendar evacuação ou outras decisões operacionais."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 11,
+    "n_relacoes": 10,
+    "n_verificacoes": 5,
+    "n_temporais": 1,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Rota de evacuação da comunidade Fundão",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Ponte do Córrego Fundo → Estrada Municipal 4",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "→ Escola Rural Boa Vista (abrigo, 60 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Escola Rural Boa Vista (abrigo, 60 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Chuva intensa pode elevar rapidamente o Córrego Fundo nas próximas 24 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: LARANJA. Chuva intensa pode elevar rapidamente o Córrego Fundo",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Rota de evacuação da comunidade Fundão",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Chuva intensa pode elevar rapidamente o Córrego Fundo",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Fonte: COMPDEC",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R9"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Fonte: Sala de Situação Regional (fictícia)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R10"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Plano de Contingência (2025) — Rotas",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "D2] Alerta de enxurrada (cenário fictício)",
+        "doc_valido": true,
+        "literal": false,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Chuva intensa pode elevar rapidamente o Córrego Fundo nas próximas 24 horas.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Escola Rural Boa Vista (abrigo, 60 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Ponte do Córrego Fundo → Estrada Municipal 4",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Chuva intensa pode elevar rapidamente o Córrego Fundo",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: LARANJA.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Rota de evacuação da comunidade Fundão",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: LARANJA.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      }
+    ],
+    "n_citacoes": 22,
+    "n_citacoes_literais": 21,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795616005,
+    "created_at": 1795615985,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_0987e35714301fcf016b06ecf19de487d294dfbae64d0d9a94",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBuzzo2ADJ992q4nH4IGwu-XjhKWICTtERRxOvm9G1McTr-tG1a5-GkzSESOXQ72ZKHsEbyDNdH9WmYwO5LVhRqXS9HpqTE6qVrIBB1spmT7UpDBQ2Gl0o_LFk6NG0drgoc9_VP5Au_GnZA29Y9xN3l-i7gLnobovowNqVAT0OUZq5xY-xwZD9-ZtEuXdQ8BnrRdyFNGv3Qt-8Vn1iA2aI5bJyfHvN24k4TwIn-VSF8exSWoGn8T-eRAVM5MYAjy1EjcBFNU5Xj1ZHgditiQHI6xL4iyy43aAG5hZC373elMVxpy3fri2xhps9G8yqv9z5CqeAerigwbIXFZCI3bcBZyYEEvT3_0YpNXcUnwp3_h2NxGGCeOjxazP6XEK90tSysv6Yw0pO5FFrn0U-pBdy2lO2fAZN43E13QYtR0eeR-OMq87xstIOxzCFkWpZYgLvmwouNW2jCZLdUI47mwzt6esDVoAvFON91DKlQWprQqeb5wOSni1hCTca2UnLvT54vkb0ARD_kbWja2I-3cnfVNI-3Yok5lmUItuw5Kj4tFlAZDw-8jQNnUIDGS-nMa_W1fCRfocwThx9A2_DSsATU4d76GTXVTm0GdLB8Idq6el4vcDMtPNAhuupDbtI2fpoIIniCKjVKmfvggNzmXVZmrL0TkgNEDcPcfcsGqMkiY8csU3Cm6PdgXRX9FdFVmTKWuT563Pxlv-zMd9msM77smzAiN03L0axpLRehBNRSJ6hkc_cvMKCFyu5u2a_mbjdq4dYpSXYX8Rlg5uqQAOloXNV7zpEVfbaXVx-OgRSO3JRA6WxmjQBNB1ua3aiHfSd1UvGRCNQ3rs9LOvJ593xvteO3lRwun36ai16KML-QoiSOcFaZkXTrDIu9hSJERtSrNxTGMvOyFXv0vMQOk3EHImlvTO3coW9RpFHrHw2MP29sdQ-eyI33_8xy4IlHoezHeIE6uBMZ5GtjsOiJ2On37H92Jncs6B4NKohwj2I7MbS5OJ_aYdPevd7A3RelWwBa67GKdQ5XRKftSMo3kdc_2KxG-kTUqT4-FL951TSVrLANQoTh_ua03ti4jT3OmRXouTPEqXtZwCyw2DDXRFtk8VYMQpJ3YZgyycJEpCRkK2So3RTDo1iFOGKonp1xSW_oe-2bUpZBkfTb_xxnZ97k8oxXFNludpILlP0KTGWC2iBUx00AsfxB6GzpuWjOEVeNwNfJasUXf6sFfVmf2UXGURNHN-fhoXizS5962wOucX4mgWqOaXfTgL6Opvjy36zpQOW9UU4lmL-3Nk4d9XVnnHB9Jk9_Ljrd4XFFdmsM4NnBJ-OspJNxc_lfxmOegEY7eZG_Z-39CGseuRWjdSX4jyLSeEj-d16YdydYlfivktkYXPWFQiARGbnjd1GhHSuTdk46wqH_QbfPstY-ZG3Uzz-UY3wndP6Qk9KJlKHIuNTpxNZMuxRBh9Y4as0yZlNYqjOjo1ovh22-wt8OUUNofO6rKW_UgWgWdjLzGtkjkiZoiRQmfHY8iZx-Iba2yGA8Sj8nVnoaTTrErYI-pOcYl-ZMjKfcAWe_smgl-DvmyQw4tUAY2SIDLR3Qva2niKl4fOFeVmahoW2kAtJN9dT8ArVQ3L0ostrw5EueTH7dMq9DHbuqLTKzwus_tvpGifLKfYkyDWiIPbJu2gWqbriLkaK7K5aUmNqn82j7JCdpUrNtlfaV5qxEr7KPZvPWkxIn-w5xoTwx1uwPkrS1PPW-GP7Hq6BfRz-tn9nRYA9HqPr1SJiWVgprypQAxikjD5TNtatQB41De8SK_yKlY2Ck61w4mYZclxH-aj4BhwM8B5hYiRK55OGXMsGcrcLmpqWM1H9_NJRvicHTeFMyK5-2ZVZ0nPhRFi08x6YnMuEj3VxE91qHaxyaGSVF_qw6qquecr2YyoY-fCMOgXt9H4vygYvYW9HdeyFFtRdxRD7CFDHwnksMQfoK4kyXadsxZrW69P3LdkxzM4IGgaf_QVEGOQTdAGmBQocL5qQRXKn3EJ53WjGZn_MZmFwkNC5NCpD28Wb7RWnvuMFyMTRQRjB4lv7jP3ughqqze1RKvKPI94lxVRsLHARKVaRkDQBVsVEqrT1bL-P3LoC2ICMxhwzn9ZNSJysOrCL9sW-j9yQafszUJe8MchtMPbmQfOCK9wOU4l6o6UTniEKBEb5sRvzEGcmXXIRR1CmNl6EhXwrx10yxMVj4Y9_WP6pCl7ec5CpZLFXkJoCRMXTdJre6x0-VGFTi6jSOi3Rt6PIDcpxMKX22dVaBGH7isUykqtEjDW6MJRbXVHBRgWD53DU2ozg8MbtypW56zYZx524b0SftJDrEvHgtShnvF-OkvPlotF0Vqo2snLHX4AYapiZqmmnbxhX8Lhd6E9uQOTQHcE41wuMVggzKjFiveKZYJK_fcrezmMmNZFtzPtv0xCCeXqUHcnosm78lJ--JNu40NmdhE06j79y8rHxeR7PHeviuA3zeItXNmjoDmKXxheIzeaVmqtpLTOal4-EmDTu4LFLzQUZuzNrAi-L-qa3j3MbVkMhbVFFUxTEb8EFGBtpDvC8nb1TzJyFp3DXrUrbZ-nM38zonm1KES6Ioy4-uoyUGO0JkFNIYPqk-K1ETQ7kCPXxz8IaQLzXpCTdbheoc6A8OSVwqFzBhcoHFp-ZTNSOdO4IOH2AXvzGJlbP8AMrAUI1O0pZ5lx-Fkw_AYm2CtSKqP9zwjF2CuKVjcSr-bMQ-xES2EFhfRGA5-qPqB8SqSEhNZHcqub5KDnbHGGKaYFg1mPpn__5z3p3inc2Bgx9I0BdpfqdKHkNJVTAorPouO_3rFGM34WMNEZAQPdIilFW-XIZeqGGd_7HPzj_J8p5gVmOyW-WtorrEG5Acn5Xs4mrFkY1ChNGIOFV0O5-puVYLtwhUg3HL_Zctqd-BiFXEdsiu9FL_8jpdQcGj2IG9Okg8D5eblan_6ckYPxsN1sst_SCKRc-J_aQTSenPt7swNCZ9LGZOsV_KxgZ258zucjXywY2ctyylVIlc3eI6lVaLapPCHSk0Gh8m49Ad3wvPwEiw5-u8ZAsZ_DDxEWJ2rVAEYUnchwXEJA-KLd5WIX6JMj5dOKsAYQxuB9EEv10Ix9M-Rm1WE2Z4oD2Jk62JIne8W2PJENM5IXAC5O9UG6QErWHhA1C3X-qkR5hesryIbfKG68gvt8tdcoFVJnZRxybNKRn2cspDZJEOs4i0tWDIKVLmH5_uD58Odifw2hxR-GYa8LFr-BWcWF2I23bZ_1bMP4xtt2HqK-NabkWTl-n6rLjvBUQlVbhhnLWevLFuIEvxS49V0qaUIN28LwSNhI0wGeXYFkzOznkAhv6l937U7nMc0=",
+        "id": "rs_0987e35714301fcf016b06ecf3354c87d2817628d2f7ecb960",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"Há um alerta de enxurrada com nível laranja para 2026-11-23, indicando que a chuva intensa pode elevar rapidamente o Córrego Fundo nas próximas 24 horas. O plano de contingência disponível traz uma rota de evacuação para a comunidade Fundão até a Escola Rural Boa Vista, usada como abrigo para 60 pessoas.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Córrego Fundo\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Curso d'água citado no alerta como podendo elevar rapidamente nas próximas 24 horas.\"},{\"id\":\"E2\",\"nome\":\"Comunidade Fundão\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":null,\"descricao\":\"Comunidade mencionada no plano de contingência como origem da rota de evacuação.\"},{\"id\":\"E3\",\"nome\":\"Ponte do Córrego Fundo\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":null,\"descricao\":\"Ponto inicial da rota de evacuação descrita no plano.\"},{\"id\":\"E4\",\"nome\":\"Estrada Municipal 4\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":null,\"descricao\":\"Trecho da rota de evacuação descrita no plano.\"},{\"id\":\"E5\",\"nome\":\"Escola Rural Boa Vista\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Destino da rota de evacuação; indicado como abrigo no plano.\"},{\"id\":\"E6\",\"nome\":\"Abrigo para 60 pessoas\",\"tipo\":\"servico\",\"setor_responsavel\":null,\"descricao\":\"Uso previsto para a Escola Rural Boa Vista no plano de contingência.\"},{\"id\":\"E7\",\"nome\":\"Rota de evacuação da comunidade Fundão\",\"tipo\":\"servico\",\"setor_responsavel\":null,\"descricao\":\"Percurso definido no plano: Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista.\"},{\"id\":\"E8\",\"nome\":\"Chuva intensa\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Evento mencionado no alerta como causa potencial de elevação rápida do córrego.\"},{\"id\":\"E9\",\"nome\":\"Alerta de enxurrada (cenário fictício)\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Documento de alerta com nível laranja e projeção para as próximas 24 horas.\"},{\"id\":\"E10\",\"nome\":\"COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Fonte do plano de contingência de 2025.\"},{\"id\":\"E11\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"setor\",\"setor_responsavel\":\"Sala de Situação Regional\",\"descricao\":\"Fonte do alerta de 2026-11-23.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E7\",\"destino\":\"E2\",\"tipo\":\"atende\",\"rotulo\":\"A rota atende a comunidade Fundão.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-04-10\",\"fim\":null,\"observacao\":\"Consta no plano de contingência de 2025.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação da comunidade Fundão\"}]},{\"id\":\"R2\",\"origem\":\"E7\",\"destino\":\"E3\",\"tipo\":\"depende_de\",\"rotulo\":\"A rota passa pela Ponte do Córrego Fundo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-04-10\",\"fim\":null,\"observacao\":\"Traçado descrito no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ponte do Córrego Fundo → Estrada Municipal 4\"}]},{\"id\":\"R3\",\"origem\":\"E7\",\"destino\":\"E4\",\"tipo\":\"depende_de\",\"rotulo\":\"A rota passa pela Estrada Municipal 4.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-04-10\",\"fim\":null,\"observacao\":\"Traçado descrito no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista\"}]},{\"id\":\"R4\",\"origem\":\"E7\",\"destino\":\"E5\",\"tipo\":\"depende_de\",\"rotulo\":\"A rota termina na Escola Rural Boa Vista.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-04-10\",\"fim\":null,\"observacao\":\"Destino indicado no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"→ Escola Rural Boa Vista (abrigo, 60 pessoas).\"}]},{\"id\":\"R5\",\"origem\":\"E5\",\"destino\":\"E6\",\"tipo\":\"atende\",\"rotulo\":\"A Escola Rural Boa Vista é indicada como abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-04-10\",\"fim\":null,\"observacao\":\"Indicação explícita no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Escola Rural Boa Vista (abrigo, 60 pessoas).\"}]},{\"id\":\"R6\",\"origem\":\"E8\",\"destino\":\"E1\",\"tipo\":\"afetado_por\",\"rotulo\":\"A chuva intensa pode elevar rapidamente o Córrego Fundo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":\"Projeção do alerta para as próximas 24 horas.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Chuva intensa pode elevar rapidamente o Córrego Fundo nas próximas 24 horas.\"}]},{\"id\":\"R7\",\"origem\":\"E9\",\"destino\":\"E1\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta se refere ao Córrego Fundo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":\"Alerta emitido na data de referência.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Chuva intensa pode elevar rapidamente o Córrego Fundo\"}]},{\"id\":\"R8\",\"origem\":\"E9\",\"destino\":\"E2\",\"tipo\":\"afetado_por\",\"rotulo\":\"A comunidade Fundão pode ser impactada pela situação de enxurrada.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":\"Inferido pela existência da rota de evacuação e pelo alerta no mesmo território.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação da comunidade Fundão\"},{\"doc_id\":\"D2\",\"trecho\":\"Chuva intensa pode elevar rapidamente o Córrego Fundo\"}]},{\"id\":\"R9\",\"origem\":\"E10\",\"destino\":\"E7\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC é a fonte do plano com a rota.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-04-10\",\"fim\":null,\"observacao\":\"Responsabilidade documental da fonte.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Fonte: COMPDEC\"}]},{\"id\":\"R10\",\"origem\":\"E11\",\"destino\":\"E9\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A Sala de Situação Regional é a fonte do alerta.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":\"Responsabilidade documental da fonte.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Fonte: Sala de Situação Regional (fictícia)\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"O documento mais recente é um alerta de 2026-11-23, enquanto a rota de evacuação disponível é de 2025-04-10.\",\"implicacao\":\"A rota existe em documento anterior, mas não há confirmação de atualização, teste ou alteração no texto disponível.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plano de Contingência (2025) — Rotas\"},{\"doc_id\":\"D2\",\"trecho\":\"D2] Alerta de enxurrada (cenário fictício)\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"A rota de evacuação da comunidade Fundão continua livre e utilizável no trecho da Ponte do Córrego Fundo até a Escola Rural Boa Vista?\",\"por_que_importa\":\"O plano depende desse percurso; o alerta indica elevação rápida do córrego nas próximas 24 horas.\",\"motivacao\":\"O trajeto descrito no plano passa por ponte e estrada que podem ser sensíveis a enxurrada.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E4\",\"E5\",\"E7\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"inferencia\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista\"},{\"doc_id\":\"D2\",\"trecho\":\"Chuva intensa pode elevar rapidamente o Córrego Fundo nas próximas 24 horas.\"}],\"o_que_falta_saber\":\"Se há bloqueios, danos, alagamento ou alteração de trânsito no trajeto.\",\"quem_pode_confirmar\":\"COMPDEC ou setor responsável por vias/obras, conforme organização local.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A Escola Rural Boa Vista está disponível e preparada para funcionar como abrigo para 60 pessoas neste momento?\",\"por_que_importa\":\"O plano indica esse local como abrigo; é preciso confirmar se o uso ainda é possível e com capacidade compatível.\",\"motivacao\":\"O documento define o abrigo, mas não informa situação operacional atual.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E5\",\"E6\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Escola Rural Boa Vista (abrigo, 60 pessoas).\"}],\"o_que_falta_saber\":\"Se o espaço está acessível, desocupado, com abertura autorizada e condições mínimas de uso.\",\"quem_pode_confirmar\":\"Direção da Escola Rural Boa Vista, COMPDEC ou setor municipal responsável por abrigos.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"A Ponte do Córrego Fundo apresenta condição segura de passagem no cenário atual de chuva intensa?\",\"por_que_importa\":\"A ponte é ponto inicial da rota e pode ser o primeiro trecho comprometido se o córrego subir rapidamente.\",\"motivacao\":\"O alerta fala em elevação rápida do córrego, mas não informa a condição da ponte.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E3\",\"E7\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ponte do Córrego Fundo → Estrada Municipal 4\"},{\"doc_id\":\"D2\",\"trecho\":\"Chuva intensa pode elevar rapidamente o Córrego Fundo\"}],\"o_que_falta_saber\":\"Se houve restrição, dano, transbordamento próximo ou necessidade de desvio.\",\"quem_pode_confirmar\":\"Setor responsável por pontes/vias e COMPDEC.\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"A Estrada Municipal 4 permanece desobstruída ao longo do trecho previsto na rota de evacuação?\",\"por_que_importa\":\"A estrada integra a rota e precisa ser verificada antes de eventual deslocamento preventivo da comunidade.\",\"motivacao\":\"O plano depende do trecho viário e o alerta aumenta a necessidade de confirmação operacional.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E4\",\"E7\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA.\"}],\"o_que_falta_saber\":\"Se há atoleiro, queda de barreira, alagamento ou interdição no trajeto.\",\"quem_pode_confirmar\":\"Setor municipal de obras/vias e COMPDEC.\",\"prioridade\":\"media\"},{\"id\":\"V5\",\"pergunta\":\"A comunidade Fundão recebeu orientação atual sobre a rota de evacuação prevista no plano?\",\"por_que_importa\":\"A existência da rota no plano não garante que a comunidade esteja informada no momento do alerta.\",\"motivacao\":\"O alerta é atual e o documento da rota é anterior; a comunicação precisa ser checada.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\",\"E7\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação da comunidade Fundão\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA.\"}],\"o_que_falta_saber\":\"Se houve aviso à comunidade, por qual meio e em qual horário.\",\"quem_pode_confirmar\":\"COMPDEC ou setor de comunicação da prefeitura, se houver.\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há informação sobre condições atuais da ponte, da estrada e do abrigo.\",\"por_que_importa\":\"Esses pontos sustentam a rota de evacuação descrita no plano.\"},{\"descricao\":\"Não há confirmação de atualização do plano de 2025 após o alerta de 2026-11-23.\",\"por_que_importa\":\"Ajuda a saber se o roteiro ainda é o vigente ou se houve mudança documentada.\"},{\"descricao\":\"Não há registro de responsáveis operacionais específicos por vias, abrigo ou comunicação.\",\"por_que_importa\":\"Isso limita a definição de quem pode confirmar cada verificação sem suposição institucional.\"}],\"cautelas\":[\"O alerta é fictício e o nível laranja foi tratado apenas como dado documental.\",\"A rota de evacuação foi registrada em documento anterior; não foi assumido que ela continue igual sem confirmação.\",\"Não há base documental para concluir que o abrigo esteja aberto, pronto ou acessível.\",\"As verificações foram formuladas para checagem humana, sem recomendar evacuação ou outras decisões operacionais.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_0987e35714301fcf016b06ecf35c0887d2afec8a4ff28d49fb",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2006,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 1792
+      },
+      "output_tokens": 3283,
+      "output_tokens_details": {
+        "reasoning_tokens": 131
+      },
+      "total_tokens": 5289
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"Há um alerta de enxurrada com nível laranja para 2026-11-23, indicando que a chuva intensa pode elevar rapidamente o Córrego Fundo nas próximas 24 horas. O plano de contingência disponível traz uma rota de evacuação para a comunidade Fundão até a Escola Rural Boa Vista, usada como abrigo para 60 pessoas.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Córrego Fundo\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Curso d'água citado no alerta como podendo elevar rapidamente nas próximas 24 horas.\"},{\"id\":\"E2\",\"nome\":\"Comunidade Fundão\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":null,\"descricao\":\"Comunidade mencionada no plano de contingência como origem da rota de evacuação.\"},{\"id\":\"E3\",\"nome\":\"Ponte do Córrego Fundo\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":null,\"descricao\":\"Ponto inicial da rota de evacuação descrita no plano.\"},{\"id\":\"E4\",\"nome\":\"Estrada Municipal 4\",\"tipo\":\"infraestrutura\",\"setor_responsavel\":null,\"descricao\":\"Trecho da rota de evacuação descrita no plano.\"},{\"id\":\"E5\",\"nome\":\"Escola Rural Boa Vista\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Destino da rota de evacuação; indicado como abrigo no plano.\"},{\"id\":\"E6\",\"nome\":\"Abrigo para 60 pessoas\",\"tipo\":\"servico\",\"setor_responsavel\":null,\"descricao\":\"Uso previsto para a Escola Rural Boa Vista no plano de contingência.\"},{\"id\":\"E7\",\"nome\":\"Rota de evacuação da comunidade Fundão\",\"tipo\":\"servico\",\"setor_responsavel\":null,\"descricao\":\"Percurso definido no plano: Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista.\"},{\"id\":\"E8\",\"nome\":\"Chuva intensa\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Evento mencionado no alerta como causa potencial de elevação rápida do córrego.\"},{\"id\":\"E9\",\"nome\":\"Alerta de enxurrada (cenário fictício)\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Documento de alerta com nível laranja e projeção para as próximas 24 horas.\"},{\"id\":\"E10\",\"nome\":\"COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Fonte do plano de contingência de 2025.\"},{\"id\":\"E11\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"setor\",\"setor_responsavel\":\"Sala de Situação Regional\",\"descricao\":\"Fonte do alerta de 2026-11-23.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E7\",\"destino\":\"E2\",\"tipo\":\"atende\",\"rotulo\":\"A rota atende a comunidade Fundão.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-04-10\",\"fim\":null,\"observacao\":\"Consta no plano de contingência de 2025.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação da comunidade Fundão\"}]},{\"id\":\"R2\",\"origem\":\"E7\",\"destino\":\"E3\",\"tipo\":\"depende_de\",\"rotulo\":\"A rota passa pela Ponte do Córrego Fundo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-04-10\",\"fim\":null,\"observacao\":\"Traçado descrito no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ponte do Córrego Fundo → Estrada Municipal 4\"}]},{\"id\":\"R3\",\"origem\":\"E7\",\"destino\":\"E4\",\"tipo\":\"depende_de\",\"rotulo\":\"A rota passa pela Estrada Municipal 4.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-04-10\",\"fim\":null,\"observacao\":\"Traçado descrito no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista\"}]},{\"id\":\"R4\",\"origem\":\"E7\",\"destino\":\"E5\",\"tipo\":\"depende_de\",\"rotulo\":\"A rota termina na Escola Rural Boa Vista.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-04-10\",\"fim\":null,\"observacao\":\"Destino indicado no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"→ Escola Rural Boa Vista (abrigo, 60 pessoas).\"}]},{\"id\":\"R5\",\"origem\":\"E5\",\"destino\":\"E6\",\"tipo\":\"atende\",\"rotulo\":\"A Escola Rural Boa Vista é indicada como abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-04-10\",\"fim\":null,\"observacao\":\"Indicação explícita no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Escola Rural Boa Vista (abrigo, 60 pessoas).\"}]},{\"id\":\"R6\",\"origem\":\"E8\",\"destino\":\"E1\",\"tipo\":\"afetado_por\",\"rotulo\":\"A chuva intensa pode elevar rapidamente o Córrego Fundo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":\"Projeção do alerta para as próximas 24 horas.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Chuva intensa pode elevar rapidamente o Córrego Fundo nas próximas 24 horas.\"}]},{\"id\":\"R7\",\"origem\":\"E9\",\"destino\":\"E1\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta se refere ao Córrego Fundo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":\"Alerta emitido na data de referência.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Chuva intensa pode elevar rapidamente o Córrego Fundo\"}]},{\"id\":\"R8\",\"origem\":\"E9\",\"destino\":\"E2\",\"tipo\":\"afetado_por\",\"rotulo\":\"A comunidade Fundão pode ser impactada pela situação de enxurrada.\",\"status_epistemico\":\"inferencia\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":\"Inferido pela existência da rota de evacuação e pelo alerta no mesmo território.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação da comunidade Fundão\"},{\"doc_id\":\"D2\",\"trecho\":\"Chuva intensa pode elevar rapidamente o Córrego Fundo\"}]},{\"id\":\"R9\",\"origem\":\"E10\",\"destino\":\"E7\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC é a fonte do plano com a rota.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-04-10\",\"fim\":null,\"observacao\":\"Responsabilidade documental da fonte.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Fonte: COMPDEC\"}]},{\"id\":\"R10\",\"origem\":\"E11\",\"destino\":\"E9\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A Sala de Situação Regional é a fonte do alerta.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-23\",\"fim\":null,\"observacao\":\"Responsabilidade documental da fonte.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Fonte: Sala de Situação Regional (fictícia)\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"O documento mais recente é um alerta de 2026-11-23, enquanto a rota de evacuação disponível é de 2025-04-10.\",\"implicacao\":\"A rota existe em documento anterior, mas não há confirmação de atualização, teste ou alteração no texto disponível.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Plano de Contingência (2025) — Rotas\"},{\"doc_id\":\"D2\",\"trecho\":\"D2] Alerta de enxurrada (cenário fictício)\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"A rota de evacuação da comunidade Fundão continua livre e utilizável no trecho da Ponte do Córrego Fundo até a Escola Rural Boa Vista?\",\"por_que_importa\":\"O plano depende desse percurso; o alerta indica elevação rápida do córrego nas próximas 24 horas.\",\"motivacao\":\"O trajeto descrito no plano passa por ponte e estrada que podem ser sensíveis a enxurrada.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\",\"E3\",\"E4\",\"E5\",\"E7\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"inferencia\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista\"},{\"doc_id\":\"D2\",\"trecho\":\"Chuva intensa pode elevar rapidamente o Córrego Fundo nas próximas 24 horas.\"}],\"o_que_falta_saber\":\"Se há bloqueios, danos, alagamento ou alteração de trânsito no trajeto.\",\"quem_pode_confirmar\":\"COMPDEC ou setor responsável por vias/obras, conforme organização local.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"A Escola Rural Boa Vista está disponível e preparada para funcionar como abrigo para 60 pessoas neste momento?\",\"por_que_importa\":\"O plano indica esse local como abrigo; é preciso confirmar se o uso ainda é possível e com capacidade compatível.\",\"motivacao\":\"O documento define o abrigo, mas não informa situação operacional atual.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E5\",\"E6\",\"E7\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Escola Rural Boa Vista (abrigo, 60 pessoas).\"}],\"o_que_falta_saber\":\"Se o espaço está acessível, desocupado, com abertura autorizada e condições mínimas de uso.\",\"quem_pode_confirmar\":\"Direção da Escola Rural Boa Vista, COMPDEC ou setor municipal responsável por abrigos.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"A Ponte do Córrego Fundo apresenta condição segura de passagem no cenário atual de chuva intensa?\",\"por_que_importa\":\"A ponte é ponto inicial da rota e pode ser o primeiro trecho comprometido se o córrego subir rapidamente.\",\"motivacao\":\"O alerta fala em elevação rápida do córrego, mas não informa a condição da ponte.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E3\",\"E7\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ponte do Córrego Fundo → Estrada Municipal 4\"},{\"doc_id\":\"D2\",\"trecho\":\"Chuva intensa pode elevar rapidamente o Córrego Fundo\"}],\"o_que_falta_saber\":\"Se houve restrição, dano, transbordamento próximo ou necessidade de desvio.\",\"quem_pode_confirmar\":\"Setor responsável por pontes/vias e COMPDEC.\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"A Estrada Municipal 4 permanece desobstruída ao longo do trecho previsto na rota de evacuação?\",\"por_que_importa\":\"A estrada integra a rota e precisa ser verificada antes de eventual deslocamento preventivo da comunidade.\",\"motivacao\":\"O plano depende do trecho viário e o alerta aumenta a necessidade de confirmação operacional.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E4\",\"E7\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA.\"}],\"o_que_falta_saber\":\"Se há atoleiro, queda de barreira, alagamento ou interdição no trajeto.\",\"quem_pode_confirmar\":\"Setor municipal de obras/vias e COMPDEC.\",\"prioridade\":\"media\"},{\"id\":\"V5\",\"pergunta\":\"A comunidade Fundão recebeu orientação atual sobre a rota de evacuação prevista no plano?\",\"por_que_importa\":\"A existência da rota no plano não garante que a comunidade esteja informada no momento do alerta.\",\"motivacao\":\"O alerta é atual e o documento da rota é anterior; a comunicação precisa ser checada.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\",\"E7\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Rota de evacuação da comunidade Fundão\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA.\"}],\"o_que_falta_saber\":\"Se houve aviso à comunidade, por qual meio e em qual horário.\",\"quem_pode_confirmar\":\"COMPDEC ou setor de comunicação da prefeitura, se houver.\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há informação sobre condições atuais da ponte, da estrada e do abrigo.\",\"por_que_importa\":\"Esses pontos sustentam a rota de evacuação descrita no plano.\"},{\"descricao\":\"Não há confirmação de atualização do plano de 2025 após o alerta de 2026-11-23.\",\"por_que_importa\":\"Ajuda a saber se o roteiro ainda é o vigente ou se houve mudança documentada.\"},{\"descricao\":\"Não há registro de responsáveis operacionais específicos por vias, abrigo ou comunicação.\",\"por_que_importa\":\"Isso limita a definição de quem pode confirmar cada verificação sem suposição institucional.\"}],\"cautelas\":[\"O alerta é fictício e o nível laranja foi tratado apenas como dado documental.\",\"A rota de evacuação foi registrada em documento anterior; não foi assumido que ela continue igual sem confirmação.\",\"Não há base documental para concluir que o abrigo esteja aberto, pronto ou acessível.\",\"As verificações foram formuladas para checagem humana, sem recomendar evacuação ou outras decisões operacionais.\"]}"
+  }
+}

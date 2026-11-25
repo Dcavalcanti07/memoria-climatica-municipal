@@ -1,0 +1,1086 @@
+{
+  "meta": {
+    "scenario": "E24",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D2"
+    ],
+    "user_message_chars": 780,
+    "user_message_sha12": "ecc5c991112d"
+  },
+  "user_message": "Município (fictício): Boa Ventura do Leste\nData de referência da análise: 2026-11-25\nDocumentos disponíveis (2), em ordem cronológica:\n\n### [D1] Plano de Contingência (minuta 2026, não aprovada)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2026-06-01\n\nCoordenador da COMPDEC: [a preencher]\nTelefone de plantão: [a preencher]\nAbrigos: Ginásio Municipal (capacidade: [a levantar])\nÁreas de risco: Beira-Lago e Jardim das Flores.\nStatus: minuta em revisão, sem aprovação formal.\n\n---\n\n### [D2] Alerta (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-25\n\nNÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_003def1dcb53961c016b06ec8b9db887d2baddfe97131b41e6",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 2035,
+    "output_tokens": 3443,
+    "reasoning_tokens": 352
+  },
+  "latency_ms": 21806,
+  "started_at": "2026-11-25T14:11:22.804Z",
+  "output": {
+    "resumo_situacao": "Há uma minuta de Plano de Contingência de 2026 ainda sem aprovação formal, com campos pendentes de coordenação, telefone e capacidade de abrigo. No alerta de 2026-11-25, há chuva de 90 mm em 24 h e risco de alagamento em Beira-Lago, o que torna relevantes os pontos ainda não preenchidos no plano.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "COMPDEC",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Órgão citado como fonte do Plano de Contingência e associado à elaboração da minuta."
+      },
+      {
+        "id": "E2",
+        "nome": "Plano de Contingência 2026",
+        "tipo": "norma_documento",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Minuta de plano datada de 2026-06-01, em revisão e sem aprovação formal."
+      },
+      {
+        "id": "E3",
+        "nome": "Coordenador da COMPDEC",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Função responsável indicada no plano, mas sem nome preenchido."
+      },
+      {
+        "id": "E4",
+        "nome": "Telefone de plantão",
+        "tipo": "recurso",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Contato operacional previsto no plano, mas ainda não preenchido."
+      },
+      {
+        "id": "E5",
+        "nome": "Ginásio Municipal",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Abrigo indicado no plano; a capacidade não foi informada."
+      },
+      {
+        "id": "E6",
+        "nome": "Beira-Lago",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Área de risco citada no plano e no alerta atual."
+      },
+      {
+        "id": "E7",
+        "nome": "Jardim das Flores",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Área de risco citada no plano."
+      },
+      {
+        "id": "E8",
+        "nome": "Sala de Situação Regional",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Fonte do alerta fictício de 2026-11-25."
+      },
+      {
+        "id": "E9",
+        "nome": "Alerta de 2026-11-25",
+        "tipo": "evento",
+        "setor_responsavel": "Sala de Situação Regional",
+        "descricao": "Alerta em nível laranja com chuva de 90 mm em 24 h e risco de alagamento em Beira-Lago."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC é a fonte do plano/minuta.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-06-01",
+          "fim": null,
+          "observacao": "Documento em revisão, sem aprovação formal."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Tipo: Plano de contingência | Fonte: COMPDEC | Data: 2026-06-01"
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "Status: minuta em revisão, sem aprovação formal."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E2",
+        "destino": "E3",
+        "tipo": "outro",
+        "rotulo": "O plano prevê a função de coordenador da COMPDEC.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-06-01",
+          "fim": null,
+          "observacao": "Campo sem preenchimento no documento."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Coordenador da COMPDEC: [a preencher]"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E2",
+        "destino": "E4",
+        "tipo": "outro",
+        "rotulo": "O plano prevê telefone de plantão.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-06-01",
+          "fim": null,
+          "observacao": "Campo sem preenchimento no documento."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Telefone de plantão: [a preencher]"
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E2",
+        "destino": "E5",
+        "tipo": "atende",
+        "rotulo": "O plano lista o Ginásio Municipal como abrigo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-06-01",
+          "fim": null,
+          "observacao": "Capacidade não informada."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigos: Ginásio Municipal (capacidade: [a levantar])"
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E2",
+        "destino": "E6",
+        "tipo": "localizado_em",
+        "rotulo": "Beira-Lago aparece como área de risco no plano.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-06-01",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Áreas de risco: Beira-Lago e Jardim das Flores."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E2",
+        "destino": "E7",
+        "tipo": "localizado_em",
+        "rotulo": "Jardim das Flores aparece como área de risco no plano.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-06-01",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Áreas de risco: Beira-Lago e Jardim das Flores."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E8",
+        "destino": "E9",
+        "tipo": "responsavel_por",
+        "rotulo": "A Sala de Situação Regional emitiu o alerta.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-25",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-25"
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E9",
+        "destino": "E6",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta aponta risco de alagamento em Beira-Lago.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-25",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "vigencia_encerrada",
+        "descricao": "A minuta do plano está datada de 2026-06-01 e permanece sem aprovação formal no próprio documento.",
+        "implicacao": "Não há base documental para tratá-la como plano vigente aprovado.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Status: minuta em revisão, sem aprovação formal."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "atualizacao",
+        "descricao": "Há um alerta mais recente, de 2026-11-25, com cenário específico de chuva intensa e risco de alagamento em Beira-Lago.",
+        "implicacao": "A análise preventiva deve priorizar as informações operacionais ligadas ao alerta atual.",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "Existe uma versão do Plano de Contingência de 2026 formalmente aprovada e válida para uso no cenário atual?",
+        "por_que_importa": "A minuta disponível está sem aprovação formal, e a decisão operacional não deve depender de um texto ainda em revisão.",
+        "motivacao": "O documento do plano informa que a versão disponível é minuta e não está aprovada.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E2"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Status: minuta em revisão, sem aprovação formal."
+          }
+        ],
+        "o_que_falta_saber": "Se há uma versão aprovada, sua data e onde ela está registrada.",
+        "quem_pode_confirmar": "COMPDEC ou setor responsável pela aprovação do plano, conforme rotina institucional.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "Quem está designado como coordenador da COMPDEC para este cenário e essa designação está preenchida no documento vigente?",
+        "por_que_importa": "A coordenação operacional precisa estar identificada para orientar verificações e comunicação interna.",
+        "motivacao": "O plano traz o campo do coordenador em branco.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E3",
+          "E2"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Coordenador da COMPDEC: [a preencher]"
+          }
+        ],
+        "o_que_falta_saber": "Nome ou função formalmente designada e o documento onde isso foi registrado.",
+        "quem_pode_confirmar": "COMPDEC.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "Qual é o telefone de plantão válido para acionamento operacional neste momento?",
+        "por_que_importa": "O contato de plantão está em branco e é um dado básico para resposta e coordenação.",
+        "motivacao": "O plano cita o telefone de plantão, mas não informa o número.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E4",
+          "E2"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Telefone de plantão: [a preencher]"
+          }
+        ],
+        "o_que_falta_saber": "Número ou canal oficial de plantão que substitua o campo em branco.",
+        "quem_pode_confirmar": "COMPDEC.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V4",
+        "pergunta": "Qual é a capacidade operacional do Ginásio Municipal como abrigo, e ela está atualizada?",
+        "por_que_importa": "O abrigo está previsto no plano, mas a capacidade não foi informada; sem esse dado não dá para avaliar uso planejado.",
+        "motivacao": "O plano lista o Ginásio Municipal como abrigo, mas sem capacidade.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E5",
+          "E2"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigos: Ginásio Municipal (capacidade: [a levantar])"
+          }
+        ],
+        "o_que_falta_saber": "Número de pessoas comportadas e se houve atualização recente do cadastro do abrigo.",
+        "quem_pode_confirmar": "COMPDEC e setor gestor do local, se houver designação institucional.",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V5",
+        "pergunta": "Beira-Lago e Jardim das Flores continuam sendo as áreas de risco que devem orientar a checagem preventiva neste alerta?",
+        "por_que_importa": "O plano cita duas áreas de risco, mas o alerta atual menciona explicitamente apenas Beira-Lago; é preciso confirmar o foco territorial da verificação.",
+        "motivacao": "Há coincidência parcial entre o plano e o alerta, com citação de Beira-Lago em ambos.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E6",
+          "E7",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Sala de Situação Regional"
+        ],
+        "status_epistemico": "inferencia",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Áreas de risco: Beira-Lago e Jardim das Flores."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago."
+          }
+        ],
+        "o_que_falta_saber": "Se Jardim das Flores também está no recorte do alerta atual ou se a prioridade é apenas Beira-Lago.",
+        "quem_pode_confirmar": "COMPDEC, com base na leitura do alerta e no protocolo local.",
+        "prioridade": "media"
+      },
+      {
+        "id": "V6",
+        "pergunta": "O alerta de 2026-11-25 exige alguma atualização formal do plano ou do fluxo de comunicação interno da COMPDEC?",
+        "por_que_importa": "A combinação de alerta atual e minuta sem aprovação pode exigir checagem de aderência entre documento e rotina de resposta.",
+        "motivacao": "Há um alerta mais recente do que a minuta do plano.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E2",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Sala de Situação Regional"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Status: minuta em revisão, sem aprovação formal."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago."
+          }
+        ],
+        "o_que_falta_saber": "Se existe protocolo atualizado para comunicação/acionamento em alerta laranja e onde ele está formalizado.",
+        "quem_pode_confirmar": "COMPDEC e setor que recepciona alertas da Sala de Situação Regional.",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há nome do coordenador da COMPDEC.",
+        "por_que_importa": "A coordenação operacional fica indefinida no documento disponível."
+      },
+      {
+        "descricao": "Não há telefone de plantão informado.",
+        "por_que_importa": "Sem esse canal, a verificação de acionamento imediato fica incompleta."
+      },
+      {
+        "descricao": "Não há capacidade do Ginásio Municipal como abrigo.",
+        "por_que_importa": "Impede avaliar o dimensionamento do abrigo previsto."
+      },
+      {
+        "descricao": "Não há aprovação formal do plano.",
+        "por_que_importa": "A minuta não pode ser tratada como documento vigente sem confirmação."
+      }
+    ],
+    "cautelas": [
+      "Há apenas dois documentos e nenhum registro histórico de ocorrências anteriores; por isso, não é possível inferir se problemas antigos persistem ou foram resolvidos.",
+      "O alerta é fictício e deve ser usado apenas como cenário de verificação, não como base para decidir medidas operacionais.",
+      "O plano está em minuta; campos em branco não devem ser preenchidos por inferência.",
+      "A relação entre Beira-Lago e Jardim das Flores foi mantida apenas como contexto do plano; o alerta atual menciona expressamente Beira-Lago."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 9,
+    "n_relacoes": 8,
+    "n_verificacoes": 6,
+    "n_temporais": 2,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Tipo: Plano de contingência | Fonte: COMPDEC | Data: 2026-06-01",
+        "doc_valido": true,
+        "literal": false,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Status: minuta em revisão, sem aprovação formal.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Coordenador da COMPDEC: [a preencher]",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Telefone de plantão: [a preencher]",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigos: Ginásio Municipal (capacidade: [a levantar])",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Áreas de risco: Beira-Lago e Jardim das Flores.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Áreas de risco: Beira-Lago e Jardim das Flores.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-25",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Status: minuta em revisão, sem aprovação formal.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Status: minuta em revisão, sem aprovação formal.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Coordenador da COMPDEC: [a preencher]",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Telefone de plantão: [a preencher]",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigos: Ginásio Municipal (capacidade: [a levantar])",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Áreas de risco: Beira-Lago e Jardim das Flores.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V5"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Status: minuta em revisão, sem aprovação formal.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V6"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V6"
+      }
+    ],
+    "n_citacoes": 19,
+    "n_citacoes_literais": 18,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795615904,
+    "created_at": 1795615883,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_003def1dcb53961c016b06ec8b9db887d2baddfe97131b41e6",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBuyPe9JJRKdNtwK9V8PWFC-OxvCWTnLqa1z9xbcp7_he0ANUDc3ADW8PogCnH7Rc0zyBl-WeOP5qf6ZQNJu5KHr3g5Mwm-RYnJ6eKBC-8WyZIWCyK0iBX2K3TYA6ubjHYxBEVXZXK5GqX4uZH8fDJlqZ1JNFAUFb0Huwbr6oIOgswKjayzkzllrXgVgZLmwiV2qD6aJIFi9mbVqxpPkJMH8-sFddHrs9afCRRMB-aNqd-BoJJNREGNcUwPthYIP7jf65MqXYLoKZC6ixgvP1_sVMlBAHDcLIYQ5TvRZRL0-8bvKnD2pMUXNL7mf-0Bqbg98bM63EW7-_K-Mjck5tPTs8gVPBZd529noWX1ABvocqYt__pxhfHc2aGPDqzP4Mlh6g4OX0tPF9V-BUCuOU21iY4td45Q4OgcOVSG4NfP2VbeegtACbDp45tCFyNZ_HQJ4YMabls3WQzzlyEGHRA6yEPEhqdV-Xe01S68mICz0tR2HasEMz-JQ5aDC3MBqVTR5sl5smpcK2YTA1DSuXxBiQQJBXlqk581Qqaa_Og6H7rF4_Kgf6FPhew6JJX0zyvsJ6ZgXLFFjgNIUi-dnhNVxPZyijR3ODCvvNOKrJmWwSSZJsOXE_oKhjaOfnDHFoPwIVHq76q3raeakI9ApJ9LqM2oh1RxFTH97OHu-K1b24LVkLFSpdGqupeFeB4uBkH8q98dCQ76yhyfK2-MaDb1sEwMdfo-j1NrysW3LPWzQ-7_sWcKeWEHmQKeQm0vYaZSGxYD-u70DBJKTOhnkU8oRiLbsCkRszoxN3tQzgHBIU40W5s5VPYatFMoeECr9pAUKHsEVWHh79nmFAJU9_pllH2r23f2l6yr2viWEg0OPs_s9Lemfc82CBI_a-ywHWWWLQd97q0TYYZDWRh1maSJ_rVIM7PfT4nS_nAnsUdYA1ygV51CmIqwybNQvNHu9QauwQmhvZn__62FfL8xeepE-K6ESAqnWmR-bUsdbSwaMMptP-ziRqj27FDqfQBbKfpPLqpYzuHgnD0GIrClYCHBWb99ylVHv16eRU4xPO27QZuJe_uKDcqaNbDbKywbA16yKPIXCxGmAjZ5y-M9mtDNDwKFqAxeBRI4yVuHnfVjHEL6DP1HhTg2J96Zap1p3G8_tg4dNLvUkCDsW3ZU_Z0OKE1_YCVM17tt73W4qNg3xbKFWAxiHOUQ-Kov2ctg7X4UHVb2uFDJoWvKsIX22DzLRHlF44QSGCcEcM_ykcRMGIB6829_izfGytEnB9cldoKEMIKhlHzqaiqZ1GIccwmOc94j-dcuCBvGezssSQeniVmHzT8LpHgS1iC38T_hpAF4ybsa2UBY64-NSQo5Ji0vqOOhxJ9H9choO-AyRnyWlOOOzzGT33IQCgDO7Ud9Zlqc9N2U4Oco1Ht2dV1OtmL92onEi9rJkzrvQvRT-5PTwlqbv6CFgL4qJxf2OZMDE-oHY1dqcWYzUi1MTKzo2x7RahXb4QsDrcv7S_adBShZkaycnf5ydFXo2EWlHgyWpKNsLulJDy40pXXeK0wdIhjNc1P2EmC9EWYbgYmJUiqsMoVqt8ksvL4B5MDSIdcyg3TbDJxMqZzz3weOKPKNviDwEfrjAbwmmaE0JVMzciUr9GWwzRmOwRThQ1pbEqiGXcDFR98rgy5dXiUPnWUTo1dD93-oqAQF_SUvqjAqd7NYSwzOqfA4R7YYy6kZfezdBhd0cZddCF3PZ24NeZO-nh7_miBOHWI841ZO8GGOVWvBI-YQL7YlWK-w87MjwtEIfwut21Wou-jw1HoqJTlKGqtHNLanvSSvJJ7bPCOrCUBSi1WCrsXIYGW9yJCECTAkPzdWWpJmkIbz4Pg2AchJAEriPtw0mfPf2b4qFNqE20sy1UGdls6I4q3oOgU53aZ3TXxAr__nFkc55NEbvULPxK1b7X-kGWwbq7U5VufkBqzRwpNpIGNr_ESGsMEK8iXrJvWEdos48fnlW47rpG3VSwhd2B12IReLWGrsXpYt4jpqfO-tqK6cC4Pno5u9Dm7rIgQWAd5cElClc6pRQRjQTRXk6xObTCMvYD5kocLEnH7PhbbpdUSSTDKRJKaCkzGhwzmJ3EMjZRxXgZ9ouq-xXnP1_n2mwNSifP2naWG3sjmPJViSQKCjZQoerDw_oUD8Hfpn_jw8tYM471MC8y63hvHCT6IajQqT44uiQaK6_SAkWGxNlEns8Xt30IDg-mJHOcMs1zextGcYI57e5qJAkq500PNbNbGP01BoULSIOiohCBSOXejzcRXgJalWPmo1cG7HhZUzdou1OtFgb9BuYUEbnVS8sVD09JUEuVMOgJFguiPzQ_iRY4UepHeZF7kIZlYf14h1jWH6Wib4VI-RYTndN01qjVLCIb5E3ToFXF7q4IyiqJxxuqDEQupz6s_wmknmxAk6TdyePlWWVGQwztGGanC3MyMzEeJzkVWo64l2MN2gdkhVQRgCWumBvCWuCiIS9Oi9BEc6VSqu59i1wCXTRUoqjHRpk4U2mzGlUJZeNRreTcnrxm0L1ie4kstbLI6ksYfdW15hsb3wXzrB7KkiDxBMK1UyJpPIDFIAp6IY1jmf-sucJZfwnE2AOohUBMcaM6mpbbNN-Hqa-UtsnaWjBZvolhGmPI9TFt0ZmSkxswTS8lQUlFxHE4K5kG-tJQ_Bxp26HdywX2fcguOKM7St7I93GqfCWtX2WGoRhXUzoM1t5VkJPPdM59dFTY8iTuBgcN3nydnPZILraTgExCtcaJ9GUk01ouKM_Qmk1pKQvSRbcTojD4qu-1q6XADzY86zHQTdrpgltIuCh0tYDYSI9TbJNRgmYTu3eUcNIkdOvAOH9GmDoqN_3E5mQIppOxCWEQ4VYj2xLznKcu3fzkLWZWSHEeX1QA-M14spr___QnA6MnOgV30eEmZlAk-X6ErIR9LVt-pDB8nd-nJzCq4vHzkZacThugP3-GFHUGcMCD2km_ZinRqHlcFtNiGYdcRp2M2uD4bJF_gIIeWQSo12ZB0NLgWwGODAyA3OM3OWyyLT1NhNq6jPLD6UpqSe7hetOusqtwLtkw2vRaCJHw9JJ-UPOdXW6fDLlYZeygd7sOLFiHesXZ1LPAJw4oBRi7HELEs0IuGpDiWMk_TON9M25aF9UYXCy571fi0m96m6dFUdS0E1cCQkst-mpkAekuLlLq1KKrwJosPoawHh9M-LaHPQ2CrK23vmUMmBiMX9slhb3twwmyfUuPUVTzapnITQbUTVb_03FHNtRohLXFMkuBt6JOLGC5ogITV-J-8YwDnCG_FGq9mpQvKJn6qBuzrGO0SoBZrG4XdDAx-Td04DIZZR6F056QtGa6HUxf3izFMmckRP2mc3NMymSVjg6ogy59drvAZERtk0JkzpNPrbWVlzVuLPU4ro1ixkaXrW0z4AYiXxWjlvHigePUr3rCiREz0PQ6wyzc56YxwsoATKs1bQ6Ta85mmFNSDnAn94AhtLqyYhE5fotzdGhO7GKek_CHKbJJVp6zalEzCUYm_qBv_iqhY8CUnrjbd6QX4UAUgL3gA7KaHcyVkhyUmEYHrePFqoT8xGbwN3kpjyo21bCSzkuJNU3pH2PIIk0CDX8pX6oeJ2MrpV8WPCfq3n8-xMmwYlKYn6xO5NDEjqOWIW86u2f5OR4CV2jkAlhe2L3NF3Ac2fELfvW-5Oq8CdW33dLZ9XHpktpzrcTZapeLGdOs57fVoBzbfzGEnYPElS1D_HI0gqISAU5DCjqrlBv8VtxXVfEp6vWE8Rfuf-wr8hD4RhR3-RB9kgfZBcmqmnPMBn4e1iOncRN5fv8vJqp6ZE4emG-85GbtDwIc6S8tp16Mr5Tjza5nV2rceiKd-1LrBwag7v-YfP6VwBlr_lemMPGPb-88lCvOrOUW0kuwkXaSwxKIYC644hz727vZV2f_QUR8UaZ5ZaQxJ5Y8BJwr7fSzoy6Idxcv-Vs1EmSHildhusXvH5y3hGCjtcyawCI_GR9oM1yeiPFpvI8ouYAokJv-ji2e4khm9Qzj82tUeShCwiAkuw9r9tKqJXgvp7sW4myJBB_JHr8oo1P1uSIOUe8I10HwKIGZDD-73rxSn-bgsy2KmQZudjk4PIf51ezoKp7BaqweMpQcHrzpTaP_Ba1QN_dfRUUi8VZqfTg9cZnBCUbfoaeYv8cd8iggRbknalUYEOUQkSDhws31CTLwtsFY5_HHwxvXfwVrjnjlwVV8PMU-W5pgCn3KJnel47cgocxPUYd2mAohg040HhDsLXzB8LAyrxxnjH-wLRYIturUYaJ4vSe_Dc_gnwvfkuATVxwo0ddW5KQzUwoAWT2oVfNiBzMoG9AdauappBxI2lRqlKEsQwXaW1aprVGrw9knE59ZuY8TLtzvanRtgeqrTRPW0qohhgsULScqX8EiJ41BQCiEcNy-ZnOxSg6zvZEO_cr3E7yDcP4awfTi4G7rq10G04b3m_MaLLOHzNCSLkTclDPPWiCycDA43mBL2yUUX_cUrlW_bk8zct4Hf-DLhylkH0xUpyT271rgqLFIjCStyrpo6ZKf3PN39_Z0fycu4aIU-TAi8BqmtpbQJcM5Eqq_EcOtR4ogrEIjlnEJsvooPkxHdngPdN2DnghbknzIrF_V5qPgEELDnK8qz6d1Suh5yx39Cga9LjQzy8LfJOMT5JOdleWqwH1Lu5M-c73B1TZd7lpMAVBySwSDX0fiy7VFpwWpfh0dK367GkAgKWaH8I3XI1mv4j9juL6A5u-nwyUlPVsSIYzQs1VtprVKya69HADxQoVXlWVbcBz31rVIj5qaKsTw1iLC_pCsp4QXN70NeXDQz3dVVpvxvQQSPghE20DFhfBQv25dBbxKiAuejAjkUZU8vCII0QRE3yfFaeiNZqd425i5OnfYRomQMgs4OQQhE70jq-n5hPIVXTtgNmx6Zu1dfYM5LJ8aEyj7K5QQ-LPqQZO3F1Yc_hoLHv0WgOw4pAnQzrGKZRfB5Xkj-J7eLfL3OfsoDNnNCiAR62pCiJHXW1qBnu5CHdA931-OpKvSyct96-ChwIJ9iOWYKbmCEknLXsC1vrquIBLbCfYIKiPbRegFnoi92q2wwl3i7BuBltQnhlZqdvf8gAusswqKTlCqJuL8mZYw_3Nr_Bzkw8WSmXrWm_2IqJ31pdcHzcxVwhBUw2Gp556E0rCUDfpYLNdbSYmkZ9thOhDKTFXRKMb69SXM7GvWPoGybPxbtvLQZ4cShN64WCMCDJoiIYQMvPo89QNS_zMFbp35GEJBGcej3DPi6CQqtgPhOwhhixDzR_D1ATyUOlBGGyRdg2byazEVfZffUcIdTLG1VFxjDWcpddey3GHlvbFNlIs0mkbkSRxYzM7hsqSuvaYoDXCnlmRVrmansgspoLUt5eRc2WFXmCa0pJIafH6d9U933S223LFxMv_g3IofEW1gHbE_6rmG68knmuNwlMcPAN1Glim71hmUKoenc559Fx4TTihUCLxBrzGOK7iRyuswZocQY5HOqsgImgYOrhgi8fGs-VsPwkuQhfRgTvAnx2PHylezH-PPNeT3x3SSNawMAZoA72qpB-UNDQgu6RgRI5wfq_JDAGn5uYM-IKBFE-MdcS_HX688IQjpWAohRiyVMmSHYyucJKkMElJSQ9uCYVPoVVKEVUaMSNiOtCZG04m7EOwnibzm7mX5GDI5upUaH7elveeASPmlSjbuwsGYsIm4ofttP0suEpfujXz09rrJB60DspjSQEnikv73K94IeIWQuYA2ZILt4-DkGHh12N_KJ-DeXxxxdEKwwBlQv-dpwm5CowAQ7aAZPEzR-ViKJ92CRgdVFM_AJ6kIIv77WPOKxhkBGzlWaPJjG2XYihEAzBS7x8P4ktsYsSjhXo85_Mk-MG1AreLnCk4yYCc9MdC6kwdyGSq1sSS8K4SGS8rhjleHiP-gItvLyubb1JFJNVOYORBk-1gQeln6hxS4b-tgUo5cSxDRKHYqPUiuV5vV7MFacSmdqRbSZiZl_LyYVACt17gN6IixbdG5XmP9GSCBn6gyfTaKpyBZyMdmfcqJuhY9aIchPxM59nnsw6Ru17AuDSXX6IZmhEWbY27hTATZkvJTW97dKruXHRIIrWQQ6fbLD7xu6cHuNptpSFwlmQ==",
+        "id": "rs_003def1dcb53961c016b06ec8eec5887d2a02c89c686c62db8",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"Há uma minuta de Plano de Contingência de 2026 ainda sem aprovação formal, com campos pendentes de coordenação, telefone e capacidade de abrigo. No alerta de 2026-11-25, há chuva de 90 mm em 24 h e risco de alagamento em Beira-Lago, o que torna relevantes os pontos ainda não preenchidos no plano.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"COMPDEC\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Órgão citado como fonte do Plano de Contingência e associado à elaboração da minuta.\"},{\"id\":\"E2\",\"nome\":\"Plano de Contingência 2026\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Minuta de plano datada de 2026-06-01, em revisão e sem aprovação formal.\"},{\"id\":\"E3\",\"nome\":\"Coordenador da COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Função responsável indicada no plano, mas sem nome preenchido.\"},{\"id\":\"E4\",\"nome\":\"Telefone de plantão\",\"tipo\":\"recurso\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Contato operacional previsto no plano, mas ainda não preenchido.\"},{\"id\":\"E5\",\"nome\":\"Ginásio Municipal\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Abrigo indicado no plano; a capacidade não foi informada.\"},{\"id\":\"E6\",\"nome\":\"Beira-Lago\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área de risco citada no plano e no alerta atual.\"},{\"id\":\"E7\",\"nome\":\"Jardim das Flores\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área de risco citada no plano.\"},{\"id\":\"E8\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Fonte do alerta fictício de 2026-11-25.\"},{\"id\":\"E9\",\"nome\":\"Alerta de 2026-11-25\",\"tipo\":\"evento\",\"setor_responsavel\":\"Sala de Situação Regional\",\"descricao\":\"Alerta em nível laranja com chuva de 90 mm em 24 h e risco de alagamento em Beira-Lago.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC é a fonte do plano/minuta.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-06-01\",\"fim\":null,\"observacao\":\"Documento em revisão, sem aprovação formal.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Tipo: Plano de contingência | Fonte: COMPDEC | Data: 2026-06-01\"},{\"doc_id\":\"D1\",\"trecho\":\"Status: minuta em revisão, sem aprovação formal.\"}]},{\"id\":\"R2\",\"origem\":\"E2\",\"destino\":\"E3\",\"tipo\":\"outro\",\"rotulo\":\"O plano prevê a função de coordenador da COMPDEC.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-06-01\",\"fim\":null,\"observacao\":\"Campo sem preenchimento no documento.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Coordenador da COMPDEC: [a preencher]\"}]},{\"id\":\"R3\",\"origem\":\"E2\",\"destino\":\"E4\",\"tipo\":\"outro\",\"rotulo\":\"O plano prevê telefone de plantão.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-06-01\",\"fim\":null,\"observacao\":\"Campo sem preenchimento no documento.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Telefone de plantão: [a preencher]\"}]},{\"id\":\"R4\",\"origem\":\"E2\",\"destino\":\"E5\",\"tipo\":\"atende\",\"rotulo\":\"O plano lista o Ginásio Municipal como abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-06-01\",\"fim\":null,\"observacao\":\"Capacidade não informada.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigos: Ginásio Municipal (capacidade: [a levantar])\"}]},{\"id\":\"R5\",\"origem\":\"E2\",\"destino\":\"E6\",\"tipo\":\"localizado_em\",\"rotulo\":\"Beira-Lago aparece como área de risco no plano.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-06-01\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Áreas de risco: Beira-Lago e Jardim das Flores.\"}]},{\"id\":\"R6\",\"origem\":\"E2\",\"destino\":\"E7\",\"tipo\":\"localizado_em\",\"rotulo\":\"Jardim das Flores aparece como área de risco no plano.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-06-01\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Áreas de risco: Beira-Lago e Jardim das Flores.\"}]},{\"id\":\"R7\",\"origem\":\"E8\",\"destino\":\"E9\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A Sala de Situação Regional emitiu o alerta.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-25\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-25\"}]},{\"id\":\"R8\",\"origem\":\"E9\",\"destino\":\"E6\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta aponta risco de alagamento em Beira-Lago.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-25\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"vigencia_encerrada\",\"descricao\":\"A minuta do plano está datada de 2026-06-01 e permanece sem aprovação formal no próprio documento.\",\"implicacao\":\"Não há base documental para tratá-la como plano vigente aprovado.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Status: minuta em revisão, sem aprovação formal.\"}]},{\"id\":\"T2\",\"tipo\":\"atualizacao\",\"descricao\":\"Há um alerta mais recente, de 2026-11-25, com cenário específico de chuva intensa e risco de alagamento em Beira-Lago.\",\"implicacao\":\"A análise preventiva deve priorizar as informações operacionais ligadas ao alerta atual.\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"Existe uma versão do Plano de Contingência de 2026 formalmente aprovada e válida para uso no cenário atual?\",\"por_que_importa\":\"A minuta disponível está sem aprovação formal, e a decisão operacional não deve depender de um texto ainda em revisão.\",\"motivacao\":\"O documento do plano informa que a versão disponível é minuta e não está aprovada.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Status: minuta em revisão, sem aprovação formal.\"}],\"o_que_falta_saber\":\"Se há uma versão aprovada, sua data e onde ela está registrada.\",\"quem_pode_confirmar\":\"COMPDEC ou setor responsável pela aprovação do plano, conforme rotina institucional.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"Quem está designado como coordenador da COMPDEC para este cenário e essa designação está preenchida no documento vigente?\",\"por_que_importa\":\"A coordenação operacional precisa estar identificada para orientar verificações e comunicação interna.\",\"motivacao\":\"O plano traz o campo do coordenador em branco.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E3\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Coordenador da COMPDEC: [a preencher]\"}],\"o_que_falta_saber\":\"Nome ou função formalmente designada e o documento onde isso foi registrado.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"Qual é o telefone de plantão válido para acionamento operacional neste momento?\",\"por_que_importa\":\"O contato de plantão está em branco e é um dado básico para resposta e coordenação.\",\"motivacao\":\"O plano cita o telefone de plantão, mas não informa o número.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E4\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Telefone de plantão: [a preencher]\"}],\"o_que_falta_saber\":\"Número ou canal oficial de plantão que substitua o campo em branco.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"Qual é a capacidade operacional do Ginásio Municipal como abrigo, e ela está atualizada?\",\"por_que_importa\":\"O abrigo está previsto no plano, mas a capacidade não foi informada; sem esse dado não dá para avaliar uso planejado.\",\"motivacao\":\"O plano lista o Ginásio Municipal como abrigo, mas sem capacidade.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E5\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigos: Ginásio Municipal (capacidade: [a levantar])\"}],\"o_que_falta_saber\":\"Número de pessoas comportadas e se houve atualização recente do cadastro do abrigo.\",\"quem_pode_confirmar\":\"COMPDEC e setor gestor do local, se houver designação institucional.\",\"prioridade\":\"alta\"},{\"id\":\"V5\",\"pergunta\":\"Beira-Lago e Jardim das Flores continuam sendo as áreas de risco que devem orientar a checagem preventiva neste alerta?\",\"por_que_importa\":\"O plano cita duas áreas de risco, mas o alerta atual menciona explicitamente apenas Beira-Lago; é preciso confirmar o foco territorial da verificação.\",\"motivacao\":\"Há coincidência parcial entre o plano e o alerta, com citação de Beira-Lago em ambos.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E6\",\"E7\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\",\"Sala de Situação Regional\"],\"status_epistemico\":\"inferencia\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Áreas de risco: Beira-Lago e Jardim das Flores.\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago.\"}],\"o_que_falta_saber\":\"Se Jardim das Flores também está no recorte do alerta atual ou se a prioridade é apenas Beira-Lago.\",\"quem_pode_confirmar\":\"COMPDEC, com base na leitura do alerta e no protocolo local.\",\"prioridade\":\"media\"},{\"id\":\"V6\",\"pergunta\":\"O alerta de 2026-11-25 exige alguma atualização formal do plano ou do fluxo de comunicação interno da COMPDEC?\",\"por_que_importa\":\"A combinação de alerta atual e minuta sem aprovação pode exigir checagem de aderência entre documento e rotina de resposta.\",\"motivacao\":\"Há um alerta mais recente do que a minuta do plano.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\",\"Sala de Situação Regional\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Status: minuta em revisão, sem aprovação formal.\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago.\"}],\"o_que_falta_saber\":\"Se existe protocolo atualizado para comunicação/acionamento em alerta laranja e onde ele está formalizado.\",\"quem_pode_confirmar\":\"COMPDEC e setor que recepciona alertas da Sala de Situação Regional.\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há nome do coordenador da COMPDEC.\",\"por_que_importa\":\"A coordenação operacional fica indefinida no documento disponível.\"},{\"descricao\":\"Não há telefone de plantão informado.\",\"por_que_importa\":\"Sem esse canal, a verificação de acionamento imediato fica incompleta.\"},{\"descricao\":\"Não há capacidade do Ginásio Municipal como abrigo.\",\"por_que_importa\":\"Impede avaliar o dimensionamento do abrigo previsto.\"},{\"descricao\":\"Não há aprovação formal do plano.\",\"por_que_importa\":\"A minuta não pode ser tratada como documento vigente sem confirmação.\"}],\"cautelas\":[\"Há apenas dois documentos e nenhum registro histórico de ocorrências anteriores; por isso, não é possível inferir se problemas antigos persistem ou foram resolvidos.\",\"O alerta é fictício e deve ser usado apenas como cenário de verificação, não como base para decidir medidas operacionais.\",\"O plano está em minuta; campos em branco não devem ser preenchidos por inferência.\",\"A relação entre Beira-Lago e Jardim das Flores foi mantida apenas como contexto do plano; o alerta atual menciona expressamente Beira-Lago.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_003def1dcb53961c016b06ec8f119487d286f96e2782518cd3",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2035,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 3443,
+      "output_tokens_details": {
+        "reasoning_tokens": 352
+      },
+      "total_tokens": 5478
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"Há uma minuta de Plano de Contingência de 2026 ainda sem aprovação formal, com campos pendentes de coordenação, telefone e capacidade de abrigo. No alerta de 2026-11-25, há chuva de 90 mm em 24 h e risco de alagamento em Beira-Lago, o que torna relevantes os pontos ainda não preenchidos no plano.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"COMPDEC\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Órgão citado como fonte do Plano de Contingência e associado à elaboração da minuta.\"},{\"id\":\"E2\",\"nome\":\"Plano de Contingência 2026\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Minuta de plano datada de 2026-06-01, em revisão e sem aprovação formal.\"},{\"id\":\"E3\",\"nome\":\"Coordenador da COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Função responsável indicada no plano, mas sem nome preenchido.\"},{\"id\":\"E4\",\"nome\":\"Telefone de plantão\",\"tipo\":\"recurso\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Contato operacional previsto no plano, mas ainda não preenchido.\"},{\"id\":\"E5\",\"nome\":\"Ginásio Municipal\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Abrigo indicado no plano; a capacidade não foi informada.\"},{\"id\":\"E6\",\"nome\":\"Beira-Lago\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área de risco citada no plano e no alerta atual.\"},{\"id\":\"E7\",\"nome\":\"Jardim das Flores\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área de risco citada no plano.\"},{\"id\":\"E8\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Fonte do alerta fictício de 2026-11-25.\"},{\"id\":\"E9\",\"nome\":\"Alerta de 2026-11-25\",\"tipo\":\"evento\",\"setor_responsavel\":\"Sala de Situação Regional\",\"descricao\":\"Alerta em nível laranja com chuva de 90 mm em 24 h e risco de alagamento em Beira-Lago.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC é a fonte do plano/minuta.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-06-01\",\"fim\":null,\"observacao\":\"Documento em revisão, sem aprovação formal.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Tipo: Plano de contingência | Fonte: COMPDEC | Data: 2026-06-01\"},{\"doc_id\":\"D1\",\"trecho\":\"Status: minuta em revisão, sem aprovação formal.\"}]},{\"id\":\"R2\",\"origem\":\"E2\",\"destino\":\"E3\",\"tipo\":\"outro\",\"rotulo\":\"O plano prevê a função de coordenador da COMPDEC.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-06-01\",\"fim\":null,\"observacao\":\"Campo sem preenchimento no documento.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Coordenador da COMPDEC: [a preencher]\"}]},{\"id\":\"R3\",\"origem\":\"E2\",\"destino\":\"E4\",\"tipo\":\"outro\",\"rotulo\":\"O plano prevê telefone de plantão.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-06-01\",\"fim\":null,\"observacao\":\"Campo sem preenchimento no documento.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Telefone de plantão: [a preencher]\"}]},{\"id\":\"R4\",\"origem\":\"E2\",\"destino\":\"E5\",\"tipo\":\"atende\",\"rotulo\":\"O plano lista o Ginásio Municipal como abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-06-01\",\"fim\":null,\"observacao\":\"Capacidade não informada.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigos: Ginásio Municipal (capacidade: [a levantar])\"}]},{\"id\":\"R5\",\"origem\":\"E2\",\"destino\":\"E6\",\"tipo\":\"localizado_em\",\"rotulo\":\"Beira-Lago aparece como área de risco no plano.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-06-01\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Áreas de risco: Beira-Lago e Jardim das Flores.\"}]},{\"id\":\"R6\",\"origem\":\"E2\",\"destino\":\"E7\",\"tipo\":\"localizado_em\",\"rotulo\":\"Jardim das Flores aparece como área de risco no plano.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-06-01\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Áreas de risco: Beira-Lago e Jardim das Flores.\"}]},{\"id\":\"R7\",\"origem\":\"E8\",\"destino\":\"E9\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A Sala de Situação Regional emitiu o alerta.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-25\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-25\"}]},{\"id\":\"R8\",\"origem\":\"E9\",\"destino\":\"E6\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta aponta risco de alagamento em Beira-Lago.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-25\",\"fim\":null,\"observacao\":null},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"vigencia_encerrada\",\"descricao\":\"A minuta do plano está datada de 2026-06-01 e permanece sem aprovação formal no próprio documento.\",\"implicacao\":\"Não há base documental para tratá-la como plano vigente aprovado.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Status: minuta em revisão, sem aprovação formal.\"}]},{\"id\":\"T2\",\"tipo\":\"atualizacao\",\"descricao\":\"Há um alerta mais recente, de 2026-11-25, com cenário específico de chuva intensa e risco de alagamento em Beira-Lago.\",\"implicacao\":\"A análise preventiva deve priorizar as informações operacionais ligadas ao alerta atual.\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"Existe uma versão do Plano de Contingência de 2026 formalmente aprovada e válida para uso no cenário atual?\",\"por_que_importa\":\"A minuta disponível está sem aprovação formal, e a decisão operacional não deve depender de um texto ainda em revisão.\",\"motivacao\":\"O documento do plano informa que a versão disponível é minuta e não está aprovada.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Status: minuta em revisão, sem aprovação formal.\"}],\"o_que_falta_saber\":\"Se há uma versão aprovada, sua data e onde ela está registrada.\",\"quem_pode_confirmar\":\"COMPDEC ou setor responsável pela aprovação do plano, conforme rotina institucional.\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"Quem está designado como coordenador da COMPDEC para este cenário e essa designação está preenchida no documento vigente?\",\"por_que_importa\":\"A coordenação operacional precisa estar identificada para orientar verificações e comunicação interna.\",\"motivacao\":\"O plano traz o campo do coordenador em branco.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E3\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Coordenador da COMPDEC: [a preencher]\"}],\"o_que_falta_saber\":\"Nome ou função formalmente designada e o documento onde isso foi registrado.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"Qual é o telefone de plantão válido para acionamento operacional neste momento?\",\"por_que_importa\":\"O contato de plantão está em branco e é um dado básico para resposta e coordenação.\",\"motivacao\":\"O plano cita o telefone de plantão, mas não informa o número.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E4\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Telefone de plantão: [a preencher]\"}],\"o_que_falta_saber\":\"Número ou canal oficial de plantão que substitua o campo em branco.\",\"quem_pode_confirmar\":\"COMPDEC.\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"Qual é a capacidade operacional do Ginásio Municipal como abrigo, e ela está atualizada?\",\"por_que_importa\":\"O abrigo está previsto no plano, mas a capacidade não foi informada; sem esse dado não dá para avaliar uso planejado.\",\"motivacao\":\"O plano lista o Ginásio Municipal como abrigo, mas sem capacidade.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E5\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigos: Ginásio Municipal (capacidade: [a levantar])\"}],\"o_que_falta_saber\":\"Número de pessoas comportadas e se houve atualização recente do cadastro do abrigo.\",\"quem_pode_confirmar\":\"COMPDEC e setor gestor do local, se houver designação institucional.\",\"prioridade\":\"alta\"},{\"id\":\"V5\",\"pergunta\":\"Beira-Lago e Jardim das Flores continuam sendo as áreas de risco que devem orientar a checagem preventiva neste alerta?\",\"por_que_importa\":\"O plano cita duas áreas de risco, mas o alerta atual menciona explicitamente apenas Beira-Lago; é preciso confirmar o foco territorial da verificação.\",\"motivacao\":\"Há coincidência parcial entre o plano e o alerta, com citação de Beira-Lago em ambos.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E6\",\"E7\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\",\"Sala de Situação Regional\"],\"status_epistemico\":\"inferencia\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Áreas de risco: Beira-Lago e Jardim das Flores.\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago.\"}],\"o_que_falta_saber\":\"Se Jardim das Flores também está no recorte do alerta atual ou se a prioridade é apenas Beira-Lago.\",\"quem_pode_confirmar\":\"COMPDEC, com base na leitura do alerta e no protocolo local.\",\"prioridade\":\"media\"},{\"id\":\"V6\",\"pergunta\":\"O alerta de 2026-11-25 exige alguma atualização formal do plano ou do fluxo de comunicação interno da COMPDEC?\",\"por_que_importa\":\"A combinação de alerta atual e minuta sem aprovação pode exigir checagem de aderência entre documento e rotina de resposta.\",\"motivacao\":\"Há um alerta mais recente do que a minuta do plano.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E2\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\",\"Sala de Situação Regional\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Status: minuta em revisão, sem aprovação formal.\"},{\"doc_id\":\"D2\",\"trecho\":\"NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago.\"}],\"o_que_falta_saber\":\"Se existe protocolo atualizado para comunicação/acionamento em alerta laranja e onde ele está formalizado.\",\"quem_pode_confirmar\":\"COMPDEC e setor que recepciona alertas da Sala de Situação Regional.\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há nome do coordenador da COMPDEC.\",\"por_que_importa\":\"A coordenação operacional fica indefinida no documento disponível.\"},{\"descricao\":\"Não há telefone de plantão informado.\",\"por_que_importa\":\"Sem esse canal, a verificação de acionamento imediato fica incompleta.\"},{\"descricao\":\"Não há capacidade do Ginásio Municipal como abrigo.\",\"por_que_importa\":\"Impede avaliar o dimensionamento do abrigo previsto.\"},{\"descricao\":\"Não há aprovação formal do plano.\",\"por_que_importa\":\"A minuta não pode ser tratada como documento vigente sem confirmação.\"}],\"cautelas\":[\"Há apenas dois documentos e nenhum registro histórico de ocorrências anteriores; por isso, não é possível inferir se problemas antigos persistem ou foram resolvidos.\",\"O alerta é fictício e deve ser usado apenas como cenário de verificação, não como base para decidir medidas operacionais.\",\"O plano está em minuta; campos em branco não devem ser preenchidos por inferência.\",\"A relação entre Beira-Lago e Jardim das Flores foi mantida apenas como contexto do plano; o alerta atual menciona expressamente Beira-Lago.\"]}"
+  }
+}

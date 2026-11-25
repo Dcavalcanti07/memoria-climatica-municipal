@@ -1,0 +1,935 @@
+{
+  "meta": {
+    "scenario": "E05",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 3,
+    "tag": "eval_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D3",
+      "D2"
+    ],
+    "user_message_chars": 1262,
+    "user_message_sha12": "60178e6207f8"
+  },
+  "user_message": "Município (fictício): Lagoa Funda\nData de referência da análise: 2026-11-19\nDocumentos disponíveis (3), em ordem cronológica:\n\n### [D1] Plano de Contingência — Alagamentos (2025)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2025-10-02\n\nD1. A Estação de Bombeamento de Águas Pluviais do Jardim Primavera (EBAP-JP) deve ser acionada quando a lagoa atingir a cota de alerta.\nD2. Operador de plantão: Secretaria de Saneamento.\nD3. Abrigo de referência para o Jardim Primavera: Escola Estadual Dom Pedro (cedida por termo de cooperação).\n\n---\n\n### [D3] Relatório técnico — Saneamento — EBAP Jardim Primavera\nTipo: Atualização de secretaria | Fonte: Secretaria de Saneamento | Data: 2026-09-15\n\nAs duas bombas da EBAP-JP foram substituídas em março de 2025. Teste operacional realizado em 10/09/2026 com funcionamento normal das duas bombas e do gerador de reserva. Próximo teste programado: março de 2027.\n\n---\n\n### [D2] Alerta de chuva forte (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-19\n\nNÍVEL: LARANJA. Acumulado de 90 mm em 24 h. Risco de alagamento em áreas baixas, incluindo o entorno da Lagoa Funda.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_009bb467df01f43a016b06ed183c9c87d2a05e6e5cee26207c",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 2164,
+    "output_tokens": 4214,
+    "reasoning_tokens": 873
+  },
+  "latency_ms": 26800,
+  "started_at": "2026-11-25T14:13:43.695Z",
+  "output": {
+    "resumo_situacao": "Há um alerta de chuva forte com risco de alagamento em áreas baixas, incluindo o entorno da Lagoa Funda. O plano aponta a EBAP do Jardim Primavera como medida operacional e a Secretaria de Saneamento como plantonista. Um relatório recente informa que as bombas e o gerador foram testados com funcionamento normal.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Estação de Bombeamento de Águas Pluviais do Jardim Primavera (EBAP-JP)",
+        "tipo": "infraestrutura",
+        "setor_responsavel": "Secretaria de Saneamento",
+        "descricao": "Estrutura de bombeamento prevista no plano de contingência para atuação em alagamentos."
+      },
+      {
+        "id": "E2",
+        "nome": "Secretaria de Saneamento",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Setor indicado como operador de plantão para acionamento da EBAP-JP."
+      },
+      {
+        "id": "E3",
+        "nome": "Escola Estadual Dom Pedro",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Abrigo de referência indicado para o Jardim Primavera, cedido por termo de cooperação."
+      },
+      {
+        "id": "E4",
+        "nome": "Jardim Primavera",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Local citado no plano e no relatório técnico, associado à EBAP e ao abrigo de referência."
+      },
+      {
+        "id": "E5",
+        "nome": "Lagoa Funda",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Referência territorial do cenário de alerta, com menção a risco de alagamento em áreas baixas no entorno."
+      },
+      {
+        "id": "E6",
+        "nome": "Operador de plantão",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "Secretaria de Saneamento",
+        "descricao": "Função operacional indicada no plano para o acionamento da EBAP-JP."
+      },
+      {
+        "id": "E7",
+        "nome": "Gerador de reserva",
+        "tipo": "equipamento",
+        "setor_responsavel": "Secretaria de Saneamento",
+        "descricao": "Equipamento mencionado no teste operacional da EBAP-JP, com funcionamento normal."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "responsavel_por",
+        "rotulo": "A Secretaria de Saneamento é o operador de plantão da EBAP-JP.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-10-02",
+          "fim": null,
+          "observacao": "Registrado no plano de contingência e não há substituição explícita posterior."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Operador de plantão: Secretaria de Saneamento."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E1",
+        "destino": "E4",
+        "tipo": "localizado_em",
+        "rotulo": "A EBAP-JP fica no Jardim Primavera.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-10-02",
+          "fim": null,
+          "observacao": null
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Estação de Bombeamento de Águas Pluviais do Jardim Primavera (EBAP-JP)"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E3",
+        "destino": "E4",
+        "tipo": "atende",
+        "rotulo": "A Escola Estadual Dom Pedro é abrigo de referência para o Jardim Primavera.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-10-02",
+          "fim": null,
+          "observacao": "A vigência do termo de cooperação não aparece detalhada nos documentos."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo de referência para o Jardim Primavera: Escola Estadual Dom Pedro (cedida por termo de cooperação)."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E1",
+        "destino": "E5",
+        "tipo": "afetado_por",
+        "rotulo": "A EBAP-JP é acionada diante da cota de alerta da lagoa.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-10-02",
+          "fim": null,
+          "observacao": "A cota de alerta é mencionada como gatilho, mas seu valor não está documentado."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "deve ser acionada quando a lagoa atingir a cota de alerta."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E1",
+        "destino": "E7",
+        "tipo": "outro",
+        "rotulo": "O teste operacional registrou funcionamento normal do gerador de reserva.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-09-10",
+          "fim": null,
+          "observacao": "Condição registrada no teste operacional de 2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Teste operacional realizado em 10/09/2026 com funcionamento normal das duas bombas e do gerador de reserva."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "As duas bombas da EBAP-JP foram substituídas em março de 2025.",
+        "implicacao": "O plano de 2025 não registra a troca, mas o relatório de 2026 mostra que o equipamento passou por substituição antes do teste operacional recente.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "As duas bombas da EBAP-JP foram substituídas em março de 2025."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "atualizacao",
+        "descricao": "Foi realizado teste operacional em 10/09/2026 com funcionamento normal das duas bombas e do gerador de reserva.",
+        "implicacao": "Há registro recente de funcionamento normal, útil para checagem preventiva no cenário de alerta.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Teste operacional realizado em 10/09/2026 com funcionamento normal das duas bombas e do gerador de reserva."
+          }
+        ]
+      },
+      {
+        "id": "T3",
+        "tipo": "atualizacao",
+        "descricao": "O próximo teste da EBAP-JP ficou programado para março de 2027.",
+        "implicacao": "A rotina de testes está prevista, mas a execução futura não está confirmada nos documentos.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Próximo teste programado: março de 2027."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "A EBAP-JP está com condições operacionais agora, inclusive com as duas bombas e o gerador de reserva prontos para uso?",
+        "por_que_importa": "O plano depende do acionamento da estação quando a lagoa atingir a cota de alerta, e o relatório mais recente só garante o funcionamento no teste de setembro.",
+        "motivacao": "Há alerta de chuva forte com risco de alagamento e um relatório recente de funcionamento normal, mas isso não substitui a confirmação no momento do alerta.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E7",
+          "E5"
+        ],
+        "setores_relacionados": [
+          "Secretaria de Saneamento"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "deve ser acionada quando a lagoa atingir a cota de alerta."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "funcionamento normal das duas bombas e do gerador de reserva."
+          }
+        ],
+        "o_que_falta_saber": "Se a estação segue disponível e operando normalmente na data do alerta, e se há alguma intercorrência desde o teste de 10/09/2026.",
+        "quem_pode_confirmar": "Secretaria de Saneamento",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "A Secretaria de Saneamento está em plantão e consegue acionar a EBAP-JP se a cota de alerta for atingida?",
+        "por_que_importa": "O plano atribui a essa secretaria o papel de operador de plantão; sem essa confirmação, o acionamento previsto pode não ocorrer no tempo necessário.",
+        "motivacao": "O plano nomeia a secretaria como plantonista, mas não informa escala, substituição ou contato operacional na data do alerta.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E6"
+        ],
+        "setores_relacionados": [
+          "Secretaria de Saneamento"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Operador de plantão: Secretaria de Saneamento."
+          }
+        ],
+        "o_que_falta_saber": "Se há plantonista designado hoje, qual é a escala vigente e se o acionamento está operacional.",
+        "quem_pode_confirmar": "Secretaria de Saneamento",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "A Escola Estadual Dom Pedro continua disponível como abrigo de referência para o Jardim Primavera e o termo de cooperação segue válido?",
+        "por_que_importa": "O plano usa esse abrigo como referência para resposta ao alagamento; se a cessão mudou, a alternativa operacional precisa ser revista.",
+        "motivacao": "O documento de 2025 menciona a cessão por termo de cooperação, mas não há atualização posterior sobre a vigência desse arranjo.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E3",
+          "E4"
+        ],
+        "setores_relacionados": [],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo de referência para o Jardim Primavera: Escola Estadual Dom Pedro (cedida por termo de cooperação)."
+          }
+        ],
+        "o_que_falta_saber": "Se o termo de cooperação continua vigente e se a escola permanece apta a servir de abrigo.",
+        "quem_pode_confirmar": "Defesa Civil e setor gestor do acordo com a escola, se houver",
+        "prioridade": "media"
+      },
+      {
+        "id": "V4",
+        "pergunta": "A lagoa já atingiu a cota de alerta ou há medição atual que confirme se o gatilho do plano foi acionado?",
+        "por_que_importa": "O acionamento da EBAP-JP depende explicitamente da cota de alerta, e o cenário de chuva forte indica possibilidade de alagamento em áreas baixas.",
+        "motivacao": "O alerta informa acumulado de chuva elevado e risco no entorno, mas não traz medição da cota da lagoa.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E5",
+          "E1"
+        ],
+        "setores_relacionados": [
+          "Secretaria de Saneamento"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "deve ser acionada quando a lagoa atingir a cota de alerta."
+          },
+          {
+            "doc_id": "D2",
+            "trecho": "Acumulado de 90 mm em 24 h. Risco de alagamento em áreas baixas"
+          }
+        ],
+        "o_que_falta_saber": "A medição atual da lagoa e se o gatilho de acionamento foi ou não alcançado.",
+        "quem_pode_confirmar": "Secretaria de Saneamento e equipe de monitoramento hidrológico, se houver",
+        "prioridade": "alta"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há no material o valor numérico da cota de alerta da lagoa.",
+        "por_que_importa": "Sem esse valor, não é possível verificar objetivamente o gatilho de acionamento previsto no plano."
+      },
+      {
+        "descricao": "Não há confirmação da vigência atual do termo de cooperação da Escola Estadual Dom Pedro.",
+        "por_que_importa": "A validade do abrigo de referência pode ter mudado desde o plano de 2025."
+      },
+      {
+        "descricao": "Não há escala, telefone ou outra forma documentada de contato do operador de plantão.",
+        "por_que_importa": "Isso dificulta confirmar rapidamente quem aciona a EBAP-JP no cenário de alerta."
+      }
+    ],
+    "cautelas": [
+      "O relatório técnico de 2026 confirma funcionamento em teste, mas não prova que a EBAP-JP permaneça sem falhas até a data do alerta.",
+      "O alerta de chuva forte informa risco de alagamento, mas não substitui a medição local da lagoa ou o gatilho formal do plano.",
+      "A existência do abrigo de referência em 2025 não garante sua disponibilidade atual sem nova confirmação.",
+      "Não foram incluídos eventos de outros tipos ou de outros locais sem vínculo direto com o cenário atual."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 7,
+    "n_relacoes": 5,
+    "n_verificacoes": 4,
+    "n_temporais": 3,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Operador de plantão: Secretaria de Saneamento.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Estação de Bombeamento de Águas Pluviais do Jardim Primavera (EBAP-JP)",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo de referência para o Jardim Primavera: Escola Estadual Dom Pedro (cedida por termo de cooperação).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "deve ser acionada quando a lagoa atingir a cota de alerta.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Teste operacional realizado em 10/09/2026 com funcionamento normal das duas bombas e do gerador de reserva.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "As duas bombas da EBAP-JP foram substituídas em março de 2025.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Teste operacional realizado em 10/09/2026 com funcionamento normal das duas bombas e do gerador de reserva.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Próximo teste programado: março de 2027.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "deve ser acionada quando a lagoa atingir a cota de alerta.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "funcionamento normal das duas bombas e do gerador de reserva.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Operador de plantão: Secretaria de Saneamento.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo de referência para o Jardim Primavera: Escola Estadual Dom Pedro (cedida por termo de cooperação).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "deve ser acionada quando a lagoa atingir a cota de alerta.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Acumulado de 90 mm em 24 h. Risco de alagamento em áreas baixas",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      }
+    ],
+    "n_citacoes": 14,
+    "n_citacoes_literais": 14,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795616050,
+    "created_at": 1795616024,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_009bb467df01f43a016b06ed183c9c87d2a05e6e5cee26207c",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBu0fYLHk9424pvUkWLmtZKlCZMPIPXZCYINlmY9hyNIDooqjR5NJ_o3VSe8af940T4_17wnCies1rsiVNaJKFPSD76pWfram718-kJQ6EEFMzejT17nXIfnJ2XxndvtP3RZKuaOW17BOIw1CjJeE5G0i1EO9Vz8MzsvJ71shkzJrEXWhPAw6LoVCC0CkxloHCkhERFAvjdDDOhGjniri2fX2xqusIrnBExvIWOUM98da0ba_47G5K9e1XODj9b2PboP2xLTXAfIc1mLFi-KDQMRoxqEg3aqHkXOb9eqe6bYYWKfkStB7JXm9SEcLzEj60ZG2I5Zxz8Pk-DEVc_Ms6ZC4Fu3EIxaOvpTsjjkTO9gdzUvAcfOXMupd0kQOIJfSKjKNy_prFhhyme811bjlU_9YN3jaAGzLfch6O_WerFc-bs0S-DJ5GQ-hviuAhVRrP93UGXFb5_hyt-e5BkIlPdPPUqPmKWPOzavyUL-W3D6ztDG1_5GkH5aLuUh2mutLTY7Kc4wE3XYtyUD7hpAtKHNek1xpoP2J3_SxG7YTDw6Lva3O07eB9zAV8ANMk15jM5IG0N226BGyQVOBkzmEid5O4FR2gZsZPQvKYaRztR3wvSPudEGNfotG4uxiWuz1sX4UTrSkiyLjEPwygStEv7gqC6bfOYBql9vBRALkInDKRsE9amu9seRaZz3wAru2yAyolg_F_kVx_efcuqst3hMLNQFSkQhLOY2AbHpcfx1ovJzt5k1HlZ-BNUR-1eAZ6qbaIZt0KEtVBy2mMJXCwL6fA6JrFWokumpHQet8r2Ux8mmUIRQF6G59htUGqMpVF_GhU_CgBbV74jqy3uKDuB22C2yCHc8FjbrXwBJif1ZwfOFod1GncpGudE94EqS9lQ0QgT4zGVKaYpebaUVrAr98YqUQPVdfH96Swxs1PIgiDh7LPZNZyDuoKbyEGmTKAQFWDs6xxEibFlWgPua3h3QaIFN1G-XfmGE-LJoAaN-X4SZAZRpEGlLtLBBbuCklmqhV1sEuobI7lP1ybvBhuzksmQDrxV1ZtlLicn8xu9ugnoflAS1th8Z3IxwOl5LB1_q5OiyxRQafIwFJwLpyjAMxsSDLpdDBnro94ViOY0aEvwOdsARBaE5T4g463lcbpKCo-4dZRYXewbOyFTBQNyp2uhsNGaTrdoZ7r92zCXBqrettnK_iN60HIHOGMwy2TJgHNb4tRbQPoZsIHwNydEC5gIWa4o3q7coKwmav8GrfjZBDdpuafu4zxdnhTX-r_olkgVcLBONmNAWCL9JQei0ow4ELlgXfmq4Pi74r-navEiBWsO8KGaDGXe_iyHxNjBjnVgz72dTD1ErlmAN-u4ER9H01CCpDshyUMjrXWH-vRDSTkzDOiL6-SE0x0Okd1B-yKwHXR0nXug5mnKAfeaqcXMdCBmkThdqHx00xgq-QoAPm0QxGRyJ3oelpMa7bHtbjg7cMIigMJVkhI7zAQFfq8dw_Esl837naRvwYDxag5pzvANTGpRYm8IyEchyi48gDUd8M_51YMtfW4tVejYK7ok_rNSTHnf3nr9YZvcVlpkrSOC_KEPkllJjI9bQ9ch5pAF-O04PZ0n84EeGSbEqapc1q-K9ad4qm9VRjropwvzK0weu9dT6g3Qb2hjGnsJjx__f3E1REgEOTlFB6hSwf-B1HbCSlddebEVXB3j-r_xPvRq2vvx-AcOyLJkMlLShrNozwlkesbPKB9zdMKRTKAlvyr8WpKRs_pgHC9Y5M2WNfbwWN2UTNfI1L7hze6vHr9-0T5MrS2AxQskpkOZsjKs0WNsQhRO9DmitBOAmD8xJe5Ddqf6ruKNUOr__dOH3fEjAIoTRlZUChoiP5_nkB3pVm-kAwu037X59xueDnbaNZOcIE1Y2X76kNcQ2fc7VJ6ic7MN3wTmhvdhni83nLU5jw4Mgf0jhg48gU_4C29ySHjdIXGu71E6q_p2DUb4l-xy6SBbkVKwgxHdG3oyReELOWksFuHfGZmbbZAGxWJOSsliCRy0_b2wrcGp-UPLntakjzwjWP1tfb1mogh8hm_jApErP0K__eRzr_4ZWmnMimmxIjt3GwAc8mnWijmNFCBfRIcjh5d_ugc_yBWfvMfWJbRNKHgXLKoLj-BMN3UoaBadnQK7_3570Fzqn7ESiuR4L68-AQSaf-1X-2IO2-CNj4akOYxbPVUupIZGnfCoe7isqHJxDA2mZltiFWVGf5GK3ZJm83aMAA5R_KTSKQuVoa0nlG8VLbgnM-Ai73BjqmZGalbYw10H3BWXRjTFy4ox7TeuJzpq2FHPXMwLW240U91MnVFl5p1b6L9JlWUOjtlowWaKur21KwFGY64q2654pko3R-MKpWILhRwSWNjRPy_KaLuT-qocaLdlrFVcR9GEKIi6PGASSyDfHdzT_GBeHMSDR8WQ1PuqdjxFzm79b5wtwe9dJ0aO_i0c7E8FZwuaaFP02Dyszz57M8ICvkVgJDEiIrtF2QrzI6VrA1J6u9wM9LIawWiYV0NxcB8Oa5a_66Czy8nHosre3_tJp_ZORcv9OiYWFPGhsjMvwluOnZGaubflO51FVcfEI7Rd4G-7wvKNkDQqqtl2HCE9c-Hu3mIVUTJrw_OhrC0R4jgaMKkMnq591BmaLvJR2t1LdnJ6OxIfWtbz3z0VYXO92c8QkmkN-L64mH0YGsQsytpoBaw4M9c6XWsDxuRuKyITjtpPW4qk5zEMoQlNIQPVRUqjQDQJR-WdAlGetQat4fhhXmG_yIRVr7rLElHx9kolR_uoxYDiHwHTFoazPnGaWNHA9dx5z1Rzi69BUN1KhgLfX4lWmC8-QRwaAOc93eouZ5iMDwNgQXvzs8KGDrJnKy1evgJDMTkLaSkQTJ6lpdhaB2zhK9Bgl0u1OkvPOuc6UoeZXsE-72CuWMODS4zkantyy2QCsi7OqCXnUGHxBRwXaGsAWsWqjFvpHlB35FFnw6niyNrBRKxBVzuq77xzCxdLehLys0SEUSaxfxiuMTeo1pYv3WHGA52AZFuStyIF3BBNjonOShwaP2MtQ8f4sqBvb7ijF0KoDxoiN1BHR3yu0ilQK0U0bRrYQ9QdP8eXeAb7f-lE3mpUuBzKD2KFawkX1ci27Tw9bXFMm6x3nbGpzc05LnbIiWnS7ajvdtGJtpKuIbZymqgn0VnapmiQ_Ad36eKg2MaTBL45zlNG2W3daEc_pfTCEI9WG8bOFMeVH_2qC2ew_JbsrijOna8tP_sBUBz2TFobqQp8c6bd6soWAPip28u8HFjKNlHT0JtIEtwo5iIFpDY0MbdUyH9JUsCoozmTOrFTGsedhyCi2TUXTkjyKqsUTOd6geaFUQ7UIHqI_NxJGr-CDHD3zy3PJPNnmNzHCCCShh0rTJeyAhbiA0kNUnN4l7RoqygyCN6hDhzm1nf32Kv_ied_w6OiSpoDgwn4269-xCU4RfCEBI-nt-J13y9xkCunixPr-DHhdGF4ndxfB105iI9OkhB1CYbPXas7K6oKfz09_vSHJklDJA-WVDjwaOPQmJO80O-SV8EVVjgThe-4NaSabmGOlJI8LYtVTTT26OyE4uE3-gtN97cn2gZbXUpGDz8b3Gv2px9fsabLNQ8-Ewo3Y_yESW51SnUYz3niKSv6rJ1nCeOmmrul_2Q7RK5uf6Apg7BRIRhwYlWRhdoEIPB75vbQvvlMEY-bYAvxxW1QKOs7M3DvIuBGgER_u8oKXhKzFdgKTgGrmNpxp9KDYfqr7G2BdRg37vpgK4i2A_c-KrW1znZ7DUGSh4ckL-4s1_F0LWsjQWWLE3Q5aFVWfjNwN4hm6hVcJc2_YDtgL69RC3edKqg1rDgODHJkPVbD4hy7SrS-z3lg-Wvl367St5466WPHGbPsLF_8sKzhVq6lD84WGTVQGT0Dnn8BZC7u2tVkiJSt2u1UY5-Bnznaxrhc6P9TcOe04cxcOJP2DIYtKNJBLe6WMkK34fPpjzD0WSAkehrEbSF-U1813HX4wBZduLF7sAqqdhUuY5DNKyVmekO2pLM6JF9--leruz4BAU2VQFZZ4NzE0Olj7XR-EufXorhTeouJMLmb-NMJZuOeffY6GQ9odAhHzWYqGayanrMHfa0O80XK03Ry6ZKkViVsOnK_QtlIyT3f-9yOYw9pAK9Kbc_shxzoMtvB1aIZAquRS-Z7wRmJVPlP42MBFH6pC9jrwz5ZNmVdjBrQppXB5N9alNOQDR4Q-C4m3Zd03KYUnJ8QvjpyHv6C7L6UVr5QICy84QO4vw9kXV2qsXVC-GQK_PnRWSdSGAQ4X126NfGqZHFeBdD2WimiZ-w3wQBtAjIrqTOqm2RO50R4W3BYSH6KheKaBeA0HkULJl7dQgt9DdFsiQsebheu18YHs3Wd_2tD2EDOUdxZQZoL-_wUcE6jQB21mVEFs0gcWd06WZKRIo4mJhA0QrhYMaWervcAmS-popZnflINdLmgXH5ZEyMoNYOuwpT2Y8XCIsDIuhUIknTLHrKKQh8XaJ4uXGCCYdd5pzEqoq34fe7U2TxvX7ACyJyq71TE8VroJYltNTq6ISZXl4y2S_QdHn1cKC14M6DCWWJUp717kzs22yh2Jz-0e_ZHojbUNL3sKjO5K7dvezystuG_TK2OLorwIjSyJB5ITbg0WEWwc_0733dcZZp_szAKS4_NSVZJEsVHVSohWBeYycL-XpgHaAZ9n2cD4P3CJA9NbwUnJdxYmCzB400HdDZ4xKE7XPIzHHHf9l3j3Pgl9iBSWpc5ojjpdv3d453iYW9T78_2PUA8Zbo7dVf3IyVYctS_SP6AEYc-5JawcQVAnibuVTqytCR60IHR7RxCJGjDseoFylziECLtvcRE1Bk69zOFUQlItL7KhBJAJIaf_zknMsVyi3fLKmNngtP8_uFqQNnv_n6uKBDFFoCdZk96m5uYpDHf8MYRHLJmU-BhTJd6rYAJPDd2tY7Ka-tC04ABsI1ZVyOb51OIBW4wGlHDxUP5O7GBJ7b65NdMct7sT8vOJOIa8egE3WtgwgERHjxT_I5abn_e3imbPpDRnmXIvQwvAN6JgYhM6Mp2MRVUhcK5R6m2YsLuf_jkin7uwdcVrbVkMuDmhSGdeqTH27v0K2lUU_xm2Ja0iV3eAUCAeIqRWKihgAmKc62h0Is5MWAezpykL0rDvS90f1Xq8wyFW5rxRi-zrDejPEOlVg_jo5TV4c80mypKHeq3PN9mseFMRQ-inEn90DuKau8j6IqPgYvFLUDhpcEbm7og4ta7lDijbYKSoXI22nrQ2qLAvAPq6j8yUzYA36CpPResR7SyhCdi4qp5ucsPIhv--87elnd9HZDqxLa58NFDZuIG1LYPGA3ucW285NJRT8Rg3wK1zQ8EtcVl7OpYci9QUFzvkTaP1E08m1xYtKwgUo__1Ugc0nYT0hWgX4Kc_aW-xDFOahtb7Z4zqsbEVVlNBTkWnITBZwVsrLzKNXmIcwNVAzr-EIijPKBsvwZdHJ_ofj076832SNx06riRxpKxV4fecBs-s9bAg2SNz-Yx40rfGzvollbC7KMaOwR7aQFfCwx9pzan2PEUz9iYKD0YnDd5sz4bdB_uNZpupiOyZ37R2sHWNXjX8ZFd9mETcmBQ8aKu_eVeBLhzq4nb6wvne0-yafGdeFGnKOeYPsF0bo-vE82c1i4akgvBKegXBg4VPvkfSRNGM5hUA2ZIYYj_UOueFRz_eR9VoCN4p8VcqoLlUhG8ckn-77WbVRRwGMkuWzf99pBEreL5prE0Dd0gT5bHXWDbqdfFSWFXFqLPeFh1FlXI4PF_BKBvxqPoFIAvRzvH7L31gBMGGX9Oj8iryXNwjbnVPS9lmjFuNt3W4afUsgrIwSt_VDmUQxxzj_V1bbvUK_MyZuqLBaCXf_xtss37APe1cQdyCICmK9P6Po-YCwV_ZXTH9567CCynhbkS3KkO06AqHPyuPjidOOdWKBiSuofqekbUNtGOIJVev8sNYiodEZxvgruHGkejXbBn8TwHkDy5Rxs8O_bR3mV6kIqcbfLtukJCM3oiSJQVZOOdEyJuHf0LtYcMZrOLvSet5o0L9guCAlhVZERPNpRlQtCkQD-co63fXSmJsmuCNI7-_xBlkUgeExH1xJUGLAx1iIGrbYckkQe7Q-1_NUzjgfTqZPryRTQPg3aHkkfp4xfEvIpnSlFFp6zjrnjy0DM83WywbPiVfxozmRf1ceQJUrWoiZtUMPVGwzdHoT_EC1cUpKgjHLj4Ag8LXQSZ61qoiniPeuXYeROI-_eWBS3lcPr1YdhGcl5mPDUsGM0nlWIz56Dfa8dK_WzR16dxXBUqL5iUpS-RpS1APlapkskJtzYmKWzQ8pMzZ9ynTV907v0mS4Cq64eTXBb896EeXZg5cA1qIFVxXjefh49BQ2vZW-1lGp1Bx8KnAqI81XGGoyttQnbKNQixlX0VmLb7bgAEpiK2RUXWIZ4ooHjhW3j262Z7iQ8_vzlOinFn60uocluKX26YiSRU1oQTML6HZbWF2ngtNTWwv4agf9ROSAECGFx9qpAw9uGAONs6SmikNn7925JE60j1OB1hBFs0qk2QkXdljIMQP6LBgH-yZNQpXkcBGK8iOdG35shY1aDYxdRdA3J9gxg7Jxw05gwSWR0IiHSgn6jzMYqm-uEF-kUiwCSjHvqmGRgxvsKbSIy-WLPxCULwC-gYVQAAFpInpzS-zA_BIji_IIQ6lCx02naUdYJBvVDUN75oMzn2MTIGJ4sWW1jZwkKPTwz-7is9H4UK5q_wxtnm_jPuWsJSopLntE0iRnmDqMifhOYEWoQ4zAo1x5jthVzH-eCabThCI1ZNAzKj_f7ZmjCjAyd90OBpa2PNhsjYYJR5pdrqNYhTVm0HHhJL3zBnFqENgwmijeTTJP5Kq2UcqzMXE2jUhxF-4Fqd8gSOCnIxxFs7rQulpPrCdP_bsyXqBGNy8iKllW5P2c2tbWnEhq2A0MGwpZst1Ut9u2HqUsz--AfcjTEXVcoh1_sDRGSwc_hU18itymPVlTRsG_E4RAIDvCSOJjtmw9689LwdYGiW2ouCOpuCvjRsCGPqhE1gMuDzMN7WQz5LHG6cyhxRLGdJGeicJ16RAkzOiq1yClE3n4LZcHnuFcTn4gRkyzuCNVAhZ4XpHlUNOf_HI2M874GJN80kId7GF3LPzVMgCHAImCGGFqpHOihbTvoctfoUkfZKFHNmu_svfhX-KNs7GuhpZfXrqiDbfA99H1I8EIhyhqP4l8FPAH2dcSNZrztaFFsDVUlM5cbILFiwA1GtsnuzjrH1MU9oQ_6gJwK4jj0VlsPrebL_3UcKUMKu6GLc3xSSlplU6Sw-zpgK-MTfF1ADl3SiE1YIMmeSeJq8QrN_YkIGHibAM6YViW9oxSvBVM8wxr1y-KilBwe3ROLW8v2Tf_fv30sGCL9MvdSk1d3acVnNuZMnRwJzCtzOkpgNaeW0dX_D7da-dr6PVKVYtEGmgJLJER1sYYUTjHUdb2edEF8CPYSntQA1rUyDr8f1VplzTquaAiFJwsoZ9362Jz1iFceTBVLyxxlAz_PC9nrs3HcECSJcxKTd5vCeGouKziq-g8yzOR0UFkprlPXLdgCcU3CD-eezt-TqLScDssvIIlVXaW-Kf83EMF6vof9_bt3FqXLVu4XoOEFvjxMPIwWLLg7gbk6sNj2u4dHZMdfWFLryu9KKsLv6QRcfR3W74liq_I-AqzKBamBXvEBw_7EK94UGE1A67HjsgNwPuSl8AKRi4Bdv078Vf0M9Dn2-2McbCxePMyz9EULjin0I_62tuAHVwd4tURPRTIGA3OIWl6ZrTg3l4A96lASbGkJCwEU2wCewbZimgJRHS7bEsUIgATPb_Lm_O9Sk8LPEE_8KcH4_0ITunRPK9usWDlW3VzAz-JbAQ8XRgInhkJrOxvMmdBEq7-XrO_HaZRsvF2DiVRMfPmi2GLNpdyFlslf1R_Sg0YMX1AiTny0Z7Yk3_hAQNy-hdUHW0VSKbr65sKrlK9QtLQB_SMSMdtXprR6a2tQXEr0iu6nKVfiofVjF_K2JwERGsO0pMDuxV-PopHJeUmQBb_KPBIW7D18GhuSKyfZ2MCCov_66QhY71ypAbWwQzsvfIhi2QZHJrgX9nL3MU7s2hBKqvlQCn2RCdGvIjreKjrMKNn48_OMpyqqvu7-CBuuL_p1LsZ3L3XL5Avb2kJ3R9aJ2BEre-QppVWeERE_5ehalD3Bx9YrbkWPd8TOYuVZ51sZGTl85MIGmFJQddFr5nOexbwIbH08mM1Rsxpr1JMpBj2YosC0JscS67KARKNEtn-c2iOHnPXf9pXcCzhptyqznrlz0HlUt0ML7HFnUZyUu6P2uLYwowDavwQPglfypGSMf69Al9Hip8KuS6BQ_lDfPn0D0fYuWZoagWNRbZ6rpukA26ONCZn3lWtHflFlYXarpES07ZFyeEO_Wi62xarjByhHYD4qiZOveJZW9Fdplmu6hinEpEyu8ypdbLBQTLKFMNY15rRbe-McKqnXYhxmT9_Y8cRQThv-R_L_8Qc4wI1CXHazsNPvFPaRLq2jLxjwi79aG04JAhlxp_sd0FxPs6tGSf5WY8RIaamuEcoLZ0700dFRyXkIXBdgLoG74lsW1zqZnbLg0xZTEDz62LQWhHGSH-5w3iZBbXfrBAVZX3-qBYPI33mfrxnTIODKnIJm04pl2K6exSpaDLfEngMQtLHpTtN-m6EBIybdtnSUPmEB_TUz-L4dBbMweQ9j-JIlgKlnLawFupmV6ciklcKvwy-8I-L8knKD-50KjzpBmG8UPmpDbeo-sjfzLPjUs3yILW48KFAlZYRhZTNAKAQHpMCpb6lb_4Xqsg4sgSrSTooAr_TfeJ-SF9U4TZzMJ0tws3dNuaYehz4eHneXGHwe6IJpIIA1VLmkmTfDwBXpC1Cg1Y_GENW34ki_GkqpY_7z54QmoGZIABa1m8_I1ZaOG36jOwjBJg_LClZFAkUDvybodbdRUqUvnvElJk8_6K6SwSVJk0SV7GbKITMswT4c2DlwKdmiIEOrgBKB-P_lj48VOdI-jArUohD-vpLp7nOfxmMuBYAkPv7tYaAHIThBSsQFu9YDwlJqrjz6Mqu2Ds1OOD6UDRZ_FYmn_uR51Y39GqN1kVU7uhtG4t45oguCysEz1hTQA03njvMFXddwwBieVoMpzA0SgVXQ4NvUMFkYRpVY1Jogg5nIHhsl-cXEwuvTxaT8kzTnYk8NGP5RjKS4ilmB78zsn2xhALzq73DoMGoUxUvLFq08q2yJ6o_wnPsaEbAaJcqAeHgTYy5qj4QX8hdV2NW1ASE1P9FrqKRTWJ0RZWiXB1TzbMr-f2gJAwqVghbbEajo7QEjB-M1dMP7HKZUBjuDeik2pTHnvhcAQVDtrDDwnRikL1l9NT51rIapMNpqcuTm967618mUBgoAqaWYcZFWl1F2DjW_q-r5rSCxrrFOP1r8ERSK9o-QNFReIVSYku1uEQvUc5N62I77fZOTROtU4BPSl0lAoVJjnBf4EQE9t3697wtpx2rOFEnBKwMjO-jE0s9T5JtB-k5Dulpsf3mzBTMzXbAE3G-AmY0skdxn5oPURa4Z-amnVCX5kmwd5SLTJS6LMN7YMvINVYbx5kXS5NPWEGPbkSYM7J1IKKFeZvMID9c2vs9Uozb44XDK7ioVwCLINE9lblIlX9fQeW0svK6q_hs5BJQkVfSEQGEnhNkE5GmobbfnTE7MOw1m76AUeYTmYQarjHHTHi36606y-IKFBzKH1jBMJ531B3GH2TnySmu-7B6xLATe9z-TNlQ6hqQJsP5R4xF9t3aKkR-3MzK7goOZ1Xg7-IyyO2SG0XWtytQPTqW26ctVHnLByA2WvnecVDyyymYLfz9o1606g_BQwqKCOpCvMXKbaZqWtPsSOzJ9Di0nZs9z8JndR9fXC6aErdrK3rJDILS9fXIc-kIak1sirdbEOOHE4r42-fBaplE85dCVW7dpYLrIjONH4bb1UIG4twppf7QqG7Ht4qYCtY5PWg_8sIB8SbS5zE8bxhvqv8Yj9ceyOs22EnfyOWFdrF56X3U8l60uHcyfKfTaj4NNDbD9tpPrr9MJTj2rq1UftTohW0r7uGxMMiNitvblWxWR51Jjk6yql0m9sTjwHK5B0n9QLj5L36kYszK_ClOttq1_VpcfzNMhMJGPoL-zIFGT8xMf_ilSG6aI-ZMDPGcRlscmJY6sHb4eImq_jZjNulcypirhc9EVqUiNCs5LQZFFEE7k_6xTz21_kMDsLOPK6p_sf2RJM94foXnMZ_hBECp66G8EjkiIewb78IMPXuGb2r4KMpoUKofY1C9YuuVhOSBtlj91y7xgZrmElEvv7wAtz_IaNDrB0vFo2HV6crINSARk-nzjaUv8Dy60uQEJcD7M1MPUvaiULKhiz1nNMhD9-PPd6WAOFdcUWjFik2FarBlUhrgy3XkQ_46RPau_vrzVEqy3_21fgwTnlR0plL_u_UDkAWJwJMOAVQxvG3nbeWYv6KOtLAb_tVuT4E9fKOVSaOvY4pPxIz5gW2jLmt0OwrPNARyJnRBGvnXbHPMfcrgk8vi-yG7lABdZJ4FgLHknckk_vz8WNVdBxgmD_3fX1z6gJUfQTZ1d9Jz3OBWtgfVgq2He_vZWw_AP0EQEDko8wgMgBUhsXVJ31T-PZ_T40XYpBGtyjJUKQobS-KoVkuyunHVGJcX-J9PxoRAl02mb_1ir-CGZxa38r8X0OC8T2pQ1K2kSiumHNLEn74KTkl6dj02vcDndS3O3DMwtaVIN4WyIdpNqPosVlC0rL3hOeGYLX-GbJXxsX0YjcxSCYAQx3EHZVvtQdOCxj5BF3oCLwLBzkKizDrOwVuChp_GZ9rtAvNp6YummaeQdEktgaOXqOA6lzlK_BL4JOZbn-dvXQMCQeVaxO2aY2vuPFeeq_46TavOV5oUTW2xdfWG1TdD99Kjxx95dLg3XmjkFSIdr4o7JTWm6K6zFn0AENlurakCo5NoM6Res40aaWeZeF-UBpyL4sQSRU11nbU4c1-qYnC05-qtG2ajHMG2734UHunm5EGZrMnAHr_Yjcz1ABoJ_X4MzUzqA8s7SdveVwcC4AkqNI20a7BlO3QMSQ4A2UDZOP5kTGwZziAUwa6d7BOQ9bulaxoMI712cOh7JHj7b-Eb8GQd85p61Qt-cBJbza7We5qXuhgpB0F4VJfMKNZgzenQnINXEgtgbGWmrsb0jrR6Sraydj53XDJx9Hla4sy6YBU2nh2-_ehU5Q7zPaP5d_aAmdywdhmM-IoxXsbXbysEKVaXTaB11_tmzKd0ZAer71yFnFr4w-cPXeuniz4mTeusVrP2eNL2aRj8R_5zht6MkuMqAbY4mXm36s0KGxyc1dNgrVhoiIO8bNolOAsO7PqTVNcKlFa3PStMfDOmnJcKVgCltbPnGP36RLdz46BCj5yB6QRdX3Jkx9wRP3GahCcttop1gA9yd8j-cUdlfQZt1c2fblERb3Agqyq5ztMVK1Bzb3gry3q3HAD_FV8-0IWeq4XNzXNcpGWF_HxDPXgK6w-sy7UA_lTFz9-gO6YVhOwbWBpMqz_WFLALhFo7yjiZ0-90X5eg78QsgzpiwlFjxfrrJg34icsOTnDz2WnNsGqdxk4RaPfCN1Ks-EH-CniPqW3uwkv1pDAM1P8oP_YQIe-O731WkBkduRjtxDSgQuUk54uDSmmomq5LQGbQYX6BfsqDf6zipkHRM-T7_aIqYuJ0-fPyGiPw9TBUS-GeIQ3-cuIvX8jFvQAqx5TYy5q6Xaeu-piB4wM74Kf6MKrupjZE5rKnZQ24GJG2GTIA_gcuVmcdNU-_cYwE1I2PA83s_vkS_-GrhZTX16PnXUZ9anCKxX6wanh3yyaT0txHxC4Tm3zP_HxzKgMe3sSuGDZsQM6b19JjORk94Br9tcjYUrH9FleGMMbW5fGs0mLHTmYUg_s05HtGv_-MfKa-CCN6eizh27WW9TvqMpMAaPhaTtnkzL9uMQKDiDSuX0g_NWmO_oKhQyXKR5_SYFhXwttwHn25BzgcfNHy6dtUuiRX_rCSiOM773TB5mBlYNfwiGMGs6EpMD427dDJB_Q9TsLMARyXc_6byxuDch1QKWDFo752A0uIexzE8w00eAiACMBLcmjokIuma6SIXZRTV6jvBimdRmer_JoiNtQR2NcQit_F6Qo7Mz8ieDqu3TgP76RoOylbnldgZXdSOZTB8pxJpjWYdTcLWGfsXdsG1iKcyIqHyIUq8LjhvJeP0l_tyDbstcXlRh0YpTJBEAM0GR8c0Ru-XyLtzKGPgWsqb6o3d_bxGQwvs_gH80XjtssAhELCScKyy6b6DKg7dOsEXFq8sdADdhuVL0KE4gKkhDNGJdTtpZSk_Zqq-sydekQP1oovRU5C_9aRiAzOgzmjzQo7J4Z70ByXhiSFkSUeL9EZjEvy5NFq00sM_qdNu7WelWTcSpcOclqadnd4N0td4Av_rPXTdK5PFE5ia1iV-MupcinbFJRHokxjsfruSMyH_5JWtTSzKNAUsmeNh_b4xl57oS_daNT49-dB0aiNHuy678Y9Teh7o2N2DfGJuguS4ct6S5nE9QWUinzAedfwzaxXIDHvJRol_xmwGduKNb8_CXhWc9M63MnrNomKhAgdGl6IXA4USGcg3-RhjjP7uq7WmGXPPA7qWrhD-aLWaU_PeaE=",
+        "id": "rs_009bb467df01f43a016b06ed1c85d087d2bd9c8f46e840110f",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\n  \"resumo_situacao\": \"Há um alerta de chuva forte com risco de alagamento em áreas baixas, incluindo o entorno da Lagoa Funda. O plano aponta a EBAP do Jardim Primavera como medida operacional e a Secretaria de Saneamento como plantonista. Um relatório recente informa que as bombas e o gerador foram testados com funcionamento normal.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Estação de Bombeamento de Águas Pluviais do Jardim Primavera (EBAP-JP)\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": \"Secretaria de Saneamento\",\n      \"descricao\": \"Estrutura de bombeamento prevista no plano de contingência para atuação em alagamentos.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Secretaria de Saneamento\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Setor indicado como operador de plantão para acionamento da EBAP-JP.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Escola Estadual Dom Pedro\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Abrigo de referência indicado para o Jardim Primavera, cedido por termo de cooperação.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Jardim Primavera\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local citado no plano e no relatório técnico, associado à EBAP e ao abrigo de referência.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Lagoa Funda\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Referência territorial do cenário de alerta, com menção a risco de alagamento em áreas baixas no entorno.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Operador de plantão\",\n      \"tipo\": \"funcao_responsavel\",\n      \"setor_responsavel\": \"Secretaria de Saneamento\",\n      \"descricao\": \"Função operacional indicada no plano para o acionamento da EBAP-JP.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Gerador de reserva\",\n      \"tipo\": \"equipamento\",\n      \"setor_responsavel\": \"Secretaria de Saneamento\",\n      \"descricao\": \"Equipamento mencionado no teste operacional da EBAP-JP, com funcionamento normal.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Secretaria de Saneamento é o operador de plantão da EBAP-JP.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-02\",\n        \"fim\": null,\n        \"observacao\": \"Registrado no plano de contingência e não há substituição explícita posterior.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Operador de plantão: Secretaria de Saneamento.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E1\",\n      \"destino\": \"E4\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"A EBAP-JP fica no Jardim Primavera.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-02\",\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Estação de Bombeamento de Águas Pluviais do Jardim Primavera (EBAP-JP)\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E3\",\n      \"destino\": \"E4\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"A Escola Estadual Dom Pedro é abrigo de referência para o Jardim Primavera.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-02\",\n        \"fim\": null,\n        \"observacao\": \"A vigência do termo de cooperação não aparece detalhada nos documentos.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo de referência para o Jardim Primavera: Escola Estadual Dom Pedro (cedida por termo de cooperação).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E1\",\n      \"destino\": \"E5\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"A EBAP-JP é acionada diante da cota de alerta da lagoa.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-02\",\n        \"fim\": null,\n        \"observacao\": \"A cota de alerta é mencionada como gatilho, mas seu valor não está documentado.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"deve ser acionada quando a lagoa atingir a cota de alerta.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E1\",\n      \"destino\": \"E7\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"O teste operacional registrou funcionamento normal do gerador de reserva.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-09-10\",\n        \"fim\": null,\n        \"observacao\": \"Condição registrada no teste operacional de 2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Teste operacional realizado em 10/09/2026 com funcionamento normal das duas bombas e do gerador de reserva.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"As duas bombas da EBAP-JP foram substituídas em março de 2025.\",\n      \"implicacao\": \"O plano de 2025 não registra a troca, mas o relatório de 2026 mostra que o equipamento passou por substituição antes do teste operacional recente.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"As duas bombas da EBAP-JP foram substituídas em março de 2025.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T2\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"Foi realizado teste operacional em 10/09/2026 com funcionamento normal das duas bombas e do gerador de reserva.\",\n      \"implicacao\": \"Há registro recente de funcionamento normal, útil para checagem preventiva no cenário de alerta.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Teste operacional realizado em 10/09/2026 com funcionamento normal das duas bombas e do gerador de reserva.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T3\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O próximo teste da EBAP-JP ficou programado para março de 2027.\",\n      \"implicacao\": \"A rotina de testes está prevista, mas a execução futura não está confirmada nos documentos.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Próximo teste programado: março de 2027.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"A EBAP-JP está com condições operacionais agora, inclusive com as duas bombas e o gerador de reserva prontos para uso?\",\n      \"por_que_importa\": \"O plano depende do acionamento da estação quando a lagoa atingir a cota de alerta, e o relatório mais recente só garante o funcionamento no teste de setembro.\",\n      \"motivacao\": \"Há alerta de chuva forte com risco de alagamento e um relatório recente de funcionamento normal, mas isso não substitui a confirmação no momento do alerta.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E7\",\n        \"E5\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Saneamento\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"deve ser acionada quando a lagoa atingir a cota de alerta.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"funcionamento normal das duas bombas e do gerador de reserva.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a estação segue disponível e operando normalmente na data do alerta, e se há alguma intercorrência desde o teste de 10/09/2026.\",\n      \"quem_pode_confirmar\": \"Secretaria de Saneamento\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"A Secretaria de Saneamento está em plantão e consegue acionar a EBAP-JP se a cota de alerta for atingida?\",\n      \"por_que_importa\": \"O plano atribui a essa secretaria o papel de operador de plantão; sem essa confirmação, o acionamento previsto pode não ocorrer no tempo necessário.\",\n      \"motivacao\": \"O plano nomeia a secretaria como plantonista, mas não informa escala, substituição ou contato operacional na data do alerta.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E6\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Saneamento\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Operador de plantão: Secretaria de Saneamento.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se há plantonista designado hoje, qual é a escala vigente e se o acionamento está operacional.\",\n      \"quem_pode_confirmar\": \"Secretaria de Saneamento\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V3\",\n      \"pergunta\": \"A Escola Estadual Dom Pedro continua disponível como abrigo de referência para o Jardim Primavera e o termo de cooperação segue válido?\",\n      \"por_que_importa\": \"O plano usa esse abrigo como referência para resposta ao alagamento; se a cessão mudou, a alternativa operacional precisa ser revista.\",\n      \"motivacao\": \"O documento de 2025 menciona a cessão por termo de cooperação, mas não há atualização posterior sobre a vigência desse arranjo.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E3\",\n        \"E4\"\n      ],\n      \"setores_relacionados\": [],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo de referência para o Jardim Primavera: Escola Estadual Dom Pedro (cedida por termo de cooperação).\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o termo de cooperação continua vigente e se a escola permanece apta a servir de abrigo.\",\n      \"quem_pode_confirmar\": \"Defesa Civil e setor gestor do acordo com a escola, se houver\",\n      \"prioridade\": \"media\"\n    },\n    {\n      \"id\": \"V4\",\n      \"pergunta\": \"A lagoa já atingiu a cota de alerta ou há medição atual que confirme se o gatilho do plano foi acionado?\",\n      \"por_que_importa\": \"O acionamento da EBAP-JP depende explicitamente da cota de alerta, e o cenário de chuva forte indica possibilidade de alagamento em áreas baixas.\",\n      \"motivacao\": \"O alerta informa acumulado de chuva elevado e risco no entorno, mas não traz medição da cota da lagoa.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E5\",\n        \"E1\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Saneamento\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"deve ser acionada quando a lagoa atingir a cota de alerta.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Acumulado de 90 mm em 24 h. Risco de alagamento em áreas baixas\"\n        }\n      ],\n      \"o_que_falta_saber\": \"A medição atual da lagoa e se o gatilho de acionamento foi ou não alcançado.\",\n      \"quem_pode_confirmar\": \"Secretaria de Saneamento e equipe de monitoramento hidrológico, se houver\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há no material o valor numérico da cota de alerta da lagoa.\",\n      \"por_que_importa\": \"Sem esse valor, não é possível verificar objetivamente o gatilho de acionamento previsto no plano.\"\n    },\n    {\n      \"descricao\": \"Não há confirmação da vigência atual do termo de cooperação da Escola Estadual Dom Pedro.\",\n      \"por_que_importa\": \"A validade do abrigo de referência pode ter mudado desde o plano de 2025.\"\n    },\n    {\n      \"descricao\": \"Não há escala, telefone ou outra forma documentada de contato do operador de plantão.\",\n      \"por_que_importa\": \"Isso dificulta confirmar rapidamente quem aciona a EBAP-JP no cenário de alerta.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O relatório técnico de 2026 confirma funcionamento em teste, mas não prova que a EBAP-JP permaneça sem falhas até a data do alerta.\",\n    \"O alerta de chuva forte informa risco de alagamento, mas não substitui a medição local da lagoa ou o gatilho formal do plano.\",\n    \"A existência do abrigo de referência em 2025 não garante sua disponibilidade atual sem nova confirmação.\",\n    \"Não foram incluídos eventos de outros tipos ou de outros locais sem vínculo direto com o cenário atual.\"\n  ]\n}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_009bb467df01f43a016b06ed1fc3e487d2a0e4e0e8eef26d3d",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2164,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 2048
+      },
+      "output_tokens": 4214,
+      "output_tokens_details": {
+        "reasoning_tokens": 873
+      },
+      "total_tokens": 6378
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\n  \"resumo_situacao\": \"Há um alerta de chuva forte com risco de alagamento em áreas baixas, incluindo o entorno da Lagoa Funda. O plano aponta a EBAP do Jardim Primavera como medida operacional e a Secretaria de Saneamento como plantonista. Um relatório recente informa que as bombas e o gerador foram testados com funcionamento normal.\",\n  \"entidades\": [\n    {\n      \"id\": \"E1\",\n      \"nome\": \"Estação de Bombeamento de Águas Pluviais do Jardim Primavera (EBAP-JP)\",\n      \"tipo\": \"infraestrutura\",\n      \"setor_responsavel\": \"Secretaria de Saneamento\",\n      \"descricao\": \"Estrutura de bombeamento prevista no plano de contingência para atuação em alagamentos.\"\n    },\n    {\n      \"id\": \"E2\",\n      \"nome\": \"Secretaria de Saneamento\",\n      \"tipo\": \"setor\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Setor indicado como operador de plantão para acionamento da EBAP-JP.\"\n    },\n    {\n      \"id\": \"E3\",\n      \"nome\": \"Escola Estadual Dom Pedro\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Abrigo de referência indicado para o Jardim Primavera, cedido por termo de cooperação.\"\n    },\n    {\n      \"id\": \"E4\",\n      \"nome\": \"Jardim Primavera\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Local citado no plano e no relatório técnico, associado à EBAP e ao abrigo de referência.\"\n    },\n    {\n      \"id\": \"E5\",\n      \"nome\": \"Lagoa Funda\",\n      \"tipo\": \"local\",\n      \"setor_responsavel\": null,\n      \"descricao\": \"Referência territorial do cenário de alerta, com menção a risco de alagamento em áreas baixas no entorno.\"\n    },\n    {\n      \"id\": \"E6\",\n      \"nome\": \"Operador de plantão\",\n      \"tipo\": \"funcao_responsavel\",\n      \"setor_responsavel\": \"Secretaria de Saneamento\",\n      \"descricao\": \"Função operacional indicada no plano para o acionamento da EBAP-JP.\"\n    },\n    {\n      \"id\": \"E7\",\n      \"nome\": \"Gerador de reserva\",\n      \"tipo\": \"equipamento\",\n      \"setor_responsavel\": \"Secretaria de Saneamento\",\n      \"descricao\": \"Equipamento mencionado no teste operacional da EBAP-JP, com funcionamento normal.\"\n    }\n  ],\n  \"relacoes\": [\n    {\n      \"id\": \"R1\",\n      \"origem\": \"E1\",\n      \"destino\": \"E2\",\n      \"tipo\": \"responsavel_por\",\n      \"rotulo\": \"A Secretaria de Saneamento é o operador de plantão da EBAP-JP.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-02\",\n        \"fim\": null,\n        \"observacao\": \"Registrado no plano de contingência e não há substituição explícita posterior.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Operador de plantão: Secretaria de Saneamento.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R2\",\n      \"origem\": \"E1\",\n      \"destino\": \"E4\",\n      \"tipo\": \"localizado_em\",\n      \"rotulo\": \"A EBAP-JP fica no Jardim Primavera.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-02\",\n        \"fim\": null,\n        \"observacao\": null\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Estação de Bombeamento de Águas Pluviais do Jardim Primavera (EBAP-JP)\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R3\",\n      \"origem\": \"E3\",\n      \"destino\": \"E4\",\n      \"tipo\": \"atende\",\n      \"rotulo\": \"A Escola Estadual Dom Pedro é abrigo de referência para o Jardim Primavera.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-02\",\n        \"fim\": null,\n        \"observacao\": \"A vigência do termo de cooperação não aparece detalhada nos documentos.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo de referência para o Jardim Primavera: Escola Estadual Dom Pedro (cedida por termo de cooperação).\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R4\",\n      \"origem\": \"E1\",\n      \"destino\": \"E5\",\n      \"tipo\": \"afetado_por\",\n      \"rotulo\": \"A EBAP-JP é acionada diante da cota de alerta da lagoa.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2025-10-02\",\n        \"fim\": null,\n        \"observacao\": \"A cota de alerta é mencionada como gatilho, mas seu valor não está documentado.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"deve ser acionada quando a lagoa atingir a cota de alerta.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"R5\",\n      \"origem\": \"E1\",\n      \"destino\": \"E7\",\n      \"tipo\": \"outro\",\n      \"rotulo\": \"O teste operacional registrou funcionamento normal do gerador de reserva.\",\n      \"status_epistemico\": \"fato_documentado\",\n      \"periodo\": {\n        \"inicio\": \"2026-09-10\",\n        \"fim\": null,\n        \"observacao\": \"Condição registrada no teste operacional de 2026.\"\n      },\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Teste operacional realizado em 10/09/2026 com funcionamento normal das duas bombas e do gerador de reserva.\"\n        }\n      ]\n    }\n  ],\n  \"achados_temporais\": [\n    {\n      \"id\": \"T1\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"As duas bombas da EBAP-JP foram substituídas em março de 2025.\",\n      \"implicacao\": \"O plano de 2025 não registra a troca, mas o relatório de 2026 mostra que o equipamento passou por substituição antes do teste operacional recente.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"As duas bombas da EBAP-JP foram substituídas em março de 2025.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T2\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"Foi realizado teste operacional em 10/09/2026 com funcionamento normal das duas bombas e do gerador de reserva.\",\n      \"implicacao\": \"Há registro recente de funcionamento normal, útil para checagem preventiva no cenário de alerta.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Teste operacional realizado em 10/09/2026 com funcionamento normal das duas bombas e do gerador de reserva.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"T3\",\n      \"tipo\": \"atualizacao\",\n      \"descricao\": \"O próximo teste da EBAP-JP ficou programado para março de 2027.\",\n      \"implicacao\": \"A rotina de testes está prevista, mas a execução futura não está confirmada nos documentos.\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"Próximo teste programado: março de 2027.\"\n        }\n      ]\n    }\n  ],\n  \"verificacoes\": [\n    {\n      \"id\": \"V1\",\n      \"pergunta\": \"A EBAP-JP está com condições operacionais agora, inclusive com as duas bombas e o gerador de reserva prontos para uso?\",\n      \"por_que_importa\": \"O plano depende do acionamento da estação quando a lagoa atingir a cota de alerta, e o relatório mais recente só garante o funcionamento no teste de setembro.\",\n      \"motivacao\": \"Há alerta de chuva forte com risco de alagamento e um relatório recente de funcionamento normal, mas isso não substitui a confirmação no momento do alerta.\",\n      \"base\": \"ambos\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E7\",\n        \"E5\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Saneamento\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"deve ser acionada quando a lagoa atingir a cota de alerta.\"\n        },\n        {\n          \"doc_id\": \"D3\",\n          \"trecho\": \"funcionamento normal das duas bombas e do gerador de reserva.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se a estação segue disponível e operando normalmente na data do alerta, e se há alguma intercorrência desde o teste de 10/09/2026.\",\n      \"quem_pode_confirmar\": \"Secretaria de Saneamento\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V2\",\n      \"pergunta\": \"A Secretaria de Saneamento está em plantão e consegue acionar a EBAP-JP se a cota de alerta for atingida?\",\n      \"por_que_importa\": \"O plano atribui a essa secretaria o papel de operador de plantão; sem essa confirmação, o acionamento previsto pode não ocorrer no tempo necessário.\",\n      \"motivacao\": \"O plano nomeia a secretaria como plantonista, mas não informa escala, substituição ou contato operacional na data do alerta.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E1\",\n        \"E2\",\n        \"E6\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Saneamento\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Operador de plantão: Secretaria de Saneamento.\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se há plantonista designado hoje, qual é a escala vigente e se o acionamento está operacional.\",\n      \"quem_pode_confirmar\": \"Secretaria de Saneamento\",\n      \"prioridade\": \"alta\"\n    },\n    {\n      \"id\": \"V3\",\n      \"pergunta\": \"A Escola Estadual Dom Pedro continua disponível como abrigo de referência para o Jardim Primavera e o termo de cooperação segue válido?\",\n      \"por_que_importa\": \"O plano usa esse abrigo como referência para resposta ao alagamento; se a cessão mudou, a alternativa operacional precisa ser revista.\",\n      \"motivacao\": \"O documento de 2025 menciona a cessão por termo de cooperação, mas não há atualização posterior sobre a vigência desse arranjo.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E3\",\n        \"E4\"\n      ],\n      \"setores_relacionados\": [],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"Abrigo de referência para o Jardim Primavera: Escola Estadual Dom Pedro (cedida por termo de cooperação).\"\n        }\n      ],\n      \"o_que_falta_saber\": \"Se o termo de cooperação continua vigente e se a escola permanece apta a servir de abrigo.\",\n      \"quem_pode_confirmar\": \"Defesa Civil e setor gestor do acordo com a escola, se houver\",\n      \"prioridade\": \"media\"\n    },\n    {\n      \"id\": \"V4\",\n      \"pergunta\": \"A lagoa já atingiu a cota de alerta ou há medição atual que confirme se o gatilho do plano foi acionado?\",\n      \"por_que_importa\": \"O acionamento da EBAP-JP depende explicitamente da cota de alerta, e o cenário de chuva forte indica possibilidade de alagamento em áreas baixas.\",\n      \"motivacao\": \"O alerta informa acumulado de chuva elevado e risco no entorno, mas não traz medição da cota da lagoa.\",\n      \"base\": \"informacao_atual\",\n      \"entidades_relacionadas\": [\n        \"E5\",\n        \"E1\"\n      ],\n      \"setores_relacionados\": [\n        \"Secretaria de Saneamento\"\n      ],\n      \"status_epistemico\": \"informacao_insuficiente\",\n      \"evidencias\": [\n        {\n          \"doc_id\": \"D1\",\n          \"trecho\": \"deve ser acionada quando a lagoa atingir a cota de alerta.\"\n        },\n        {\n          \"doc_id\": \"D2\",\n          \"trecho\": \"Acumulado de 90 mm em 24 h. Risco de alagamento em áreas baixas\"\n        }\n      ],\n      \"o_que_falta_saber\": \"A medição atual da lagoa e se o gatilho de acionamento foi ou não alcançado.\",\n      \"quem_pode_confirmar\": \"Secretaria de Saneamento e equipe de monitoramento hidrológico, se houver\",\n      \"prioridade\": \"alta\"\n    }\n  ],\n  \"informacoes_ausentes\": [\n    {\n      \"descricao\": \"Não há no material o valor numérico da cota de alerta da lagoa.\",\n      \"por_que_importa\": \"Sem esse valor, não é possível verificar objetivamente o gatilho de acionamento previsto no plano.\"\n    },\n    {\n      \"descricao\": \"Não há confirmação da vigência atual do termo de cooperação da Escola Estadual Dom Pedro.\",\n      \"por_que_importa\": \"A validade do abrigo de referência pode ter mudado desde o plano de 2025.\"\n    },\n    {\n      \"descricao\": \"Não há escala, telefone ou outra forma documentada de contato do operador de plantão.\",\n      \"por_que_importa\": \"Isso dificulta confirmar rapidamente quem aciona a EBAP-JP no cenário de alerta.\"\n    }\n  ],\n  \"cautelas\": [\n    \"O relatório técnico de 2026 confirma funcionamento em teste, mas não prova que a EBAP-JP permaneça sem falhas até a data do alerta.\",\n    \"O alerta de chuva forte informa risco de alagamento, mas não substitui a medição local da lagoa ou o gatilho formal do plano.\",\n    \"A existência do abrigo de referência em 2025 não garante sua disponibilidade atual sem nova confirmação.\",\n    \"Não foram incluídos eventos de outros tipos ou de outros locais sem vínculo direto com o cenário atual.\"\n  ]\n}"
+  }
+}

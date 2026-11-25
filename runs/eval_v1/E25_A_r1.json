@@ -1,0 +1,1045 @@
+{
+  "meta": {
+    "scenario": "E25",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D3",
+      "D2"
+    ],
+    "user_message_chars": 1044,
+    "user_message_sha12": "2f175af234b9"
+  },
+  "user_message": "Município (fictício): Arroio das Pedras\nData de referência da análise: 2026-11-20\nDocumentos disponíveis (3), em ordem cronológica:\n\n### [D1] Plano de Contingência (2025)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2025-11-11\n\nRecursos de resgate: 1 barco de alumínio da COMPDEC; apoio do Corpo de Bombeiros conforme disponibilidade regional.\nÁrea de risco: Ilha dos Pescadores (acesso apenas por barco em cheias).\n\n---\n\n### [D3] Inventário de equipamentos — COMPDEC\nTipo: Atualização de secretaria | Fonte: COMPDEC | Data: 2026-08-28\n\nBarco de alumínio 6 m: motor de popa 40 HP instalado em 2025, revisado em 20/08/2026. Coletes salva-vidas: 12. Operadores habilitados: 1 (curso de arrais vence em 03/2027).\n\n---\n\n### [D2] Alerta de cheia (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-20\n\nNÍVEL: LARANJA. Cheia do Arroio das Pedras pode isolar a Ilha dos Pescadores a partir de 21/11.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_04ba868819b93a19016b06ec9acb5887d2b182197f5a0d9aa1",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 2117,
+    "output_tokens": 3550,
+    "reasoning_tokens": 623
+  },
+  "latency_ms": 22983,
+  "started_at": "2026-11-25T14:11:38.260Z",
+  "output": {
+    "resumo_situacao": "O cenário de alerta aponta possibilidade de cheia a partir de 21/11 com risco de isolar a Ilha dos Pescadores. Os documentos mostram que o município tem um barco de alumínio para resgate, coletes salva-vidas e um operador habilitado, além de apoio do Corpo de Bombeiros condicionado à disponibilidade regional. Há, porém, pontos que precisam ser confirmados antes do uso operacional da pauta.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "COMPDEC",
+        "tipo": "setor",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Setor municipal citado como fonte do plano e do inventário de equipamentos."
+      },
+      {
+        "id": "E2",
+        "nome": "Corpo de Bombeiros",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Apoio externo previsto para os recursos de resgate, condicionado à disponibilidade regional."
+      },
+      {
+        "id": "E3",
+        "nome": "Sala de Situação Regional",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Fonte do cenário de alerta fictício de cheia."
+      },
+      {
+        "id": "E4",
+        "nome": "Ilha dos Pescadores",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Área de risco citada no plano; pode ficar isolada em cheias."
+      },
+      {
+        "id": "E5",
+        "nome": "Barco de alumínio 6 m",
+        "tipo": "equipamento",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Embarcação de resgate informada no inventário, com motor de popa instalado em 2025 e revisão em 20/08/2026."
+      },
+      {
+        "id": "E6",
+        "nome": "Motor de popa 40 HP",
+        "tipo": "equipamento",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Motor instalado no barco de alumínio em 2025 e revisado em 20/08/2026."
+      },
+      {
+        "id": "E7",
+        "nome": "Coletes salva-vidas",
+        "tipo": "recurso",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Quantidade informada no inventário: 12."
+      },
+      {
+        "id": "E8",
+        "nome": "Operadores habilitados",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Pessoal habilitado para operar o barco; o inventário informa 1 operador com curso de arrais válido até 03/2027."
+      },
+      {
+        "id": "E9",
+        "nome": "Cheia do Arroio das Pedras",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Evento de cheia citado no alerta, com possibilidade de isolar a Ilha dos Pescadores a partir de 21/11."
+      },
+      {
+        "id": "E10",
+        "nome": "Acesso por barco em cheias",
+        "tipo": "servico",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Forma de acesso indicada para a Ilha dos Pescadores quando há cheias."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E10",
+        "destino": "E4",
+        "tipo": "acesso_por",
+        "rotulo": "A ilha é acessada por barco em cheias.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": null,
+          "fim": null,
+          "observacao": "Válido conforme o plano de contingência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Ilha dos Pescadores (acesso apenas por barco em cheias)."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E4",
+        "destino": "E9",
+        "tipo": "afetado_por",
+        "rotulo": "A ilha pode ser isolada pela cheia.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-21",
+          "fim": null,
+          "observacao": "Indicado no alerta de 20/11."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Cheia do Arroio das Pedras pode isolar a Ilha dos Pescadores a partir de 21/11."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E1",
+        "destino": "E5",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC mantém o barco de resgate.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": null,
+          "fim": null,
+          "observacao": "Informado no inventário e no plano."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "1 barco de alumínio da COMPDEC; apoio do Corpo de Bombeiros conforme disponibilidade regional."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Barco de alumínio 6 m: motor de popa 40 HP instalado em 2025, revisado em 20/08/2026."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E5",
+        "destino": "E6",
+        "tipo": "outro",
+        "rotulo": "O barco está equipado com motor de popa.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2025-01-01",
+          "fim": null,
+          "observacao": "Instalado em 2025."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "motor de popa 40 HP instalado em 2025, revisado em 20/08/2026."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E1",
+        "destino": "E7",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC dispõe de coletes salva-vidas para resgate.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": null,
+          "fim": null,
+          "observacao": "Quantidade informada em 28/08/2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Coletes salva-vidas: 12."
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E1",
+        "destino": "E8",
+        "tipo": "responsavel_por",
+        "rotulo": "A COMPDEC informa um operador habilitado.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": null,
+          "fim": "2027-03-01",
+          "observacao": "Validade do curso de arrais até 03/2027."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Operadores habilitados: 1 (curso de arrais vence em 03/2027)."
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E1",
+        "destino": "E2",
+        "tipo": "depende_de",
+        "rotulo": "O plano prevê apoio do Corpo de Bombeiros conforme disponibilidade regional.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": null,
+          "fim": null,
+          "observacao": "Dependência condicionada à disponibilidade regional."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "apoio do Corpo de Bombeiros conforme disponibilidade regional."
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E9",
+        "destino": "E4",
+        "tipo": "afetado_por",
+        "rotulo": "A cheia ameaça o isolamento da ilha.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-21",
+          "fim": null,
+          "observacao": "Cenário do alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Cheia do Arroio das Pedras pode isolar a Ilha dos Pescadores a partir de 21/11."
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "O inventário de 28/08/2026 atualiza a informação do plano de 2025 ao detalhar o barco de alumínio com motor de popa 40 HP, revisão em 20/08/2026, 12 coletes e 1 operador habilitado.",
+        "implicacao": "A pauta de verificação deve considerar esses dados mais recentes como referência operacional, sem presumir mudanças além do que foi escrito.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "1 barco de alumínio da COMPDEC; apoio do Corpo de Bombeiros conforme disponibilidade regional."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Barco de alumínio 6 m: motor de popa 40 HP instalado em 2025, revisado em 20/08/2026."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "vigencia_encerrada",
+        "descricao": "O curso de arrais do único operador habilitado vence em 03/2027.",
+        "implicacao": "Não há base documental para dizer que a habilitação expirou na data de referência, mas existe prazo futuro que pode exigir acompanhamento.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Operadores habilitados: 1 (curso de arrais vence em 03/2027)."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "O barco de alumínio da COMPDEC está operacional para deslocamento até a Ilha dos Pescadores durante a cheia prevista?",
+        "por_que_importa": "A ilha pode ficar isolada e o plano prevê acesso por barco em cheias.",
+        "motivacao": "O alerta indica isolamento possível a partir de 21/11 e o plano define acesso apenas por barco nessas condições.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E4",
+          "E5",
+          "E9",
+          "E10"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "acesso apenas por barco em cheias"
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Barco de alumínio 6 m: motor de popa 40 HP instalado em 2025, revisado em 20/08/2026."
+          }
+        ],
+        "o_que_falta_saber": "Se a embarcação está pronta para uso imediato, com combustível, tripulação e condições de navegação compatíveis com a cheia.",
+        "quem_pode_confirmar": "COMPDEC",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "Há operador habilitado disponível para conduzir o barco no período do alerta?",
+        "por_que_importa": "O inventário registra apenas 1 operador habilitado, o que torna a confirmação de disponibilidade imediata relevante para o resgate.",
+        "motivacao": "O documento informa um único operador habilitado e o alerta é para a data presente, com efeito já no dia seguinte.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E5",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Operadores habilitados: 1 (curso de arrais vence em 03/2027)."
+          }
+        ],
+        "o_que_falta_saber": "Se esse operador está em serviço, ausente, de férias ou se existe outro servidor apto não registrado no inventário.",
+        "quem_pode_confirmar": "COMPDEC",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "Os 12 coletes salva-vidas são suficientes para a operação prevista de resgate ou transporte na cheia?",
+        "por_que_importa": "O número de coletes é conhecido, mas o documento não informa quantas pessoas poderão ser transportadas em cada viagem.",
+        "motivacao": "O alerta aponta possibilidade de isolamento e o plano prevê uso de barco para acesso à ilha.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E5",
+          "E7",
+          "E4",
+          "E9"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Coletes salva-vidas: 12."
+          },
+          {
+            "doc_id": "D1",
+            "trecho": "acesso apenas por barco em cheias."
+          }
+        ],
+        "o_que_falta_saber": "Se a quantidade atende à lotação prevista, à equipe embarcada e a eventuais passageiros resgatados.",
+        "quem_pode_confirmar": "COMPDEC",
+        "prioridade": "media"
+      },
+      {
+        "id": "V4",
+        "pergunta": "O apoio do Corpo de Bombeiros está confirmado para o período do alerta ou permanece apenas condicionado à disponibilidade regional?",
+        "por_que_importa": "O plano cita apoio externo, mas sem confirmação de acionamento efetivo para este episódio de cheia.",
+        "motivacao": "A dependência aparece no plano, e o cenário atual exige saber se esse apoio pode ser acionado.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E1",
+          "E2"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Corpo de Bombeiros"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "apoio do Corpo de Bombeiros conforme disponibilidade regional."
+          }
+        ],
+        "o_que_falta_saber": "Se houve confirmação operacional do apoio ou apenas previsão genérica no plano.",
+        "quem_pode_confirmar": "COMPDEC ou setor responsável pelo acionamento junto ao Corpo de Bombeiros",
+        "prioridade": "media"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há registro de quantidade de pessoas na Ilha dos Pescadores ou de população potencialmente afetada.",
+        "por_que_importa": "Sem esse dado, não é possível dimensionar a operação de resgate ou transporte."
+      },
+      {
+        "descricao": "Não há informação sobre combustível, manutenção operacional completa ou local de guarda do barco.",
+        "por_que_importa": "Esses itens podem influenciar a prontidão do recurso de resgate."
+      },
+      {
+        "descricao": "Não há atualização documental sobre acionamento efetivo do Corpo de Bombeiros para este alerta.",
+        "por_que_importa": "O plano menciona apoio condicionado, mas não confirma disponibilidade para o evento atual."
+      }
+    ],
+    "cautelas": [
+      "O cenário de alerta é fictício e deve ser tratado apenas como base documental para verificação.",
+      "A data de referência é 2026-11-20; prazos futuros não devem ser tratados como vencidos.",
+      "O inventário de 2026 atualiza recursos, mas não substitui automaticamente todas as informações do plano de 2025.",
+      "Não presumir que a existência de um recurso significa prontidão operacional sem confirmação explícita."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 10,
+    "n_relacoes": 8,
+    "n_verificacoes": 4,
+    "n_temporais": 2,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Ilha dos Pescadores (acesso apenas por barco em cheias).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Cheia do Arroio das Pedras pode isolar a Ilha dos Pescadores a partir de 21/11.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "1 barco de alumínio da COMPDEC; apoio do Corpo de Bombeiros conforme disponibilidade regional.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Barco de alumínio 6 m: motor de popa 40 HP instalado em 2025, revisado em 20/08/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "motor de popa 40 HP instalado em 2025, revisado em 20/08/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Coletes salva-vidas: 12.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Operadores habilitados: 1 (curso de arrais vence em 03/2027).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "apoio do Corpo de Bombeiros conforme disponibilidade regional.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Cheia do Arroio das Pedras pode isolar a Ilha dos Pescadores a partir de 21/11.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R8"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "1 barco de alumínio da COMPDEC; apoio do Corpo de Bombeiros conforme disponibilidade regional.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Barco de alumínio 6 m: motor de popa 40 HP instalado em 2025, revisado em 20/08/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Operadores habilitados: 1 (curso de arrais vence em 03/2027).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "acesso apenas por barco em cheias",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Barco de alumínio 6 m: motor de popa 40 HP instalado em 2025, revisado em 20/08/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Operadores habilitados: 1 (curso de arrais vence em 03/2027).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Coletes salva-vidas: 12.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "acesso apenas por barco em cheias.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "apoio do Corpo de Bombeiros conforme disponibilidade regional.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      }
+    ],
+    "n_citacoes": 18,
+    "n_citacoes_literais": 18,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795615921,
+    "created_at": 1795615898,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_04ba868819b93a19016b06ec9acb5887d2b182197f5a0d9aa1",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBuygm66LdvAvQDlMrkOwQDDUs8siF8GZMRg7YqxAmU9bTttH9_QM1Vm2BImuLJgm_JVlBnbmhyBmp5S1-sNx6SAcFArOwpb6SYke8BFv6wOkQWUlBcMfR7bgGIy-hJk4ZxNTrimy2eHB8N9xnTlngt6TZ1SEEMZ39mFIArOs1lMlKqdmweIFrs6Ql8bjAiu5n4WOu69ZBMYL30K0XJjZmU3Stv7fWUezkZlUklBqT0XXPyDtL_gG2_nmviSjM2CGuYKRIoNgEjN3kmUAYkhcQ7zF13U0ByzMgRHYtzVqgv-tO1nKOvTeXe6uiuqUqni4ZVUcRpbP16iIe8dI7QvdjikGqR3NSNiPNqQGZRSn0OqiRPOGTHszz9TSLPXPfJmsugu9ugcW4AModBQSCu95lXFv79Nw3NvAq_Ewcb5v9nPRID1tgXtgOZvlUFj86aUpJ9ELKIomGugxj1MxITFi9iS1-ZGHc10k5nBa5nVtdQlDc7sBbtD2ScCyp19JG8cIdOUTs9P0YfBePQzLM-ygSdPcze59YTgCZBbeDVWTqL7T7l36phBCuOCu0IPGcXwkODCnbL0_MrABz8s99bvjFB8xI1n83BvwLY4a_2A8ZTqYt745KwRh8673vCxVcy41_CjNMdfcZlgWad56q5ntOGcSrz0DoEUNqbXDAq_KNJaXr4hQgeoI6I6C8-kxPTk59mZSytxCz3qAYNeihrL2En1bqZK7xVxQkCzYn4eVUEAqLVm4narnxhDyuyoavDt9aMO9aLFsnN9ewRPX27d-B0XZzFJuq6GeXHXBHiEMRHe7dRpgOtO8L8iDC9AAzD7swCk1io0wsbyEijpLgP6kzxmSlmT22kcghsB0ndYpZBO9WGALTVNPcEvgIZDL5swIHiYH1nAlSs_6KIWaH9Bmc_sC9-n8JgJNqWS7pMH2s5ExRsv1ZX32Tgh55A0j21iRTAfFYVLfDQsmTvG-4_D1HLCN7q1CChGmI_EWf3eoydHtV1dSTokSCsMF86sCySa4EDEYj1phaJVr4B1KcN-nx8k4DAwqaTiKoxNUrz0e5jU05f09zJtSLqlatJUZaOwD6KuaD8A8ucjMUGHmVh3j8aFg3GpFqNE8m2cJRh0BnjVvc0meBjmU8T4rxNC0qpPmtp4UAsuBBrFwHu4wk-zrs5T76e9ZPrho3vArjV6mm7L2I52Qgkjc0jW5Kpc3wBWVZd9jyt8uW_r62udD6ALQLuAYUDl1jlYOcG9R4cpMQH9TUKhKwcFd2jMRIQBMY4gvyZQaC3GkGjLw06Zz4sE7MYZAl4-4pSlYyfsXrDY9RrLxZSxJ8fXeezANZh8qmPHR0psU21GgNdiLdZmhFWJR8z-qL6AZC-0Z5rPu_FX9RU13tzlruzoH3CjSpG7PjlrncZjwELJAHtOPGrnqXKyBQO00Ke8sMwjVmwLbyXK0kp0k54F272HSJgpGSiJoVXkm1PWtl-KT0eOFzNNBjn12kEc3Cdyb9nik-4I_pVOnDSLmE1hW5LipJP9Q6hXd_8BGUCtIICURgDxDy1B4R_uQ1xPEeAkNdPNa4-kg2HjNzxVYexwymMvKY3qyG1uAn5TCjbOxGHIhIoQeB8RIrEqyhEmoy8BWgtaKAUKdPwpBSGkl7FdYFLSlZwVxIjd7wGYpCWsy7YNkNPzuEzQk9oTC-r5yttfFY4Gwz0v-lHAD2hrGZvnyTMWqglPnbvtpFhasvKMeeRJGlahdvg5YzaprAMJGlrenMZgw7yxP2AgphM3IU92ZX_FYmNC7k5TJfXEWTwGsxvFsBPJwiwT5lZageZyMcK-zqyJtjQDVNrfLr3iMvYMRj5EoIl5jU-GtVZJl042DNF5NX0BZ-bXQelti8dyt9g-4ToHEaFsCUtTSTK4ElfRYoyc4FRq7eNN6rWUPJlhe17GR9y7ictRkCvCkfOlErIO2soPA0j8sFtH7GxL4Qk0tb42Na1uD7Al49BB0FYqlOi_34RfFc_1oXvDRNS7LWencZFFlgf3fJTkeGSx-wneMf84CtGJSkOM0ze2QP8JdVAVHRTW_IDSCtLeApAG34SM4Qkm0cyKjzDy3DeSnIBH26zVRaKkCLUH_OZuqh1e_MpFthlkdryBqJ9v1xkxhE4dI7-hK3Y0dHPuEctEm7x7XFSc9mlK5xo5aQmmp6pQ5XRA1-6Er7W5Ibk4q7Em8Ao_HemN_eSUgUnX-J-392UIh3TG0R1gQ0DlgLA7_S5S3CtbGGICcxmbDXlvYJLwIn-DGiQOB3URqovClqz03OIpR__TX7Bzcc6jkQnffnw066JuDwA0wUn7DSH2IfHYSJsxh69tZjtNE9eX3xy8we2NCzbRXT7sVjkn7iSAbImNmzKpqzgvhb1hYYnFPOtk526tx7oZD4lInMQ1ATA9yLTVpegPKnocVikesF4r4yx5lgriTANsyFJuFPeKfrQpA7B86BoZZxAy6LGLgPBdvZk4Lx9aJO6C3yIHBkz2hUGdiO7ZD4Ng76jDTecq9rwFWPVPQbZgZfkha3lYMlZXTe49DvPz8Zqfd2wu-noRZkCz2cVIoM1C8_Lz5wNGrJLI52ydEWLhaYBjP0dAm9EooetqjZCRzE27bxZFXF6ShR1Ap63v8hCbCRZ4PUEhR8ioHv_3jztAu-W_GyaYfgdXk5--udTH2ES-v8J4qVLM59bwNuEyp_usFcG-dlWXYqZRG9tLu05uENAXuhgZmCdhlmS8pZydt_iWNEPPwj7q1ffi2cJOTRTpepxf9FpcSKgvrK93Ej3J14DrMNrA6mknoBzLBg-7YBNF2QgLYQgeH30ok5KKmTF5RCWGGtAtN_106YfUw25TzG-HaMmiCi7V0i2zjwSlmxebhraCAcpkPJDRHFsaRSWtlCDqwaHP5ymHCRagG3xN4TzXT24hqsSRBycyje7Tmg5WpgQJfgt-npjqRmG_ws7NdRfMCxTag9Cnugu35KjO8wPKv_41jNz5SnLYsCECjKmLyJMqXFBFSofe3DTeItf2BKLjBQwxdW4zCI5n14WO2uL_Im1hipautOrn-sYZcMqddQTeOVTDRMBeKXLT3kmNtOMwA1_lFjCUuzJrbPMyQ1_6Wc3Oasl9lT6Vt2Leoo8LBZYMnkoZ81H86DgRWZ3LmQ4ZvYcA12RS1HRjuOzymQy_XAphHTU9Q8h_LlUZpvPMVRQQud1fC0TqIJeg19yFuWaJL_dWvEbNRo0UgU24Hx2T1sQ5hwn-gRD_4A3tQnSj4BTnl4OgL__jEi7AcPrERVaSSnM3EGh1kEoCSOIZVjxoo4TzJd2LDGHgkCwF6ZwtJUtirrLX7ndjTj8cP4ZUjaWzMiJzmwd7WN9BtXcKj4ZIJssvPv97HT8HUSC85N2u0THm5NHcghgUE_O0wBqtopH5gqqndtCyXfSEYU9lgAgpD-KQ700B8C2St7hOD1Gxtj5_BNyvIk_82KScfc2HH4D8130lqtnncWVT72mmB98Mxi-cHGlYfcRN6sMZY2Hsfn6J_r2SWtoMweDgKnj_xWEP14Aab9Q52Rbb_97tuq5xs5jPNMygrDvQNmBjF71Z_GSkpNQcKmst3tGqxumLbUOkI-AWFhk-JwKtUwQRNe-Tamyxe97AVPVfi2evr3553yZ9GNkWGExMFYxSfcuIDhs-zgiaJDcCyb3O7i6KxqqLV9JAi6g2mcCYcN5io_Pb3Na_rg3Ia9rI1GEspbg0xuHmn-Q3xFeJ3Vb1SdfSxyekGnreeHXIeUHUT7K_UBg2MpezC-hKMor_IHuluMCj5aiYCrnOi6Q-xOkdqjGWwBAc66GAbaOVsvRT8aJvZ3DsIFItBit4ZlEahGCjkrbT0xaJUp83ov0gB56-pXo9QNtC-45SlWKfhRd08_y3n37SBXUh2-CyVTWzjW5DnCnmXZy7j9lTSfT41hXroaLIJ4NkkCAyXWGFWPIb4-sIZ3eWmqBjpYZIVRvHifVkkZyHoGUh6w_jX89KRm_mpzeqSRX9hPL4wMXmkfEdUee86RLSFMcM_mE2fkbNWEaVSBGDo8bOfrMAsTn_W1b0MvafxYXw_K9iho5nF6YBYs9CbYnNwDka7L6NajwoyG0b25VdLremwlErKDzYNXwVvEf1NjG9zTlgjIhCRJUbzch032dJXhK6s6wCz6hRI8VAaK_BvB_AUpQsg3Cs5-mrST-O2V8knjGjNNN8r9Qo-ybXX_-muDek06JYwEJhQM4shawXAFvFaYYdB0yg-4utlRAro71M9YyiG9f8iA6d9jZ-BwwqQlppdFucan7CwunVod3andq3-fMSCz3C87DQP7C9XkUe-Vl9ZYTcf3D7OI9b0dLl4YSWGBoegBhf4feUD3V2vgNs1hnkuzgKyjEmlbg7n7HX0Ksxh4ScUuN6tWuJWdNiJnSTv_WGthqNv1JmyZDEMRAjpaRQN5nY3HS8MUVEFFa31xGiNMX3AqSrcPUxnkNT68NUsQ0pToxWogtRD6sIbU6fEK6dcvTNaPjGJIxugIh4wKa5i7fUcTm3gwkRhBki0MBOG8z6qJj15QJ5bhKHtjcCzWuHFoA5Q1LHVDI3tPRlklk1a8Uk1GQq0DgcgvC-3-VGtt_jDfh7VBqI9q0SUKsUr1eoSWLeYeCW7HCEyYJYaJmlgv3U4SF-45LARy6MSKVVBT9IcGTHy6BH4fbfguimC63ZqpTEYAw5qDnC8jQfayCNSxxu9_N1VnZpoLVLjkPqEWICpGXsj0Fml5c3tL5zGKJcI_1_qF4Ks8t9T86jC-fU72V-76RfP9EmsUxlLl9aV5fQ893B3DgGKrKyb7uFSYZdyO7IKf71iIbhtaa4MMM-4YzfmURPTgWQ9jwLVdy4_s_vI3wJh3kxxanpJkwqqIoSMYY1MBJEXTg2CJRC9NIVv4gF6GIiWCLYIacpn-4ZLsA36Bu6jb96pjzix7USkTj1oVmlN25-vp8Ne1Kr_zVcdwFNE8eJbV-nttYG4kEYItYS1lVZwIsXvBPNDK4ANNIlhWIceZusjTYkXzgG0cfCfQdVtBUsvprRBjECCzs3ffwFV1sCzCInWtufoAFAXOM_-e0rhRbcROj6QVS9lZNGsuR8f-JVHcktZNLpk41ZnBLlFNaNGY8jRmhxbTgJYlfPYNEOdJNrGWe0V-TEFkZFVBx9qt4nNhz4xXs0WQUJpacnmeEEKTOHS045AO8owB0G1hsdq3NkkigbBokzL4Ok9_FbMP17wrcGaCUlvX9rfZ4gzLA_bMMZfQdHhvm-jLfKYTDFo7RFaOvHHVSEEQSqsE-ZmAPpxRhjFU83lKgwwSB4jFelDIWFaAXmAmBBY-zJ1H5iMS3rvs-eTpa2XbCxSnxFcIm6UiRAECIKIWZKelOWyp_3lWd3GuE2G749SHlhWTW0iPcnmYzRYGZ0s1GiKdQSBOd7Ld1sAXcxCP7AI_qs7lPGxjz_blSAIP4NMMj9GOJYr0OblA00WFrJM1gQpteVMXzKpokNU3lgx8KZdSV-DmQZXg_JEgTHusGoXG9xw-w6NmfWhHWIAUU_6kxDtcEocSROqFfkH6D_Y4X35ddpMUdL0yQU-NoUXIY2o6vNEUxeMV7c24Lc0hXN0soOkM0l1U2YLAO-0oHmV-tuiqxQCfoYtm5jIpef5SC637ivvzKh15vHQfx97NtKpSb0wjuxaPxlH73tb2m2Ocv38yJoTnPIozY6HFs7GhHZinkWlpz-pzDt-qFA93aT0YC0MGNQx2qyPNrbBEhIZiiqt_fvnicd9ThiDX5Exp-YdHTX1kUPmyH5xz6oqXGQAA93NNikN-YEIPKxhQTFggqx07qo16FYrRut1tTJbl5QOpV2_KkWrtn64eXI1C_Gs4_8mhzW8o4NFt-MhMqPaokm1-GZPDQwRPHMP_3U8J5JSQwEBa0w0TK4t7gg_oxxej3DkEOK9lr4ME6fCC3pXQA_KwgEfPvlY-vpFDcmUJoK9lHXDbNK0t4CLoOmHSivyiQUXQle9y69aBX0mFgBswLg6ueRPjoFfTqYRC1d09LUleiGTvc4N-JH4MtV_vQbaxs-lnsoyIixmZQzNDoKmxJ3JN_EHZpVoT-293qLOdRu5HpzrrzYb9M64NKuM3eAW13dQx5XYm5o6WchFgDyA6LYOoyqoeTnxVwOUp_2Xf18CqCt_F7-cJllWbB8SPj3wRFQHKeqdQBAZT-GgeNr7dTKt25Yx1UW6XUAAOdztv_e9bbkF57GT1t7oMdR69JYUPKdHPdZc7L-fIM7Sc_wHiymU8pmTKVxflUywfsOrQAILiSjxcbXJs_AGJanpfXa8444fVaI6uxdLjpbgR5Qv09-sVKMPDJekg7LqAG4eMgrWTsAz1xDKF_U8BhbhVaFVB9RH5OFBrz5hZFymIoxTdlIx-DudWCC2BvsLPiOcyBwDO8rzf82TBhuhHwytrV3oiqYlsrgLINcBEYbsbaU_M0nogWsj2Jeeli12-cZhrxfw2MV9_aDDFYsckSgLkwQ9l_nCk-ADf8qcGSAEir3d0sE_vQAcQVVjPQw1J1_X_vs2CQ1AtxF2rBfWFn1h61Bc0pYl-TEobMM7mpMQGlyGWyWhsR2UkZBzIEkgtGDW0hdulUW93iP4BhZdA9JIINgI5UXtbZXi7CT6M83ZDU-5TnNIT8BKnS4vlOKexH8lZBTzQhZo6tEMx6VqI9QsCjvrWrF4Ta4x1Gbc195G_ID6uAqPlyxA90RLU2QBmTxVbh9vXtXMD5NOBnuz7HAJLXoWZwI7rgyMlVbqPvAXHYGDBHH_dgXoPX6VdoyEJOVO2nYIlVaEmeS7xFiirVvBgSeukwxSK-PQZzk7m-KvVjKZSDI9e3nwCvLkerbHrb2lMKW2heSfQOBeKKR1q-9B7N41yi3S9pXn8iGdgTBfZwzeAm1HbSWfLtcxK96PplJqn41UeqlS_B2-09TLT472mQ6RrL62JSi2ju3PHoAPFmua_oHttbUG3FtlM7L5mSFfh-07WzjoPHyDd-Y99cYZl82kWuvwsSUPL3vCprxKn7-yplyx7aB7OHHoQksuU9U2YcJmoYXJn9W3IdmsI_tB3TXtcGJLS0UyKxjmaITFo9ACBe0zMizIL_5q8p3iILVzx9ax9GNSMzWDyTvPMhMXvM-4nSnlX7PykxP-nTBbpb2KwzO6ED7LtNiCCVsvtkPezBKs3GWi4WWowyYcN0pDkskQSW55uTp8MYj3zj8-gG1rOo5Hlhrvdh_9LYEk-RQw2KONXmoIEKFi5TgjjwUKhb1J1dQ8Xl9ganCouOXCDM6zArYhtYX4fhFcsnxTCeGf61ibFzd618h2nKx3xRyfZnTy2PHoAEYkOQV1124UwGnPk-grRkgQ2gZ32CgcuVDmrCajS0qaq8kma3nqrRM0Afl_z3rijWk_tX6WMl6QRY9f3OF-2xLl4PfWzbFaeP6bqAGZEvpwFdlpFDs92l6MH2WxDy3p696zR3zpfMfuFTIR8A_5yywWConYWBzq9M3thjlCXW6211yl9sBh6E_WtYyZjtwinDD55MHfwAPJVHir_zjRpaYLaOepqkeOYQ07pXFowacj__LIPlLnwl2GoNbiZ3h4I-H4JSrL39h7tTLorrWVP11AK2LKt-Cu7aHVAO66Z3mEfGYsStThmWQExbOQIh-Tiwfit_9O_FPE_VPHJAaJceh-trBa1wnIPHFxYEfJsab3qIhliLCdboLwa6ZmaK-K1jjmSwnzd6EZPC2Ypv7yCjn4PT9at6r9tIco8w_2a5L3AGFa-XIxh7f-uxAJhuTqNeijSYtddSITTN0WD8nyvoYe3sSJulOTqwuhU0fbRbmp_0sOVGObMpSXQcgz8fBcpfT7aMl98DXI4SS0xjkX_6FmgDjf62O4p7MyCUlb6OlpkQG4KIHFNlpYVvcQoF92Js5ugeACH-URcvkwfjZZeDGDU2HXsO4E-TM4B6q7k_sVFodLxaiFGEePPltnjM70k2zDGKRGYoHPSp5FuJBZv7U6aLIBWcT0yUBTssxwihH2vOtSYt_EwIvJgQ-7FJ-VNRrI2Ats6A3I83n9NNB-iApDSePwfmgbrzSg5rSTVvq-kohBJci39TTXC8qPYb0gfukVaVbpLn9Lpvor1M0EPuIZpm6lRiuzRRlmxYOkvRuRE0jFjDM7FH2WxrnLE5L01Wtnfn9B6Fvx5-euzPVLzJLF2JQOS1pINbfbxUAaPh-cc2EEOh-rRA0ZwCmOcpQAZKnOAUjGPI9v41izQbBwXsFmi8yih28lo2E_cx7LYIA3Xd-GfMb-_dqbPfkpf10tRuwhnmzKMBJnjyy7IRLCOJAOPWGSdoP0gvRYVKUmlRAIqyjCkRPYKUdR7iA1CzJK4iMs__NUHY58NQYOyRTbXuwbUj25nYqJZulVQzuNutQwPeGi5FuWtqzHPXhwLUGyMqG3wbX_kU81H_8-PupaxTj1N5qMFnVx24L6uxFS8HiBN8qfA8z-2VXB3XTgUirVwqkwhUa-g3C1i2803ahKMGu7YhmKCbsTItZVHcUq-U9OHmzMWVcPCXpUBxSUqX6m0DU_b7KF7_v8i85VvUPQsbzJ_FbuCaY8jwUihn-DoFif9vmQAjC1wBWCA_58C4WJ2uPGykBvH0lm3-diZwROfk7Nbe18VSSSjDKLGb13i93r2NjmRfspy9J87QiQBBn_LXvPk3sFhjJYyrXCpUGzyNNX7xJRhhXd-8N3jW6zW5qhtqYAZkJrWjrKgd3OcNspJXbXlSiHdO_r_mYcyhGrqX-B6vh6UCUfs6YBNl2s4CPuN66QcOZkfufUK-519fLKtKjsewV7AtbLtgE-8yPpSgR0RpAMMeH_WIwxmNKphEhShBpgYt7KZETrPbetQwLDHt-ANhE-gRFhSJUA2TS1d5pGzhuTiQt9UwIiVnTeECpe80ymNgjqIvfUyyjUQuXeSnV1loRjNy_XoAUXjxMJBUk-Nn_0N2bBvtqB1aDBKWREE2AMV0HzH7LZztkhh0qRnRcfnF5R27fDrGKrsf_9dfEdf0PharvxDFpzYr80PMhI6QTkW0BmCcyUdozsdv2esJJXqMMlFhCASVIRmAqtZyMmx5sNeez5ZXBocsH3Ey5XSuwp5A4jRnh6imMgNNOMaLoirGk4RRFLlWd8dSKJdqPswuryvEtoxHHTjE_kDVfrkC63-dyrpZVUWAEEB0EoYGZzrLUfVEW7Biel96xMLqhFpBH_MUKY2kUr6NcSha40adTyk3cJvAB74_aGgAg166ZLCYQLQoV2IRfD71LmHfLWZiD-w73WXX18U-2DLq3mXiX5N42vKFJP-Gmy3WrEZctOzbdfeiVFUUKxu2PFNeBvLu6DKHAmtweG8GLc4d13CnekiDaVRR0G1itCOkKGiHnxbJFbqJjEXIDrCO-oK_VSo3-nOv9vkg2qDj944gvsz_cybMfbHUPDZUnUbcsC5v4nsxyHbgl9iNkqwyKz_DJw_urXOutoKvBuo_CalC7Y4HzAug_RrQdjQR7-IKAeglqrYmCBCLcEDnBGfCTYnGGS6jY39IRtm-ZDYSzPkl8OHwV-nsytxY89Us8q9v0PEczcXtijw4iYRuIE1JwW2vsnDoT7vemq4DvP9cqje9ywztDf2TNSZtwEh_I9I234E88lkV2sCCuaILfm27jLBL9GXPkFqQTeByFUJ1E8ZQZySPaV4aHa_siSGOz0Ix8f2v0nVPlxRTcJEZvC7mx0yffktJ_PVTFR1w6QKaeltSLqtiAtx-j_XHxsCX374JBYwGd1LRw8PJbtIFeZyN5k50Gg4PRprpXO8NbazCe3OxYyQ6Q9i5FekW_8CWlaBqWMuItnTlcgRsV2LJD7Bx_KJu-Uw8na_dxffVcHEe1cw9VPtRAqfZRS60RWVoGKe3adiQP6rEDW3ZQhQiL_InVE-Eb5sbK8El8pMVLDRlQecpiU-B2ru0M4_1OCDs3zZXAkuY3EePMo09lQWAPry-KEuio2tpw0KcPWRTDk7OkgsupKnE_U3bvEHX_-yPrsYwyq8uQlVhLQIoj0F7wf9BWG4PcxkECD9lL-o547jMmasj4LEXq3CW5G7dpyaTegtND_WtudK8DpxOf3F_1vVT0pUwNMf-utEbW1IxANDacLldfjSCZRJHKljtLToFwAjtBHzK0sEcw=",
+        "id": "rs_04ba868819b93a19016b06ec9f2e1087d29dad3df747066f38",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"O cenário de alerta aponta possibilidade de cheia a partir de 21/11 com risco de isolar a Ilha dos Pescadores. Os documentos mostram que o município tem um barco de alumínio para resgate, coletes salva-vidas e um operador habilitado, além de apoio do Corpo de Bombeiros condicionado à disponibilidade regional. Há, porém, pontos que precisam ser confirmados antes do uso operacional da pauta.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"COMPDEC\",\"tipo\":\"setor\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Setor municipal citado como fonte do plano e do inventário de equipamentos.\"},{\"id\":\"E2\",\"nome\":\"Corpo de Bombeiros\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Apoio externo previsto para os recursos de resgate, condicionado à disponibilidade regional.\"},{\"id\":\"E3\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Fonte do cenário de alerta fictício de cheia.\"},{\"id\":\"E4\",\"nome\":\"Ilha dos Pescadores\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área de risco citada no plano; pode ficar isolada em cheias.\"},{\"id\":\"E5\",\"nome\":\"Barco de alumínio 6 m\",\"tipo\":\"equipamento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Embarcação de resgate informada no inventário, com motor de popa instalado em 2025 e revisão em 20/08/2026.\"},{\"id\":\"E6\",\"nome\":\"Motor de popa 40 HP\",\"tipo\":\"equipamento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Motor instalado no barco de alumínio em 2025 e revisado em 20/08/2026.\"},{\"id\":\"E7\",\"nome\":\"Coletes salva-vidas\",\"tipo\":\"recurso\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Quantidade informada no inventário: 12.\"},{\"id\":\"E8\",\"nome\":\"Operadores habilitados\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Pessoal habilitado para operar o barco; o inventário informa 1 operador com curso de arrais válido até 03/2027.\"},{\"id\":\"E9\",\"nome\":\"Cheia do Arroio das Pedras\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Evento de cheia citado no alerta, com possibilidade de isolar a Ilha dos Pescadores a partir de 21/11.\"},{\"id\":\"E10\",\"nome\":\"Acesso por barco em cheias\",\"tipo\":\"servico\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Forma de acesso indicada para a Ilha dos Pescadores quando há cheias.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E10\",\"destino\":\"E4\",\"tipo\":\"acesso_por\",\"rotulo\":\"A ilha é acessada por barco em cheias.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":null,\"fim\":null,\"observacao\":\"Válido conforme o plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ilha dos Pescadores (acesso apenas por barco em cheias).\"}]},{\"id\":\"R2\",\"origem\":\"E4\",\"destino\":\"E9\",\"tipo\":\"afetado_por\",\"rotulo\":\"A ilha pode ser isolada pela cheia.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Indicado no alerta de 20/11.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Cheia do Arroio das Pedras pode isolar a Ilha dos Pescadores a partir de 21/11.\"}]},{\"id\":\"R3\",\"origem\":\"E1\",\"destino\":\"E5\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC mantém o barco de resgate.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":null,\"fim\":null,\"observacao\":\"Informado no inventário e no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"1 barco de alumínio da COMPDEC; apoio do Corpo de Bombeiros conforme disponibilidade regional.\"},{\"doc_id\":\"D3\",\"trecho\":\"Barco de alumínio 6 m: motor de popa 40 HP instalado em 2025, revisado em 20/08/2026.\"}]},{\"id\":\"R4\",\"origem\":\"E5\",\"destino\":\"E6\",\"tipo\":\"outro\",\"rotulo\":\"O barco está equipado com motor de popa.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-01-01\",\"fim\":null,\"observacao\":\"Instalado em 2025.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"motor de popa 40 HP instalado em 2025, revisado em 20/08/2026.\"}]},{\"id\":\"R5\",\"origem\":\"E1\",\"destino\":\"E7\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC dispõe de coletes salva-vidas para resgate.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":null,\"fim\":null,\"observacao\":\"Quantidade informada em 28/08/2026.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Coletes salva-vidas: 12.\"}]},{\"id\":\"R6\",\"origem\":\"E1\",\"destino\":\"E8\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC informa um operador habilitado.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":null,\"fim\":\"2027-03-01\",\"observacao\":\"Validade do curso de arrais até 03/2027.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Operadores habilitados: 1 (curso de arrais vence em 03/2027).\"}]},{\"id\":\"R7\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"depende_de\",\"rotulo\":\"O plano prevê apoio do Corpo de Bombeiros conforme disponibilidade regional.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":null,\"fim\":null,\"observacao\":\"Dependência condicionada à disponibilidade regional.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"apoio do Corpo de Bombeiros conforme disponibilidade regional.\"}]},{\"id\":\"R8\",\"origem\":\"E9\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"A cheia ameaça o isolamento da ilha.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Cenário do alerta.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Cheia do Arroio das Pedras pode isolar a Ilha dos Pescadores a partir de 21/11.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"O inventário de 28/08/2026 atualiza a informação do plano de 2025 ao detalhar o barco de alumínio com motor de popa 40 HP, revisão em 20/08/2026, 12 coletes e 1 operador habilitado.\",\"implicacao\":\"A pauta de verificação deve considerar esses dados mais recentes como referência operacional, sem presumir mudanças além do que foi escrito.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"1 barco de alumínio da COMPDEC; apoio do Corpo de Bombeiros conforme disponibilidade regional.\"},{\"doc_id\":\"D3\",\"trecho\":\"Barco de alumínio 6 m: motor de popa 40 HP instalado em 2025, revisado em 20/08/2026.\"}]},{\"id\":\"T2\",\"tipo\":\"vigencia_encerrada\",\"descricao\":\"O curso de arrais do único operador habilitado vence em 03/2027.\",\"implicacao\":\"Não há base documental para dizer que a habilitação expirou na data de referência, mas existe prazo futuro que pode exigir acompanhamento.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Operadores habilitados: 1 (curso de arrais vence em 03/2027).\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"O barco de alumínio da COMPDEC está operacional para deslocamento até a Ilha dos Pescadores durante a cheia prevista?\",\"por_que_importa\":\"A ilha pode ficar isolada e o plano prevê acesso por barco em cheias.\",\"motivacao\":\"O alerta indica isolamento possível a partir de 21/11 e o plano define acesso apenas por barco nessas condições.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E4\",\"E5\",\"E9\",\"E10\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"acesso apenas por barco em cheias\"},{\"doc_id\":\"D3\",\"trecho\":\"Barco de alumínio 6 m: motor de popa 40 HP instalado em 2025, revisado em 20/08/2026.\"}],\"o_que_falta_saber\":\"Se a embarcação está pronta para uso imediato, com combustível, tripulação e condições de navegação compatíveis com a cheia.\",\"quem_pode_confirmar\":\"COMPDEC\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"Há operador habilitado disponível para conduzir o barco no período do alerta?\",\"por_que_importa\":\"O inventário registra apenas 1 operador habilitado, o que torna a confirmação de disponibilidade imediata relevante para o resgate.\",\"motivacao\":\"O documento informa um único operador habilitado e o alerta é para a data presente, com efeito já no dia seguinte.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E5\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Operadores habilitados: 1 (curso de arrais vence em 03/2027).\"}],\"o_que_falta_saber\":\"Se esse operador está em serviço, ausente, de férias ou se existe outro servidor apto não registrado no inventário.\",\"quem_pode_confirmar\":\"COMPDEC\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"Os 12 coletes salva-vidas são suficientes para a operação prevista de resgate ou transporte na cheia?\",\"por_que_importa\":\"O número de coletes é conhecido, mas o documento não informa quantas pessoas poderão ser transportadas em cada viagem.\",\"motivacao\":\"O alerta aponta possibilidade de isolamento e o plano prevê uso de barco para acesso à ilha.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E5\",\"E7\",\"E4\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Coletes salva-vidas: 12.\"},{\"doc_id\":\"D1\",\"trecho\":\"acesso apenas por barco em cheias.\"}],\"o_que_falta_saber\":\"Se a quantidade atende à lotação prevista, à equipe embarcada e a eventuais passageiros resgatados.\",\"quem_pode_confirmar\":\"COMPDEC\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"O apoio do Corpo de Bombeiros está confirmado para o período do alerta ou permanece apenas condicionado à disponibilidade regional?\",\"por_que_importa\":\"O plano cita apoio externo, mas sem confirmação de acionamento efetivo para este episódio de cheia.\",\"motivacao\":\"A dependência aparece no plano, e o cenário atual exige saber se esse apoio pode ser acionado.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\",\"Corpo de Bombeiros\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"apoio do Corpo de Bombeiros conforme disponibilidade regional.\"}],\"o_que_falta_saber\":\"Se houve confirmação operacional do apoio ou apenas previsão genérica no plano.\",\"quem_pode_confirmar\":\"COMPDEC ou setor responsável pelo acionamento junto ao Corpo de Bombeiros\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há registro de quantidade de pessoas na Ilha dos Pescadores ou de população potencialmente afetada.\",\"por_que_importa\":\"Sem esse dado, não é possível dimensionar a operação de resgate ou transporte.\"},{\"descricao\":\"Não há informação sobre combustível, manutenção operacional completa ou local de guarda do barco.\",\"por_que_importa\":\"Esses itens podem influenciar a prontidão do recurso de resgate.\"},{\"descricao\":\"Não há atualização documental sobre acionamento efetivo do Corpo de Bombeiros para este alerta.\",\"por_que_importa\":\"O plano menciona apoio condicionado, mas não confirma disponibilidade para o evento atual.\"}],\"cautelas\":[\"O cenário de alerta é fictício e deve ser tratado apenas como base documental para verificação.\",\"A data de referência é 2026-11-20; prazos futuros não devem ser tratados como vencidos.\",\"O inventário de 2026 atualiza recursos, mas não substitui automaticamente todas as informações do plano de 2025.\",\"Não presumir que a existência de um recurso significa prontidão operacional sem confirmação explícita.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_04ba868819b93a19016b06eca0260887d293f1b6fe2ad11d55",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2117,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 3550,
+      "output_tokens_details": {
+        "reasoning_tokens": 623
+      },
+      "total_tokens": 5667
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"O cenário de alerta aponta possibilidade de cheia a partir de 21/11 com risco de isolar a Ilha dos Pescadores. Os documentos mostram que o município tem um barco de alumínio para resgate, coletes salva-vidas e um operador habilitado, além de apoio do Corpo de Bombeiros condicionado à disponibilidade regional. Há, porém, pontos que precisam ser confirmados antes do uso operacional da pauta.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"COMPDEC\",\"tipo\":\"setor\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Setor municipal citado como fonte do plano e do inventário de equipamentos.\"},{\"id\":\"E2\",\"nome\":\"Corpo de Bombeiros\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Apoio externo previsto para os recursos de resgate, condicionado à disponibilidade regional.\"},{\"id\":\"E3\",\"nome\":\"Sala de Situação Regional\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Fonte do cenário de alerta fictício de cheia.\"},{\"id\":\"E4\",\"nome\":\"Ilha dos Pescadores\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área de risco citada no plano; pode ficar isolada em cheias.\"},{\"id\":\"E5\",\"nome\":\"Barco de alumínio 6 m\",\"tipo\":\"equipamento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Embarcação de resgate informada no inventário, com motor de popa instalado em 2025 e revisão em 20/08/2026.\"},{\"id\":\"E6\",\"nome\":\"Motor de popa 40 HP\",\"tipo\":\"equipamento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Motor instalado no barco de alumínio em 2025 e revisado em 20/08/2026.\"},{\"id\":\"E7\",\"nome\":\"Coletes salva-vidas\",\"tipo\":\"recurso\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Quantidade informada no inventário: 12.\"},{\"id\":\"E8\",\"nome\":\"Operadores habilitados\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Pessoal habilitado para operar o barco; o inventário informa 1 operador com curso de arrais válido até 03/2027.\"},{\"id\":\"E9\",\"nome\":\"Cheia do Arroio das Pedras\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Evento de cheia citado no alerta, com possibilidade de isolar a Ilha dos Pescadores a partir de 21/11.\"},{\"id\":\"E10\",\"nome\":\"Acesso por barco em cheias\",\"tipo\":\"servico\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Forma de acesso indicada para a Ilha dos Pescadores quando há cheias.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E10\",\"destino\":\"E4\",\"tipo\":\"acesso_por\",\"rotulo\":\"A ilha é acessada por barco em cheias.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":null,\"fim\":null,\"observacao\":\"Válido conforme o plano de contingência.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Ilha dos Pescadores (acesso apenas por barco em cheias).\"}]},{\"id\":\"R2\",\"origem\":\"E4\",\"destino\":\"E9\",\"tipo\":\"afetado_por\",\"rotulo\":\"A ilha pode ser isolada pela cheia.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Indicado no alerta de 20/11.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Cheia do Arroio das Pedras pode isolar a Ilha dos Pescadores a partir de 21/11.\"}]},{\"id\":\"R3\",\"origem\":\"E1\",\"destino\":\"E5\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC mantém o barco de resgate.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":null,\"fim\":null,\"observacao\":\"Informado no inventário e no plano.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"1 barco de alumínio da COMPDEC; apoio do Corpo de Bombeiros conforme disponibilidade regional.\"},{\"doc_id\":\"D3\",\"trecho\":\"Barco de alumínio 6 m: motor de popa 40 HP instalado em 2025, revisado em 20/08/2026.\"}]},{\"id\":\"R4\",\"origem\":\"E5\",\"destino\":\"E6\",\"tipo\":\"outro\",\"rotulo\":\"O barco está equipado com motor de popa.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2025-01-01\",\"fim\":null,\"observacao\":\"Instalado em 2025.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"motor de popa 40 HP instalado em 2025, revisado em 20/08/2026.\"}]},{\"id\":\"R5\",\"origem\":\"E1\",\"destino\":\"E7\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC dispõe de coletes salva-vidas para resgate.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":null,\"fim\":null,\"observacao\":\"Quantidade informada em 28/08/2026.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Coletes salva-vidas: 12.\"}]},{\"id\":\"R6\",\"origem\":\"E1\",\"destino\":\"E8\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A COMPDEC informa um operador habilitado.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":null,\"fim\":\"2027-03-01\",\"observacao\":\"Validade do curso de arrais até 03/2027.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Operadores habilitados: 1 (curso de arrais vence em 03/2027).\"}]},{\"id\":\"R7\",\"origem\":\"E1\",\"destino\":\"E2\",\"tipo\":\"depende_de\",\"rotulo\":\"O plano prevê apoio do Corpo de Bombeiros conforme disponibilidade regional.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":null,\"fim\":null,\"observacao\":\"Dependência condicionada à disponibilidade regional.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"apoio do Corpo de Bombeiros conforme disponibilidade regional.\"}]},{\"id\":\"R8\",\"origem\":\"E9\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"A cheia ameaça o isolamento da ilha.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Cenário do alerta.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Cheia do Arroio das Pedras pode isolar a Ilha dos Pescadores a partir de 21/11.\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"O inventário de 28/08/2026 atualiza a informação do plano de 2025 ao detalhar o barco de alumínio com motor de popa 40 HP, revisão em 20/08/2026, 12 coletes e 1 operador habilitado.\",\"implicacao\":\"A pauta de verificação deve considerar esses dados mais recentes como referência operacional, sem presumir mudanças além do que foi escrito.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"1 barco de alumínio da COMPDEC; apoio do Corpo de Bombeiros conforme disponibilidade regional.\"},{\"doc_id\":\"D3\",\"trecho\":\"Barco de alumínio 6 m: motor de popa 40 HP instalado em 2025, revisado em 20/08/2026.\"}]},{\"id\":\"T2\",\"tipo\":\"vigencia_encerrada\",\"descricao\":\"O curso de arrais do único operador habilitado vence em 03/2027.\",\"implicacao\":\"Não há base documental para dizer que a habilitação expirou na data de referência, mas existe prazo futuro que pode exigir acompanhamento.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Operadores habilitados: 1 (curso de arrais vence em 03/2027).\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"O barco de alumínio da COMPDEC está operacional para deslocamento até a Ilha dos Pescadores durante a cheia prevista?\",\"por_que_importa\":\"A ilha pode ficar isolada e o plano prevê acesso por barco em cheias.\",\"motivacao\":\"O alerta indica isolamento possível a partir de 21/11 e o plano define acesso apenas por barco nessas condições.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E4\",\"E5\",\"E9\",\"E10\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"acesso apenas por barco em cheias\"},{\"doc_id\":\"D3\",\"trecho\":\"Barco de alumínio 6 m: motor de popa 40 HP instalado em 2025, revisado em 20/08/2026.\"}],\"o_que_falta_saber\":\"Se a embarcação está pronta para uso imediato, com combustível, tripulação e condições de navegação compatíveis com a cheia.\",\"quem_pode_confirmar\":\"COMPDEC\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"Há operador habilitado disponível para conduzir o barco no período do alerta?\",\"por_que_importa\":\"O inventário registra apenas 1 operador habilitado, o que torna a confirmação de disponibilidade imediata relevante para o resgate.\",\"motivacao\":\"O documento informa um único operador habilitado e o alerta é para a data presente, com efeito já no dia seguinte.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E5\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Operadores habilitados: 1 (curso de arrais vence em 03/2027).\"}],\"o_que_falta_saber\":\"Se esse operador está em serviço, ausente, de férias ou se existe outro servidor apto não registrado no inventário.\",\"quem_pode_confirmar\":\"COMPDEC\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"Os 12 coletes salva-vidas são suficientes para a operação prevista de resgate ou transporte na cheia?\",\"por_que_importa\":\"O número de coletes é conhecido, mas o documento não informa quantas pessoas poderão ser transportadas em cada viagem.\",\"motivacao\":\"O alerta aponta possibilidade de isolamento e o plano prevê uso de barco para acesso à ilha.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E5\",\"E7\",\"E4\",\"E9\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Coletes salva-vidas: 12.\"},{\"doc_id\":\"D1\",\"trecho\":\"acesso apenas por barco em cheias.\"}],\"o_que_falta_saber\":\"Se a quantidade atende à lotação prevista, à equipe embarcada e a eventuais passageiros resgatados.\",\"quem_pode_confirmar\":\"COMPDEC\",\"prioridade\":\"media\"},{\"id\":\"V4\",\"pergunta\":\"O apoio do Corpo de Bombeiros está confirmado para o período do alerta ou permanece apenas condicionado à disponibilidade regional?\",\"por_que_importa\":\"O plano cita apoio externo, mas sem confirmação de acionamento efetivo para este episódio de cheia.\",\"motivacao\":\"A dependência aparece no plano, e o cenário atual exige saber se esse apoio pode ser acionado.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E1\",\"E2\"],\"setores_relacionados\":[\"COMPDEC\",\"Corpo de Bombeiros\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"apoio do Corpo de Bombeiros conforme disponibilidade regional.\"}],\"o_que_falta_saber\":\"Se houve confirmação operacional do apoio ou apenas previsão genérica no plano.\",\"quem_pode_confirmar\":\"COMPDEC ou setor responsável pelo acionamento junto ao Corpo de Bombeiros\",\"prioridade\":\"media\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há registro de quantidade de pessoas na Ilha dos Pescadores ou de população potencialmente afetada.\",\"por_que_importa\":\"Sem esse dado, não é possível dimensionar a operação de resgate ou transporte.\"},{\"descricao\":\"Não há informação sobre combustível, manutenção operacional completa ou local de guarda do barco.\",\"por_que_importa\":\"Esses itens podem influenciar a prontidão do recurso de resgate.\"},{\"descricao\":\"Não há atualização documental sobre acionamento efetivo do Corpo de Bombeiros para este alerta.\",\"por_que_importa\":\"O plano menciona apoio condicionado, mas não confirma disponibilidade para o evento atual.\"}],\"cautelas\":[\"O cenário de alerta é fictício e deve ser tratado apenas como base documental para verificação.\",\"A data de referência é 2026-11-20; prazos futuros não devem ser tratados como vencidos.\",\"O inventário de 2026 atualiza recursos, mas não substitui automaticamente todas as informações do plano de 2025.\",\"Não presumir que a existência de um recurso significa prontidão operacional sem confirmação explícita.\"]}"
+  }
+}

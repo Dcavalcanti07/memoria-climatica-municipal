@@ -48,7 +48,7 @@ export function Workspace({ id }: { id: string }) {
   }, [sc, live]);
   const allDocs = useMemo(() => (sc ? [...sc.docs, ...sc.atualizacao].sort((a, b) => a.data.localeCompare(b.data)) : []), [sc]);
   const docMap = useMemo(() => new Map(allDocs.map((d) => [d.id, d])), [allDocs]);
-  const W = 1000, H = Math.round(1000 * (size.h / size.w));
+  const W = size.w, H = size.h;
   const union = useMemo(() => (sc ? buildUnion(Object.entries(runs).map(([key, r]) => ({ key, out: r.output })), allDocs, W, H) : null), [sc, runs, allDocs, H]);
 
   const run = runs[mode];

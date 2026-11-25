@@ -1,0 +1,1096 @@
+{
+  "meta": {
+    "scenario": "E20",
+    "condicao": "A",
+    "com_atualizacao": false,
+    "rep": 1,
+    "tag": "eval_v1",
+    "config": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini-2026-03-17",
+      "reasoning_effort": "low",
+      "temperature": null,
+      "max_output_tokens": 32000
+    },
+    "prompt_file": "analise_v2.md",
+    "prompt_sha12": "d86ad33cc633",
+    "docs_fornecidos": [
+      "D1",
+      "D3",
+      "D2"
+    ],
+    "user_message_chars": 997,
+    "user_message_sha12": "9545761c4020"
+  },
+  "user_message": "Município (fictício): Monte Verde do Sul\nData de referência da análise: 2026-11-21\nDocumentos disponíveis (3), em ordem cronológica:\n\n### [D1] Plano de Contingência (2024)\nTipo: Plano de contingência | Fonte: COMPDEC | Data: 2024-08-08\n\nAbrigo 1: Escola Municipal Monte Verde (150 pessoas).\nAbrigo 2: Salão da Associação Rural (50 pessoas).\n\n---\n\n### [D3] Ofício — Educação — obras na Escola Monte Verde\nTipo: Atualização de secretaria | Fonte: Secretaria de Educação | Data: 2026-09-12\n\nA Escola Municipal Monte Verde está em reforma geral, com o prédio interditado para uso até 20/12/2026. As aulas foram transferidas provisoriamente para o Centro Paroquial.\n\n---\n\n### [D2] Alerta (cenário fictício)\nTipo: Cenário de alerta (fictício) | Fonte: Sala de Situação Regional (fictícia) | Data: 2026-11-21\n\nNÍVEL: LARANJA. Risco de inundação no bairro Várzea e na Vila Nova, com possível desalojamento de até 60 famílias.\n\nProduza a análise e a pauta de verificações preventivas no formato solicitado.",
+  "response_id": "resp_05f13435f433991a016b06ec75d52487d28fdcaa94f2a069e0",
+  "model_reported": "gpt-5.4-mini-2026-03-17",
+  "usage": {
+    "input_tokens": 2080,
+    "output_tokens": 3386,
+    "reasoning_tokens": 288
+  },
+  "latency_ms": 21705,
+  "started_at": "2026-11-25T14:11:01.097Z",
+  "output": {
+    "resumo_situacao": "Há um alerta de inundação para o bairro Várzea e a Vila Nova, com possibilidade de desalojamento de até 60 famílias. No plano de contingência, a Escola Municipal Monte Verde era um abrigo previsto, mas um ofício posterior informa que o prédio está em reforma e interditado até 20/12/2026. O Salão da Associação Rural continua citado no plano como abrigo, mas não há atualização recente sobre ele.",
+    "entidades": [
+      {
+        "id": "E1",
+        "nome": "Escola Municipal Monte Verde",
+        "tipo": "local",
+        "setor_responsavel": "Educação",
+        "descricao": "Unidade escolar citada no plano como abrigo para 150 pessoas; depois informada como em reforma geral e interditada até 20/12/2026."
+      },
+      {
+        "id": "E2",
+        "nome": "Salão da Associação Rural",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Local citado no plano de contingência como abrigo para 50 pessoas."
+      },
+      {
+        "id": "E3",
+        "nome": "Bairro Várzea",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Área indicada no alerta como local com risco de inundação."
+      },
+      {
+        "id": "E4",
+        "nome": "Vila Nova",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Área indicada no alerta como local com risco de inundação."
+      },
+      {
+        "id": "E5",
+        "nome": "60 famílias",
+        "tipo": "grupo_populacional",
+        "setor_responsavel": null,
+        "descricao": "Quantidade máxima de famílias com possível desalojamento indicada no alerta."
+      },
+      {
+        "id": "E6",
+        "nome": "Reforma geral da Escola Municipal Monte Verde",
+        "tipo": "evento",
+        "setor_responsavel": "Educação",
+        "descricao": "Obra informada pela Secretaria de Educação, com interdição do prédio até 20/12/2026."
+      },
+      {
+        "id": "E7",
+        "nome": "Centro Paroquial",
+        "tipo": "local",
+        "setor_responsavel": null,
+        "descricao": "Local para onde as aulas da Escola Municipal Monte Verde foram transferidas provisoriamente."
+      },
+      {
+        "id": "E8",
+        "nome": "Alerta de inundação de 2026-11-21",
+        "tipo": "evento",
+        "setor_responsavel": null,
+        "descricao": "Cenário de alerta com nível laranja, risco de inundação no bairro Várzea e na Vila Nova."
+      },
+      {
+        "id": "E9",
+        "nome": "Plano de Contingência (2024)",
+        "tipo": "norma_documento",
+        "setor_responsavel": "COMPDEC",
+        "descricao": "Documento de referência que lista abrigos para uso em contingência."
+      },
+      {
+        "id": "E10",
+        "nome": "COMPDEC",
+        "tipo": "funcao_responsavel",
+        "setor_responsavel": null,
+        "descricao": "Fonte do plano de contingência de 2024."
+      },
+      {
+        "id": "E11",
+        "nome": "Secretaria de Educação",
+        "tipo": "setor",
+        "setor_responsavel": null,
+        "descricao": "Secretaria que informou a reforma e a interdição da Escola Municipal Monte Verde."
+      }
+    ],
+    "relacoes": [
+      {
+        "id": "R1",
+        "origem": "E9",
+        "destino": "E1",
+        "tipo": "outro",
+        "rotulo": "O plano lista a escola como abrigo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-08-08",
+          "fim": null,
+          "observacao": "Registro no plano de contingência de 2024."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo 1: Escola Municipal Monte Verde (150 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "origem": "E9",
+        "destino": "E2",
+        "tipo": "outro",
+        "rotulo": "O plano lista o salão como abrigo.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2024-08-08",
+          "fim": null,
+          "observacao": "Registro no plano de contingência de 2024."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo 2: Salão da Associação Rural (50 pessoas)."
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "origem": "E1",
+        "destino": "E6",
+        "tipo": "outro",
+        "rotulo": "A escola está em reforma geral.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-09-12",
+          "fim": "2026-12-20",
+          "observacao": "Interdição informada até 20/12/2026."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "A Escola Municipal Monte Verde está em reforma geral, com o prédio interditado para uso até 20/12/2026."
+          }
+        ]
+      },
+      {
+        "id": "R4",
+        "origem": "E1",
+        "destino": "E7",
+        "tipo": "outro",
+        "rotulo": "As aulas foram transferidas para o Centro Paroquial.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-09-12",
+          "fim": null,
+          "observacao": "Transferência provisória informada no ofício."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "As aulas foram transferidas provisoriamente para o Centro Paroquial."
+          }
+        ]
+      },
+      {
+        "id": "R5",
+        "origem": "E8",
+        "destino": "E3",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta indica risco de inundação no bairro Várzea.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-21",
+          "fim": null,
+          "observacao": "Cenário do alerta vigente na data de referência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "Risco de inundação no bairro Várzea"
+          }
+        ]
+      },
+      {
+        "id": "R6",
+        "origem": "E8",
+        "destino": "E4",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta indica risco de inundação na Vila Nova.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-21",
+          "fim": null,
+          "observacao": "Cenário do alerta vigente na data de referência."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "e na Vila Nova"
+          }
+        ]
+      },
+      {
+        "id": "R7",
+        "origem": "E8",
+        "destino": "E5",
+        "tipo": "afetado_por",
+        "rotulo": "O alerta prevê possível desalojamento de até 60 famílias.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-11-21",
+          "fim": null,
+          "observacao": "Estimativa do alerta."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "com possível desalojamento de até 60 famílias."
+          }
+        ]
+      },
+      {
+        "id": "R8",
+        "origem": "E1",
+        "destino": "E8",
+        "tipo": "outro",
+        "rotulo": "A escola prevista como abrigo está em área diferente da área citada no alerta, sem vínculo direto documentado com o risco.",
+        "status_epistemico": "informacao_insuficiente",
+        "periodo": {
+          "inicio": null,
+          "fim": null,
+          "observacao": "Não há documento ligando a escola ao cenário de inundação."
+        },
+        "evidencias": []
+      },
+      {
+        "id": "R9",
+        "origem": "E11",
+        "destino": "E6",
+        "tipo": "responsavel_por",
+        "rotulo": "A Secretaria de Educação informou a reforma e a interdição.",
+        "status_epistemico": "fato_documentado",
+        "periodo": {
+          "inicio": "2026-09-12",
+          "fim": null,
+          "observacao": "Atualização setorial."
+        },
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Ofício — Educação — obras na Escola Monte Verde"
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "Fonte: Secretaria de Educação"
+          }
+        ]
+      }
+    ],
+    "achados_temporais": [
+      {
+        "id": "T1",
+        "tipo": "atualizacao",
+        "descricao": "O plano de 2024 lista a Escola Municipal Monte Verde como abrigo, mas a atualização de 2026 informa que o prédio está interditado até 20/12/2026.",
+        "implicacao": "A referência de abrigo do plano precisa ser conferida à luz da interdição vigente.",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo 1: Escola Municipal Monte Verde (150 pessoas)."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "o prédio interditado para uso até 20/12/2026."
+          }
+        ]
+      },
+      {
+        "id": "T2",
+        "tipo": "mudanca_responsavel",
+        "descricao": "A informação sobre a Escola Municipal Monte Verde passa a ser tratada pela Secretaria de Educação no ofício de 2026.",
+        "implicacao": "A checagem sobre uso do prédio depende da confirmação do setor de Educação.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "Fonte: Secretaria de Educação"
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "A Escola Municipal Monte Verde está em reforma geral"
+          }
+        ]
+      },
+      {
+        "id": "T3",
+        "tipo": "vigencia_encerrada",
+        "descricao": "A escola permanece interditada para uso até 20/12/2026, segundo o ofício.",
+        "implicacao": "Até essa data, não se pode presumir o uso do prédio conforme o plano antigo.",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "com o prédio interditado para uso até 20/12/2026."
+          }
+        ]
+      }
+    ],
+    "verificacoes": [
+      {
+        "id": "V1",
+        "pergunta": "O Plano de Contingência continua valendo para a Escola Municipal Monte Verde como abrigo, mesmo com a interdição informada pela Secretaria de Educação?",
+        "por_que_importa": "A escola aparece como abrigo no plano antigo, mas há uma atualização posterior indicando impedimento de uso.",
+        "motivacao": "O plano lista a escola como abrigo e o ofício informa interdição até 20/12/2026.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E9",
+          "E6",
+          "E11"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Secretaria de Educação"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo 1: Escola Municipal Monte Verde (150 pessoas)."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "o prédio interditado para uso até 20/12/2026."
+          }
+        ],
+        "o_que_falta_saber": "Se houve atualização formal do plano ou definição de abrigo substituto enquanto durar a interdição.",
+        "quem_pode_confirmar": "COMPDEC e Secretaria de Educação",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V2",
+        "pergunta": "O Salão da Associação Rural segue disponível como abrigo para o cenário atual de inundação?",
+        "por_que_importa": "É o outro abrigo previsto no plano, mas não há atualização recente sobre sua condição.",
+        "motivacao": "O plano cita o salão como abrigo, e o alerta atual pode exigir esse recurso.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E2",
+          "E9",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "COMPDEC"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D1",
+            "trecho": "Abrigo 2: Salão da Associação Rural (50 pessoas)."
+          }
+        ],
+        "o_que_falta_saber": "Se o salão está acessível, apto e autorizado para uso no contexto do alerta de 2026-11-21.",
+        "quem_pode_confirmar": "COMPDEC ou setor responsável pelo abrigo",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V3",
+        "pergunta": "Existe definição de local alternativo para acomodar pessoas desalojadas nos bairros Várzea e Vila Nova, caso os abrigos do plano não possam ser usados como previsto?",
+        "por_que_importa": "O alerta prevê possível desalojamento de até 60 famílias, e um dos abrigos do plano está interditado.",
+        "motivacao": "O alerta indica potencial desalojamento e a escola abrigo está interditada.",
+        "base": "ambos",
+        "entidades_relacionadas": [
+          "E1",
+          "E2",
+          "E5",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "COMPDEC",
+          "Secretaria de Educação"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D2",
+            "trecho": "com possível desalojamento de até 60 famílias."
+          },
+          {
+            "doc_id": "D3",
+            "trecho": "o prédio interditado para uso até 20/12/2026."
+          }
+        ],
+        "o_que_falta_saber": "Se há outro espaço definido, com capacidade compatível, para uso durante a vigência da interdição.",
+        "quem_pode_confirmar": "COMPDEC",
+        "prioridade": "alta"
+      },
+      {
+        "id": "V4",
+        "pergunta": "Há alguma atualização específica sobre a situação do Centro Paroquial diante do alerta de inundação, já que ele recebe provisoriamente as aulas da escola?",
+        "por_que_importa": "O local passa a concentrar atividades escolares e pode ter reflexos operacionais, mas não há informação sobre sua condição no alerta.",
+        "motivacao": "As aulas foram transferidas para o Centro Paroquial, sem detalhes sobre sua aptidão no cenário atual.",
+        "base": "informacao_atual",
+        "entidades_relacionadas": [
+          "E7",
+          "E1",
+          "E8"
+        ],
+        "setores_relacionados": [
+          "Secretaria de Educação"
+        ],
+        "status_epistemico": "informacao_insuficiente",
+        "evidencias": [
+          {
+            "doc_id": "D3",
+            "trecho": "As aulas foram transferidas provisoriamente para o Centro Paroquial."
+          }
+        ],
+        "o_que_falta_saber": "Se o local permanece operacional para as aulas e se há algum impacto do alerta sobre ele.",
+        "quem_pode_confirmar": "Secretaria de Educação",
+        "prioridade": "baixa"
+      }
+    ],
+    "informacoes_ausentes": [
+      {
+        "descricao": "Não há no material informado a localização ou condições operacionais detalhadas do Salão da Associação Rural.",
+        "por_que_importa": "Sem isso, não dá para avaliar sua aptidão como abrigo no cenário atual."
+      },
+      {
+        "descricao": "Não há atualização do Plano de Contingência de 2024 após a reforma e interdição da Escola Municipal Monte Verde.",
+        "por_que_importa": "Sem atualização, fica incerto como o plano trata o abrigo que deixou de estar disponível."
+      },
+      {
+        "descricao": "Não há informação sobre medidas internas para os bairros Várzea e Vila Nova além do risco de inundação e do possível desalojamento.",
+        "por_que_importa": "Isso impede detalhar a pauta com locais específicos dentro das áreas atingidas."
+      }
+    ],
+    "cautelas": [
+      "O plano de 2024 não deve ser tratado como vigente para a Escola Municipal Monte Verde sem considerar a interdição informada em 2026.",
+      "A existência de um abrigo no plano não confirma sua disponibilidade atual.",
+      "O alerta menciona bairros e famílias em risco, mas não traz detalhes sobre pontos críticos, rotas ou equipamentos atingidos.",
+      "A data de interdição da escola é futura em relação ao alerta, então a impossibilidade de uso vale até 20/12/2026, salvo nova atualização."
+    ]
+  },
+  "validation": {
+    "schema_ok": true,
+    "n_entidades": 11,
+    "n_relacoes": 9,
+    "n_verificacoes": 4,
+    "n_temporais": 3,
+    "relacoes_orfas": [],
+    "verificacoes_entidades_invalidas": [],
+    "ids_duplicados": [],
+    "citacoes": [
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo 1: Escola Municipal Monte Verde (150 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo 2: Salão da Associação Rural (50 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "A Escola Municipal Monte Verde está em reforma geral, com o prédio interditado para uso até 20/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R3"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "As aulas foram transferidas provisoriamente para o Centro Paroquial.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R4"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "Risco de inundação no bairro Várzea",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R5"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "e na Vila Nova",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R6"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "com possível desalojamento de até 60 famílias.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R7"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Ofício — Educação — obras na Escola Monte Verde",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R9"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Fonte: Secretaria de Educação",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "relacao:R9"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo 1: Escola Municipal Monte Verde (150 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "o prédio interditado para uso até 20/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "Fonte: Secretaria de Educação",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "A Escola Municipal Monte Verde está em reforma geral",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T2"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "com o prédio interditado para uso até 20/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "temporal:T3"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo 1: Escola Municipal Monte Verde (150 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "o prédio interditado para uso até 20/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V1"
+      },
+      {
+        "doc_id": "D1",
+        "trecho": "Abrigo 2: Salão da Associação Rural (50 pessoas).",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V2"
+      },
+      {
+        "doc_id": "D2",
+        "trecho": "com possível desalojamento de até 60 famílias.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "o prédio interditado para uso até 20/12/2026.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V3"
+      },
+      {
+        "doc_id": "D3",
+        "trecho": "As aulas foram transferidas provisoriamente para o Centro Paroquial.",
+        "doc_valido": true,
+        "literal": true,
+        "onde": "verificacao:V4"
+      }
+    ],
+    "n_citacoes": 20,
+    "n_citacoes_literais": 20,
+    "n_citacoes_doc_invalido": 0,
+    "verificacoes_sem_evidencia": []
+  },
+  "raw": {
+    "access_programs": null,
+    "background": false,
+    "billing": {
+      "payer": "developer"
+    },
+    "completed_at": 1795615882,
+    "created_at": 1795615861,
+    "error": null,
+    "frequency_penalty": 0,
+    "id": "resp_05f13435f433991a016b06ec75d52487d28fdcaa94f2a069e0",
+    "image": {
+      "context_compression": "disabled"
+    },
+    "incomplete_details": null,
+    "input_transformations": [],
+    "instructions": null,
+    "max_output_tokens": 32000,
+    "max_tool_calls": null,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "moderation": null,
+    "object": "response",
+    "output": [
+      {
+        "content": [],
+        "encrypted_content": "gAAAAABrBux5GfIM2hiUbrWJj19oTiKZa5oV9Ysm7kf_NKQYNauNrdY9rVGD_UvfAD2ZcCMqag01EuA2bRJYycOQEdEm6Kmx6O-86fn0RZPIicuHd4uf3kLJm1WuA7Yc2nh7uCnIErAaxJklPSpTofBviFdeRG2ZDIR5_nSNtepZCcpzUUTR_OdNuviNCE1BGflEnBFQKeHQ-QvgfKobIS0ubxxdR93-xhGhjZG2ANFUr9hAE5ydKHs76V8F--E0fUtvWy9ygmM0_FMmOvbFikvz-_06TmzvckWom-HZf05P3j1Ef3tJgJRGT7aZunvgmzFq6Lc2rHT34EFZ_jGEDK6_OhUVHNMCM0sC-1-S3xpfghh8N3iXro4NQkEfe7rrO5hjtV2OfOfZzBTsjvxyFYIq_SrUctbnL061F1dRSzekG_-hCRHt6KriFLwU5BBMS-isYdMuOEn1hoWXATfgPJAPq1XQJrHYdQGN9KkOr_XmbmmMtgeCyXONlatIHGLW1N8wRiry7lI32Fc7F_8e1_R2kDGHA4nyiOpKNDYrSdig4IMKRx07rZSVHoFJdd12xYZjF4K8NnGs1bZbyqv79bw5yC70USut-2zH1FI_inFRW9qWgMHw4yII-oW9eHAautcFQAqPNC-_OpvYVEPBIU1MgtzfeuYI_EoDYJ5wyIkJpBQiU2sO_0tf2-iaCLUrOPgnJj8zjG11-88m36KjWbBHsX2P4X7ASlWR02ik7ra3zVMWEr9ezMH_thoyeErzGtxqrbRD8TUuBSRNrTOK9ASG48b6vglrC3WHeyALkldZ8wK-ajC9TB0u4AEo7f9OFlQ9mx1Faxe6Hid06smFDtObccwdpcWHLm-fR1uoXcUOsWyDof05HiUVQW4f3G55MmHp-y10fc-dD0JfcS4xFlDO09bIra7X46cSormcFw5eRvd8xVRmdXY9AQ_1BgQoFlnHAhw8xcySLz2e1Zp9EFa4LBUqanBmL4jv7LZ_8RyRe2U2zGGtUkjWDZF_V-2XddZavDyTghpqoJEAP07hJPV8Aq5Z782I1OqMXdzFWoCy7govIkSnQ2SMnjZ5NuNygIEva3BeDtX4F_M0SSB2RKW3Qs8e-y7AtkZVps3ZoaaKMPqVHPCcKjsFfnwxK8kUy9Ocx2-Svfp2IANa88wlr9CBFE3O8QjJMSlhjbiF8Zhf817Swfj2qXe5E84JPThD0vkIe_Bs4IJgIp-xNgJFaYM_Ip542d8uB5Umcb63OMLS5WHtGX5xFCbPfdB-Bk6FGNxtSXPZMxX3_S-8ElQD57qZjrQ9wXHvcDqzKllE7z1TLbzzu_NXYteFtCHuaIkOtzc2ibNSy8kaRmHOYLYgwL8edtg4_tujSlczeP_t-R_orMBcBLnxAxbCJL2BhG-FaCRDz0FqViU0VoSACDlW24ckZg4JNh6eawlnJWHGk-I66CkvFaX3k7zfcNBipVFbL4N5Eujk-5FmjIfpJMYiQCNfMVfD9AfQBW9zynpLFsFV4jlirHGRTPH0LcIe9gu5XLnuiODY-iT8sxZ_zNmFEDI-z0ta14gfVql7jVH4iRlONmSQTnaz8HxzWTy8mKVKJonOwMi3D9xw72hvpvLd6q-L4gdDvDApM6GQklewdUeSYYc8dzW6zhm7oRikB9ds4Z0gdUna5YGBVjPqWAXIeff63TGJIctowShEFnJMZ7O4U8SeDjMajhDv4GMPuxJET61Qi4geGNV5ztODs2fXFY6qa2WkSbJtPIeeCMi_hbi3_NpTCzgB8Kq6VB-EkwXExg39TPTyfKf6-LQsV3mgqS35OiNWedutztidB6NYB8bndGQko0M0tJx3NpRXq_ZuBLPcXqF8Je5c-y7DL8g-QM5eknyirbdoFs9C74MAN6NL70B4A5GTxGPhdtyZ9YmmCAMBJP1XN1O8bXIKO0bkYeVOPRvF3qVOjL9BzLLhVATocmUDBrfXrL2R_78ry1zRPZIIuKRnImdUbZgmBiGDXGxJmgIgaoFwNfDDFUcWK47deDgwCdqHc57mI8v8j2QT8JjGCTk_gZPhnFLG2MB0lPkFlXjqbLyZGVAOWMvoIhNDotY5xgzrtNX63HEGvLxkcAkzIaCui4ydSiefzprssgP0380lIn2g3GptfX5BdL-F3gJ9rgJJjbSfc98UuUkFfATDsCAMGYI5oNxL6pdAlYFpDA3Xk5-H6hWcM-V8tFJB2x3D7jnegwAw_1a5pqC0T-igkXqmstIRK6KKN5eCWuVmTYdmmkUW7bHyrMzP9c9o-wAofNzdBc3CAqK9L1HN636VT2ALNdlxzJu-ZDyFyLQIwPrHUUxWvbVYHd1a82QXpXVCFrHZ5tFRvPMAaofTmLXeJ8-uI_LudX0hcujErDZpwpXVNvyptp7cOlnQF5EwHOHPcfdV9aGW6UN0lMJVu6xbnAl9nkn7E9KSr4I0J0rcMIL8zRqZRT1zcE4QyTDEsn6S1Exx3MmX-A3uJvOHNdbeskSrcVp1TbRaLNrSM2B99D12T3viVz9yftwEEL4bHbQRXVUcpYtpqUrEhfndEGI2nUsyy8yxq6a7UsDZ0KEl8RBoc74pb09eiaB23_h2lsGUffmOo24oiiIGuZmdsRLAIaV3zMqVrDLdc2BNGZJt8nozoB2wGbKS9NON3PdWJTyGvDineWKvOzWkulEEyZqwarqLgtmupCdIaWwICFsgpdqkcGGs-SSm3NoyeHSqeUlOdlyztlgFojJNEuWT7T_57pcTMhbKCfm7ar4z2vS0LUouvlzlWEOAPQsOEj-whRLNpVEoNESlHyVK0GIZ5awY7fchDqX5vjUsj7ah9ZKSEgXQIuRPqa8ayFvuc5xcNTcj77nRaMUqBY0a0cZAMDj4ZkxaGminl6PObrr05zK6VXg14xjkSxvbL9C0Q4ZTKyzffmAIUufQeJLP1upAnbGYl_4R0qghWzM-ITz8MFiI__hL9u-EIumRZ1pwmlA4ZYDFNb3RU0aDGiFLY44_yV9IlMLEBE57OKaPZ-wo1v5o9jfVb2ENGbR0mvTdhJa7jPw1vA68my2-1ukggi9KJ_7xRQgow_GsN-1ArTH3k9ZVCnbFNO90pDYl4Gk1qZopwrG8BOjFRS1WlyhLQLKJoxUZCJuGTpGx7ZUAsnbLNIoOsvzWx2DvVdpuDM7r5cfzvsS1-a-toazsIoAmKznogZiqGRTYwzfACjVis4l99BClrowOI1nqFN42kCNcgS0-JNngYk8WDFD_TDVCoTNRk4ua7R_Z5qeAn5xVR931RMiY--TJ1hZV0mdgYlu8LySIkUMka9CDACMR75MZqJ8SYw1pcAvpUz7YGy7lR6dEuGdeQA29NGVSYQwuaJXGd8VWA0iYWeVAwXXwWQCUCtzfCy4TQL_asAyhmIACKU38yCLdsIVXMwscStaYlLCsPitZEKIu-mlf9TmNQ2vbGSrnd7spfA0EkwmDodjT8VmdBNqsQkDdteaCpzFKy300aoSA1T2nelcZf7csuB7RuiuidomLRC6u4zFxRZic3UsGRPVVthkavXgm_vVJIe_tMjVp2b4k-hJakaUF5mEwf2ab9reLyOTbJa252pl57h23sjTw1u-O1VqFmbTToh9tkh_PQ6D8iPjLQB1TEnY7DQ6Kt_TrnTVdZXz8Hj4BXy1aSejP6mkVjVdiwu8x8wFCy6WpJCQa0-z60OEyHj-9r2qblU0Y26RArekR9xf1vUBixw4gjCaF7dbiNiPK8ngQjFUg9ubZvCd7c1TnpC3Ilqv8OcmRYCI3GVu2R_0qNGfq6ACJqc_jOYFJPyNU_u6Mr9mYtYDyE8fTr9tU6BoDCr2ebZcl0XIl0ySbI0-UV9j8Lu3QAyTr0zTTquFnj-ITk-OmXBk-PStmKm9lYaaRN5QD99mxs9sgrmDOsiVYKstAtT7t9gKllEYliyG1VKSrmYsD2o8_VEkt84vDgVD1l1TRsiB4GeU8aLrWpFzyJQbRvu1IirIWUpaPqIPXnd8LodBaruoZRHYMRnU_jDNXC2kI07n6P1cPubpv4JeHqhBG4NSELJ1BR8bMBBOxTxr7D9IMZbWbwaf8qLkTo3CQDXGx4fnU03amLHzs4pCZpzhpPnyz2BWIe3hwGUobhhJN2AxgAxGoKtiTTimimC_zdVl6rVgW4bZS27szKVmbiQ55BBGgrBvW4AhteMo5zvIG7h7J3ODGzg_DaVpJdw9VD8QX7M9Tg_2D2ax0gCmgm74KHewsSu6yUu7BK8WIUaNAJfs4gsbinmAjAbxxyUvhFQCVWRcYe6SodogJbiLhpURPYsBB3ZPlYsNzAMHSCgyWPAaj98qs5ZYvXt-UNe779FLaCx8SnhU5PasorrPyD4OaKiRBLMpgqI4iC_HVbqofsRnnpP22LNg0zM5PBQVTyc7CdbJ9hG0cw7Ws0ijdshVwGV_uDDsGpIQAJUmxIq_5-jTD9q-vwo7zcjQhpFNFjExBB30Sz6Qu6fKzWq2KaRIDQ1q0kHPv-T4Qw03DEyp7xMhwbwLjChliHt-YvhQaEAPnIugmLFFdbD8R7RiFGiYMWtWEFx-kH2_ajWwOma0i8htf1ggK_DUGP3VE3LpRFVMhFLYu8GMl7G3gKjegKmqYpMniYVBsOigY5kTln07mpA2U3ZGZfKz9pFJOAzCYtDyOgiRLWo1AulMTZTJXq19KFbImoVqTphDsOBXoLEckETFlyPd_mtIVmlDNEHtHLiMZ5AVP7_OgfJdYIE_D1rqQi1JaedjJPuZmgdIntYSBhFpouudi6g4xQl78PPIm7ymXzdBoIBrNnxHasnOxugC9zD4cXsHaC6myvoA2_0Ny_L77B99GBPQBDJQgsmrBhNuU089SglB77EzKU4XhBJaM9vQStY1zx3VEmVYT1yC75O1JRStZ8KoZkjEsOamUUTUvlPmszF-8FmbHQVDD_hrcDIoGYWY5j7CtLALct-AbCuAoqb4co1d4_0jj2flHKl7g43qvvlPBk0sxL8I843KRvuMmK62BO-BXW4VbXu9uQgqC-sKpzfXD3wSShu4cERI1qfiYqG17jm6uPmvleVkF5m06baTdaQcsCiRJrrPpDDxGPzIpQXH7KX_GjsM1PC_ZPJEnOMHoMUREIrdcj7MHn2DZJRPxaIkajs06h5C_wrtmJ8SZgfqmyPqC972APucyQaTopEI_lbfkOcZXyXBujs_rNtGuOKCqXydykAOVv6bvSO5O3TXDZIqWZSjizonojJSmkDbulyDL-WAMOL1qmi_ZfiCtlMDC24Tsudr87W0chA7ykbxrr0g3SLWjJkEgOQMMhIMZwDP3DaiAhNuLJVBn-oYIuV-JRjS1ewhT1H1zh0hdlF5kUPF56wYfDMTAO3xTohGNOAS5n5bnavaY8PIcUnhRtvMBNd25mMT5T-qokih1vYkGdlouPdw9aAw_9Vw22a_hgEeWAA39cAmQi7bletSFv4b0ZA==",
+        "id": "rs_05f13435f433991a016b06ec78f9d087d29d8723865b121223",
+        "summary": [],
+        "type": "reasoning"
+      },
+      {
+        "content": [
+          {
+            "annotations": [],
+            "logprobs": [],
+            "text": "{\"resumo_situacao\":\"Há um alerta de inundação para o bairro Várzea e a Vila Nova, com possibilidade de desalojamento de até 60 famílias. No plano de contingência, a Escola Municipal Monte Verde era um abrigo previsto, mas um ofício posterior informa que o prédio está em reforma e interditado até 20/12/2026. O Salão da Associação Rural continua citado no plano como abrigo, mas não há atualização recente sobre ele.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Escola Municipal Monte Verde\",\"tipo\":\"local\",\"setor_responsavel\":\"Educação\",\"descricao\":\"Unidade escolar citada no plano como abrigo para 150 pessoas; depois informada como em reforma geral e interditada até 20/12/2026.\"},{\"id\":\"E2\",\"nome\":\"Salão da Associação Rural\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Local citado no plano de contingência como abrigo para 50 pessoas.\"},{\"id\":\"E3\",\"nome\":\"Bairro Várzea\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área indicada no alerta como local com risco de inundação.\"},{\"id\":\"E4\",\"nome\":\"Vila Nova\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área indicada no alerta como local com risco de inundação.\"},{\"id\":\"E5\",\"nome\":\"60 famílias\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":null,\"descricao\":\"Quantidade máxima de famílias com possível desalojamento indicada no alerta.\"},{\"id\":\"E6\",\"nome\":\"Reforma geral da Escola Municipal Monte Verde\",\"tipo\":\"evento\",\"setor_responsavel\":\"Educação\",\"descricao\":\"Obra informada pela Secretaria de Educação, com interdição do prédio até 20/12/2026.\"},{\"id\":\"E7\",\"nome\":\"Centro Paroquial\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Local para onde as aulas da Escola Municipal Monte Verde foram transferidas provisoriamente.\"},{\"id\":\"E8\",\"nome\":\"Alerta de inundação de 2026-11-21\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Cenário de alerta com nível laranja, risco de inundação no bairro Várzea e na Vila Nova.\"},{\"id\":\"E9\",\"nome\":\"Plano de Contingência (2024)\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Documento de referência que lista abrigos para uso em contingência.\"},{\"id\":\"E10\",\"nome\":\"COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":null,\"descricao\":\"Fonte do plano de contingência de 2024.\"},{\"id\":\"E11\",\"nome\":\"Secretaria de Educação\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Secretaria que informou a reforma e a interdição da Escola Municipal Monte Verde.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E9\",\"destino\":\"E1\",\"tipo\":\"outro\",\"rotulo\":\"O plano lista a escola como abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-08-08\",\"fim\":null,\"observacao\":\"Registro no plano de contingência de 2024.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo 1: Escola Municipal Monte Verde (150 pessoas).\"}]},{\"id\":\"R2\",\"origem\":\"E9\",\"destino\":\"E2\",\"tipo\":\"outro\",\"rotulo\":\"O plano lista o salão como abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-08-08\",\"fim\":null,\"observacao\":\"Registro no plano de contingência de 2024.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo 2: Salão da Associação Rural (50 pessoas).\"}]},{\"id\":\"R3\",\"origem\":\"E1\",\"destino\":\"E6\",\"tipo\":\"outro\",\"rotulo\":\"A escola está em reforma geral.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-09-12\",\"fim\":\"2026-12-20\",\"observacao\":\"Interdição informada até 20/12/2026.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"A Escola Municipal Monte Verde está em reforma geral, com o prédio interditado para uso até 20/12/2026.\"}]},{\"id\":\"R4\",\"origem\":\"E1\",\"destino\":\"E7\",\"tipo\":\"outro\",\"rotulo\":\"As aulas foram transferidas para o Centro Paroquial.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-09-12\",\"fim\":null,\"observacao\":\"Transferência provisória informada no ofício.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"As aulas foram transferidas provisoriamente para o Centro Paroquial.\"}]},{\"id\":\"R5\",\"origem\":\"E8\",\"destino\":\"E3\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta indica risco de inundação no bairro Várzea.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Cenário do alerta vigente na data de referência.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Risco de inundação no bairro Várzea\"}]},{\"id\":\"R6\",\"origem\":\"E8\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta indica risco de inundação na Vila Nova.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Cenário do alerta vigente na data de referência.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"e na Vila Nova\"}]},{\"id\":\"R7\",\"origem\":\"E8\",\"destino\":\"E5\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta prevê possível desalojamento de até 60 famílias.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Estimativa do alerta.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"com possível desalojamento de até 60 famílias.\"}]},{\"id\":\"R8\",\"origem\":\"E1\",\"destino\":\"E8\",\"tipo\":\"outro\",\"rotulo\":\"A escola prevista como abrigo está em área diferente da área citada no alerta, sem vínculo direto documentado com o risco.\",\"status_epistemico\":\"informacao_insuficiente\",\"periodo\":{\"inicio\":null,\"fim\":null,\"observacao\":\"Não há documento ligando a escola ao cenário de inundação.\"},\"evidencias\":[]},{\"id\":\"R9\",\"origem\":\"E11\",\"destino\":\"E6\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A Secretaria de Educação informou a reforma e a interdição.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-09-12\",\"fim\":null,\"observacao\":\"Atualização setorial.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Ofício — Educação — obras na Escola Monte Verde\"},{\"doc_id\":\"D3\",\"trecho\":\"Fonte: Secretaria de Educação\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"O plano de 2024 lista a Escola Municipal Monte Verde como abrigo, mas a atualização de 2026 informa que o prédio está interditado até 20/12/2026.\",\"implicacao\":\"A referência de abrigo do plano precisa ser conferida à luz da interdição vigente.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo 1: Escola Municipal Monte Verde (150 pessoas).\"},{\"doc_id\":\"D3\",\"trecho\":\"o prédio interditado para uso até 20/12/2026.\"}]},{\"id\":\"T2\",\"tipo\":\"mudanca_responsavel\",\"descricao\":\"A informação sobre a Escola Municipal Monte Verde passa a ser tratada pela Secretaria de Educação no ofício de 2026.\",\"implicacao\":\"A checagem sobre uso do prédio depende da confirmação do setor de Educação.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Fonte: Secretaria de Educação\"},{\"doc_id\":\"D3\",\"trecho\":\"A Escola Municipal Monte Verde está em reforma geral\"}]},{\"id\":\"T3\",\"tipo\":\"vigencia_encerrada\",\"descricao\":\"A escola permanece interditada para uso até 20/12/2026, segundo o ofício.\",\"implicacao\":\"Até essa data, não se pode presumir o uso do prédio conforme o plano antigo.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"com o prédio interditado para uso até 20/12/2026.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"O Plano de Contingência continua valendo para a Escola Municipal Monte Verde como abrigo, mesmo com a interdição informada pela Secretaria de Educação?\",\"por_que_importa\":\"A escola aparece como abrigo no plano antigo, mas há uma atualização posterior indicando impedimento de uso.\",\"motivacao\":\"O plano lista a escola como abrigo e o ofício informa interdição até 20/12/2026.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E9\",\"E6\",\"E11\"],\"setores_relacionados\":[\"COMPDEC\",\"Secretaria de Educação\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo 1: Escola Municipal Monte Verde (150 pessoas).\"},{\"doc_id\":\"D3\",\"trecho\":\"o prédio interditado para uso até 20/12/2026.\"}],\"o_que_falta_saber\":\"Se houve atualização formal do plano ou definição de abrigo substituto enquanto durar a interdição.\",\"quem_pode_confirmar\":\"COMPDEC e Secretaria de Educação\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"O Salão da Associação Rural segue disponível como abrigo para o cenário atual de inundação?\",\"por_que_importa\":\"É o outro abrigo previsto no plano, mas não há atualização recente sobre sua condição.\",\"motivacao\":\"O plano cita o salão como abrigo, e o alerta atual pode exigir esse recurso.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\",\"E9\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo 2: Salão da Associação Rural (50 pessoas).\"}],\"o_que_falta_saber\":\"Se o salão está acessível, apto e autorizado para uso no contexto do alerta de 2026-11-21.\",\"quem_pode_confirmar\":\"COMPDEC ou setor responsável pelo abrigo\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"Existe definição de local alternativo para acomodar pessoas desalojadas nos bairros Várzea e Vila Nova, caso os abrigos do plano não possam ser usados como previsto?\",\"por_que_importa\":\"O alerta prevê possível desalojamento de até 60 famílias, e um dos abrigos do plano está interditado.\",\"motivacao\":\"O alerta indica potencial desalojamento e a escola abrigo está interditada.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E5\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\",\"Secretaria de Educação\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"com possível desalojamento de até 60 famílias.\"},{\"doc_id\":\"D3\",\"trecho\":\"o prédio interditado para uso até 20/12/2026.\"}],\"o_que_falta_saber\":\"Se há outro espaço definido, com capacidade compatível, para uso durante a vigência da interdição.\",\"quem_pode_confirmar\":\"COMPDEC\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"Há alguma atualização específica sobre a situação do Centro Paroquial diante do alerta de inundação, já que ele recebe provisoriamente as aulas da escola?\",\"por_que_importa\":\"O local passa a concentrar atividades escolares e pode ter reflexos operacionais, mas não há informação sobre sua condição no alerta.\",\"motivacao\":\"As aulas foram transferidas para o Centro Paroquial, sem detalhes sobre sua aptidão no cenário atual.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E7\",\"E1\",\"E8\"],\"setores_relacionados\":[\"Secretaria de Educação\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"As aulas foram transferidas provisoriamente para o Centro Paroquial.\"}],\"o_que_falta_saber\":\"Se o local permanece operacional para as aulas e se há algum impacto do alerta sobre ele.\",\"quem_pode_confirmar\":\"Secretaria de Educação\",\"prioridade\":\"baixa\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há no material informado a localização ou condições operacionais detalhadas do Salão da Associação Rural.\",\"por_que_importa\":\"Sem isso, não dá para avaliar sua aptidão como abrigo no cenário atual.\"},{\"descricao\":\"Não há atualização do Plano de Contingência de 2024 após a reforma e interdição da Escola Municipal Monte Verde.\",\"por_que_importa\":\"Sem atualização, fica incerto como o plano trata o abrigo que deixou de estar disponível.\"},{\"descricao\":\"Não há informação sobre medidas internas para os bairros Várzea e Vila Nova além do risco de inundação e do possível desalojamento.\",\"por_que_importa\":\"Isso impede detalhar a pauta com locais específicos dentro das áreas atingidas.\"}],\"cautelas\":[\"O plano de 2024 não deve ser tratado como vigente para a Escola Municipal Monte Verde sem considerar a interdição informada em 2026.\",\"A existência de um abrigo no plano não confirma sua disponibilidade atual.\",\"O alerta menciona bairros e famílias em risco, mas não traz detalhes sobre pontos críticos, rotas ou equipamentos atingidos.\",\"A data de interdição da escola é futura em relação ao alerta, então a impossibilidade de uso vale até 20/12/2026, salvo nova atualização.\"]}",
+            "type": "output_text"
+          }
+        ],
+        "id": "msg_05f13435f433991a016b06ec79236087d2b3d21c3d03640f7a",
+        "phase": "final_answer",
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "presence_penalty": 0,
+    "previous_response_id": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": "24h",
+    "reasoning": {
+      "context": "current_turn",
+      "effort": "low",
+      "mode": "standard",
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "store": false,
+    "temperature": 1,
+    "text": {
+      "format": {
+        "description": null,
+        "name": "analise_mcm",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "achados_temporais": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "implicacao": {
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "atualizacao",
+                      "mudanca_responsavel",
+                      "alteracao_protocolo",
+                      "problema_resolvido",
+                      "pendencia_historica",
+                      "contradicao",
+                      "historico_superado",
+                      "vigencia_encerrada",
+                      "solucao_parcial"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "tipo",
+                  "descricao",
+                  "implicacao",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cautelas": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "entidades": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "setor_responsavel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "tipo": {
+                    "enum": [
+                      "servico",
+                      "infraestrutura",
+                      "equipamento",
+                      "local",
+                      "setor",
+                      "evento",
+                      "recurso",
+                      "grupo_populacional",
+                      "norma_documento",
+                      "funcao_responsavel"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "nome",
+                  "tipo",
+                  "setor_responsavel",
+                  "descricao"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "informacoes_ausentes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "descricao",
+                  "por_que_importa"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "relacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "destino": {
+                    "type": "string"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "origem": {
+                    "type": "string"
+                  },
+                  "periodo": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "fim": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "inicio": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "observacao": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "inicio",
+                      "fim",
+                      "observacao"
+                    ],
+                    "type": "object"
+                  },
+                  "rotulo": {
+                    "description": "Frase curta que descreve a relação.",
+                    "type": "string"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  },
+                  "tipo": {
+                    "enum": [
+                      "depende_de",
+                      "acesso_por",
+                      "atende",
+                      "responsavel_por",
+                      "afetado_por",
+                      "abastece",
+                      "localizado_em",
+                      "substitui",
+                      "contradiz",
+                      "comunica",
+                      "armazena",
+                      "outro"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "origem",
+                  "destino",
+                  "tipo",
+                  "rotulo",
+                  "status_epistemico",
+                  "periodo",
+                  "evidencias"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "resumo_situacao": {
+              "description": "Até 3 frases, linguagem simples.",
+              "type": "string"
+            },
+            "verificacoes": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "base": {
+                    "enum": [
+                      "informacao_atual",
+                      "registro_historico",
+                      "ambos"
+                    ],
+                    "type": "string"
+                  },
+                  "entidades_relacionadas": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "evidencias": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "doc_id": {
+                          "type": "string"
+                        },
+                        "trecho": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "doc_id",
+                        "trecho"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "motivacao": {
+                    "description": "Acontecimentos ou informações que motivaram a verificação.",
+                    "type": "string"
+                  },
+                  "o_que_falta_saber": {
+                    "type": "string"
+                  },
+                  "pergunta": {
+                    "description": "O que precisa ser confirmado, em forma de pergunta.",
+                    "type": "string"
+                  },
+                  "por_que_importa": {
+                    "type": "string"
+                  },
+                  "prioridade": {
+                    "enum": [
+                      "alta",
+                      "media",
+                      "baixa"
+                    ],
+                    "type": "string"
+                  },
+                  "quem_pode_confirmar": {
+                    "type": "string"
+                  },
+                  "setores_relacionados": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "status_epistemico": {
+                    "enum": [
+                      "fato_documentado",
+                      "inferencia",
+                      "hipotese",
+                      "contradicao",
+                      "superado",
+                      "informacao_insuficiente"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "pergunta",
+                  "por_que_importa",
+                  "motivacao",
+                  "base",
+                  "entidades_relacionadas",
+                  "setores_relacionados",
+                  "status_epistemico",
+                  "evidencias",
+                  "o_que_falta_saber",
+                  "quem_pode_confirmar",
+                  "prioridade"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "resumo_situacao",
+            "entidades",
+            "relacoes",
+            "achados_temporais",
+            "verificacoes",
+            "informacoes_ausentes",
+            "cautelas"
+          ],
+          "type": "object"
+        },
+        "strict": true,
+        "type": "json_schema"
+      },
+      "verbosity": "medium"
+    },
+    "tool_choice": "auto",
+    "tool_usage": {
+      "image_gen": {
+        "input_tokens": 0,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "output_tokens": 0,
+        "output_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 0
+        },
+        "total_tokens": 0
+      },
+      "web_search": {
+        "num_requests": 0
+      }
+    },
+    "tools": [],
+    "top_logprobs": 0,
+    "top_p": 0.98,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 2080,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 3386,
+      "output_tokens_details": {
+        "reasoning_tokens": 288
+      },
+      "total_tokens": 5466
+    },
+    "user": null,
+    "metadata": {},
+    "output_text": "{\"resumo_situacao\":\"Há um alerta de inundação para o bairro Várzea e a Vila Nova, com possibilidade de desalojamento de até 60 famílias. No plano de contingência, a Escola Municipal Monte Verde era um abrigo previsto, mas um ofício posterior informa que o prédio está em reforma e interditado até 20/12/2026. O Salão da Associação Rural continua citado no plano como abrigo, mas não há atualização recente sobre ele.\",\"entidades\":[{\"id\":\"E1\",\"nome\":\"Escola Municipal Monte Verde\",\"tipo\":\"local\",\"setor_responsavel\":\"Educação\",\"descricao\":\"Unidade escolar citada no plano como abrigo para 150 pessoas; depois informada como em reforma geral e interditada até 20/12/2026.\"},{\"id\":\"E2\",\"nome\":\"Salão da Associação Rural\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Local citado no plano de contingência como abrigo para 50 pessoas.\"},{\"id\":\"E3\",\"nome\":\"Bairro Várzea\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área indicada no alerta como local com risco de inundação.\"},{\"id\":\"E4\",\"nome\":\"Vila Nova\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Área indicada no alerta como local com risco de inundação.\"},{\"id\":\"E5\",\"nome\":\"60 famílias\",\"tipo\":\"grupo_populacional\",\"setor_responsavel\":null,\"descricao\":\"Quantidade máxima de famílias com possível desalojamento indicada no alerta.\"},{\"id\":\"E6\",\"nome\":\"Reforma geral da Escola Municipal Monte Verde\",\"tipo\":\"evento\",\"setor_responsavel\":\"Educação\",\"descricao\":\"Obra informada pela Secretaria de Educação, com interdição do prédio até 20/12/2026.\"},{\"id\":\"E7\",\"nome\":\"Centro Paroquial\",\"tipo\":\"local\",\"setor_responsavel\":null,\"descricao\":\"Local para onde as aulas da Escola Municipal Monte Verde foram transferidas provisoriamente.\"},{\"id\":\"E8\",\"nome\":\"Alerta de inundação de 2026-11-21\",\"tipo\":\"evento\",\"setor_responsavel\":null,\"descricao\":\"Cenário de alerta com nível laranja, risco de inundação no bairro Várzea e na Vila Nova.\"},{\"id\":\"E9\",\"nome\":\"Plano de Contingência (2024)\",\"tipo\":\"norma_documento\",\"setor_responsavel\":\"COMPDEC\",\"descricao\":\"Documento de referência que lista abrigos para uso em contingência.\"},{\"id\":\"E10\",\"nome\":\"COMPDEC\",\"tipo\":\"funcao_responsavel\",\"setor_responsavel\":null,\"descricao\":\"Fonte do plano de contingência de 2024.\"},{\"id\":\"E11\",\"nome\":\"Secretaria de Educação\",\"tipo\":\"setor\",\"setor_responsavel\":null,\"descricao\":\"Secretaria que informou a reforma e a interdição da Escola Municipal Monte Verde.\"}],\"relacoes\":[{\"id\":\"R1\",\"origem\":\"E9\",\"destino\":\"E1\",\"tipo\":\"outro\",\"rotulo\":\"O plano lista a escola como abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-08-08\",\"fim\":null,\"observacao\":\"Registro no plano de contingência de 2024.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo 1: Escola Municipal Monte Verde (150 pessoas).\"}]},{\"id\":\"R2\",\"origem\":\"E9\",\"destino\":\"E2\",\"tipo\":\"outro\",\"rotulo\":\"O plano lista o salão como abrigo.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2024-08-08\",\"fim\":null,\"observacao\":\"Registro no plano de contingência de 2024.\"},\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo 2: Salão da Associação Rural (50 pessoas).\"}]},{\"id\":\"R3\",\"origem\":\"E1\",\"destino\":\"E6\",\"tipo\":\"outro\",\"rotulo\":\"A escola está em reforma geral.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-09-12\",\"fim\":\"2026-12-20\",\"observacao\":\"Interdição informada até 20/12/2026.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"A Escola Municipal Monte Verde está em reforma geral, com o prédio interditado para uso até 20/12/2026.\"}]},{\"id\":\"R4\",\"origem\":\"E1\",\"destino\":\"E7\",\"tipo\":\"outro\",\"rotulo\":\"As aulas foram transferidas para o Centro Paroquial.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-09-12\",\"fim\":null,\"observacao\":\"Transferência provisória informada no ofício.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"As aulas foram transferidas provisoriamente para o Centro Paroquial.\"}]},{\"id\":\"R5\",\"origem\":\"E8\",\"destino\":\"E3\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta indica risco de inundação no bairro Várzea.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Cenário do alerta vigente na data de referência.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"Risco de inundação no bairro Várzea\"}]},{\"id\":\"R6\",\"origem\":\"E8\",\"destino\":\"E4\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta indica risco de inundação na Vila Nova.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Cenário do alerta vigente na data de referência.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"e na Vila Nova\"}]},{\"id\":\"R7\",\"origem\":\"E8\",\"destino\":\"E5\",\"tipo\":\"afetado_por\",\"rotulo\":\"O alerta prevê possível desalojamento de até 60 famílias.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-11-21\",\"fim\":null,\"observacao\":\"Estimativa do alerta.\"},\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"com possível desalojamento de até 60 famílias.\"}]},{\"id\":\"R8\",\"origem\":\"E1\",\"destino\":\"E8\",\"tipo\":\"outro\",\"rotulo\":\"A escola prevista como abrigo está em área diferente da área citada no alerta, sem vínculo direto documentado com o risco.\",\"status_epistemico\":\"informacao_insuficiente\",\"periodo\":{\"inicio\":null,\"fim\":null,\"observacao\":\"Não há documento ligando a escola ao cenário de inundação.\"},\"evidencias\":[]},{\"id\":\"R9\",\"origem\":\"E11\",\"destino\":\"E6\",\"tipo\":\"responsavel_por\",\"rotulo\":\"A Secretaria de Educação informou a reforma e a interdição.\",\"status_epistemico\":\"fato_documentado\",\"periodo\":{\"inicio\":\"2026-09-12\",\"fim\":null,\"observacao\":\"Atualização setorial.\"},\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Ofício — Educação — obras na Escola Monte Verde\"},{\"doc_id\":\"D3\",\"trecho\":\"Fonte: Secretaria de Educação\"}]}],\"achados_temporais\":[{\"id\":\"T1\",\"tipo\":\"atualizacao\",\"descricao\":\"O plano de 2024 lista a Escola Municipal Monte Verde como abrigo, mas a atualização de 2026 informa que o prédio está interditado até 20/12/2026.\",\"implicacao\":\"A referência de abrigo do plano precisa ser conferida à luz da interdição vigente.\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo 1: Escola Municipal Monte Verde (150 pessoas).\"},{\"doc_id\":\"D3\",\"trecho\":\"o prédio interditado para uso até 20/12/2026.\"}]},{\"id\":\"T2\",\"tipo\":\"mudanca_responsavel\",\"descricao\":\"A informação sobre a Escola Municipal Monte Verde passa a ser tratada pela Secretaria de Educação no ofício de 2026.\",\"implicacao\":\"A checagem sobre uso do prédio depende da confirmação do setor de Educação.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"Fonte: Secretaria de Educação\"},{\"doc_id\":\"D3\",\"trecho\":\"A Escola Municipal Monte Verde está em reforma geral\"}]},{\"id\":\"T3\",\"tipo\":\"vigencia_encerrada\",\"descricao\":\"A escola permanece interditada para uso até 20/12/2026, segundo o ofício.\",\"implicacao\":\"Até essa data, não se pode presumir o uso do prédio conforme o plano antigo.\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"com o prédio interditado para uso até 20/12/2026.\"}]}],\"verificacoes\":[{\"id\":\"V1\",\"pergunta\":\"O Plano de Contingência continua valendo para a Escola Municipal Monte Verde como abrigo, mesmo com a interdição informada pela Secretaria de Educação?\",\"por_que_importa\":\"A escola aparece como abrigo no plano antigo, mas há uma atualização posterior indicando impedimento de uso.\",\"motivacao\":\"O plano lista a escola como abrigo e o ofício informa interdição até 20/12/2026.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E9\",\"E6\",\"E11\"],\"setores_relacionados\":[\"COMPDEC\",\"Secretaria de Educação\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo 1: Escola Municipal Monte Verde (150 pessoas).\"},{\"doc_id\":\"D3\",\"trecho\":\"o prédio interditado para uso até 20/12/2026.\"}],\"o_que_falta_saber\":\"Se houve atualização formal do plano ou definição de abrigo substituto enquanto durar a interdição.\",\"quem_pode_confirmar\":\"COMPDEC e Secretaria de Educação\",\"prioridade\":\"alta\"},{\"id\":\"V2\",\"pergunta\":\"O Salão da Associação Rural segue disponível como abrigo para o cenário atual de inundação?\",\"por_que_importa\":\"É o outro abrigo previsto no plano, mas não há atualização recente sobre sua condição.\",\"motivacao\":\"O plano cita o salão como abrigo, e o alerta atual pode exigir esse recurso.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E2\",\"E9\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D1\",\"trecho\":\"Abrigo 2: Salão da Associação Rural (50 pessoas).\"}],\"o_que_falta_saber\":\"Se o salão está acessível, apto e autorizado para uso no contexto do alerta de 2026-11-21.\",\"quem_pode_confirmar\":\"COMPDEC ou setor responsável pelo abrigo\",\"prioridade\":\"alta\"},{\"id\":\"V3\",\"pergunta\":\"Existe definição de local alternativo para acomodar pessoas desalojadas nos bairros Várzea e Vila Nova, caso os abrigos do plano não possam ser usados como previsto?\",\"por_que_importa\":\"O alerta prevê possível desalojamento de até 60 famílias, e um dos abrigos do plano está interditado.\",\"motivacao\":\"O alerta indica potencial desalojamento e a escola abrigo está interditada.\",\"base\":\"ambos\",\"entidades_relacionadas\":[\"E1\",\"E2\",\"E5\",\"E8\"],\"setores_relacionados\":[\"COMPDEC\",\"Secretaria de Educação\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D2\",\"trecho\":\"com possível desalojamento de até 60 famílias.\"},{\"doc_id\":\"D3\",\"trecho\":\"o prédio interditado para uso até 20/12/2026.\"}],\"o_que_falta_saber\":\"Se há outro espaço definido, com capacidade compatível, para uso durante a vigência da interdição.\",\"quem_pode_confirmar\":\"COMPDEC\",\"prioridade\":\"alta\"},{\"id\":\"V4\",\"pergunta\":\"Há alguma atualização específica sobre a situação do Centro Paroquial diante do alerta de inundação, já que ele recebe provisoriamente as aulas da escola?\",\"por_que_importa\":\"O local passa a concentrar atividades escolares e pode ter reflexos operacionais, mas não há informação sobre sua condição no alerta.\",\"motivacao\":\"As aulas foram transferidas para o Centro Paroquial, sem detalhes sobre sua aptidão no cenário atual.\",\"base\":\"informacao_atual\",\"entidades_relacionadas\":[\"E7\",\"E1\",\"E8\"],\"setores_relacionados\":[\"Secretaria de Educação\"],\"status_epistemico\":\"informacao_insuficiente\",\"evidencias\":[{\"doc_id\":\"D3\",\"trecho\":\"As aulas foram transferidas provisoriamente para o Centro Paroquial.\"}],\"o_que_falta_saber\":\"Se o local permanece operacional para as aulas e se há algum impacto do alerta sobre ele.\",\"quem_pode_confirmar\":\"Secretaria de Educação\",\"prioridade\":\"baixa\"}],\"informacoes_ausentes\":[{\"descricao\":\"Não há no material informado a localização ou condições operacionais detalhadas do Salão da Associação Rural.\",\"por_que_importa\":\"Sem isso, não dá para avaliar sua aptidão como abrigo no cenário atual.\"},{\"descricao\":\"Não há atualização do Plano de Contingência de 2024 após a reforma e interdição da Escola Municipal Monte Verde.\",\"por_que_importa\":\"Sem atualização, fica incerto como o plano trata o abrigo que deixou de estar disponível.\"},{\"descricao\":\"Não há informação sobre medidas internas para os bairros Várzea e Vila Nova além do risco de inundação e do possível desalojamento.\",\"por_que_importa\":\"Isso impede detalhar a pauta com locais específicos dentro das áreas atingidas.\"}],\"cautelas\":[\"O plano de 2024 não deve ser tratado como vigente para a Escola Municipal Monte Verde sem considerar a interdição informada em 2026.\",\"A existência de um abrigo no plano não confirma sua disponibilidade atual.\",\"O alerta menciona bairros e famílias em risco, mas não traz detalhes sobre pontos críticos, rotas ou equipamentos atingidos.\",\"A data de interdição da escola é futura em relação ao alerta, então a impossibilidade de uso vale até 20/12/2026, salvo nova atualização.\"]}"
+  }
+}
