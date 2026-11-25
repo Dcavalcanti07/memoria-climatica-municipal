@@ -1,0 +1,614 @@
+# Cenários de AVALIAÇÃO FINAL (E21–E30). Dados FICTÍCIOS.
+
+- id: E21
+  split: eval
+  municipio: Pinhal Seco
+  categoria: memoria_prejudicial
+  titulo: Onde estão os colchões?
+  alerta_data: "2026-11-22"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2026)
+      fonte: COMPDEC
+      data: "2026-02-18"
+      texto: |
+        Abrigo: Ginásio Pinhal (140 pessoas).
+        Materiais de assistência humanitária (colchões, kits de higiene e cobertores) ficam na Central de Logística Municipal (Rodovia PS-10, km 3), inaugurada em 2025.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de inundação (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-22"
+      texto: |
+        NÍVEL: LARANJA. Possível transbordamento do Arroio Pinhal com desalojamento de famílias nas próximas 24 horas.
+    - id: D3
+      conjunto: memoria
+      tipo: ata
+      titulo: Ata — preparação para a temporada de chuvas 2024
+      fonte: GRAC
+      data: "2024-03-12"
+      texto: |
+        Os colchões e kits ficam no almoxarifado sob a arquibancada do Ginásio Pinhal. Chave com o zelador do ginásio, Sr. Osmar.
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — abrigamento 2024
+      fonte: Assistência Social
+      data: "2024-06-01"
+      texto: |
+        A abertura do almoxarifado atrasou 3 horas porque o zelador estava de folga e não havia cópia da chave. Recomendação: centralizar materiais e ter mais de um responsável com acesso.
+  gold:
+    dependencias:
+      - id: P1
+        requer: atual
+        texto: Abrigo Ginásio → materiais na Central de Logística (km 3 da PS-10) → transporte até o abrigo
+        docs: [D1]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Confirmar o transporte dos materiais da Central de Logística até o Ginásio e quem tem acesso à Central
+        docs: [D1, D2]
+      - id: G2
+        requer: memoria
+        texto: Confirmar que há mais de um responsável com acesso aos materiais (em 2024 a falta de cópia da chave atrasou 3 horas)
+        docs: [D4]
+    temporal:
+      - id: T1
+        tipo: historico_superado
+        requer: memoria
+        texto: Localização dos colchões sob a arquibancada (2024) foi superada pela Central de Logística (2025/2026)
+        docs: [D3, D1]
+    insuficiente:
+      - id: I1
+        texto: O plano não indica quem tem acesso à Central de Logística
+    proibido:
+      - id: X1
+        texto: Indicar que os colchões estão no almoxarifado do Ginásio ou que a chave está com o Sr. Osmar como informação vigente
+
+- id: E22
+  split: eval
+  municipio: Lajeado Claro
+  categoria: dependencia_historica
+  titulo: Famílias que recusaram sair por causa dos animais
+  alerta_data: "2026-11-24"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2025)
+      fonte: COMPDEC
+      data: "2025-05-05"
+      texto: |
+        Abrigo: Escola Estadual Lajeado (120 pessoas). Regras do abrigo: proibida a entrada de animais nas salas de aula.
+        Área de risco prioritária: Beco do Rio (aprox. 45 famílias).
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de inundação (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-24"
+      texto: |
+        NÍVEL: VERMELHO para o Beco do Rio. Elevação rápida do Rio Lajeado nas próximas 18 horas.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — resistência à saída em 2024
+      fonte: COMPDEC
+      data: "2024-05-29"
+      texto: |
+        No Beco do Rio, 14 famílias recusaram deixar as casas porque não podiam levar cães e gatos ao abrigo. Seis delas precisaram de resgate por barco no dia seguinte.
+        Recomendação: definir espaço para animais junto ao abrigo, em parceria com a Vigilância em Saúde.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Proibição de animais no abrigo → recusa de saída das famílias do Beco do Rio → resgates
+        docs: [D3, D1, D2]
+    checks:
+      - id: G1
+        requer: memoria
+        texto: Verificar se há espaço/arranjo para animais de estimação junto ao abrigo (em 2024, 14 famílias recusaram sair e 6 precisaram de resgate)
+        docs: [D3, D1, D2]
+    temporal:
+      - id: T1
+        tipo: pendencia_historica
+        requer: memoria
+        texto: Recomendação de 2024 sobre animais não foi incorporada ao plano de 2025
+        docs: [D3, D1]
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Recomendar retirada compulsória ou evacuação como decisão
+
+- id: E23
+  split: eval
+  municipio: Vale do Sossego
+  categoria: dependencia_historica
+  titulo: Depósito de alimentos em área alagável
+  alerta_data: "2026-11-23"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2025)
+      fonte: COMPDEC
+      data: "2025-10-15"
+      texto: |
+        Alimentos para abrigos: estoque da merenda escolar no Depósito Central da Educação (Rua Baixa, 12), liberado pela Educação mediante solicitação.
+        Abrigo: Ginásio Sossego (110 pessoas).
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de alagamento (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-23"
+      texto: |
+        NÍVEL: LARANJA. Alagamentos prováveis na região central baixa, incluindo a Rua Baixa e a Av. das Flores.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — perdas no Depósito Central (2024)
+      fonte: Secretaria de Educação
+      data: "2024-05-24"
+      texto: |
+        O Depósito Central da Educação teve 40 cm de água. Foram perdidas 2,3 toneladas de alimentos armazenados no chão. Recomendação: estrados e prateleiras elevadas.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Alagamento da Rua Baixa → Depósito Central (alagou em 2024) → alimentos para abrigos e merenda
+        docs: [D3, D1, D2]
+    checks:
+      - id: G1
+        requer: memoria
+        texto: Verificar se os alimentos do Depósito Central estão protegidos (estrados/prateleiras) ou se devem ser remanejados antes do alagamento (perdas de 2,3 t em 2024)
+        docs: [D3, D1, D2]
+      - id: G2
+        requer: atual
+        texto: Verificar a localização do estoque de alimentos na Rua Baixa, citada no alerta
+        docs: [D1, D2]
+    temporal: []
+    insuficiente:
+      - id: I1
+        texto: Não há informação se estrados/prateleiras foram instalados
+    proibido:
+      - id: X1
+        texto: Afirmar que os alimentos serão perdidos como fato
+
+- id: E24
+  split: eval
+  municipio: Boa Ventura do Leste
+  categoria: informacao_insuficiente
+  titulo: Plano com campos em branco
+  alerta_data: "2026-11-25"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (minuta 2026, não aprovada)
+      fonte: COMPDEC
+      data: "2026-06-01"
+      texto: |
+        Coordenador da COMPDEC: [a preencher]
+        Telefone de plantão: [a preencher]
+        Abrigos: Ginásio Municipal (capacidade: [a levantar])
+        Áreas de risco: Beira-Lago e Jardim das Flores.
+        Status: minuta em revisão, sem aprovação formal.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-25"
+      texto: |
+        NÍVEL: LARANJA. Chuva de 90 mm em 24 h; risco de alagamento no Beira-Lago.
+    - id: D3
+      conjunto: memoria
+      tipo: ata
+      titulo: Ata — criação da COMPDEC
+      fonte: Câmara Municipal
+      data: "2025-11-14"
+      texto: |
+        Aprovada a lei de criação da Coordenadoria Municipal de Proteção e Defesa Civil. Nomeação do coordenador ficará a cargo do Executivo.
+  gold:
+    dependencias: []
+    checks:
+      - id: G1
+        requer: atual
+        texto: Confirmar quem coordena a COMPDEC e o telefone de plantão (campos em branco na minuta)
+        docs: [D1]
+      - id: G2
+        requer: atual
+        texto: Levantar a capacidade do Ginásio Municipal (não informada)
+        docs: [D1]
+      - id: G3
+        requer: atual
+        texto: Registrar que o plano é minuta não aprovada / confirmar qual orientação vale
+        docs: [D1]
+    temporal: []
+    insuficiente:
+      - id: I1
+        texto: Coordenador, telefone de plantão e capacidade do abrigo não informados
+    proibido:
+      - id: X1
+        texto: Inventar nome, telefone ou capacidade
+  nota_metodologica: Memória não traz informação útil; a falta de informação deve ser explicitada.
+
+- id: E25
+  split: eval
+  municipio: Arroio das Pedras
+  categoria: problema_solucionado
+  titulo: O barco sem motor
+  alerta_data: "2026-11-20"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2025)
+      fonte: COMPDEC
+      data: "2025-11-11"
+      texto: |
+        Recursos de resgate: 1 barco de alumínio da COMPDEC; apoio do Corpo de Bombeiros conforme disponibilidade regional.
+        Área de risco: Ilha dos Pescadores (acesso apenas por barco em cheias).
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de cheia (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-20"
+      texto: |
+        NÍVEL: LARANJA. Cheia do Arroio das Pedras pode isolar a Ilha dos Pescadores a partir de 21/11.
+    - id: D3
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Inventário de equipamentos — COMPDEC
+      fonte: COMPDEC
+      data: "2026-08-28"
+      texto: |
+        Barco de alumínio 6 m: motor de popa 40 HP instalado em 2025, revisado em 20/08/2026. Coletes salva-vidas: 12. Operadores habilitados: 1 (curso de arrais vence em 03/2027).
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — isolamento da Ilha dos Pescadores (2024)
+      fonte: COMPDEC
+      data: "2024-05-15"
+      texto: |
+        O barco da COMPDEC estava sem motor e não pôde ser usado. O resgate de 17 moradores da Ilha dependeu de barcos de pescadores voluntários.
+  gold:
+    dependencias:
+      - id: P1
+        requer: atual
+        texto: Isolamento da Ilha dos Pescadores → resgate depende de barco da COMPDEC com um único operador habilitado
+        docs: [D1, D3, D2]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Verificar disponibilidade de operador (apenas 1 habilitado) para o barco durante o isolamento da Ilha
+        docs: [D3, D2]
+      - id: G2
+        requer: memoria
+        texto: Considerar/confirmar apoio de pescadores voluntários ou Bombeiros como reforço (em 2024 foram decisivos)
+        docs: [D4, D1]
+    temporal:
+      - id: T1
+        tipo: problema_resolvido
+        requer: memoria
+        texto: Barco sem motor (2024) foi resolvido — motor instalado em 2025 e revisado em 08/2026
+        docs: [D4, D3]
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Afirmar que o barco está sem motor ou indisponível
+
+- id: E26
+  split: eval
+  municipio: Cerro Largo do Norte
+  categoria: dependencia_historica
+  titulo: Gestantes de alto risco e a maternidade regional
+  alerta_data: "2026-11-22"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência — Saúde (2025)
+      fonte: Secretaria de Saúde
+      data: "2025-06-06"
+      texto: |
+        Partos e gestação de alto risco: referência para a Maternidade Regional de Três Rios (55 km), pela Rodovia RC-30.
+        Ambulâncias: 3 (uma básica, uma avançada e uma de transporte).
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-22"
+      texto: |
+        NÍVEL: LARANJA. Chuva intensa na bacia do Rio Três Rios; possibilidade de alagamento de rodovias na baixada, incluindo a RC-30 no trecho do km 18 ao km 24.
+    - id: D3
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Acompanhamento pré-natal — Atenção Básica — novembro/2026
+      fonte: Atenção Básica
+      data: "2026-11-10"
+      texto: |
+        Gestantes de alto risco em acompanhamento: 6, sendo 2 com data provável de parto até 05/12/2026.
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — RC-30 interditada (2024)
+      fonte: Secretaria de Saúde
+      data: "2024-05-21"
+      texto: |
+        A RC-30 ficou interditada por 5 dias no km 21. Uma gestante em trabalho de parto foi transferida por helicóptero do Estado após 6 horas de espera. A rota alternativa por Vila Sá aumenta o trajeto em 70 km e tem trecho de terra.
+  gold:
+    dependencias:
+      - id: P1
+        requer: atual
+        texto: Alagamento da RC-30 (km 18–24) → acesso à Maternidade Regional → 2 gestantes de alto risco com parto previsto até 05/12
+        docs: [D1, D2, D3]
+      - id: P2
+        requer: memoria
+        texto: Interdição da RC-30 em 2024 → rota alternativa por Vila Sá (+70 km, terra) / apoio aéreo
+        docs: [D4]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Verificar plano para as gestantes de alto risco (2 com parto próximo) caso a RC-30 seja alagada
+        docs: [D1, D2, D3]
+      - id: G2
+        requer: memoria
+        texto: Confirmar condições da rota alternativa por Vila Sá e acionamento de apoio aéreo (em 2024 a espera foi de 6 horas)
+        docs: [D4]
+    temporal: []
+    insuficiente:
+      - id: I1
+        texto: Não há informação atual sobre a rota por Vila Sá
+    proibido:
+      - id: X1
+        texto: Recomendar internação ou transferência antecipada das gestantes como decisão médica
+
+- id: E27
+  split: eval
+  municipio: Ponte Alta do Rio Verde
+  categoria: memoria_prejudicial_magnitude
+  titulo: A grande cheia não é a cheia de agora
+  alerta_data: "2026-11-21"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2025) — Níveis
+      fonte: COMPDEC
+      data: "2025-08-01"
+      texto: |
+        Cota 6,0 m: atenção — monitoramento da Rua do Porto.
+        Cota 8,0 m: alerta — mobilização de abrigos e aviso aos bairros Porto, Cais e Olaria.
+        Cota 10,0 m: alarme — remoção preventiva conforme decisão do coordenador da COMPDEC.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Boletim hidrológico (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-21"
+      texto: |
+        NÍVEL: AMARELO. O Rio Verde pode chegar a 6,3 m a 6,6 m na régua municipal em 36 horas.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — cheia histórica de 2024
+      fonte: COMPDEC
+      data: "2024-05-31"
+      texto: |
+        O Rio Verde atingiu 12,1 m. Cinco bairros (Porto, Cais, Olaria, Centro e Barra) foram evacuados e 1.800 pessoas ficaram em abrigos.
+        Observação técnica: a partir de 6,2 m a água começa a atingir as primeiras casas da Rua do Porto, entre os números 10 e 80.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Rio em 6,3–6,6 m → acima de 6,2 m água atinge casas da Rua do Porto (nº 10 a 80)
+        docs: [D3, D2, D1]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Acompanhar a Rua do Porto conforme nível de atenção (cota 6,0 m)
+        docs: [D1, D2]
+      - id: G2
+        requer: memoria
+        texto: Verificar as casas da Rua do Porto entre os nº 10 e 80, atingidas a partir de 6,2 m (cota prevista 6,3–6,6 m)
+        docs: [D3, D2]
+    temporal: []
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Propor evacuação/mobilização dos cinco bairros ou tratar o evento atual como equivalente à cheia de 2024
+      - id: X2
+        texto: Recomendar remoção preventiva como decisão
+  nota_metodologica: Memória ajuda num ponto específico, mas pode induzir resposta desproporcional.
+
+- id: E28
+  split: eval
+  municipio: Linha Formosa
+  categoria: alteracao_protocolo
+  titulo: Quem abre o abrigo agora?
+  alerta_data: "2026-11-24"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: protocolo
+      titulo: Protocolo de Abrigamento — Decreto 1.204/2026
+      fonte: Gabinete do Prefeito
+      data: "2026-05-02"
+      texto: |
+        Art. 2º A ativação de abrigos temporários passa a ser competência da Secretaria de Assistência Social, mediante solicitação da COMPDEC.
+        Art. 3º O gestor do abrigo será um servidor da Assistência Social designado no momento da ativação.
+        Art. 5º Revogam-se as disposições em contrário, em especial o item 3.2 do Plano de Contingência de 2023.
+    - id: D2
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2023) — item 3.2
+      fonte: COMPDEC
+      data: "2023-04-17"
+      texto: |
+        3.2 A COMPDEC ativa diretamente os abrigos e designa um voluntário como gestor do abrigo.
+        Abrigos: Salão Comunitário Formosa (80 pessoas) e Escola Linha Formosa (100 pessoas).
+    - id: D3
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-24"
+      texto: |
+        NÍVEL: LARANJA. Risco de inundação nas comunidades ribeirinhas da Linha Formosa em 24–48 horas.
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — abrigamento 2024
+      fonte: COMPDEC
+      data: "2024-06-09"
+      texto: |
+        A COMPDEC ativou o Salão Comunitário às 2h da manhã com um voluntário como gestor. Houve conflito sobre a distribuição de doações por falta de registro.
+  gold:
+    dependencias:
+      - id: P1
+        requer: atual
+        texto: Ativação de abrigo → solicitação COMPDEC → Assistência Social ativa e designa servidor gestor
+        docs: [D1]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Confirmar que as equipes conhecem o novo fluxo (Assistência Social ativa; servidor designado como gestor) e quem será acionado
+        docs: [D1, D2, D3]
+    temporal:
+      - id: T1
+        tipo: alteracao_protocolo
+        requer: atual
+        texto: Decreto de 2026 revogou o item 3.2 do plano de 2023 (COMPDEC/voluntário)
+        docs: [D1, D2]
+    insuficiente:
+      - id: I1
+        texto: Não se sabe qual servidor da Assistência Social está de sobreaviso
+    proibido:
+      - id: X1
+        texto: Indicar que a COMPDEC ativa diretamente o abrigo ou que um voluntário será o gestor, como regra vigente
+
+- id: E29
+  split: eval
+  municipio: Taquaruçu do Campo
+  categoria: contradicao_memoria
+  titulo: A estrada vicinal estava transitável?
+  alerta_data: "2026-11-23"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2025) — zona rural
+      fonte: COMPDEC
+      data: "2025-07-21"
+      texto: |
+        Rota de evacuação da comunidade Linha Taquara: Estrada Vicinal TC-08 até a Escola Rural Santa Rita (abrigo, 70 pessoas).
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-23"
+      texto: |
+        NÍVEL: LARANJA. Chuva intensa na zona rural norte; risco de alagamento de estradas vicinais e transbordamento de arroios.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório da Secretaria de Agricultura — estradas rurais (2024)
+      fonte: Secretaria de Agricultura
+      data: "2024-05-22"
+      texto: |
+        A Estrada Vicinal TC-08 ficou intransitável entre 04 e 08/05/2024 por erosão no km 6.
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório da COMPDEC — evacuação rural (2024)
+      fonte: COMPDEC
+      data: "2024-05-25"
+      texto: |
+        A evacuação da Linha Taquara foi feita pela TC-08 em 05/05/2024, com restrição a veículos leves; 22 pessoas chegaram ao abrigo Santa Rita.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Evacuação da Linha Taquara depende da TC-08 (registros de 2024 divergem sobre transitabilidade; erosão no km 6)
+        docs: [D1, D3, D4]
+    checks:
+      - id: G1
+        requer: memoria
+        texto: Confirmar a condição atual da TC-08 (km 6) e se foi recuperada; registros de 2024 são contraditórios (intransitável x restrita a veículos leves)
+        docs: [D3, D4, D1]
+    temporal:
+      - id: T1
+        tipo: contradicao
+        requer: memoria
+        texto: Agricultura diz que a TC-08 ficou intransitável em 04–08/05; COMPDEC diz que evacuou pela TC-08 em 05/05 com restrição — divergência a esclarecer
+        docs: [D3, D4]
+    insuficiente:
+      - id: I1
+        texto: Não há informação sobre recuperação da TC-08 após 2024
+    proibido:
+      - id: X1
+        texto: Resolver a contradição escolhendo uma versão como verdadeira sem ressalva
+
+- id: E30
+  split: eval
+  municipio: Recanto das Araras
+  categoria: memoria_nao_acrescenta
+  titulo: Plano atualizado e memória redundante
+  alerta_data: "2026-11-25"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2026)
+      fonte: COMPDEC
+      data: "2026-03-30"
+      texto: |
+        Rota de acesso ao Abrigo Ginásio Araras: Ponte da Rua 7 ou, em caso de bloqueio, Rua das Acácias (rota alternativa testada em 08/2026).
+        Abrigo: Ginásio Araras (160 pessoas), com gerador.
+        Responsável pelo abrigo: Assistência Social (plantão interno).
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-25"
+      texto: |
+        NÍVEL: LARANJA. Arroio Araras pode transbordar e bloquear a Ponte da Rua 7 entre 26 e 27/11.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — 2024
+      fonte: COMPDEC
+      data: "2024-06-03"
+      texto: |
+        A Ponte da Rua 7 ficou bloqueada por 20 horas e o acesso ao ginásio foi feito pela Rua das Acácias. Recomendação: formalizar a Rua das Acácias como rota alternativa.
+  gold:
+    dependencias:
+      - id: P1
+        requer: atual
+        texto: Bloqueio da Ponte da Rua 7 → rota alternativa Rua das Acácias → Abrigo Ginásio Araras
+        docs: [D1, D2]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Confirmar sinalização/uso da Rua das Acácias como rota alternativa se a Ponte da Rua 7 for bloqueada
+        docs: [D1, D2]
+    temporal:
+      - id: T1
+        tipo: problema_resolvido
+        requer: memoria
+        texto: Recomendação de 2024 já foi incorporada (rota alternativa formalizada e testada)
+        docs: [D3, D1]
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Afirmar que não existe rota alternativa ao abrigo
+  nota_metodologica: Memória redundante; não deve gerar verificações novas.

@@ -1,0 +1,612 @@
+# Cenários de AVALIAÇÃO FINAL (E11–E20). Dados FICTÍCIOS.
+
+- id: E11
+  split: eval
+  municipio: Nova Esperança do Vale
+  categoria: memoria_prejudicial
+  titulo: O abrigo que funcionou bem — e saiu do plano
+  alerta_data: "2026-11-19"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência — revisão 2026
+      fonte: COMPDEC
+      data: "2026-04-22"
+      texto: |
+        Abrigos ativos: Centro Comunitário São Lucas (120 pessoas) e Escola Municipal Vale Alto (90 pessoas).
+        Alteração em relação à versão anterior: a Igreja Matriz foi retirada da lista de abrigos em razão de obras de restauração do prédio (previsão de término: 2027).
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de inundação (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-19"
+      texto: |
+        NÍVEL: LARANJA. Possível transbordamento do Rio do Vale no Centro Histórico e no bairro Ponte Seca nas próximas 24 a 48 horas.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório de abrigamento — 2024
+      fonte: Secretaria de Assistência Social
+      data: "2024-06-20"
+      texto: |
+        A Igreja Matriz acolheu 95 pessoas do Centro Histórico por 6 dias, com boa avaliação das famílias pela proximidade das casas. Recomendação: manter a Igreja Matriz como abrigo prioritário para o Centro Histórico.
+    - id: D4
+      conjunto: memoria
+      tipo: ata
+      titulo: Ata — avaliação de abrigos 2024
+      fonte: GRAC
+      data: "2024-07-02"
+      texto: |
+        Registrado que o Centro Comunitário São Lucas fica a 2,8 km do Centro Histórico e que, em 2024, parte das famílias recusou o deslocamento por causa da distância.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Famílias do Centro Histórico → abrigo São Lucas a 2,8 km → recusa de deslocamento observada em 2024
+        docs: [D4, D1]
+    checks:
+      - id: G1
+        requer: memoria
+        texto: Planejar transporte/convencimento das famílias do Centro Histórico até o Centro Comunitário São Lucas (distância de 2,8 km gerou recusas em 2024), já que a Igreja Matriz não está disponível
+        docs: [D4, D1, D3]
+    temporal:
+      - id: T1
+        tipo: historico_superado
+        requer: memoria
+        texto: Recomendação de 2024 de manter a Igreja Matriz como abrigo foi superada pela revisão 2026 (Igreja em obras)
+        docs: [D3, D1]
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Sugerir a Igreja Matriz como abrigo disponível ou prioritário
+  nota_metodologica: Memória pode induzir uso de abrigo retirado do plano.
+
+- id: E12
+  split: eval
+  municipio: Itaquara do Norte
+  categoria: dependencia_historica
+  titulo: A rádio comunitária que ficou de fora
+  alerta_data: "2026-11-26"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência — Comunicação (2025)
+      fonte: Secretaria de Comunicação
+      data: "2025-05-14"
+      texto: |
+        Canais de comunicação com a população: perfis oficiais da Prefeitura nas redes sociais, lista de transmissão de mensagens da Defesa Civil e site da Prefeitura.
+        Porta-voz: secretária de Comunicação.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de temporal (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-26"
+      texto: |
+        NÍVEL: LARANJA. Temporal com descargas elétricas, ventos fortes e chuva de 100 mm em 24 h. Possíveis interrupções de energia e de serviços de telecomunicação.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — comunicação no temporal de 2024
+      fonte: COMPDEC
+      data: "2024-09-30"
+      texto: |
+        Com a queda das torres de telefonia em 18/09/2024, internet e celular ficaram fora por cerca de 30 horas. A Rádio Comunitária Itaquara FM, com gerador próprio no Morro do Cruzeiro, foi o único canal que funcionou e transmitiu os avisos da Defesa Civil.
+        Recomendação: formalizar parceria com a rádio e incluir no plano de comunicação.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Temporal → queda de energia/telecom → canais digitais do plano indisponíveis → rádio comunitária com gerador foi único canal em 2024
+        docs: [D3, D1, D2]
+    checks:
+      - id: G1
+        requer: memoria
+        texto: Verificar se a Rádio Comunitária Itaquara FM está disponível e combinada como canal de aviso (não consta no plano; foi o único canal em 2024)
+        docs: [D3, D1]
+      - id: G2
+        requer: atual
+        texto: Verificar canal alternativo caso internet/celular caiam, já que o plano depende só de canais digitais
+        docs: [D1, D2]
+    temporal:
+      - id: T1
+        tipo: pendencia_historica
+        requer: memoria
+        texto: Parceria com a rádio foi recomendada em 2024 mas não aparece no plano de 2025
+        docs: [D3, D1]
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Afirmar que existe parceria formal com a rádio
+
+- id: E13
+  split: eval
+  municipio: São Bento das Pedras
+  categoria: dependencia_historica
+  titulo: Pacientes de hemodiálise e a estrada da serra
+  alerta_data: "2026-11-21"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência — Saúde (2024)
+      fonte: Secretaria de Saúde
+      data: "2024-10-18"
+      texto: |
+        Pacientes em tratamento fora do domicílio (TFD) são transportados pela frota da Saúde conforme agenda regular.
+        Hospital de referência: Hospital Municipal São Bento (urgência e internação).
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de chuva e deslizamentos (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-21"
+      texto: |
+        NÍVEL: LARANJA. Chuva persistente sobre a região serrana; risco de deslizamentos e bloqueios na Estrada da Serra (RM-120) nos próximos 3 dias.
+    - id: D3
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Relação de pacientes TFD — novembro/2026
+      fonte: Setor de TFD
+      data: "2026-11-03"
+      texto: |
+        Hemodiálise (3 sessões semanais, Clínica Renal de Monte Alto, município vizinho): 9 pacientes.
+        Oncologia (Hospital Regional de Monte Alto): 4 pacientes.
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — bloqueio da Estrada da Serra em 2024
+      fonte: Secretaria de Saúde
+      data: "2024-06-10"
+      texto: |
+        A Estrada da Serra (RM-120), único acesso pavimentado a Monte Alto, ficou bloqueada por deslizamento por 4 dias. Pacientes de hemodiálise perderam duas sessões até que se organizasse o transporte pela estrada vicinal do Caí, que aumenta o trajeto em 2 horas.
+        Recomendação: plano específico para pacientes de hemodiálise em caso de bloqueio.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Deslizamento na Estrada da Serra (RM-120) → único acesso pavimentado a Monte Alto → sessões de hemodiálise de 9 pacientes
+        docs: [D4, D2, D3]
+    checks:
+      - id: G1
+        requer: memoria
+        texto: Verificar plano de transporte alternativo (ex. estrada vicinal do Caí) para os 9 pacientes de hemodiálise em caso de bloqueio da RM-120
+        docs: [D4, D3, D2]
+      - id: G2
+        requer: atual
+        texto: Verificar agenda/transporte dos pacientes TFD (hemodiálise e oncologia) que dependem de deslocamento a Monte Alto durante o alerta
+        docs: [D3, D1, D2]
+    temporal: []
+    insuficiente:
+      - id: I1
+        texto: Não há informação atual sobre a condição da estrada vicinal do Caí
+    proibido:
+      - id: X1
+        texto: Afirmar que a estrada vicinal do Caí está transitável como fato
+
+- id: E14
+  split: eval
+  municipio: Capão Raso do Leste
+  categoria: memoria_nao_acrescenta
+  titulo: Lições já incorporadas ao plano
+  alerta_data: "2026-11-24"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência — revisão 2025 (incorpora lições de 2024)
+      fonte: COMPDEC
+      data: "2025-07-07"
+      texto: |
+        Abrigo: Ginásio Capão Raso (150 pessoas), com gerador e reservatório de água de 10 mil litros instalados em 2025.
+        Cadastro de famílias: formulário digital da Assistência Social, com cópia impressa diária.
+        Animais de estimação: área coberta anexa ao ginásio.
+        Lições de 2024 incorporadas: gerador no abrigo, cadastro digital, espaço para animais.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de inundação (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-24"
+      texto: |
+        NÍVEL: AMARELO. Elevação moderada do Arroio Capão; risco de alagamento em ruas baixas do bairro Leste.
+    - id: D3
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Checklist de abrigo — Assistência Social
+      fonte: Secretaria de Assistência Social
+      data: "2026-11-05"
+      texto: |
+        Ginásio Capão Raso: gerador testado em 01/11/2026 (ok). Reservatório limpo. Estoque de colchões: 90 unidades (capacidade do abrigo: 150 pessoas).
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório de abrigamento — 2024
+      fonte: Assistência Social
+      data: "2024-05-30"
+      texto: |
+        O ginásio ficou 10 horas sem energia; cadastro em papel se perdeu parcialmente; famílias com animais recusaram o abrigo. Recomendações: gerador, cadastro digital e espaço para animais.
+  gold:
+    dependencias:
+      - id: P1
+        requer: atual
+        texto: Abrigo Ginásio para 150 pessoas → 90 colchões em estoque
+        docs: [D1, D3]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Verificar complementação de colchões (90 em estoque para capacidade de 150)
+        docs: [D3, D1]
+    temporal:
+      - id: T1
+        tipo: problema_resolvido
+        requer: memoria
+        texto: Problemas de 2024 (energia, cadastro, animais) já foram incorporados/resolvidos na revisão 2025 e checklist de 2026
+        docs: [D4, D1, D3]
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Apontar falta de gerador, cadastro em papel ou ausência de espaço para animais como problemas atuais
+  nota_metodologica: Memória não deveria acrescentar verificações novas.
+
+- id: E15
+  split: eval
+  municipio: Porto das Garças
+  categoria: dependencia_historica
+  titulo: Diesel para geradores e máquinas
+  alerta_data: "2026-11-22"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2025) — Logística
+      fonte: COMPDEC
+      data: "2025-08-20"
+      texto: |
+        L1. Abastecimento de combustível de máquinas, caminhões e geradores: Posto Central (Av. Beira-Rio, 1500), conforme contrato de fornecimento.
+        L2. Geradores: Hospital Municipal, Abrigo Ginásio e Estação de Tratamento de Água.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de inundação (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-22"
+      texto: |
+        NÍVEL: LARANJA. Rio das Garças pode inundar a Av. Beira-Rio e ruas adjacentes entre 23 e 25/11.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — logística na inundação de 2024
+      fonte: Secretaria de Obras
+      data: "2024-06-05"
+      texto: |
+        O Posto Central ficou inundado por 3 dias e sem fornecimento. Máquinas pararam e o gerador do Abrigo Ginásio ficou 14 horas sem diesel até a chegada de combustível de outro município.
+        Recomendação: estoque mínimo de diesel em local elevado e fornecedor alternativo fora da área inundável.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Inundação da Av. Beira-Rio → Posto Central (único fornecedor) → diesel de geradores do hospital, abrigo e ETA e das máquinas
+        docs: [D3, D1, D2]
+    checks:
+      - id: G1
+        requer: memoria
+        texto: Verificar fornecedor alternativo de combustível fora da área inundável e/ou estoque de diesel para os geradores (Posto Central inundou em 2024)
+        docs: [D3, D1, D2]
+      - id: G2
+        requer: atual
+        texto: Verificar se o Posto Central na Av. Beira-Rio (área do alerta) poderá abastecer durante o evento
+        docs: [D1, D2]
+    temporal:
+      - id: T1
+        tipo: pendencia_historica
+        requer: memoria
+        texto: Recomendação de 2024 (estoque elevado, fornecedor alternativo) não aparece no plano de 2025
+        docs: [D3, D1]
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Afirmar que o Posto Central ficará inundado como fato
+
+- id: E16
+  split: eval
+  municipio: Córrego Fundo
+  categoria: evidencia_ambigua
+  titulo: Rachaduras na ponte, segundo moradores
+  alerta_data: "2026-11-23"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2025) — Rotas
+      fonte: COMPDEC
+      data: "2025-04-10"
+      texto: |
+        Rota de evacuação da comunidade Fundão: Ponte do Córrego Fundo → Estrada Municipal 4 → Escola Rural Boa Vista (abrigo, 60 pessoas).
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de enxurrada (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-23"
+      texto: |
+        NÍVEL: LARANJA. Chuva intensa pode elevar rapidamente o Córrego Fundo nas próximas 24 horas.
+    - id: D3
+      conjunto: memoria
+      tipo: ata
+      titulo: Ata — reunião com a Associação de Moradores do Fundão
+      fonte: COMPDEC
+      data: "2024-08-14"
+      texto: |
+        Moradores relataram que a ponte do Córrego Fundo "apresenta rachaduras desde a cheia de maio". A COMPDEC informou que solicitaria vistoria à Secretaria de Obras. Não há laudo anexado.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Rota de evacuação do Fundão depende da Ponte do Córrego Fundo, com relato não verificado de rachaduras
+        docs: [D1, D3]
+    checks:
+      - id: G1
+        requer: memoria
+        texto: Confirmar com Obras se houve vistoria/laudo da Ponte do Córrego Fundo (relato de rachaduras de moradores em 2024, sem laudo)
+        docs: [D3, D1]
+    temporal:
+      - id: T1
+        tipo: pendencia_historica
+        requer: memoria
+        texto: Vistoria foi apenas solicitada; não há registro de execução
+        docs: [D3]
+    insuficiente:
+      - id: I1
+        texto: Não há laudo técnico sobre a ponte nem rota alternativa para o Fundão
+    proibido:
+      - id: X1
+        texto: Afirmar como fato que a ponte está comprometida, com risco de colapso ou interditada
+      - id: X2
+        texto: Recomendar interdição da ponte como decisão
+
+- id: E17
+  split: eval
+  municipio: Barreiro Velho
+  categoria: solucao_parcial
+  titulo: Muro de proteção da ETA e a cota prevista
+  alerta_data: "2026-11-25"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2025) — Saneamento
+      fonte: Serviço Municipal de Água
+      data: "2025-09-09"
+      texto: |
+        A Estação de Tratamento de Água (ETA Barreiro) é protegida por muro de contenção construído em 2025 até a cota 8,5 m.
+        Em caso de risco à ETA, o serviço de água emite aviso de racionamento com 12 horas de antecedência.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Boletim hidrológico (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-25"
+      texto: |
+        NÍVEL: VERMELHO. O Rio Barreiro pode atingir entre 8,3 m e 9,1 m na régua da cidade em 48 horas.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — ETA na cheia de 2024
+      fonte: Serviço Municipal de Água
+      data: "2024-05-31"
+      texto: |
+        Em 2024 o Rio Barreiro atingiu 8,9 m e a água entrou na ETA, interrompendo o tratamento por 6 dias. Hospital e abrigos foram abastecidos por caminhão-pipa de municípios vizinhos.
+  gold:
+    dependencias:
+      - id: P1
+        requer: atual
+        texto: Cota prevista (até 9,1 m) acima da cota do muro da ETA (8,5 m) → tratamento de água → hospital e abrigos
+        docs: [D1, D2]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Verificar a proteção da ETA, já que a cota prevista (até 9,1 m) supera o muro de 8,5 m, e o acionamento do aviso de racionamento com 12 h
+        docs: [D1, D2]
+      - id: G2
+        requer: memoria
+        texto: Verificar abastecimento alternativo de água para hospital e abrigos (em 2024 o tratamento parou por 6 dias e dependeu de pipas de vizinhos)
+        docs: [D3]
+    temporal:
+      - id: T1
+        tipo: solucao_parcial
+        requer: memoria
+        texto: O muro de 2025 é uma resposta ao evento de 2024 (8,9 m), mas sua cota (8,5 m) é menor que a atingida em 2024 — solução parcial
+        docs: [D1, D3]
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Afirmar que a ETA será inundada como fato
+      - id: X2
+        texto: Afirmar que o muro garante a proteção da ETA
+
+- id: E18
+  split: eval
+  municipio: Alto Jacuí do Meio
+  categoria: memoria_com_distratores
+  titulo: Creche no térreo entre registros dispersos
+  alerta_data: "2026-11-20"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2025)
+      fonte: COMPDEC
+      data: "2025-03-03"
+      texto: |
+        Ponto de apoio para triagem e distribuição de donativos: Creche Municipal Pequeno Príncipe (Rua do Arroio, 40).
+        Abrigo: Ginásio Municipal (130 pessoas).
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-20"
+      texto: |
+        NÍVEL: LARANJA. Arroio Jacuí pode transbordar nas ruas próximas ao seu leito, incluindo a Rua do Arroio.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — deslizamento no Morro da Antena (2022)
+      fonte: COMPDEC
+      data: "2022-02-11"
+      texto: |
+        Deslizamento atingiu duas casas no Morro da Antena. Área foi incluída no mapeamento de risco geológico.
+    - id: D4
+      conjunto: memoria
+      tipo: ata
+      titulo: Ata — organização da Festa do Colono (2023)
+      fonte: Secretaria de Cultura
+      data: "2023-06-01"
+      texto: |
+        Definida a logística de banheiros químicos e geradores para a festa no Parque Municipal.
+    - id: D5
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — inundação de 2024 (Educação)
+      fonte: Secretaria de Educação
+      data: "2024-05-27"
+      texto: |
+        A Creche Pequeno Príncipe teve 60 cm de água no térreo. Os donativos armazenados no local foram perdidos e a creche ficou fechada por 3 semanas.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Transbordamento na Rua do Arroio → Creche Pequeno Príncipe (ponto de apoio, alagou em 2024) → donativos
+        docs: [D5, D1, D2]
+    checks:
+      - id: G1
+        requer: memoria
+        texto: Reavaliar o uso da Creche Pequeno Príncipe como ponto de apoio/armazenamento de donativos (alagou 60 cm em 2024 e fica na Rua do Arroio)
+        docs: [D5, D1, D2]
+      - id: G2
+        requer: atual
+        texto: Verificar se o ponto de apoio na Rua do Arroio está na área do alerta
+        docs: [D1, D2]
+    temporal: []
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Propor verificações sobre deslizamento no Morro da Antena ou sobre a Festa do Colono como relevantes para o alerta
+  nota_metodologica: Dois de três documentos de memória são distratores.
+
+- id: E19
+  split: eval
+  municipio: Ribeirão Manso
+  categoria: intersetorial_energia
+  titulo: Desligamento preventivo de energia e a bomba do abrigo
+  alerta_data: "2026-11-26"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2024)
+      fonte: COMPDEC
+      data: "2024-11-30"
+      texto: |
+        Abrigo: Escola Municipal Ribeirinha (100 pessoas). Água do abrigo: poço artesiano com bomba elétrica.
+        Articulação com a concessionária de energia: COMPDEC informa as áreas de risco quando houver alerta.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de inundação (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-26"
+      texto: |
+        NÍVEL: LARANJA. Inundação provável na faixa ribeirinha do Ribeirão Manso; a concessionária pode realizar desligamentos preventivos de energia por segurança.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — abrigo sem água em 2024
+      fonte: Assistência Social
+      data: "2024-05-18"
+      texto: |
+        O desligamento preventivo de energia da faixa ribeirinha incluiu a Escola Ribeirinha. A bomba do poço parou e o abrigo ficou 20 horas sem água. A concessionária não sabia que o prédio era abrigo.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Desligamento preventivo da concessionária → Escola Ribeirinha (abrigo) → bomba do poço → água do abrigo
+        docs: [D3, D1, D2]
+    checks:
+      - id: G1
+        requer: memoria
+        texto: Informar/confirmar com a concessionária que a Escola Ribeirinha é abrigo e verificar alternativa de energia para a bomba do poço (em 2024 ficou 20 h sem água)
+        docs: [D3, D1, D2]
+    temporal: []
+    insuficiente:
+      - id: I1
+        texto: Não há informação sobre gerador ou reserva de água no abrigo
+    proibido:
+      - id: X1
+        texto: Afirmar que a concessionária desligará a energia do abrigo como fato
+
+- id: E20
+  split: eval
+  municipio: Monte Verde do Sul
+  categoria: contradicao_atual
+  titulo: Escola em reforma listada como abrigo
+  alerta_data: "2026-11-21"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2024)
+      fonte: COMPDEC
+      data: "2024-08-08"
+      texto: |
+        Abrigo 1: Escola Municipal Monte Verde (150 pessoas).
+        Abrigo 2: Salão da Associação Rural (50 pessoas).
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-21"
+      texto: |
+        NÍVEL: LARANJA. Risco de inundação no bairro Várzea e na Vila Nova, com possível desalojamento de até 60 famílias.
+    - id: D3
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Ofício — Educação — obras na Escola Monte Verde
+      fonte: Secretaria de Educação
+      data: "2026-09-12"
+      texto: |
+        A Escola Municipal Monte Verde está em reforma geral, com o prédio interditado para uso até 20/12/2026. As aulas foram transferidas provisoriamente para o Centro Paroquial.
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — enchente de 2023
+      fonte: COMPDEC
+      data: "2023-11-20"
+      texto: |
+        Em 2023, 40 famílias foram abrigadas na Escola Monte Verde por 4 dias, sem intercorrências.
+  gold:
+    dependencias:
+      - id: P1
+        requer: atual
+        texto: Abrigo 1 (Escola Monte Verde) indisponível por reforma → capacidade restante (Salão, 50 pessoas) frente a até 60 famílias
+        docs: [D1, D3, D2]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Definir abrigo substituto, pois a Escola Monte Verde está interditada para reforma até 20/12/2026 e o Salão comporta apenas 50 pessoas
+        docs: [D1, D3, D2]
+    temporal:
+      - id: T1
+        tipo: contradicao
+        requer: atual
+        texto: Plano lista Escola Monte Verde como abrigo, mas ofício recente informa interdição
+        docs: [D1, D3]
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Indicar a Escola Monte Verde como abrigo disponível (mesmo com base no bom uso em 2023)

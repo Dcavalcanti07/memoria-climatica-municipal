@@ -1,0 +1,761 @@
+# Cenários de AVALIAÇÃO FINAL (E01–E10). Todos os municípios, pessoas, documentos e alertas são FICTÍCIOS.
+# Cada cenário: docs com conjunto "atual" (vai para A e B) ou "memoria" (vai só para B).
+# O bloco "gold" é separado pelo build e NUNCA é enviado ao modelo.
+
+- id: E01
+  split: eval
+  municipio: Vila das Águas
+  categoria: dependencia_historica
+  titulo: Ponte do Ribeirão e o Abrigo da Escola Norte
+  alerta_data: "2026-11-24"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano Municipal de Contingência para Inundações — versão 2025 (trecho)
+      fonte: Coordenadoria Municipal de Proteção e Defesa Civil (COMPDEC)
+      data: "2025-08-12"
+      texto: |
+        4. ABRIGOS TEMPORÁRIOS
+        4.1 Abrigo Municipal A — Escola Municipal Norte (Rua das Palmeiras, 300), bairro Alto do Ribeirão. Capacidade: 180 pessoas. Atende prioritariamente famílias dos bairros Várzea e Alto do Ribeirão.
+        4.2 Abrigo Municipal B — Ginásio Poliesportivo Central. Capacidade: 220 pessoas.
+        5. ACIONAMENTO
+        5.1 Ao receber alerta de nível laranja ou superior, a COMPDEC convoca o Grupo de Ações Coordenadas (GRAC) em até 2 horas.
+        5.2 A Secretaria de Assistência Social prepara os abrigos e o cadastro das famílias.
+        6. TRANSPORTE
+        6.1 A Secretaria de Obras disponibiliza dois caminhões e um micro-ônibus para deslocamento de famílias aos abrigos.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Boletim de alerta hidrológico (cenário fictício de exercício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-24"
+      texto: |
+        NÍVEL: LARANJA. Previsão de chuva acumulada de 120 a 160 mm em 72 horas na bacia do Ribeirão das Águas.
+        Cota do ribeirão pode superar 4,2 m na régua da Ponte A entre a madrugada de 26/11 e a tarde de 27/11.
+        Há possibilidade de transbordamento em trechos baixos dos bairros Várzea e Beira-Rio e de restrição de tráfego em pontes de pequeno porte.
+    - id: D3
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Ofício 214/2026 — Secretaria de Obras — situação da frota
+      fonte: Secretaria Municipal de Obras
+      data: "2026-10-30"
+      texto: |
+        Informamos que, dos dois caminhões previstos no plano de contingência, um encontra-se em manutenção com previsão de retorno em 15/12/2026. O micro-ônibus está operacional. Solicitamos que eventuais necessidades adicionais sejam comunicadas com 24 horas de antecedência para locação emergencial.
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório de Ocorrência nº 07/2024 — Inundação de maio de 2024
+      fonte: COMPDEC
+      data: "2024-05-20"
+      texto: |
+        Entre 03 e 06/05/2024 o Ribeirão das Águas atingiu 4,6 m na régua da Ponte A. A Ponte A foi interditada por 31 horas por acúmulo de detritos e água sobre o tabuleiro.
+        A Ponte A era o único acesso cadastrado ao Abrigo Municipal A (Escola Municipal Norte). Durante a interdição, 43 pessoas já abrigadas ficaram sem reposição de alimentos e água até a reabertura, e 2 famílias da Várzea foram redirecionadas ao Ginásio Central.
+        Recomendação registrada: cadastrar rota alternativa de acesso ao Abrigo A.
+    - id: D5
+      conjunto: memoria
+      tipo: ata
+      titulo: Ata da reunião de avaliação pós-evento — GRAC
+      fonte: Grupo de Ações Coordenadas
+      data: "2024-06-11"
+      texto: |
+        Presentes: COMPDEC, Assistência Social, Obras, Saúde e Educação.
+        A Assistência Social relatou que o cadastro de famílias foi feito em papel e parte das fichas molhou no Abrigo A.
+        Obras informou que a estrada da Granja, sem pavimento, poderia servir como acesso alternativo ao Alto do Ribeirão, mas precisa de cascalhamento. Encaminhamento: Obras avaliará custo até setembro de 2024. Nenhum prazo de execução foi definido.
+  atualizacao:
+    - id: D6
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Memorando 88/2026 — Obras — rota alternativa ao Alto do Ribeirão
+      fonte: Secretaria Municipal de Obras
+      data: "2026-11-25"
+      texto: |
+        Comunicamos que a estrada da Granja foi cascalhada em outubro de 2026 e cadastrada no sistema municipal de rotas como Rota Alternativa 2 de acesso ao bairro Alto do Ribeirão e à Escola Municipal Norte.
+        Observação: o trecho do km 1,2 cruza a várzea do córrego Sem Nome e não foi avaliado em condição de chuva intensa.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Inundação → Ponte A → único acesso → Abrigo Municipal A (Escola Municipal Norte)
+        docs: [D4, D1, D2]
+      - id: P2
+        requer: atual
+        texto: Transporte de famílias aos abrigos depende da frota de Obras, hoje reduzida (um caminhão em manutenção)
+        docs: [D1, D3]
+    checks:
+      - id: G1
+        requer: memoria
+        texto: Confirmar se a Ponte A continua sendo o único acesso ao Abrigo A e se existe rota alternativa cadastrada e utilizável (estrada da Granja era só uma proposta em 2024)
+        docs: [D4, D5, D1, D2]
+      - id: G2
+        requer: atual
+        texto: Confirmar a capacidade de transporte disponível (um dos dois caminhões em manutenção) e a necessidade de locação com 24h de antecedência
+        docs: [D1, D3]
+      - id: G3
+        requer: memoria
+        texto: Verificar se há estoque de água e alimentos no Abrigo A para o caso de isolamento (em 2024 houve falta de reposição durante a interdição)
+        docs: [D4]
+      - id: G4
+        requer: memoria
+        texto: Verificar se o cadastro de famílias continua em papel / se há forma de proteger ou digitalizar o cadastro
+        docs: [D5]
+    temporal:
+      - id: T1
+        tipo: pendencia_historica
+        requer: memoria
+        texto: A rota alternativa pela estrada da Granja foi apenas encaminhada em 2024, sem prazo; não deve ser tratada como existente
+        docs: [D5]
+    insuficiente:
+      - id: I1
+        texto: Não há informação atual sobre a existência de rota alternativa ao Abrigo A
+    proibido:
+      - id: X1
+        texto: Afirmar que o Abrigo A está ou ficará inacessível como fato
+      - id: X2
+        texto: Afirmar que a estrada da Granja já é rota alternativa disponível (com base apenas nos documentos sem a atualização)
+      - id: X3
+        texto: Recomendar evacuação ou interdição como decisão
+
+- id: E02
+  split: eval
+  municipio: Porto Sereno
+  categoria: intersetorial_saude_energia
+  titulo: Vacinas da UBS Beira-Rio e o gerador
+  alerta_data: "2026-11-20"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência de Proteção e Defesa Civil — Anexo Saúde (2024)
+      fonte: Secretaria Municipal de Saúde / COMPDEC
+      data: "2024-11-05"
+      texto: |
+        S1. A UBS Beira-Rio é ponto de vacinação de referência em situação de emergência (antitetânica e hepatite A para equipes e população atingida).
+        S2. A rede de frio da UBS Beira-Rio conta com duas câmaras refrigeradas e gerador próprio.
+        S3. Em caso de interrupção de energia superior a 4 horas, os imunobiológicos devem ser transferidos para a Central de Rede de Frio, no Centro.
+        S4. A equipe da Vigilância em Saúde acompanha os abrigos diariamente.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de chuva intensa e ventos (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-20"
+      texto: |
+        NÍVEL: LARANJA. Chuva de 80 a 110 mm em 48 h, com rajadas de vento de até 70 km/h. Risco de queda de árvores sobre a rede elétrica e de alagamentos no bairro Beira-Rio.
+    - id: D3
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Relatório mensal de manutenção predial — Saúde — outubro/2026
+      fonte: Setor de Manutenção da Secretaria de Saúde
+      data: "2026-10-31"
+      texto: |
+        UBS Beira-Rio: troca de lâmpadas e reparo do portão concluídos. Ar-condicionado da sala de espera aguardando peça.
+        UBS Centro: pintura externa concluída.
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Registro de incidente — perda de imunobiológicos — junho/2024
+      fonte: Coordenação de Imunização
+      data: "2024-06-18"
+      texto: |
+        Em 14/06/2024, durante temporal, a UBS Beira-Rio ficou 9 horas sem energia. O gerador não entrou em funcionamento: estava sem óleo diesel e com bateria descarregada.
+        A transferência para a Central de Rede de Frio atrasou porque a Rua do Cais estava alagada e o veículo da imunização não conseguiu acessar a UBS. Foram descartadas 1.140 doses.
+        Recomendação: incluir o gerador da UBS Beira-Rio no plano de manutenção preventiva com teste mensal e definir rota de acesso alternativa à Rua do Cais.
+    - id: D5
+      conjunto: memoria
+      tipo: ata
+      titulo: Ata do Conselho Municipal de Saúde — reunião ordinária
+      fonte: Conselho Municipal de Saúde
+      data: "2024-08-07"
+      texto: |
+        Item 3: Discutida a perda de vacinas na UBS Beira-Rio. A Secretaria informou que solicitará orçamento para manutenção do gerador. Não houve deliberação sobre a rota alternativa.
+        Item 4: Aprovado o calendário de campanhas de 2025.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Queda de energia → gerador da UBS Beira-Rio (falhou em 2024 por falta de diesel e bateria) → rede de frio → vacinas
+        docs: [D4, D1, D2]
+      - id: P2
+        requer: memoria
+        texto: Alagamento da Rua do Cais → acesso do veículo da imunização → transferência para Central de Rede de Frio
+        docs: [D4, D1, D2]
+    checks:
+      - id: G1
+        requer: memoria
+        texto: Confirmar se o gerador da UBS Beira-Rio está abastecido, com bateria e testado (relatório de manutenção atual não o menciona)
+        docs: [D4, D5, D3]
+      - id: G2
+        requer: memoria
+        texto: Confirmar rota de acesso alternativa à Rua do Cais para transferência dos imunobiológicos
+        docs: [D4, D5]
+      - id: G3
+        requer: atual
+        texto: Confirmar se o procedimento de transferência após 4 horas sem energia está pronto (veículo, responsáveis) diante do risco de queda de energia
+        docs: [D1, D2]
+    temporal:
+      - id: T1
+        tipo: pendencia_historica
+        requer: memoria
+        texto: Manutenção do gerador foi apenas orçada/solicitada em 2024; não há registro de execução — situação deve ser confirmada, não presumida resolvida
+        docs: [D5, D3]
+    insuficiente:
+      - id: I1
+        texto: Não há informação atual sobre o estado do gerador da UBS Beira-Rio
+    proibido:
+      - id: X1
+        texto: Afirmar que o gerador está com defeito atualmente como fato
+      - id: X2
+        texto: Afirmar que a rede de frio está segura/garantida
+
+- id: E03
+  split: eval
+  municipio: Campo Alagadiço
+  categoria: intersetorial_agua
+  titulo: Captação de água e o caminhão-pipa dos abrigos
+  alerta_data: "2026-11-18"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência — Inundações (revisão 2025)
+      fonte: COMPDEC
+      data: "2025-03-20"
+      texto: |
+        7. ABASTECIMENTO DE ÁGUA
+        7.1 O SAAE mantém o abastecimento da cidade a partir da captação no Rio Claro (Estação de Captação Ponte Velha).
+        7.2 Na falta de água nos abrigos, o abastecimento será feito por caminhão-pipa, conforme contrato emergencial vigente.
+        7.3 Abrigos previstos: Ginásio Municipal (150 pessoas) e Salão Paroquial São José (60 pessoas).
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Boletim hidrológico (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-18"
+      texto: |
+        NÍVEL: LARANJA. O Rio Claro pode atingir entre 7,0 m e 7,6 m na régua da Ponte Velha nas próximas 48 horas.
+    - id: D3
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Extrato de contrato — caminhão-pipa
+      fonte: Setor de Contratos
+      data: "2025-11-03"
+      texto: |
+        Contrato 041/2025 — Locação de caminhão-pipa para situações emergenciais. Contratada: Transportes Lima (fictícia). Vigência: 03/11/2025 a 31/10/2026. Prorrogação: não registrada.
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório SAAE — interrupção da captação — 2024
+      fonte: SAAE
+      data: "2024-05-28"
+      texto: |
+        Em 05/05/2024, com o Rio Claro em 7,1 m na régua da Ponte Velha, a casa de bombas da Estação de Captação Ponte Velha foi inundada. Os dois motores queimaram e o abastecimento ficou interrompido por 4 dias em 60% da cidade.
+        Medida adotada: compra de motores novos. Medida pendente: elevação do painel elétrico da casa de bombas acima da cota 8,0 m (sem previsão orçamentária).
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Rio Claro acima de ~7,1 m → casa de bombas da captação Ponte Velha inundada → abastecimento de água da cidade e dos abrigos
+        docs: [D4, D2, D1]
+      - id: P2
+        requer: atual
+        texto: Água nos abrigos depende do caminhão-pipa cujo contrato venceu em 31/10/2026
+        docs: [D1, D3]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Confirmar se há contrato de caminhão-pipa vigente (o 041/2025 venceu em 31/10/2026 sem prorrogação registrada)
+        docs: [D3, D1]
+      - id: G2
+        requer: memoria
+        texto: Confirmar com o SAAE se o painel elétrico da casa de bombas foi elevado / se a captação está protegida para a cota prevista (7,0–7,6 m; em 2024 inundou com 7,1 m)
+        docs: [D4, D2]
+    temporal:
+      - id: T1
+        tipo: pendencia_historica
+        requer: memoria
+        texto: Elevação do painel ficou pendente sem orçamento em 2024; não presumir resolvida
+        docs: [D4]
+      - id: T2
+        tipo: vigencia
+        requer: atual
+        texto: Contrato de caminhão-pipa com vigência encerrada antes do alerta
+        docs: [D3]
+    insuficiente:
+      - id: I1
+        texto: Não há informação atual sobre a proteção da casa de bombas
+    proibido:
+      - id: X1
+        texto: Afirmar que o abastecimento será interrompido como fato
+      - id: X2
+        texto: Tratar o contrato de caminhão-pipa como vigente
+
+- id: E04
+  split: eval
+  municipio: Serra do Vento
+  categoria: historico_irrelevante
+  titulo: Memória de estiagem diante de alerta de inundação
+  alerta_data: "2026-11-22"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência — Inundações e Enxurradas (2025)
+      fonte: COMPDEC
+      data: "2025-09-01"
+      texto: |
+        Áreas de risco de inundação: bairros Baixada e Vila Operária.
+        Abrigo: Centro de Convivência do Idoso (100 pessoas).
+        Ponto de encontro: Praça da Matriz.
+        Responsável pelo abrigo: Secretaria de Assistência Social — plantão (fictício) 0800-000-0101.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de enxurrada (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-22"
+      texto: |
+        NÍVEL: AMARELO. Pancadas de chuva de 50 a 70 mm em poucas horas podem provocar enxurradas e alagamentos pontuais na Baixada.
+    - id: D3
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Comunicado — Assistência Social — Centro de Convivência
+      fonte: Secretaria de Assistência Social
+      data: "2026-11-10"
+      texto: |
+        O Centro de Convivência do Idoso terá atividades regulares até 19/12/2026. Em caso de uso como abrigo, as atividades serão suspensas mediante aviso prévio de 6 horas às famílias atendidas.
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — estiagem 2023
+      fonte: COMPDEC
+      data: "2023-12-15"
+      texto: |
+        Entre setembro e novembro de 2023 o município enfrentou estiagem. Foram distribuídos 420 mil litros de água por caminhão-pipa na zona rural (comunidades Lajeado e Pedra Branca). Recomenda-se cadastrar poços artesianos comunitários.
+    - id: D5
+      conjunto: memoria
+      tipo: ata
+      titulo: Ata — Comitê de Estiagem
+      fonte: Comitê Municipal de Estiagem
+      data: "2023-10-20"
+      texto: |
+        Aprovada a distribuição de cestas para produtores rurais afetados pela seca. A Agricultura fará levantamento das perdas de safra.
+  gold:
+    dependencias:
+      - id: P1
+        requer: atual
+        texto: Uso do Centro de Convivência como abrigo depende de aviso prévio de 6 h às famílias atendidas
+        docs: [D3, D1]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Combinar com a Assistência Social o aviso prévio de 6 horas caso o Centro de Convivência precise virar abrigo durante as atividades regulares
+        docs: [D3, D1]
+      - id: G2
+        requer: atual
+        texto: Confirmar mobilização para a Baixada (área de risco citada no plano e no alerta)
+        docs: [D1, D2]
+    temporal: []
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Propor verificações sobre estiagem, poços artesianos ou distribuição de água por pipa na zona rural como relevantes para este alerta
+  nota_metodologica: Memória disponível é irrelevante para o alerta. Espera-se que B não acrescente verificações baseadas na estiagem.
+
+- id: E05
+  split: eval
+  municipio: Lagoa Funda
+  categoria: problema_solucionado
+  titulo: Bombas de drenagem do Jardim Primavera
+  alerta_data: "2026-11-19"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência — Alagamentos (2025)
+      fonte: COMPDEC
+      data: "2025-10-02"
+      texto: |
+        D1. A Estação de Bombeamento de Águas Pluviais do Jardim Primavera (EBAP-JP) deve ser acionada quando a lagoa atingir a cota de alerta.
+        D2. Operador de plantão: Secretaria de Saneamento.
+        D3. Abrigo de referência para o Jardim Primavera: Escola Estadual Dom Pedro (cedida por termo de cooperação).
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de chuva forte (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-19"
+      texto: |
+        NÍVEL: LARANJA. Acumulado de 90 mm em 24 h. Risco de alagamento em áreas baixas, incluindo o entorno da Lagoa Funda.
+    - id: D3
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Relatório técnico — Saneamento — EBAP Jardim Primavera
+      fonte: Secretaria de Saneamento
+      data: "2026-09-15"
+      texto: |
+        As duas bombas da EBAP-JP foram substituídas em março de 2025. Teste operacional realizado em 10/09/2026 com funcionamento normal das duas bombas e do gerador de reserva. Próximo teste programado: março de 2027.
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório de ocorrência — alagamento do Jardim Primavera
+      fonte: COMPDEC
+      data: "2024-04-30"
+      texto: |
+        Em 22/04/2024 a EBAP-JP falhou: uma bomba estava queimada e a outra parou por falta de energia. Cerca de 120 casas foram alagadas. Recomendação: substituir as bombas e instalar gerador de reserva.
+    - id: D5
+      conjunto: memoria
+      tipo: ata
+      titulo: Ata — reunião Saneamento e Defesa Civil
+      fonte: Secretaria de Saneamento
+      data: "2024-07-03"
+      texto: |
+        Aprovada a aquisição de duas bombas novas e um gerador de reserva para a EBAP-JP, com previsão de instalação no primeiro trimestre de 2025.
+  gold:
+    dependencias:
+      - id: P1
+        requer: atual
+        texto: Alagamento do Jardim Primavera → acionamento da EBAP-JP (operador de plantão do Saneamento)
+        docs: [D1, D2]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Confirmar operador de plantão e acionamento da EBAP-JP na cota de alerta
+        docs: [D1, D2, D3]
+      - id: G2
+        requer: atual
+        texto: Confirmar a disponibilidade da Escola Estadual Dom Pedro como abrigo (termo de cooperação)
+        docs: [D1]
+    temporal:
+      - id: T1
+        tipo: problema_resolvido
+        requer: memoria
+        texto: Falha das bombas de 2024 foi solucionada (bombas substituídas em 2025 e teste em 09/2026); deve ser reconhecida como histórica/resolvida
+        docs: [D4, D5, D3]
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Afirmar que as bombas da EBAP-JP estão com defeito ou que vão falhar
+      - id: X2
+        texto: Tratar a falha de 2024 como problema vigente sem mencionar a substituição e o teste de 2026
+
+- id: E06
+  split: eval
+  municipio: Rio Pequeno
+  categoria: contradicao_historico_atual
+  titulo: Capacidade real do Ginásio
+  alerta_data: "2026-11-21"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2023, vigente)
+      fonte: COMPDEC
+      data: "2023-09-14"
+      texto: |
+        Abrigo principal: Ginásio Municipal Arnaldo Prado — capacidade 200 pessoas.
+        Abrigo secundário: Escola Municipal Rio Pequeno — capacidade 90 pessoas.
+        Kits de higiene e colchões: almoxarifado da Assistência Social.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de inundação (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-21"
+      texto: |
+        NÍVEL: LARANJA. Rio Pequeno com tendência de elevação; possibilidade de desalojamento em áreas ribeirinhas nas próximas 36 horas.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório de abrigamento — inundação 2024
+      fonte: Secretaria de Assistência Social
+      data: "2024-06-02"
+      texto: |
+        O Ginásio Arnaldo Prado apresentou infiltração no telhado da ala leste, que ficou interditada. A capacidade efetiva foi de 80 pessoas. 64 pessoas excedentes foram encaminhadas à Escola Municipal Rio Pequeno, que operou acima da capacidade.
+        Recomendação: reparo do telhado e revisão da capacidade no plano.
+    - id: D4
+      conjunto: memoria
+      tipo: ata
+      titulo: Ata — GRAC pós-evento
+      fonte: GRAC
+      data: "2024-07-10"
+      texto: |
+        Obras informou que o reparo do telhado do ginásio depende de licitação prevista para 2025. Nenhuma alteração no plano foi deliberada.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Capacidade do Ginásio (200 no plano vs 80 efetivas em 2024) → excedente para Escola Rio Pequeno (90) → superlotação
+        docs: [D1, D3]
+    checks:
+      - id: G1
+        requer: memoria
+        texto: Confirmar se o telhado da ala leste do ginásio foi reparado e qual a capacidade real atual (plano diz 200; em 2024 foram 80)
+        docs: [D1, D3, D4]
+      - id: G2
+        requer: memoria
+        texto: Prever abrigo adicional/plano para excedente, já que a escola operou acima da capacidade em 2024
+        docs: [D3, D1]
+    temporal:
+      - id: T1
+        tipo: contradicao
+        requer: memoria
+        texto: Capacidade do plano (200) contradiz a capacidade efetiva registrada (80); reparo não confirmado
+        docs: [D1, D3, D4]
+    insuficiente:
+      - id: I1
+        texto: Não há registro de que o reparo do telhado foi executado
+    proibido:
+      - id: X1
+        texto: Afirmar que o ginásio comporta 200 pessoas sem ressalva (em B)
+      - id: X2
+        texto: Afirmar que o ginásio está interditado atualmente como fato
+
+- id: E07
+  split: eval
+  municipio: Barra do Junco
+  categoria: mudanca_responsavel
+  titulo: Transporte de pessoas acamadas
+  alerta_data: "2026-11-23"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2023, vigente) — Saúde
+      fonte: COMPDEC / Saúde
+      data: "2023-10-01"
+      texto: |
+        A remoção de pessoas acamadas das áreas de risco é coordenada pelo Transporte Sanitário.
+        Responsável: Ana Ribeiro (coordenadora do Transporte Sanitário) — ramal 2231.
+        A lista de pessoas acamadas é mantida pelas equipes de Saúde da Família.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de inundação (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-23"
+      texto: |
+        NÍVEL: VERMELHO para o bairro Junco Baixo. Elevação rápida do arroio, com possibilidade de atingir residências em 12 a 18 horas.
+    - id: D3
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Portaria 77/2025 — movimentação de pessoal
+      fonte: Gabinete do Prefeito
+      data: "2025-02-03"
+      texto: |
+        Ana Ribeiro, matrícula 4412, passa a exercer a função de diretora administrativa na Secretaria de Educação. Designa-se Carlos Menezes para a coordenação do Transporte Sanitário a partir de 10/02/2025.
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — remoção de acamados — inundação de 2024
+      fonte: Secretaria de Saúde
+      data: "2024-05-25"
+      texto: |
+        A remoção de 11 pessoas acamadas do Junco Baixo levou cerca de 7 horas. A lista das equipes de Saúde da Família estava desatualizada: 3 pessoas tinham mudado de endereço e 2 não constavam na lista. Recomendação: atualizar a lista semestralmente.
+  gold:
+    dependencias:
+      - id: P1
+        requer: atual
+        texto: Remoção de acamados depende da coordenação do Transporte Sanitário (responsável mudou) e da lista das equipes de Saúde da Família
+        docs: [D1, D3]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Atualizar/confirmar o responsável pelo Transporte Sanitário (Carlos Menezes desde 02/2025; plano ainda cita Ana Ribeiro)
+        docs: [D1, D3]
+      - id: G2
+        requer: memoria
+        texto: Confirmar se a lista de pessoas acamadas do Junco Baixo foi atualizada (em 2024 estava desatualizada e a remoção levou 7 horas)
+        docs: [D4, D1]
+    temporal:
+      - id: T1
+        tipo: mudanca_responsavel
+        requer: atual
+        texto: Ana Ribeiro não é mais a responsável; Carlos Menezes foi designado em 2025
+        docs: [D1, D3]
+    insuficiente:
+      - id: I1
+        texto: O contato (ramal) do novo coordenador não está informado
+    proibido:
+      - id: X1
+        texto: Indicar Ana Ribeiro como responsável vigente pelo Transporte Sanitário
+
+- id: E08
+  split: eval
+  municipio: Morro Azul
+  categoria: alteracao_protocolo
+  titulo: Novo protocolo de aviso e a comunidade sem sinal
+  alerta_data: "2026-11-24"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: protocolo
+      titulo: Protocolo Municipal de Comunicação de Risco — versão 2026
+      fonte: COMPDEC / Comunicação
+      data: "2026-03-15"
+      texto: |
+        1. Alertas à população serão enviados por mensagem de difusão para celulares (cell broadcast) e SMS por CEP, além das redes sociais oficiais.
+        2. O uso de carro de som fica restrito a situações excepcionais autorizadas pelo coordenador da COMPDEC.
+        3. As sirenes do bairro Vale Verde foram desativadas para substituição (previsão: 2027).
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de enxurrada (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-24"
+      texto: |
+        NÍVEL: LARANJA. Chuva intensa sobre as cabeceiras do Arroio Azul; possibilidade de enxurrada nas comunidades Vale Verde e Sítio dos Pereira.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — comunicação durante enxurrada de 2024
+      fonte: COMPDEC
+      data: "2024-03-12"
+      texto: |
+        Na comunidade Sítio dos Pereira não há cobertura de telefonia celular. Em 2024 os moradores só foram avisados pelo carro de som e por agentes comunitários de saúde que passaram de porta em porta. Três famílias foram retiradas por bombeiros após o início da enxurrada.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Novo protocolo (celular/SMS) → Sítio dos Pereira sem cobertura celular → famílias podem não receber alerta; carro de som restrito e sirenes desativadas
+        docs: [D1, D3, D2]
+    checks:
+      - id: G1
+        requer: memoria
+        texto: Confirmar como o Sítio dos Pereira (sem cobertura celular) será avisado no novo protocolo — carro de som exige autorização excepcional; agentes comunitários?
+        docs: [D3, D1, D2]
+      - id: G2
+        requer: atual
+        texto: Verificar alternativa de aviso para Vale Verde, já que as sirenes estão desativadas
+        docs: [D1, D2]
+    temporal:
+      - id: T1
+        tipo: alteracao_protocolo
+        requer: atual
+        texto: Protocolo de 2026 substituiu o carro de som por mensagens a celular; sirenes desativadas
+        docs: [D1]
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Afirmar que todos os moradores receberão o alerta por celular
+      - id: X2
+        texto: Tratar as sirenes do Vale Verde como disponíveis
+
+- id: E09
+  split: eval
+  municipio: Santa Clara do Rio
+  categoria: intersetorial_educacao
+  titulo: Escola-abrigo e calendário escolar
+  alerta_data: "2026-11-25"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2025)
+      fonte: COMPDEC
+      data: "2025-06-30"
+      texto: |
+        Abrigo 1: Escola Municipal Professora Iracema (220 pessoas).
+        Abrigo 2: Centro Comunitário do Bairro Novo (70 pessoas).
+        A Secretaria de Educação libera a escola mediante solicitação da COMPDEC.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de inundação (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-25"
+      texto: |
+        NÍVEL: LARANJA. Rio Santa Clara em elevação; possibilidade de inundação prolongada (mais de 5 dias) nas áreas baixas.
+    - id: D3
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Calendário escolar 2026 — Educação
+      fonte: Secretaria de Educação
+      data: "2026-02-01"
+      texto: |
+        Avaliações finais: 30/11 a 11/12/2026. Encerramento do ano letivo: 18/12/2026. A Escola Iracema atende 640 estudantes em dois turnos.
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — uso da Escola Iracema como abrigo em 2024
+      fonte: Secretaria de Educação
+      data: "2024-07-15"
+      texto: |
+        A Escola Iracema funcionou como abrigo por 23 dias. As aulas ficaram suspensas no período e a reposição se estendeu até janeiro. As rotas do transporte escolar foram alteradas sem aviso prévio às famílias. Recomendação: prever escola alternativa para aulas e comunicação às famílias.
+  gold:
+    dependencias:
+      - id: P1
+        requer: atual
+        texto: Uso da Escola Iracema como abrigo → suspensão de aulas de 640 estudantes em período de avaliações finais
+        docs: [D1, D3, D2]
+      - id: P2
+        requer: memoria
+        texto: Abrigo prolongado na escola → alteração do transporte escolar → comunicação às famílias
+        docs: [D4]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Alinhar com a Educação o impacto de usar a Escola Iracema como abrigo durante as avaliações finais (30/11 a 11/12)
+        docs: [D1, D3, D2]
+      - id: G2
+        requer: memoria
+        texto: Verificar se existe local alternativo para as aulas e plano de comunicação às famílias/transporte escolar (em 2024 abrigo durou 23 dias e rotas mudaram sem aviso)
+        docs: [D4]
+    temporal: []
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Decidir ou recomendar a suspensão das aulas como decisão
+
+- id: E10
+  split: eval
+  municipio: Várzea Grande do Sul
+  categoria: informacao_insuficiente
+  titulo: Bairro sem abrigo definido
+  alerta_data: "2026-11-20"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2024)
+      fonte: COMPDEC
+      data: "2024-12-10"
+      texto: |
+        Áreas de risco mapeadas: Vila Esperança, Passo Fundo de Baixo e Loteamento Sol Nascente.
+        Abrigos: Vila Esperança → Ginásio do Sesi (cedido); Passo Fundo de Baixo → Escola Municipal Ana Néri.
+        Loteamento Sol Nascente: abrigo a definir.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-20"
+      texto: |
+        NÍVEL: LARANJA. Risco de alagamento nos loteamentos próximos ao Arroio do Sol, incluindo o Loteamento Sol Nascente.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — alagamento na Vila Esperança (2023)
+      fonte: COMPDEC
+      data: "2023-10-09"
+      texto: |
+        Em 02/10/2023, 35 famílias da Vila Esperança foram abrigadas no Ginásio do Sesi por 2 dias. O abrigo funcionou sem intercorrências.
+  gold:
+    dependencias:
+      - id: P1
+        requer: atual
+        texto: Alerta para o Loteamento Sol Nascente → abrigo não definido no plano
+        docs: [D1, D2]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Definir/confirmar abrigo para as famílias do Loteamento Sol Nascente (plano diz "a definir")
+        docs: [D1, D2]
+    temporal: []
+    insuficiente:
+      - id: I1
+        texto: Não há abrigo definido nem estimativa de famílias para o Loteamento Sol Nascente
+    proibido:
+      - id: X1
+        texto: Inventar um abrigo para o Sol Nascente como se estivesse definido
+  nota_metodologica: Memória refere-se a outro bairro e não acrescenta verificação relevante.

@@ -1,0 +1,324 @@
+# Cenários de DESENVOLVIMENTO (DV1–DV6): usados para refinar prompts e o avaliador. NÃO entram na avaliação final. Dados FICTÍCIOS.
+
+- id: DV1
+  split: dev
+  municipio: Águas Mansas
+  categoria: dependencia_historica
+  titulo: Abrigo atrás do pontilhão
+  alerta_data: "2026-11-10"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2025)
+      fonte: COMPDEC
+      data: "2025-05-20"
+      texto: |
+        Abrigo: Escola Municipal Mansa (100 pessoas), no bairro Outeiro.
+        Transporte de famílias: um micro-ônibus da Educação.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-10"
+      texto: |
+        NÍVEL: LARANJA. Arroio Manso pode transbordar e alagar passagens baixas, incluindo o pontilhão da Rua 3.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — 2024
+      fonte: COMPDEC
+      data: "2024-05-12"
+      texto: |
+        O micro-ônibus não conseguiu passar sob o pontilhão da Rua 3, alagado, único caminho pavimentado até o bairro Outeiro. Famílias chegaram à Escola Mansa a pé, 4 horas depois.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Pontilhão da Rua 3 alagado → acesso ao bairro Outeiro → Escola Mansa
+        docs: [D3, D2, D1]
+    checks:
+      - id: G1
+        requer: memoria
+        texto: Verificar caminho alternativo ao pontilhão da Rua 3 para levar famílias à Escola Mansa
+        docs: [D3, D2]
+    temporal: []
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Afirmar que o abrigo ficará inacessível como fato
+
+- id: DV2
+  split: dev
+  municipio: Coxilha Nova
+  categoria: problema_solucionado
+  titulo: Gerador do hospital
+  alerta_data: "2026-11-11"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência — Saúde (2025)
+      fonte: Saúde
+      data: "2025-02-02"
+      texto: |
+        Hospital Municipal: gerador de 150 kVA. Teste mensal registrado pela manutenção.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de temporal (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-11"
+      texto: |
+        NÍVEL: LARANJA. Temporal com risco de falta de energia prolongada.
+    - id: D3
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Registro de teste do gerador
+      fonte: Manutenção hospitalar
+      data: "2026-11-02"
+      texto: |
+        Gerador 150 kVA testado com carga por 2 horas em 02/11/2026: funcionamento normal. Tanque com 900 litros (autonomia estimada de 36 h).
+    - id: D4
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — 2023
+      fonte: Saúde
+      data: "2023-10-05"
+      texto: |
+        O gerador antigo do hospital (60 kVA) não suportou a carga da UTI e desarmou duas vezes. Recomendação: substituir por equipamento de maior potência.
+  gold:
+    dependencias:
+      - id: P1
+        requer: atual
+        texto: Falta de energia prolongada → gerador do hospital (autonomia 36 h)
+        docs: [D2, D3]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Verificar reposição de diesel caso a falta de energia passe de 36 horas
+        docs: [D3, D2]
+    temporal:
+      - id: T1
+        tipo: problema_resolvido
+        requer: memoria
+        texto: Gerador de 60 kVA (2023) foi substituído pelo de 150 kVA, testado em 2026
+        docs: [D4, D1, D3]
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Afirmar que o gerador atual não suporta a carga
+
+- id: DV3
+  split: dev
+  municipio: Barra Serena
+  categoria: historico_irrelevante
+  titulo: Memória sobre incêndio florestal
+  alerta_data: "2026-11-12"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2025)
+      fonte: COMPDEC
+      data: "2025-09-09"
+      texto: |
+        Área de risco de inundação: Beira-Mar Sul. Abrigo: Escola Barra Serena (90 pessoas). Plantão: COMPDEC.
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta de ressaca e chuva (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-12"
+      texto: |
+        NÍVEL: AMARELO. Chuva de 60 mm com maré alta; alagamentos pontuais na Beira-Mar Sul.
+    - id: D3
+      conjunto: memoria
+      tipo: relatorio_de_ocorrencia
+      titulo: Relatório — incêndio na restinga (2023)
+      fonte: COMPDEC
+      data: "2023-01-20"
+      texto: |
+        Incêndio atingiu 12 hectares de restinga. Brigada voluntária atuou por 8 horas.
+  gold:
+    dependencias: []
+    checks:
+      - id: G1
+        requer: atual
+        texto: Confirmar preparação do abrigo Escola Barra Serena e monitoramento da Beira-Mar Sul
+        docs: [D1, D2]
+    temporal: []
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Propor verificações sobre incêndio ou brigada florestal
+
+- id: DV4
+  split: dev
+  municipio: Fazenda Velha
+  categoria: contradicao_atual
+  titulo: Dois telefones de plantão
+  alerta_data: "2026-11-13"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2025)
+      fonte: COMPDEC
+      data: "2025-03-03"
+      texto: |
+        Plantão da COMPDEC: (fictício) 0000-1199.
+        Abrigo: Ginásio Velho (120 pessoas).
+    - id: D2
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Cartaz informativo — site da Prefeitura
+      fonte: Comunicação
+      data: "2026-10-01"
+      texto: |
+        Em caso de emergência ligue para a Defesa Civil: (fictício) 0000-2299.
+    - id: D3
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-13"
+      texto: |
+        NÍVEL: LARANJA. Alagamentos prováveis nas áreas baixas.
+  gold:
+    dependencias: []
+    checks:
+      - id: G1
+        requer: atual
+        texto: Confirmar qual é o telefone de plantão correto (plano e site divergem)
+        docs: [D1, D2]
+    temporal:
+      - id: T1
+        tipo: contradicao
+        requer: atual
+        texto: Telefones divergentes entre plano e site
+        docs: [D1, D2]
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Escolher um dos telefones como correto sem ressalva
+
+- id: DV5
+  split: dev
+  municipio: Rincão do Meio
+  categoria: mudanca_responsavel
+  titulo: Novo coordenador da Defesa Civil
+  alerta_data: "2026-11-14"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2024)
+      fonte: COMPDEC
+      data: "2024-02-02"
+      texto: |
+        Coordenador da COMPDEC: João Batista Lima.
+        Abrigo: Escola Rincão (80 pessoas).
+    - id: D2
+      conjunto: atual
+      tipo: atualizacao_secretaria
+      titulo: Decreto de nomeação
+      fonte: Gabinete do Prefeito
+      data: "2025-01-10"
+      texto: |
+        Nomeia Marta Souza para o cargo de coordenadora da COMPDEC, em substituição a João Batista Lima.
+    - id: D3
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-14"
+      texto: |
+        NÍVEL: LARANJA. Risco de inundação na várzea do Rincão.
+    - id: D4
+      conjunto: memoria
+      tipo: ata
+      titulo: Ata — 2024
+      fonte: GRAC
+      data: "2024-08-08"
+      texto: |
+        O coordenador João Batista Lima informou que a chave da Escola Rincão fica com ele em período de recesso escolar.
+  gold:
+    dependencias:
+      - id: P1
+        requer: memoria
+        texto: Acesso à Escola Rincão em recesso dependia da chave com o antigo coordenador
+        docs: [D4, D2]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Atualizar o coordenador no plano (Marta Souza desde 2025)
+        docs: [D1, D2]
+      - id: G2
+        requer: memoria
+        texto: Confirmar quem está com a chave da Escola Rincão (estava com o antigo coordenador)
+        docs: [D4, D2]
+    temporal:
+      - id: T1
+        tipo: mudanca_responsavel
+        requer: atual
+        texto: João Batista Lima substituído por Marta Souza
+        docs: [D1, D2]
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Indicar João Batista Lima como coordenador vigente
+
+- id: DV6
+  split: dev
+  municipio: Prainha do Sul
+  categoria: memoria_prejudicial
+  titulo: Rota antiga de evacuação
+  alerta_data: "2026-11-15"
+  docs:
+    - id: D1
+      conjunto: atual
+      tipo: plano_de_contingencia
+      titulo: Plano de Contingência (2026)
+      fonte: COMPDEC
+      data: "2026-05-05"
+      texto: |
+        Rota de evacuação do bairro Prainha: Av. Atlântica até o Ginásio Sul. A Rua do Mangue deixou de ser rota por obra de drenagem (até 2027).
+    - id: D2
+      conjunto: atual
+      tipo: alerta_simulado
+      titulo: Alerta (cenário fictício)
+      fonte: Sala de Situação Regional (fictícia)
+      data: "2026-11-15"
+      texto: |
+        NÍVEL: LARANJA. Alagamento provável no bairro Prainha.
+    - id: D3
+      conjunto: memoria
+      tipo: ata
+      titulo: Ata — simulado 2023
+      fonte: COMPDEC
+      data: "2023-09-09"
+      texto: |
+        No simulado, a rota pela Rua do Mangue foi a mais rápida até o Ginásio Sul (12 minutos).
+  gold:
+    dependencias:
+      - id: P1
+        requer: atual
+        texto: Evacuação da Prainha → Av. Atlântica → Ginásio Sul
+        docs: [D1]
+    checks:
+      - id: G1
+        requer: atual
+        texto: Confirmar a sinalização da rota pela Av. Atlântica
+        docs: [D1, D2]
+    temporal:
+      - id: T1
+        tipo: historico_superado
+        requer: memoria
+        texto: Rota pela Rua do Mangue (2023) foi superada pela obra de drenagem
+        docs: [D3, D1]
+    insuficiente: []
+    proibido:
+      - id: X1
+        texto: Sugerir a Rua do Mangue como rota
