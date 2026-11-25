@@ -12,7 +12,7 @@ const EVAL = [
   { t: 'Respostas esperadas', d: 'Escritas e congeladas antes dos testes (hash SHA-256 no git).' },
   { t: 'Duas versões', d: 'Mesmo caso analisado só com o atual (A) e com a memória (B).' },
   { t: 'Correção às cegas', d: 'Outro modelo (gpt-6.1-terra) compara com o esperado sem saber se é A ou B.' },
-  { t: 'Segundo corretor', d: 'Numa rodada anterior, dois corretores diferentes concordaram em 92% das decisões. Não substitui especialistas.' },
+  { t: 'Itens marcados', d: 'Cada item esperado indica se depende do contexto atual ou da memória, para separar omissão de limitação de acesso.' },
 ];
 
 function Arch() {
@@ -75,7 +75,7 @@ export function Method() {
           <li><b>Condição B:</b> os mesmos documentos + registros históricos.</li>
           <li><b>Amostra:</b> 36 cenários fictícios (6 de desenvolvimento, usados para ajustar instruções; 30 de avaliação final), 3 a 6 documentos cada. Inclui casos em que a memória ajuda, é irrelevante, já foi superada, traz contradições ou pode induzir exagero.</li>
           <li><b>Gabaritos:</b> escritos antes das execuções finais e congelados com hash SHA-256 em commit no repositório. Cada item indica se depende do contexto atual ou da memória, o que separa omissão de limitação legítima de acesso.</li>
-          <li><b>Duas rodadas:</b> a principal usa gpt-6-luna para analisar e gpt-6.1-terra para corrigir. Uma rodada anterior, com gpt-5.4-mini e gpt-5.4 e com repetições para observar estabilidade, fica registrada como comparação.</li>
+          <li><b>Modelos:</b> gpt-6-luna analisa os documentos; gpt-6.1-terra corrige, sem saber a condição.</li>
         </ul>
 
         <h2 id="Métricas" tabIndex={-1}>Métricas</h2>
@@ -94,7 +94,7 @@ export function Method() {
             <tr><td>Latência e tokens</td><td>medidos em cada chamada</td><td>determinística</td></tr>
           </tbody>
         </table></div>
-        <p>A avaliação semântica foi feita por um segundo modelo com rubrica explícita, sem saber a condição. Numa rodada anterior, o mesmo conjunto de respostas foi corrigido por dois modelos diferentes, que concordaram em 92% das decisões. Isso não equivale à validação por servidores ou especialistas em Defesa Civil.</p>
+        <p>A avaliação semântica foi feita por um segundo modelo com rubrica explícita, sem saber a condição. Isso não equivale à validação por servidores ou especialistas em Defesa Civil.</p>
 
         <h2>Indicador de produtividade: TCPM</h2>
         <p><b>Tempo de Consolidação da Prontidão Municipal</b>: tempo para transformar os documentos disponíveis em uma pauta preventiva revisada. A meta exploratória é reduzir esse tempo em pelo menos 30% sem perder qualidade. É uma hipótese: não foi medida com pessoas neste protótipo, e a latência da IA não serve como evidência de economia de tempo.</p>
@@ -115,8 +115,8 @@ export function Method() {
         <ul>
           <li>Documentos e gabaritos foram escritos pela mesma equipe do protótipo; o recorte pode favorecer casos “legíveis” e não reflete a bagunça de arquivos reais (PDFs escaneados, planilhas, mensagens).</li>
           <li>Cenários curtos (3 a 6 documentos). Com dezenas de documentos, seria preciso estratégia de seleção ou recuperação de contexto.</li>
-          <li>Avaliação semântica automatizada (concordância de 92% entre dois corretores); sem participação de especialistas municipais.</li>
-          <li>Dois modelos de análise testados, cada um com seu próprio desenho de rodada; a rodada principal não teve repetições para medir estabilidade.</li>
+          <li>Avaliação semântica automatizada; sem participação de especialistas municipais.</li>
+          <li>Um modelo de análise, sem repetições para medir a estabilidade das respostas.</li>
           <li>O grafo depende da saída de cada execução; nomes de entidades variam entre execuções. O mapa aproxima nomes da mesma coluna por similaridade textual, e compara relações pela direção e pelo tipo.</li>
         </ul>
 
