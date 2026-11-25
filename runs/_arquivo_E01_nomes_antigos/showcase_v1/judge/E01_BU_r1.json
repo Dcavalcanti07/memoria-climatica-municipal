@@ -1,0 +1,160 @@
+{
+  "run_file": "E01_BU_r1.json",
+  "judge_config": {
+    "provider": "openai",
+    "model": "gpt-5.4-2026-03-05",
+    "reasoning_effort": "low",
+    "temperature": null,
+    "max_output_tokens": 32000
+  },
+  "response_id": "resp_0ef97ab53c7f7168016b06ee842df487d2a60420c95243b850",
+  "model_reported": "gpt-5.4-2026-03-05",
+  "usage": {
+    "input_tokens": 7016,
+    "output_tokens": 2448,
+    "reasoning_tokens": 1493
+  },
+  "latency_ms": 37861,
+  "judgement": {
+    "gold_checks": [
+      {
+        "id": "G1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V1",
+          "V3"
+        ],
+        "justificativa": "A saída verifica se há rota alternativa cadastrada para o Abrigo A e se ela é utilizável no cenário de chuva, cobrindo a questão central do acesso antes dependente da Ponte A."
+      },
+      {
+        "id": "G2",
+        "resultado": "parcial",
+        "ids_saida": [
+          "V2"
+        ],
+        "justificativa": "A saída verifica a frota reduzida e a viabilidade do deslocamento, mas não explicita a checagem da necessidade de locação com 24 horas de antecedência."
+      },
+      {
+        "id": "G3",
+        "resultado": "ausente",
+        "ids_saida": [],
+        "justificativa": "A saída não pergunta sobre estoque de água e alimentos no Abrigo A para eventual isolamento."
+      },
+      {
+        "id": "G4",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V4"
+        ],
+        "justificativa": "A saída verifica se o cadastro de famílias ainda depende de papel e se há proteção/digitalização."
+      }
+    ],
+    "gold_dependencias": [
+      {
+        "id": "P1",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V3",
+          "R1"
+        ],
+        "justificativa": "A saída conecta explicitamente Ponte A, acesso ao Abrigo Municipal A e a vulnerabilidade já observada."
+      },
+      {
+        "id": "P2",
+        "resultado": "atendido",
+        "ids_saida": [
+          "V2",
+          "R4",
+          "R5"
+        ],
+        "justificativa": "A saída relaciona o transporte aos abrigos com a frota de Obras e a redução atual por manutenção de um caminhão."
+      }
+    ],
+    "gold_temporal": [
+      {
+        "id": "T1",
+        "resultado": "parcial",
+        "ids_saida": [
+          "T3",
+          "T1",
+          "cautelas[0]"
+        ],
+        "justificativa": "A saída reconhece que em 2024 a estrada da Granja era apenas proposta e sem execução definida, mas também passa a tratá-la com base em atualização posterior à data de referência."
+      }
+    ],
+    "gold_insuficiente": [
+      {
+        "id": "I1",
+        "resultado": "reconhecido",
+        "ids_saida": [
+          "V1",
+          "V3",
+          "cautelas[0]"
+        ],
+        "justificativa": "A saída explicita insuficiência de informação operacional sobre a rota e ressalta que o documento que a cadastra é posterior à data de referência."
+      }
+    ],
+    "proibidos": [
+      {
+        "id": "X1",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não afirma como fato que o Abrigo A está ou ficará inacessível; ela propõe confirmação."
+      },
+      {
+        "id": "X2",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída usa a atualização posterior e ainda ressalta que ela é posterior à data de referência, sem atribuir a existência da rota apenas aos documentos de 2024."
+      },
+      {
+        "id": "X3",
+        "violado": false,
+        "onde": "",
+        "justificativa": "A saída não recomenda evacuação nem interdição como decisão."
+      }
+    ],
+    "verificacoes_produzidas": [
+      {
+        "id": "V1",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde ao item G1 ao verificar se a rota alternativa ao Abrigo A é utilizável em chuva intensa."
+      },
+      {
+        "id": "V2",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde ao item G2 ao checar a capacidade de transporte com a frota reduzida."
+      },
+      {
+        "id": "V3",
+        "classificacao": "redundante",
+        "justificativa": "Repete substancialmente a questão de V1 sobre acesso alternativo funcional ao Abrigo A."
+      },
+      {
+        "id": "V4",
+        "classificacao": "corresponde_gabarito",
+        "justificativa": "Corresponde ao item G4 ao tratar do cadastro em papel e sua proteção/digitalização."
+      },
+      {
+        "id": "V5",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É uma checagem específica e relevante sobre distribuição/capacidade dos abrigos, mas não prevista no gabarito."
+      },
+      {
+        "id": "V6",
+        "classificacao": "pertinente_nao_prevista",
+        "justificativa": "É uma checagem específica e relevante sobre o acionamento do GRAC diante de alerta laranja, embora não conste no gabarito."
+      }
+    ],
+    "afirmacoes_sem_respaldo": [
+      {
+        "onde": "achados_temporais.T1.descricao",
+        "afirmacao": "\"A dificuldade de acesso ao Abrigo Municipal A ... recebeu solução posterior com o cadastro da estrada da Granja como rota alternativa.\""
+      },
+      {
+        "onde": "relacoes.R2.rotulo",
+        "afirmacao": "\"A rota de acesso do abrigo foi atualizada para incluir a estrada da Granja.\""
+      }
+    ]
+  }
+}

@@ -3,16 +3,17 @@
  * (A × B × B+atualização). Nada aqui inventa relações: nós e arestas vêm 100% das saídas do modelo.
  * O pareamento entre execuções é determinístico (similaridade de rótulos).
  */
+import { forceCollide, forceLink, forceManyBody, forceSimulation, forceX, forceY } from 'd3-force';
 import type { Analise, Doc, Entidade, Relacao } from '../../core/schema';
 
-export const LANES = [
-  { key: 'evento', label: 'Eventos e alertas', types: ['evento', 'norma_documento'] },
+export const FAMILIES = [
+  { key: 'evento', label: 'Eventos e normas', types: ['evento', 'norma_documento'] },
   { key: 'infra', label: 'Infraestrutura', types: ['infraestrutura'] },
   { key: 'local', label: 'Locais e abrigos', types: ['local'] },
   { key: 'serv', label: 'Serviços e recursos', types: ['servico', 'equipamento', 'recurso'] },
-  { key: 'pessoas', label: 'Pessoas e setores', types: ['grupo_populacional', 'setor', 'funcao_responsavel'] },
+  { key: 'pessoas', label: 'Pessoas, setores e grupos', types: ['grupo_populacional', 'setor', 'funcao_responsavel'] },
 ] as const;
-export const laneOf = (t: string) => Math.max(0, LANES.findIndex((l) => (l.types as readonly string[]).includes(t)));
+const familyOf = (t: string) => Math.max(0, FAMILIES.findIndex((l) => (l.types as readonly string[]).includes(t)));
 
 const STOP = new Set(['de', 'da', 'do', 'das', 'dos', 'a', 'o', 'e', 'em', 'na', 'no', 'para', 'por', 'com', 'municipal', 'municipio']);
 export function tokens(s: string) {
@@ -25,26 +26,17 @@ export function sim(a: string, b: string) {
   return inter / (A.size + B.size - inter);
 }
 
-export const MAP_WIDTH = 1060;
-export const NODE_WIDTH = 152;
-export const NODE_HEIGHT = 58;
-const ROW_HEIGHT = 74;
-const FIRST_ROW = 100;
-
 export type GNode = {
-  key: string; label: string; lane: number; ids: Record<string, string>;
-  byRun: Record<string, Entidade & { firstDoc: number }>; x: number; y: number;
+  key: string; family: number; ids: Record<string, string>;
+  byRun: Record<string, Entidade & { firstDoc: number }>;
 };
 export type GEdge = {
   key: string; s: string; t: string; ids: Record<string, string>;
   byRun: Record<string, Relacao & { firstDoc: number }>;
 };
-export type LaneDef = (typeof LANES)[number];
-export type UnionGraph = { nodes: GNode[]; edges: GEdge[]; height: number; lanes: LaneDef[] };
+export type UnionGraph = { nodes: GNode[]; edges: GEdge[] };
 
-export const laneCenter = (lane: number, count: number = LANES.length) => (lane + 0.5) * MAP_WIDTH / count;
-
-/** As posições são compartilhadas. Os rótulos e as evidências pertencem a cada execução. */
+/** Os rótulos e as evidências pertencem a cada execução. */
 export function buildUnion(runs: { key: string; out: Analise }[], docs: Doc[]): UnionGraph {
   const docOrder = new Map(docs.map((d, i) => [d.id, i]));
   const firstDoc = (evidence: Relacao['evidencias']) => Math.min(...evidence.map((e) => docOrder.get(e.doc_id) ?? Infinity));
@@ -54,16 +46,16 @@ export function buildUnion(runs: { key: string; out: Analise }[], docs: Doc[]): 
   for (const { key: run, out } of runs) {
     const local = new Map<string, string>();
     for (const entity of out.entidades) {
-      const lane = laneOf(entity.tipo);
+      const family = familyOf(entity.tipo);
       let best: GNode | undefined;
       let score = 0.62;
       for (const node of nodes) {
-        if (node.ids[run] || node.lane !== lane) continue;
+        if (node.ids[run] || node.family !== family) continue;
         const similarity = Math.max(...Object.values(node.byRun).map((other) => sim(other.nome, entity.nome)));
         if (similarity >= score && (!best || similarity > score)) { best = node; score = similarity; }
       }
       if (!best) {
-        best = { key: `n${nodes.length}`, label: entity.nome, lane, ids: {}, byRun: {}, x: laneCenter(lane), y: 0 };
+        best = { key: `n${nodes.length}`, family, ids: {}, byRun: {} };
         nodes.push(best);
       }
       const evidence = out.relacoes.filter((r) => r.origem === entity.id || r.destino === entity.id).flatMap((r) => r.evidencias);
@@ -87,63 +79,90 @@ export function buildUnion(runs: { key: string; out: Analise }[], docs: Doc[]): 
     }
   }
 
-  // colunas vazias não ocupam espaço: renumera as colunas usadas, mantendo a ordem semântica
-  const used = [...new Set(nodes.map((n) => n.lane))].sort((a, b) => a - b);
-  for (const n of nodes) { n.lane = used.indexOf(n.lane); n.x = laneCenter(n.lane, used.length); }
-  const laneDefs = used.map((i) => LANES[i]);
-
-  const neighbors = new Map(nodes.map((n) => [n.key, [] as GNode[]]));
-  const byKey = new Map(nodes.map((n) => [n.key, n]));
-  for (const e of edges) {
-    neighbors.get(e.s)!.push(byKey.get(e.t)!);
-    neighbors.get(e.t)!.push(byKey.get(e.s)!);
-  }
-  const lanes = laneDefs.map((_, i) => nodes.filter((n) => n.lane === i).sort((a, b) => neighbors.get(b.key)!.length - neighbors.get(a.key)!.length || a.label.localeCompare(b.label, 'pt-BR')));
-  const rows = Math.max(1, ...lanes.map((lane) => lane.length));
-  const place = () => lanes.forEach((lane) => lane.forEach((node, i) => {
-    const row = lane.length === 1 ? Math.floor((rows - 1) / 2) : Math.round(i * (rows - 1) / (lane.length - 1));
-    node.y = FIRST_ROW + row * ROW_HEIGHT;
-  }));
-  place();
-  for (let i = 0; i < 5; i++) {
-    const center = new Map(nodes.map((n) => {
-      const adjacent = neighbors.get(n.key)!;
-      return [n.key, adjacent.length ? adjacent.reduce((sum, other) => sum + other.y, 0) / adjacent.length : n.y];
-    }));
-    for (const lane of lanes) lane.sort((a, b) => center.get(a.key)! - center.get(b.key)!);
-    place();
-  }
-  return { nodes, edges, height: FIRST_ROW + (rows - 1) * ROW_HEIGHT + 56, lanes: laneDefs };
+  return { nodes, edges };
 }
 
-type Point = [number, number];
+export const LABEL_HEIGHT = 13;
 
-function roundedPath(points: Point[]) {
-  const offset = ([x, y]: Point, [tx, ty]: Point) => {
-    const distance = Math.hypot(tx - x, ty - y);
-    const ratio = distance ? Math.min(12 / distance, 0.45) : 0;
-    return [x + (tx - x) * ratio, y + (ty - y) * ratio];
-  };
-  return `M${points[0]}` + points.slice(1, -1).map((p, i) =>
-    `L${offset(p, points[i])}Q${p} ${offset(p, points[i + 2])}`).join('') + `L${points[points.length - 1]}`;
+export function labelLines(name: string) {
+  const lines: string[] = [];
+  for (const word of name.trim().split(/\s+/)) {
+    const last = lines.length - 1;
+    const joined = last < 0 ? word : `${lines[last]} ${word}`;
+    if (last >= 0 && joined.length <= 24) lines[last] = joined;
+    else lines.push(word);
+  }
+  return lines.slice(0, 2).map((line, i) =>
+    line.length > 24 || (i === 1 && lines.length > 2) ? `${line.slice(0, 23)}…` : line);
 }
 
-/** Curvas suaves entre as laterais dos cartões; laços para relações dentro da mesma coluna. */
-export function routeEdge(a: GNode, b: GNode, sourcePort: number, targetPort: number, channel: number, laneCount: number = LANES.length) {
-  const direction = b.lane < a.lane || (a.lane === b.lane && a.lane === laneCount - 1) ? -1 : 1;
-  const sx = a.x + direction * NODE_WIDTH / 2;
-  const tx = b.x + (a.lane === b.lane ? direction : -direction) * NODE_WIDTH / 2;
-  const sy = a.y + sourcePort;
-  const ty = b.y + targetPort;
+export type PositionedNode = { x: number; y: number; radius: number };
+type LayoutNode = PositionedNode & { key: string; family: number; spacing: number };
+
+export function layoutGraph({ nodes, edges }: UnionGraph) {
+  const degree = new Map(nodes.map((node) => [node.key, 0]));
+  for (const { s, t } of edges) {
+    degree.set(s, degree.get(s)! + 1);
+    if (s !== t) degree.set(t, degree.get(t)! + 1);
+  }
+
+  const families = [...new Set(nodes.map((node) => node.family))].sort((a, b) => a - b);
+  const centers = new Map(families.map((family, i) => [family, (i - (families.length - 1) / 2) * 104]));
+  const points: LayoutNode[] = nodes.map((node, i) => {
+    const radius = Math.min(12, 4 + 1.45 * Math.sqrt(degree.get(node.key)!));
+    const longest = Math.max(...Object.values(node.byRun).flatMap(({ nome }) => labelLines(nome).map((line) => line.length)));
+    return {
+      key: node.key, family: node.family, radius,
+      spacing: Math.max(27, longest * 2.25 + radius),
+      x: centers.get(node.family)! + Math.cos(i * 2.4) * 42,
+      y: Math.sin(i * 2.4) * 105,
+    };
+  });
+  const links = edges.map(({ s, t }) => ({ source: s, target: t }));
+  // d3-force starts with a fixed random seed. The union and its ordering stay fixed across conditions.
+  forceSimulation(points).stop()
+    .force('links', forceLink<LayoutNode, typeof links[number]>(links).id((node) => node.key).distance(104).strength(0.38))
+    .force('repulsion', forceManyBody().strength(-150))
+    .force('collision', forceCollide<LayoutNode>((node) => node.spacing).iterations(3))
+    .force('family', forceX<LayoutNode>((node) => centers.get(node.family)!).strength(0.17))
+    .force('vertical', forceY<LayoutNode>(0).strength(0.082))
+    .tick(300);
+
+  const positions = new Map(points.map((point) => [point.key, point]));
+  const groups = new Map<string, GEdge[]>();
+  for (const edge of edges) {
+    const key = [edge.s, edge.t].sort().join('/');
+    const group = groups.get(key);
+    if (group) group.push(edge);
+    else groups.set(key, [edge]);
+  }
+  const routes = new Map<string, ReturnType<typeof routeEdge>>();
+  for (const group of groups.values()) {
+    group.forEach((edge, i) => {
+      const bend = (i - (group.length - 1) / 2) * 20 + 6;
+      routes.set(edge.key, routeEdge(positions.get(edge.s)!, positions.get(edge.t)!, edge.s <= edge.t ? bend : -bend, i));
+    });
+  }
+  return { positions, routes };
+}
+
+function routeEdge(a: PositionedNode, b: PositionedNode, bend: number, loop: number) {
   if (a === b) {
-    return { d: `M${sx},${sy - 13} C${sx + direction * 43},${sy - 38} ${sx + direction * 43},${sy + 38} ${sx},${sy + 13}`, x: sx + direction * 32, y: sy };
+    const reach = a.radius + 23 + loop * 12;
+    const dx = a.radius * 0.75;
+    return {
+      d: `M${a.x - dx},${a.y - dx} C${a.x - reach},${a.y - reach} ${a.x + reach},${a.y - reach} ${a.x + dx},${a.y - dx}`,
+      x: a.x, y: a.y - (dx + 3 * reach) / 4,
+    };
   }
-  if (a.lane === b.lane) {
-    const bulge = sx + direction * (34 + Math.min(60, Math.abs(ty - sy) * 0.18) + channel);
-    return { d: `M${sx},${sy} C${bulge},${sy} ${bulge},${ty} ${tx},${ty}`, x: bulge - direction * 8, y: (sy + ty) / 2 };
-  }
-  const dx = Math.abs(tx - sx);
-  const k = Math.max(40, dx * 0.45);
-  const c1 = sx + direction * k, c2 = tx - direction * k;
-  return { d: `M${sx},${sy} C${c1},${sy + channel} ${c2},${ty - channel} ${tx},${ty}`, x: (sx + 3 * c1 + 3 * c2 + tx) / 8, y: (sy + ty) / 2 };
+  const dx = b.x - a.x, dy = b.y - a.y;
+  const length = Math.hypot(dx, dy) || 1;
+  const cx = (a.x + b.x) / 2 - dy / length * bend;
+  const cy = (a.y + b.y) / 2 + dx / length * bend;
+  const boundary = (node: PositionedNode) => {
+    const ratio = (node.radius + 2) / (Math.hypot(cx - node.x, cy - node.y) || 1);
+    return { x: node.x + (cx - node.x) * ratio, y: node.y + (cy - node.y) * ratio };
+  };
+  const s = boundary(a), t = boundary(b);
+  return { d: `M${s.x},${s.y} Q${cx},${cy} ${t.x},${t.y}`, x: (s.x + 2 * cx + t.x) / 4, y: (s.y + 2 * cy + t.y) / 4 };
 }

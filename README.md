@@ -59,16 +59,16 @@ documentos fictícios ─► LLM (saída estruturada) ─► validação determi
 - **Gabaritos** escritos antes das execuções e congelados com SHA-256 no commit `aea0272`; cada item marca se depende do contexto atual ou da memória. → [data/gold](data/gold)
 - **Condições:** A = plano + alerta + informações atuais; B = A + registros históricos. Mesmo modelo, prompt, configuração e formato; chamadas independentes.
 - **Avaliação:** validações determinísticas + rubrica aplicada por outro modelo (`gpt-5.4-2026-03-05`), cego à condição, com auditoria manual de amostra. → [prompts/avaliador_v1.md](prompts/avaliador_v1.md)
-- **Execuções:** 60 da comparação principal + 40 repetições + 1 de atualização; 250 chamadas reais no total, com respostas brutas em [runs/](runs).
+- **Execuções:** 60 da comparação principal + 40 repetições + 1 de atualização; 264 chamadas reais no total (incluindo a reexecução do E01 após renomeação), com respostas brutas em [runs/](runs).
 
 ## Resultados
 
 | Nos 30 cenários | A · só atual | B · + memória |
 |---|---:|---:|
-| Verificações esperadas encontradas | 63% | 93% |
+| Verificações esperadas encontradas | 62% | 92% |
 | … que dependem do histórico | 31% | 94% |
-| … que dependem só do contexto atual | 93% | 91% |
-| Precisão (pertinentes ÷ produzidas) | 95% | 95% |
+| … que dependem só do contexto atual | 91% | 89% |
+| Precisão (pertinentes ÷ produzidas) | 95% | 96% |
 | Citações literais | 98,2% | 99,2% |
 | Afirmações proibidas (40 pontos de controle) | 0 | 1 |
 

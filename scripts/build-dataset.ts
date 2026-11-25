@@ -8,7 +8,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import yaml from 'js-yaml';
+import { load as yamlLoad } from 'js-yaml';
 
 const root = path.resolve(import.meta.dirname, '..');
 const authDir = path.join(root, 'data/authoring');
@@ -23,7 +23,7 @@ const errors: string[] = [];
 const index: any[] = [];
 
 for (const f of files) {
-  const items = yaml.load(fs.readFileSync(path.join(authDir, f), 'utf8')) as any[];
+  const items = yamlLoad(fs.readFileSync(path.join(authDir, f), 'utf8')) as any[];
   for (const s of items) {
     const { gold, nota_metodologica, ...scenario } = s;
     const allDocs = [...scenario.docs, ...(scenario.atualizacao ?? [])];

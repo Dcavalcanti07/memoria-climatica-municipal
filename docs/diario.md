@@ -56,7 +56,7 @@ Resultado no desenvolvimento (A → B): precisão de B 90% → 96%; falsos alarm
 - Repetições: 10 cenários × 2 execuções extras × 2 condições = 40 execuções.
 - Demonstração da atualização: E01 em B com o memorando de rota alternativa (1 execução).
 - Avaliação por rubrica de todas as 101 execuções.
-- Total registrado: 250 chamadas reais (125 de análise, 125 de avaliação), ~881 mil tokens de entrada e ~617 mil de saída. Respostas brutas em `runs/`.
+- Total registrado nesta etapa: 250 chamadas reais (125 de análise, 125 de avaliação), ~881 mil tokens de entrada e ~617 mil de saída. Respostas brutas em `runs/`.
 
 Resultados e casos: ver `docs/resultados.md`.
 
@@ -70,7 +70,18 @@ Resultados e casos: ver `docs/resultados.md`.
 - Layout de forças (d3-force) amontoou os nós; trocado por colunas com ordenação baricêntrica, determinística.
 - A pedido, a camada visual foi refinada com o Codex CLI (OpenAI), com briefing restrito aos arquivos de interface e às regras de honestidade (procedência das execuções, rótulo de exemplo ilustrativo, sem dados inventados).
 
-## 10. O que não foi feito ou ficou limitado
+## 10. Renomeação do cenário E01 (depois do congelamento)
+
+- Pedido da autora: trocar os nomes genéricos do E01 ("Ponte A", "Abrigo Municipal A/B", "Rota Alternativa 2") por nomes fictícios (Ponte dos Tropeiros, Escola Municipal Lírio do Vale, Ginásio Poliesportivo Central, Rota Alternativa da Granja).
+- É uma alteração **posterior ao congelamento**, só de nomes; datas, fatos, itens do gabarito e afirmações proibidas não mudaram. Hash do gabarito E01: `9c9d835c…` → `eb65431a…`. Os outros 35 gabaritos mantêm o hash original.
+- E01 foi reexecutado (A e B, 3 repetições cada, e a variante com atualização) e reavaliado: 14 chamadas novas. As execuções antigas ficam em `runs/_arquivo_E01_nomes_antigos/`.
+- Impacto: recall geral A 63% → 62% e B 93% → 92%; diferença pareada inalterada (+28 p.p.). Total de chamadas reais registradas: 264.
+
+## 11. Grafo no estilo Obsidian
+
+- Depois da revisão visual, a autora pediu um grafo mais próximo da visualização do Obsidian: layout orgânico por forças, nós circulares por grau, vizinhança destacada ao passar o mouse, zoom e arraste. A implementação foi delegada ao Codex com a mesma regra: nós e relações vêm só das saídas do modelo.
+
+## 12. O que não foi feito ou ficou limitado
 
 - Nenhum teste com servidores municipais. O indicador TCPM não foi medido; há protocolo proposto.
 - Um único modelo de análise. Sem comparação entre provedores.

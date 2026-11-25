@@ -9,16 +9,15 @@ function Morph() {
     { x: 70, y: 250, r: 3, t: 'Ata pós-evento' }, { x: 300, y: 240, r: -4, t: 'Alerta (simulado)' },
   ];
   const nodes = [
-    { x: 70, y: 200, t: 'Inundação', c: 'var(--water)' }, { x: 175, y: 120, t: 'Ponte A', c: 'var(--ink)' },
-    { x: 290, y: 175, t: 'Rota de acesso', c: 'var(--memory)' }, { x: 380, y: 95, t: 'Abrigo A', c: 'var(--ink)' },
+    { x: 66, y: 196, t: 'Inundação', c: 'var(--graph-event)' }, { x: 170, y: 105, t: 'Ponte dos Tropeiros', c: 'var(--graph-infra)' },
+    { x: 274, y: 172, t: 'Rota de acesso', c: 'var(--graph-infra)' }, { x: 370, y: 81, t: 'Abrigo Lírio do Vale', c: 'var(--graph-place)' },
   ];
+  const question = ['A Ponte dos Tropeiros continua sendo o único', 'acesso ao abrigo? Existe rota alternativa?'];
   return (
     <figure className="hero-map">
       <figcaption><span>exemplo ilustrativo</span><button type="button" onClick={() => setK(k + 1)}>Repetir animação <span aria-hidden="true">↻</span></button></figcaption>
-      <svg className="morph" viewBox="0 0 460 400" key={k} role="img" aria-label="Quatro documentos se transformam em uma cadeia de dependência entre inundação, ponte, rota de acesso e abrigo.">
-      <defs><pattern id="hero-grid" width="23" height="23" patternUnits="userSpaceOnUse"><path d="M23 0H0V23" fill="none" stroke="var(--rule)" strokeWidth=".7" /></pattern></defs>
-      <rect width="460" height="400" fill="url(#hero-grid)" opacity=".65" />
-      {[0, 1, 2, 3, 4, 5].map((i) => <path key={i} d={`M-5 ${37 + i * 24} C130 ${200 + i * 21} 340 ${-57 + i * 19} 465 ${105 + i * 26}`} fill="none" stroke="var(--water)" strokeWidth=".7" opacity=".25" />)}
+      <svg className="morph" viewBox="0 0 460 400" key={k} role="img" aria-label={`Quatro documentos se transformam em uma cadeia de dependência entre inundação, ponte, rota de acesso e abrigo. ${question.join(' ')}`}>
+      {[0, 1, 2, 3, 4, 5].map((i) => <path key={i} d={`M-5 ${37 + i * 24} C130 ${200 + i * 21} 340 ${-57 + i * 19} 465 ${105 + i * 26}`} fill="none" stroke="var(--graph-line)" strokeWidth=".7" opacity=".17" />)}
       <style>{`
         .md { animation: md 1.6s cubic-bezier(.6,0,.3,1) .6s forwards; transform-box: fill-box; transform-origin: center; }
         @keyframes md { to { opacity: 0; transform: scale(.25) rotate(0deg); } }
@@ -31,27 +30,31 @@ function Morph() {
       `}</style>
       {docs.map((d, i) => (
         <g key={i} className="md" style={{ animationDelay: `${0.6 + i * 0.15}s` }} transform={`translate(${d.x},${d.y}) rotate(${d.r})`}>
-          <rect width="130" height="150" rx="6" fill="var(--paper-3)" stroke="var(--rule)" />
-          <rect x="12" y="14" width="70" height="7" rx="2" fill={i === 0 || i === 2 ? 'var(--memory)' : 'var(--water)'} opacity=".7" />
-          {[34, 46, 58, 70, 82, 94, 106].map((y) => <rect key={y} x="12" y={y} width={y % 24 ? 100 : 80} height="4" rx="2" fill="var(--rule)" />)}
-          <text x="12" y="134" fontSize="11" fontFamily="var(--mono)" fill="var(--ink-3)">{d.t}</text>
+          <rect width="130" height="150" rx="6" fill="var(--graph-panel)" stroke="var(--graph-rule)" />
+          <rect x="12" y="14" width="70" height="7" rx="2" fill={i === 0 || i === 2 ? 'var(--graph-memory)' : 'var(--graph-infra)'} opacity=".7" />
+          {[34, 46, 58, 70, 82, 94, 106].map((y) => <rect key={y} x="12" y={y} width={y % 24 ? 100 : 80} height="4" rx="2" fill="var(--graph-rule)" />)}
+          <text x="12" y="134" fontSize="11" fontFamily="var(--mono)" fill="var(--graph-muted)">{d.t}</text>
         </g>
       ))}
-      {nodes.slice(1).map((n, i) => (
-        <line key={i} className="ml" style={{ animationDelay: `${2.4 + i * 0.35}s` }} x1={nodes[i].x} y1={nodes[i].y} x2={n.x} y2={n.y} stroke={i === 1 ? 'var(--memory)' : 'var(--ink-2)'} strokeWidth={i === 1 ? 2.4 : 1.6} />
-      ))}
+      {nodes.slice(1).map((n, i) => {
+        const from = nodes[i];
+        const curve = `M${from.x},${from.y} Q${(from.x + n.x) / 2 - 15},${(from.y + n.y) / 2 - 14} ${n.x},${n.y}`;
+        return <path key={i} className="ml" style={{ animationDelay: `${2.4 + i * 0.35}s` }} d={curve}
+          fill="none" stroke={i === 1 ? 'var(--graph-memory)' : 'var(--graph-line)'} strokeWidth="1.4" opacity=".72" />;
+      })}
       {nodes.map((n, i) => (
         <g key={i} className="mn" style={{ animationDelay: `${2 + i * 0.3}s` }}>
-          {i === 2 && <circle cx={n.x} cy={n.y} r="22" fill="var(--memory-glow)" />}
-          <circle cx={n.x} cy={n.y} r="9" fill="var(--paper-3)" stroke={n.c} strokeWidth="2" />
-          <text x={n.x} y={n.y + 26} textAnchor="middle" fontSize="13" fontFamily="var(--sans)" fill="var(--ink)">{n.t}</text>
+          {i === 2 && <circle cx={n.x} cy={n.y} r="11" fill="var(--graph-memory)" fillOpacity=".14" stroke="var(--graph-memory)" strokeWidth="1" />}
+          <circle cx={n.x} cy={n.y} r={i === 1 || i === 2 ? 6 : 4.5} fill={n.c} />
+          <text x={n.x} y={n.y + 23} textAnchor="middle" fontSize="13" fontFamily="var(--sans)" fill="var(--graph-ink)">{n.t}</text>
         </g>
       ))}
       <g className="mq">
-        <rect x="40" y="300" width="390" height="78" rx="10" fill="var(--paper-3)" stroke="var(--ink)" />
-        <text x="58" y="326" fontSize="11" fontFamily="var(--mono)" fill="var(--memory)">VERIFICAÇÃO SUGERIDA · PARA REVISÃO HUMANA</text>
-        <text x="58" y="348" fontSize="15" fontFamily="var(--serif)" fill="var(--ink)">A Ponte A continua sendo o único acesso</text>
-        <text x="58" y="367" fontSize="15" fontFamily="var(--serif)" fill="var(--ink)">ao abrigo? Existe rota alternativa?</text>
+        <rect x="40" y="300" width="390" height="78" rx="10" fill="var(--graph-panel)" stroke="var(--graph-rule)" />
+        <text x="58" y="326" fontSize="11" fontFamily="var(--mono)" fill="var(--graph-memory)">VERIFICAÇÃO SUGERIDA · PARA REVISÃO HUMANA</text>
+        <text x="58" y="348" fontSize="15" fontFamily="var(--serif)" fill="var(--graph-ink)">
+          {question.map((line, i) => <tspan key={line} x="58" dy={i ? 19 : 0}>{line}</tspan>)}
+        </text>
       </g>
       </svg>
     </figure>
@@ -87,7 +90,9 @@ export function Home() {
       <section className="map-reading">
         <div className="wrap reading-inner">
           <h2>Como ler o mapa</h2>
-          <div><span className="key-swatch water" aria-hidden="true" />Azul <span>Informação atual</span></div>
+          <div><svg className="reading-families" viewBox="0 0 29 10" aria-hidden="true">
+            <circle cx="4" cy="5" r="4" fill="var(--graph-event)" /><circle cx="14" cy="5" r="4" fill="var(--graph-infra)" /><circle cx="24" cy="5" r="4" fill="var(--graph-place)" />
+          </svg>Cores dos pontos <span>Famílias de entidades</span></div>
           <div><span className="key-swatch memory" aria-hidden="true" />Ocre <span>O que apareceu com a memória</span></div>
           <div><span className="reading-mark" aria-hidden="true">? ≠</span>Marcas <span>Hipóteses e contradições</span></div>
         </div>

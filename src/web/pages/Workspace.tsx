@@ -17,7 +17,7 @@ const ENTITY_LABEL: Record<string, string> = {
 
 const GUIDE = [
   { t: 'Os documentos do município', p: 'À esquerda está o arquivo fictício: plano de contingência, alerta, ofícios e, em ocre, registros de eventos anteriores. Clique em qualquer um para ler.' },
-  { t: 'O que a IA conectou', p: 'No centro, cada ponto é algo que a IA extraiu dos documentos (uma ponte, um abrigo, uma secretaria). As linhas são relações, com o tipo de certeza: fato, inferência, hipótese, contradição ou informação superada.' },
+  { t: 'O que a IA conectou', p: 'No centro, cada ponto é algo que a IA extraiu dos documentos (uma ponte, um abrigo, uma secretaria). As cores agrupam os tipos de entidade. As setas mostram a direção das relações e os traços indicam o grau de certeza.' },
   { t: 'A pauta de verificações', p: 'À direita, as perguntas que a equipe poderia confirmar antes do evento. Clique numa pergunta para ver no mapa o caminho de dependências e as citações literais que a sustentam.' },
   { t: 'Com e sem memória', p: 'No alto, alterne entre a análise feita só com informações atuais e a análise que também recebeu os registros históricos. O contorno ocre indica o que apareceu na condição com memória.' },
 ];
@@ -38,7 +38,7 @@ export function Workspace({ id }: { id: string }) {
   const [reader, setReader] = useState<{ doc: Doc; focus?: string } | null>(null);
   const [cutoff, setCutoff] = useState<number | null>(null);
   const [playing, setPlaying] = useState(false);
-  const [guide, setGuide] = useState<number>(() => { try { return localStorage.getItem('mcm.guide.done') ? -1 : 0; } catch { return 0; } });
+  const [guide, setGuide] = useState<number>(() => { if (location.search.includes('tour=0')) return -1; try { return localStorage.getItem('mcm.guide.done') ? -1 : 0; } catch { return 0; } });
   const { reviews, update } = useReviews(id);
   const stageRef = useRef<HTMLElement>(null);
   const inspectorRef = useRef<HTMLElement>(null);

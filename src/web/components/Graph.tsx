@@ -1,6 +1,6 @@
-import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from 'react';
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type FocusEvent, type KeyboardEvent, type PointerEvent } from 'react';
 import { STATUS_LABEL } from '../lib/data';
-import { LANES, MAP_WIDTH, NODE_HEIGHT, NODE_WIDTH, laneCenter, routeEdge, type GEdge, type GNode, type UnionGraph } from '../lib/graph';
+import { FAMILIES, LABEL_HEIGHT, labelLines, layoutGraph, type GEdge, type GNode, type UnionGraph } from '../lib/graph';
 
 type Props = {
   g: UnionGraph;
@@ -15,8 +15,34 @@ type Props = {
   onNode: (n: GNode) => void;
 };
 
-const MARK: Record<string, string> = { hipotese: '?', contradicao: '≠', superado: '×', informacao_insuficiente: '…' };
+const MARK: Record<string, string> = { hipotese: '?', contradicao: '≠', superado: '×' };
 const STATUSES = Object.keys(STATUS_LABEL);
+const labelMagnification = (scale: number) => Math.max(1, 9.5 / (11 * scale));
+const atCutoff = (item: { firstDoc: number } | undefined, cutoff: number | null) =>
+  !!item && (cutoff === null || item.firstDoc <= cutoff);
+
+type Point = { x: number; y: number };
+type Size = { width: number; height: number };
+type Camera = Point & { scale: number };
+type Bounds = { left: number; right: number; top: number; bottom: number };
+
+function fit(bounds: Bounds | null, { width, height }: Size): Camera {
+  if (!bounds) return { x: width / 2, y: height / 2, scale: 1 };
+  const { left, right, top, bottom } = bounds;
+  const scale = Math.min(2.1, Math.max(1, width - 34) / (right - left), Math.max(1, height - 64) / (bottom - top));
+  return { x: width / 2 - (left + right) / 2 * scale, y: (height - 32) / 2 - (top + bottom) / 2 * scale, scale };
+}
+
+function zoom(camera: Camera, from: Point, to: Point, factor: number, min: number): Camera {
+  const scale = Math.max(min, Math.min(6, camera.scale * factor));
+  return { x: to.x - (from.x - camera.x) * scale / camera.scale, y: to.y - (from.y - camera.y) * scale / camera.scale, scale };
+}
+
+function gesture(points: Map<number, Point>) {
+  const [a, b] = points.values();
+  return b ? { center: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, spread: Math.max(1, Math.hypot(a.x - b.x, a.y - b.y)) }
+    : { center: a, spread: 1 };
+}
 
 function activate(event: KeyboardEvent, action: () => void) {
   if (event.key === 'Enter' || event.key === ' ') {
@@ -25,200 +51,291 @@ function activate(event: KeyboardEvent, action: () => void) {
   }
 }
 
-function wrapLabel(label: string) {
-  const lines = [''];
-  for (const word of label.split(/\s+/)) {
-    const last = lines.length - 1;
-    const candidate = `${lines[last]} ${word}`.trim();
-    if (lines[last] && candidate.length > 19 && lines.length < 3) lines.push(word);
-    else lines[last] = candidate;
-  }
-  return lines.map((line) => line.length > 20 ? `${line.slice(0, 19)}…` : line);
-}
-
-function Glyph({ tipo, r }: { tipo: string; r: number }) {
-  switch (tipo) {
-    case 'evento': return <path className="glyph" d={`M0 ${-r} L${r} 0 L0 ${r} L${-r} 0Z`} />;
-    case 'infraestrutura': return <rect className="glyph" x={-r * 0.85} y={-r * 0.85} width={r * 1.7} height={r * 1.7} rx={2} />;
-    case 'local': return <path className="glyph" d={`M0 ${r} C ${-r} ${-r * 0.1}, ${-r * 0.8} ${-r}, 0 ${-r} C ${r * 0.8} ${-r}, ${r} ${-r * 0.1}, 0 ${r}Z`} />;
-    case 'equipamento': return <path className="glyph" d={hex(r)} />;
-    case 'recurso': return <path className="glyph" d={`M0 ${-r} L${r} ${r * 0.8} L${-r} ${r * 0.8}Z`} />;
-    case 'grupo_populacional': return <g><circle className="glyph" r={r} /><circle className="glyph" r={r * 0.45} /></g>;
-    case 'setor': case 'funcao_responsavel': return <rect className="glyph" x={-r * 1.1} y={-r * 0.7} width={r * 2.2} height={r * 1.4} rx={r * 0.7} />;
-    case 'norma_documento': return <path className="glyph" d={`M${-r * 0.75} ${-r} H${r * 0.35} L${r * 0.75} ${-r * 0.6} V${r} H${-r * 0.75}Z`} />;
-    default: return <circle className="glyph" r={r} />;
-  }
-}
-function hex(r: number) {
-  const p = Array.from({ length: 6 }, (_, i) => { const a = (Math.PI / 3) * i + Math.PI / 6; return `${(Math.cos(a) * r).toFixed(1)} ${(Math.sin(a) * r).toFixed(1)}`; });
-  return `M${p.join(' L')}Z`;
-}
 export function Graph({ g, run, base, cutoff, highlightNodes, highlightEdges, selectedEdge, selectedNode, onEdge, onNode }: Props) {
   const svgId = useId();
-  const mapRef = useRef<HTMLDivElement>(null);
+  const svg = useRef<SVGSVGElement>(null);
+  const layer = useRef<SVGGElement>(null);
+  const [size, setSize] = useState<Size>({ width: 0, height: 0 });
+  const [camera, setCamera] = useState<Camera>({ x: 0, y: 0, scale: 1 });
+  const [ease, setEase] = useState(false);
+  const [dragging, setDragging] = useState(false);
+  const pointers = useRef(new Map<number, Point>());
+  const moved = useRef(false);
   const [hover, setHover] = useState<string | null>(null);
   const [focus, setFocus] = useState<string | null>(null);
-  const previous = useRef(run);
-  const [lastRun, setLastRun] = useState(run);
+  const { positions, routes } = useMemo(() => layoutGraph(g), [g]);
+
+  const scene = useMemo(() => {
+    const nodes = g.nodes.filter((node) => node.byRun[run]).map((node) => {
+      const lines = labelLines(node.byRun[run].nome);
+      return { node, lines, halfLabel: Math.max(...lines.map((line) => line.length)) * 3.05 };
+    });
+    const edges = g.edges.filter((edge) => edge.byRun[run]);
+    return { nodes, edges };
+  }, [g, run]);
+  const visible = useMemo(() => {
+    const nodes = scene.nodes.filter(({ node }) => atCutoff(node.byRun[run], cutoff));
+    const keys = new Set(nodes.map(({ node }) => node.key));
+    const edges = scene.edges.filter((edge) => atCutoff(edge.byRun[run], cutoff) && keys.has(edge.s) && keys.has(edge.t));
+    return { nodes, keys, edges, edgeKeys: new Set(edges.map((edge) => edge.key)) };
+  }, [scene, run, cutoff]);
+  const pathNodes = new Set(highlightNodes);
+  for (const edge of visible.edges) {
+    if (highlightEdges.has(edge.key)) { pathNodes.add(edge.s); pathNodes.add(edge.t); }
+  }
+  const degree = new Map<string, number>();
+  const active = hover ?? focus;
+  const activeNode = visible.nodes.find(({ node }) => node.key === active)?.node;
+  const activeEdge = visible.edges.find((edge) => edge.key === (active ?? selectedEdge));
+  const neighbors = new Set(activeNode ? [activeNode.key] : []);
+  for (const { s, t } of visible.edges) {
+    degree.set(s, (degree.get(s) ?? 0) + 1);
+    if (s !== t) degree.set(t, (degree.get(t) ?? 0) + 1);
+    if (s === activeNode?.key || t === activeNode?.key) { neighbors.add(s); neighbors.add(t); }
+  }
+  const checkActive = visible.nodes.some(({ node }) => pathNodes.has(node.key));
+  const dimOthers = checkActive || !!activeNode || !!activeEdge;
+  const accent = run === 'BU' ? 'update' : run === 'B' ? 'memory' : '';
+
+  function getBounds(nodes: typeof scene.nodes, edges: GEdge[], labelScale: number): Bounds | null {
+    if (!nodes.length) return null;
+    const bounds = { left: Infinity, right: -Infinity, top: Infinity, bottom: -Infinity };
+    function include(x: number, y: number, horizontal: number, above: number, below: number) {
+      bounds.left = Math.min(bounds.left, x - horizontal);
+      bounds.right = Math.max(bounds.right, x + horizontal);
+      bounds.top = Math.min(bounds.top, y - above);
+      bounds.bottom = Math.max(bounds.bottom, y + below);
+    }
+    for (const { node, lines, halfLabel } of nodes) {
+      const { x, y, radius } = positions.get(node.key)!;
+      include(x, y, Math.max(radius + 5, halfLabel * labelScale), radius + 5, radius + 5 + lines.length * LABEL_HEIGHT * labelScale);
+    }
+    for (const edge of edges) {
+      const { x, y } = routes.get(edge.key)!;
+      include(x, y, 9, 9, 9);
+    }
+    return bounds;
+  }
+
+  function frame(nodes: typeof scene.nodes, edges: GEdge[]) {
+    let view = fit(getBounds(nodes, edges, 1), size);
+    // Reserve room for labels that keep a minimum size at overview zoom.
+    for (let i = 0; i < 3 && view.scale < 9.5 / 11 && size.width > 0; i++) {
+      view = fit(getBounds(nodes, edges, labelMagnification(view.scale)), size);
+    }
+    return view;
+  }
+
+  const fullFit = frame(scene.nodes, scene.edges);
+  const checkFit = checkActive ? frame(
+    visible.nodes.filter(({ node }) => pathNodes.has(node.key)),
+    visible.edges.filter((edge) => highlightEdges.has(edge.key)),
+  ) : fullFit;
+  const { x: fitX, y: fitY, scale: fitScale } = checkFit;
+  const minScale = Math.min(0.28, fullFit.scale * 0.65);
+  const zoomed = camera.scale >= Math.max(0.95, fullFit.scale * 1.45);
+
+  useLayoutEffect(() => {
+    const element = svg.current!;
+    const resize = () => {
+      const { width, height } = element.getBoundingClientRect();
+      setSize({ width, height });
+    };
+    resize();
+    const observer = new ResizeObserver(resize);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  // primeiro enquadramento (e ajustes de tamanho) sem animação; troca de condição/verificação com animação
+  const framedFor = useRef<string | null>(null);
+  useLayoutEffect(() => {
+    const intent = `${run}|${[...highlightNodes].sort().join(',')}|${[...highlightEdges].sort().join(',')}`;
+    setEase(framedFor.current !== null && framedFor.current !== intent);
+    framedFor.current = intent;
+    setCamera({ x: fitX, y: fitY, scale: fitScale });
+  }, [run, fitX, fitY, fitScale, highlightNodes, highlightEdges]);
+
   useEffect(() => {
     setHover(null);
     setFocus(null);
-    setLastRun(previous.current);
-    previous.current = run;
   }, [run]);
 
-  const nodeMap = useMemo(() => new Map(g.nodes.map((n) => [n.key, n])), [g]);
-  const routes = useMemo(() => {
-    const ports = new Map<string, { edge: GEdge; end: 's' | 't'; peer: GNode }[]>();
-    for (const edge of g.edges) {
-      const from = nodeMap.get(edge.s)!, to = nodeMap.get(edge.t)!;
-      const forward = to.lane > from.lane || (to.lane === from.lane && from.lane < g.lanes.length - 1);
-      const sameLane = from.lane === to.lane;
-      const fromPort = `${edge.s}:${forward}`, toPort = `${edge.t}:${sameLane ? forward : !forward}`;
-      if (!ports.has(fromPort)) ports.set(fromPort, []);
-      if (!ports.has(toPort)) ports.set(toPort, []);
-      ports.get(fromPort)!.push({ edge, end: 's', peer: to });
-      ports.get(toPort)!.push({ edge, end: 't', peer: from });
-    }
-    const offsets = new Map<string, number>();
-    for (const entries of ports.values()) {
-      entries.sort((a, b) => a.peer.y - b.peer.y || a.peer.x - b.peer.x || a.edge.key.localeCompare(b.edge.key));
-      entries.forEach(({ edge, end }, i) => offsets.set(`${edge.key}:${end}`, (i - (entries.length - 1) / 2) * Math.min(7, 36 / entries.length)));
-    }
-    return new Map(g.edges.map((edge, i) => [edge.key, routeEdge(
-      nodeMap.get(edge.s)!, nodeMap.get(edge.t)!, offsets.get(`${edge.key}:s`)!, offsets.get(`${edge.key}:t`)!, (i % 5 - 2) * 3, g.lanes.length,
-    )]));
-  }, [g, nodeMap]);
+  function currentCamera() {
+    const matrix = layer.current?.getCTM();
+    return matrix ? { x: matrix.e, y: matrix.f, scale: matrix.a } : camera;
+  }
 
-  const visible = (item?: { firstDoc: number }) => !!item && (cutoff === null || item.firstDoc <= cutoff);
-  const active = hover ?? focus;
-  const hoveredNode = active ? nodeMap.get(active) : undefined;
-  const activeEdge = g.edges.find((e) => (e.key === active || (!active && e.key === selectedEdge)) && visible(e.byRun[run]));
-  const neighbors = new Set<string>();
-  if (hoveredNode && visible(hoveredNode.byRun[run])) {
-    neighbors.add(hoveredNode.key);
-    for (const e of g.edges) {
-      if (visible(e.byRun[run]) && (e.s === active || e.t === active)) {
-        neighbors.add(e.s);
-        neighbors.add(e.t);
-      }
+  useEffect(() => {
+    const element = svg.current!;
+    function wheel(event: WheelEvent) {
+      event.preventDefault();
+      const rect = element.getBoundingClientRect();
+      const point = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+      const matrix = layer.current?.getCTM();
+      if (!matrix) return;
+      const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? rect.height : 1);
+      setEase(false);
+      setCamera(zoom({ x: matrix.e, y: matrix.f, scale: matrix.a }, point, point, Math.exp(-delta * (event.ctrlKey ? 0.01 : 0.002)), minScale));
+    }
+    element.addEventListener('wheel', wheel, { passive: false });
+    return () => element.removeEventListener('wheel', wheel);
+  }, [minScale]);
+
+  function zoomButton(factor: number) {
+    const center = { x: size.width / 2, y: size.height / 2 };
+    setEase(true);
+    setCamera((view) => zoom(view, center, center, factor, minScale));
+  }
+
+  function start(event: PointerEvent<SVGSVGElement>) {
+    const points = pointers.current;
+    if (!points.size) moved.current = false;
+    const onItem = (event.target as Element).closest('[role="button"]');
+    if (event.button !== 0 || (event.pointerType !== 'touch' && onItem) || points.size >= 2) return;
+    if (!points.size) {
+      setCamera(currentCamera());
+      setEase(false);
+    }
+    points.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (points.size === 2) {
+      moved.current = true;
+      setDragging(true);
+      for (const id of points.keys()) event.currentTarget.setPointerCapture(id);
+    } else if (!onItem) {
+      event.currentTarget.setPointerCapture(event.pointerId);
     }
   }
-  const checkActive = g.nodes.some((node) => visible(node.byRun[run]) && highlightNodes.has(node.key)) || g.edges.some((edge) => visible(edge.byRun[run]) && highlightEdges.has(edge.key));
-  const compareFrom = previous.current === run ? lastRun : previous.current;
-  const accent = run === 'BU' ? 'update' : run === 'B' ? 'memory' : 'current';
-  const laneW = MAP_WIDTH / g.lanes.length;
-  const enabledLanes = g.lanes.map((_, i) => g.nodes.some((node) => node.lane === i && node.byRun[run]));
-  const firstLane = enabledLanes.findIndex(Boolean);
-  useEffect(() => {
-    const map = mapRef.current;
-    if (map && firstLane >= 0 && map.scrollWidth > map.clientWidth) {
-      map.scrollLeft = firstLane * map.scrollWidth / g.lanes.length;
+
+  function move(event: PointerEvent<SVGSVGElement>) {
+    const points = pointers.current;
+    const previous = points.get(event.pointerId);
+    if (!previous || (!moved.current && Math.hypot(event.clientX - previous.x, event.clientY - previous.y) < 5)) return;
+    const from = gesture(points);
+    points.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    const to = gesture(points);
+    if (!moved.current) {
+      moved.current = true;
+      setDragging(true);
+      event.currentTarget.setPointerCapture(event.pointerId);
     }
-  }, [firstLane]);
-  // ao destacar o caminho de uma verificação, traz o trecho destacado para a área visível do mapa
-  const hlKey = [...highlightNodes].sort().join(',');
-  useEffect(() => {
-    const map = mapRef.current;
-    if (!map || !hlKey) return;
-    const els = hlKey.split(',').map((k) => map.querySelector<SVGGElement>(`[data-node="${k}"]`)).filter(Boolean) as SVGGElement[];
-    if (!els.length) return;
-    const box = map.getBoundingClientRect();
-    const rects = els.map((el) => el.getBoundingClientRect());
-    const top = Math.min(...rects.map((r) => r.top)), bottom = Math.max(...rects.map((r) => r.bottom));
-    if (top >= box.top && bottom <= box.bottom) return;
-    map.scrollTo({ top: map.scrollTop + (top + bottom) / 2 - (box.top + box.bottom) / 2, behavior: 'smooth' });
-  }, [hlKey]);
+    const { left, top } = event.currentTarget.getBoundingClientRect();
+    setCamera((view) => zoom(view,
+      { x: from.center.x - left, y: from.center.y - top },
+      { x: to.center.x - left, y: to.center.y - top },
+      to.spread / from.spread, minScale));
+  }
+
+  function stop(event: PointerEvent<SVGSVGElement>) {
+    pointers.current.delete(event.pointerId);
+    if (!pointers.current.size) setDragging(false);
+  }
+
   const interactions = (key: string, shown: boolean, action: () => void) => ({
     role: 'button',
     tabIndex: shown ? 0 : -1,
     'aria-hidden': !shown || undefined,
     onClick: () => shown && action(),
     onKeyDown: (event: KeyboardEvent) => shown && activate(event, action),
-    onMouseEnter: () => shown && setHover(key),
-    onMouseLeave: () => setHover(null),
-    onFocus: () => setFocus(key),
+    onPointerEnter: (event: PointerEvent) => {
+      if (event.pointerType !== 'touch' && shown) setHover(key);
+    },
+    onPointerLeave: () => setHover(null),
+    onFocus: (event: FocusEvent<SVGGElement>) => {
+      if (!shown) return;
+      setFocus(key);
+      if (!event.currentTarget.matches(':focus-visible')) return;
+      const point = positions.get(key) ?? routes.get(key)!;
+      const view = currentCamera();
+      const x = view.x + point.x * view.scale, y = view.y + point.y * view.scale;
+      if (x < 16 || x > size.width - 16 || y < 16 || y > size.height - 42) {
+        setEase(true);
+        setCamera({ x: size.width / 2 - point.x * view.scale, y: size.height / 2 - point.y * view.scale, scale: view.scale });
+      }
+    },
     onBlur: () => setFocus(null),
   });
+
   return (
     <>
-      <div className="map-jump" role="group" aria-label="Ir para uma coluna do mapa">
-        {g.lanes.map((lane, i) => enabledLanes[i] && <button type="button" key={lane.key} onClick={() => {
-          const map = mapRef.current;
-          if (!map) return;
-          map.scrollLeft = i * map.scrollWidth / g.lanes.length;
-          const first = g.nodes.filter((node) => node.lane === i && visible(node.byRun[run])).sort((a, b) => a.y - b.y)[0];
-          if (first) map.querySelector<SVGGElement>(`[data-node="${first.key}"]`)?.focus();
-        }}>{lane.label}</button>)}
-      </div>
-      <div className="map-scroll" ref={mapRef} role="region" aria-label="Mapa rolável de entidades e relações" tabIndex={0}>
-        <svg className="knowledge-map" viewBox={`0 0 ${MAP_WIDTH} ${g.height}`} role="group" aria-label="Mapa de conhecimento">
+      <div className={`graph-canvas ${dragging ? 'dragging' : ''}`}>
+        <div className="graph-controls" role="group" aria-label="Controles do mapa">
+          <button type="button" onClick={() => zoomButton(1 / 1.3)} aria-label="Diminuir zoom">−</button>
+          <button type="button" onClick={() => zoomButton(1.3)} aria-label="Aumentar zoom">+</button>
+          <button type="button" onClick={() => {
+            setEase(true);
+            setCamera(frame(visible.nodes, visible.edges));
+          }}>Enquadrar</button>
+        </div>
+        <svg ref={svg} className="knowledge-map" role="group" aria-label="Grafo interativo de entidades e relações"
+          onPointerDown={start} onPointerMove={move} onPointerUp={stop} onPointerCancel={stop} onLostPointerCapture={(event) => { if (event.target === event.currentTarget) stop(event); }}
+          onClickCapture={(event) => {
+            if (event.detail > 0 && moved.current) event.stopPropagation();
+          }}>
           <defs>
-            <pattern id={`${svgId}-contours`} width="240" height="120" patternUnits="userSpaceOnUse">
-              <path d="M-30 32C40 8 53 58 120 36S211 12 270 40M-30 46C40 22 53 72 120 50S211 26 270 54M-30 60C40 36 53 86 120 64S211 40 270 68" fill="none" stroke="var(--rule)" strokeWidth=".65" />
-            </pattern>
-            {STATUSES.map((status) => <marker key={status} id={`${svgId}-${status}`} viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path className={`arrow ${status}`} d="M0 0 8 4 0 8 2.5 4Z" /></marker>)}
+            {STATUSES.map((status) => (
+              <marker key={status} id={`${svgId}-${status}`} viewBox="0 0 7 7" refX="6.5" refY="3.5" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto">
+                <path className={`arrow ${status}`} d="M0 0 7 3.5 0 7 1.6 3.5Z" />
+              </marker>
+            ))}
           </defs>
-          <rect width={MAP_WIDTH} height={g.height} fill={`url(#${svgId}-contours)`} opacity=".42" />
-          {g.lanes.map((lane, i) => (
-            <g key={lane.key} aria-hidden="true">
-              <rect className="lane-band" x={i * laneW + 9} y={12} width={laneW - 18} height={g.height - 24} rx={5} />
-              <path className="lane-rule" d={`M${i * laneW + 23} 52h${laneW - 46}`} />
-              <text className="lane-label" x={laneCenter(i, g.lanes.length)} y={36} textAnchor="middle">{lane.label}</text>
-            </g>
-          ))}
-          {g.edges.map((e) => {
-            const info = e.byRun[run] ?? e.byRun[compareFrom] ?? Object.values(e.byRun)[0];
-            const shown = visible(e.byRun[run]);
-            const isNew = !!base && shown && !e.byRun[base];
-            const entered = !!compareFrom && compareFrom !== run && !e.byRun[compareFrom];
-            const changed = shown && [base, compareFrom].some((from) => from && e.byRun[from] && e.byRun[from].status_epistemico !== info.status_epistemico);
-            const path = highlightEdges.has(e.key);
-            const emphasized = path || activeEdge?.key === e.key || (neighbors.size > 0 && (e.s === active || e.t === active));
-            const dim = !emphasized && (checkActive || neighbors.size > 0 || !!activeEdge);
-            const route = routes.get(e.key)!;
-            const status = info.status_epistemico;
-            return (
-              <g key={e.key} className={`edge-g ${shown ? '' : 'gone'} ${isNew ? accent : ''} ${dim ? 'dim' : ''} ${emphasized ? 'hl' : ''}`}
-                {...interactions(e.key, shown, () => onEdge(e))}
-                aria-label={`${STATUS_LABEL[status]}. ${info.rotulo}`}>
-                <title>{info.rotulo}</title>
-                {(isNew || entered) && shown && <path key={run} className={`edge-under ${accent} ${isNew ? 'persistent' : ''}`} d={route.d} />}
-                <path key={entered && shown ? run : 'edge'} className={`edge ${status} ${entered && shown ? 'edge-arriving' : ''}`} d={route.d} markerEnd={`url(#${svgId}-${status})`} />
-                {changed && <path key={run} className={`edge-pulse ${accent}`} d={route.d} />}
-                {path && <path className="edge-flow" d={route.d} />}
-                {MARK[status] && <g className={`edge-mark ${status}`} transform={`translate(${route.x},${route.y})`} aria-hidden="true"><circle r="8" /><text textAnchor="middle" y="4">{MARK[status]}</text></g>}
-                <path className="edge-hit" d={route.d} />
-              </g>
-            );
-          })}
-          {g.nodes.map((node) => {
-            const info = node.byRun[run] ?? node.byRun[compareFrom] ?? Object.values(node.byRun)[0];
-            const shown = visible(node.byRun[run]);
-            const isNew = !!base && shown && !node.byRun[base];
-            const entered = !!compareFrom && compareFrom !== run && !node.byRun[compareFrom];
-            const emphasized = highlightNodes.has(node.key) || selectedNode === node.key || neighbors.has(node.key) || activeEdge?.s === node.key || activeEdge?.t === node.key;
-            const dim = !emphasized && (checkActive || neighbors.size > 0 || !!activeEdge);
-            const lines = wrapLabel(info.nome);
-            return (
-              <g key={node.key} data-node={node.key} transform={`translate(${node.x},${node.y})`} className={`node ${shown ? '' : 'gone'} ${isNew ? accent : ''} ${dim ? 'dim' : ''} ${emphasized ? 'hl' : ''}`}
-                {...interactions(node.key, shown, () => onNode(node))} aria-label={info.nome}>
-                <title>{info.nome}</title>
-                <g key={shown ? run : undefined} className={`node-face ${shown && (isNew || entered || cutoff !== null) ? 'arriving' : ''}`}>
-                  {shown && (isNew || entered) && <rect className={`node-under ${accent} ${isNew ? 'persistent' : ''}`} x={-NODE_WIDTH / 2 - 3} y={-NODE_HEIGHT / 2 - 3} width={NODE_WIDTH + 6} height={NODE_HEIGHT + 6} rx={8} />}
-                  <rect className="node-paper" x={-NODE_WIDTH / 2} y={-NODE_HEIGHT / 2} width={NODE_WIDTH} height={NODE_HEIGHT} rx={5} />
-                  <g transform="translate(-59,0)" aria-hidden="true"><Glyph tipo={info.tipo} r={7} /></g>
-                  <text className="label" x={-44} y={4 - (lines.length - 1) * 7.5} aria-hidden="true">{lines.map((line, i) => <tspan key={i} x={-44} dy={i ? 15 : 0}>{line}</tspan>)}</text>
+          <g ref={layer} className={`graph-layer ${ease ? 'easing' : ''} ${zoomed ? 'zoomed' : ''}`}
+            style={{ transform: `translate(${camera.x}px, ${camera.y}px) scale(${camera.scale})` }}>
+            {g.edges.map((edge) => {
+              const info = edge.byRun[run] ?? Object.values(edge.byRun)[0];
+              const shown = visible.edgeKeys.has(edge.key);
+              const isNew = !!base && !edge.byRun[base];
+              const path = highlightEdges.has(edge.key);
+              const lit = path || edge.key === activeEdge?.key || edge.s === activeNode?.key || edge.t === activeNode?.key;
+              const route = routes.get(edge.key)!;
+              const status = info.status_epistemico;
+              return (
+                <g key={edge.key} className={`edge-g ${shown ? '' : 'gone'} ${isNew ? accent : ''} ${lit ? 'hl' : dimOthers ? 'dim' : ''}`}
+                  {...interactions(edge.key, shown, () => onEdge(edge))} aria-label={`${STATUS_LABEL[status]}. ${info.rotulo}`}>
+                  {isNew && <path className="edge-under" d={route.d} />}
+                  <path className={`edge ${status}`} d={route.d} markerEnd={`url(#${svgId}-${status})`} />
+                  {path && <path className="edge-flow" d={route.d} />}
+                  {MARK[status] && <g className={`edge-mark ${status}`} transform={`translate(${route.x},${route.y})`} aria-hidden="true">
+                    <circle r="7" /><text textAnchor="middle" y="3.5">{MARK[status]}</text>
+                  </g>}
+                  <path className="edge-hit" d={route.d} />
                 </g>
-              </g>
-            );
-          })}
+              );
+            })}
+            {g.nodes.map((node) => {
+              const info = node.byRun[run] ?? Object.values(node.byRun)[0];
+              const shown = visible.keys.has(node.key);
+              const { x, y, radius } = positions.get(node.key)!;
+              const family = FAMILIES[node.family];
+              const isNew = !!base && !node.byRun[base];
+              const lit = pathNodes.has(node.key) || selectedNode === node.key || neighbors.has(node.key) || activeEdge?.s === node.key || activeEdge?.t === node.key;
+              const prominent = lit || scene.nodes.length <= 26 || (degree.get(node.key) ?? 0) >= 2;
+              return (
+                <g key={node.key} data-node={node.key} transform={`translate(${x},${y})`}
+                  className={`node family-${family.key} ${shown ? '' : 'gone'} ${isNew ? accent : ''} ${lit ? 'hl' : dimOthers ? 'dim' : ''}`}
+                  {...interactions(node.key, shown, () => onNode(node))} aria-label={`${info.nome} · ${family.label}`}>
+                  <title>{info.nome}</title>
+                  <g className="node-face">
+                    {isNew && <><circle className="node-halo" r={radius + 5} /><circle className="node-ring" r={radius + 2.8} /></>}
+                    <circle className="node-dot" r={radius} />
+                  </g>
+                  <circle className="node-hit" r={Math.max(14, radius + 5)} />
+                  <text className={`node-label ${prominent ? 'prominent' : ''}`} textAnchor="middle" y="9" aria-hidden="true"
+                    transform={`translate(0,${radius + 4}) scale(${labelMagnification(camera.scale)})`}>
+                    {labelLines(info.nome).map((line, i) => <tspan key={i} x="0" dy={i ? LABEL_HEIGHT : 0}>{line}</tspan>)}
+                  </text>
+                </g>
+              );
+            })}
+          </g>
         </svg>
+        {!visible.nodes.length && <span className="graph-empty">Nenhuma entidade neste trecho da análise.</span>}
       </div>
       <div className="map-caption">
         {activeEdge ? <><b>{STATUS_LABEL[activeEdge.byRun[run].status_epistemico]}</b> · {activeEdge.byRun[run].rotulo}</>
-          : hoveredNode && visible(hoveredNode.byRun[run]) ? hoveredNode.byRun[run].nome
-          : checkActive ? 'Caminho da verificação em destaque' : 'Selecione um ponto ou uma linha para ler as evidências. Role para explorar o mapa.'}
+          : activeNode ? activeNode.byRun[run].nome
+          : checkActive ? 'Caminho da verificação em destaque'
+          : 'Selecione um ponto ou uma linha para ler as evidências.'}
       </div>
     </>
   );
@@ -229,9 +346,12 @@ export function Legend() {
     <details className="legend">
       <summary>Legenda do mapa</summary>
       <div className="legend-key">
-        {STATUSES.map((status) => <div key={status}><svg viewBox="0 0 38 12" aria-hidden="true"><path className={`edge ${status}`} d="M1 6H24" /><text x="29" y="10">{MARK[status]}</text></svg>{STATUS_LABEL[status]}</div>)}
-        <div><span className="key-swatch memory" />Novo na condição com memória</div>
-        <div><span className="key-swatch moss" />Novo na condição com atualização</div>
+        {FAMILIES.map((family) => <div key={family.key}><svg viewBox="0 0 38 12" aria-hidden="true"><circle className={`family-${family.key}`} cx="13" cy="6" r="4" fill="var(--family)" /></svg>{family.label}</div>)}
+        <hr />
+        {STATUSES.map((status) => <div key={status}><svg viewBox="0 0 38 12" aria-hidden="true"><path className={`edge ${status}`} d="M1 6H25" /><text className={`edge-mark ${status}`} x="29" y="10">{MARK[status]}</text></svg>{STATUS_LABEL[status]}</div>)}
+        <hr />
+        <div><svg viewBox="0 0 38 12" aria-hidden="true"><circle className="node-ring memory" cx="13" cy="6" r="4.5" /></svg>Novo na condição com memória</div>
+        <div><svg viewBox="0 0 38 12" aria-hidden="true"><circle className="node-ring update" cx="13" cy="6" r="4.5" /></svg>Novo na condição com atualização</div>
       </div>
     </details>
   );
