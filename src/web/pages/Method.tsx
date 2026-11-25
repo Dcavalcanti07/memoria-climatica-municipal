@@ -3,7 +3,7 @@ import { loadMethod } from '../lib/data';
 
 const FLOW = [
   { n: '1', t: 'Reunir os documentos', leigo: 'Plano de contingência, alerta, ofícios e, quando houver, relatórios e atas de eventos anteriores.', tec: '3 a 6 documentos fictícios por caso, com código (D1, D2…), enviados em ordem de data.', tone: 'water' },
-  { n: '2', t: 'A IA lê e organiza', leigo: 'Um modelo de linguagem lê tudo de uma vez e devolve uma ficha organizada: o que existe, como se liga e o que conferir.', tec: 'gpt-5.4-mini, uma chamada por análise, resposta em JSON Schema estrito: entidades, relações, mudanças no tempo e verificações.', tone: 'ink' },
+  { n: '2', t: 'A IA lê e organiza', leigo: 'Um modelo de linguagem lê tudo de uma vez e devolve uma ficha organizada: o que existe, como se liga e o que conferir.', tec: 'gpt-6-luna, uma chamada por análise, resposta em JSON Schema estrito: entidades, relações, mudanças no tempo e verificações.', tone: 'ink' },
   { n: '3', t: 'O sistema confere a IA', leigo: 'Antes de mostrar, o sistema checa se cada trecho citado existe mesmo no documento indicado.', tec: 'Validação determinística: citação literal, código de documento válido, relação ligada a entidade existente.', tone: 'ink' },
   { n: '4', t: 'Mapa e pauta', leigo: 'As ligações viram um mapa navegável e as perguntas viram uma pauta para a reunião.', tec: 'O grafo é montado só com a resposta do modelo. Não há GraphRAG, banco vetorial ou embeddings.', tone: 'memory' },
   { n: '5', t: 'A equipe decide', leigo: 'A equipe marca o que confirmou, anota e exporta. A IA sugere; quem decide é a prefeitura.', tec: 'Revisão por pergunta (revisada, precisa confirmar, não se aplica) e exportação em Markdown.', tone: 'moss' },
@@ -11,8 +11,8 @@ const FLOW = [
 const EVAL = [
   { t: 'Respostas esperadas', d: 'Escritas e congeladas antes dos testes (hash SHA-256 no git).' },
   { t: 'Duas versões', d: 'Mesmo caso analisado só com o atual (A) e com a memória (B).' },
-  { t: 'Correção às cegas', d: 'Outro modelo (gpt-5.4) compara com o esperado sem saber se é A ou B.' },
-  { t: 'Conferência item a item', d: 'Amostra de 68 decisões do corretor conferida uma a uma: 65 confirmadas. Não substitui especialistas.' },
+  { t: 'Correção às cegas', d: 'Outro modelo (gpt-6.1-terra) compara com o esperado sem saber se é A ou B.' },
+  { t: 'Segundo corretor', d: 'Numa rodada anterior, dois corretores diferentes concordaram em 92% das decisões. Não substitui especialistas.' },
 ];
 
 function Arch() {
@@ -75,7 +75,7 @@ export function Method() {
           <li><b>Condição B:</b> os mesmos documentos + registros históricos.</li>
           <li><b>Amostra:</b> 36 cenários fictícios (6 de desenvolvimento, usados para ajustar instruções; 30 de avaliação final), 3 a 6 documentos cada. Inclui casos em que a memória ajuda, é irrelevante, já foi superada, traz contradições ou pode induzir exagero.</li>
           <li><b>Gabaritos:</b> escritos antes das execuções finais e congelados com hash SHA-256 em commit no repositório. Cada item indica se depende do contexto atual ou da memória, o que separa omissão de limitação legítima de acesso.</li>
-          <li><b>Repetições:</b> parte da amostra foi executada mais vezes para observar estabilidade.</li>
+          <li><b>Duas rodadas:</b> a principal usa gpt-6-luna para analisar e gpt-6.1-terra para corrigir. Uma rodada anterior, com gpt-5.4-mini e gpt-5.4 e com repetições para observar estabilidade, fica registrada como comparação.</li>
         </ul>
 
         <h2 id="Métricas" tabIndex={-1}>Métricas</h2>
