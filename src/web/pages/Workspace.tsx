@@ -242,7 +242,7 @@ export function Workspace({ id }: { id: string }) {
           <div className="muted" style={{ fontSize: 12.5 }}>{provided.size} de {allDocs.length - (liveDoc && mode !== 'LIVE' ? 1 : 0)} documentos nesta análise · <span style={{ color: 'var(--water)' }}>■</span> atual <span style={{ color: 'var(--memory)' }}>■</span> histórico {updateIds.size > 0 && <><span style={{ color: 'var(--moss)' }}>■</span> atualização</>}</div>
         </div>
         <DocList docs={allDocs.filter((doc) => mode === 'LIVE' || doc !== liveDoc)} provided={provided} cites={cites} updateIds={updateIds} onOpen={(d) => setReader({ doc: d })} selected={reader?.doc.id} />
-        <LiveBox onRun={runLive} scenario={sc} pending={livePending} />
+        {LIVE_ENABLED ? <LiveBox onRun={runLive} scenario={sc} pending={livePending} /> : <UpdateShortcut hasUpdate={!!runs.BU} active={mode === 'BU'} onShow={() => changeMode('BU')} />}
       </aside>
 
       <section className="stage" ref={stageRef} tabIndex={-1} aria-label="Mapa de conhecimento">
@@ -412,6 +412,32 @@ function Timeline({ entries, cutoff, onSeek, playing, updateIds }: {
       <div className="timeline-caption" role="status">
         {doc ? <><b>{playing ? 'Em leitura' : 'Até este documento'} · {doc.id} · {fmtDate(doc.data)}</b><span>{doc.titulo}</span></>
           : <span>{entries.length} documentos em ordem cronológica. Selecione um para limitar o mapa.</span>}
+      </div>
+    </div>
+  );
+}
+
+/** Análise ao vivo só aparece quando a publicação a habilita (VITE_LIVE_ENABLED=1 no build). */
+const LIVE_ENABLED = import.meta.env.VITE_LIVE_ENABLED === '1';
+
+/** Na versão pública: atalho para a atualização registrada (execução real armazenada). */
+function UpdateShortcut({ hasUpdate, active, onShow }: { hasUpdate: boolean; active: boolean; onShow: () => void }) {
+  return (
+    <div style={{ padding: '6px 12px 24px' }}>
+      <div className="card" style={{ padding: 12 }}>
+        <div className="eyebrow">Incorporar uma atualização</div>
+        {hasUpdate ? (
+          <>
+            <p style={{ fontSize: 13, color: 'var(--ink-2)', margin: '6px 0 8px' }}>Veja como a IA incorporou um ofício novo, de 25/11/2026, que cadastra a estrada da Granja como rota alternativa. Resultado de uma execução real armazenada.</p>
+            <button className="btn small ghost" onClick={onShow} disabled={active} aria-pressed={active}>{active ? 'Atualização em exibição' : 'Ver a atualização registrada'}</button>
+          </>
+        ) : (
+          <>
+            <p style={{ fontSize: 13, color: 'var(--ink-2)', margin: '6px 0 8px' }}>No caso Vila das Águas, dá para ver como a IA incorporou um ofício novo. Resultado de uma execução real armazenada.</p>
+            <a className="btn small ghost" href="?modo=BU#/cenario/E01">Ver a atualização em Vila das Águas</a>
+          </>
+        )}
+        <p className="muted" style={{ fontSize: 11.5, margin: '8px 0 0' }}>Nesta versão pública, a análise ao vivo está desligada. Rodando o projeto com uma chave própria, é possível escrever um documento novo e pedir outra análise.</p>
       </div>
     </div>
   );

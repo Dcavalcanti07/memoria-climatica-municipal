@@ -33,7 +33,7 @@ Transformar documentos dispersos em **conhecimento conectado e verificável**:
 | Investigação | servidor, gestor | grafo de relações, linha do tempo, leitor com citações destacadas, comparação **só atual × com memória × com atualização** |
 | Técnica | engenheiro, avaliador | modelo e id de cada chamada, documentos enviados, validação das citações, gabarito × resultado, métricas, prompts e schema |
 
-A pauta é acionável: marcar como revisada, “precisa confirmar” ou “não se aplica”, anotar observações e **baixar a pauta em Markdown** para a reunião. É possível **incorporar uma atualização** escrita pelo visitante e pedir nova análise real (quando a análise ao vivo está habilitada no servidor).
+A pauta é acionável: marcar como revisada, “precisa confirmar” ou “não se aplica”, anotar observações e **baixar a pauta em Markdown** para a reunião. A incorporação de atualizações aparece no modo **“+ Atualização recente”** do caso Vila das Águas: uma execução real em que a IA recebe um ofício novo sobre a rota alternativa. Na versão pública, a análise ao vivo fica desligada; rodando o projeto com chave própria, é possível escrever um documento novo e pedir outra análise.
 
 Procedência sempre visível: **execução real armazenada** (modelo, data, id da chamada), **executada agora** ou **exemplo ilustrativo**.
 
@@ -104,7 +104,7 @@ npx tsx scripts/score.ts --tag meu_teste
 npx tsx scripts/build-app-data.ts --tag meu_teste --dev-tag dev_v2 --update-tag showcase_v1
 ```
 
-Análise ao vivo na publicação: variáveis `OPENAI_API_KEY` e `MCM_LIVE_ENABLED=1` no servidor; limites por visitante (`MCM_LIVE_PER_IP_HOUR`) e por dia (`MCM_LIVE_DAILY_CAP`).
+Análise ao vivo na publicação: variáveis `OPENAI_API_KEY` e `MCM_LIVE_ENABLED=1` no servidor e `VITE_LIVE_ENABLED=1` no build (mostra o formulário); limites por visitante (`MCM_LIVE_PER_IP_HOUR`) e por dia (`MCM_LIVE_DAILY_CAP`).
 
 ## Estrutura
 
