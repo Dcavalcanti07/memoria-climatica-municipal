@@ -5,10 +5,10 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { ANALYSIS_SCHEMA, type Doc, type Scenario } from '../src/core/schema';
-import { buildUserMessage, selectDocs } from '../src/core/prompt';
-import { callStructured } from '../src/core/llm';
-import { assertShape, validateAnalysis } from '../src/core/validate';
+import { ANALYSIS_SCHEMA, type Doc, type Scenario } from '../src/core/schema.js';
+import { buildUserMessage, selectDocs } from '../src/core/prompt.js';
+import { callStructured } from '../src/core/llm.js';
+import { assertShape, validateAnalysis } from '../src/core/validate.js';
 
 const root = process.cwd();
 const hits = new Map<string, number[]>();

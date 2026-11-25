@@ -6,7 +6,7 @@
 
 ![Cenário Vila das Águas: arquivo de documentos, mapa de relações e pauta preventiva](docs/img/cenario-e01.png)
 
-**Demonstração:** _(link da aplicação publicada)_ · **Relatório de resultados:** [docs/resultados.md](docs/resultados.md) · **Diário de experimentação:** [docs/diario.md](docs/diario.md)
+**Demonstração:** https://memoria-climatica-municipal.vercel.app · **Relatório de resultados:** [docs/resultados.md](docs/resultados.md) · **Diário de experimentação:** [docs/diario.md](docs/diario.md)
 
 ---
 
